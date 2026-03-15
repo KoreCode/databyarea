@@ -1,0 +1,180 @@
+import os
+
+BASE_DIR = "/storage/emulated/0/databyarea-site"
+SITE = "https://databyarea.com"
+
+STATES = [
+("alabama","Alabama"),("alaska","Alaska"),("arizona","Arizona"),("arkansas","Arkansas"),
+("california","California"),("colorado","Colorado"),("connecticut","Connecticut"),("delaware","Delaware"),
+("florida","Florida"),("georgia","Georgia"),("hawaii","Hawaii"),("idaho","Idaho"),
+("illinois","Illinois"),("indiana","Indiana"),("iowa","Iowa"),("kansas","Kansas"),
+("kentucky","Kentucky"),("louisiana","Louisiana"),("maine","Maine"),("maryland","Maryland"),
+("massachusetts","Massachusetts"),("michigan","Michigan"),("minnesota","Minnesota"),("mississippi","Mississippi"),
+("missouri","Missouri"),("montana","Montana"),("nebraska","Nebraska"),("nevada","Nevada"),
+("new-hampshire","New Hampshire"),("new-jersey","New Jersey"),("new-mexico","New Mexico"),("new-york","New York"),
+("north-carolina","North Carolina"),("north-dakota","North Dakota"),("ohio","Ohio"),("oklahoma","Oklahoma"),
+("oregon","Oregon"),("pennsylvania","Pennsylvania"),("rhode-island","Rhode Island"),
+("south-carolina","South Carolina"),("south-dakota","South Dakota"),("tennessee","Tennessee"),
+("texas","Texas"),("utah","Utah"),("vermont","Vermont"),("virginia","Virginia"),
+("washington","Washington"),("west-virginia","West Virginia"),
+("wisconsin","Wisconsin"),("wyoming","Wyoming")
+]
+
+CATEGORIES = [
+("cost-of-living","Cost of Living","Housing, groceries, transportation, and tax-related costs."),
+("utility-costs","Utility Costs","Electricity, gas, water, sewer, and trash costs."),
+("property-taxes","Property Tax Rates","State-level property tax comparisons."),
+("insurance-costs","Insurance Costs","Auto and home insurance cost comparisons.")
+]
+
+def ensure(path):
+    os.makedirs(path, exist_ok=True)
+
+def write(path, html):
+    ensure(os.path.dirname(path))
+    with open(path,"w",encoding="utf-8") as f:
+        f.write(html)
+
+def head(title, desc, canonical):
+    return f"""<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{title}</title>
+<meta name="description" content="{desc}">
+<link rel="canonical" href="{SITE}{canonical}">
+<link rel="stylesheet" href="/assets/styles.css">
+</head>"""
+
+def nav():
+    links = ''.join(
+        f'<a class="pill" href="/{s}/">{t}</a>'
+        for s,t,_ in CATEGORIES
+    )
+    return f"""
+<header class="nav">
+  <div class="brand">
+    <img src="/assets/logo.png" alt="Data By Area logo" class="logo">
+    <div class="brand-text">
+      <strong>Data By Area</strong>
+      <span>Costs • Rates • Public Data</span>
+    </div>
+  </div>
+  <nav class="navlinks">
+    <a class="pill" href="/">Home</a>
+    {links}
+  </nav>
+</header>
+"""
+
+def footer():
+    return """<footer class="footer">
+<p><strong>Disclaimer:</strong> Informational estimates only. Not financial or legal advice.</p>
+<p>
+<a href="/about/">About</a> ·
+<a href="/privacy/">Privacy</a> ·
+<a href="/contact/">Contact</a>
+</p>
+<p>© <span id="y"></span> DataByArea.com</p>
+<script>document.getElementById("y").textContent=new Date().getFullYear()</script>
+</footer>"""
+
+def homepage():
+    cards = ""
+    for slug,title,desc in CATEGORIES:
+        cards += f"""
+<div class="card">
+<h2>{title}</h2>
+<p>{desc}</p>
+<a class="btn" href="/{slug}/">Browse states</a>
+</div>"""
+    return f"""<!doctype html>
+<html lang="en">
+{head(
+"Compare Costs & Rates by State | Data By Area",
+"Compare cost of living, utilities, taxes, and insurance by state.",
+"/")}
+<body>
+<div class="container">
+{nav()}
+<section class="hero">
+<h1>Compare Costs & Rates by State</h1>
+<p>Cost of living, utilities, property taxes, and insurance — organized by location.</p>
+</section>
+<section class="grid">
+{cards}
+</section>
+{footer()}
+</div>
+</body>
+</html>"""
+
+def category_page(slug,title,desc):
+    items = ''.join(
+        f'<li><a href="/{slug}/{s}/">{n}</a></li>'
+        for s,n in STATES
+    )
+    return f"""<!doctype html>
+<html lang="en">
+{head(f"{title} by State | Data By Area",desc,f"/{slug}/")}
+<body>
+<div class="container">
+{nav()}
+<section class="hero">
+<h1>{title} by State</h1>
+<p>{desc}</p>
+</section>
+<ul class="list">{items}</ul>
+{footer()}
+</div>
+</body>
+</html>"""
+
+def state_page(cat_slug,cat_title,state_slug,state_name):
+    related = ''.join(
+        f'<li><a href="/{s}/{state_slug}/">{t} in {state_name}</a></li>'
+        for s,t,_ in CATEGORIES if s!=cat_slug
+    )
+    return f"""<!doctype html>
+<html lang="en">
+{head(f"{cat_title} in {state_name} | Data By Area",
+f"{cat_title} estimates in {state_name}.",
+f"/{cat_slug}/{state_slug}/")}
+<body>
+<div class="container">
+{nav()}
+<section class="hero">
+<h1>{cat_title} in {state_name}</h1>
+<p>High-level statewide estimates and comparisons.</p>
+</section>
+<div class="grid">
+<div class="card">
+<h2>Overview</h2>
+<ul>
+<li>Statewide averages</li>
+<li>Regional variation</li>
+<li>Comparisons to national norms</li>
+</ul>
+</div>
+<div class="card">
+<h2>Related</h2>
+<ul>{related}</ul>
+</div>
+</div>
+{footer()}
+</div>
+</body>
+</html>"""
+
+def build():
+    write(f"{BASE_DIR}/index.html", homepage())
+    for slug,title,desc in CATEGORIES:
+        write(f"{BASE_DIR}/{slug}/index.html", category_page(slug,title,desc))
+        for s,n in STATES:
+            write(
+                f"{BASE_DIR}/{slug}/{s}/index.html",
+                state_page(slug,title,s,n)
+            )
+    print("✔ Site generated")
+
+if __name__ == "__main__":
+    build()

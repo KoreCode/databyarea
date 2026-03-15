@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Insurance Costs by State | Data By Area</title>
+  <meta name="description" content="Compare average insurance cost estimates (auto and home focused) by state. Browse insurance costs pages for all 50 states." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="canonical" href="https://databyarea.com/insurance-costs/" />
+</head>
+<body>
+  <div class="container">
+    <div class="nav">
+  <div class="brand">
+    <img src="/assets/logo.png" alt="Data By Area logo" class="logo">
+    <div class="brand-text">
+      <strong>Data By Area</strong>
+      <span>Costs • Rates • Public Data</span>
+    </div>
+  </div>
+  <div class="navlinks">
+    <a class="pill" href="/">Home</a><a class="pill" href="/cost-of-living/">Cost of Living</a><a class="pill" href="/utility-costs/">Utility Costs</a><a class="pill" href="/property-taxes/">Property Tax Rates</a><a class="pill" href="/insurance-costs/">Insurance Costs</a>
+  </div>
+</div>
+
+    <div class="hero">
+      <h1>Insurance Costs by State</h1>
+      <p>Compare average insurance cost estimates (auto and home focused) by state. Use search to quickly find a state.</p>
+      <div class="breadcrumbs"><a href="/">Home</a> › <span>Insurance Costs</span></div>
+
+      <div class="searchRow">
+        <input id="q" class="input" placeholder="Search a state (e.g., Minnesota)..." />
+      </div>
+    </div>
+
+    <h2 class="sectionTitle">Browse states</h2>
+    <ul id="list" class="list">
+      <li class="item"><a href="/insurance-costs/alabama/">Alabama</a></li>
+<li class="item"><a href="/insurance-costs/alaska/">Alaska</a></li>
+<li class="item"><a href="/insurance-costs/arizona/">Arizona</a></li>
+<li class="item"><a href="/insurance-costs/arkansas/">Arkansas</a></li>
+<li class="item"><a href="/insurance-costs/california/">California</a></li>
+<li class="item"><a href="/insurance-costs/colorado/">Colorado</a></li>
+<li class="item"><a href="/insurance-costs/connecticut/">Connecticut</a></li>
+<li class="item"><a href="/insurance-costs/delaware/">Delaware</a></li>
+<li class="item"><a href="/insurance-costs/florida/">Florida</a></li>
+<li class="item"><a href="/insurance-costs/georgia/">Georgia</a></li>
+<li class="item"><a href="/insurance-costs/hawaii/">Hawaii</a></li>
+<li class="item"><a href="/insurance-costs/idaho/">Idaho</a></li>
+<li class="item"><a href="/insurance-costs/illinois/">Illinois</a></li>
+<li class="item"><a href="/insurance-costs/indiana/">Indiana</a></li>
+<li class="item"><a href="/insurance-costs/iowa/">Iowa</a></li>
+<li class="item"><a href="/insurance-costs/kansas/">Kansas</a></li>
+<li class="item"><a href="/insurance-costs/kentucky/">Kentucky</a></li>
+<li class="item"><a href="/insurance-costs/louisiana/">Louisiana</a></li>
+<li class="item"><a href="/insurance-costs/maine/">Maine</a></li>
+<li class="item"><a href="/insurance-costs/maryland/">Maryland</a></li>
+<li class="item"><a href="/insurance-costs/massachusetts/">Massachusetts</a></li>
+<li class="item"><a href="/insurance-costs/michigan/">Michigan</a></li>
+<li class="item"><a href="/insurance-costs/minnesota/">Minnesota</a></li>
+<li class="item"><a href="/insurance-costs/mississippi/">Mississippi</a></li>
+<li class="item"><a href="/insurance-costs/missouri/">Missouri</a></li>
+<li class="item"><a href="/insurance-costs/montana/">Montana</a></li>
+<li class="item"><a href="/insurance-costs/nebraska/">Nebraska</a></li>
+<li class="item"><a href="/insurance-costs/nevada/">Nevada</a></li>
+<li class="item"><a href="/insurance-costs/new-hampshire/">New Hampshire</a></li>
+<li class="item"><a href="/insurance-costs/new-jersey/">New Jersey</a></li>
+<li class="item"><a href="/insurance-costs/new-mexico/">New Mexico</a></li>
+<li class="item"><a href="/insurance-costs/new-york/">New York</a></li>
+<li class="item"><a href="/insurance-costs/north-carolina/">North Carolina</a></li>
+<li class="item"><a href="/insurance-costs/north-dakota/">North Dakota</a></li>
+<li class="item"><a href="/insurance-costs/ohio/">Ohio</a></li>
+<li class="item"><a href="/insurance-costs/oklahoma/">Oklahoma</a></li>
+<li class="item"><a href="/insurance-costs/oregon/">Oregon</a></li>
+<li class="item"><a href="/insurance-costs/pennsylvania/">Pennsylvania</a></li>
+<li class="item"><a href="/insurance-costs/rhode-island/">Rhode Island</a></li>
+<li class="item"><a href="/insurance-costs/south-carolina/">South Carolina</a></li>
+<li class="item"><a href="/insurance-costs/south-dakota/">South Dakota</a></li>
+<li class="item"><a href="/insurance-costs/tennessee/">Tennessee</a></li>
+<li class="item"><a href="/insurance-costs/texas/">Texas</a></li>
+<li class="item"><a href="/insurance-costs/utah/">Utah</a></li>
+<li class="item"><a href="/insurance-costs/vermont/">Vermont</a></li>
+<li class="item"><a href="/insurance-costs/virginia/">Virginia</a></li>
+<li class="item"><a href="/insurance-costs/washington/">Washington</a></li>
+<li class="item"><a href="/insurance-costs/west-virginia/">West Virginia</a></li>
+<li class="item"><a href="/insurance-costs/wisconsin/">Wisconsin</a></li>
+<li class="item"><a href="/insurance-costs/wyoming/">Wyoming</a></li>
+    </ul>
+
+    <div class="footer">
+  <p>
+    <strong>Disclaimer:</strong> Informational estimates only. Costs and rates vary by household,
+    provider, and local area. Not financial, legal, or tax advice.
+  </p>
+  <p>
+    <a href="/about/">About</a> ·
+    <a href="/privacy/">Privacy Policy</a> ·
+    <a href="/contact/">Contact</a>
+  </p>
+  <p>© <span id="y"></span> DataByArea.com</p>
+</div>
+<script>
+  document.getElementById("y").textContent = new Date().getFullYear();
+</script>
+  </div>
+
+  <script>
+    const q = document.getElementById('q');
+    const items = Array.from(document.querySelectorAll('#list .item'));
+    function filter(){
+      const term = q.value.trim().toLowerCase();
+      items.forEach(li => {
+        const text = li.textContent.toLowerCase();
+        li.style.display = text.includes(term) ? '' : 'none';
+      });
+    }
+    q.addEventListener('input', filter);
+  </script>
+</body>
+</html>

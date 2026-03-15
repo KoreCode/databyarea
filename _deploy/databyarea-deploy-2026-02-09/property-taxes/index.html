@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Property Tax Rates by State | Data By Area</title>
+  <meta name="description" content="Browse high-level property tax rate estimates and comparisons by state. Browse property tax rates pages for all 50 states." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="canonical" href="https://databyarea.com/property-taxes/" />
+</head>
+<body>
+  <div class="container">
+    <div class="nav">
+  <div class="brand">
+    <img src="/assets/logo.png" alt="Data By Area logo" class="logo">
+    <div class="brand-text">
+      <strong>Data By Area</strong>
+      <span>Costs • Rates • Public Data</span>
+    </div>
+  </div>
+  <div class="navlinks">
+    <a class="pill" href="/">Home</a><a class="pill" href="/cost-of-living/">Cost of Living</a><a class="pill" href="/utility-costs/">Utility Costs</a><a class="pill" href="/property-taxes/">Property Tax Rates</a><a class="pill" href="/insurance-costs/">Insurance Costs</a>
+  </div>
+</div>
+
+    <div class="hero">
+      <h1>Property Tax Rates by State</h1>
+      <p>Browse high-level property tax rate estimates and comparisons by state. Use search to quickly find a state.</p>
+      <div class="breadcrumbs"><a href="/">Home</a> › <span>Property Tax Rates</span></div>
+
+      <div class="searchRow">
+        <input id="q" class="input" placeholder="Search a state (e.g., Minnesota)..." />
+      </div>
+    </div>
+
+    <h2 class="sectionTitle">Browse states</h2>
+    <ul id="list" class="list">
+      <li class="item"><a href="/property-taxes/alabama/">Alabama</a></li>
+<li class="item"><a href="/property-taxes/alaska/">Alaska</a></li>
+<li class="item"><a href="/property-taxes/arizona/">Arizona</a></li>
+<li class="item"><a href="/property-taxes/arkansas/">Arkansas</a></li>
+<li class="item"><a href="/property-taxes/california/">California</a></li>
+<li class="item"><a href="/property-taxes/colorado/">Colorado</a></li>
+<li class="item"><a href="/property-taxes/connecticut/">Connecticut</a></li>
+<li class="item"><a href="/property-taxes/delaware/">Delaware</a></li>
+<li class="item"><a href="/property-taxes/florida/">Florida</a></li>
+<li class="item"><a href="/property-taxes/georgia/">Georgia</a></li>
+<li class="item"><a href="/property-taxes/hawaii/">Hawaii</a></li>
+<li class="item"><a href="/property-taxes/idaho/">Idaho</a></li>
+<li class="item"><a href="/property-taxes/illinois/">Illinois</a></li>
+<li class="item"><a href="/property-taxes/indiana/">Indiana</a></li>
+<li class="item"><a href="/property-taxes/iowa/">Iowa</a></li>
+<li class="item"><a href="/property-taxes/kansas/">Kansas</a></li>
+<li class="item"><a href="/property-taxes/kentucky/">Kentucky</a></li>
+<li class="item"><a href="/property-taxes/louisiana/">Louisiana</a></li>
+<li class="item"><a href="/property-taxes/maine/">Maine</a></li>
+<li class="item"><a href="/property-taxes/maryland/">Maryland</a></li>
+<li class="item"><a href="/property-taxes/massachusetts/">Massachusetts</a></li>
+<li class="item"><a href="/property-taxes/michigan/">Michigan</a></li>
+<li class="item"><a href="/property-taxes/minnesota/">Minnesota</a></li>
+<li class="item"><a href="/property-taxes/mississippi/">Mississippi</a></li>
+<li class="item"><a href="/property-taxes/missouri/">Missouri</a></li>
+<li class="item"><a href="/property-taxes/montana/">Montana</a></li>
+<li class="item"><a href="/property-taxes/nebraska/">Nebraska</a></li>
+<li class="item"><a href="/property-taxes/nevada/">Nevada</a></li>
+<li class="item"><a href="/property-taxes/new-hampshire/">New Hampshire</a></li>
+<li class="item"><a href="/property-taxes/new-jersey/">New Jersey</a></li>
+<li class="item"><a href="/property-taxes/new-mexico/">New Mexico</a></li>
+<li class="item"><a href="/property-taxes/new-york/">New York</a></li>
+<li class="item"><a href="/property-taxes/north-carolina/">North Carolina</a></li>
+<li class="item"><a href="/property-taxes/north-dakota/">North Dakota</a></li>
+<li class="item"><a href="/property-taxes/ohio/">Ohio</a></li>
+<li class="item"><a href="/property-taxes/oklahoma/">Oklahoma</a></li>
+<li class="item"><a href="/property-taxes/oregon/">Oregon</a></li>
+<li class="item"><a href="/property-taxes/pennsylvania/">Pennsylvania</a></li>
+<li class="item"><a href="/property-taxes/rhode-island/">Rhode Island</a></li>
+<li class="item"><a href="/property-taxes/south-carolina/">South Carolina</a></li>
+<li class="item"><a href="/property-taxes/south-dakota/">South Dakota</a></li>
+<li class="item"><a href="/property-taxes/tennessee/">Tennessee</a></li>
+<li class="item"><a href="/property-taxes/texas/">Texas</a></li>
+<li class="item"><a href="/property-taxes/utah/">Utah</a></li>
+<li class="item"><a href="/property-taxes/vermont/">Vermont</a></li>
+<li class="item"><a href="/property-taxes/virginia/">Virginia</a></li>
+<li class="item"><a href="/property-taxes/washington/">Washington</a></li>
+<li class="item"><a href="/property-taxes/west-virginia/">West Virginia</a></li>
+<li class="item"><a href="/property-taxes/wisconsin/">Wisconsin</a></li>
+<li class="item"><a href="/property-taxes/wyoming/">Wyoming</a></li>
+    </ul>
+
+    <div class="footer">
+  <p>
+    <strong>Disclaimer:</strong> Informational estimates only. Costs and rates vary by household,
+    provider, and local area. Not financial, legal, or tax advice.
+  </p>
+  <p>
+    <a href="/about/">About</a> ·
+    <a href="/privacy/">Privacy Policy</a> ·
+    <a href="/contact/">Contact</a>
+  </p>
+  <p>© <span id="y"></span> DataByArea.com</p>
+</div>
+<script>
+  document.getElementById("y").textContent = new Date().getFullYear();
+</script>
+  </div>
+
+  <script>
+    const q = document.getElementById('q');
+    const items = Array.from(document.querySelectorAll('#list .item'));
+    function filter(){
+      const term = q.value.trim().toLowerCase();
+      items.forEach(li => {
+        const text = li.textContent.toLowerCase();
+        li.style.display = text.includes(term) ? '' : 'none';
+      });
+    }
+    q.addEventListener('input', filter);
+  </script>
+</body>
+</html>

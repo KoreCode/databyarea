@@ -1,0 +1,52 @@
+{
+  "published": {
+    "electrician-rates-by-state": {
+      "published_at": "2026-02-02"
+    },
+    "plumber-rates-by-state": {
+      "published_at": "2026-02-02"
+    },
+    "hvac-installation-cost-by-state": {
+      "published_at": "2026-02-02"
+    },
+    "roof-replacement-cost-by-state": {
+      "published_at": "2026-02-02"
+    },
+    "deck-building-cost-by-state": {
+      "published_at": "2026-02-02"
+    },
+    "concrete-driveway-cost-by-state": {
+      "published_at": "2026-02-02"
+    },
+    "window-replacement-cost-by-state": {
+      "published_at": "2026-02-02"
+    },
+    "water-heater-installation-cost-by-state": {
+      "published_at": "2026-02-02"
+    },
+    "foundation-repair-cost-by-state": {
+      "published_at": "2026-02-02"
+    },
+    "garage-door-repair-cost-by-state": {
+      "published_at": "2026-02-02"
+    },
+    "privacy-policy": {
+      "published_at": "2026-02-08",
+      "system": true
+    },
+    "terms": {
+      "published_at": "2026-02-08",
+      "system": true
+    }
+  },
+  "history": [
+    {
+      "ts": "2026-02-02T15:41:35.957627Z",
+      "attempted": 10,
+      "written": 10,
+      "skipped_existing_file": 0,
+      "daily_max": 10,
+      "link_to_queued": false
+    }
+  ]
+}
