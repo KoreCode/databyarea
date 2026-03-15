@@ -1,0 +1,1738 @@
+.
+├── .git
+│   ├── COMMIT_EDITMSG
+│   ├── FETCH_HEAD
+│   ├── HEAD
+│   ├── ORIG_HEAD
+│   ├── config
+│   ├── description
+│   ├── hooks
+│   │   ├── applypatch-msg.sample
+│   │   ├── commit-msg.sample
+│   │   ├── fsmonitor-watchman.sample
+│   │   ├── post-checkout
+│   │   ├── post-commit
+│   │   ├── post-merge
+│   │   ├── post-update.sample
+│   │   ├── pre-applypatch.sample
+│   │   ├── pre-commit.sample
+│   │   ├── pre-merge-commit.sample
+│   │   ├── pre-push
+│   │   ├── pre-push.sample
+│   │   ├── pre-rebase.sample
+│   │   ├── pre-receive.sample
+│   │   ├── prepare-commit-msg.sample
+│   │   ├── push-to-checkout.sample
+│   │   ├── sendemail-validate.sample
+│   │   └── update.sample
+│   ├── index
+│   ├── info
+│   │   └── exclude
+│   ├── lfs
+│   │   ├── cache
+│   │   │   └── locks
+│   │   │       └── refs
+│   │   │           └── heads
+│   │   │               └── main
+│   │   │                   └── verifiable
+│   │   └── tmp
+│   ├── logs
+│   │   ├── HEAD
+│   │   └── refs
+│   │       ├── heads
+│   │       │   └── main
+│   │       └── remotes
+│   │           └── origin
+│   │               ├── HEAD
+│   │               └── main
+│   ├── objects
+│   │   ├── 00
+│   │   │   ├── 021608ba7ed4a0a5b35ec7b5ccc339beb054df
+│   │   │   ├── 08fba6b9b6839fd68ce14d77e1c49d8615c98e
+│   │   │   ├── 3f5655b330b4e6fd6222334eb1cbd4766d753e
+│   │   │   └── 5fe9ce7d829c4ed503230fe8ced99d38d46860
+│   │   ├── 02
+│   │   │   └── 0fdbd35ebb5dd068a47f688af9df869ea66863
+│   │   ├── 03
+│   │   │   ├── 878c9c9083d1cf32e1bc482d04ba62f2df7d6f
+│   │   │   └── ce6ab25aa2b966ef5dca4df250d7376624e54f
+│   │   ├── 05
+│   │   │   └── f90eed51f9a3d1247ab5c58aeede30673a72ed
+│   │   ├── 07
+│   │   │   ├── a4cf27b93b2c570774a762cbcfceeab3280923
+│   │   │   └── ca0d4c1e760c30cfd0222a0732de288d111777
+│   │   ├── 08
+│   │   │   └── f0295e62be78c4ce63088272fa4dce9bdbf13d
+│   │   ├── 09
+│   │   │   ├── af6faf72a954f523563ccf0fec9944915b1542
+│   │   │   └── f530f7d98143024fe24ca7b60a4133232f4baf
+│   │   ├── 0a
+│   │   │   └── ac17e08abf205cf30e0364cde870a6db32e59c
+│   │   ├── 0b
+│   │   │   └── 670e8b1faff5996e1dc1db24f93d55a51c9cb7
+│   │   ├── 0c
+│   │   │   ├── 4e1e09d20c51ee2da86870b0fd5c62f40ea97a
+│   │   │   └── e509579986fdc4751d9b3bd31d97785bcf9581
+│   │   ├── 0e
+│   │   │   ├── 0844f5ddf0cdf48d1675808421166a46af2a43
+│   │   │   ├── 0bd9bece3b7faa0abef610142e3b3d4b380d57
+│   │   │   └── a447b76db83464dc00fecb83b095aee08a65aa
+│   │   ├── 0f
+│   │   │   ├── 07f3c818b1fff168bfc41f6b817e9ad3e9f14b
+│   │   │   ├── 0bbbf60441945fbb18ca99735677f1b75da522
+│   │   │   └── 45234a335fea0bc8f32bf572bf2f31f463927a
+│   │   ├── 10
+│   │   │   ├── 684b207089668c76c753943b85f3f9057e0ed1
+│   │   │   ├── 9f033a4eada495e7b0f5ef2a1f38481b2838db
+│   │   │   ├── cb2d194d5bfef0e86a322de87891e439555a5e
+│   │   │   └── f84ef5d0165ba12de10f9a6f95b3935fc3d249
+│   │   ├── 12
+│   │   │   └── 1a6af5620e5370aea6d013de5b5c289d585eda
+│   │   ├── 13
+│   │   │   ├── 508e0c48d7cba09e12f34f9680a8d66670ad43
+│   │   │   ├── 7facb931a8d3897f7b2c781a823a606e861983
+│   │   │   └── c3bc56607d6edd2857d6750a5cb024b49c6508
+│   │   ├── 14
+│   │   │   ├── 247bafd9def87a89a3a234058cd3ed9c20c028
+│   │   │   └── 258dd5006e2211b64daf0e057fb8f5e4a70187
+│   │   ├── 15
+│   │   │   ├── 364df074d5c4a8e5b43c87771584b4837712c4
+│   │   │   └── 99576ce7f4741970f17255865f6c50580ee86c
+│   │   ├── 16
+│   │   │   ├── 9ef7b1d652dd6af83618accaa219d79e195fee
+│   │   │   └── ab65277bcf3b1b3c888241237baacd4616348b
+│   │   ├── 17
+│   │   │   ├── 16b08cee9c0b070c9d65c267fd318e33702652
+│   │   │   └── 75c11c24073482c7ea16b4e90d6099a15d8d7f
+│   │   ├── 18
+│   │   │   ├── 06cbbc57f0c2d78d55dde5c511f8ec4e002cea
+│   │   │   ├── 5b3de85f7976c510ac81d968336c22ff12e072
+│   │   │   └── fe8b8f372caeea38d7ae2deec27e33d0da9442
+│   │   ├── 1a
+│   │   │   ├── 3cbff5b5c897d66ee607f2692be2a9c3ee7e11
+│   │   │   └── 939eb5ca8930522d0c3828ed173e6b991189fc
+│   │   ├── 1b
+│   │   │   ├── 286c0db546debeb903afd7f1fef4bfddfe3d22
+│   │   │   └── 8216ee0928dfdda29955b8accbc32b952cbdb4
+│   │   ├── 1c
+│   │   │   ├── 32811af2add0b9c99e1cf12f881480c9e5e02c
+│   │   │   ├── 809277d9c06c1f088ec8c1f65fbe5faffc23c0
+│   │   │   └── d2efbee7ef7f7f14b08421e57729caf6999b27
+│   │   ├── 1d
+│   │   │   ├── 1794ee7628fdafb16195fd2f1605da6ed1bd8f
+│   │   │   ├── 47290d98023f032926210bd16cf15e25efdb17
+│   │   │   ├── a2b69f0aa18ae384faeaf13f8c7d31fa859b6f
+│   │   │   └── e0c51a445e2ace4f52a939c37ac20e394332d7
+│   │   ├── 1e
+│   │   │   ├── 194068c98c1d086ed75843f1e8d541a0963ed5
+│   │   │   ├── 645abee9ffff5046e5d1f886cd3efc6588d1d2
+│   │   │   ├── a854e75bb4a1fb81b7a86430486a89adaca22b
+│   │   │   └── df2d3c1b71e1117291899687d5ceaace2e0171
+│   │   ├── 1f
+│   │   │   ├── 465880ba40b82c1af0633734e16b8631c9cc1b
+│   │   │   ├── 4c4393ad9f6b3a22534e372ba5d67e83d5918a
+│   │   │   ├── 869b1eaf8ed78393763200322d310d8d13df70
+│   │   │   └── a4aa80f8ee8c256b2568071187ca08b9fc0249
+│   │   ├── 20
+│   │   │   ├── 02ed3235e7f665004f17b0eae3013ced6290fa
+│   │   │   ├── 71a503bac514cd3439c0cb32844157c65d0f2c
+│   │   │   └── c53c8e4cbdca03bc2ca1ca771b6797f71f3d4b
+│   │   ├── 21
+│   │   │   └── 7860230d8f2a053047b88a1fcc80693762a9bf
+│   │   ├── 22
+│   │   │   └── dc04736ff6a8f52d65d3b410844c0f193f7882
+│   │   ├── 23
+│   │   │   └── 02ec21bca335a7e55feb3dc66075815c10281d
+│   │   ├── 25
+│   │   │   └── 2ba48fd6f6ccb81ba40368c999b006ff04326a
+│   │   ├── 26
+│   │   │   └── bd31dc79cf8e59a164b282fc3221105047cf04
+│   │   ├── 27
+│   │   │   └── a22d058c9ea2fc8225ec2cd25a4a65bec449dd
+│   │   ├── 28
+│   │   │   ├── 1689597f5a94b7ea4eeaf544536b9945633f7a
+│   │   │   ├── 2a034b0b5561845abe32f902824f2316c878b0
+│   │   │   └── ef39813b3140666e149dd19ef83e4d30cb3f0b
+│   │   ├── 29
+│   │   │   └── 0d654efdea5d991c1ba6afef362bf0f9ae1464
+│   │   ├── 2a
+│   │   │   ├── 4c7f5bf08cc591679977ff43de38c78bf61773
+│   │   │   ├── 855da8aba8c76ed9fb8855ffe48953b9aab8c7
+│   │   │   └── 8eee2986240ae314eb6888124a842d8284b1e2
+│   │   ├── 2c
+│   │   │   ├── 34d974e6bf3166401edc342e65a084e2ef205a
+│   │   │   └── 99d967ea41ca499f41b3246f0dcd9a520d686b
+│   │   ├── 2d
+│   │   │   └── 22c62590779fb9e0b0fcd7716e39fce62bdbb3
+│   │   ├── 2e
+│   │   │   ├── 9aee086c5fad7bb90890b76f16eb53fd818368
+│   │   │   └── f4c88e9d4d7d45397a542ba53d00c480c22cd7
+│   │   ├── 2f
+│   │   │   ├── 939eda7c0ba1c01e7d517304c20ae83f1bb08d
+│   │   │   └── aed8b0629cc3f2d1646836e00b71434e6d462b
+│   │   ├── 30
+│   │   │   ├── 3fa310e0ad103becfd82b0ba772ad15bbee067
+│   │   │   ├── 8332afa51d3687c30dd1426c20a4db35296104
+│   │   │   ├── b3c28046f87105b422c76392755b2dba2ee927
+│   │   │   ├── c05d07ca2ca9f16f8c71e56cc058c6bdbd1a78
+│   │   │   └── d7d633c173816f9ff617c5b0820686a323e4f1
+│   │   ├── 31
+│   │   │   └── b959baf7b5c6ea47478ff645e10eacd3f5253c
+│   │   ├── 32
+│   │   │   └── b9e23d5bacd44c6d1d963c0b6756eb9dddfa31
+│   │   ├── 33
+│   │   │   ├── a968dea2c09e7e914760e16bd2a0642a2da2b0
+│   │   │   └── c30a4f3483ac0dd86edd4999549075def47b3e
+│   │   ├── 34
+│   │   │   └── 1d1aef8a4d1a1cd65d00b27c30f46e5dbefba8
+│   │   ├── 35
+│   │   │   └── d513234a7fa22927f91adfe70118bb7d11106c
+│   │   ├── 36
+│   │   │   └── c0699e6efb87878bd81a68dd8ce15d3a38fb69
+│   │   ├── 38
+│   │   │   ├── 149e7599c6d10f112726f3a4d7ffb458420c8b
+│   │   │   ├── c3a6b846919125614143b35fd0e66a06e0cd70
+│   │   │   └── f2f886c0721753e131811e88e63c666e9baa74
+│   │   ├── 39
+│   │   │   ├── 0816527ac297cf3b3354d791e1d13eb9548eca
+│   │   │   └── 2bfa8b5bcb150ddf7687892d19be6d15950849
+│   │   ├── 3a
+│   │   │   └── 2ed053fd4662318c50cb66f352d09a76182c8c
+│   │   ├── 3b
+│   │   │   └── f132a7bd26612dfc5c138ba1c323e0000468cb
+│   │   ├── 3c
+│   │   │   ├── 3c3d6ddd8901ab1344f08f87d27a9e96bfd8bf
+│   │   │   ├── cd25d990c0dff43c04b36bf51a32270198e1ab
+│   │   │   └── da55231e47ccac0e22eee294747f127ab5afb8
+│   │   ├── 3d
+│   │   │   ├── 2d687862aabc6d6dc0571b557907b4d1b13f03
+│   │   │   ├── 66e4f39a9b836a13c2f542e78d20d5202ac06d
+│   │   │   └── 7ffa1b3be68f2dae633e1bed08779313c8bcec
+│   │   ├── 3e
+│   │   │   ├── 3db0ed247e19cfa76aab66917bc2dfa52efcdc
+│   │   │   └── 695e713a93e4df624d9f5c6cfb54a607f5a311
+│   │   ├── 40
+│   │   │   └── a860daea364d38459dc95cf9bba095b08ab1bf
+│   │   ├── 41
+│   │   │   ├── 3b7f52b7bb03412355b4bc819df7e5cd263757
+│   │   │   └── a7846b7dcd312e3f0883a7a6669d7ed75ec630
+│   │   ├── 42
+│   │   │   └── 0c1254a6dbdf57bfb36ecc4a77de70d358fd66
+│   │   ├── 43
+│   │   │   ├── 0777f1c6a09874f2e5d69995aad5891450ce53
+│   │   │   ├── 7a696b7de3dc791b1b58d8b8c49acdb416f34a
+│   │   │   └── acc7ba992722c06215a11323351824e742e358
+│   │   ├── 44
+│   │   │   └── f21632c9e8f4f96e29dc24799e9feba252ec58
+│   │   ├── 45
+│   │   │   ├── 04a5422c992c7064bee943ace9921107cbb39b
+│   │   │   ├── 167ad6736d5f64b0dfe657c261cfa3a84c6529
+│   │   │   ├── 4b05d949fb06d50633beb2fb09c1b2b8148beb
+│   │   │   ├── 639a5e7cb5d261824d6790a9e50e23e6433db0
+│   │   │   └── ea12ce728e7cd6c475b9ffbd2129fcbbcd58dc
+│   │   ├── 46
+│   │   │   ├── 87f00954cdeebf9b70a1a7f81001a5a8bd1a27
+│   │   │   ├── b7867c9582445b148c351b85ae99e6365bdd08
+│   │   │   └── e806c6b16293155b819222b81861b4f3cae424
+│   │   ├── 47
+│   │   │   └── 118700cf7a876848371756e748d9b88f9e02d2
+│   │   ├── 48
+│   │   │   ├── 78a7e8ca4f47202c5fd6d014fcb407544f3022
+│   │   │   └── 81c476c68640028b61610145aceec1727debdc
+│   │   ├── 49
+│   │   │   ├── 809b97f6b1c57feb8fe2e291daf93f454e6add
+│   │   │   ├── 95bfadbb9a231f8fb5450cb977fc0da91edddf
+│   │   │   ├── 9ffcf2a53063414aa34e5e317673e81b85614c
+│   │   │   └── e32d231897ffe22a8f74145fc75e07958eee62
+│   │   ├── 4a
+│   │   │   ├── 6e91445e9b7cb49ba29c3076959e6b88e867d9
+│   │   │   └── ed8b9f13349790d1f8bfed70fe72ece205efb2
+│   │   ├── 4b
+│   │   │   ├── 016e70f45fc3f74a1b936e2f5e157b8ce576d4
+│   │   │   ├── 338006b894f3cb9bbdc4c398840202b795e214
+│   │   │   ├── 35bb5e2d22fcbf9c1d7565faa74115ade6126b
+│   │   │   ├── 5e3e872dfd62b939c08611a3b2ea48d9b87cbf
+│   │   │   ├── 850c3ca659f6c699725875dba2f0a1d91f4066
+│   │   │   └── a89140d5eda868173fb34f8d8032da938a7314
+│   │   ├── 4c
+│   │   │   ├── 4239a685ccf6f5ebfdbc03f22526b9b8cc9c15
+│   │   │   └── 888fbb6ceb01dc3c803f846a6df3c3ca174ca8
+│   │   ├── 4d
+│   │   │   └── d22d47c7fcc03c6088b46cd1c43a33d3488437
+│   │   ├── 4e
+│   │   │   └── 17e74dd3f2e47306c7995eba99205de62da537
+│   │   ├── 50
+│   │   │   ├── 9884a09413bc70622c63ebbbb48b287940c96e
+│   │   │   └── ae236e7dba8670a788a0e9983f8255b280d2a5
+│   │   ├── 51
+│   │   │   └── 25ee23f58171e90b2272fb07d2062a0c726370
+│   │   ├── 52
+│   │   │   ├── 78d1200b473d67cdd27042d10f9b401a58cf8a
+│   │   │   └── 9d0bc902934dbe4030a70d42413bf37d065126
+│   │   ├── 53
+│   │   │   └── 0560218c980f75f71ea1bd38a05f4b3ed217a8
+│   │   ├── 54
+│   │   │   └── 082f49d27cbbaaf3c67459c4a69e56d7392036
+│   │   ├── 55
+│   │   │   ├── b8f1d941e117a6014b6c38294b397a9ca6ed84
+│   │   │   ├── ea663109b081327de215ba11404f0474d12e38
+│   │   │   └── fae0436b15be63a902ec86e7fdafd1433cd724
+│   │   ├── 56
+│   │   │   └── 77a13fa5168166b6f9dca2e3f9a899117f426f
+│   │   ├── 57
+│   │   │   ├── 558960c81dadc8829820ef61c69fb3554dd921
+│   │   │   └── 9ddd8ec0922360fd24c3cb27b90f0c9e9fe9d7
+│   │   ├── 58
+│   │   │   ├── a0eaf4303a3248d81080519d13029a3cb2d574
+│   │   │   └── bb4f13c8507e28125de00ea821a580c3fc915c
+│   │   ├── 59
+│   │   │   └── 5c94a23b3f830d25974a84aba004c2c0dba59c
+│   │   ├── 5a
+│   │   │   └── 8b4a9a2badeb8391b5ce61faf56439280336e4
+│   │   ├── 5b
+│   │   │   └── 7dcb1eb0de13d9f095d06fe02c40b879efca8a
+│   │   ├── 5c
+│   │   │   ├── 4ceda8680028dfd7b93ef7585c3428ac452225
+│   │   │   ├── 765e0fbeb7dd6f3df3ff7d6afcf62e5ab91cee
+│   │   │   ├── a3b1310dd22727eeae3c3e1633a1c483a3c4b3
+│   │   │   └── cf02ccd866a0766ec78726fc7c5a045362197d
+│   │   ├── 5d
+│   │   │   └── f5eb954aea7e25e73e9445345a5164ccc7a289
+│   │   ├── 5e
+│   │   │   └── b07a3225342dc4fa6e0f119ef80b520c349df6
+│   │   ├── 5f
+│   │   │   ├── bd5f11e071d158ddf2109ba29cd739661dadb4
+│   │   │   └── bdf524a5b2f0e79f43f8925d3f03835a699b41
+│   │   ├── 60
+│   │   │   ├── 368124f6773b76d264fefe5b45d6cea7cd63b6
+│   │   │   └── 41f66f90d509ce63b9a9a1bd7621f7bef66bc2
+│   │   ├── 61
+│   │   │   └── 887f3fd340a61dc2ee3e2f0d2b745f69704701
+│   │   ├── 62
+│   │   │   ├── 7fa87d392ac6805e39645735d8ee1782f142dc
+│   │   │   └── d2b6f4ca8f436546b802aee75d86d8d0a9d2c2
+│   │   ├── 63
+│   │   │   ├── 963289ae1a01d2349aa95908db77d73b62e807
+│   │   │   └── ba347c69de2b8efc8264240b55acec8447864d
+│   │   ├── 64
+│   │   │   └── d52136adcc4d21987424970e315de325cc9e90
+│   │   ├── 65
+│   │   │   ├── 54836d73e769f5029cba106539d0fcd1180c41
+│   │   │   ├── 96c8020e13c0fa6408f532a2f891892bf2e102
+│   │   │   └── da5133f017ac7d92c0289f103461037a5e9bf4
+│   │   ├── 66
+│   │   │   ├── 2a93e6f40b28344fe486985731ad91bddd9c66
+│   │   │   ├── ad8e004324aa00fb913fd8cd1e776f2bc894a7
+│   │   │   └── dd1abbdd7548b11943b19bbebf476e362a93f6
+│   │   ├── 67
+│   │   │   ├── 3a2639d136da48a17e2aff609e21d399af20e6
+│   │   │   └── 92768dcd70cf28f72d097cd3ddc635f8b129f0
+│   │   ├── 68
+│   │   │   └── 02ca0b8a29a8964eda42709e38a780aa82c86b
+│   │   ├── 69
+│   │   │   ├── 723525ce59777c685af82e98cd2d8d4a3e9051
+│   │   │   ├── adc85d406b3d01bf75801c19366c51792118c3
+│   │   │   └── b356aa8c5e3eec45879346205b80b056a28040
+│   │   ├── 6a
+│   │   │   └── f7f71dc6574b885b883541c567ab9db753dbcd
+│   │   ├── 6b
+│   │   │   ├── 21d3f6e2e3410605d6e701ee8460a3e8aa4e10
+│   │   │   └── 77798745725dbdb06acb66433e8bb0cc8660b6
+│   │   ├── 6c
+│   │   │   ├── 71334cebc8df80f9c86ac694e94a1de4c088db
+│   │   │   ├── a74e8e7f52cc23e15188d4a8865d42ecc30e86
+│   │   │   └── ad12a0d45b16e46bf3d69deab80a22603c9b0a
+│   │   ├── 6d
+│   │   │   ├── 3ec15374ed6a0efdd2fe4e0fd50b0f5c378f9f
+│   │   │   ├── 52f7f4f55e8f545660434500f3abe115626ded
+│   │   │   ├── b605aa7ae65d1539c5818a01266b06b8954634
+│   │   │   └── bdc9e40731bb5a8d089aad840e85edad27208f
+│   │   ├── 6e
+│   │   │   └── ae65e004e02c3f4cc5c0453bf588f564631422
+│   │   ├── 6f
+│   │   │   ├── 0b100697685ce673bd829d10bc91d12d24ba16
+│   │   │   ├── 7a7120bbeb84beb0c8dabb5ec69c7aee6eed0b
+│   │   │   └── dec43e561654e5b58f549ec5ad37969cde4183
+│   │   ├── 70
+│   │   │   ├── 2d66ef86ce3b1f2fcc19b93bd529a490b8b4dd
+│   │   │   └── 46e0c401a4e79598524711aef25b45a227d962
+│   │   ├── 71
+│   │   │   ├── 42ac770b9848b5908b90887f9115130a01292c
+│   │   │   ├── 9eb51d99258f088b32c75dbf303333d2dc2a77
+│   │   │   └── f93fffd4592cd3b6882718560426aa9a277a97
+│   │   ├── 72
+│   │   │   ├── 0eb23425c3b9e7460ea5b29f199af28fa187ba
+│   │   │   ├── 53565ed9599d7d661b7bc50c61d4e0e31d92b9
+│   │   │   ├── 57f39bff0cb5131c7f2ff78f087c1c83910ac7
+│   │   │   └── e2ecc065be2d1ba3747056449e2522e1797872
+│   │   ├── 73
+│   │   │   ├── 27fe126863a42d6dbcefd2c0e29530d3bce09a
+│   │   │   ├── 68e744e516d14f0f6bc9dcd4afd74f4c4b17ff
+│   │   │   ├── b9f4bbc375af2e4aaf7c8123d8a46d52ddcc3e
+│   │   │   ├── d2d2fead1f4fa0e6a94de35f87f66691ce533a
+│   │   │   └── e8d74551a0cacb0dfeaed70f2fc2c49e5fe117
+│   │   ├── 74
+│   │   │   └── eac7fa58fbb3c24e12b6f89c4be3f6fb8da809
+│   │   ├── 75
+│   │   │   ├── 602d858ae9af6749105be42238c8c48ee3f532
+│   │   │   └── 7f9a3543620907d32369eb0119b2521d1c902b
+│   │   ├── 76
+│   │   │   ├── 61b55f68382176b9dcdf23c857436d49d903f9
+│   │   │   └── a38a0b4f54a932dc1ec557b58afcc8e5c26ff5
+│   │   ├── 77
+│   │   │   └── cdc72398dc99e415acea48add9b8f8bfe4eb5c
+│   │   ├── 78
+│   │   │   ├── 4951fcd9aafc3053cab06be92a80f1d226f80e
+│   │   │   └── fb292b369971133245579963b47bb835af2a18
+│   │   ├── 79
+│   │   │   ├── 567167d66ff82dcd01312a24b3837d316917ab
+│   │   │   ├── 8633a7902362b4e3217bd802569b19b2f64ee3
+│   │   │   └── da5577d66e982dec7c9ea6ab0244509d0930d8
+│   │   ├── 7a
+│   │   │   ├── 645617f52d46ea5e02bbc6ee8cde7617c0e18b
+│   │   │   ├── d2dc00fef2c8423fa48ca8f768162522d90dfb
+│   │   │   └── d4a62a316abf805b72a77e861e54e237acc780
+│   │   ├── 7b
+│   │   │   ├── 7531817996d14c25de300628e3cea1b2dd3356
+│   │   │   ├── ae5c6106d7d5141243e2af6136ec6c82d5c68f
+│   │   │   └── b13b8a03a467916800f6010e39e51d9054d16b
+│   │   ├── 7c
+│   │   │   ├── 48a01612a33c3274374ef8ebdb1f1e54b84bfc
+│   │   │   ├── 8d271f1360598f786686ad358fd419674a49f6
+│   │   │   ├── 9799f52893f6f83936f6a291ba309fefce7eec
+│   │   │   └── d17ad8b2b1933f82f31013b7c1b27443563b86
+│   │   ├── 7d
+│   │   │   ├── 48601b1d6eeaf34b19a61f7c7d96f4bf70f755
+│   │   │   ├── cf15dd8fef2644eca86333ccf33771388f22b3
+│   │   │   └── e5f517a129e4e3aafc025cc0a8566f6511ad7b
+│   │   ├── 7e
+│   │   │   ├── ba4c502aad40b49a7eab07a45221bb5016ef4f
+│   │   │   └── e9daf3946c35ae08c50a51bc74f6544c0dc9a2
+│   │   ├── 7f
+│   │   │   ├── 18fe12997f4df62bf699bb7c8436744c795028
+│   │   │   ├── 615b22e34918abaf3308633b1bddba723105de
+│   │   │   └── ad745c0fe92bcddba69c6b671e6784642f1a21
+│   │   ├── 81
+│   │   │   └── 143cb6935a6cf7e4cc98b120571628873c041a
+│   │   ├── 82
+│   │   │   ├── 703a012f325d7e959101f6f51eab75085335d2
+│   │   │   ├── 95acc5a949b194aa5fc1b0b3f8b9bb2e02034a
+│   │   │   └── e8cfff879556e93de574459c25abb512fa8995
+│   │   ├── 83
+│   │   │   ├── 0fdfd8bfa8365a3c51d6cd3f24739ffde8eff9
+│   │   │   ├── 425fd1618d21bdb26c2a71bc270f10321aa180
+│   │   │   └── cee1b99e47f7846316779e69c7dad5aa3b1b9e
+│   │   ├── 85
+│   │   │   └── 2fd3908c763b1b061cc941263df5dacd93910e
+│   │   ├── 87
+│   │   │   └── a05281036f0eaa76e9882c65e2b37c716f952e
+│   │   ├── 89
+│   │   │   ├── 77c5e5e1b431d4c6f8c6a96156343f7537044e
+│   │   │   └── af46dd86ec6467c9b8469c651d6e158328ae0c
+│   │   ├── 8a
+│   │   │   └── b07db0b1cab4e8a141f75aa467ab1b1b1cbea5
+│   │   ├── 8b
+│   │   │   └── c3d109c1b7e4257d9666c3f5f6f84529232609
+│   │   ├── 8c
+│   │   │   ├── 45ed6db24a19cab606ab7f9ed2f9992e2314b1
+│   │   │   ├── 57cf1f7c5a6e96fc35453f03779a946d141d4e
+│   │   │   └── 9f46244c174429516cfa738f2275ce49f3152f
+│   │   ├── 8d
+│   │   │   ├── 1fc94c192f71232946a8e138388e2e85f18f77
+│   │   │   ├── 6ddee5e1ea6b8eaab6113c5f80e34a410c72fb
+│   │   │   ├── 843e89d01d2a90e49411ade2a9768d33e2eea0
+│   │   │   └── d09d990f2c0d6ba331d9b2ce19b67341232df4
+│   │   ├── 8f
+│   │   │   ├── 1677231dccfd63f30d03925c80bf7ee1603ae8
+│   │   │   └── c366b65a6537b127b431a97f310a574e13e7bc
+│   │   ├── 90
+│   │   │   └── f177ad99caa3427964fcbc9c268844e0fda207
+│   │   ├── 92
+│   │   │   ├── 1ce4f4e95aa196a3af1243ad2200c0918c159b
+│   │   │   ├── 365d51016db10c79213ffb982f9633c2f080d2
+│   │   │   ├── 6c38f00d738a93e53173cd84f7c705a8effd4d
+│   │   │   └── 7a1d85a886aecee2d450fd5eb4752a3695c13f
+│   │   ├── 93
+│   │   │   ├── 17055c7234b023ca4fb2c1aeeffe18578817ed
+│   │   │   ├── 59c1872e85734ad714468c73577fc8d70e7717
+│   │   │   └── 83b775f30f9f1716fe3002f2abd1dac2a218f2
+│   │   ├── 94
+│   │   │   ├── 010a9cc27bdce386255be68fbc76f4ab4a77ca
+│   │   │   └── 7c0050cdb883445b824ccc57b895d6979fdd52
+│   │   ├── 95
+│   │   │   ├── 33f4efaebacaa85182853dfa1296abff0ce734
+│   │   │   └── 7bc05ae1c80a8e0f78bc4019930fda31e9ccff
+│   │   ├── 96
+│   │   │   ├── 13d47e56e7701d3b6667a0f99c58864d5be300
+│   │   │   ├── 2d5b83cc148d78a5653191773058907a40e856
+│   │   │   ├── 321da846cd02bc55ebb3063226072c1d0e570e
+│   │   │   ├── cafc28f3c63e70e14607ba0ba6a7ac8440c78f
+│   │   │   └── dc8a19fbd04d9cd1f0cf4cde66ddf4c75de3d2
+│   │   ├── 97
+│   │   │   └── ae34ed14280d90246ef9c27cf44d2a13261f08
+│   │   ├── 98
+│   │   │   ├── 16952f232e952f0b6cc596535d147f65e64f64
+│   │   │   ├── 8767e111ebc87dceb2ffdd606d5307c26be2c0
+│   │   │   └── dab6fca25a4071cbf58e8b7e0543d29b1e9868
+│   │   ├── 99
+│   │   │   ├── 3327bd7f72741ccd3a023b6b35591e4eb5cc7d
+│   │   │   ├── 5ca4922a346e21cb6363cb2f176712c1a79ec0
+│   │   │   └── e2bde4f2044f72fe1d2effcf550f4e389b4c51
+│   │   ├── 9a
+│   │   │   ├── 1bf04eb6ff846f490273202b0f97f39fb23bae
+│   │   │   ├── 8775102d4dec82af45b1892b41d435dff587cb
+│   │   │   └── ebe99c3027efd9b7cbe9ece93c3880b8736dd5
+│   │   ├── 9b
+│   │   │   └── 85d42edbdebf012ec91221d825169692327f11
+│   │   ├── 9c
+│   │   │   ├── 1041d7140cffc690c63974131cbefbf4bf8933
+│   │   │   ├── 3e1aea800108ae8f181ea89c77b98c6ae759c3
+│   │   │   ├── 474b0a37a6a8b3c4ad8ebae27f7004df5156b6
+│   │   │   └── eea61ac4cda8774d66ef730c6c34d057cfe3ae
+│   │   ├── 9e
+│   │   │   ├── 969e923b0d6d26a72778163fae282046e3da5b
+│   │   │   └── fde9ab5890345bc2554568aec121461d53c8d9
+│   │   ├── a0
+│   │   │   ├── 57a9091d698dcfd47e6b9d1991248202e5c376
+│   │   │   ├── 83266d5c1b57abe32fd029f1efb3d40373f14a
+│   │   │   └── df411e1e9b8fbb5d2abd06a5a883329bb71dc4
+│   │   ├── a1
+│   │   │   ├── 251db9e4dcf177b8c9dac7ba6d64811fe7d788
+│   │   │   ├── 3c99abddaba42c1bc17ca6479048679832371d
+│   │   │   └── 8e9b1153e9f73304ac7b76594a9bc437bb9759
+│   │   ├── a2
+│   │   │   ├── 34d36956de0648fed8e195677d9e2606c8b250
+│   │   │   └── fa807e1a49b654fa727cfd4ca564fb44e20bf1
+│   │   ├── a3
+│   │   │   └── 84874c53cab99698b59b6ac9589a2f5ad4e3c1
+│   │   ├── a4
+│   │   │   ├── 23a976680b2c986d789d4ac0c3341cc68d430a
+│   │   │   └── eece0db3f99ed6f63b003da9bff4ab69cce934
+│   │   ├── a5
+│   │   │   ├── 1f5a3b01009ffad41b979246dd5cfb48fb6e53
+│   │   │   └── be738bc2c6e1841ff48ffa2cd345b8433e4359
+│   │   ├── a7
+│   │   │   └── 80d9267b30bdaf6a2a169b4f71302ea31103fd
+│   │   ├── a8
+│   │   │   ├── 1d2e6492afc8ca1fe0212502b3b865c4ed28ca
+│   │   │   ├── 6a5b2ff3dfa2c62c8b3fbf5d2542f9a632f5e7
+│   │   │   ├── 72bf08f69d94914bab84f5b8d765adb57c3ac3
+│   │   │   └── b2e991f7d75a13f0bf1eaf6d1897d0d4c9fdc4
+│   │   ├── ab
+│   │   │   ├── 9623f3fe00505ab8f1ad4a79fb479232e91127
+│   │   │   ├── 9ee55abd04035ca09439c11116a46e1f362370
+│   │   │   ├── cb6f9a4325b82f62344be83b81a702c6325183
+│   │   │   └── e7d19857e89fc5ae309a35cc46282e519d0943
+│   │   ├── ad
+│   │   │   ├── 572fab9335139e4bdc0d3d500d941450694973
+│   │   │   ├── 8fd1ffdedeca49d96eb3ec8c41c9516d579f56
+│   │   │   └── b4a096b42517e93fc92388e2f6ab6245be036e
+│   │   ├── ae
+│   │   │   ├── 2a97f24ad2a2223fd0e29bde8e9797defee231
+│   │   │   ├── 6439a7ac8ddcd40894487194042e067a580e89
+│   │   │   └── e7a036abf3cca2027bf6677396f54e3d8b83a5
+│   │   ├── af
+│   │   │   ├── 15cbd4004af1cc6fe27308675dbc1704eb9dd7
+│   │   │   └── 6c1c4ded9f397b7611f7066d6aa1979c3e3b7f
+│   │   ├── b0
+│   │   │   ├── 2b65a49a238fa9433158881054442f65fe0f6d
+│   │   │   ├── 7d4debd8a7cb3a8b8455ead7668faa73e82ae2
+│   │   │   ├── 9e9adb0848c938f0ff81ae4f58410aaefb6200
+│   │   │   └── ce3acaa5b6efc3c3446aafe048763d2ca6df16
+│   │   ├── b1
+│   │   │   ├── d6813c33732097ddfa4331941895d8824785aa
+│   │   │   └── e209fab9b002e8b2554f080a4c2d70fac41ac8
+│   │   ├── b2
+│   │   │   └── 8ac5e3176140e6ed5a634ac1efbecf4930dded
+│   │   ├── b4
+│   │   │   ├── 5f6cc8209fd42967ebb6af65eacf6384bf8900
+│   │   │   └── bcaeaeda470e77b4f62f0aa5b51294115e2035
+│   │   ├── b5
+│   │   │   ├── 27a4bd5a8d2ac00dda903e7e5e3439e9b2a687
+│   │   │   ├── a2326c304c480491f03246878c57c75d474035
+│   │   │   └── a45be5c3f58ef5370a0cb06d7a2c29eaf229e6
+│   │   ├── b6
+│   │   │   ├── 95f771a84fe39582b5724640d1d64ec71b75f5
+│   │   │   └── d8e965a4b27e7ba10ef62f1188b1cd00f3f3d7
+│   │   ├── b7
+│   │   │   └── 8d1b7c4754759741828454cd42e72d34f94974
+│   │   ├── b8
+│   │   │   ├── 2d9f7c9cf1b2a9854967e51cd9f08afb6277f1
+│   │   │   └── feb398c184d389e44d8f3165992cb61f08a535
+│   │   ├── b9
+│   │   │   └── 414500238b34868781ae2bbd2f4ed97ded54d7
+│   │   ├── ba
+│   │   │   ├── a97e1eab4ff16b6e39be77ff08c1fd1a8f50af
+│   │   │   └── fb733761feaee9a22aeeeec31121d92c45e9d3
+│   │   ├── bb
+│   │   │   ├── 2d06b8ade7f0cdff05593ef2680f7a765cd2cc
+│   │   │   ├── 72f1e183815cd7ceff4c9c8cdfc9e254dc3fea
+│   │   │   └── c42e5848e909588e8c2e2e95f40f01de3a3fe0
+│   │   ├── bc
+│   │   │   ├── 0a3e5d613d2eb68473933a1318869f64d5f8be
+│   │   │   └── a22a69463a9f3dfb4ad7100b92cad749774ab7
+│   │   ├── bd
+│   │   │   ├── 2bf1fabf315eb424a080307f2d1e8bc42ae8cb
+│   │   │   └── ac54597436855f352fc01909e436066d7e3894
+│   │   ├── be
+│   │   │   ├── 24d0beb078988e09979d1fb5d7d90830ea0eb1
+│   │   │   ├── 2c10545291a7a5ede5eaf1fe1d4a35b3fc393f
+│   │   │   ├── b644180b004f88dd4a270471870e7487cc6281
+│   │   │   └── d32697632169bf2fc7c5438bed3529dd42e647
+│   │   ├── bf
+│   │   │   ├── 5ec043359f12fb734c4fbd1665a997201adc8a
+│   │   │   └── 846b80aff066ebffbdfdd71035e0864e304612
+│   │   ├── c0
+│   │   │   ├── 7b17549d2d2a722ba318a9c1a61814b3c3ab9d
+│   │   │   ├── a1e3cf2cde1af1b9affb1e7f6f29957b0012f5
+│   │   │   └── e1944d917bcc6892e6c3cd0ddd1a211270a883
+│   │   ├── c1
+│   │   │   └── 07069ccf69f94efaf565fa3f157063eeca01ec
+│   │   ├── c2
+│   │   │   ├── e4484566f88e4f17df3a680a83fbc1ed0b0594
+│   │   │   ├── e865312f4bd915b756e41f70c9d0e8470d687b
+│   │   │   └── f9194b61bfa02c67004f808670ae6a1a8b2e57
+│   │   ├── c3
+│   │   │   ├── 351c31d163f9c983faa82b92251ab4df92d0ac
+│   │   │   ├── 428ce1765ba17985739a58fa63fa1cf8349198
+│   │   │   ├── 530902621d50457159333aa0587987f60207dc
+│   │   │   └── c2fa84a184e23ce1b559fd0996bb41d00b379c
+│   │   ├── c4
+│   │   │   ├── 115063a4e1ade55ddc65ee6faf23bd3f922e3d
+│   │   │   └── bd0e1d877cce72b03d41f4b1e1582885667a79
+│   │   ├── c6
+│   │   │   ├── 0dbab25fc779ddd5f4e78c2f1ae9396ca3fb5e
+│   │   │   └── b7547206a6a6434ffad2b6f7e88d95dfeb4e31
+│   │   ├── c8
+│   │   │   ├── 29be98a5cd2ae25d561e8f2b8104fb5b5c0bb7
+│   │   │   ├── 31220aba8441297a218b4dee905eda6491c43b
+│   │   │   ├── 53dc07a584db78bccee48c6eed65f972b2e065
+│   │   │   └── b9629be918f4f8385f95f5a31046b3af04b407
+│   │   ├── c9
+│   │   │   ├── 54e8d74fb859e044a49b4f0075de5e884e76f7
+│   │   │   ├── 8cb4cd3b5dc737b5de9d3cf077cab7b8fba592
+│   │   │   └── d6021e147fca7c6078ced858beb6f0944dea20
+│   │   ├── cb
+│   │   │   ├── 0cfe35c887ae724aad0f3155b8cb26c1537711
+│   │   │   └── 8073b2d44868edaa6b8555ca56d7661aa145c2
+│   │   ├── cc
+│   │   │   ├── a52c687055f34ccf959f0cf6e028affc56a391
+│   │   │   └── a7168ef60a07e1e237892e071bcd9b7254cb26
+│   │   ├── cd
+│   │   │   ├── 305fd9c86e9c251bf4773ececf0593a55540ea
+│   │   │   ├── 442d4320dc9c03136582fe077fc987c43fdf7a
+│   │   │   └── ecec9f26fc8001c5b4313a671bdde1656681e8
+│   │   ├── ce
+│   │   │   ├── 89bca6a4f62bc28194e6440b420d5b90b54ed5
+│   │   │   └── c5dc788e84235f525d0bb20aac4b64bb35e58c
+│   │   ├── cf
+│   │   │   ├── 556e449044b1e00590a50b906d2795d8b8491b
+│   │   │   └── b869f1a2d8823751552fc588cff6194add13ef
+│   │   ├── d0
+│   │   │   ├── 6c4ad70a8809ba93d6d51d1815e1bccbbe9794
+│   │   │   └── b81c5473314d0b5a8172518638bd222ee42bba
+│   │   ├── d1
+│   │   │   ├── 0aebdb5d55b797e4ce1bc379f830f74bbc772c
+│   │   │   ├── 5a162b907b6da488c8f2c0b5ee5c091747a5d3
+│   │   │   ├── c56414e06980add46e07a0be3ed176ad4c8958
+│   │   │   └── e6d16bc624d609124dae3ed240d625ee99cf2c
+│   │   ├── d3
+│   │   │   └── a85fcea8c4a6b04fd35762943f6de29303e4b8
+│   │   ├── d4
+│   │   │   ├── 23c98a8d32b8ee045373fc53232bac4b0a247a
+│   │   │   ├── 4b57869710e4849bb605049d8750dc21c2765c
+│   │   │   ├── 6dfbd67c3752b02b39fcce373fdcdae64060bf
+│   │   │   ├── cdf6eefb0120da6a0c9f4a0fac3835376fea73
+│   │   │   └── fd74f41e487c815f2e8c7b3b3ef254162b1ac2
+│   │   ├── d5
+│   │   │   └── 371b382e1e1850fea5be2ee62bf57e7a8c31bb
+│   │   ├── d6
+│   │   │   ├── 0e1304ff43966d5cab5ae7fa4dafa57d8fac34
+│   │   │   ├── 71afd4ffcab9fd7215c0054ebf62579e176ff4
+│   │   │   └── 7ef53f9d191c0f4e0a598bd5aff367b4e7c0b2
+│   │   ├── d7
+│   │   │   ├── 4870e493121d6fde22cc1620d69c57f80b062e
+│   │   │   ├── aadb2fdf673c72bea26b79d2efd2095b7c5fb6
+│   │   │   ├── da48782b79bfcca9d2134ef018cf204ad831c2
+│   │   │   └── efc519ac77aff183371f14af005edeb0fd4634
+│   │   ├── d8
+│   │   │   ├── 1ec2c0ed7a437206fc044da07663eef38d0db7
+│   │   │   └── 45f5200ae552ee9c2c113bfab1962c86b08776
+│   │   ├── d9
+│   │   │   └── 68e7c416f4d2e38a76bc7aea5fdddd55c3c79a
+│   │   ├── da
+│   │   │   └── 91976afcdf3948a6e8613219edd4976f5f50d3
+│   │   ├── db
+│   │   │   ├── 157d5c434b087e7e184690c0c43c7c7eb4047a
+│   │   │   ├── 5ecf57d86f2c71eea74a589114dd3eacbd53eb
+│   │   │   └── 9d9fc6cda442fbbd3f9d92f3952d21a99cd98d
+│   │   ├── dc
+│   │   │   ├── 08258cd22d2fffcb16f4a5dfeaf29e63655e20
+│   │   │   ├── b3bbaadf02e461e113b8f011ad0ce4d763f12d
+│   │   │   ├── c44f2153cc3d923f30341d0347fe2444a06d08
+│   │   │   └── fe290a2bb6b8b677339ee91de699be2eb6b9c9
+│   │   ├── df
+│   │   │   ├── 189e9e76dbcfe2244a06f87211c7bdb8c7f250
+│   │   │   └── 442e45c9e0c0ab3ad1664dfa0b0425ac7af358
+│   │   ├── e0
+│   │   │   ├── 3559c3dab2fcdd8d168a8d903b98cd58414c12
+│   │   │   └── 979dad91d272e49c4312531595d98ab72c2311
+│   │   ├── e1
+│   │   │   ├── 0b8342126b4a82c04efa77a93ff181cdc68221
+│   │   │   ├── 206e475479e3fbf98525a4a307f1860f8eda5b
+│   │   │   ├── 475f983e0ae27b6a18437ffc89367e152e7a68
+│   │   │   ├── 52c53ca8de2fac46ce73c915e543136d437547
+│   │   │   └── 600707399ce7338f73dcbb5a3085d2c9b5933e
+│   │   ├── e2
+│   │   │   ├── 869068602c6d7607bbcfd8a22b43ef6db7aa75
+│   │   │   └── b8bb25fb74205384e2905060511323531dbaae
+│   │   ├── e3
+│   │   │   ├── 3eedc5f2878f4d460154ecbc3d46a6dc7e0e91
+│   │   │   ├── 80b5e32b1a3042458caae78b36ad88384e313c
+│   │   │   └── fb87c71c7b8eae8dd575a909c7938bb01b01a7
+│   │   ├── e4
+│   │   │   ├── 0f631c5cf1a0bdd71dad77b73aeacf657bbe9e
+│   │   │   ├── 2fc2da7786e5a72fdb37e5b24dc85aaa7c9be3
+│   │   │   └── 3c6ad24c01efdd97d1821925ddcd2cb647023d
+│   │   ├── e5
+│   │   │   ├── 07ec97f4da30398c336e0402b254de4ada8b33
+│   │   │   ├── 22c8a1328b4144f49ebf4edc3b298b7b0c5b28
+│   │   │   ├── 463c3018170bdd115a3e2ff249ced210f5f1a8
+│   │   │   ├── 5b17f6096b5aade261bfb486493a85e93ecff0
+│   │   │   └── 6bc3aa6437290cf8164b954e3c6e11a41b59a4
+│   │   ├── e6
+│   │   │   ├── 7b5e3f2e604b6fc302ea13a13c656f986a23b6
+│   │   │   ├── 9de29bb2d1d6434b8b29ae775ad8c2e48c5391
+│   │   │   ├── ac594f47e17833e652a5f8abc97def1bc01b4f
+│   │   │   └── afc871708e3a649d20e74d40debc6cde4b19f0
+│   │   ├── e7
+│   │   │   └── b7233e2123bad175d2a79d120c3e288cdbc099
+│   │   ├── e8
+│   │   │   ├── b476a564827726a686869a6a2e8c03dac3333e
+│   │   │   └── dd5fd6bdd9cd93135b056955da25b98a55b699
+│   │   ├── e9
+│   │   │   ├── 1299415e107107e9c59b3deff46383dd3fd530
+│   │   │   ├── b1df0d89776e1232360ffa31b1eb0cf966dac6
+│   │   │   └── cf3754d5f0b38424529048276cb3af1680813f
+│   │   ├── ea
+│   │   │   ├── 5d2f34f99f6678d43870f95c83dc45f08ca29a
+│   │   │   └── f194421f1e7f19ca8974d3908e258fdfc941ae
+│   │   ├── eb
+│   │   │   └── 70b8631daf264f4f47b18916ebdef6b4b4f401
+│   │   ├── ec
+│   │   │   ├── c0e1029319948812a38c125624944b2a76fec8
+│   │   │   └── f4b342fca0574e1189113336f1997a062e3b69
+│   │   ├── ed
+│   │   │   ├── 0861115d9df971c905b22894feb9a7cc297a4f
+│   │   │   └── 0bdb63cf3d40ed7398a87f828ac5c47233a08b
+│   │   ├── ee
+│   │   │   ├── 8f2f6e01f844b2474ffa7340db1a64c60c8b6c
+│   │   │   └── d88c5991d79e7d8299ec7977a676fbd31da0d8
+│   │   ├── f0
+│   │   │   └── 968085737bf6c58c6a637978f592449553a966
+│   │   ├── f1
+│   │   │   ├── 280793142079348d25e87de5855ed7b4e95d12
+│   │   │   └── 470f2a09a1bc209a1ce4ce8d1607ec11eb50ec
+│   │   ├── f2
+│   │   │   └── 2821e2d29a9a4bc751e48c60886770ea265441
+│   │   ├── f3
+│   │   │   ├── 56495e67439956a078c2562f60a78d639a6196
+│   │   │   ├── 94786923f45c29c718699c9db6d7765f6ce138
+│   │   │   └── c0da96cd5ad7620576fc4597cbd3b76a053dc7
+│   │   ├── f4
+│   │   │   └── fc46ae1f228da2265c80694308cc083ba77b53
+│   │   ├── f5
+│   │   │   ├── 26dc7a395de42f46aa8be6dd67f18ed02e5506
+│   │   │   ├── 2c78dc9bd28d49533685509d7743d98f24e89e
+│   │   │   ├── 9811de51cc994b54c1e4397087d5928c8f27b7
+│   │   │   └── f773c13f89f279885d548c18ba44757b5e2e58
+│   │   ├── f6
+│   │   │   ├── 3b4276c0bcbaba1e9d71fa2497a7a8ce69b0f2
+│   │   │   └── fb149aeac2b63a857138cae9ee67ec653d3493
+│   │   ├── f7
+│   │   │   ├── 3411db7a9d1f4779e4b3062d959d9889f4af70
+│   │   │   └── 5c3ba9f058176a405f1522a977653d5e7245b4
+│   │   ├── f9
+│   │   │   └── 3d52dce0776dc955aef42f26846126d9b6fa33
+│   │   ├── fa
+│   │   │   ├── 232d23233c42aef2765fc7186ce9c056de46b3
+│   │   │   └── 5436dbafb39a7c19db972a6af8a622564dcbed
+│   │   ├── fb
+│   │   │   ├── 54c9d33de066b83dc3345e335e43290684c262
+│   │   │   ├── 891a2e09c3fe40b23d3a5be98af861d17789a2
+│   │   │   └── ab21c98fa6dac92ebcb09117c3bc39568b18b1
+│   │   ├── fe
+│   │   │   ├── 5cf09aa1b816867c488529bc73fe68894ef912
+│   │   │   └── 625204bcfa07a26e42a15c8b0b1ce7eca5992d
+│   │   ├── ff
+│   │   │   ├── 3e308a2211767f805bee853e27c0c4c6f029a4
+│   │   │   └── 66c922ee3756e50a39247b2828b29a1bb8dfd5
+│   │   ├── info
+│   │   └── pack
+│   │       ├── pack-c6bd4f4f094c3d1cf370114e77e722a2cb463b1a.idx
+│   │       ├── pack-c6bd4f4f094c3d1cf370114e77e722a2cb463b1a.pack
+│   │       └── pack-c6bd4f4f094c3d1cf370114e77e722a2cb463b1a.rev
+│   ├── packed-refs
+│   └── refs
+│       ├── heads
+│       │   └── main
+│       ├── remotes
+│       │   └── origin
+│       │       ├── HEAD
+│       │       └── main
+│       └── tags
+├── README.md
+├── _deploy
+│   ├── databyarea-deploy-2026-02-09
+│   │   ├── about
+│   │   │   └── index.html
+│   │   ├── assets
+│   │   │   ├── logo.png
+│   │   │   ├── logoww.png
+│   │   │   └── styles.css
+│   │   ├── auto_clean_site.py
+│   │   ├── concrete-driveway-cost-by-state
+│   │   │   └── index.html
+│   │   ├── contact
+│   │   │   └── index.html
+│   │   ├── cost-of-living
+│   │   │   ├── alabama
+│   │   │   │   └── index.html
+│   │   │   ├── alaska
+│   │   │   │   └── index.html
+│   │   │   ├── arizona
+│   │   │   │   └── index.html
+│   │   │   ├── arkansas
+│   │   │   │   └── index.html
+│   │   │   ├── california
+│   │   │   │   └── index.html
+│   │   │   ├── colorado
+│   │   │   │   └── index.html
+│   │   │   ├── connecticut
+│   │   │   │   └── index.html
+│   │   │   ├── delaware
+│   │   │   │   └── index.html
+│   │   │   ├── florida
+│   │   │   │   └── index.html
+│   │   │   ├── georgia
+│   │   │   │   └── index.html
+│   │   │   ├── hawaii
+│   │   │   │   └── index.html
+│   │   │   ├── idaho
+│   │   │   │   └── index.html
+│   │   │   ├── illinois
+│   │   │   │   └── index.html
+│   │   │   ├── index.html
+│   │   │   ├── indiana
+│   │   │   │   └── index.html
+│   │   │   ├── iowa
+│   │   │   │   └── index.html
+│   │   │   ├── kansas
+│   │   │   │   └── index.html
+│   │   │   ├── kentucky
+│   │   │   │   └── index.html
+│   │   │   ├── louisiana
+│   │   │   │   └── index.html
+│   │   │   ├── maine
+│   │   │   │   └── index.html
+│   │   │   ├── maryland
+│   │   │   │   └── index.html
+│   │   │   ├── massachusetts
+│   │   │   │   └── index.html
+│   │   │   ├── michigan
+│   │   │   │   └── index.html
+│   │   │   ├── minnesota
+│   │   │   │   └── index.html
+│   │   │   ├── mississippi
+│   │   │   │   └── index.html
+│   │   │   ├── missouri
+│   │   │   │   └── index.html
+│   │   │   ├── montana
+│   │   │   │   └── index.html
+│   │   │   ├── nebraska
+│   │   │   │   └── index.html
+│   │   │   ├── nevada
+│   │   │   │   └── index.html
+│   │   │   ├── new-hampshire
+│   │   │   │   └── index.html
+│   │   │   ├── new-jersey
+│   │   │   │   └── index.html
+│   │   │   ├── new-mexico
+│   │   │   │   └── index.html
+│   │   │   ├── new-york
+│   │   │   │   └── index.html
+│   │   │   ├── north-carolina
+│   │   │   │   └── index.html
+│   │   │   ├── north-dakota
+│   │   │   │   └── index.html
+│   │   │   ├── ohio
+│   │   │   │   └── index.html
+│   │   │   ├── oklahoma
+│   │   │   │   └── index.html
+│   │   │   ├── oregon
+│   │   │   │   └── index.html
+│   │   │   ├── pennsylvania
+│   │   │   │   └── index.html
+│   │   │   ├── rhode-island
+│   │   │   │   └── index.html
+│   │   │   ├── south-carolina
+│   │   │   │   └── index.html
+│   │   │   ├── south-dakota
+│   │   │   │   └── index.html
+│   │   │   ├── tennessee
+│   │   │   │   └── index.html
+│   │   │   ├── texas
+│   │   │   │   └── index.html
+│   │   │   ├── utah
+│   │   │   │   └── index.html
+│   │   │   ├── vermont
+│   │   │   │   └── index.html
+│   │   │   ├── virginia
+│   │   │   │   └── index.html
+│   │   │   ├── washington
+│   │   │   │   └── index.html
+│   │   │   ├── west-virginia
+│   │   │   │   └── index.html
+│   │   │   ├── wisconsin
+│   │   │   │   └── index.html
+│   │   │   └── wyoming
+│   │   │       └── index.html
+│   │   ├── data
+│   │   │   ├── cities.csv
+│   │   │   └── core_pages.txt
+│   │   ├── deck-building-cost-by-state
+│   │   │   └── index.html
+│   │   ├── electrician-rates-by-state
+│   │   │   └── index.html
+│   │   ├── foundation-repair-cost-by-state
+│   │   │   └── index.html
+│   │   ├── garage-door-repair-cost-by-state
+│   │   │   └── index.html
+│   │   ├── hvac-installation-cost-by-state
+│   │   │   └── index.html
+│   │   ├── index.html
+│   │   ├── insurance-costs
+│   │   │   ├── alabama
+│   │   │   │   └── index.html
+│   │   │   ├── alaska
+│   │   │   │   └── index.html
+│   │   │   ├── arizona
+│   │   │   │   └── index.html
+│   │   │   ├── arkansas
+│   │   │   │   └── index.html
+│   │   │   ├── california
+│   │   │   │   └── index.html
+│   │   │   ├── colorado
+│   │   │   │   └── index.html
+│   │   │   ├── connecticut
+│   │   │   │   └── index.html
+│   │   │   ├── delaware
+│   │   │   │   └── index.html
+│   │   │   ├── florida
+│   │   │   │   └── index.html
+│   │   │   ├── georgia
+│   │   │   │   └── index.html
+│   │   │   ├── hawaii
+│   │   │   │   └── index.html
+│   │   │   ├── idaho
+│   │   │   │   └── index.html
+│   │   │   ├── illinois
+│   │   │   │   └── index.html
+│   │   │   ├── index.html
+│   │   │   ├── indiana
+│   │   │   │   └── index.html
+│   │   │   ├── iowa
+│   │   │   │   └── index.html
+│   │   │   ├── kansas
+│   │   │   │   └── index.html
+│   │   │   ├── kentucky
+│   │   │   │   └── index.html
+│   │   │   ├── louisiana
+│   │   │   │   └── index.html
+│   │   │   ├── maine
+│   │   │   │   └── index.html
+│   │   │   ├── maryland
+│   │   │   │   └── index.html
+│   │   │   ├── massachusetts
+│   │   │   │   └── index.html
+│   │   │   ├── michigan
+│   │   │   │   └── index.html
+│   │   │   ├── minnesota
+│   │   │   │   └── index.html
+│   │   │   ├── mississippi
+│   │   │   │   └── index.html
+│   │   │   ├── missouri
+│   │   │   │   └── index.html
+│   │   │   ├── montana
+│   │   │   │   └── index.html
+│   │   │   ├── nebraska
+│   │   │   │   └── index.html
+│   │   │   ├── nevada
+│   │   │   │   └── index.html
+│   │   │   ├── new-hampshire
+│   │   │   │   └── index.html
+│   │   │   ├── new-jersey
+│   │   │   │   └── index.html
+│   │   │   ├── new-mexico
+│   │   │   │   └── index.html
+│   │   │   ├── new-york
+│   │   │   │   └── index.html
+│   │   │   ├── north-carolina
+│   │   │   │   └── index.html
+│   │   │   ├── north-dakota
+│   │   │   │   └── index.html
+│   │   │   ├── ohio
+│   │   │   │   └── index.html
+│   │   │   ├── oklahoma
+│   │   │   │   └── index.html
+│   │   │   ├── oregon
+│   │   │   │   └── index.html
+│   │   │   ├── pennsylvania
+│   │   │   │   └── index.html
+│   │   │   ├── rhode-island
+│   │   │   │   └── index.html
+│   │   │   ├── south-carolina
+│   │   │   │   └── index.html
+│   │   │   ├── south-dakota
+│   │   │   │   └── index.html
+│   │   │   ├── tennessee
+│   │   │   │   └── index.html
+│   │   │   ├── texas
+│   │   │   │   └── index.html
+│   │   │   ├── utah
+│   │   │   │   └── index.html
+│   │   │   ├── vermont
+│   │   │   │   └── index.html
+│   │   │   ├── virginia
+│   │   │   │   └── index.html
+│   │   │   ├── washington
+│   │   │   │   └── index.html
+│   │   │   ├── west-virginia
+│   │   │   │   └── index.html
+│   │   │   ├── wisconsin
+│   │   │   │   └── index.html
+│   │   │   └── wyoming
+│   │   │       └── index.html
+│   │   ├── make-site.py
+│   │   ├── makesitemap.py
+│   │   ├── makesitenew.py
+│   │   ├── newfile.py
+│   │   ├── one_button_daily-1.py
+│   │   ├── plumber-rates-by-state
+│   │   │   └── index.html
+│   │   ├── privacy
+│   │   │   └── index.html
+│   │   ├── privacy-policy
+│   │   │   └── index.html
+│   │   ├── property-taxes
+│   │   │   ├── alabama
+│   │   │   │   └── index.html
+│   │   │   ├── alaska
+│   │   │   │   └── index.html
+│   │   │   ├── arizona
+│   │   │   │   └── index.html
+│   │   │   ├── arkansas
+│   │   │   │   └── index.html
+│   │   │   ├── california
+│   │   │   │   └── index.html
+│   │   │   ├── colorado
+│   │   │   │   └── index.html
+│   │   │   ├── connecticut
+│   │   │   │   └── index.html
+│   │   │   ├── delaware
+│   │   │   │   └── index.html
+│   │   │   ├── florida
+│   │   │   │   └── index.html
+│   │   │   ├── georgia
+│   │   │   │   └── index.html
+│   │   │   ├── hawaii
+│   │   │   │   └── index.html
+│   │   │   ├── idaho
+│   │   │   │   └── index.html
+│   │   │   ├── illinois
+│   │   │   │   └── index.html
+│   │   │   ├── index.html
+│   │   │   ├── indiana
+│   │   │   │   └── index.html
+│   │   │   ├── iowa
+│   │   │   │   └── index.html
+│   │   │   ├── kansas
+│   │   │   │   └── index.html
+│   │   │   ├── kentucky
+│   │   │   │   └── index.html
+│   │   │   ├── louisiana
+│   │   │   │   └── index.html
+│   │   │   ├── maine
+│   │   │   │   └── index.html
+│   │   │   ├── maryland
+│   │   │   │   └── index.html
+│   │   │   ├── massachusetts
+│   │   │   │   └── index.html
+│   │   │   ├── michigan
+│   │   │   │   └── index.html
+│   │   │   ├── minnesota
+│   │   │   │   └── index.html
+│   │   │   ├── mississippi
+│   │   │   │   └── index.html
+│   │   │   ├── missouri
+│   │   │   │   └── index.html
+│   │   │   ├── montana
+│   │   │   │   └── index.html
+│   │   │   ├── nebraska
+│   │   │   │   └── index.html
+│   │   │   ├── nevada
+│   │   │   │   └── index.html
+│   │   │   ├── new-hampshire
+│   │   │   │   └── index.html
+│   │   │   ├── new-jersey
+│   │   │   │   └── index.html
+│   │   │   ├── new-mexico
+│   │   │   │   └── index.html
+│   │   │   ├── new-york
+│   │   │   │   └── index.html
+│   │   │   ├── north-carolina
+│   │   │   │   └── index.html
+│   │   │   ├── north-dakota
+│   │   │   │   └── index.html
+│   │   │   ├── ohio
+│   │   │   │   └── index.html
+│   │   │   ├── oklahoma
+│   │   │   │   └── index.html
+│   │   │   ├── oregon
+│   │   │   │   └── index.html
+│   │   │   ├── pennsylvania
+│   │   │   │   └── index.html
+│   │   │   ├── rhode-island
+│   │   │   │   └── index.html
+│   │   │   ├── south-carolina
+│   │   │   │   └── index.html
+│   │   │   ├── south-dakota
+│   │   │   │   └── index.html
+│   │   │   ├── tennessee
+│   │   │   │   └── index.html
+│   │   │   ├── texas
+│   │   │   │   └── index.html
+│   │   │   ├── utah
+│   │   │   │   └── index.html
+│   │   │   ├── vermont
+│   │   │   │   └── index.html
+│   │   │   ├── virginia
+│   │   │   │   └── index.html
+│   │   │   ├── washington
+│   │   │   │   └── index.html
+│   │   │   ├── west-virginia
+│   │   │   │   └── index.html
+│   │   │   ├── wisconsin
+│   │   │   │   └── index.html
+│   │   │   └── wyoming
+│   │   │       └── index.html
+│   │   ├── published_manifest.json
+│   │   ├── relink_existing_pages.py
+│   │   ├── robots.txt
+│   │   ├── roof-replacement-cost-by-state
+│   │   │   └── index.html
+│   │   ├── scan_and_cleanup.py
+│   │   ├── scripts
+│   │   │   └── generators
+│   │   │       ├── __init__.py
+│   │   │       ├── high_intent.py
+│   │   │       ├── registry.py
+│   │   │       ├── utils.py
+│   │   │       ├── validate.py
+│   │   │       └── validate_keys.py
+│   │   ├── sitemap.xml
+│   │   ├── terms
+│   │   │   └── index.html
+│   │   ├── utility-costs
+│   │   │   ├── alabama
+│   │   │   │   └── index.html
+│   │   │   ├── alaska
+│   │   │   │   └── index.html
+│   │   │   ├── arizona
+│   │   │   │   └── index.html
+│   │   │   ├── arkansas
+│   │   │   │   └── index.html
+│   │   │   ├── california
+│   │   │   │   └── index.html
+│   │   │   ├── colorado
+│   │   │   │   └── index.html
+│   │   │   ├── connecticut
+│   │   │   │   └── index.html
+│   │   │   ├── delaware
+│   │   │   │   └── index.html
+│   │   │   ├── florida
+│   │   │   │   └── index.html
+│   │   │   ├── georgia
+│   │   │   │   └── index.html
+│   │   │   ├── hawaii
+│   │   │   │   └── index.html
+│   │   │   ├── idaho
+│   │   │   │   └── index.html
+│   │   │   ├── illinois
+│   │   │   │   └── index.html
+│   │   │   ├── index.html
+│   │   │   ├── indiana
+│   │   │   │   └── index.html
+│   │   │   ├── iowa
+│   │   │   │   └── index.html
+│   │   │   ├── kansas
+│   │   │   │   └── index.html
+│   │   │   ├── kentucky
+│   │   │   │   └── index.html
+│   │   │   ├── louisiana
+│   │   │   │   └── index.html
+│   │   │   ├── maine
+│   │   │   │   └── index.html
+│   │   │   ├── maryland
+│   │   │   │   └── index.html
+│   │   │   ├── massachusetts
+│   │   │   │   └── index.html
+│   │   │   ├── michigan
+│   │   │   │   └── index.html
+│   │   │   ├── minnesota
+│   │   │   │   └── index.html
+│   │   │   ├── mississippi
+│   │   │   │   └── index.html
+│   │   │   ├── missouri
+│   │   │   │   └── index.html
+│   │   │   ├── montana
+│   │   │   │   └── index.html
+│   │   │   ├── nebraska
+│   │   │   │   └── index.html
+│   │   │   ├── nevada
+│   │   │   │   └── index.html
+│   │   │   ├── new-hampshire
+│   │   │   │   └── index.html
+│   │   │   ├── new-jersey
+│   │   │   │   └── index.html
+│   │   │   ├── new-mexico
+│   │   │   │   └── index.html
+│   │   │   ├── new-york
+│   │   │   │   └── index.html
+│   │   │   ├── north-carolina
+│   │   │   │   └── index.html
+│   │   │   ├── north-dakota
+│   │   │   │   └── index.html
+│   │   │   ├── ohio
+│   │   │   │   └── index.html
+│   │   │   ├── oklahoma
+│   │   │   │   └── index.html
+│   │   │   ├── oregon
+│   │   │   │   └── index.html
+│   │   │   ├── pennsylvania
+│   │   │   │   └── index.html
+│   │   │   ├── rhode-island
+│   │   │   │   └── index.html
+│   │   │   ├── south-carolina
+│   │   │   │   └── index.html
+│   │   │   ├── south-dakota
+│   │   │   │   └── index.html
+│   │   │   ├── tennessee
+│   │   │   │   └── index.html
+│   │   │   ├── texas
+│   │   │   │   └── index.html
+│   │   │   ├── utah
+│   │   │   │   └── index.html
+│   │   │   ├── vermont
+│   │   │   │   └── index.html
+│   │   │   ├── virginia
+│   │   │   │   └── index.html
+│   │   │   ├── washington
+│   │   │   │   └── index.html
+│   │   │   ├── west-virginia
+│   │   │   │   └── index.html
+│   │   │   ├── wisconsin
+│   │   │   │   └── index.html
+│   │   │   └── wyoming
+│   │   │       └── index.html
+│   │   ├── water-heater-installation-cost-by-state
+│   │   │   └── index.html
+│   │   └── window-replacement-cost-by-state
+│   │       └── index.html
+│   ├── databyarea-deploy-2026-02-09.zip
+│   ├── databyarea-deploy-2026-02-09__2.zip
+│   └── databyarea-deploy-2026-02-09__3.zip
+├── _trash
+│   ├── .trashed-1772080145-Generate-DataByArea
+│   └── List.py
+├── about
+│   └── index.html
+├── assets
+│   ├── .trashed-1771794496-logo.png
+│   ├── index.html
+│   ├── logo.png
+│   ├── logoww.png
+│   └── styles.css
+├── auto_clean_site.py
+├── concrete-driveway-cost-by-state
+│   └── index.html
+├── contact
+│   └── index.html
+├── cost-of-living
+│   ├── alabama
+│   │   └── index.html
+│   ├── alaska
+│   │   └── index.html
+│   ├── arizona
+│   │   └── index.html
+│   ├── arkansas
+│   │   └── index.html
+│   ├── california
+│   │   └── index.html
+│   ├── colorado
+│   │   └── index.html
+│   ├── connecticut
+│   │   └── index.html
+│   ├── delaware
+│   │   └── index.html
+│   ├── florida
+│   │   └── index.html
+│   ├── georgia
+│   │   └── index.html
+│   ├── hawaii
+│   │   └── index.html
+│   ├── idaho
+│   │   └── index.html
+│   ├── illinois
+│   │   └── index.html
+│   ├── index.html
+│   ├── indiana
+│   │   └── index.html
+│   ├── iowa
+│   │   └── index.html
+│   ├── kansas
+│   │   └── index.html
+│   ├── kentucky
+│   │   └── index.html
+│   ├── louisiana
+│   │   └── index.html
+│   ├── maine
+│   │   └── index.html
+│   ├── maryland
+│   │   └── index.html
+│   ├── massachusetts
+│   │   └── index.html
+│   ├── michigan
+│   │   └── index.html
+│   ├── minnesota
+│   │   └── index.html
+│   ├── mississippi
+│   │   └── index.html
+│   ├── missouri
+│   │   └── index.html
+│   ├── montana
+│   │   └── index.html
+│   ├── nebraska
+│   │   └── index.html
+│   ├── nevada
+│   │   └── index.html
+│   ├── new-hampshire
+│   │   └── index.html
+│   ├── new-jersey
+│   │   └── index.html
+│   ├── new-mexico
+│   │   └── index.html
+│   ├── new-york
+│   │   └── index.html
+│   ├── north-carolina
+│   │   └── index.html
+│   ├── north-dakota
+│   │   └── index.html
+│   ├── ohio
+│   │   └── index.html
+│   ├── oklahoma
+│   │   └── index.html
+│   ├── oregon
+│   │   └── index.html
+│   ├── pennsylvania
+│   │   └── index.html
+│   ├── rhode-island
+│   │   └── index.html
+│   ├── south-carolina
+│   │   └── index.html
+│   ├── south-dakota
+│   │   └── index.html
+│   ├── tennessee
+│   │   └── index.html
+│   ├── texas
+│   │   └── index.html
+│   ├── utah
+│   │   └── index.html
+│   ├── vermont
+│   │   └── index.html
+│   ├── virginia
+│   │   └── index.html
+│   ├── washington
+│   │   └── index.html
+│   ├── west-virginia
+│   │   └── index.html
+│   ├── wisconsin
+│   │   └── index.html
+│   └── wyoming
+│       └── index.html
+├── data
+│   ├── cities.csv
+│   ├── core_pages.txt
+│   ├── generate_csv_system.py
+│   └── index.html
+├── databyarea-site.zip
+├── deck-building-cost-by-state
+│   └── index.html
+├── directory_structure.txt
+├── electrician-rates-by-state
+│   └── index.html
+├── foundation-repair-cost-by-state
+│   └── index.html
+├── garage-door-repair-cost-by-state
+│   └── index.html
+├── hvac-installation-cost-by-state
+│   └── index.html
+├── index.html
+├── index_everywhere.py
+├── insurance-costs
+│   ├── alabama
+│   │   └── index.html
+│   ├── alaska
+│   │   └── index.html
+│   ├── arizona
+│   │   └── index.html
+│   ├── arkansas
+│   │   └── index.html
+│   ├── california
+│   │   └── index.html
+│   ├── colorado
+│   │   └── index.html
+│   ├── connecticut
+│   │   └── index.html
+│   ├── delaware
+│   │   └── index.html
+│   ├── florida
+│   │   └── index.html
+│   ├── georgia
+│   │   └── index.html
+│   ├── hawaii
+│   │   └── index.html
+│   ├── idaho
+│   │   └── index.html
+│   ├── illinois
+│   │   └── index.html
+│   ├── index.html
+│   ├── indiana
+│   │   └── index.html
+│   ├── iowa
+│   │   └── index.html
+│   ├── kansas
+│   │   └── index.html
+│   ├── kentucky
+│   │   └── index.html
+│   ├── louisiana
+│   │   └── index.html
+│   ├── maine
+│   │   └── index.html
+│   ├── maryland
+│   │   └── index.html
+│   ├── massachusetts
+│   │   └── index.html
+│   ├── michigan
+│   │   └── index.html
+│   ├── minnesota
+│   │   └── index.html
+│   ├── mississippi
+│   │   └── index.html
+│   ├── missouri
+│   │   └── index.html
+│   ├── montana
+│   │   └── index.html
+│   ├── nebraska
+│   │   └── index.html
+│   ├── nevada
+│   │   └── index.html
+│   ├── new-hampshire
+│   │   └── index.html
+│   ├── new-jersey
+│   │   └── index.html
+│   ├── new-mexico
+│   │   └── index.html
+│   ├── new-york
+│   │   └── index.html
+│   ├── north-carolina
+│   │   └── index.html
+│   ├── north-dakota
+│   │   └── index.html
+│   ├── ohio
+│   │   └── index.html
+│   ├── oklahoma
+│   │   └── index.html
+│   ├── oregon
+│   │   └── index.html
+│   ├── pennsylvania
+│   │   └── index.html
+│   ├── rhode-island
+│   │   └── index.html
+│   ├── south-carolina
+│   │   └── index.html
+│   ├── south-dakota
+│   │   └── index.html
+│   ├── tennessee
+│   │   └── index.html
+│   ├── texas
+│   │   └── index.html
+│   ├── utah
+│   │   └── index.html
+│   ├── vermont
+│   │   └── index.html
+│   ├── virginia
+│   │   └── index.html
+│   ├── washington
+│   │   └── index.html
+│   ├── west-virginia
+│   │   └── index.html
+│   ├── wisconsin
+│   │   └── index.html
+│   └── wyoming
+│       └── index.html
+├── make-site.py
+├── makesitemap.py
+├── makesitenew.py
+├── newfile.py
+├── one_button_daily.py
+├── plumber-rates-by-state
+│   └── index.html
+├── popular_cities.csv
+├── privacy
+│   └── index.html
+├── privacy-policy
+│   └── index.html
+├── property-taxes
+│   ├── alabama
+│   │   └── index.html
+│   ├── alaska
+│   │   └── index.html
+│   ├── arizona
+│   │   └── index.html
+│   ├── arkansas
+│   │   └── index.html
+│   ├── california
+│   │   └── index.html
+│   ├── colorado
+│   │   └── index.html
+│   ├── connecticut
+│   │   └── index.html
+│   ├── delaware
+│   │   └── index.html
+│   ├── florida
+│   │   └── index.html
+│   ├── georgia
+│   │   └── index.html
+│   ├── hawaii
+│   │   └── index.html
+│   ├── idaho
+│   │   └── index.html
+│   ├── illinois
+│   │   └── index.html
+│   ├── index.html
+│   ├── indiana
+│   │   └── index.html
+│   ├── iowa
+│   │   └── index.html
+│   ├── kansas
+│   │   └── index.html
+│   ├── kentucky
+│   │   └── index.html
+│   ├── louisiana
+│   │   └── index.html
+│   ├── maine
+│   │   └── index.html
+│   ├── maryland
+│   │   └── index.html
+│   ├── massachusetts
+│   │   └── index.html
+│   ├── michigan
+│   │   └── index.html
+│   ├── minnesota
+│   │   └── index.html
+│   ├── mississippi
+│   │   └── index.html
+│   ├── missouri
+│   │   └── index.html
+│   ├── montana
+│   │   └── index.html
+│   ├── nebraska
+│   │   └── index.html
+│   ├── nevada
+│   │   └── index.html
+│   ├── new-hampshire
+│   │   └── index.html
+│   ├── new-jersey
+│   │   └── index.html
+│   ├── new-mexico
+│   │   └── index.html
+│   ├── new-york
+│   │   └── index.html
+│   ├── north-carolina
+│   │   └── index.html
+│   ├── north-dakota
+│   │   └── index.html
+│   ├── ohio
+│   │   └── index.html
+│   ├── oklahoma
+│   │   └── index.html
+│   ├── oregon
+│   │   └── index.html
+│   ├── pennsylvania
+│   │   └── index.html
+│   ├── rhode-island
+│   │   └── index.html
+│   ├── south-carolina
+│   │   └── index.html
+│   ├── south-dakota
+│   │   └── index.html
+│   ├── tennessee
+│   │   └── index.html
+│   ├── texas
+│   │   └── index.html
+│   ├── utah
+│   │   └── index.html
+│   ├── vermont
+│   │   └── index.html
+│   ├── virginia
+│   │   └── index.html
+│   ├── washington
+│   │   └── index.html
+│   ├── west-virginia
+│   │   └── index.html
+│   ├── wisconsin
+│   │   └── index.html
+│   └── wyoming
+│       └── index.html
+├── publish_popular_cities_daily.py
+├── published_manifest.json
+├── relink_existing_pages.py
+├── robots.txt
+├── roof-replacement-cost-by-state
+│   └── index.html
+├── scan_and_cleanup.py
+├── scripts
+│   ├── generate_us_city_dataset.py
+│   ├── generators
+│   │   ├── __init__.py
+│   │   ├── high_intent.py
+│   │   ├── index.html
+│   │   ├── registry.py
+│   │   ├── utils.py
+│   │   ├── validate.py
+│   │   └── validate_keys.py
+│   └── index.html
+├── sitemap.xml
+├── terms
+│   └── index.html
+├── tt.zip
+├── utility-costs
+│   ├── alabama
+│   │   └── index.html
+│   ├── alaska
+│   │   └── index.html
+│   ├── arizona
+│   │   └── index.html
+│   ├── arkansas
+│   │   └── index.html
+│   ├── california
+│   │   └── index.html
+│   ├── colorado
+│   │   └── index.html
+│   ├── connecticut
+│   │   └── index.html
+│   ├── delaware
+│   │   └── index.html
+│   ├── florida
+│   │   └── index.html
+│   ├── georgia
+│   │   └── index.html
+│   ├── hawaii
+│   │   └── index.html
+│   ├── idaho
+│   │   └── index.html
+│   ├── illinois
+│   │   └── index.html
+│   ├── index.html
+│   ├── indiana
+│   │   └── index.html
+│   ├── iowa
+│   │   └── index.html
+│   ├── kansas
+│   │   └── index.html
+│   ├── kentucky
+│   │   └── index.html
+│   ├── louisiana
+│   │   └── index.html
+│   ├── maine
+│   │   └── index.html
+│   ├── maryland
+│   │   └── index.html
+│   ├── massachusetts
+│   │   └── index.html
+│   ├── michigan
+│   │   └── index.html
+│   ├── minnesota
+│   │   └── index.html
+│   ├── mississippi
+│   │   └── index.html
+│   ├── missouri
+│   │   └── index.html
+│   ├── montana
+│   │   └── index.html
+│   ├── nebraska
+│   │   └── index.html
+│   ├── nevada
+│   │   └── index.html
+│   ├── new-hampshire
+│   │   └── index.html
+│   ├── new-jersey
+│   │   └── index.html
+│   ├── new-mexico
+│   │   └── index.html
+│   ├── new-york
+│   │   └── index.html
+│   ├── north-carolina
+│   │   └── index.html
+│   ├── north-dakota
+│   │   └── index.html
+│   ├── ohio
+│   │   └── index.html
+│   ├── oklahoma
+│   │   └── index.html
+│   ├── oregon
+│   │   └── index.html
+│   ├── pennsylvania
+│   │   └── index.html
+│   ├── rhode-island
+│   │   └── index.html
+│   ├── south-carolina
+│   │   └── index.html
+│   ├── south-dakota
+│   │   └── index.html
+│   ├── tennessee
+│   │   └── index.html
+│   ├── texas
+│   │   └── index.html
+│   ├── utah
+│   │   └── index.html
+│   ├── vermont
+│   │   └── index.html
+│   ├── virginia
+│   │   └── index.html
+│   ├── washington
+│   │   └── index.html
+│   ├── west-virginia
+│   │   └── index.html
+│   ├── wisconsin
+│   │   └── index.html
+│   └── wyoming
+│       └── index.html
+├── water-heater-installation-cost-by-state
+│   └── index.html
+├── window-replacement-cost-by-state
+│   └── index.html
+└── yu.zip
+
+695 directories, 1041 files
