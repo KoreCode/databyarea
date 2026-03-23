@@ -18,6 +18,7 @@ DataByArea
 - Install cron job: `./setup_autorun.sh`
   - Default schedule is daily at `03:15 UTC`
   - Override schedule: `CRON_EXPR=\"0 2 * * *\" ./setup_autorun.sh`
+  - If `crontab` is unavailable, the cron line is written to `_deploy/cron_entry.txt` for manual host setup.
 
 ### Admin backend
 - Run: `python3 admin_backend.py --host 127.0.0.1 --port 8787`
@@ -32,3 +33,7 @@ DataByArea
   - Only whitelisted options are accepted per script
   - Only one script can run at a time via the admin backend
   - Script execution has a timeout guard
+
+## Ops Files
+- `DIRECTORY_TREE.md` — clean repository tree map.
+- `AUTOMATION_STATUS.md` — current automation enablement status and scheduler line.

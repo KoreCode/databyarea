@@ -8,9 +8,12 @@ CRON_EXPR="${CRON_EXPR:-15 3 * * *}"
 CRON_LINE="$CRON_EXPR $RUN_CMD"
 
 if ! command -v crontab >/dev/null 2>&1; then
+  mkdir -p "$ROOT_DIR/_deploy"
+  printf '%s\n' "$CRON_LINE" > "$ROOT_DIR/_deploy/cron_entry.txt"
   echo "crontab command not found on this machine."
+  echo "Saved scheduler line to: $ROOT_DIR/_deploy/cron_entry.txt"
   echo "Add this line to your scheduler manually:"
-  echo "$CRON_LINE"
+  cat "$ROOT_DIR/_deploy/cron_entry.txt"
   exit 0
 fi
 EXISTING="$(crontab -l 2>/dev/null || true)"

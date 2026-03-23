@@ -7,3 +7,4 @@ _deploy/*.zip
 _deploy/last_daily_run_summary.json
 _deploy/last_daily_run_summary.md
 _deploy/autorun.log
+_deploy/cron_entry.txt
