@@ -1,3 +1,4 @@
+import argparse
 import os
 import json
 import random
@@ -9,7 +10,7 @@ import xml.etree.ElementTree as ET
 # CONFIG (EDIT THESE IF NEEDED)
 # =========================================================
 SITE_URL = "https://databyarea.com"
-DAILY_MAX = 10
+DAILY_MAX = int(os.getenv("DBA_DAILY_MAX", "10"))
 QUEUE_FILE = "data/core_pages.txt"
 MANIFEST_PATH = "published_manifest.json"
 SITEMAP_PATH = "sitemap.xml"
@@ -626,7 +627,7 @@ def update_robots():
 # =========================================================
 # MAIN
 # =========================================================
-def main():
+def main(daily_max: int | None = None):
     queue_slugs = read_lines(QUEUE_FILE)
 
     # If queue file doesn't exist yet, generate nothing accidentally
@@ -647,8 +648,9 @@ def main():
 
     published = manifest.get("published", {})
 
-    # Only publish new slugs, limited by DAILY_MAX
-    remaining = [s for s in queue_slugs if s and s not in published][:DAILY_MAX]
+    daily_limit = daily_max if daily_max is not None else DAILY_MAX
+    # Only publish new slugs, limited by daily_limit
+    remaining = [s for s in queue_slugs if s and s not in published][:daily_limit]
 
     if not remaining:
         save_json(MANIFEST_PATH, manifest)
@@ -686,7 +688,7 @@ def main():
         "attempted": len(remaining),
         "written": count,
         "skipped_existing_file": skipped_existing_file,
-        "daily_max": DAILY_MAX,
+        "daily_max": daily_limit,
         "link_to_queued": LINK_TO_QUEUED
     })
 
@@ -697,4 +699,7 @@ def main():
     print(f"Published {count} pages. (Skipped existing index.html: {skipped_existing_file})")
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description="Build/publish site pages from queued slugs.")
+    parser.add_argument("--daily-max", type=int, default=None, help="Maximum number of new service slugs to publish this run.")
+    args = parser.parse_args()
+    main(daily_max=args.daily_max)
