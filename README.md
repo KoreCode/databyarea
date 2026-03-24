@@ -33,7 +33,17 @@ DataByArea
   - Only whitelisted options are accepted per script
   - Only one script can run at a time via the admin backend
   - Script execution has a timeout guard
+  - Optional URL/header auth key via env vars:
+    - `ADMIN_ACCESS_KEY` (secret value)
+    - `ADMIN_KEY_PARAM` (query variable name, default `admin_key`)
+
+### Admin access on your domain
+- Example local URL with key: `http://127.0.0.1:8787/?admin_key=YOUR_KEY`
+- Example production URL pattern behind proxy/domain:
+  - `https://databyarea.com/admin/?admin_key=YOUR_KEY`
+- Full guide: `CLOUDFLARE_GITHUB_AUTODEPLOY.md`
 
 ## Ops Files
 - `DIRECTORY_TREE.md` — clean repository tree map.
 - `AUTOMATION_STATUS.md` — current automation enablement status and scheduler line.
+- `CLOUDFLARE_GITHUB_AUTODEPLOY.md` — Cloudflare + GitHub auto-deploy + domain admin routing steps.
