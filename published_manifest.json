@@ -1,0 +1,36 @@
+{
+  "published": {
+    "privacy-policy": {
+      "published_at": "2026-03-20",
+      "system": true
+    },
+    "terms": {
+      "published_at": "2026-03-20",
+      "system": true
+    },
+    "electrician-rates-by-state": {
+      "published_at": "2026-03-20"
+    },
+    "plumber-rates-by-state": {
+      "published_at": "2026-03-20"
+    }
+  },
+  "history": [
+    {
+      "ts": "2026-03-20T01:59:00.910945Z",
+      "attempted": 1,
+      "written": 0,
+      "skipped_existing_file": 1,
+      "daily_max": 1,
+      "link_to_queued": false
+    },
+    {
+      "ts": "2026-03-20T01:59:12.659184Z",
+      "attempted": 1,
+      "written": 1,
+      "skipped_existing_file": 0,
+      "daily_max": 1,
+      "link_to_queued": false
+    }
+  ]
+}
