@@ -24,8 +24,6 @@ from datetime import datetime, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any
-from urllib.parse import parse_qs, urlparse
-import os
 
 REPO_ROOT = Path(__file__).resolve().parent
 DAILY_LOG = REPO_ROOT / ".daily_runs.json"
@@ -33,8 +31,6 @@ CITY_LOG = REPO_ROOT / ".daily_city_runs.json"
 SUMMARY_JSON = REPO_ROOT / "_deploy" / "last_daily_run_summary.json"
 RUN_TIMEOUT_SECONDS = 1800
 RUN_LOCK = threading.Lock()
-ADMIN_ACCESS_KEY = os.getenv("ADMIN_ACCESS_KEY", "").strip()
-ADMIN_KEY_PARAM = os.getenv("ADMIN_KEY_PARAM", "admin_key").strip() or "admin_key"
 
 SCRIPT_CATALOG: dict[str, dict[str, Any]] = {
     "one_button_daily": {
@@ -97,8 +93,6 @@ SETTINGS = {
     "python_executable": sys.executable,
     "timezone": "UTC",
     "run_timeout_seconds": RUN_TIMEOUT_SECONDS,
-    "admin_key_param": ADMIN_KEY_PARAM,
-    "admin_access_key_configured": bool(ADMIN_ACCESS_KEY),
 }
 
 
@@ -240,16 +234,11 @@ def dashboard_html() -> str:
   <textarea id='out' readonly></textarea>
 
 <script>
-const qp = new URLSearchParams(window.location.search);
-const keyParam = '{ADMIN_KEY_PARAM}';
-const keyValue = qp.get(keyParam);
-const suffix = keyValue ? `?${keyParam}=${encodeURIComponent(keyValue)}` : '';
-
 async function loadOverview() {{
   const [cfg, hist, summary] = await Promise.all([
-    fetch('/api/config' + suffix).then(r=>r.json()),
-    fetch('/api/history' + suffix).then(r=>r.json()),
-    fetch('/api/last-summary' + suffix).then(r=>r.json()),
+    fetch('/api/config').then(r=>r.json()),
+    fetch('/api/history').then(r=>r.json()),
+    fetch('/api/last-summary').then(r=>r.json()),
   ]);
   document.getElementById('out').value = JSON.stringify({{config: cfg, history: hist, last_summary: summary}}, null, 2);
 }}
@@ -257,7 +246,7 @@ async function loadOverview() {{
 async function runScript(scriptKey) {{
   const argLine = document.getElementById('args').value.trim();
   const args = argLine ? argLine.split(/\s+/) : [];
-  const res = await fetch('/api/run' + suffix, {{
+  const res = await fetch('/api/run', {{
     method: 'POST',
     headers: {{'Content-Type':'application/json'}},
     body: JSON.stringify({{script: scriptKey, args}})
@@ -274,22 +263,6 @@ loadOverview();
 
 
 class Handler(BaseHTTPRequestHandler):
-    def _path_parts(self):
-        parsed = urlparse(self.path)
-        return parsed.path, parse_qs(parsed.query)
-
-    def _extract_admin_key(self) -> str:
-        _, query = self._path_parts()
-        qv = (query.get(ADMIN_KEY_PARAM) or [""])[0]
-        hv = self.headers.get("X-Admin-Key", "")
-        return (hv or qv or "").strip()
-
-    def _authorized(self) -> bool:
-        # If no ADMIN_ACCESS_KEY is configured, keep current behavior open.
-        if not ADMIN_ACCESS_KEY:
-            return True
-        return self._extract_admin_key() == ADMIN_ACCESS_KEY
-
     def _send_json(self, payload: Any, status: int = 200) -> None:
         raw = json.dumps(payload, ensure_ascii=False).encode("utf-8")
         self.send_response(status)
@@ -307,25 +280,20 @@ class Handler(BaseHTTPRequestHandler):
         self.wfile.write(raw)
 
     def do_GET(self):
-        path, _ = self._path_parts()
-        if path != "/api/health" and not self._authorized():
-            self._send_json({"ok": False, "error": f"Unauthorized. Supply {ADMIN_KEY_PARAM}=... in URL or X-Admin-Key header."}, status=401)
-            return
-
-        if path == "/":
+        if self.path == "/":
             self._send_html(dashboard_html())
             return
-        if path == "/api/config":
+        if self.path == "/api/config":
             payload = {
                 "scripts": SCRIPT_CATALOG,
                 "settings": SETTINGS,
             }
             self._send_json(payload)
             return
-        if path == "/api/health":
+        if self.path == "/api/health":
             self._send_json({"ok": True, "utc": datetime.now(timezone.utc).isoformat()})
             return
-        if path == "/api/history":
+        if self.path == "/api/history":
             self._send_json(
                 {
                     "daily_runs": load_json(DAILY_LOG, {}),
@@ -333,18 +301,13 @@ class Handler(BaseHTTPRequestHandler):
                 }
             )
             return
-        if path == "/api/last-summary":
+        if self.path == "/api/last-summary":
             self._send_json(load_json(SUMMARY_JSON, {"note": "No summary generated yet."}))
             return
         self._send_json({"error": "Not found"}, status=404)
 
     def do_POST(self):
-        path, _ = self._path_parts()
-        if not self._authorized():
-            self._send_json({"ok": False, "error": f"Unauthorized. Supply {ADMIN_KEY_PARAM}=... in URL or X-Admin-Key header."}, status=401)
-            return
-
-        if path != "/api/run":
+        if self.path != "/api/run":
             self._send_json({"error": "Not found"}, status=404)
             return
 
