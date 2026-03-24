@@ -15,6 +15,7 @@ DataByArea
 ### Daily autorun (1 service + 10 cities)
 - Command used by runner script: `./run_daily.sh`
   - Runs: `DBA_AUTORUN=1 python3 one_button_daily.py --services 1 --cities 10 --relink --clean`
+  - Runs: `python3 one_button_daily.py --services 1 --cities 10 --relink --clean`
 - Install cron job: `./setup_autorun.sh`
   - Default schedule is daily at `03:15 UTC`
   - Override schedule: `CRON_EXPR=\"0 2 * * *\" ./setup_autorun.sh`
