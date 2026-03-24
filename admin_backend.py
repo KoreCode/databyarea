@@ -40,6 +40,11 @@ SCRIPT_CATALOG: dict[str, dict[str, Any]] = {
     "one_button_daily": {
         "path": "one_button_daily.py",
         "description": "Main daily pipeline: city publish + build + sitemap + zip + summary.",
+        "safe_args": ["--cities", "--services", "--no-cities", "--relink", "--clean", "--force"],
+        "value_args": ["--cities", "--services"],
+        "examples": [
+            ["--cities", "10"],
+            ["--services", "1", "--cities", "10"],
         "safe_args": ["--cities", "--no-cities", "--relink", "--clean", "--force"],
         "value_args": ["--cities"],
         "examples": [

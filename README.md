@@ -3,6 +3,9 @@ DataByArea
 
 ## Automation
 
+### Generator mode
+- Single canonical generator only: `scripts/build_site.py`
+- `one_button_daily.py` fails fast if this generator is missing.
 
 ### Daily auto-generation runner
 - Run: `python3 one_button_daily.py`
@@ -12,6 +15,7 @@ DataByArea
   - `_deploy/last_daily_run_summary.md`
 - State coverage check runs first via `scripts/ensure_states.py` to keep state-level hubs in place.
 - SEO baseline is refreshed each run by rebuilding `sitemap.xml`, `robots.txt`, and generating internal-link-ready state/city pages.
+- City publishing is forced inside the one-button pipeline so both daily and manual runs attempt to add up to `--cities` new city pages each run.
 
 ### Daily autorun (1 service + 10 cities)
 - Command used by runner script: `./run_daily.sh`
@@ -49,8 +53,10 @@ DataByArea
 - `DIRECTORY_TREE.md` — clean repository tree map.
 - `AUTOMATION_STATUS.md` — current automation enablement status and scheduler line.
 - `CLOUDFLARE_GITHUB_AUTODEPLOY.md` — Cloudflare + GitHub auto-deploy + domain admin routing steps.
+- `FULL_AUTOMATION_SINGLE_GENERATOR.md` — full end-to-end setup (GitHub Actions + Cloudflare) with single generator mode.
 
 ## Site Version Footer
 - A small version badge is injected at the bottom-right of pages via `/assets/version-footer.js`.
 - Version metadata lives in `/assets/site-version.json`.
 - The version file is updated **only when autorun succeeds** (`DBA_AUTORUN=1`), so manual runs do not advance the public version stamp.
+- Footer JavaScript is rewritten on each run to keep deployed pages aligned with the latest footer code.

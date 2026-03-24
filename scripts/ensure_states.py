@@ -46,6 +46,7 @@ def state_index_html(section: str, state_slug: str) -> str:
   <meta charset=\"utf-8\">
   <title>{section_title} in {state_name} | {SITE_NAME}</title>
   <meta name=\"description\" content=\"{desc}\">
+  <meta name=\"robots\" content=\"index,follow,max-image-preview:large\">
   <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
   <link rel=\"canonical\" href=\"{canonical}\">
   <link rel=\"stylesheet\" href=\"{CSS_PATH}\">

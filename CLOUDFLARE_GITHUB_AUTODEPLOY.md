@@ -23,6 +23,8 @@ This guide sets up two things:
 
 Result: every push to the production branch triggers Cloudflare to pull and publish the latest site automatically.
 
+Recommended: enable this repo's GitHub workflow (`.github/workflows/daily-automation.yml`) so a scheduled run can commit/push fresh site updates daily, which Cloudflare then auto-deploys.
+
 ---
 
 ## 2) Route domain traffic

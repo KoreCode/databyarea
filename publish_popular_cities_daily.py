@@ -133,6 +133,7 @@ def city_page_html(section: str, state_slug: str, city_name: str) -> str:
   <meta charset="utf-8">
   <title>{title}</title>
   <meta name="description" content="{desc}">
+  <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="{canonical}">
   <link rel="stylesheet" href="{CSS_PATH}">
@@ -175,6 +176,7 @@ def ensure_state_index(section: str, state_slug: str):
   <meta charset="utf-8">
   <title>{title}</title>
   <meta name="description" content="{desc}">
+  <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="{canonical}">
   <link rel="stylesheet" href="{CSS_PATH}">

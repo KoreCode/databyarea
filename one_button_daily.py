@@ -4,6 +4,8 @@
 # Does (in order):
 #  0) OPTIONAL: Ensure missing state index pages exist (runs scripts/ensure_states.py if present)
 #  1) OPTIONAL: Publish a safe batch of popular city pages (runs publish_popular_cities_daily.py if present)
+#  1) Runs the single canonical generator:
+#       scripts/build_site.py
 #  1) Runs the first available generator:
 #       make-site.py OR scripts/build_site.py OR newfile.py
 #     (publishes today's service pages + ensures hubs/legal)
@@ -37,6 +39,7 @@ from urllib.parse import urljoin
 SITE_URL = "https://databyarea.com"
 
 RUN_LOG = Path(".daily_runs.json")
+SINGLE_GENERATOR = Path("scripts/build_site.py")
 GENERATOR_CANDIDATES = [
     Path("make-site.py"),
     Path("scripts/build_site.py"),
@@ -206,6 +209,10 @@ def run_cmd_capture(cmd: list[str], env: dict | None = None) -> tuple[int, str]:
         return 127, ""
 
 def resolve_generator() -> Path:
+    if SINGLE_GENERATOR.exists():
+        return SINGLE_GENERATOR
+    print("ERROR: Required generator script not found.")
+    print(f"Expected: {SINGLE_GENERATOR}")
     for candidate in GENERATOR_CANDIDATES:
         if candidate.exists():
             return candidate
@@ -324,7 +331,7 @@ def main():
 
     # 1) Popular cities publish (optional)
     if (not args.no_cities) and POPULAR_CITIES_PUBLISHER.exists() and args.cities > 0:
-        city_rc, city_out = run_cmd_capture([sys.executable, str(POPULAR_CITIES_PUBLISHER), "--max", str(args.cities)])
+        city_rc, city_out = run_cmd_capture([sys.executable, str(POPULAR_CITIES_PUBLISHER), "--max", str(args.cities), "--force"])
         if city_rc != 0:
             print(f"Warning: publish_popular_cities_daily.py exited with code {city_rc}. Continuing.")
         created_city_urls = parse_created_urls(city_out)
