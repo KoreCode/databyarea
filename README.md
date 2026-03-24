@@ -3,6 +3,7 @@ DataByArea
 
 ## Automation
 
+
 ### Daily auto-generation runner
 - Run: `python3 one_button_daily.py`
 - Optional flags: `--services`, `--cities`, `--no-cities`, `--relink`, `--clean`, `--force`
