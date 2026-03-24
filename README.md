@@ -14,6 +14,7 @@ DataByArea
 
 ### Daily autorun (1 service + 10 cities)
 - Command used by runner script: `./run_daily.sh`
+  - Runs: `DBA_AUTORUN=1 python3 one_button_daily.py --services 1 --cities 10 --relink --clean`
   - Runs: `python3 one_button_daily.py --services 1 --cities 10 --relink --clean`
 - Install cron job: `./setup_autorun.sh`
   - Default schedule is daily at `03:15 UTC`
@@ -47,3 +48,8 @@ DataByArea
 - `DIRECTORY_TREE.md` — clean repository tree map.
 - `AUTOMATION_STATUS.md` — current automation enablement status and scheduler line.
 - `CLOUDFLARE_GITHUB_AUTODEPLOY.md` — Cloudflare + GitHub auto-deploy + domain admin routing steps.
+
+## Site Version Footer
+- A small version badge is injected at the bottom-right of pages via `/assets/version-footer.js`.
+- Version metadata lives in `/assets/site-version.json`.
+- The version file is updated **only when autorun succeeds** (`DBA_AUTORUN=1`), so manual runs do not advance the public version stamp.

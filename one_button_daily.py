@@ -56,6 +56,9 @@ DEPLOY_DIR = Path("_deploy")
 DEPLOY_DIR.mkdir(exist_ok=True)
 RUN_SUMMARY_JSON = DEPLOY_DIR / "last_daily_run_summary.json"
 RUN_SUMMARY_MD = DEPLOY_DIR / "last_daily_run_summary.md"
+VERSION_JSON = Path("assets/site-version.json")
+VERSION_FOOTER_JS = Path("assets/version-footer.js")
+VERSION_SCRIPT_TAG = '<script defer src="/assets/version-footer.js"></script>'
 
 # Exclusion rules for scan + zip
 EXCLUDE_DIRS = {
@@ -104,6 +107,69 @@ def write_run_summary(summary: dict) -> None:
         f"- clean: `{summary.get('clean_rc')}`",
     ]
     RUN_SUMMARY_MD.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+def git_commit_short() -> str:
+    rc, out = run_cmd_capture(["git", "rev-parse", "--short", "HEAD"])
+    if rc == 0 and out.strip():
+        return out.strip().splitlines()[-1].strip()
+    return "unknown"
+
+def ensure_version_footer_js() -> None:
+    VERSION_FOOTER_JS.parent.mkdir(parents=True, exist_ok=True)
+    if VERSION_FOOTER_JS.exists():
+        return
+    VERSION_FOOTER_JS.write_text(
+        """(function () {\n"""
+        """  const root = document.createElement('div');\n"""
+        """  root.id = 'site-version-footer';\n"""
+        """  root.style.cssText = 'position:fixed;bottom:8px;right:8px;background:#111;color:#fff;font:12px/1.2 Arial,sans-serif;padding:6px 8px;border-radius:8px;opacity:.82;z-index:99999';\n"""
+        """  fetch('/assets/site-version.json', { cache: 'no-store' })\n"""
+        """    .then(r => r.ok ? r.json() : null)\n"""
+        """    .then(v => {\n"""
+        """      if (!v) return;\n"""
+        """      root.textContent = `v ${v.commit_short || 'unknown'} · ${v.updated_utc || ''}`;\n"""
+        """      document.body.appendChild(root);\n"""
+        """    })\n"""
+        """    .catch(() => {});\n"""
+        """})();\n""",
+        encoding="utf-8",
+    )
+
+def inject_version_script_into_html() -> int:
+    added = 0
+    for root, dirs, files in os.walk("."):
+        rel_root = os.path.relpath(root, ".")
+        if rel_root == ".":
+            rel_root = ""
+        dirs[:] = [d for d in dirs if not should_exclude(os.path.join(rel_root, d))]
+        if "index.html" not in files:
+            continue
+        html_path = Path(root) / "index.html"
+        txt = html_path.read_text(encoding="utf-8", errors="ignore")
+        if VERSION_SCRIPT_TAG in txt:
+            continue
+        if "</body>" in txt:
+            txt = txt.replace("</body>", f"  {VERSION_SCRIPT_TAG}\n</body>")
+        else:
+            txt += "\n" + VERSION_SCRIPT_TAG + "\n"
+        html_path.write_text(txt, encoding="utf-8")
+        added += 1
+    return added
+
+def maybe_update_site_version_for_autorun(summary: dict) -> None:
+    if os.getenv("DBA_AUTORUN", "").strip() != "1":
+        print("Skipping version stamp update (DBA_AUTORUN is not set to 1).")
+        return
+    VERSION_JSON.parent.mkdir(parents=True, exist_ok=True)
+    payload = {
+        "commit_short": git_commit_short(),
+        "updated_utc": datetime.now(timezone.utc).isoformat(),
+        "services_requested": summary.get("services_requested"),
+        "cities_requested": summary.get("cities_requested"),
+        "deploy_zip": summary.get("deploy_zip"),
+    }
+    VERSION_JSON.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+    print(f"Updated version stamp: {VERSION_JSON}")
 
 def already_ran_today(log: dict) -> bool:
     return log.get("last_run_utc") == utc_date_str()
@@ -344,6 +410,9 @@ def main():
         "clean_rc": clean_rc,
     }
     write_run_summary(summary)
+    ensure_version_footer_js()
+    injected = inject_version_script_into_html()
+    maybe_update_site_version_for_autorun(summary)
 
     # 7) Log
     log["last_run_utc"] = date
@@ -405,6 +474,7 @@ def main():
     print("\nSitemap URLs total:", total_sitemap_urls)
     print("Deploy zip:", zip_path.as_posix())
     print(f"Zip contents -> Added files: {files_added} | Skipped: {files_skipped}")
+    print(f"Version footer script tags injected: {injected}")
     print("Run summary JSON:", RUN_SUMMARY_JSON.as_posix())
     print("Run summary Markdown:", RUN_SUMMARY_MD.as_posix())
     print("\nNext (Cloudflare): Pages -> Upload assets -> upload the zip above.")
