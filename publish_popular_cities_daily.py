@@ -35,6 +35,7 @@ SITE_URL = "https://databyarea.com"
 CSS_PATH = "/assets/styles.css"
 
 POPULAR_CSV = Path("data/popular_cities.csv")
+POPULAR_CSV_FALLBACK = Path("popular_cities.csv")
 RUN_LOG = Path(".daily_city_runs.json")
 
 SECTIONS = [
@@ -84,10 +85,11 @@ def already_ran_today(log: dict) -> bool:
     return log.get("last_run_utc") == utc_date_str()
 
 def read_popular_list() -> list[tuple[str,str]]:
-    if not POPULAR_CSV.exists():
-        raise SystemExit(f"Missing {POPULAR_CSV}. Put a CSV with columns: state,city")
+    csv_path = POPULAR_CSV if POPULAR_CSV.exists() else POPULAR_CSV_FALLBACK
+    if not csv_path.exists():
+        raise SystemExit(f"Missing {POPULAR_CSV} (or fallback {POPULAR_CSV_FALLBACK}). Put a CSV with columns: state,city")
     out = []
-    with POPULAR_CSV.open("r", encoding="utf-8", newline="") as f:
+    with csv_path.open("r", encoding="utf-8", newline="") as f:
         reader = csv.DictReader(f)
         if not reader.fieldnames:
             raise SystemExit("popular_cities.csv has no header row.")
@@ -131,6 +133,7 @@ def city_page_html(section: str, state_slug: str, city_name: str) -> str:
   <meta charset="utf-8">
   <title>{title}</title>
   <meta name="description" content="{desc}">
+  <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="{canonical}">
   <link rel="stylesheet" href="{CSS_PATH}">
@@ -173,6 +176,7 @@ def ensure_state_index(section: str, state_slug: str):
   <meta charset="utf-8">
   <title>{title}</title>
   <meta name="description" content="{desc}">
+  <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="{canonical}">
   <link rel="stylesheet" href="{CSS_PATH}">
