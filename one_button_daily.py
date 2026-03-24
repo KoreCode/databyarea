@@ -6,6 +6,8 @@
 #  1) OPTIONAL: Publish a safe batch of popular city pages (runs publish_popular_cities_daily.py if present)
 #  1) Runs the single canonical generator:
 #       scripts/build_site.py
+#  1) Runs the first available generator:
+#       make-site.py OR scripts/build_site.py OR newfile.py
 #     (publishes today's service pages + ensures hubs/legal)
 #  2) OPTIONAL: Runs relink_existing_pages.py
 #  3) OPTIONAL: Runs auto_clean_site.py
@@ -38,6 +40,11 @@ SITE_URL = "https://databyarea.com"
 
 RUN_LOG = Path(".daily_runs.json")
 SINGLE_GENERATOR = Path("scripts/build_site.py")
+GENERATOR_CANDIDATES = [
+    Path("make-site.py"),
+    Path("scripts/build_site.py"),
+    Path("newfile.py"),
+]
 RELINK = Path("relink_existing_pages.py")
 CLEANER = Path("auto_clean_site.py")
 EMPTY_DIR_CLEANER = Path("scripts/cleanup_empty_dirs.py")
@@ -112,6 +119,8 @@ def git_commit_short() -> str:
 
 def ensure_version_footer_js() -> None:
     VERSION_FOOTER_JS.parent.mkdir(parents=True, exist_ok=True)
+    if VERSION_FOOTER_JS.exists():
+        return
     VERSION_FOOTER_JS.write_text(
         """(function () {\n"""
         """  const root = document.createElement('div');\n"""
@@ -204,6 +213,12 @@ def resolve_generator() -> Path:
         return SINGLE_GENERATOR
     print("ERROR: Required generator script not found.")
     print(f"Expected: {SINGLE_GENERATOR}")
+    for candidate in GENERATOR_CANDIDATES:
+        if candidate.exists():
+            return candidate
+    checked = ", ".join(str(p) for p in GENERATOR_CANDIDATES)
+    print("ERROR: No generator script found.")
+    print(f"Checked: {checked}")
     sys.exit(1)
 
 def parse_created_urls(output: str) -> list[str]:

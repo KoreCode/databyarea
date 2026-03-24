@@ -45,6 +45,10 @@ SCRIPT_CATALOG: dict[str, dict[str, Any]] = {
         "examples": [
             ["--cities", "10"],
             ["--services", "1", "--cities", "10"],
+        "safe_args": ["--cities", "--no-cities", "--relink", "--clean", "--force"],
+        "value_args": ["--cities"],
+        "examples": [
+            ["--cities", "10"],
             ["--cities", "20", "--relink", "--clean"],
             ["--no-cities", "--force"],
         ],
@@ -251,6 +255,11 @@ async function loadOverview() {{
     fetch('/api/config' + suffix).then(r=>r.json()),
     fetch('/api/history' + suffix).then(r=>r.json()),
     fetch('/api/last-summary' + suffix).then(r=>r.json()),
+async function loadOverview() {{
+  const [cfg, hist, summary] = await Promise.all([
+    fetch('/api/config').then(r=>r.json()),
+    fetch('/api/history').then(r=>r.json()),
+    fetch('/api/last-summary').then(r=>r.json()),
   ]);
   document.getElementById('out').value = JSON.stringify({{config: cfg, history: hist, last_summary: summary}}, null, 2);
 }}
@@ -259,6 +268,7 @@ async function runScript(scriptKey) {{
   const argLine = document.getElementById('args').value.trim();
   const args = argLine ? argLine.split(/\s+/) : [];
   const res = await fetch('/api/run' + suffix, {{
+  const res = await fetch('/api/run', {{
     method: 'POST',
     headers: {{'Content-Type':'application/json'}},
     body: JSON.stringify({{script: scriptKey, args}})
@@ -317,6 +327,10 @@ class Handler(BaseHTTPRequestHandler):
             self._send_html(dashboard_html())
             return
         if path == "/api/config":
+        if self.path == "/":
+            self._send_html(dashboard_html())
+            return
+        if self.path == "/api/config":
             payload = {
                 "scripts": SCRIPT_CATALOG,
                 "settings": SETTINGS,
@@ -327,6 +341,10 @@ class Handler(BaseHTTPRequestHandler):
             self._send_json({"ok": True, "utc": datetime.now(timezone.utc).isoformat()})
             return
         if path == "/api/history":
+        if self.path == "/api/health":
+            self._send_json({"ok": True, "utc": datetime.now(timezone.utc).isoformat()})
+            return
+        if self.path == "/api/history":
             self._send_json(
                 {
                     "daily_runs": load_json(DAILY_LOG, {}),
@@ -335,6 +353,7 @@ class Handler(BaseHTTPRequestHandler):
             )
             return
         if path == "/api/last-summary":
+        if self.path == "/api/last-summary":
             self._send_json(load_json(SUMMARY_JSON, {"note": "No summary generated yet."}))
             return
         self._send_json({"error": "Not found"}, status=404)
@@ -346,6 +365,7 @@ class Handler(BaseHTTPRequestHandler):
             return
 
         if path != "/api/run":
+        if self.path != "/api/run":
             self._send_json({"error": "Not found"}, status=404)
             return
 
