@@ -2,6 +2,10 @@
 
 Generated clean tree map (depth <= 3, noisy/build dirs excluded).
 
+- `.github/`
+  - `.github/workflows/`
+    - `.github/workflows/daily-automation.yml`
+    - `.github/workflows/daily-generator.yml`
 - `_trash/`
   - `_trash/.trashed-1772080145-Generate-DataByArea`
   - `_trash/List.py`
@@ -12,7 +16,9 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `assets/index.html`
   - `assets/logo.png`
   - `assets/logoww.png`
+  - `assets/site-version.json`
   - `assets/styles.css`
+  - `assets/version-footer.js`
 - `contact/`
   - `contact/index.html`
 - `cost-of-living/`
@@ -45,6 +51,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `cost-of-living/illinois/`
     - `cost-of-living/illinois/index.html`
   - `cost-of-living/indiana/`
+    - `cost-of-living/indiana/indianapolis/`
+      - `cost-of-living/indiana/indianapolis/index.html`
     - `cost-of-living/indiana/index.html`
   - `cost-of-living/iowa/`
     - `cost-of-living/iowa/index.html`
@@ -107,6 +115,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `cost-of-living/texas/`
     - `cost-of-living/texas/dallas/`
       - `cost-of-living/texas/dallas/index.html`
+    - `cost-of-living/texas/fort-worth/`
+      - `cost-of-living/texas/fort-worth/index.html`
     - `cost-of-living/texas/index.html`
   - `cost-of-living/utah/`
     - `cost-of-living/utah/index.html`
@@ -155,6 +165,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `insurance-costs/delaware/`
     - `insurance-costs/delaware/index.html`
   - `insurance-costs/florida/`
+    - `insurance-costs/florida/jacksonville/`
+      - `insurance-costs/florida/jacksonville/index.html`
     - `insurance-costs/florida/index.html`
   - `insurance-costs/georgia/`
     - `insurance-costs/georgia/index.html`
@@ -179,6 +191,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `insurance-costs/maryland/`
     - `insurance-costs/maryland/index.html`
   - `insurance-costs/massachusetts/`
+    - `insurance-costs/massachusetts/boston/`
+      - `insurance-costs/massachusetts/boston/index.html`
     - `insurance-costs/massachusetts/index.html`
   - `insurance-costs/michigan/`
     - `insurance-costs/michigan/index.html`
@@ -203,6 +217,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `insurance-costs/new-york/`
     - `insurance-costs/new-york/index.html`
   - `insurance-costs/north-carolina/`
+    - `insurance-costs/north-carolina/charlotte/`
+      - `insurance-costs/north-carolina/charlotte/index.html`
     - `insurance-costs/north-carolina/index.html`
   - `insurance-costs/north-dakota/`
     - `insurance-costs/north-dakota/index.html`
@@ -257,8 +273,12 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `property-taxes/arkansas/`
     - `property-taxes/arkansas/index.html`
   - `property-taxes/california/`
+    - `property-taxes/california/san-francisco/`
+      - `property-taxes/california/san-francisco/index.html`
     - `property-taxes/california/index.html`
   - `property-taxes/colorado/`
+    - `property-taxes/colorado/denver/`
+      - `property-taxes/colorado/denver/index.html`
     - `property-taxes/colorado/index.html`
   - `property-taxes/connecticut/`
     - `property-taxes/connecticut/index.html`
@@ -335,6 +355,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `property-taxes/tennessee/`
     - `property-taxes/tennessee/index.html`
   - `property-taxes/texas/`
+    - `property-taxes/texas/austin/`
+      - `property-taxes/texas/austin/index.html`
     - `property-taxes/texas/san-antonio/`
       - `property-taxes/texas/san-antonio/index.html`
     - `property-taxes/texas/index.html`
@@ -559,6 +581,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `utility-costs/north-dakota/`
     - `utility-costs/north-dakota/index.html`
   - `utility-costs/ohio/`
+    - `utility-costs/ohio/columbus/`
+      - `utility-costs/ohio/columbus/index.html`
     - `utility-costs/ohio/index.html`
   - `utility-costs/oklahoma/`
     - `utility-costs/oklahoma/index.html`
@@ -585,6 +609,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `utility-costs/virginia/`
     - `utility-costs/virginia/index.html`
   - `utility-costs/washington/`
+    - `utility-costs/washington/seattle/`
+      - `utility-costs/washington/seattle/index.html`
     - `utility-costs/washington/index.html`
   - `utility-costs/west-virginia/`
     - `utility-costs/west-virginia/index.html`
@@ -596,15 +622,19 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `water-heater-installation-cost-by-state/index.html`
 - `window-replacement-cost-by-state/`
   - `window-replacement-cost-by-state/index.html`
+- `.daily_city_runs.json`
+- `.daily_runs.json`
 - `.gitignore`
 - `admin_backend.py`
 - `auto_clean_site.py`
 - `AUTOMATION_STATUS.md`
 - `cleanup_repo.sh`
+- `CLOUDFLARE_GITHUB_AUTODEPLOY.md`
 - `databyarea-site.zip`
 - `directory_structure.txt`
 - `DIRECTORY_TREE.md`
 - `file_list.txt`
+- `FULL_AUTOMATION_SINGLE_GENERATOR.md`
 - `index.html`
 - `index_everywhere.py`
 - `makesitemap.py`

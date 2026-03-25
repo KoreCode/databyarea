@@ -13,6 +13,9 @@
     },
     "plumber-rates-by-state": {
       "published_at": "2026-03-20"
+    },
+    "hvac-installation-cost-by-state": {
+      "published_at": "2026-03-25"
     }
   },
   "history": [
@@ -29,6 +32,14 @@
       "attempted": 1,
       "written": 1,
       "skipped_existing_file": 0,
+      "daily_max": 1,
+      "link_to_queued": false
+    },
+    {
+      "ts": "2026-03-25T05:04:45.889333Z",
+      "attempted": 1,
+      "written": 0,
+      "skipped_existing_file": 1,
       "daily_max": 1,
       "link_to_queued": false
     }
