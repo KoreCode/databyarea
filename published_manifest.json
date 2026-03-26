@@ -16,6 +16,9 @@
     },
     "hvac-installation-cost-by-state": {
       "published_at": "2026-03-25"
+    },
+    "roof-replacement-cost-by-state": {
+      "published_at": "2026-03-26"
     }
   },
   "history": [
@@ -37,6 +40,14 @@
     },
     {
       "ts": "2026-03-25T05:04:45.889333Z",
+      "attempted": 1,
+      "written": 0,
+      "skipped_existing_file": 1,
+      "daily_max": 1,
+      "link_to_queued": false
+    },
+    {
+      "ts": "2026-03-26T05:17:20.229501Z",
       "attempted": 1,
       "written": 0,
       "skipped_existing_file": 1,

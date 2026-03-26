@@ -29,6 +29,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `cost-of-living/arizona/`
     - `cost-of-living/arizona/phoenix/`
       - `cost-of-living/arizona/phoenix/index.html`
+    - `cost-of-living/arizona/tucson/`
+      - `cost-of-living/arizona/tucson/index.html`
     - `cost-of-living/arizona/index.html`
   - `cost-of-living/arkansas/`
     - `cost-of-living/arkansas/index.html`
@@ -81,6 +83,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `cost-of-living/nebraska/`
     - `cost-of-living/nebraska/index.html`
   - `cost-of-living/nevada/`
+    - `cost-of-living/nevada/las-vegas/`
+      - `cost-of-living/nevada/las-vegas/index.html`
     - `cost-of-living/nevada/index.html`
   - `cost-of-living/new-hampshire/`
     - `cost-of-living/new-hampshire/index.html`
@@ -111,6 +115,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `cost-of-living/south-dakota/`
     - `cost-of-living/south-dakota/index.html`
   - `cost-of-living/tennessee/`
+    - `cost-of-living/tennessee/nashville/`
+      - `cost-of-living/tennessee/nashville/index.html`
     - `cost-of-living/tennessee/index.html`
   - `cost-of-living/texas/`
     - `cost-of-living/texas/dallas/`
@@ -213,6 +219,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `insurance-costs/new-jersey/`
     - `insurance-costs/new-jersey/index.html`
   - `insurance-costs/new-mexico/`
+    - `insurance-costs/new-mexico/albuquerque/`
+      - `insurance-costs/new-mexico/albuquerque/index.html`
     - `insurance-costs/new-mexico/index.html`
   - `insurance-costs/new-york/`
     - `insurance-costs/new-york/index.html`
@@ -227,6 +235,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `insurance-costs/oklahoma/`
     - `insurance-costs/oklahoma/index.html`
   - `insurance-costs/oregon/`
+    - `insurance-costs/oregon/portland/`
+      - `insurance-costs/oregon/portland/index.html`
     - `insurance-costs/oregon/index.html`
   - `insurance-costs/pennsylvania/`
     - `insurance-costs/pennsylvania/index.html`
@@ -341,6 +351,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `property-taxes/ohio/`
     - `property-taxes/ohio/index.html`
   - `property-taxes/oklahoma/`
+    - `property-taxes/oklahoma/oklahoma-city/`
+      - `property-taxes/oklahoma/oklahoma-city/index.html`
     - `property-taxes/oklahoma/index.html`
   - `property-taxes/oregon/`
     - `property-taxes/oregon/index.html`
@@ -371,6 +383,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `property-taxes/west-virginia/`
     - `property-taxes/west-virginia/index.html`
   - `property-taxes/wisconsin/`
+    - `property-taxes/wisconsin/milwaukee/`
+      - `property-taxes/wisconsin/milwaukee/index.html`
     - `property-taxes/wisconsin/index.html`
   - `property-taxes/wyoming/`
     - `property-taxes/wyoming/index.html`
@@ -517,6 +531,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `utility-costs/arkansas/`
     - `utility-costs/arkansas/index.html`
   - `utility-costs/california/`
+    - `utility-costs/california/fresno/`
+      - `utility-costs/california/fresno/index.html`
     - `utility-costs/california/los-angeles/`
       - `utility-costs/california/los-angeles/index.html`
     - `utility-costs/california/san-jose/`
@@ -545,6 +561,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `utility-costs/kansas/`
     - `utility-costs/kansas/index.html`
   - `utility-costs/kentucky/`
+    - `utility-costs/kentucky/louisville/`
+      - `utility-costs/kentucky/louisville/index.html`
     - `utility-costs/kentucky/index.html`
   - `utility-costs/louisiana/`
     - `utility-costs/louisiana/index.html`
@@ -555,6 +573,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `utility-costs/massachusetts/`
     - `utility-costs/massachusetts/index.html`
   - `utility-costs/michigan/`
+    - `utility-costs/michigan/detroit/`
+      - `utility-costs/michigan/detroit/index.html`
     - `utility-costs/michigan/index.html`
   - `utility-costs/minnesota/`
     - `utility-costs/minnesota/index.html`
