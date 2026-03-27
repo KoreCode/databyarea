@@ -121,6 +121,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `cost-of-living/texas/`
     - `cost-of-living/texas/dallas/`
       - `cost-of-living/texas/dallas/index.html`
+    - `cost-of-living/texas/el-paso/`
+      - `cost-of-living/texas/el-paso/index.html`
     - `cost-of-living/texas/fort-worth/`
       - `cost-of-living/texas/fort-worth/index.html`
     - `cost-of-living/texas/index.html`
@@ -129,6 +131,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `cost-of-living/vermont/`
     - `cost-of-living/vermont/index.html`
   - `cost-of-living/virginia/`
+    - `cost-of-living/virginia/virginia-beach/`
+      - `cost-of-living/virginia/virginia-beach/index.html`
     - `cost-of-living/virginia/index.html`
   - `cost-of-living/washington/`
     - `cost-of-living/washington/index.html`
@@ -145,6 +149,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `data/generate_csv_system.py`
   - `data/index.html`
   - `data/published_manifest.json`
+- `deck-building-cost-by-state/`
+  - `deck-building-cost-by-state/index.html`
 - `electrician-rates-by-state/`
   - `electrician-rates-by-state/index.html`
 - `foundation-repair-cost-by-state/`
@@ -173,10 +179,14 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `insurance-costs/florida/`
     - `insurance-costs/florida/jacksonville/`
       - `insurance-costs/florida/jacksonville/index.html`
+    - `insurance-costs/florida/tampa/`
+      - `insurance-costs/florida/tampa/index.html`
     - `insurance-costs/florida/index.html`
   - `insurance-costs/georgia/`
     - `insurance-costs/georgia/index.html`
   - `insurance-costs/hawaii/`
+    - `insurance-costs/hawaii/honolulu/`
+      - `insurance-costs/hawaii/honolulu/index.html`
     - `insurance-costs/hawaii/index.html`
   - `insurance-costs/idaho/`
     - `insurance-costs/idaho/index.html`
@@ -187,6 +197,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `insurance-costs/iowa/`
     - `insurance-costs/iowa/index.html`
   - `insurance-costs/kansas/`
+    - `insurance-costs/kansas/wichita/`
+      - `insurance-costs/kansas/wichita/index.html`
     - `insurance-costs/kansas/index.html`
   - `insurance-costs/kentucky/`
     - `insurance-costs/kentucky/index.html`
@@ -283,6 +295,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `property-taxes/arkansas/`
     - `property-taxes/arkansas/index.html`
   - `property-taxes/california/`
+    - `property-taxes/california/sacramento/`
+      - `property-taxes/california/sacramento/index.html`
     - `property-taxes/california/san-francisco/`
       - `property-taxes/california/san-francisco/index.html`
     - `property-taxes/california/index.html`
@@ -295,6 +309,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `property-taxes/delaware/`
     - `property-taxes/delaware/index.html`
   - `property-taxes/florida/`
+    - `property-taxes/florida/miami/`
+      - `property-taxes/florida/miami/index.html`
     - `property-taxes/florida/index.html`
   - `property-taxes/georgia/`
     - `property-taxes/georgia/index.html`
@@ -325,6 +341,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `property-taxes/michigan/`
     - `property-taxes/michigan/index.html`
   - `property-taxes/minnesota/`
+    - `property-taxes/minnesota/minneapolis/`
+      - `property-taxes/minnesota/minneapolis/index.html`
     - `property-taxes/minnesota/index.html`
   - `property-taxes/mississippi/`
     - `property-taxes/mississippi/index.html`
@@ -535,6 +553,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
       - `utility-costs/california/fresno/index.html`
     - `utility-costs/california/los-angeles/`
       - `utility-costs/california/los-angeles/index.html`
+    - `utility-costs/california/oakland/`
+      - `utility-costs/california/oakland/index.html`
     - `utility-costs/california/san-jose/`
       - `utility-costs/california/san-jose/index.html`
     - `utility-costs/california/index.html`
@@ -587,6 +607,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `utility-costs/nebraska/`
     - `utility-costs/nebraska/index.html`
   - `utility-costs/nevada/`
+    - `utility-costs/nevada/reno/`
+      - `utility-costs/nevada/reno/index.html`
     - `utility-costs/nevada/index.html`
   - `utility-costs/new-hampshire/`
     - `utility-costs/new-hampshire/index.html`
