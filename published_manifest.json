@@ -22,6 +22,9 @@
     },
     "deck-building-cost-by-state": {
       "published_at": "2026-03-27"
+    },
+    "concrete-driveway-cost-by-state": {
+      "published_at": "2026-03-28"
     }
   },
   "history": [
@@ -59,6 +62,14 @@
     },
     {
       "ts": "2026-03-27T05:18:42.408159Z",
+      "attempted": 1,
+      "written": 1,
+      "skipped_existing_file": 0,
+      "daily_max": 1,
+      "link_to_queued": false
+    },
+    {
+      "ts": "2026-03-28T05:03:45.713275Z",
       "attempted": 1,
       "written": 1,
       "skipped_existing_file": 0,
