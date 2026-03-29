@@ -81,6 +81,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `cost-of-living/mississippi/`
     - `cost-of-living/mississippi/index.html`
   - `cost-of-living/missouri/`
+    - `cost-of-living/missouri/kansas-city/`
+      - `cost-of-living/missouri/kansas-city/index.html`
     - `cost-of-living/missouri/index.html`
   - `cost-of-living/montana/`
     - `cost-of-living/montana/index.html`
@@ -113,6 +115,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `cost-of-living/oregon/`
     - `cost-of-living/oregon/index.html`
   - `cost-of-living/pennsylvania/`
+    - `cost-of-living/pennsylvania/pittsburgh/`
+      - `cost-of-living/pennsylvania/pittsburgh/index.html`
     - `cost-of-living/pennsylvania/index.html`
   - `cost-of-living/rhode-island/`
     - `cost-of-living/rhode-island/index.html`
@@ -167,6 +171,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `hvac-installation-cost-by-state/index.html`
 - `insurance-costs/`
   - `insurance-costs/alabama/`
+    - `insurance-costs/alabama/birmingham/`
+      - `insurance-costs/alabama/birmingham/index.html`
     - `insurance-costs/alabama/index.html`
   - `insurance-costs/alaska/`
     - `insurance-costs/alaska/index.html`
@@ -255,6 +261,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `insurance-costs/north-dakota/`
     - `insurance-costs/north-dakota/index.html`
   - `insurance-costs/ohio/`
+    - `insurance-costs/ohio/cincinnati/`
+      - `insurance-costs/ohio/cincinnati/index.html`
     - `insurance-costs/ohio/index.html`
   - `insurance-costs/oklahoma/`
     - `insurance-costs/oklahoma/index.html`
@@ -277,6 +285,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
       - `insurance-costs/texas/houston/index.html`
     - `insurance-costs/texas/index.html`
   - `insurance-costs/utah/`
+    - `insurance-costs/utah/salt-lake-city/`
+      - `insurance-costs/utah/salt-lake-city/index.html`
     - `insurance-costs/utah/index.html`
   - `insurance-costs/vermont/`
     - `insurance-costs/vermont/index.html`
@@ -327,6 +337,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `property-taxes/florida/`
     - `property-taxes/florida/miami/`
       - `property-taxes/florida/miami/index.html`
+    - `property-taxes/florida/st-petersburg/`
+      - `property-taxes/florida/st-petersburg/index.html`
     - `property-taxes/florida/index.html`
   - `property-taxes/georgia/`
     - `property-taxes/georgia/index.html`
@@ -383,6 +395,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `property-taxes/north-dakota/`
     - `property-taxes/north-dakota/index.html`
   - `property-taxes/ohio/`
+    - `property-taxes/ohio/cleveland/`
+      - `property-taxes/ohio/cleveland/index.html`
     - `property-taxes/ohio/index.html`
   - `property-taxes/oklahoma/`
     - `property-taxes/oklahoma/oklahoma-city/`
@@ -403,6 +417,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `property-taxes/texas/`
     - `property-taxes/texas/austin/`
       - `property-taxes/texas/austin/index.html`
+    - `property-taxes/texas/lubbock/`
+      - `property-taxes/texas/lubbock/index.html`
     - `property-taxes/texas/san-antonio/`
       - `property-taxes/texas/san-antonio/index.html`
     - `property-taxes/texas/index.html`
@@ -623,6 +639,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `utility-costs/mississippi/`
     - `utility-costs/mississippi/index.html`
   - `utility-costs/missouri/`
+    - `utility-costs/missouri/st-louis/`
+      - `utility-costs/missouri/st-louis/index.html`
     - `utility-costs/missouri/index.html`
   - `utility-costs/montana/`
     - `utility-costs/montana/index.html`
@@ -665,6 +683,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `utility-costs/tennessee/`
     - `utility-costs/tennessee/index.html`
   - `utility-costs/texas/`
+    - `utility-costs/texas/plano/`
+      - `utility-costs/texas/plano/index.html`
     - `utility-costs/texas/index.html`
   - `utility-costs/utah/`
     - `utility-costs/utah/index.html`

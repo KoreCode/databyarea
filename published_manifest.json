@@ -25,6 +25,9 @@
     },
     "concrete-driveway-cost-by-state": {
       "published_at": "2026-03-28"
+    },
+    "window-replacement-cost-by-state": {
+      "published_at": "2026-03-29"
     }
   },
   "history": [
@@ -73,6 +76,14 @@
       "attempted": 1,
       "written": 1,
       "skipped_existing_file": 0,
+      "daily_max": 1,
+      "link_to_queued": false
+    },
+    {
+      "ts": "2026-03-29T05:20:44.450191Z",
+      "attempted": 1,
+      "written": 0,
+      "skipped_existing_file": 1,
       "daily_max": 1,
       "link_to_queued": false
     }
