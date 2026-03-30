@@ -65,6 +65,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `cost-of-living/kentucky/`
     - `cost-of-living/kentucky/index.html`
   - `cost-of-living/louisiana/`
+    - `cost-of-living/louisiana/baton-rouge/`
+      - `cost-of-living/louisiana/baton-rouge/index.html`
     - `cost-of-living/louisiana/new-orleans/`
       - `cost-of-living/louisiana/new-orleans/index.html`
     - `cost-of-living/louisiana/index.html`
@@ -95,6 +97,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `cost-of-living/new-hampshire/`
     - `cost-of-living/new-hampshire/index.html`
   - `cost-of-living/new-jersey/`
+    - `cost-of-living/new-jersey/jersey-city/`
+      - `cost-of-living/new-jersey/jersey-city/index.html`
     - `cost-of-living/new-jersey/index.html`
   - `cost-of-living/new-mexico/`
     - `cost-of-living/new-mexico/index.html`
@@ -121,6 +125,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `cost-of-living/rhode-island/`
     - `cost-of-living/rhode-island/index.html`
   - `cost-of-living/south-carolina/`
+    - `cost-of-living/south-carolina/charleston/`
+      - `cost-of-living/south-carolina/charleston/index.html`
     - `cost-of-living/south-carolina/index.html`
   - `cost-of-living/south-dakota/`
     - `cost-of-living/south-dakota/index.html`
@@ -211,6 +217,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `insurance-costs/indiana/`
     - `insurance-costs/indiana/index.html`
   - `insurance-costs/iowa/`
+    - `insurance-costs/iowa/des-moines/`
+      - `insurance-costs/iowa/des-moines/index.html`
     - `insurance-costs/iowa/index.html`
   - `insurance-costs/kansas/`
     - `insurance-costs/kansas/wichita/`
@@ -247,6 +255,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `insurance-costs/new-hampshire/`
     - `insurance-costs/new-hampshire/index.html`
   - `insurance-costs/new-jersey/`
+    - `insurance-costs/new-jersey/newark/`
+      - `insurance-costs/new-jersey/newark/index.html`
     - `insurance-costs/new-jersey/index.html`
   - `insurance-costs/new-mexico/`
     - `insurance-costs/new-mexico/albuquerque/`
@@ -331,6 +341,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
       - `property-taxes/colorado/denver/index.html`
     - `property-taxes/colorado/index.html`
   - `property-taxes/connecticut/`
+    - `property-taxes/connecticut/bridgeport/`
+      - `property-taxes/connecticut/bridgeport/index.html`
     - `property-taxes/connecticut/index.html`
   - `property-taxes/delaware/`
     - `property-taxes/delaware/index.html`
@@ -345,6 +357,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `property-taxes/hawaii/`
     - `property-taxes/hawaii/index.html`
   - `property-taxes/idaho/`
+    - `property-taxes/idaho/boise/`
+      - `property-taxes/idaho/boise/index.html`
     - `property-taxes/idaho/index.html`
   - `property-taxes/illinois/`
     - `property-taxes/illinois/chicago/`
@@ -579,6 +593,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `utility-costs/arizona/`
     - `utility-costs/arizona/index.html`
   - `utility-costs/arkansas/`
+    - `utility-costs/arkansas/little-rock/`
+      - `utility-costs/arkansas/little-rock/index.html`
     - `utility-costs/arkansas/index.html`
   - `utility-costs/california/`
     - `utility-costs/california/fresno/`
@@ -627,6 +643,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `utility-costs/maine/`
     - `utility-costs/maine/index.html`
   - `utility-costs/maryland/`
+    - `utility-costs/maryland/baltimore/`
+      - `utility-costs/maryland/baltimore/index.html`
     - `utility-costs/maryland/index.html`
   - `utility-costs/massachusetts/`
     - `utility-costs/massachusetts/index.html`
@@ -677,6 +695,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `utility-costs/rhode-island/`
     - `utility-costs/rhode-island/index.html`
   - `utility-costs/south-carolina/`
+    - `utility-costs/south-carolina/columbia/`
+      - `utility-costs/south-carolina/columbia/index.html`
     - `utility-costs/south-carolina/index.html`
   - `utility-costs/south-dakota/`
     - `utility-costs/south-dakota/index.html`
