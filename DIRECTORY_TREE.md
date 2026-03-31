@@ -105,6 +105,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `cost-of-living/new-york/`
     - `cost-of-living/new-york/new-york/`
       - `cost-of-living/new-york/new-york/index.html`
+    - `cost-of-living/new-york/yonkers/`
+      - `cost-of-living/new-york/yonkers/index.html`
     - `cost-of-living/new-york/index.html`
   - `cost-of-living/north-carolina/`
     - `cost-of-living/north-carolina/raleigh/`
@@ -153,6 +155,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
       - `cost-of-living/virginia/virginia-beach/index.html`
     - `cost-of-living/virginia/index.html`
   - `cost-of-living/washington/`
+    - `cost-of-living/washington/tacoma/`
+      - `cost-of-living/washington/tacoma/index.html`
     - `cost-of-living/washington/index.html`
   - `cost-of-living/west-virginia/`
     - `cost-of-living/west-virginia/index.html`
@@ -263,6 +267,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
       - `insurance-costs/new-mexico/albuquerque/index.html`
     - `insurance-costs/new-mexico/index.html`
   - `insurance-costs/new-york/`
+    - `insurance-costs/new-york/rochester/`
+      - `insurance-costs/new-york/rochester/index.html`
     - `insurance-costs/new-york/index.html`
   - `insurance-costs/north-carolina/`
     - `insurance-costs/north-carolina/charlotte/`
@@ -299,10 +305,14 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
       - `insurance-costs/utah/salt-lake-city/index.html`
     - `insurance-costs/utah/index.html`
   - `insurance-costs/vermont/`
+    - `insurance-costs/vermont/burlington/`
+      - `insurance-costs/vermont/burlington/index.html`
     - `insurance-costs/vermont/index.html`
   - `insurance-costs/virginia/`
     - `insurance-costs/virginia/index.html`
   - `insurance-costs/washington/`
+    - `insurance-costs/washington/spokane/`
+      - `insurance-costs/washington/spokane/index.html`
     - `insurance-costs/washington/index.html`
   - `insurance-costs/west-virginia/`
     - `insurance-costs/west-virginia/index.html`
@@ -403,6 +413,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `property-taxes/new-mexico/`
     - `property-taxes/new-mexico/index.html`
   - `property-taxes/new-york/`
+    - `property-taxes/new-york/buffalo/`
+      - `property-taxes/new-york/buffalo/index.html`
     - `property-taxes/new-york/index.html`
   - `property-taxes/north-carolina/`
     - `property-taxes/north-carolina/index.html`
@@ -421,6 +433,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `property-taxes/pennsylvania/`
     - `property-taxes/pennsylvania/index.html`
   - `property-taxes/rhode-island/`
+    - `property-taxes/rhode-island/providence/`
+      - `property-taxes/rhode-island/providence/index.html`
     - `property-taxes/rhode-island/index.html`
   - `property-taxes/south-carolina/`
     - `property-taxes/south-carolina/index.html`
@@ -441,6 +455,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `property-taxes/vermont/`
     - `property-taxes/vermont/index.html`
   - `property-taxes/virginia/`
+    - `property-taxes/virginia/norfolk/`
+      - `property-taxes/virginia/norfolk/index.html`
     - `property-taxes/virginia/index.html`
   - `property-taxes/washington/`
     - `property-taxes/washington/index.html`
@@ -669,6 +685,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
       - `utility-costs/nevada/reno/index.html`
     - `utility-costs/nevada/index.html`
   - `utility-costs/new-hampshire/`
+    - `utility-costs/new-hampshire/manchester/`
+      - `utility-costs/new-hampshire/manchester/index.html`
     - `utility-costs/new-hampshire/index.html`
   - `utility-costs/new-jersey/`
     - `utility-costs/new-jersey/index.html`
@@ -711,6 +729,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `utility-costs/vermont/`
     - `utility-costs/vermont/index.html`
   - `utility-costs/virginia/`
+    - `utility-costs/virginia/richmond/`
+      - `utility-costs/virginia/richmond/index.html`
     - `utility-costs/virginia/index.html`
   - `utility-costs/washington/`
     - `utility-costs/washington/seattle/`

@@ -31,6 +31,9 @@
     },
     "water-heater-installation-cost-by-state": {
       "published_at": "2026-03-30"
+    },
+    "foundation-repair-cost-by-state": {
+      "published_at": "2026-03-31"
     }
   },
   "history": [
@@ -92,6 +95,14 @@
     },
     {
       "ts": "2026-03-30T05:34:40.825619Z",
+      "attempted": 1,
+      "written": 0,
+      "skipped_existing_file": 1,
+      "daily_max": 1,
+      "link_to_queued": false
+    },
+    {
+      "ts": "2026-03-31T05:20:33.604822Z",
       "attempted": 1,
       "written": 0,
       "skipped_existing_file": 1,
