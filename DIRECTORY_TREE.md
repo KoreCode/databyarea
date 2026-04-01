@@ -71,6 +71,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
       - `cost-of-living/louisiana/new-orleans/index.html`
     - `cost-of-living/louisiana/index.html`
   - `cost-of-living/maine/`
+    - `cost-of-living/maine/portland/`
+      - `cost-of-living/maine/portland/index.html`
     - `cost-of-living/maine/index.html`
   - `cost-of-living/maryland/`
     - `cost-of-living/maryland/index.html`
@@ -131,6 +133,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
       - `cost-of-living/south-carolina/charleston/index.html`
     - `cost-of-living/south-carolina/index.html`
   - `cost-of-living/south-dakota/`
+    - `cost-of-living/south-dakota/sioux-falls/`
+      - `cost-of-living/south-dakota/sioux-falls/index.html`
     - `cost-of-living/south-dakota/index.html`
   - `cost-of-living/tennessee/`
     - `cost-of-living/tennessee/nashville/`
@@ -145,6 +149,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
       - `cost-of-living/texas/el-paso/index.html`
     - `cost-of-living/texas/fort-worth/`
       - `cost-of-living/texas/fort-worth/index.html`
+    - `cost-of-living/texas/irving/`
+      - `cost-of-living/texas/irving/index.html`
     - `cost-of-living/texas/index.html`
   - `cost-of-living/utah/`
     - `cost-of-living/utah/index.html`
@@ -177,6 +183,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `electrician-rates-by-state/index.html`
 - `foundation-repair-cost-by-state/`
   - `foundation-repair-cost-by-state/index.html`
+- `garage-door-repair-cost-by-state/`
+  - `garage-door-repair-cost-by-state/index.html`
 - `hvac-installation-cost-by-state/`
   - `hvac-installation-cost-by-state/index.html`
 - `insurance-costs/`
@@ -275,6 +283,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
       - `insurance-costs/north-carolina/charlotte/index.html`
     - `insurance-costs/north-carolina/index.html`
   - `insurance-costs/north-dakota/`
+    - `insurance-costs/north-dakota/fargo/`
+      - `insurance-costs/north-dakota/fargo/index.html`
     - `insurance-costs/north-dakota/index.html`
   - `insurance-costs/ohio/`
     - `insurance-costs/ohio/cincinnati/`
@@ -303,6 +313,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `insurance-costs/utah/`
     - `insurance-costs/utah/salt-lake-city/`
       - `insurance-costs/utah/salt-lake-city/index.html`
+    - `insurance-costs/utah/west-valley-city/`
+      - `insurance-costs/utah/west-valley-city/index.html`
     - `insurance-costs/utah/index.html`
   - `insurance-costs/vermont/`
     - `insurance-costs/vermont/burlington/`
@@ -401,6 +413,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `property-taxes/missouri/`
     - `property-taxes/missouri/index.html`
   - `property-taxes/montana/`
+    - `property-taxes/montana/billings/`
+      - `property-taxes/montana/billings/index.html`
     - `property-taxes/montana/index.html`
   - `property-taxes/nebraska/`
     - `property-taxes/nebraska/index.html`
@@ -451,6 +465,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
       - `property-taxes/texas/san-antonio/index.html`
     - `property-taxes/texas/index.html`
   - `property-taxes/utah/`
+    - `property-taxes/utah/provo/`
+      - `property-taxes/utah/provo/index.html`
     - `property-taxes/utah/index.html`
   - `property-taxes/vermont/`
     - `property-taxes/vermont/index.html`
@@ -629,6 +645,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `utility-costs/connecticut/`
     - `utility-costs/connecticut/index.html`
   - `utility-costs/delaware/`
+    - `utility-costs/delaware/wilmington/`
+      - `utility-costs/delaware/wilmington/index.html`
     - `utility-costs/delaware/index.html`
   - `utility-costs/florida/`
     - `utility-costs/florida/orlando/`
@@ -721,6 +739,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `utility-costs/tennessee/`
     - `utility-costs/tennessee/index.html`
   - `utility-costs/texas/`
+    - `utility-costs/texas/garland/`
+      - `utility-costs/texas/garland/index.html`
     - `utility-costs/texas/plano/`
       - `utility-costs/texas/plano/index.html`
     - `utility-costs/texas/index.html`
@@ -741,6 +761,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `utility-costs/wisconsin/`
     - `utility-costs/wisconsin/index.html`
   - `utility-costs/wyoming/`
+    - `utility-costs/wyoming/cheyenne/`
+      - `utility-costs/wyoming/cheyenne/index.html`
     - `utility-costs/wyoming/index.html`
 - `water-heater-installation-cost-by-state/`
   - `water-heater-installation-cost-by-state/index.html`

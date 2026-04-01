@@ -34,6 +34,9 @@
     },
     "foundation-repair-cost-by-state": {
       "published_at": "2026-03-31"
+    },
+    "garage-door-repair-cost-by-state": {
+      "published_at": "2026-04-01"
     }
   },
   "history": [
@@ -106,6 +109,14 @@
       "attempted": 1,
       "written": 0,
       "skipped_existing_file": 1,
+      "daily_max": 1,
+      "link_to_queued": false
+    },
+    {
+      "ts": "2026-04-01T05:32:41.219662Z",
+      "attempted": 1,
+      "written": 1,
+      "skipped_existing_file": 0,
       "daily_max": 1,
       "link_to_queued": false
     }
