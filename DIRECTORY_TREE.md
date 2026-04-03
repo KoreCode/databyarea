@@ -29,6 +29,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `cost-of-living/alaska/`
     - `cost-of-living/alaska/index.html`
   - `cost-of-living/arizona/`
+    - `cost-of-living/arizona/mesa/`
+      - `cost-of-living/arizona/mesa/index.html`
     - `cost-of-living/arizona/phoenix/`
       - `cost-of-living/arizona/phoenix/index.html`
     - `cost-of-living/arizona/tucson/`
@@ -37,6 +39,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `cost-of-living/arkansas/`
     - `cost-of-living/arkansas/index.html`
   - `cost-of-living/california/`
+    - `cost-of-living/california/oxnard/`
+      - `cost-of-living/california/oxnard/index.html`
     - `cost-of-living/california/santa-ana/`
       - `cost-of-living/california/santa-ana/index.html`
     - `cost-of-living/california/stockton/`
@@ -207,6 +211,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
       - `insurance-costs/california/anaheim/index.html`
     - `insurance-costs/california/fremont/`
       - `insurance-costs/california/fremont/index.html`
+    - `insurance-costs/california/huntington-beach/`
+      - `insurance-costs/california/huntington-beach/index.html`
     - `insurance-costs/california/modesto/`
       - `insurance-costs/california/modesto/index.html`
     - `insurance-costs/california/riverside/`
@@ -317,6 +323,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `insurance-costs/tennessee/`
     - `insurance-costs/tennessee/index.html`
   - `insurance-costs/texas/`
+    - `insurance-costs/texas/corpus-christi/`
+      - `insurance-costs/texas/corpus-christi/index.html`
     - `insurance-costs/texas/houston/`
       - `insurance-costs/texas/houston/index.html`
     - `insurance-costs/texas/index.html`
@@ -355,6 +363,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `property-taxes/alaska/`
     - `property-taxes/alaska/index.html`
   - `property-taxes/arizona/`
+    - `property-taxes/arizona/gilbert/`
+      - `property-taxes/arizona/gilbert/index.html`
     - `property-taxes/arizona/index.html`
   - `property-taxes/arkansas/`
     - `property-taxes/arkansas/index.html`
@@ -363,6 +373,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
       - `property-taxes/california/bakersfield/index.html`
     - `property-taxes/california/chula-vista/`
       - `property-taxes/california/chula-vista/index.html`
+    - `property-taxes/california/moreno-valley/`
+      - `property-taxes/california/moreno-valley/index.html`
     - `property-taxes/california/sacramento/`
       - `property-taxes/california/sacramento/index.html`
     - `property-taxes/california/san-bernardino/`
@@ -639,12 +651,16 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `utility-costs/alaska/`
     - `utility-costs/alaska/index.html`
   - `utility-costs/arizona/`
+    - `utility-costs/arizona/chandler/`
+      - `utility-costs/arizona/chandler/index.html`
     - `utility-costs/arizona/index.html`
   - `utility-costs/arkansas/`
     - `utility-costs/arkansas/little-rock/`
       - `utility-costs/arkansas/little-rock/index.html`
     - `utility-costs/arkansas/index.html`
   - `utility-costs/california/`
+    - `utility-costs/california/fontana/`
+      - `utility-costs/california/fontana/index.html`
     - `utility-costs/california/fresno/`
       - `utility-costs/california/fresno/index.html`
     - `utility-costs/california/irvine/`
