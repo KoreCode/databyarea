@@ -2,7 +2,7 @@
 # One-button daily run for DataByArea with "what changed" summary.
 #
 # Does (in order):
-#  0) OPTIONAL: Ensure missing state index pages exist (runs scripts/ensure_states.py if present)
+#  0) OPTIONAL: Ensure state index pages exist and sync city links (runs scripts/ensure_states.py if present)
 #  1) OPTIONAL: Publish a safe batch of popular city pages (runs publish_popular_cities_daily.py if present)
 #  1) Runs the single canonical generator:
 #       scripts/build_site.py
@@ -335,6 +335,10 @@ def main():
         if city_rc != 0:
             print(f"Warning: publish_popular_cities_daily.py exited with code {city_rc}. Continuing.")
         created_city_urls = parse_created_urls(city_out)
+        if STATE_ENSURER.exists():
+            states_rc, _ = run_cmd_capture([sys.executable, str(STATE_ENSURER)])
+            if states_rc != 0:
+                print(f"Warning: {STATE_ENSURER} exited with code {states_rc}. Continuing.")
     else:
         print("\n(Skipping popular cities publish.)")
 

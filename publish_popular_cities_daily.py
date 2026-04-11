@@ -25,14 +25,20 @@
 import argparse
 import csv
 import json
-import os
-import re
 from datetime import datetime, timezone
 from pathlib import Path
 
-SITE_NAME = "DataByArea"
-SITE_URL = "https://databyarea.com"
 CSS_PATH = "/assets/styles.css"
+
+from scripts.city_content import (
+    SITE_NAME,
+    SITE_URL,
+    US_STATES,
+    discover_city_slugs,
+    ensure_city_data_seed,
+    render_state_index_html,
+    slugify,
+)
 
 POPULAR_CSV = Path("data/popular_cities.csv")
 POPULAR_CSV_FALLBACK = Path("popular_cities.csv")
@@ -44,28 +50,6 @@ SECTIONS = [
     "property-taxes",
     "insurance-costs",
 ]
-
-US_STATES = {
-    "alabama":"Alabama","alaska":"Alaska","arizona":"Arizona","arkansas":"Arkansas","california":"California",
-    "colorado":"Colorado","connecticut":"Connecticut","delaware":"Delaware","florida":"Florida","georgia":"Georgia",
-    "hawaii":"Hawaii","idaho":"Idaho","illinois":"Illinois","indiana":"Indiana","iowa":"Iowa","kansas":"Kansas",
-    "kentucky":"Kentucky","louisiana":"Louisiana","maine":"Maine","maryland":"Maryland","massachusetts":"Massachusetts",
-    "michigan":"Michigan","minnesota":"Minnesota","mississippi":"Mississippi","missouri":"Missouri","montana":"Montana",
-    "nebraska":"Nebraska","nevada":"Nevada","new-hampshire":"New Hampshire","new-jersey":"New Jersey","new-mexico":"New Mexico",
-    "new-york":"New York","north-carolina":"North Carolina","north-dakota":"North Dakota","ohio":"Ohio","oklahoma":"Oklahoma",
-    "oregon":"Oregon","pennsylvania":"Pennsylvania","rhode-island":"Rhode Island","south-carolina":"South Carolina",
-    "south-dakota":"South Dakota","tennessee":"Tennessee","texas":"Texas","utah":"Utah","vermont":"Vermont",
-    "virginia":"Virginia","washington":"Washington","west-virginia":"West Virginia","wisconsin":"Wisconsin","wyoming":"Wyoming",
-}
-
-def slugify(s: str) -> str:
-    s = s.strip().lower()
-    s = s.replace(".", "")
-    s = re.sub(r"&", " and ", s)
-    s = re.sub(r"[^a-z0-9\s-]", "", s)
-    s = re.sub(r"\s+", "-", s).strip("-")
-    s = re.sub(r"-{2,}", "-", s)
-    return s
 
 def utc_date_str() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%d")
@@ -163,34 +147,8 @@ def ensure_state_index(section: str, state_slug: str):
     folder = Path(section) / state_slug
     ensure_dir(folder)
     idx = folder / "index.html"
-    if idx.exists():
-        return
-    state_name = US_STATES[state_slug]
-    today = datetime.utcnow().strftime("%Y-%m-%d")
-    title = f"{section.replace('-', ' ').title()} in {state_name} | {SITE_NAME}"
-    desc = f"Browse {section.replace('-', ' ')} for {state_name}. Includes major cities and state-level links."
-    canonical = f"{SITE_URL}/{section}/{state_slug}/"
-    html = f"""<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>{title}</title>
-  <meta name="description" content="{desc}">
-  <meta name="robots" content="index,follow,max-image-preview:large">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="canonical" href="{canonical}">
-  <link rel="stylesheet" href="{CSS_PATH}">
-</head>
-<body>
-  <div class="container">
-    <h1>{section.replace('-', ' ').title()} in {state_name}</h1>
-    <p class="lede">{desc}</p>
-    <p><a href="/{section}/">Back to {section.replace('-', ' ').title()} by State</a></p>
-    <p><em>Last updated: {today}</em></p>
-  </div>
-</body>
-</html>
-"""
+    city_slugs = discover_city_slugs(section, state_slug)
+    html = render_state_index_html(section, state_slug, city_slugs)
     idx.write_text(html, encoding="utf-8")
 
 def inject_city_block(section: str, state_slug: str, city_pairs: list[tuple[str,str]], max_links: int = 24) -> bool:
@@ -243,6 +201,7 @@ def main():
 
     created = 0
     considered = 0
+    seeded = 0
 
     # Round-robin across sections to keep growth balanced
     section_i = 0
@@ -264,6 +223,8 @@ def main():
             continue
 
         idx.write_text(city_page_html(section, st, city), encoding="utf-8")
+        if ensure_city_data_seed(section, st, city_slug, city):
+            seeded += 1
         created += 1
         print(f"Created: /{section}/{st}/{city_slug}/")
 
@@ -274,6 +235,11 @@ def main():
             for st in US_STATES.keys():
                 if inject_city_block(section, st, popular):
                     injected += 1
+
+    # Always re-render state pages from actual on-disk city folders.
+    for section in SECTIONS:
+        for st in US_STATES:
+            ensure_state_index(section, st)
 
     run_log["last_run_utc"] = utc_date_str()
     run_log.setdefault("history", [])
@@ -287,7 +253,7 @@ def main():
         run_log["history"] = run_log["history"][-200:]
     save_json(RUN_LOG, run_log)
 
-    print(f"Done. New city pages: {created}. State pages injected: {injected}.")
+    print(f"Done. New city pages: {created}. State pages injected: {injected}. Seeded city datasets: {seeded}.")
     print("Next: run make-site.py to rebuild sitemap.xml and robots.txt, then upload to Cloudflare.")
 
 if __name__ == "__main__":
