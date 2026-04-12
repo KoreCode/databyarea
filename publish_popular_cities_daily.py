@@ -10,7 +10,7 @@
 #     /insurance-costs/<state>/<city-slug>/index.html
 # - Publishes up to DAILY_CITY_MAX new city pages total per run
 # - Never overwrites existing city pages unless --overwrite
-# - Optionally injects a "Major cities" block into the state index pages (--inject)
+# - Injects a "Major cities" block into state index pages by default (disable with --no-inject)
 # - Updates .daily_city_runs.json so you don't accidentally run twice in a day (UTC)
 #
 # Usage:
@@ -18,6 +18,7 @@
 #   python publish_popular_cities_daily.py --max 20
 #   python publish_popular_cities_daily.py --inject
 #   python publish_popular_cities_daily.py --inject --max 20
+#   python publish_popular_cities_daily.py --no-inject
 #   python publish_popular_cities_daily.py --force
 #
 # Tip: run this BEFORE make-site.py, then run make-site.py to rebuild sitemap/robots.
@@ -230,7 +231,9 @@ def main():
     ap = argparse.ArgumentParser(description="Publish a safe batch of popular city pages each day.")
     ap.add_argument("--max", type=int, default=12, help="Max new city pages to create per run (default 12).")
     ap.add_argument("--overwrite", action="store_true", help="Overwrite existing city pages.")
-    ap.add_argument("--inject", action="store_true", help="Inject popular city blocks into state index pages (one-time).")
+    ap.add_argument("--inject", dest="inject", action="store_true", help="Inject popular city blocks into state index pages (default).")
+    ap.add_argument("--no-inject", dest="inject", action="store_false", help="Skip injecting city blocks into state index pages.")
+    ap.set_defaults(inject=True)
     ap.add_argument("--force", action="store_true", help="Run even if already ran today (UTC).")
     args = ap.parse_args()
 
