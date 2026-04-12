@@ -26,7 +26,6 @@
 import argparse
 import csv
 import json
-import os
 import re
 from datetime import datetime, timezone
 from pathlib import Path
@@ -57,6 +56,25 @@ US_STATES = {
     "oregon":"Oregon","pennsylvania":"Pennsylvania","rhode-island":"Rhode Island","south-carolina":"South Carolina",
     "south-dakota":"South Dakota","tennessee":"Tennessee","texas":"Texas","utah":"Utah","vermont":"Vermont",
     "virginia":"Virginia","washington":"Washington","west-virginia":"West Virginia","wisconsin":"Wisconsin","wyoming":"Wyoming",
+}
+
+SECTION_META = {
+    "cost-of-living": {
+        "title": "Cost of Living",
+        "summary": "housing, groceries, utilities, healthcare, and transportation",
+    },
+    "utility-costs": {
+        "title": "Utility Costs",
+        "summary": "electricity, natural gas, water, sewer, and internet costs",
+    },
+    "property-taxes": {
+        "title": "Property Tax Rates",
+        "summary": "effective property tax rates and homeowner tax burden",
+    },
+    "insurance-costs": {
+        "title": "Insurance Costs",
+        "summary": "auto, home, renters, and health insurance benchmarks",
+    },
 }
 
 def slugify(s: str) -> str:
@@ -167,10 +185,24 @@ def ensure_state_index(section: str, state_slug: str):
     if idx.exists():
         return
     state_name = US_STATES[state_slug]
+    section_meta = SECTION_META[section]
     today = datetime.utcnow().strftime("%Y-%m-%d")
-    title = f"{section.replace('-', ' ').title()} in {state_name} | {SITE_NAME}"
-    desc = f"Browse {section.replace('-', ' ')} for {state_name}. Includes major cities and state-level links."
+    section_title = section_meta["title"]
+    title = f"{section_title} in {state_name} | {SITE_NAME}"
+    desc = (
+        f"Explore {section_title.lower()} in {state_name}. "
+        f"Compare state averages and city-level differences."
+    )
     canonical = f"{SITE_URL}/{section}/{state_slug}/"
+    related_links = []
+    for other_section in SECTIONS:
+        if other_section == section:
+            continue
+        other_title = SECTION_META[other_section]["title"]
+        related_links.append(
+            f'<li><a href="/{other_section}/{state_slug}/">{other_title} in {state_name}</a></li>'
+        )
+    related_html = "\n          ".join(related_links)
     html = f"""<!doctype html>
 <html lang="en">
 <head>
@@ -184,11 +216,61 @@ def ensure_state_index(section: str, state_slug: str):
 </head>
 <body>
   <div class="container">
-    <h1>{section.replace('-', ' ').title()} in {state_name}</h1>
-    <p class="lede">{desc}</p>
-    <p><a href="/{section}/">Back to {section.replace('-', ' ').title()} by State</a></p>
-    <p><em>Last updated: {today}</em></p>
+    <div class="nav">
+      <div class="brand">
+        <img src="/assets/logo.png" alt="Data By Area logo" class="logo">
+        <div class="brand-text">
+          <strong>Data By Area</strong>
+          <span>Costs • Rates • Public Data</span>
+        </div>
+      </div>
+      <div class="navlinks">
+        <a class="pill" href="/">Home</a>
+        <a class="pill" href="/cost-of-living/">Cost of Living</a>
+        <a class="pill" href="/utility-costs/">Utility Costs</a>
+        <a class="pill" href="/property-taxes/">Property Tax Rates</a>
+        <a class="pill" href="/insurance-costs/">Insurance Costs</a>
+      </div>
+    </div>
+
+    <div class="hero">
+      <h1>{section_title} in {state_name}</h1>
+      <p>{desc}</p>
+      <div class="breadcrumbs">
+        <a href="/">Home</a> › <a href="/{section}/">{section_title}</a> › <span>{state_name}</span>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>What you can compare</h2>
+        <p>Use this page to review {section_meta["summary"]} across {state_name}.</p>
+        <ul class="list">
+          <li class="item">Statewide averages and regional variation</li>
+          <li class="item">City-level snapshots for major metros</li>
+          <li class="item">Cross-category links for fuller context</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Related {state_name} pages</h2>
+        <p>Explore other cost categories for {state_name}.</p>
+        <ul class="list">
+          {related_html}
+        </ul>
+        <a class="btn" href="/{section}/">Back to {section_title} states</a>
+      </div>
+    </div>
+
+    <!-- POPULAR_CITIES:ANCHOR -->
+
+    <div class="footer">
+      <p><strong>Disclaimer:</strong> Informational estimates only. Costs and rates vary by household, provider, and local area.</p>
+      <p><a href="/about/">About</a> · <a href="/privacy/">Privacy Policy</a> · <a href="/contact/">Contact</a></p>
+      <p>Last updated: {today}</p>
+    </div>
   </div>
+  <script defer src="/assets/version-footer.js"></script>
 </body>
 </html>
 """
@@ -212,17 +294,25 @@ def inject_city_block(section: str, state_slug: str, city_pairs: list[tuple[str,
         f'<li><a href="/{section}/{state_slug}/{slugify(c)}/">{c}</a></li>' for c in cities
     )
 
-    block = f"""\n<!-- POPULAR_CITIES:START -->
-<h2>Popular cities in {state_name}</h2>
+    block = f"""<!-- POPULAR_CITIES:START -->
+<div class="card">
+<h2 class="sectionTitle">Popular cities in {state_name}</h2>
 <ul class="gridList">
 {lis}
 </ul>
-<!-- POPULAR_CITIES:END -->\n"""
+</div>
+<!-- POPULAR_CITIES:END -->"""
 
-    if "</body>" in html:
-        html = html.replace("</body>", block + "\n</body>")
+    if "<!-- POPULAR_CITIES:ANCHOR -->" in html:
+        html = html.replace("<!-- POPULAR_CITIES:ANCHOR -->", f"{block}\n\n    <!-- POPULAR_CITIES:ANCHOR -->")
+    elif '<div class="footer">' in html:
+        html = html.replace('<div class="footer">', f"{block}\n\n    <div class=\"footer\">", 1)
     else:
-        html = html + block
+        container_end = html.find("</div>")
+        if container_end == -1:
+            html = html + "\n" + block
+        else:
+            html = html[:container_end] + "\n" + block + "\n" + html[container_end:]
 
     idx.write_text(html, encoding="utf-8")
     return True
