@@ -77,6 +77,15 @@ DataByArea
   - `https://databyarea.com/admin/?admin_key=YOUR_KEY`
 - Full guide: `CLOUDFLARE_GITHUB_AUTODEPLOY.md`
 
+### Static admin panel (no routing)
+- File: `admin/index.html`
+- This is a plain static page (no framework/router) that calls the backend APIs directly.
+- Open it directly from your site and point `API base URL` to your admin backend origin when needed.
+- Optional query params for convenience:
+  - `?base=https://admin.example.com`
+  - `&key=YOUR_KEY`
+  - `&kp=admin_key`
+
 ## Ops Files
 - `DIRECTORY_TREE.md` — clean repository tree map.
 - `AUTOMATION_STATUS.md` — current automation enablement status and scheduler line.
