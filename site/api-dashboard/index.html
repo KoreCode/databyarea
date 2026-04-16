@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>API Data Dashboard | DataByArea</title>
+  <style>
+    body { font-family: Inter, Arial, sans-serif; margin: 2rem; color: #0f172a; }
+    h1 { margin-bottom: 0.25rem; }
+    p { color: #334155; }
+    .card { border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 0.7rem; border-bottom: 1px solid #e2e8f0; text-align: left; font-size: 0.95rem; }
+    th { background: #f8fafc; }
+    tr:hover td { background: #f8fafc; }
+  </style>
+</head>
+<body>
+  <h1>DataByArea API Dashboard</h1>
+  <p>Recent locally stored values from EIA v2 API with cached + rate-limited retrieval.</p>
+  <div class="card">
+    <table>
+      <thead><tr><th>Series</th><th>Period</th><th>Value</th><th>Units</th></tr></thead>
+      <tbody><tr><td colspan='4'>No data yet. Run the pipeline pull step.</td></tr></tbody>
+    </table>
+  </div>
+</body>
+</html>
