@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DataByArea Admin (Static)</title>
+  <style>
+    :root {
+      --bg:#0b1020;
+      --panel:#111933;
+      --panel-soft:#0f1730;
+      --border:#24335f;
+      --text:#dbe6ff;
+      --muted:#8ea1d1;
+      --accent:#63a7ff;
+      --good:#22c55e;
+      --bad:#f97316;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      color:var(--text);
+      background:linear-gradient(180deg, #070b17 0%, #0b1020 50%, #090d1b 100%);
+      min-height:100vh;
+      padding:24px;
+    }
+    .app { max-width:1200px; margin:0 auto; display:grid; gap:16px; }
+    .panel {
+      background:var(--panel);
+      border:1px solid var(--border);
+      border-radius:14px;
+      overflow:hidden;
+    }
+    .panel h1, .panel h2 { margin:0; }
+    .head {
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      padding:16px;
+      border-bottom:1px solid var(--border);
+      flex-wrap:wrap;
+    }
+    .title { font-size:24px; font-weight:800; }
+    .muted { color:var(--muted); font-size:12px; }
+    .body { padding:16px; }
+    .grid { display:grid; gap:14px; grid-template-columns:2fr 1fr; }
+    .inputs { display:grid; gap:10px; grid-template-columns:repeat(3,minmax(160px,1fr)); }
+    label { font-size:12px; color:var(--muted); display:block; margin-bottom:4px; }
+    input, textarea {
+      width:100%;
+      border:1px solid var(--border);
+      background:var(--panel-soft);
+      color:var(--text);
+      border-radius:10px;
+      padding:10px;
+      font:inherit;
+    }
+    textarea { min-height:240px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size:12px; }
+    .actions { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+    button {
+      border:1px solid var(--border);
+      border-radius:10px;
+      padding:9px 12px;
+      background:#14224a;
+      color:var(--text);
+      font-weight:700;
+      cursor:pointer;
+    }
+    button:hover { border-color:#3d62bf; }
+    .cards { display:grid; gap:8px; }
+    .card {
+      border:1px solid var(--border);
+      border-radius:10px;
+      background:var(--panel-soft);
+      padding:10px;
+      cursor:pointer;
+    }
+    .card:hover { border-color:#3d62bf; }
+    .card strong { font-size:13px; }
+    .card .desc { font-size:12px; color:var(--muted); margin-top:4px; }
+    .pill {
+      display:inline-block;
+      margin-left:8px;
+      font-size:10px;
+      border-radius:999px;
+      padding:2px 7px;
+      border:1px solid #355fb8;
+      color:var(--accent);
+    }
+    .status {
+      font-size:12px;
+      padding:8px 10px;
+      border-radius:10px;
+      border:1px solid var(--border);
+      background:var(--panel-soft);
+    }
+    .ok { color:var(--good); }
+    .err { color:var(--bad); }
+    @media (max-width: 900px) {
+      .grid { grid-template-columns:1fr; }
+      .inputs { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <section class="panel">
+      <div class="head">
+        <div>
+          <h1 class="title">DataByArea Static Admin Panel</h1>
+          <div class="muted">No SPA router, no framework, just one HTML file.</div>
+        </div>
+        <div class="status" id="status">Idle</div>
+      </div>
+      <div class="body">
+        <div class="inputs">
+          <div>
+            <label for="baseUrl">API base URL</label>
+            <input id="baseUrl" value="" placeholder="https://admin.example.com" />
+          </div>
+          <div>
+            <label for="keyParam">Key param name</label>
+            <input id="keyParam" value="admin_key" placeholder="admin_key" />
+          </div>
+          <div>
+            <label for="accessKey">Access key (optional)</label>
+            <input id="accessKey" value="" placeholder="secret-key" />
+          </div>
+        </div>
+        <div class="actions">
+          <button id="loadBtn">Load config + history</button>
+          <button id="summaryBtn">Load last summary</button>
+          <button id="healthBtn">Health check</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="panel">
+        <div class="head">
+          <h2>Script catalog</h2>
+          <div class="muted" id="scriptCount">0 scripts</div>
+        </div>
+        <div class="body">
+          <div class="inputs" style="grid-template-columns:2fr 1fr; margin-bottom:10px;">
+            <div>
+              <label for="args">Args for selected script</label>
+              <input id="args" placeholder="--services 1 --cities 10 --relink --clean" />
+            </div>
+            <div>
+              <label for="selectedScript">Selected script</label>
+              <input id="selectedScript" placeholder="one_button_daily" />
+            </div>
+          </div>
+          <div class="actions" style="margin-bottom:10px;">
+            <button id="runSelectedBtn">Run selected script</button>
+          </div>
+          <div id="cards" class="cards"></div>
+        </div>
+      </article>
+
+      <article class="panel">
+        <div class="head">
+          <h2>Output</h2>
+          <div class="muted">JSON response</div>
+        </div>
+        <div class="body">
+          <textarea id="out" readonly></textarea>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <script>
+    const el = {
+      baseUrl: document.getElementById('baseUrl'),
+      keyParam: document.getElementById('keyParam'),
+      accessKey: document.getElementById('accessKey'),
+      status: document.getElementById('status'),
+      scriptCount: document.getElementById('scriptCount'),
+      selectedScript: document.getElementById('selectedScript'),
+      args: document.getElementById('args'),
+      cards: document.getElementById('cards'),
+      out: document.getElementById('out'),
+      loadBtn: document.getElementById('loadBtn'),
+      summaryBtn: document.getElementById('summaryBtn'),
+      healthBtn: document.getElementById('healthBtn'),
+      runSelectedBtn: document.getElementById('runSelectedBtn'),
+    };
+
+    function setStatus(msg, ok = true) {
+      el.status.textContent = msg;
+      el.status.className = `status ${ok ? 'ok' : 'err'}`;
+    }
+
+    function parseArgs(raw) {
+      return raw.trim() ? raw.trim().split(/\s+/) : [];
+    }
+
+    function resolveBaseUrl() {
+      const fromInput = el.baseUrl.value.trim();
+      if (fromInput) return fromInput.replace(/\/$/, '');
+      return window.location.origin;
+    }
+
+    function endpoint(path) {
+      const url = new URL(resolveBaseUrl() + path);
+      const keyName = el.keyParam.value.trim();
+      const keyVal = el.accessKey.value.trim();
+      if (keyName && keyVal) url.searchParams.set(keyName, keyVal);
+      return url;
+    }
+
+    async function readJson(path, opts = {}) {
+      const res = await fetch(endpoint(path), opts);
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || `HTTP ${res.status}`);
+      }
+      return data;
+    }
+
+    function renderScripts(scripts) {
+      const keys = Object.keys(scripts || {});
+      el.scriptCount.textContent = `${keys.length} scripts`;
+      el.cards.innerHTML = '';
+      for (const key of keys) {
+        const spec = scripts[key];
+        const div = document.createElement('button');
+        div.type = 'button';
+        div.className = 'card';
+        div.innerHTML = `<strong>${key}</strong><span class="pill">run</span><div class="desc">${spec.description || ''}</div>`;
+        div.addEventListener('click', () => {
+          el.selectedScript.value = key;
+          runScript();
+        });
+        el.cards.appendChild(div);
+      }
+    }
+
+    async function loadOverview() {
+      try {
+        setStatus('Loading...');
+        const [cfg, hist] = await Promise.all([
+          readJson('/api/config'),
+          readJson('/api/history')
+        ]);
+        renderScripts(cfg.scripts || {});
+        el.out.value = JSON.stringify({ config: cfg, history: hist }, null, 2);
+        setStatus('Loaded config/history');
+      } catch (err) {
+        setStatus(`Error: ${err.message}`, false);
+        el.out.value = String(err.stack || err);
+      }
+    }
+
+    async function loadSummary() {
+      try {
+        setStatus('Loading summary...');
+        const summary = await readJson('/api/last-summary');
+        el.out.value = JSON.stringify(summary, null, 2);
+        setStatus('Loaded summary');
+      } catch (err) {
+        setStatus(`Error: ${err.message}`, false);
+      }
+    }
+
+    async function healthCheck() {
+      try {
+        setStatus('Checking health...');
+        const health = await readJson('/api/health');
+        el.out.value = JSON.stringify(health, null, 2);
+        setStatus('Health is OK');
+      } catch (err) {
+        setStatus(`Error: ${err.message}`, false);
+      }
+    }
+
+    async function runScript() {
+      const script = el.selectedScript.value.trim();
+      if (!script) {
+        setStatus('Pick a script first', false);
+        return;
+      }
+      try {
+        setStatus(`Running ${script}...`);
+        const payload = { script, args: parseArgs(el.args.value) };
+        const result = await readJson('/api/run', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        el.out.value = JSON.stringify(result, null, 2);
+        setStatus(`${script} finished`);
+      } catch (err) {
+        setStatus(`Error: ${err.message}`, false);
+      }
+    }
+
+    el.loadBtn.addEventListener('click', loadOverview);
+    el.summaryBtn.addEventListener('click', loadSummary);
+    el.healthBtn.addEventListener('click', healthCheck);
+    el.runSelectedBtn.addEventListener('click', runScript);
+
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('base')) el.baseUrl.value = params.get('base');
+    if (params.get('key')) el.accessKey.value = params.get('key');
+    if (params.get('kp')) el.keyParam.value = params.get('kp');
+
+    loadOverview();
+  </script>
+</body>
+</html>
