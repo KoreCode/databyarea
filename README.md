@@ -26,6 +26,18 @@ DataByArea
   - Override schedule: `CRON_EXPR=\"0 2 * * *\" ./setup_autorun.sh`
   - If `crontab` is unavailable, the cron line is written to `_deploy/cron_entry.txt` for manual host setup.
 
+### EIA API integration
+- EIA API helper lives at `scripts/eia_client.py`.
+- Default key is configured for this repo and can be overridden with env var `EIA_API_KEY`.
+- Example usage:
+  - `python3 -c "from scripts.eia_client import fetch_series; print(fetch_series('electricity/retail-sales/data'))"`
+
+### Multi-agent quality review
+- Run all quality agents: `python3 scripts/site_quality_agents.py`
+- Run quality agents + regenerate site: `python3 scripts/site_quality_agents.py --generate`
+- Report output: `_deploy/agent_quality_report.json`
+- Admin backend script key: `agent_quality_review`
+
 ### Admin backend
 - Run: `python3 admin_backend.py --host 127.0.0.1 --port 8787`
 - Open: `http://127.0.0.1:8787`

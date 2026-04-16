@@ -45,12 +45,7 @@ SCRIPT_CATALOG: dict[str, dict[str, Any]] = {
         "examples": [
             ["--cities", "10"],
             ["--services", "1", "--cities", "10"],
-        "safe_args": ["--cities", "--no-cities", "--relink", "--clean", "--force"],
-        "value_args": ["--cities"],
-        "examples": [
-            ["--cities", "10"],
-            ["--cities", "20", "--relink", "--clean"],
-            ["--no-cities", "--force"],
+            ["--no-cities", "--relink", "--clean"],
         ],
     },
     "publish_popular_cities": {
@@ -65,6 +60,12 @@ SCRIPT_CATALOG: dict[str, dict[str, Any]] = {
         "description": "Generate service/state pages and update manifest.",
         "safe_args": [],
         "examples": [[]],
+    },
+    "agent_quality_review": {
+        "path": "scripts/site_quality_agents.py",
+        "description": "Run multi-agent quality checks and optional site generation.",
+        "safe_args": ["--generate"],
+        "examples": [[], ["--generate"]],
     },
     "relink": {
         "path": "relink_existing_pages.py",
@@ -327,10 +328,6 @@ class Handler(BaseHTTPRequestHandler):
             self._send_html(dashboard_html())
             return
         if path == "/api/config":
-        if self.path == "/":
-            self._send_html(dashboard_html())
-            return
-        if self.path == "/api/config":
             payload = {
                 "scripts": SCRIPT_CATALOG,
                 "settings": SETTINGS,
@@ -341,10 +338,6 @@ class Handler(BaseHTTPRequestHandler):
             self._send_json({"ok": True, "utc": datetime.now(timezone.utc).isoformat()})
             return
         if path == "/api/history":
-        if self.path == "/api/health":
-            self._send_json({"ok": True, "utc": datetime.now(timezone.utc).isoformat()})
-            return
-        if self.path == "/api/history":
             self._send_json(
                 {
                     "daily_runs": load_json(DAILY_LOG, {}),
@@ -353,7 +346,6 @@ class Handler(BaseHTTPRequestHandler):
             )
             return
         if path == "/api/last-summary":
-        if self.path == "/api/last-summary":
             self._send_json(load_json(SUMMARY_JSON, {"note": "No summary generated yet."}))
             return
         self._send_json({"error": "Not found"}, status=404)
@@ -365,7 +357,6 @@ class Handler(BaseHTTPRequestHandler):
             return
 
         if path != "/api/run":
-        if self.path != "/api/run":
             self._send_json({"error": "Not found"}, status=404)
             return
 
