@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <title>Property Tax Rates by State | Data By Area</title>
-  <meta name="description" content="Browse high-level property tax rate estimates and comparisons by state. Browse property tax rates pages for all 50 states." />
+  <meta name="description" content="Browse property tax rates estimates across all 50 U.S. states. Use quick search plus cross-category links for complete comparisons." />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="/assets/styles.css" />
   <link rel="canonical" href="https://databyarea.com/property-taxes/" />
@@ -11,25 +11,52 @@
 <body>
   <div class="container">
     <div class="nav">
-  <div class="brand">
-    <img src="/assets/logo.png" alt="Data By Area logo" class="logo">
-    <div class="brand-text">
-      <strong>Data By Area</strong>
-      <span>Costs • Rates • Public Data</span>
+      <div class="brand">
+        <img src="/assets/logo.png" alt="Data By Area logo" class="logo">
+        <div class="brand-text">
+          <strong>Data By Area</strong>
+          <span>Costs • Rates • Public Data</span>
+        </div>
+      </div>
+      <div class="navlinks">
+        <a class="pill" href="/">Home</a>
+        <a class="pill" href="/cost-of-living/">Cost of Living</a>
+        <a class="pill" href="/utility-costs/">Utility Costs</a>
+        <a class="pill" href="/property-taxes/">Property Tax Rates</a>
+        <a class="pill" href="/insurance-costs/">Insurance Costs</a>
+      </div>
     </div>
-  </div>
-  <div class="navlinks">
-    <a class="pill" href="/">Home</a><a class="pill" href="/cost-of-living/">Cost of Living</a><a class="pill" href="/utility-costs/">Utility Costs</a><a class="pill" href="/property-taxes/">Property Tax Rates</a><a class="pill" href="/insurance-costs/">Insurance Costs</a>
-  </div>
-</div>
 
     <div class="hero">
       <h1>Property Tax Rates by State</h1>
-      <p>Browse high-level property tax rate estimates and comparisons by state. Use search to quickly find a state.</p>
+      <p>Browse property tax rates estimates across all 50 U.S. states. Use quick search plus cross-category links for complete comparisons.</p>
       <div class="breadcrumbs"><a href="/">Home</a> › <span>Property Tax Rates</span></div>
-
+      <div class="badges">
+        <span class="badge"><span class="dot"></span> 50 states</span>
+        <span class="badge">Mobile friendly</span>
+        <span class="badge">Desktop friendly</span>
+      </div>
       <div class="searchRow">
         <input id="q" class="input" placeholder="Search a state (e.g., Minnesota)..." />
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Included data & tools</h2>
+        <ul class="list">
+          <li class="item">Effective property tax rates and homeowner tax burden</li>
+          <li class="item">State-by-state pages with related category links</li>
+          <li class="item">Crawlable links for every U.S. state</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Related categories</h2>
+        <ul class="list">
+          <li class="item"><a href="/cost-of-living/">Cost of Living</a></li>
+<li class="item"><a href="/utility-costs/">Utility Costs</a></li>
+<li class="item"><a href="/insurance-costs/">Insurance Costs</a></li>
+        </ul>
       </div>
     </div>
 
@@ -88,20 +115,11 @@
     </ul>
 
     <div class="footer">
-  <p>
-    <strong>Disclaimer:</strong> Informational estimates only. Costs and rates vary by household,
-    provider, and local area. Not financial, legal, or tax advice.
-  </p>
-  <p>
-    <a href="/about/">About</a> ·
-    <a href="/privacy/">Privacy Policy</a> ·
-    <a href="/contact/">Contact</a>
-  </p>
-  <p>© <span id="y"></span> DataByArea.com</p>
-</div>
-<script>
-  document.getElementById("y").textContent = new Date().getFullYear();
-</script>
+      <p><strong>Disclaimer:</strong> Informational estimates only. Costs and rates vary by household, provider, and local area.</p>
+      <p><a href="/about/">About</a> · <a href="/privacy/">Privacy Policy</a> · <a href="/contact/">Contact</a></p>
+      <p>© <span id="y"></span> DataByArea.com</p>
+    </div>
+    <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
   </div>
 
   <script>
