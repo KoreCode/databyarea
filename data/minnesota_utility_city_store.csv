@@ -1,0 +1,348 @@
+state,city,slug,population,county_detail,rbe_data_band,d_store_key
+Minnesota,Minneapolis,minneapolis,429954,County varies or requires parcel-level lookup for precise billing jurisdictions.,high-density,mn-minneapolis
+Minnesota,Saint Paul,saint-paul,311527,County varies or requires parcel-level lookup for precise billing jurisdictions.,high-density,mn-saint-paul
+Minnesota,Rochester,rochester,112225,County varies or requires parcel-level lookup for precise billing jurisdictions.,high-density,mn-rochester
+Minnesota,Bloomington,bloomington,89987,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-bloomington
+Minnesota,Duluth,duluth,86697,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-duluth
+Minnesota,Brooklyn Park,brooklyn-park,86478,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-brooklyn-park
+Minnesota,Plymouth,plymouth,75907,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-plymouth
+Minnesota,Woodbury,woodbury,75102,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-woodbury
+Minnesota,Maple Grove,maple-grove,70253,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-maple-grove
+Minnesota,Eagan,eagan,68855,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-eagan
+Minnesota,Saint Cloud,saint-cloud,65842,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-saint-cloud
+Minnesota,Eden Prairie,eden-prairie,64198,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-eden-prairie
+Minnesota,Coon Rapids,coon-rapids,63599,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-coon-rapids
+Minnesota,West Coon Rapids,west-coon-rapids,62528,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-west-coon-rapids
+Minnesota,Blaine,blaine,62124,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-blaine
+Minnesota,Burnsville,burnsville,61481,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-burnsville
+Minnesota,Lakeville,lakeville,60633,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-lakeville
+Minnesota,Minnetonka,minnetonka,53781,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-minnetonka
+Minnesota,Edina,edina,53494,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-edina
+Minnesota,Apple Valley,apple-valley,51221,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-apple-valley
+Minnesota,Minnetonka Mills,minnetonka-mills,50117,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-minnetonka-mills
+Minnesota,Saint Louis Park,saint-louis-park,45250,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-saint-louis-park
+Minnesota,Moorhead,moorhead,44505,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-moorhead
+Minnesota,Mankato,mankato,44488,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-mankato
+Minnesota,Shakopee,shakopee,43698,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-shakopee
+Minnesota,Maplewood,maplewood,42088,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-maplewood
+Minnesota,Richfield,richfield,36216,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-richfield
+Minnesota,Cottage Grove,cottage-grove,35918,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-cottage-grove
+Minnesota,Inver Grove Heights,inver-grove-heights,35801,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-inver-grove-heights
+Minnesota,Roseville,roseville,35580,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-roseville
+Minnesota,Brooklyn Center,brooklyn-center,33782,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-brooklyn-center
+Minnesota,Savage,savage,32465,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-savage
+Minnesota,Andover,andover,32213,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-andover
+Minnesota,Fridley,fridley,29590,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-fridley
+Minnesota,Chaska,chaska,27810,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-chaska
+Minnesota,Prior Lake,prior-lake,27617,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-prior-lake
+Minnesota,Shoreview,shoreview,26921,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-shoreview
+Minnesota,Owatonna,owatonna,26420,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-owatonna
+Minnesota,Austin,austin,26174,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-austin
+Minnesota,Chanhassen,chanhassen,25947,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-chanhassen
+Minnesota,Elk River,elk-river,25835,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-elk-river
+Minnesota,Rosemount,rosemount,25650,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-rosemount
+Minnesota,White Bear Lake,white-bear-lake,24883,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-white-bear-lake
+Minnesota,Farmington,farmington,24531,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-farmington
+Minnesota,Champlin,champlin,23919,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-champlin
+Minnesota,New Brighton,new-brighton,23454,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-new-brighton
+Minnesota,Oakdale,oakdale,23181,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-oakdale
+Minnesota,Crystal,crystal,22943,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-crystal
+Minnesota,Hastings,hastings,22554,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-hastings
+Minnesota,Columbia Heights,columbia-heights,21973,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-columbia-heights
+Minnesota,Lino Lakes,lino-lakes,21399,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-lino-lakes
+Minnesota,Golden Valley,golden-valley,21270,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-golden-valley
+Minnesota,New Hope,new-hope,21032,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-new-hope
+Minnesota,Willmar,willmar,21015,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-willmar
+Minnesota,Forest Lake,forest-lake,20611,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-forest-lake
+Minnesota,Northfield,northfield,20380,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-northfield
+Minnesota,South Saint Paul,south-saint-paul,20160,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-south-saint-paul
+Minnesota,West Saint Paul,west-saint-paul,19540,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-west-saint-paul
+Minnesota,Sartell,sartell,19351,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-sartell
+Minnesota,Stillwater,stillwater,18924,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-stillwater
+Minnesota,Albert Lea,albert-lea,18492,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-albert-lea
+Minnesota,Hopkins,hopkins,17591,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-hopkins
+Minnesota,Red Wing,red-wing,16547,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-red-wing
+Minnesota,Ham Lake,ham-lake,16464,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-ham-lake
+Minnesota,Saint Michael,saint-michael,16399,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-saint-michael
+Minnesota,Hibbing,hibbing,16214,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-hibbing
+Minnesota,Buffalo,buffalo,16026,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-buffalo
+Minnesota,Otsego,otsego,15551,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-otsego
+Minnesota,Worthington,worthington,14786,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-worthington
+Minnesota,Robbinsdale,robbinsdale,14646,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-robbinsdale
+Minnesota,Bemidji,bemidji,14574,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-bemidji
+Minnesota,Brainerd,brainerd,14395,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-brainerd
+Minnesota,Hugo,hugo,14388,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-hugo
+Minnesota,North Mankato,north-mankato,14275,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-north-mankato
+Minnesota,New Ulm,new-ulm,14120,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-new-ulm
+Minnesota,Fergus Falls,fergus-falls,14119,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-fergus-falls
+Minnesota,Hutchinson,hutchinson,13913,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-hutchinson
+Minnesota,Sauk Rapids,sauk-rapids,13862,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-sauk-rapids
+Minnesota,Monticello,monticello,13299,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-monticello
+Minnesota,Mounds View,mounds-view,13249,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-mounds-view
+Minnesota,Waconia,waconia,13033,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-waconia
+Minnesota,Vadnais Heights,vadnais-heights,12912,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-vadnais-heights
+Minnesota,Cloquet,cloquet,12568,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-cloquet
+Minnesota,Rogers,rogers,12562,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-rogers
+Minnesota,Alexandria,alexandria,11843,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-alexandria
+Minnesota,East Bethel,east-bethel,11786,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-east-bethel
+Minnesota,Mendota Heights,mendota-heights,11744,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-mendota-heights
+Minnesota,North Saint Paul,north-saint-paul,11460,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-north-saint-paul
+Minnesota,Saint Peter,saint-peter,11196,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-saint-peter
+Minnesota,Grand Rapids,grand-rapids,11127,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-grand-rapids
+Minnesota,Little Canada,little-canada,10819,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-little-canada
+Minnesota,North Branch,north-branch,10787,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-north-branch
+Minnesota,Victoria,victoria,10546,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-victoria
+Minnesota,Fairmont,fairmont,10487,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-fairmont
+Minnesota,Big Lake,big-lake,10368,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-big-lake
+Minnesota,Hermantown,hermantown,10221,County varies or requires parcel-level lookup for precise billing jurisdictions.,medium,mn-hermantown
+Minnesota,Arden Hills,arden-hills,9939,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-arden-hills
+Minnesota,Detroit Lakes,detroit-lakes,9869,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-detroit-lakes
+Minnesota,Mound,mound,9336,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-mound
+Minnesota,East Grand Forks,east-grand-forks,9176,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-east-grand-forks
+Minnesota,Little Falls,little-falls,9140,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-little-falls
+Minnesota,Thief River Falls,thief-river-falls,8749,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-thief-river-falls
+Minnesota,Baxter,baxter,8612,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-baxter
+Minnesota,Cambridge,cambridge,8451,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-cambridge
+Minnesota,Oak Grove,oak-grove,8439,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-oak-grove
+Minnesota,Virginia,virginia,8421,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-virginia
+Minnesota,Lake Elmo,lake-elmo,8406,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-lake-elmo
+Minnesota,Waite Park,waite-park,8341,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-waite-park
+Minnesota,Minnetrista,minnetrista,8262,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-minnetrista
+Minnesota,Saint Anthony,saint-anthony,8226,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-saint-anthony
+Minnesota,New Prague,new-prague,8162,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-new-prague
+Minnesota,Mahtomedi,mahtomedi,8138,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-mahtomedi
+Minnesota,Orono,orono,8006,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-orono
+Minnesota,Albertville,albertville,7896,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-albertville
+Minnesota,Wyoming,wyoming,7813,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-wyoming
+Minnesota,Shorewood,shorewood,7783,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-shorewood
+Minnesota,Crookston,crookston,7482,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-crookston
+Minnesota,Saint Francis,saint-francis,7218,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-saint-francis
+Minnesota,Spring Lake Park,spring-lake-park,7188,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-spring-lake-park
+Minnesota,Belle Plaine,belle-plaine,6918,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-belle-plaine
+Minnesota,Kasson,kasson,6851,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-kasson
+Minnesota,Stewartville,stewartville,6687,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-stewartville
+Minnesota,Litchfield,litchfield,6657,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-litchfield
+Minnesota,Saint Joseph,saint-joseph,6534,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-saint-joseph
+Minnesota,Zimmerman,zimmerman,6189,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-zimmerman
+Minnesota,Jordan,jordan,6076,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-jordan
+Minnesota,Medina,medina,6047,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-medina
+Minnesota,Delano,delano,5875,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-delano
+Minnesota,International Falls,international-falls,5802,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-international-falls
+Minnesota,Falcon Heights,falcon-heights,5571,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-falcon-heights
+Minnesota,Chisago City,chisago-city,5558,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-chisago-city
+Minnesota,Corcoran,corcoran,5552,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-corcoran
+Minnesota,Glencoe,glencoe,5521,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-glencoe
+Minnesota,Montevideo,montevideo,5398,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-montevideo
+Minnesota,Benson,benson,5355,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-benson
+Minnesota,Byron,byron,5328,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-byron
+Minnesota,Saint Paul Park,saint-paul-park,5279,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-saint-paul-park
+Minnesota,La Crescent,la-crescent,5276,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-la-crescent
+Minnesota,North Oaks,north-oaks,5272,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-north-oaks
+Minnesota,Morris,morris,5105,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-morris
+Minnesota,Redwood Falls,redwood-falls,5102,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-redwood-falls
+Minnesota,Dayton,dayton,5096,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-dayton
+Minnesota,Lake City,lake-city,5027,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-lake-city
+Minnesota,Circle Pines,circle-pines,5025,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-circle-pines
+Minnesota,Luverne,luverne,4946,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-luverne
+Minnesota,Lindstrom,lindstrom,4888,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-lindstrom
+Minnesota,Oak Park Heights,oak-park-heights,4849,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-oak-park-heights
+Minnesota,Elko New Market,elko-new-market,4846,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-elko-new-market
+Minnesota,Windom,windom,4798,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-windom
+Minnesota,Chisholm,chisholm,4775,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-chisholm
+Minnesota,Lonsdale,lonsdale,4686,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-lonsdale
+Minnesota,Princeton,princeton,4680,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-princeton
+Minnesota,Dilworth,dilworth,4612,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-dilworth
+Minnesota,Saint James,saint-james,4605,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-saint-james
+Minnesota,Sauk Centre,sauk-centre,4555,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-sauk-centre
+Minnesota,Nowthen,nowthen,4536,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-nowthen
+Minnesota,Wayzata,wayzata,4434,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-wayzata
+Minnesota,Rockford,rockford,4358,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-rockford
+Minnesota,Watertown,watertown,4289,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-watertown
+Minnesota,Cannon Falls,cannon-falls,4220,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-cannon-falls
+Minnesota,Cold Spring,cold-spring,4164,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-cold-spring
+Minnesota,Goodview,goodview,4158,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-goodview
+Minnesota,Park Rapids,park-rapids,4142,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-park-rapids
+Minnesota,Scandia,scandia,4057,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-scandia
+Minnesota,Bayport,bayport,4024,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-bayport
+Minnesota,Columbus,columbus,4007,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-columbus
+Minnesota,Centerville,centerville,3930,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-centerville
+Minnesota,Ely,ely,3924,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-ely
+Minnesota,Deephaven,deephaven,3899,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-deephaven
+Minnesota,Norwood Young America,norwood-young-america,3863,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-norwood-young-america
+Minnesota,Pine Island,pine-island,3769,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-pine-island
+Minnesota,Independence,independence,3741,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-independence
+Minnesota,Saint Charles,saint-charles,3735,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-saint-charles
+Minnesota,Zumbrota,zumbrota,3726,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-zumbrota
+Minnesota,Long Prairie,long-prairie,3661,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-long-prairie
+Minnesota,Two Harbors,two-harbors,3633,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-two-harbors
+Minnesota,Melrose,melrose,3616,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-melrose
+Minnesota,Collegeville,collegeville,3516,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-collegeville
+Minnesota,Eveleth,eveleth,3493,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-eveleth
+Minnesota,Newport,newport,3480,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-newport
+Minnesota,Mora,mora,3462,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-mora
+Minnesota,Sleepy Eye,sleepy-eye,3452,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-sleepy-eye
+Minnesota,Annandale,annandale,3330,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-annandale
+Minnesota,Saint Augusta,saint-augusta,3317,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-saint-augusta
+Minnesota,Breckenridge,breckenridge,3290,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-breckenridge
+Minnesota,Hanover,hanover,3289,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-hanover
+Minnesota,Eagle Lake,eagle-lake,3278,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-eagle-lake
+Minnesota,Perham,perham,3278,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-perham
+Minnesota,Plainview,plainview,3237,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-plainview
+Minnesota,Rush City,rush-city,3228,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-rush-city
+Minnesota,Pine City,pine-city,3130,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-pine-city
+Minnesota,Proctor,proctor,3120,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-proctor
+Minnesota,Montrose,montrose,3079,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-montrose
+Minnesota,Milaca,milaca,3021,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-milaca
+Minnesota,Afton,afton,2966,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-afton
+Minnesota,Arnold,arnold,2960,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-arnold
+Minnesota,Greenfield,greenfield,2919,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-greenfield
+Minnesota,Montgomery,montgomery,2915,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-montgomery
+Minnesota,Staples,staples,2885,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-staples
+Minnesota,Mountain Iron,mountain-iron,2878,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-mountain-iron
+Minnesota,Dodge Center,dodge-center,2844,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-dodge-center
+Minnesota,Chatfield,chatfield,2799,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-chatfield
+Minnesota,Cokato,cokato,2799,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-cokato
+Minnesota,Moose Lake,moose-lake,2789,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-moose-lake
+Minnesota,Caledonia,caledonia,2787,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-caledonia
+Minnesota,Barnesville,barnesville,2759,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-barnesville
+Minnesota,Osseo,osseo,2748,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-osseo
+Minnesota,Granite Falls,granite-falls,2747,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-granite-falls
+Minnesota,Foley,foley,2711,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-foley
+Minnesota,Branch,branch,2696,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-branch
+Minnesota,Cohasset,cohasset,2689,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-cohasset
+Minnesota,Albany,albany,2647,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-albany
+Minnesota,Pelican Rapids,pelican-rapids,2577,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-pelican-rapids
+Minnesota,Breezy Point,breezy-point,2574,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-breezy-point
+Minnesota,Glenwood,glenwood,2568,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-glenwood
+Minnesota,Lake Crystal,lake-crystal,2539,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-lake-crystal
+Minnesota,Parkville,parkville,2525,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-parkville
+Minnesota,Le Center,le-center,2517,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-le-center
+Minnesota,Rockville,rockville,2514,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-rockville
+Minnesota,Sandstone,sandstone,2462,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-sandstone
+Minnesota,Spring Valley,spring-valley,2413,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-spring-valley
+Minnesota,Madelia,madelia,2396,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-madelia
+Minnesota,Pequot Lakes,pequot-lakes,2395,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-pequot-lakes
+Minnesota,Paynesville,paynesville,2388,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-paynesville
+Minnesota,Excelsior,excelsior,2355,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-excelsior
+Minnesota,Crosby,crosby,2345,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-crosby
+Minnesota,Olivia,olivia,2343,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-olivia
+Minnesota,Saint Bonifacius,saint-bonifacius,2283,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-saint-bonifacius
+Minnesota,Lauderdale,lauderdale,2271,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-lauderdale
+Minnesota,Janesville,janesville,2254,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-janesville
+Minnesota,Wells,wells,2247,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-wells
+Minnesota,Gaylord,gaylord,2245,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-gaylord
+Minnesota,Winsted,winsted,2240,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-winsted
+Minnesota,Hawley,hawley,2179,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-hawley
+Minnesota,Arlington,arlington,2169,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-arlington
+Minnesota,Maple Lake,maple-lake,2159,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-maple-lake
+Minnesota,Cross Lake,cross-lake,2141,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-cross-lake
+Minnesota,Tracy,tracy,2117,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-tracy
+Minnesota,Howard Lake,howard-lake,2071,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-howard-lake
+Minnesota,Springfield,springfield,2068,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-springfield
+Minnesota,Lexington,lexington,2049,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-lexington
+Minnesota,Ortonville,ortonville,2021,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-ortonville
+Minnesota,Hoyt Lakes,hoyt-lakes,2020,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-hoyt-lakes
+Minnesota,Slayton,slayton,2013,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-slayton
+Minnesota,Coleraine,coleraine,2006,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-coleraine
+Minnesota,Eyota,eyota,2006,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-eyota
+Minnesota,Mountain Lake,mountain-lake,1999,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-mountain-lake
+Minnesota,Blooming Prairie,blooming-prairie,1974,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-blooming-prairie
+Minnesota,Nisswa,nisswa,1967,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-nisswa
+Minnesota,Lewiston,lewiston,1939,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-lewiston
+Minnesota,Hinckley,hinckley,1904,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-hinckley
+Minnesota,Mayer,mayer,1903,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-mayer
+Minnesota,Kenyon,kenyon,1894,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-kenyon
+Minnesota,Lester Prairie,lester-prairie,1894,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-lester-prairie
+Minnesota,Mapleton,mapleton,1886,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-mapleton
+Minnesota,Esko,esko,1869,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-esko
+Minnesota,Rushford,rushford,1860,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-rushford
+Minnesota,Waterville,waterville,1849,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-waterville
+Minnesota,Lakeland,lakeland,1839,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-lakeland
+Minnesota,Warroad,warroad,1830,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-warroad
+Minnesota,Silver Bay,silver-bay,1813,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-silver-bay
+Minnesota,Oronoco,oronoco,1802,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-oronoco
+Minnesota,Long Lake,long-lake,1800,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-long-lake
+Minnesota,Gilbert,gilbert,1792,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-gilbert
+Minnesota,Osakis,osakis,1771,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-osakis
+Minnesota,Braham,braham,1769,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-braham
+Minnesota,Maple Plain,maple-plain,1743,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-maple-plain
+Minnesota,Ada,ada,1740,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-ada
+Minnesota,Lakefield,lakefield,1735,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-lakefield
+Minnesota,Spring Park,spring-park,1734,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-spring-park
+Minnesota,Dundas,dundas,1712,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-dundas
+Minnesota,Canby,canby,1709,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-canby
+Minnesota,Stacy,stacy,1703,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-stacy
+Minnesota,Rock Creek,rock-creek,1682,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-rock-creek
+Minnesota,Aurora,aurora,1666,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-aurora
+Minnesota,Cologne,cologne,1605,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-cologne
+Minnesota,Richmond,richmond,1557,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-richmond
+Minnesota,Young America (historical),young-america-historical,1530,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-young-america-historical
+Minnesota,Norwood (historical),norwood-historical,1506,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-norwood-historical
+Minnesota,Dassel,dassel,1472,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-dassel
+Minnesota,Avon,avon,1466,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-avon
+Minnesota,Dawson,dawson,1466,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-dawson
+Minnesota,Madison,madison,1462,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-madison
+Minnesota,Tonka Bay,tonka-bay,1442,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-tonka-bay
+Minnesota,Fosston,fosston,1434,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-fosston
+Minnesota,Clara City,clara-city,1423,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-clara-city
+Minnesota,Pierz,pierz,1418,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-pierz
+Minnesota,Babbitt,babbitt,1397,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-babbitt
+Minnesota,Waverly,waverly,1396,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-waverly
+Minnesota,Winnebago,winnebago,1391,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-winnebago
+Minnesota,Oakport,oakport,1387,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-oakport
+Minnesota,Glyndon,glyndon,1380,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-glyndon
+Minnesota,Fulda,fulda,1371,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-fulda
+Minnesota,Minneota,minneota,1366,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-minneota
+Minnesota,Hayfield,hayfield,1364,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-hayfield
+Minnesota,Winthrop,winthrop,1363,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-winthrop
+Minnesota,Wheaton,wheaton,1362,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-wheaton
+Minnesota,Warren,warren,1351,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-warren
+Minnesota,Appleton,appleton,1341,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-appleton
+Minnesota,Menahga,menahga,1340,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-menahga
+Minnesota,Red Lake Falls,red-lake-falls,1339,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-red-lake-falls
+Minnesota,Grand Marais,grand-marais,1337,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-grand-marais
+Minnesota,Frazee,frazee,1335,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-frazee
+Minnesota,Redby,redby,1334,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-redby
+Minnesota,New London,new-london,1328,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-new-london
+Minnesota,Preston,preston,1299,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-preston
+Minnesota,Spring Grove,spring-grove,1293,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-spring-grove
+Minnesota,Bagley,bagley,1285,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-bagley
+Minnesota,Royalton,royalton,1281,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-royalton
+Minnesota,Elbow Lake,elbow-lake,1276,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-elbow-lake
+Minnesota,Starbuck,starbuck,1264,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-starbuck
+Minnesota,Medford,medford,1249,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-medford
+Minnesota,Madison Lake,madison-lake,1247,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-madison-lake
+Minnesota,New Richland,new-richland,1229,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-new-richland
+Minnesota,New York Mills,new-york-mills,1225,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-new-york-mills
+Minnesota,Adrian,adrian,1220,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-adrian
+Minnesota,Little Rock,little-rock,1208,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-little-rock
+Minnesota,Fairfax,fairfax,1172,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-fairfax
+Minnesota,Dellwood,dellwood,1171,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-dellwood
+Minnesota,Shafer,shafer,1142,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-shafer
+Minnesota,Birchwood,birchwood,1139,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-birchwood
+Minnesota,Edgerton,edgerton,1139,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-edgerton
+Minnesota,Tyler,tyler,1138,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-tyler
+Minnesota,Grand Meadow,grand-meadow,1127,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-grand-meadow
+Minnesota,Harris,harris,1125,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-harris
+Minnesota,Atwater,atwater,1124,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-atwater
+Minnesota,Wanamingo,wanamingo,1113,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-wanamingo
+Minnesota,Spicer,spicer,1112,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-spicer
+Minnesota,Mantorville,mantorville,1111,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-mantorville
+Minnesota,Truman,truman,1092,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-truman
+Minnesota,Hector,hector,1076,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-hector
+Minnesota,Sherburn,sherburn,1058,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-sherburn
+Minnesota,Lake Shore,lake-shore,1056,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-lake-shore
+Minnesota,Elgin,elgin,1055,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-elgin
+Minnesota,Taylors Falls,taylors-falls,1055,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-taylors-falls
+Minnesota,Lake Saint Croix Beach,lake-saint-croix-beach,1051,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-lake-saint-croix-beach
+Minnesota,Eden Valley,eden-valley,1027,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-eden-valley
+Minnesota,Parkers Prairie,parkers-prairie,1020,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-parkers-prairie
+Minnesota,Vineland,vineland,1001,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-vineland
+Minnesota,East Gull Lake,east-gull-lake,986,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-east-gull-lake
+Minnesota,Keewatin,keewatin,984,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-keewatin
+Minnesota,Baudette,baudette,966,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-baudette
+Minnesota,Walker,walker,966,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-walker
+Minnesota,Hallock,hallock,906,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-hallock
+Minnesota,Center City,center-city,629,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-center-city
+Minnesota,Ivanhoe,ivanhoe,560,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-ivanhoe
+Minnesota,Saint Louis,saint-louis,0,County varies or requires parcel-level lookup for precise billing jurisdictions.,small-city,mn-saint-louis
