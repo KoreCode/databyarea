@@ -195,17 +195,21 @@ def run_script(script_key: str, args: list[str]) -> dict[str, Any]:
 def dashboard_html() -> str:
     cards = []
     for key, spec in SCRIPT_CATALOG.items():
-        examples = "<br>".join(" ".join(e) if e else "(no args)" for e in spec["examples"])
+        examples = " • ".join(" ".join(e) if e else "(no args)" for e in spec["examples"])
+        safe_args = " ".join(spec["safe_args"]) or "(none)"
         cards.append(
             f"""
-            <div class='card'>
-              <h3>{key}</h3>
-              <p>{spec['description']}</p>
-              <p><b>Script:</b> <code>{spec['path']}</code></p>
-              <p><b>Allowed args:</b> <code>{' '.join(spec['safe_args']) or '(none)'}</code></p>
-              <p><b>Examples:</b><br><code>{examples}</code></p>
-              <button onclick="runScript('{key}')">Run</button>
-            </div>
+            <button class="command-card" onclick="runScript('{key}')">
+              <div class="command-head">
+                <span class="status-dot"></span>
+                <span class="command-name">{key}</span>
+                <span class="chip">Run</span>
+              </div>
+              <p class="command-desc">{spec['description']}</p>
+              <div class="command-meta"><strong>Script:</strong> <code>{spec['path']}</code></div>
+              <div class="command-meta"><strong>Allowed args:</strong> <code>{safe_args}</code></div>
+              <div class="command-meta"><strong>Examples:</strong> <code>{examples}</code></div>
+            </button>
             """
         )
 
@@ -216,52 +220,179 @@ def dashboard_html() -> str:
   <meta name='viewport' content='width=device-width,initial-scale=1'>
   <title>DataByArea Admin Backend</title>
   <style>
-    body {{ font-family: Arial, sans-serif; margin: 24px; background: #f8fafc; }}
-    h1 {{ margin-bottom: 6px; }}
-    .muted {{ color: #475569; }}
-    .grid {{ display:grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; margin-top: 18px; }}
-    .card {{ background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 12px; }}
-    code {{ background: #eef2ff; padding: 2px 5px; border-radius: 4px; }}
-    textarea {{ width:100%; min-height: 220px; margin-top: 12px; }}
-    button {{ cursor: pointer; padding: 8px 12px; }}
-    .top {{ display:grid; gap:8px; max-width: 800px; }}
-    input {{ padding:7px; }}
+    :root {{
+      --bg:#050505;
+      --panel:#0a0a0a;
+      --border:#1e293b80;
+      --text:#e2e8f0;
+      --muted:#64748b;
+      --accent:#f59e0b;
+      --success:#34d399;
+    }}
+    * {{ box-sizing: border-box; }}
+    body {{
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 24px;
+    }}
+    .shell {{ max-width: 1280px; margin: 0 auto; }}
+    .topbar {{
+      display:flex; justify-content: space-between; align-items:flex-end; gap:14px;
+      border-bottom:1px solid var(--border); padding-bottom:16px; margin-bottom:20px;
+      flex-wrap:wrap;
+    }}
+    h1 {{ margin:0; text-transform:uppercase; letter-spacing:-0.02em; font-size:30px; color:#fff; }}
+    .version {{ color:var(--accent); font-size:11px; font-style:italic; margin-left:6px; }}
+    .subtitle {{ margin-top:6px; font-size:10px; text-transform:uppercase; letter-spacing:0.2em; color:var(--muted); font-weight:700; }}
+    .uptime {{
+      border:1px solid var(--border); background:#0f172a70; border-radius:10px;
+      padding:10px 14px; text-align:right;
+    }}
+    .uptime-label {{ font-size:9px; text-transform:uppercase; color:var(--muted); font-weight:700; }}
+    .uptime-val {{ font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size:24px; color:var(--success); line-height:1.1; }}
+    .stats {{ display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr)); gap:12px; margin-bottom:20px; }}
+    .stat {{
+      background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:14px;
+    }}
+    .stat-label {{ font-size:10px; text-transform:uppercase; color:var(--muted); font-weight:700; }}
+    .stat-value {{ color:#fff; font-size:26px; font-weight:900; margin-top:4px; }}
+    .stat-sub {{ font-size:10px; color:#475569; margin-top:2px; }}
+    .grid {{ display:grid; grid-template-columns:2fr 1fr; gap:18px; }}
+    .panel {{ background:var(--panel); border:1px solid var(--border); border-radius:12px; overflow:hidden; }}
+    .panel-head {{
+      padding:14px 16px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; gap:8px;
+      font-size:12px; text-transform:uppercase; letter-spacing:.08em; font-weight:700;
+    }}
+    .small {{ font-size:10px; color:var(--muted); }}
+    table {{ width:100%; border-collapse:collapse; }}
+    th, td {{ padding:12px; border-bottom:1px solid #1e293b50; text-align:left; }}
+    th {{ font-size:10px; text-transform:uppercase; color:var(--muted); }}
+    td {{ font-size:13px; }}
+    .mono {{ font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }}
+    .status {{ text-align:right; }}
+    .badge {{
+      display:inline-block; font-size:9px; border:1px solid #34d39950; color:var(--success);
+      background:#34d39915; padding:3px 6px; border-radius:999px; text-transform:uppercase; font-weight:700;
+    }}
+    .commands {{ padding:10px; display:grid; gap:10px; }}
+    .command-card {{
+      width:100%; border:1px solid var(--border); background:#0f172a40; color:inherit; text-align:left;
+      border-radius:10px; padding:12px; cursor:pointer;
+    }}
+    .command-card:hover {{ border-color:#334155; }}
+    .command-head {{ display:flex; align-items:center; gap:8px; margin-bottom:8px; }}
+    .status-dot {{ width:8px; height:8px; border-radius:99px; background:var(--success); }}
+    .command-name {{ font-size:12px; text-transform:uppercase; font-weight:800; letter-spacing:.08em; }}
+    .chip {{
+      margin-left:auto; font-size:9px; text-transform:uppercase; padding:2px 8px; border-radius:999px;
+      border:1px solid #f59e0b40; color:var(--accent); background:#f59e0b12; font-weight:700;
+    }}
+    .command-desc {{ margin:0 0 6px 0; color:#94a3b8; font-size:12px; }}
+    .command-meta {{ color:#94a3b8; font-size:11px; margin-top:2px; }}
+    code {{ background:#1e293b80; color:#cbd5e1; padding:2px 6px; border-radius:4px; }}
+    .controls {{ padding:12px; border-top:1px solid var(--border); display:grid; gap:8px; }}
+    .input {{
+      width:100%; border:1px solid #334155; background:#020617; color:#e2e8f0;
+      border-radius:8px; padding:8px 10px;
+    }}
+    .actions {{ display:flex; gap:8px; flex-wrap:wrap; }}
+    .btn {{
+      cursor:pointer; padding:8px 12px; border-radius:8px; border:1px solid #334155;
+      background:#0f172a; color:#e2e8f0; font-size:12px; font-weight:700;
+    }}
+    .btn:hover {{ border-color:#475569; }}
+    textarea {{
+      width:100%; min-height:240px; border-radius:10px; border:1px solid var(--border); background:#020617;
+      color:#cbd5e1; margin-top:14px; padding:12px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size:12px;
+    }}
+    @media (max-width: 1000px) {{
+      .grid {{ grid-template-columns:1fr; }}
+    }}
   </style>
 </head>
 <body>
-  <h1>DataByArea Admin Backend</h1>
-  <p class='muted'>Review scripts, settings, and run tasks from one place.</p>
+  <div class="shell">
+    <header class="topbar">
+      <div>
+        <h1>DataByArea <span class="version">Mogul Command v1.0</span></h1>
+        <p class="subtitle">National Data Infrastructure // Internal System Reboot Active</p>
+      </div>
+      <div class="uptime">
+        <div class="uptime-label">Sovereign Uptime</div>
+        <div id="uptime" class="uptime-val">DAY 01</div>
+      </div>
+    </header>
 
-  <div class='top'>
-    <label>Optional args for selected script (space-separated):</label>
-    <input id='args' placeholder='--cities 15 --relink'>
-    <button onclick='loadOverview()'>Refresh Overview</button>
+    <section class="stats">
+      <article class="stat"><div class="stat-label">System Saturation</div><div class="stat-value">0.00 ng/mL</div><div class="stat-sub">Reset from legacy load</div></article>
+      <article class="stat"><div class="stat-label">Survival Probability</div><div class="stat-value">0.1%</div><div class="stat-sub">Outlier status confirmed</div></article>
+      <article class="stat"><div class="stat-label">Domain Fleet</div><div id="domain-count" class="stat-value">0 Active</div><div class="stat-sub">Connected admin endpoints</div></article>
+      <article class="stat"><div class="stat-label">Whitelisted Scripts</div><div id="script-count" class="stat-value">0</div><div class="stat-sub">Run-safe catalog entries</div></article>
+    </section>
+
+    <div class="grid">
+      <section class="panel">
+        <div class="panel-head">
+          <span>Automation Pipeline Controls</span>
+          <span class="small">Live Local Feed</span>
+        </div>
+        <div class="commands">
+          {''.join(cards)}
+        </div>
+        <div class="controls">
+          <label for="args" class="small">Optional args for selected script (space-separated):</label>
+          <input id="args" class="input" placeholder="--services 1 --cities 10 --relink --clean" />
+          <div class="actions">
+            <button class="btn" onclick="loadOverview()">Refresh Overview</button>
+            <button class="btn" onclick="runScript('one_button_daily')">Run Daily Pipeline</button>
+          </div>
+        </div>
+      </section>
+
+      <aside class="panel">
+        <div class="panel-head">
+          <span>Mission Status</span>
+          <span class="small">Latest Signals</span>
+        </div>
+        <table>
+          <thead>
+            <tr><th>Module</th><th>State</th><th class="status">Status</th></tr>
+          </thead>
+          <tbody class="mono">
+            <tr><td>Config API</td><td>/api/config</td><td class="status"><span class="badge">Synced</span></td></tr>
+            <tr><td>History API</td><td>/api/history</td><td class="status"><span class="badge">Synced</span></td></tr>
+            <tr><td>Summary API</td><td>/api/last-summary</td><td class="status"><span class="badge">Synced</span></td></tr>
+          </tbody>
+        </table>
+      </aside>
+    </div>
+
+    <textarea id='out' readonly></textarea>
   </div>
-
-  <div class='grid'>
-    {''.join(cards)}
-  </div>
-
-  <h2>Latest Output</h2>
-  <textarea id='out' readonly></textarea>
 
 <script>
 const qp = new URLSearchParams(window.location.search);
 const keyParam = '{ADMIN_KEY_PARAM}';
 const keyValue = qp.get(keyParam);
-const suffix = keyValue ? `?${keyParam}=${encodeURIComponent(keyValue)}` : '';
+const suffix = keyValue ? `?${{keyParam}}=${{encodeURIComponent(keyValue)}}` : '';
 
 async function loadOverview() {{
   const [cfg, hist, summary] = await Promise.all([
     fetch('/api/config' + suffix).then(r=>r.json()),
     fetch('/api/history' + suffix).then(r=>r.json()),
     fetch('/api/last-summary' + suffix).then(r=>r.json()),
-async function loadOverview() {{
-  const [cfg, hist, summary] = await Promise.all([
-    fetch('/api/config').then(r=>r.json()),
-    fetch('/api/history').then(r=>r.json()),
-    fetch('/api/last-summary').then(r=>r.json()),
   ]);
+  const scriptCount = Object.keys(cfg.scripts || {{}}).length;
+  document.getElementById('script-count').textContent = String(scriptCount);
+  document.getElementById('domain-count').textContent = scriptCount + ' Active';
+
+  const now = new Date();
+  const day = String(now.getUTCDate()).padStart(2, '0');
+  document.getElementById('uptime').textContent = `DAY ${{day}}`;
+
   document.getElementById('out').value = JSON.stringify({{config: cfg, history: hist, last_summary: summary}}, null, 2);
 }}
 
@@ -269,7 +400,6 @@ async function runScript(scriptKey) {{
   const argLine = document.getElementById('args').value.trim();
   const args = argLine ? argLine.split(/\s+/) : [];
   const res = await fetch('/api/run' + suffix, {{
-  const res = await fetch('/api/run', {{
     method: 'POST',
     headers: {{'Content-Type':'application/json'}},
     body: JSON.stringify({{script: scriptKey, args}})
