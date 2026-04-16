@@ -32,6 +32,22 @@ DataByArea
 - Example usage:
   - `python3 -c "from scripts.eia_client import fetch_series; print(fetch_series('electricity/retail-sales/data'))"`
 
+### Fast API pull/store/display pipeline
+- Script: `scripts/eia_pipeline.py`
+- Purpose: quickly pull EIA data, cache responses, store normalized points in sqlite, and render an HTML dashboard.
+- Safety / API-rule controls:
+  - Request pacing via `EIA_MIN_REQUEST_INTERVAL_SECONDS` (default `0.35`)
+  - Retry with backoff via `EIA_MAX_RETRIES` (default `3`)
+  - Cache TTL via `EIA_CACHE_TTL_SECONDS` (default `21600` seconds)
+- Local artifacts:
+  - sqlite: `data/api_metrics.db`
+  - snapshots: `data/api_snapshots/*.json`
+  - dashboard: `site/api-dashboard/index.html`
+- Quick start:
+  - `python3 scripts/eia_pipeline.py`
+  - `python3 scripts/eia_pipeline.py --series electricity/retail-sales/data --length 12`
+  - `python3 scripts/eia_pipeline.py --skip-pull` (render from stored data only)
+
 ### Multi-agent quality review
 - Run all quality agents: `python3 scripts/site_quality_agents.py`
 - Run quality agents + regenerate site: `python3 scripts/site_quality_agents.py --generate`
