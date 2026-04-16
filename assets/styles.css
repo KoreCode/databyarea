@@ -50,16 +50,16 @@ a:focus-visible{
 }
 
 .grid{
-  margin-top:22px;
+  margin-top:14px;
   display:grid;
-  gap:16px;
+  gap:12px;
 }
 
 .card{
   border:1px solid var(--line);
   border-radius:16px;
   background:rgba(255,255,255,.04);
-  padding:18px;
+  padding:16px;
 }
 
 .card h2{
@@ -125,8 +125,12 @@ a:focus-visible{
 }
 
 .sectionTitle{
-  margin:0 0 10px;
-  font-size:22px;
+  margin:0 0 8px;
+  font-size:21px;
+}
+
+.compactTop{
+  margin-top:18px;
 }
 
 .list{
@@ -195,8 +199,8 @@ a:focus-visible{
 /* ===== HERO ===== */
 
 .hero{
-  margin-top:22px;
-  padding:26px 20px;
+  margin-top:18px;
+  padding:22px 18px;
   border-radius:calc(var(--radius) + 10px);
   border:1px solid var(--line);
   background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
@@ -205,7 +209,7 @@ a:focus-visible{
 
 .hero h1{
   margin:0 0 10px;
-  font-size:34px;
+  font-size:32px;
   line-height:1.15;
 }
 
@@ -245,19 +249,75 @@ a:focus-visible{
 /* ===== CTA BUTTONS ===== */
 
 .cta{
-  margin-top:18px;
+  margin-top:14px;
   display:grid;
-  gap:12px;
+  gap:10px;
 }
 
 .cta a{
-  padding:16px;
+  padding:14px;
   text-align:center;
   border-radius:16px;
   border:1px solid var(--line);
   background:rgba(255,255,255,.06);
   font-weight:800;
   font-size:16px;
+}
+
+.statGrid,
+.quickLinks,
+.stepsGrid{
+  margin-top:10px;
+  display:grid;
+  gap:10px;
+}
+
+.statCard,
+.stepCard{
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:rgba(255,255,255,.04);
+  padding:14px;
+}
+
+.statLabel{
+  margin:0 0 4px;
+  color:var(--muted);
+  font-size:13px;
+}
+
+.statValue{
+  margin:0;
+  font-size:24px;
+  line-height:1.1;
+  font-weight:800;
+}
+
+.statNote{
+  margin:6px 0 0;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.45;
+}
+
+.quickLink{
+  display:block;
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:12px 14px;
+  background:rgba(255,255,255,.04);
+  font-weight:650;
+}
+
+.stepCard h3{
+  margin:0 0 6px;
+  font-size:17px;
+}
+
+.stepCard p{
+  margin:0;
+  color:var(--muted);
+  line-height:1.5;
 }
 
 .cta a.primary{
@@ -274,7 +334,7 @@ a:focus-visible{
     justify-content:space-between;
   }
 
-  .hero h1{font-size:44px}
+  .hero h1{font-size:40px}
 
   .cta{
     grid-template-columns:repeat(2,1fr);
@@ -286,6 +346,18 @@ a:focus-visible{
   }
   .gridList{
     grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .statGrid{
+    grid-template-columns:repeat(4,minmax(0,1fr));
+  }
+
+  .quickLinks{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+
+  .stepsGrid{
+    grid-template-columns:repeat(3,minmax(0,1fr));
   }
 }
 
@@ -322,10 +394,11 @@ a:focus-visible{
   }
 
   .container{padding:16px 14px 48px}
-  .hero{padding:22px 16px}
-  .hero h1{font-size:30px}
+  .hero{padding:20px 14px}
+  .hero h1{font-size:28px}
   .card{padding:16px}
   .pill{padding:10px 12px}
   .btn{display:block;text-align:center}
+  .statValue{font-size:22px}
 
 }
