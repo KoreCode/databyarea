@@ -11,6 +11,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `_trash/List.py`
 - `about/`
   - `about/index.html`
+- `admin/`
+  - `admin/index.html`
 - `assets/`
   - `assets/.trashed-1771794496-logo.png`
   - `assets/index.html`
@@ -527,12 +529,17 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `scripts/.gitignore`
   - `scripts/build_site.py`
   - `scripts/cleanup_empty_dirs.py`
+  - `scripts/eia_client.py`
+  - `scripts/eia_pipeline.py`
   - `scripts/ensure_states.py`
   - `scripts/generate_tree_map.py`
   - `scripts/generate_us_city_dataset.py`
   - `scripts/index.html`
   - `scripts/oldgen.py`
+  - `scripts/site_quality_agents.py`
 - `site/`
+  - `site/api-dashboard/`
+    - `site/api-dashboard/index.html`
   - `site/concrete-driveway-cost-by-state/`
     - `site/concrete-driveway-cost-by-state/index.html`
   - `site/deck-building-cost-by-state/`
@@ -800,6 +807,7 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
     - `utility-costs/wyoming/cheyenne/`
       - `utility-costs/wyoming/cheyenne/index.html`
     - `utility-costs/wyoming/index.html`
+  - `utility-costs/index.html`
 - `water-heater-installation-cost-by-state/`
   - `water-heater-installation-cost-by-state/index.html`
 - `window-replacement-cost-by-state/`
