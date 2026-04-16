@@ -3,172 +3,514 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>DataByArea Admin (Static)</title>
+  <title>DataByArea Admin Command Deck</title>
   <style>
     :root {
-      --bg:#0b1020;
-      --panel:#111933;
-      --panel-soft:#0f1730;
-      --border:#24335f;
-      --text:#dbe6ff;
-      --muted:#8ea1d1;
-      --accent:#63a7ff;
-      --good:#22c55e;
-      --bad:#f97316;
+      --bg-0: #050b18;
+      --bg-1: #0a1327;
+      --bg-2: #0f1d3a;
+      --panel: #0d182f;
+      --panel-soft: #11213f;
+      --border: #233a68;
+      --text: #e8eeff;
+      --muted: #8ea4d3;
+      --amber: #f4b15c;
+      --blue: #63b3ff;
+      --violet: #c18cff;
+      --green: #34d399;
+      --good: #27d37d;
+      --bad: #ff8f70;
+      --shadow: 0 22px 60px rgba(0, 0, 0, 0.5);
     }
+
     * { box-sizing: border-box; }
+
     body {
-      margin:0;
+      margin: 0;
+      min-height: 100vh;
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-      color:var(--text);
-      background:linear-gradient(180deg, #070b17 0%, #0b1020 50%, #090d1b 100%);
-      min-height:100vh;
-      padding:24px;
+      background: radial-gradient(circle at 15% 10%, #15294f 0%, var(--bg-1) 28%, var(--bg-0) 70%);
+      color: var(--text);
+      padding: 20px;
+      letter-spacing: 0.01em;
     }
-    .app { max-width:1200px; margin:0 auto; display:grid; gap:16px; }
+
+    .app {
+      max-width: 1320px;
+      margin: 0 auto;
+      display: grid;
+      gap: 14px;
+    }
+
+    .deck {
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, #0f1f3b 0%, #0b162d 100%);
+      box-shadow: var(--shadow);
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    .topline {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(90deg, rgba(255, 179, 94, 0.07), rgba(99, 179, 255, 0.05));
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-mark {
+      width: 5px;
+      height: 48px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, #ffcc79, #f29e37);
+      box-shadow: 0 0 20px rgba(244, 177, 92, 0.55);
+    }
+
+    .eyebrow {
+      color: var(--amber);
+      font-size: 34px;
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow small {
+      font-size: 0.47em;
+      font-weight: 700;
+      color: #ffd8a4;
+      margin-left: 8px;
+    }
+
+    .subhead {
+      color: #c3d3f8;
+      font-size: 31px;
+      font-weight: 300;
+      letter-spacing: 0.01em;
+    }
+
+    .status-line {
+      color: #70e6b0;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-size: 14px;
+      text-align: right;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(160px, 1fr));
+      gap: 10px;
+      padding: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .metric {
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid;
+      background: rgba(13, 24, 47, 0.85);
+      min-height: 94px;
+    }
+
+    .metric h3,
+    .metric p {
+      margin: 0;
+    }
+
+    .metric h3 {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #c0d0f4;
+      margin-bottom: 6px;
+    }
+
+    .metric .val {
+      font-size: 33px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .metric .hint {
+      margin-top: 4px;
+      color: #a7bbeb;
+      font-size: 12px;
+    }
+
+    .metric.blue { border-color: rgba(99, 179, 255, 0.5); }
+    .metric.amber { border-color: rgba(244, 177, 92, 0.5); }
+    .metric.violet { border-color: rgba(193, 140, 255, 0.5); }
+    .metric.green { border-color: rgba(52, 211, 153, 0.55); }
+
+    .workspace {
+      display: grid;
+      grid-template-columns: minmax(580px, 1.35fr) minmax(270px, 0.65fr);
+      gap: 12px;
+      padding: 12px;
+    }
+
     .panel {
-      background:var(--panel);
-      border:1px solid var(--border);
-      border-radius:14px;
-      overflow:hidden;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: linear-gradient(180deg, #0c1831, #0a1427);
+      overflow: hidden;
     }
-    .panel h1, .panel h2 { margin:0; }
-    .head {
-      display:flex;
-      justify-content:space-between;
-      gap:12px;
-      padding:16px;
-      border-bottom:1px solid var(--border);
-      flex-wrap:wrap;
+
+    .panel-head {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
     }
-    .title { font-size:24px; font-weight:800; }
-    .muted { color:var(--muted); font-size:12px; }
-    .body { padding:16px; }
-    .grid { display:grid; gap:14px; grid-template-columns:2fr 1fr; }
-    .inputs { display:grid; gap:10px; grid-template-columns:repeat(3,minmax(160px,1fr)); }
-    label { font-size:12px; color:var(--muted); display:block; margin-bottom:4px; }
-    input, textarea {
-      width:100%;
-      border:1px solid var(--border);
-      background:var(--panel-soft);
-      color:var(--text);
-      border-radius:10px;
-      padding:10px;
-      font:inherit;
+
+    .panel-title {
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
     }
-    textarea { min-height:240px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size:12px; }
-    .actions { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px; }
+
+    .panel-note {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .panel-body { padding: 14px; }
+
+    .inputs {
+      display: grid;
+      gap: 8px;
+      grid-template-columns: repeat(3, minmax(130px, 1fr));
+      margin-bottom: 10px;
+    }
+
+    label {
+      display: block;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid #2a4578;
+      background: var(--panel-soft);
+      color: var(--text);
+      font: inherit;
+      padding: 8px 10px;
+      outline: none;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: #5d8ae1;
+      box-shadow: 0 0 0 2px rgba(93, 138, 225, 0.2);
+    }
+
+    .actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
     button {
-      border:1px solid var(--border);
-      border-radius:10px;
-      padding:9px 12px;
-      background:#14224a;
-      color:var(--text);
-      font-weight:700;
-      cursor:pointer;
+      cursor: pointer;
+      border: 1px solid #385e9f;
+      border-radius: 8px;
+      background: linear-gradient(180deg, #18356b, #122852);
+      color: #dfeaff;
+      padding: 8px 11px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      transition: 140ms ease;
     }
-    button:hover { border-color:#3d62bf; }
-    .cards { display:grid; gap:8px; }
+
+    button:hover {
+      border-color: #69a3ff;
+      transform: translateY(-1px);
+    }
+
+    .scripts-wrap {
+      border: 1px solid #233a68;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .scripts-toolbar {
+      padding: 8px 10px;
+      font-size: 12px;
+      border-bottom: 1px solid #233a68;
+      background: rgba(7, 14, 30, 0.75);
+      color: #a9bce8;
+    }
+
+    .cards-list {
+      display: grid;
+      max-height: 220px;
+      overflow: auto;
+    }
+
     .card {
-      border:1px solid var(--border);
-      border-radius:10px;
-      background:var(--panel-soft);
-      padding:10px;
-      cursor:pointer;
+      border: 0;
+      border-bottom: 1px solid #1c3158;
+      border-radius: 0;
+      text-align: left;
+      background: rgba(7, 16, 32, 0.75);
+      padding: 10px;
     }
-    .card:hover { border-color:#3d62bf; }
-    .card strong { font-size:13px; }
-    .card .desc { font-size:12px; color:var(--muted); margin-top:4px; }
+
+    .card:last-child { border-bottom: 0; }
+    .card strong { font-size: 13px; }
+    .desc { margin-top: 3px; font-size: 12px; color: #92a8da; }
+
     .pill {
-      display:inline-block;
-      margin-left:8px;
-      font-size:10px;
-      border-radius:999px;
-      padding:2px 7px;
-      border:1px solid #355fb8;
-      color:var(--accent);
+      font-size: 10px;
+      border-radius: 999px;
+      border: 1px solid #4677ca;
+      color: #8fbeff;
+      padding: 1px 7px;
+      margin-left: 6px;
     }
+
     .status {
-      font-size:12px;
-      padding:8px 10px;
-      border-radius:10px;
-      border:1px solid var(--border);
-      background:var(--panel-soft);
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid #2f4f87;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background: #0a1730;
     }
-    .ok { color:var(--good); }
-    .err { color:var(--bad); }
-    @media (max-width: 900px) {
-      .grid { grid-template-columns:1fr; }
-      .inputs { grid-template-columns:1fr; }
+
+    .ok { color: var(--good); }
+    .err { color: var(--bad); border-color: #7a3841; }
+
+    .feed {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin-top: 8px;
+    }
+
+    .feed th,
+    .feed td {
+      border-bottom: 1px solid #1e335a;
+      padding: 8px 6px;
+      text-align: left;
+      color: #d0dcfb;
+    }
+
+    .feed th {
+      color: #9db2e3;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .side {
+      display: grid;
+      gap: 10px;
+      align-content: start;
+    }
+
+    .side .panel {
+      background: linear-gradient(180deg, #0f1b34, #0c172d);
+    }
+
+    .side .panel.focus {
+      border-color: #8f5e22;
+      background: linear-gradient(180deg, rgba(122, 77, 22, 0.36), rgba(53, 35, 14, 0.78));
+    }
+
+    textarea {
+      min-height: 220px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 12px;
+      line-height: 1.45;
+      resize: vertical;
+    }
+
+    @media (max-width: 1080px) {
+      .cards { grid-template-columns: repeat(2, minmax(140px, 1fr)); }
+      .workspace { grid-template-columns: 1fr; }
+      .subhead { font-size: 24px; }
+    }
+
+    @media (max-width: 760px) {
+      .eyebrow { font-size: 26px; }
+      .inputs { grid-template-columns: 1fr; }
+      .subhead { font-size: 20px; }
     }
   </style>
 </head>
 <body>
   <main class="app">
-    <section class="panel">
-      <div class="head">
-        <div>
-          <h1 class="title">DataByArea Static Admin Panel</h1>
-          <div class="muted">No SPA router, no framework, just one HTML file.</div>
-        </div>
-        <div class="status" id="status">Idle</div>
-      </div>
-      <div class="body">
-        <div class="inputs">
+    <section class="deck">
+      <header class="topline">
+        <div class="brand">
+          <div class="brand-mark"></div>
           <div>
-            <label for="baseUrl">API base URL</label>
-            <input id="baseUrl" value="" placeholder="https://admin.example.com" />
-          </div>
-          <div>
-            <label for="keyParam">Key param name</label>
-            <input id="keyParam" value="admin_key" placeholder="admin_key" />
-          </div>
-          <div>
-            <label for="accessKey">Access key (optional)</label>
-            <input id="accessKey" value="" placeholder="secret-key" />
+            <div class="eyebrow">LORD FERGALICIOUS <small>V1.0</small></div>
+            <div class="subhead">Databyarea.com Mogul Admin Panel</div>
           </div>
         </div>
-        <div class="actions">
-          <button id="loadBtn">Load config + history</button>
-          <button id="summaryBtn">Load last summary</button>
-          <button id="healthBtn">Health check</button>
-        </div>
-      </div>
-    </section>
+        <div class="status-line">Mission Status: Sovereign Rewiring · 92% Complete<br>Day 15 Uptime</div>
+      </header>
 
-    <section class="grid">
-      <article class="panel">
-        <div class="head">
-          <h2>Script catalog</h2>
-          <div class="muted" id="scriptCount">0 scripts</div>
-        </div>
-        <div class="body">
-          <div class="inputs" style="grid-template-columns:2fr 1fr; margin-bottom:10px;">
-            <div>
-              <label for="args">Args for selected script</label>
-              <input id="args" placeholder="--services 1 --cities 10 --relink --clean" />
-            </div>
-            <div>
-              <label for="selectedScript">Selected script</label>
-              <input id="selectedScript" placeholder="one_button_daily" />
-            </div>
-          </div>
-          <div class="actions" style="margin-bottom:10px;">
-            <button id="runSelectedBtn">Run selected script</button>
-          </div>
-          <div id="cards" class="cards"></div>
-        </div>
-      </article>
+      <section class="cards">
+        <article class="metric blue">
+          <h3>System Saturation</h3>
+          <p class="val">0.00</p>
+          <p class="hint">(Reset threshold: 72.122 ng/mL)</p>
+        </article>
+        <article class="metric amber">
+          <h3>Domain Fleet</h3>
+          <p class="val">7</p>
+          <p class="hint">Active cloud deployments</p>
+        </article>
+        <article class="metric violet">
+          <h3>D1 Records</h3>
+          <p class="val">14,202</p>
+          <p class="hint">MN pilot phase</p>
+        </article>
+        <article class="metric green">
+          <h3>Daily Leads</h3>
+          <p class="val">342</p>
+          <p class="hint">+125 growth</p>
+        </article>
+      </section>
 
-      <article class="panel">
-        <div class="head">
-          <h2>Output</h2>
-          <div class="muted">JSON response</div>
-        </div>
-        <div class="body">
-          <textarea id="out" readonly></textarea>
-        </div>
-      </article>
+      <section class="workspace">
+        <article class="panel">
+          <div class="panel-head">
+            <h1 class="panel-title">EIA National Ingestion Engine · Minnesota Feed</h1>
+            <div class="status ok" id="status">Idle</div>
+          </div>
+          <div class="panel-body">
+            <div class="inputs">
+              <div>
+                <label for="baseUrl">API base URL</label>
+                <input id="baseUrl" value="" placeholder="https://admin.example.com" />
+              </div>
+              <div>
+                <label for="keyParam">Key param name</label>
+                <input id="keyParam" value="admin_key" placeholder="admin_key" />
+              </div>
+              <div>
+                <label for="accessKey">Access key</label>
+                <input id="accessKey" value="" placeholder="secret-key" />
+              </div>
+            </div>
+
+            <div class="actions">
+              <button id="loadBtn">Load config + history</button>
+              <button id="summaryBtn">Load last summary</button>
+              <button id="healthBtn">Health check</button>
+            </div>
+
+            <div class="inputs" style="grid-template-columns: 2fr 1fr;">
+              <div>
+                <label for="args">Args for selected script</label>
+                <input id="args" placeholder="--services 1 --cities 10 --relink --clean" />
+              </div>
+              <div>
+                <label for="selectedScript">Selected script</label>
+                <input id="selectedScript" placeholder="one_button_daily" />
+              </div>
+            </div>
+            <div class="actions">
+              <button id="runSelectedBtn">Run selected script</button>
+            </div>
+
+            <table class="feed" aria-label="demo feed table">
+              <thead>
+                <tr>
+                  <th>City</th>
+                  <th>Utility</th>
+                  <th>Rate</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Kiester, MN</td><td>Utility Provider</td><td>$5.60</td><td class="ok">Synced</td></tr>
+                <tr><td>Fairmont, MN</td><td>Utility Provider</td><td>$2.50</td><td class="ok">Synced</td></tr>
+                <tr><td>Mankato, MN</td><td>Mankato</td><td>$1.203</td><td class="ok">Synced</td></tr>
+                <tr><td>Rochester, MN</td><td>Rochester</td><td>$3.56</td><td class="ok">Synced</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <aside class="side">
+          <article class="panel">
+            <div class="panel-head">
+              <h2 class="panel-title">Script Catalog</h2>
+              <div class="panel-note" id="scriptCount">0 scripts</div>
+            </div>
+            <div class="panel-body">
+              <div class="scripts-wrap">
+                <div class="scripts-toolbar">Click any script to run immediately.</div>
+                <div id="cards" class="cards-list"></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-head">
+              <h2 class="panel-title">Asset Portfolio</h2>
+              <div class="panel-note">Live/Stage</div>
+            </div>
+            <div class="panel-body panel-note" style="line-height:1.85; font-size:14px;">
+              databyarea.com <span class="ok">(LIVE)</span><br>
+              localcontractorrates.com <span style="color:#f4b15c;">(STAGING)</span><br>
+              [Domains 3-7] <span style="color:#f4b15c;">(QUEUED)</span>
+            </div>
+          </article>
+
+          <article class="panel focus">
+            <div class="panel-head">
+              <h2 class="panel-title">Architectural Focus</h2>
+            </div>
+            <div class="panel-body" style="line-height:1.6;">
+              <strong style="font-size:28px; color:#ffd8a4;">ShieldAlert</strong><br>
+              Priority: Southern MN regional module.<br>
+              Recovery / Empire build.<br>
+              0.1% survival confirmed.<br>
+              Build the foundation.
+            </div>
+          </article>
+
+          <article class="panel">
+            <div class="panel-head">
+              <h2 class="panel-title">Output</h2>
+              <div class="panel-note">JSON response</div>
+            </div>
+            <div class="panel-body">
+              <textarea id="out" readonly></textarea>
+            </div>
+          </article>
+        </aside>
+      </section>
     </section>
   </main>
 
