@@ -146,6 +146,128 @@ def city_page_html(section: str, state_slug: str, city_name: str) -> str:
     desc = f"Local comparisons for {city_name}, {state_name} in {section.replace('-', ' ')}. Updated regularly."
     canonical = f"{SITE_URL}/{section}/{state_slug}/{city_slug}/"
 
+    if section == "utility-costs":
+        desc = (
+            f"{city_name}, {state_name} utility cost guide with electricity, gas, water, sewer, trash, "
+            "internet, and mobile cost ratings plus monthly budget ranges."
+        )
+        return f"""<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{city_name}, {state_name} Utility Cost by Category (Rated) | {SITE_NAME}</title>
+  <meta name="description" content="{desc}">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="{canonical}">
+  <link rel="stylesheet" href="{CSS_PATH}">
+  <script type="application/ld+json">
+  {{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {{
+        "@type": "Question",
+        "name": "What utilities are included in this {city_name}, {state_name} cost breakdown?",
+        "acceptedAnswer": {{
+          "@type": "Answer",
+          "text": "This page includes electricity, natural gas, water, sewer, trash collection, home internet, and mobile service cost ratings."
+        }}
+      }},
+      {{
+        "@type": "Question",
+        "name": "How should I use utility cost ratings for moving decisions?",
+        "acceptedAnswer": {{
+          "@type": "Answer",
+          "text": "Use the ratings as a planning baseline, then confirm with local utility providers, property managers, and recent household bills before signing a lease or buying."
+        }}
+      }},
+      {{
+        "@type": "Question",
+        "name": "What changes monthly utility bills the most?",
+        "acceptedAnswer": {{
+          "@type": "Answer",
+          "text": "Seasonal weather, home size and insulation, household occupancy, appliance efficiency, and provider rate plans usually drive the largest monthly bill changes."
+        }}
+      }}
+    ]
+  }}
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>{city_name}, {state_name} Utility Cost by Category</h1>
+    <p class="lede">Use this city guide to compare utility cost ratings and monthly budget ranges before you rent, buy, or relocate.</p>
+
+    <h2>Utility Cost Ratings for {city_name}</h2>
+    <p>Ratings below are built for quick comparison and budget planning. Confirm final rates with local providers and your specific property profile.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Utility Category</th>
+          <th>Typical Monthly Range</th>
+          <th>Cost Rating</th>
+          <th>What Moves This Cost</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Electricity</td><td>$90-$220</td><td>Medium</td><td>Cooling load, heating fuel type, insulation, peak-hour usage</td></tr>
+        <tr><td>Natural Gas / Heating Fuel</td><td>$35-$180</td><td>Medium</td><td>Winter climate, furnace efficiency, water heating source</td></tr>
+        <tr><td>Water</td><td>$35-$95</td><td>Low to Medium</td><td>Household size, irrigation, fixture flow rates</td></tr>
+        <tr><td>Sewer & Wastewater</td><td>$30-$85</td><td>Medium</td><td>Municipal fee structures, seasonal usage tiers</td></tr>
+        <tr><td>Trash / Recycling</td><td>$20-$60</td><td>Low</td><td>Local service contracts, container size, add-on pickup</td></tr>
+        <tr><td>Home Internet</td><td>$45-$95</td><td>Medium</td><td>Speed tier, fiber availability, promo expiration</td></tr>
+        <tr><td>Mobile Service (1 line)</td><td>$35-$90</td><td>Medium</td><td>Carrier mix, unlimited plans, taxes and fees</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Estimated Total Utility Budget Bands</h2>
+    <ul class="list">
+      <li class="item"><strong>Studio / 1-bed renter:</strong> $180-$420 per month depending on season and internet tier.</li>
+      <li class="item"><strong>2-3 bedroom household:</strong> $320-$680 per month with moderate energy usage.</li>
+      <li class="item"><strong>Larger single-family home:</strong> $520-$1,050 per month in high-usage months.</li>
+    </ul>
+
+    <h2>Utility Cost Detail Checklist (High-Intent Comparison)</h2>
+    <ul class="list">
+      <li class="item">Electric rate structure (flat, tiered, and time-of-use options)</li>
+      <li class="item">Seasonal cooling and heating pressure on monthly bills</li>
+      <li class="item">Water + sewer billing method (usage, fixed charges, or both)</li>
+      <li class="item">Trash and recycling service inclusion in rent or HOA fees</li>
+      <li class="item">Internet provider availability by neighborhood and address</li>
+      <li class="item">Typical installation/activation fees and contract terms</li>
+      <li class="item">Utility deposit requirements for new residents</li>
+      <li class="item">Energy-efficiency impact from HVAC, windows, and insulation</li>
+      <li class="item">Solar/net-metering availability (if owner occupied)</li>
+      <li class="item">Budget billing and low-income assistance program options</li>
+    </ul>
+
+    <h2>How to Lower Utility Bills in {city_name}</h2>
+    <ul class="list">
+      <li class="item">Shift major electricity usage outside peak windows when TOU plans apply.</li>
+      <li class="item">Use smart thermostat schedules and tune HVAC filters monthly.</li>
+      <li class="item">Check for hidden leaks and install low-flow showerheads/aerators.</li>
+      <li class="item">Reprice internet annually and compare bundle alternatives.</li>
+      <li class="item">Ask providers about autopay, paperless, and efficiency rebate credits.</li>
+    </ul>
+
+    <h2>Explore More {city_name} and {state_name} Cost Pages</h2>
+    <ul class="gridList">
+      <li><a href="/utility-costs/{state_slug}/">Utility Costs in {state_name}</a></li>
+      <li><a href="/utility-costs/">Utility Costs by State</a></li>
+      <li><a href="/cost-of-living/{state_slug}/">Cost of Living in {state_name}</a></li>
+      <li><a href="/property-taxes/{state_slug}/">Property Tax Rates in {state_name}</a></li>
+      <li><a href="/services/">Home Service Cost Guides</a></li>
+    </ul>
+
+    <p><strong>Editorial note:</strong> Ranges and ratings are planning benchmarks for fast city comparison, not provider quotes.</p>
+    <p><em>Last updated: {today}</em></p>
+  </div>
+  <script defer src="/assets/version-footer.js"></script>
+</body>
+</html>
+"""
+
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -174,6 +296,17 @@ def city_page_html(section: str, state_slug: str, city_name: str) -> str:
 </body>
 </html>
 """
+
+
+def refresh_existing_utility_city_pages() -> int:
+    refreshed = 0
+    for path in Path("utility-costs").glob("*/*/index.html"):
+        state_slug = path.parts[1]
+        city_slug = path.parts[2]
+        city_name = city_slug.replace("-", " ").title()
+        path.write_text(city_page_html("utility-costs", state_slug, city_name), encoding="utf-8")
+        refreshed += 1
+    return refreshed
 
 def ensure_dir(p: Path):
     p.mkdir(parents=True, exist_ok=True)
@@ -325,7 +458,17 @@ def main():
     ap.add_argument("--no-inject", dest="inject", action="store_false", help="Skip injecting city blocks into state index pages.")
     ap.set_defaults(inject=True)
     ap.add_argument("--force", action="store_true", help="Run even if already ran today (UTC).")
+    ap.add_argument(
+        "--refresh-utility-city-pages",
+        action="store_true",
+        help="Rewrite all existing /utility-costs/<state>/<city>/ pages with the latest utility city template.",
+    )
     args = ap.parse_args()
+
+    if args.refresh_utility_city_pages:
+        refreshed = refresh_existing_utility_city_pages()
+        print(f"Refreshed utility city pages: {refreshed}.")
+        return
 
     run_log = load_json(RUN_LOG, {})
     if already_ran_today(run_log) and not args.force:
