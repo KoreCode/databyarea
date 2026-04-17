@@ -8,6 +8,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="https://databyarea.com/utility-costs/minnesota/">
   <link rel="stylesheet" href="/assets/styles.css">
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  >
 </head>
 <body>
   <div class="container">
@@ -105,6 +111,26 @@
         </ul>
         <a class="btn" href="/utility-costs/">Back to Utility Costs states</a>
       </div>
+
+      <div class="card">
+        <h2>Interactive map: utility cost snapshots across Minnesota</h2>
+        <p>Use the map to jump to city pages and compare utility cost context by location.</p>
+        <div id="mnUtilityMap" style="height:420px;border:1px solid #e5e7eb;border-radius:12px;"></div>
+        <p><small>Tip: Click a city marker to open its utility-costs detail page.</small></p>
+        <div id="mnMapDetails" style="margin-top:12px;padding:12px;border:1px solid #e5e7eb;border-radius:10px;background:#f8fafc;">
+          <strong id="mnMapDetailsTitle">Select a city</strong>
+          <p id="mnMapDetailsText" style="margin:8px 0 0;">Choose a marker to view quick details and navigate to that city page.</p>
+        </div>
+        <details style="margin-top:12px;">
+          <summary><strong>Implementation details for this map</strong></summary>
+          <ul class="list" style="margin-top:10px;">
+            <li class="item">Leaflet JS renders the interactive map with OpenStreetMap tiles.</li>
+            <li class="item">A local city dataset powers markers, popups, and detail-panel updates.</li>
+            <li class="item">Each marker includes a direct URL to the matching Minnesota city page.</li>
+            <li class="item">The map auto-fits marker bounds so both metro and greater Minnesota cities stay visible.</li>
+          </ul>
+        </details>
+      </div>
     </div>
 
     <!-- POPULAR_CITIES:START -->
@@ -149,5 +175,84 @@
     </div>
   </div>
   <script defer src="/assets/version-footer.js"></script>
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+  <script>
+    (function () {
+      const mapEl = document.getElementById('mnUtilityMap');
+      if (!mapEl || typeof L === 'undefined') return;
+
+      const cityData = [
+        {
+          name: 'Minneapolis',
+          lat: 44.9778,
+          lng: -93.265,
+          href: '/utility-costs/minnesota/minneapolis/',
+          blurb: 'Major metro benchmark for electricity, gas, water, sewer, and internet comparisons.'
+        },
+        {
+          name: 'Centerville',
+          lat: 45.1636,
+          lng: -93.0533,
+          href: '/utility-costs/minnesota/centerville/',
+          blurb: 'North metro profile with suburban household utility mix context.'
+        },
+        {
+          name: 'Waverly',
+          lat: 45.0665,
+          lng: -93.9683,
+          href: '/utility-costs/minnesota/waverly/',
+          blurb: 'Western Twin Cities region point for smaller-city cost checks.'
+        },
+        {
+          name: 'Dilworth',
+          lat: 46.8766,
+          lng: -96.7031,
+          href: '/utility-costs/minnesota/dilworth/',
+          blurb: 'Moorhead-area view for utility patterns in northwest Minnesota.'
+        },
+        {
+          name: 'Babbitt',
+          lat: 47.7085,
+          lng: -91.9444,
+          href: '/utility-costs/minnesota/babbitt/',
+          blurb: 'Northern Minnesota context for climate-driven utility demand.'
+        }
+      ];
+
+      const map = L.map('mnUtilityMap', { scrollWheelZoom: false }).setView([46.0, -94.3], 6);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 12,
+        attribution: '&copy; OpenStreetMap contributors'
+      }).addTo(map);
+
+      const detailsTitle = document.getElementById('mnMapDetailsTitle');
+      const detailsText = document.getElementById('mnMapDetailsText');
+      const bounds = L.latLngBounds([]);
+
+      cityData.forEach((city) => {
+        const marker = L.marker([city.lat, city.lng]).addTo(map);
+        bounds.extend([city.lat, city.lng]);
+
+        marker.bindPopup(
+          '<strong>' + city.name + '</strong><br>' +
+          city.blurb + '<br>' +
+          '<a href="' + city.href + '">Open city page</a>'
+        );
+
+        marker.on('click', () => {
+          if (detailsTitle) detailsTitle.textContent = city.name;
+          if (detailsText) detailsText.textContent = city.blurb + ' Use the link in the popup to navigate.';
+        });
+      });
+
+      if (bounds.isValid()) {
+        map.fitBounds(bounds.pad(0.2));
+      }
+    })();
+  </script>
 </body>
 </html>
