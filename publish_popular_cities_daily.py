@@ -78,6 +78,59 @@ SECTION_META = {
     },
 }
 
+COUNTY_CITY_MAP = {
+    "california": {
+        "Los Angeles County": ["Los Angeles", "Long Beach", "Glendale", "Lancaster"],
+        "San Diego County": ["San Diego", "Chula Vista", "Oceanside", "Escondido"],
+        "Orange County": ["Anaheim", "Santa Ana", "Irvine", "Huntington Beach"],
+    },
+    "texas": {
+        "Harris County": ["Houston", "Pasadena", "Baytown", "League City"],
+        "Dallas County": ["Dallas", "Irving", "Garland", "Mesquite"],
+        "Travis County": ["Austin", "Round Rock", "Pflugerville", "Cedar Park"],
+        "Bexar County": ["San Antonio"],
+    },
+    "florida": {
+        "Miami-Dade County": ["Miami", "Hialeah", "Miami Gardens", "Homestead"],
+        "Hillsborough County": ["Tampa"],
+        "Orange County": ["Orlando"],
+    },
+    "illinois": {
+        "Cook County": ["Chicago", "Cicero", "Evanston", "Skokie"],
+    },
+    "new-york": {
+        "New York County": ["New York"],
+        "Kings County": ["Brooklyn"],
+        "Queens County": ["Queens"],
+    },
+    "arizona": {
+        "Maricopa County": ["Phoenix", "Mesa", "Chandler", "Gilbert", "Scottsdale"],
+    },
+    "pennsylvania": {
+        "Philadelphia County": ["Philadelphia"],
+        "Allegheny County": ["Pittsburgh"],
+    },
+    "washington": {
+        "King County": ["Seattle", "Bellevue", "Kent", "Renton"],
+    },
+    "nevada": {
+        "Clark County": ["Las Vegas", "Henderson", "North Las Vegas"],
+    },
+    "utah": {
+        "Salt Lake County": ["Salt Lake City", "West Valley City", "Sandy"],
+    },
+    "north-carolina": {
+        "Wake County": ["Raleigh", "Cary"],
+    },
+    "ohio": {
+        "Franklin County": ["Columbus"],
+        "Cuyahoga County": ["Cleveland"],
+    },
+    "michigan": {
+        "Wayne County": ["Detroit", "Dearborn", "Livonia"],
+    },
+}
+
 MINNESOTA_UTILITY_BENCHMARK_2024 = {
     "source_year": 2024,
     "price_cents_per_kwh": 15.45,
@@ -522,6 +575,8 @@ def _existing_city_names_for_state(section: str, state_slug: str) -> list[str]:
         city_slug = city_index.parent.name
         if city_slug == "index":
             continue
+        if city_slug.endswith(("-county", "-parish", "-borough", "-census-area")):
+            continue
         names.append(city_slug.replace("-", " ").title())
     return names
 
@@ -565,7 +620,7 @@ def inject_city_block(section: str, state_slug: str, city_pairs: list[tuple[str,
     block = f"""<!-- POPULAR_CITIES:START -->
 <div class="card">
 <h2 class="sectionTitle">Popular cities in {state_name}</h2>
-<p class="cityListMeta">Browse {len(cities)} available city pages in {state_name}.</p>
+<p class="cityListMeta">Browse {len(cities)} total city pages in {state_name}.</p>
 <ul class="gridList cityGrid">
 {lis}
 </ul>
@@ -589,6 +644,126 @@ def inject_city_block(section: str, state_slug: str, city_pairs: list[tuple[str,
             html = html + "\n" + block
         else:
             html = html[:container_end] + "\n" + block + "\n" + html[container_end:]
+
+    idx.write_text(html, encoding="utf-8")
+    return True
+
+
+def county_page_html(section: str, state_slug: str, county_name: str, county_cities: list[str]) -> str:
+    today = datetime.utcnow().strftime("%Y-%m-%d")
+    state_name = US_STATES.get(state_slug, state_slug.replace("-", " ").title())
+    section_title = SECTION_META[section]["title"]
+    county_slug = slugify(county_name)
+    canonical = f"{SITE_URL}/{section}/{state_slug}/{county_slug}/"
+    desc = (
+        f"County-level {section_title.lower()} guide for {county_name}, {state_name}, "
+        f"including city pages and comparison links."
+    )
+    city_items = "\n".join(
+        f'<li class="item"><a href="/{section}/{state_slug}/{slugify(city)}/">{escape(city)}</a></li>'
+        for city in county_cities
+    )
+    return f"""<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{section_title} in {county_name}, {state_name} | {SITE_NAME}</title>
+  <meta name="description" content="{desc}">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="{canonical}">
+  <link rel="stylesheet" href="{CSS_PATH}">
+</head>
+<body>
+  <div class="container">
+    <div class="hero">
+      <h1>{section_title} in {county_name}, {state_name}</h1>
+      <p>{desc}</p>
+      <div class="breadcrumbs">
+        <a href="/">Home</a> › <a href="/{section}/">{section_title}</a> › <a href="/{section}/{state_slug}/">{state_name}</a> › <span>{county_name}</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Cities in {county_name}</h2>
+      <p>This county page lists the city pages currently available for this county.</p>
+      <ul class="list">
+        {city_items}
+      </ul>
+    </div>
+
+    <div class="footer">
+      <p><strong>Disclaimer:</strong> Informational estimates only. Costs and rates vary by household, provider, and local area.</p>
+      <p><a href="/about/">About</a> · <a href="/privacy/">Privacy Policy</a> · <a href="/contact/">Contact</a></p>
+      <p>Last updated: {today}</p>
+    </div>
+  </div>
+  <script defer src="/assets/version-footer.js"></script>
+</body>
+</html>
+"""
+
+
+def ensure_county_pages(section: str, state_slug: str) -> int:
+    county_map = COUNTY_CITY_MAP.get(state_slug, {})
+    written = 0
+    for county_name, county_cities in county_map.items():
+        county_slug = slugify(county_name)
+        folder = Path(section) / state_slug / county_slug
+        ensure_dir(folder)
+        idx = folder / "index.html"
+        html = county_page_html(section, state_slug, county_name, county_cities)
+        current = idx.read_text(encoding="utf-8", errors="ignore") if idx.exists() else None
+        if current != html:
+            idx.write_text(html, encoding="utf-8")
+            written += 1
+    return written
+
+
+def inject_county_block(section: str, state_slug: str, max_links: int = 12) -> bool:
+    idx = Path(section) / state_slug / "index.html"
+    if not idx.exists():
+        return False
+    county_map = COUNTY_CITY_MAP.get(state_slug)
+    if not county_map:
+        return False
+
+    html = idx.read_text(encoding="utf-8", errors="ignore")
+    state_name = US_STATES[state_slug]
+    county_items = list(county_map.items())[:max_links]
+    lis = "\n".join(
+        (
+            f'<li><a class="cityLink" href="/{section}/{state_slug}/{slugify(county_name)}/">'
+            f'{escape(county_name)}</a> '
+            f'<span class="mutedSmall">({len(cities)} {"city" if len(cities) == 1 else "cities"})</span></li>'
+        )
+        for county_name, cities in county_items
+    )
+    block = f"""<!-- COUNTY_PAGES:START -->
+<div class="card">
+<h2 class="sectionTitle">Counties in {state_name}</h2>
+<p class="cityListMeta">Browse {len(county_items)} county pages with city-level links.</p>
+<ul class="gridList cityGrid">
+{lis}
+</ul>
+</div>
+<!-- COUNTY_PAGES:END -->"""
+
+    if "<!-- COUNTY_PAGES:START -->" in html and "<!-- COUNTY_PAGES:END -->" in html:
+        html = re.sub(
+            r"<!-- COUNTY_PAGES:START -->.*?<!-- COUNTY_PAGES:END -->",
+            block,
+            html,
+            flags=re.DOTALL,
+        )
+    elif "<!-- COUNTY_PAGES:ANCHOR -->" in html:
+        html = html.replace("<!-- COUNTY_PAGES:ANCHOR -->", f"{block}\n\n    <!-- COUNTY_PAGES:ANCHOR -->")
+    elif "<!-- POPULAR_CITIES:ANCHOR -->" in html:
+        html = html.replace("<!-- POPULAR_CITIES:ANCHOR -->", f"{block}\n\n    <!-- POPULAR_CITIES:ANCHOR -->")
+    elif '<div class="footer">' in html:
+        html = html.replace('<div class="footer">', f"{block}\n\n    <div class=\"footer\">", 1)
+    else:
+        html = html + "\n" + block
 
     idx.write_text(html, encoding="utf-8")
     return True
@@ -654,10 +829,15 @@ def main():
         print(f"Created: /{section}/{st}/{city_slug}/")
 
     injected = 0
+    county_injected = 0
+    county_pages_written = 0
     if args.inject:
-        # inject once per state per section if not already injected
+        # inject once per state per section
         for section in SECTIONS:
             for st in US_STATES.keys():
+                county_pages_written += ensure_county_pages(section, st)
+                if inject_county_block(section, st):
+                    county_injected += 1
                 if inject_city_block(section, st, popular):
                     injected += 1
 
@@ -673,7 +853,12 @@ def main():
         run_log["history"] = run_log["history"][-200:]
     save_json(RUN_LOG, run_log)
 
-    print(f"Done. New city pages: {created}. State pages injected: {injected}.")
+    print(
+        f"Done. New city pages: {created}. "
+        f"State pages with county blocks: {county_injected}. "
+        f"County pages written: {county_pages_written}. "
+        f"State pages with city blocks: {injected}."
+    )
     print("Next: run make-site.py to rebuild sitemap.xml and robots.txt, then upload to Cloudflare.")
 
 if __name__ == "__main__":
