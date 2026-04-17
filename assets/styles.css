@@ -112,6 +112,37 @@ a:focus-visible{
   padding:10px 12px;
 }
 
+.cityListMeta{
+  margin:0;
+  color:var(--muted);
+  font-size:14px;
+}
+
+.cityGrid{
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+}
+
+.cityGrid li{
+  padding:0;
+  overflow:hidden;
+}
+
+.cityLink{
+  display:block;
+  padding:12px 14px;
+  font-weight:600;
+  color:#dce7ff;
+  background:linear-gradient(135deg, rgba(110,168,255,.13), rgba(255,255,255,.03));
+  transition:transform .16s ease, background .16s ease, color .16s ease;
+}
+
+.cityLink:hover{
+  text-decoration:none;
+  transform:translateY(-1px);
+  color:#ffffff;
+  background:linear-gradient(135deg, rgba(110,168,255,.22), rgba(230,196,107,.12));
+}
+
 .searchRow{
   margin-top:14px;
   display:flex;
