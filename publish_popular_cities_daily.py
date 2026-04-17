@@ -77,6 +77,24 @@ SECTION_META = {
     },
 }
 
+MINNESOTA_UTILITY_BENCHMARK_2024 = {
+    "source_year": 2024,
+    "price_cents_per_kwh": 15.45,
+    "monthly_kwh": 712,
+    "monthly_bill_usd": 110.06,
+    "customers": 2_581_180,
+    "commercial_price_cents_per_kwh": 12.15,
+    "industrial_price_cents_per_kwh": 9.15,
+    "us_price_cents_per_kwh": 16.48,
+    "us_monthly_kwh": 863,
+    "us_monthly_bill_usd": 142.26,
+    "price_rank_label": "below U.S. average",
+    "source_note": (
+        "U.S. Energy Information Administration (EIA), forms EIA-861 schedules 4A-4D, "
+        "EIA-861S, EIA-861U. 2024 annual tables published in 2026."
+    ),
+}
+
 def slugify(s: str) -> str:
     s = s.strip().lower()
     s = s.replace(".", "")
@@ -147,6 +165,65 @@ def city_page_html(section: str, state_slug: str, city_name: str) -> str:
     canonical = f"{SITE_URL}/{section}/{state_slug}/{city_slug}/"
 
     if section == "utility-costs":
+        mn = MINNESOTA_UTILITY_BENCHMARK_2024
+        minnesota_detail_html = ""
+        if state_slug == "minnesota":
+            minnesota_detail_html = f"""
+    <h2>Minnesota Electricity Benchmarks ({mn["source_year"]} EIA)</h2>
+    <p>Statewide electricity data is shown below so you can convert utility planning to <strong>cost per kWh</strong> and bill-impact math.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Benchmark</th>
+          <th>Minnesota</th>
+          <th>U.S.</th>
+          <th>Why it matters</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Average residential price</td><td>{mn["price_cents_per_kwh"]:.2f}¢/kWh</td><td>{mn["us_price_cents_per_kwh"]:.2f}¢/kWh</td><td>Rate baseline for appliance and heating-electricity planning</td></tr>
+        <tr><td>Average residential monthly usage</td><td>{mn["monthly_kwh"]} kWh</td><td>{mn["us_monthly_kwh"]} kWh</td><td>Usage benchmark for seasonal budget stress tests</td></tr>
+        <tr><td>Average residential monthly bill</td><td>${mn["monthly_bill_usd"]:.2f}</td><td>${mn["us_monthly_bill_usd"]:.2f}</td><td>Fast renter/owner utility budget anchor</td></tr>
+        <tr><td>Commercial average price</td><td>{mn["commercial_price_cents_per_kwh"]:.2f}¢/kWh</td><td>—</td><td>Small business and mixed-use property context</td></tr>
+        <tr><td>Industrial average price</td><td>{mn["industrial_price_cents_per_kwh"]:.2f}¢/kWh</td><td>—</td><td>Regional load and local economic-rate context</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Utility Snapshot Graph (Minnesota vs U.S.)</h2>
+    <p>The mini chart compares state and national utility intensity (price, usage, and bill) for quick decision support.</p>
+    <svg viewBox="0 0 620 230" role="img" aria-label="Minnesota vs United States electricity benchmark chart" style="max-width:100%;height:auto;border:1px solid #e5e7eb;border-radius:10px;background:#fff">
+      <line x1="60" y1="190" x2="600" y2="190" stroke="#cbd5e1" />
+      <line x1="60" y1="40" x2="60" y2="190" stroke="#cbd5e1" />
+      <text x="80" y="28" font-size="12" fill="#334155">Residential price (¢/kWh)</text>
+      <rect x="80" y="108" width="120" height="20" fill="#0ea5e9" />
+      <rect x="80" y="132" width="127" height="20" fill="#94a3b8" />
+      <text x="205" y="123" font-size="11" fill="#0f172a">MN {mn["price_cents_per_kwh"]:.2f}</text>
+      <text x="212" y="147" font-size="11" fill="#0f172a">US {mn["us_price_cents_per_kwh"]:.2f}</text>
+
+      <text x="260" y="28" font-size="12" fill="#334155">Monthly usage (kWh)</text>
+      <rect x="260" y="85" width="120" height="20" fill="#0ea5e9" />
+      <rect x="260" y="61" width="145" height="20" fill="#94a3b8" />
+      <text x="385" y="100" font-size="11" fill="#0f172a">MN {mn["monthly_kwh"]}</text>
+      <text x="410" y="76" font-size="11" fill="#0f172a">US {mn["us_monthly_kwh"]}</text>
+
+      <text x="430" y="28" font-size="12" fill="#334155">Monthly bill ($)</text>
+      <rect x="430" y="99" width="120" height="20" fill="#0ea5e9" />
+      <rect x="430" y="66" width="155" height="20" fill="#94a3b8" />
+      <text x="555" y="114" font-size="11" fill="#0f172a">MN {mn["monthly_bill_usd"]:.0f}</text>
+      <text x="590" y="81" font-size="11" fill="#0f172a">US {mn["us_monthly_bill_usd"]:.0f}</text>
+
+      <text x="80" y="212" font-size="11" fill="#475569">Blue = Minnesota</text>
+      <text x="210" y="212" font-size="11" fill="#475569">Gray = U.S. average</text>
+    </svg>
+
+    <h2>Useful Minnesota Utility Details</h2>
+    <ul class="list">
+      <li class="item"><strong>Customer base:</strong> {mn["customers"]:,} residential electricity customers in annual reporting.</li>
+      <li class="item"><strong>Positioning:</strong> Minnesota residential electricity pricing is {mn["price_rank_label"]} for the same reporting year.</li>
+      <li class="item"><strong>Budget conversion:</strong> Every additional 100 kWh/month is about ${(mn["price_cents_per_kwh"]):.2f} at the statewide average price.</li>
+      <li class="item"><strong>Source:</strong> {mn["source_note"]}</li>
+    </ul>
+"""
         desc = (
             f"{city_name}, {state_name} utility cost guide with electricity, gas, water, sewer, trash, "
             "internet, and mobile cost ratings plus monthly budget ranges."
@@ -251,6 +328,8 @@ def city_page_html(section: str, state_slug: str, city_name: str) -> str:
       <li class="item">Ask providers about autopay, paperless, and efficiency rebate credits.</li>
     </ul>
 
+{minnesota_detail_html}
+
     <h2>Explore More {city_name} and {state_name} Cost Pages</h2>
     <ul class="gridList">
       <li><a href="/utility-costs/{state_slug}/">Utility Costs in {state_name}</a></li>
@@ -298,12 +377,33 @@ def city_page_html(section: str, state_slug: str, city_name: str) -> str:
 """
 
 
-def refresh_existing_utility_city_pages() -> int:
+def read_minnesota_city_store() -> dict[str, str]:
+    csv_path = Path("data/minnesota_utility_city_store.csv")
+    slug_to_city: dict[str, str] = {}
+    if not csv_path.exists():
+        return slug_to_city
+    with csv_path.open("r", encoding="utf-8", newline="") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            slug = (row.get("city_slug") or "").strip().lower()
+            city = (row.get("city") or "").strip()
+            if slug and city:
+                slug_to_city[slug] = city
+    return slug_to_city
+
+
+def refresh_existing_utility_city_pages(state_slug_filter: str | None = None) -> int:
+    minnesota_city_map = read_minnesota_city_store()
     refreshed = 0
     for path in Path("utility-costs").glob("*/*/index.html"):
         state_slug = path.parts[1]
+        if state_slug_filter and state_slug != state_slug_filter:
+            continue
         city_slug = path.parts[2]
-        city_name = city_slug.replace("-", " ").title()
+        if state_slug == "minnesota":
+            city_name = minnesota_city_map.get(city_slug, city_slug.replace("-", " ").title())
+        else:
+            city_name = city_slug.replace("-", " ").title()
         path.write_text(city_page_html("utility-costs", state_slug, city_name), encoding="utf-8")
         refreshed += 1
     return refreshed
@@ -463,10 +563,17 @@ def main():
         action="store_true",
         help="Rewrite all existing /utility-costs/<state>/<city>/ pages with the latest utility city template.",
     )
+    ap.add_argument(
+        "--state",
+        type=str,
+        default=None,
+        help="Optional state slug filter for refresh modes (example: minnesota).",
+    )
     args = ap.parse_args()
 
     if args.refresh_utility_city_pages:
-        refreshed = refresh_existing_utility_city_pages()
+        state_filter = slugify(args.state) if args.state else None
+        refreshed = refresh_existing_utility_city_pages(state_filter)
         print(f"Refreshed utility city pages: {refreshed}.")
         return
 
