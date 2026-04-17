@@ -53,6 +53,36 @@ SECTION_META = {
     },
 }
 
+FEATURED_COUNTIES = [
+    "Los Angeles County, CA",
+    "Cook County, IL",
+    "Harris County, TX",
+    "Maricopa County, AZ",
+    "King County, WA",
+    "Miami-Dade County, FL",
+    "Clark County, NV",
+    "Wayne County, MI",
+    "Travis County, TX",
+    "Salt Lake County, UT",
+    "Wake County, NC",
+    "Allegheny County, PA",
+]
+
+FEATURED_CITIES = [
+    "New York, NY",
+    "Los Angeles, CA",
+    "Chicago, IL",
+    "Houston, TX",
+    "Phoenix, AZ",
+    "Philadelphia, PA",
+    "San Antonio, TX",
+    "San Diego, CA",
+    "Dallas, TX",
+    "Austin, TX",
+    "Jacksonville, FL",
+    "Columbus, OH",
+]
+
 
 def state_index_html(section: str, state_slug: str) -> str:
     state_name = US_STATES[state_slug]
@@ -157,6 +187,12 @@ def section_index_html(section: str) -> str:
         f'<li class="item"><a href="/{section}/{slug}/">{name}</a></li>'
         for slug, name in sorted(US_STATES.items(), key=lambda x: x[1])
     )
+    state_column_items = "\n".join(
+        f'<li><a href="/{section}/{slug}/">{name}</a></li>'
+        for slug, name in sorted(US_STATES.items(), key=lambda x: x[1])
+    )
+    county_items = "\n".join(f"<li>{county}</li>" for county in FEATURED_COUNTIES)
+    city_items = "\n".join(f"<li>{city}</li>" for city in FEATURED_CITIES)
     related_sections = "\n".join(
         f'<li class="item"><a href="/{other}/">{SECTION_META[other]["title"]}</a></li>'
         for other in SECTIONS if other != section
@@ -207,17 +243,50 @@ def section_index_html(section: str) -> str:
     <div class="grid">
       <div class="card">
         <h2>Included data & tools</h2>
+        <p>Quickly compare by state, then drill into county and city-level pages where available.</p>
         <ul class="list">
           <li class="item">{section_meta["summary"].capitalize()}</li>
           <li class="item">State-by-state pages with related category links</li>
           <li class="item">Crawlable links for every U.S. state</li>
+          <li class="item">User-friendly navigation designed for mobile and desktop</li>
         </ul>
       </div>
       <div class="card">
         <h2>Related categories</h2>
+        <p>Use matching pages to understand total cost pressure in the same location.</p>
         <ul class="list">
           {related_sections}
         </ul>
+      </div>
+    </div>
+
+    <div class="card compactTop">
+      <h2 class="sectionTitle">Pick a location: state → county → city</h2>
+      <p>Start with your state, then use county and city examples to refine comparisons and planning.</p>
+      <div class="selectionGrid">
+        <img class="selectionVisual" src="/assets/state-selection-visual.svg" alt="Illustration for selecting states, counties, and cities" loading="lazy" />
+        <div class="selectionColumns">
+          <div class="card">
+            <h3>States</h3>
+            <ul class="listColumns">
+              {state_column_items}
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Popular counties</h3>
+            <ul class="listColumns">
+              {county_items}
+            </ul>
+            <p class="mutedSmall">County-level detail varies by dataset and update cycle.</p>
+          </div>
+          <div class="card">
+            <h3>Popular cities</h3>
+            <ul class="listColumns">
+              {city_items}
+            </ul>
+            <p class="mutedSmall">City pages help benchmark local differences inside each state.</p>
+          </div>
+        </div>
       </div>
     </div>
 
