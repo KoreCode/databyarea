@@ -59,6 +59,54 @@
       </div>
 
       <div class="card">
+        <h2>Minnesota Electricity Benchmarks (EIA 2024)</h2>
+        <p>These statewide electricity benchmarks add decision-ready detail such as <strong>cost per kWh</strong>, monthly kWh usage, and bill impact.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Benchmark</th>
+              <th>Minnesota</th>
+              <th>U.S.</th>
+              <th>Planning use</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Residential average price</td><td>15.45¢/kWh</td><td>16.48¢/kWh</td><td>Cost-per-kWh baseline for appliance and HVAC estimates</td></tr>
+            <tr><td>Residential average monthly usage</td><td>712 kWh</td><td>863 kWh</td><td>Usage baseline for low/medium/high scenario modeling</td></tr>
+            <tr><td>Residential average monthly bill</td><td>$110.06</td><td>$142.26</td><td>Fast monthly budget anchor for relocations and underwriting</td></tr>
+            <tr><td>Commercial average price</td><td>12.15¢/kWh</td><td>—</td><td>Small-business and mixed-use property budgeting</td></tr>
+            <tr><td>Industrial average price</td><td>9.15¢/kWh</td><td>—</td><td>Regional load and utility infrastructure context</td></tr>
+          </tbody>
+        </table>
+        <p><small>Source: U.S. EIA annual Form 861 tables (published 2026), including 2024 state averages.</small></p>
+      </div>
+
+      <div class="card">
+        <h2>Graph: Minnesota vs U.S. electricity profile</h2>
+        <svg viewBox="0 0 620 230" role="img" aria-label="Minnesota versus United States electricity benchmark chart" style="max-width:100%;height:auto;border:1px solid #e5e7eb;border-radius:10px;background:#fff">
+          <line x1="60" y1="190" x2="600" y2="190" stroke="#cbd5e1" />
+          <line x1="60" y1="40" x2="60" y2="190" stroke="#cbd5e1" />
+          <text x="80" y="28" font-size="12" fill="#334155">Residential price (¢/kWh)</text>
+          <rect x="80" y="108" width="120" height="20" fill="#0ea5e9" />
+          <rect x="80" y="132" width="127" height="20" fill="#94a3b8" />
+          <text x="205" y="123" font-size="11" fill="#0f172a">MN 15.45</text>
+          <text x="212" y="147" font-size="11" fill="#0f172a">US 16.48</text>
+          <text x="260" y="28" font-size="12" fill="#334155">Monthly usage (kWh)</text>
+          <rect x="260" y="85" width="120" height="20" fill="#0ea5e9" />
+          <rect x="260" y="61" width="145" height="20" fill="#94a3b8" />
+          <text x="385" y="100" font-size="11" fill="#0f172a">MN 712</text>
+          <text x="410" y="76" font-size="11" fill="#0f172a">US 863</text>
+          <text x="430" y="28" font-size="12" fill="#334155">Monthly bill ($)</text>
+          <rect x="430" y="99" width="120" height="20" fill="#0ea5e9" />
+          <rect x="430" y="66" width="155" height="20" fill="#94a3b8" />
+          <text x="555" y="114" font-size="11" fill="#0f172a">MN 110</text>
+          <text x="590" y="81" font-size="11" fill="#0f172a">US 142</text>
+          <text x="80" y="212" font-size="11" fill="#475569">Blue = Minnesota</text>
+          <text x="210" y="212" font-size="11" fill="#475569">Gray = U.S. average</text>
+        </svg>
+      </div>
+
+      <div class="card">
         <h2>Related Minnesota pages</h2>
         <p>Explore other cost categories for Minnesota.</p>
         <ul class="list">
@@ -431,7 +479,7 @@
     <div class="footer">
       <p><strong>Disclaimer:</strong> Informational estimates only. Costs and rates vary by household, provider, and local area.</p>
       <p><a href="/about/">About</a> · <a href="/privacy/">Privacy Policy</a> · <a href="/contact/">Contact</a></p>
-      <p>Last updated: 2026-04-16</p>
+      <p>Last updated: 2026-04-17</p>
     </div>
   </div>
   <script defer src="/assets/version-footer.js"></script>
