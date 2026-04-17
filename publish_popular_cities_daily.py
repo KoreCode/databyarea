@@ -29,6 +29,7 @@ import json
 import re
 from datetime import datetime, timezone
 from pathlib import Path
+from html import escape
 
 SITE_NAME = "DataByArea"
 SITE_URL = "https://databyarea.com"
@@ -509,34 +510,76 @@ def ensure_state_index(section: str, state_slug: str):
 """
     idx.write_text(html, encoding="utf-8")
 
+def _existing_city_names_for_state(section: str, state_slug: str) -> list[str]:
+    """
+    Return city names from already-published city folders for this state/section.
+    """
+    state_dir = Path(section) / state_slug
+    if not state_dir.exists():
+        return []
+    names: list[str] = []
+    for city_index in sorted(state_dir.glob("*/index.html")):
+        city_slug = city_index.parent.name
+        if city_slug == "index":
+            continue
+        names.append(city_slug.replace("-", " ").title())
+    return names
+
+
+def _merged_city_names(state_slug: str, city_pairs: list[tuple[str, str]], section: str, max_links: int) -> list[str]:
+    """
+    Merge cities from CSV with cities already published on disk, preserving order and uniqueness.
+    """
+    csv_cities = [city for st, city in city_pairs if st == state_slug]
+    existing_cities = _existing_city_names_for_state(section, state_slug)
+
+    merged: list[str] = []
+    seen: set[str] = set()
+    for city in csv_cities + existing_cities:
+        city_clean = city.strip()
+        if not city_clean:
+            continue
+        key = slugify(city_clean)
+        if not key or key in seen:
+            continue
+        seen.add(key)
+        merged.append(city_clean)
+    return merged[:max_links]
+
+
 def inject_city_block(section: str, state_slug: str, city_pairs: list[tuple[str,str]], max_links: int = 24) -> bool:
     idx = Path(section) / state_slug / "index.html"
     if not idx.exists():
         return False
     html = idx.read_text(encoding="utf-8", errors="ignore")
-    if "<!-- POPULAR_CITIES:START -->" in html:
-        return False
 
     state_name = US_STATES[state_slug]
-    # pick cities for this state in the same order as the popular list
-    cities = [c for st, c in city_pairs if st == state_slug][:max_links]
+    cities = _merged_city_names(state_slug, city_pairs, section, max_links)
     if not cities:
         return False
 
     lis = "\n".join(
-        f'<li><a href="/{section}/{state_slug}/{slugify(c)}/">{c}</a></li>' for c in cities
+        f'<li><a class="cityLink" href="/{section}/{state_slug}/{slugify(c)}/">{escape(c)}</a></li>' for c in cities
     )
 
     block = f"""<!-- POPULAR_CITIES:START -->
 <div class="card">
 <h2 class="sectionTitle">Popular cities in {state_name}</h2>
-<ul class="gridList">
+<p class="cityListMeta">Browse {len(cities)} available city pages in {state_name}.</p>
+<ul class="gridList cityGrid">
 {lis}
 </ul>
 </div>
 <!-- POPULAR_CITIES:END -->"""
 
-    if "<!-- POPULAR_CITIES:ANCHOR -->" in html:
+    if "<!-- POPULAR_CITIES:START -->" in html and "<!-- POPULAR_CITIES:END -->" in html:
+        html = re.sub(
+            r"<!-- POPULAR_CITIES:START -->.*?<!-- POPULAR_CITIES:END -->",
+            block,
+            html,
+            flags=re.DOTALL,
+        )
+    elif "<!-- POPULAR_CITIES:ANCHOR -->" in html:
         html = html.replace("<!-- POPULAR_CITIES:ANCHOR -->", f"{block}\n\n    <!-- POPULAR_CITIES:ANCHOR -->")
     elif '<div class="footer">' in html:
         html = html.replace('<div class="footer">', f"{block}\n\n    <div class=\"footer\">", 1)
