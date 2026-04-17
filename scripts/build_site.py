@@ -3,6 +3,7 @@ import os
 import json
 import random
 from datetime import datetime
+from pathlib import Path
 from urllib.parse import urljoin
 import xml.etree.ElementTree as ET
 
@@ -17,6 +18,17 @@ SITEMAP_PATH = "sitemap.xml"
 ROBOTS_PATH = "robots.txt"
 ALLOW_OVERWRITE = False
 OUTPUT_ROOT = "."
+SITEMAP_EXCLUDE_DIRS = {
+    ".git",
+    "__pycache__",
+    "_deploy",
+    "assets",
+    "scripts",
+    "site",
+    "data",
+    "logs",
+    "node_modules",
+}
 
 # Ensure required legal pages exist (privacy-policy/terms)
 ENSURE_SYSTEM_PAGES = True
@@ -602,17 +614,41 @@ def build_page(slug: str, queue_slugs: list[str], published_map: dict) -> str:
 # SITEMAP + ROBOTS
  # SITEMAP + ROBOTS
 # =========================================================
+def iter_public_index_pages():
+    """
+    Yield tuples of (url_path, index_file_path) for public-facing index pages.
+    """
+    for root, dirs, files in os.walk(OUTPUT_ROOT):
+        rel_root = os.path.relpath(root, OUTPUT_ROOT)
+        if rel_root == ".":
+            rel_root = ""
+
+        # Prune non-public folders from crawl.
+        dirs[:] = [
+            d for d in dirs
+            if d not in SITEMAP_EXCLUDE_DIRS and not d.startswith(".")
+        ]
+
+        if "index.html" not in files:
+            continue
+
+        index_path = Path(root) / "index.html"
+        if rel_root:
+            url_path = "/" + rel_root.replace(os.sep, "/").strip("/") + "/"
+        else:
+            url_path = "/"
+        yield url_path, index_path
+
 def update_sitemap(manifest: dict):
     urlset = ET.Element("urlset", xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
+    pages = sorted(set(iter_public_index_pages()), key=lambda item: item[0])
 
-    home = ET.SubElement(urlset, "url")
-    ET.SubElement(home, "loc").text = SITE_URL.rstrip("/") + "/"
-    ET.SubElement(home, "lastmod").text = datetime.utcnow().strftime("%Y-%m-%d")
-
-    for slug, meta in manifest["published"].items():
+    for url_path, index_path in pages:
         u = ET.SubElement(urlset, "url")
-        ET.SubElement(u, "loc").text = urljoin(SITE_URL.rstrip("/") + "/", slug.strip("/") + "/")
-        ET.SubElement(u, "lastmod").text = meta.get("published_at", datetime.utcnow().strftime("%Y-%m-%d"))
+        ET.SubElement(u, "loc").text = urljoin(SITE_URL.rstrip("/") + "/", url_path.lstrip("/"))
+        ET.SubElement(u, "lastmod").text = datetime.utcfromtimestamp(
+            index_path.stat().st_mtime
+        ).strftime("%Y-%m-%d")
 
     ET.ElementTree(urlset).write(SITEMAP_PATH, encoding="utf-8", xml_declaration=True)
 
