@@ -353,6 +353,20 @@ a:focus-visible{
 .selectionColumns{
   display:grid;
   gap:12px;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+}
+
+.selectionColumns .card{
+  min-width:0;
+}
+
+.selectionColumns .listColumns{
+  columns:1;
+  column-gap:0;
+}
+
+.selectionColumns li{
+  overflow-wrap:anywhere;
 }
 
 .mutedSmall{
@@ -394,7 +408,7 @@ a:focus-visible{
   }
 
   .selectionColumns{
-    grid-template-columns:repeat(3,minmax(0,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
   }
 
   .listColumns{
@@ -458,4 +472,5 @@ a:focus-visible{
 
 @media (min-width:1200px){
   .listColumns{columns:3;}
+  .selectionColumns .listColumns{columns:1;}
 }
