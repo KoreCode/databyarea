@@ -32,6 +32,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `cost-of-living/alaska/`
     - `cost-of-living/alaska/index.html`
   - `cost-of-living/arizona/`
+    - `cost-of-living/arizona/maricopa-county/`
+      - `cost-of-living/arizona/maricopa-county/index.html`
     - `cost-of-living/arizona/mesa/`
       - `cost-of-living/arizona/mesa/index.html`
     - `cost-of-living/arizona/phoenix/`
@@ -42,8 +44,14 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `cost-of-living/arkansas/`
     - `cost-of-living/arkansas/index.html`
   - `cost-of-living/california/`
+    - `cost-of-living/california/los-angeles-county/`
+      - `cost-of-living/california/los-angeles-county/index.html`
+    - `cost-of-living/california/orange-county/`
+      - `cost-of-living/california/orange-county/index.html`
     - `cost-of-living/california/oxnard/`
       - `cost-of-living/california/oxnard/index.html`
+    - `cost-of-living/california/san-diego-county/`
+      - `cost-of-living/california/san-diego-county/index.html`
     - `cost-of-living/california/santa-ana/`
       - `cost-of-living/california/santa-ana/index.html`
     - `cost-of-living/california/stockton/`
@@ -56,6 +64,12 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `cost-of-living/delaware/`
     - `cost-of-living/delaware/index.html`
   - `cost-of-living/florida/`
+    - `cost-of-living/florida/hillsborough-county/`
+      - `cost-of-living/florida/hillsborough-county/index.html`
+    - `cost-of-living/florida/miami-dade-county/`
+      - `cost-of-living/florida/miami-dade-county/index.html`
+    - `cost-of-living/florida/orange-county/`
+      - `cost-of-living/florida/orange-county/index.html`
     - `cost-of-living/florida/index.html`
   - `cost-of-living/georgia/`
     - `cost-of-living/georgia/index.html`
@@ -64,6 +78,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `cost-of-living/idaho/`
     - `cost-of-living/idaho/index.html`
   - `cost-of-living/illinois/`
+    - `cost-of-living/illinois/cook-county/`
+      - `cost-of-living/illinois/cook-county/index.html`
     - `cost-of-living/illinois/index.html`
   - `cost-of-living/indiana/`
     - `cost-of-living/indiana/indianapolis/`
@@ -90,6 +106,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `cost-of-living/massachusetts/`
     - `cost-of-living/massachusetts/index.html`
   - `cost-of-living/michigan/`
+    - `cost-of-living/michigan/wayne-county/`
+      - `cost-of-living/michigan/wayne-county/index.html`
     - `cost-of-living/michigan/index.html`
   - `cost-of-living/minnesota/`
     - `cost-of-living/minnesota/index.html`
@@ -104,6 +122,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `cost-of-living/nebraska/`
     - `cost-of-living/nebraska/index.html`
   - `cost-of-living/nevada/`
+    - `cost-of-living/nevada/clark-county/`
+      - `cost-of-living/nevada/clark-county/index.html`
     - `cost-of-living/nevada/las-vegas/`
       - `cost-of-living/nevada/las-vegas/index.html`
     - `cost-of-living/nevada/index.html`
@@ -116,24 +136,40 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `cost-of-living/new-mexico/`
     - `cost-of-living/new-mexico/index.html`
   - `cost-of-living/new-york/`
+    - `cost-of-living/new-york/kings-county/`
+      - `cost-of-living/new-york/kings-county/index.html`
     - `cost-of-living/new-york/new-york/`
       - `cost-of-living/new-york/new-york/index.html`
+    - `cost-of-living/new-york/new-york-county/`
+      - `cost-of-living/new-york/new-york-county/index.html`
+    - `cost-of-living/new-york/queens-county/`
+      - `cost-of-living/new-york/queens-county/index.html`
     - `cost-of-living/new-york/yonkers/`
       - `cost-of-living/new-york/yonkers/index.html`
     - `cost-of-living/new-york/index.html`
   - `cost-of-living/north-carolina/`
     - `cost-of-living/north-carolina/raleigh/`
       - `cost-of-living/north-carolina/raleigh/index.html`
+    - `cost-of-living/north-carolina/wake-county/`
+      - `cost-of-living/north-carolina/wake-county/index.html`
     - `cost-of-living/north-carolina/index.html`
   - `cost-of-living/north-dakota/`
     - `cost-of-living/north-dakota/index.html`
   - `cost-of-living/ohio/`
+    - `cost-of-living/ohio/cuyahoga-county/`
+      - `cost-of-living/ohio/cuyahoga-county/index.html`
+    - `cost-of-living/ohio/franklin-county/`
+      - `cost-of-living/ohio/franklin-county/index.html`
     - `cost-of-living/ohio/index.html`
   - `cost-of-living/oklahoma/`
     - `cost-of-living/oklahoma/index.html`
   - `cost-of-living/oregon/`
     - `cost-of-living/oregon/index.html`
   - `cost-of-living/pennsylvania/`
+    - `cost-of-living/pennsylvania/allegheny-county/`
+      - `cost-of-living/pennsylvania/allegheny-county/index.html`
+    - `cost-of-living/pennsylvania/philadelphia-county/`
+      - `cost-of-living/pennsylvania/philadelphia-county/index.html`
     - `cost-of-living/pennsylvania/pittsburgh/`
       - `cost-of-living/pennsylvania/pittsburgh/index.html`
     - `cost-of-living/pennsylvania/index.html`
@@ -154,16 +190,26 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `cost-of-living/texas/`
     - `cost-of-living/texas/arlington/`
       - `cost-of-living/texas/arlington/index.html`
+    - `cost-of-living/texas/bexar-county/`
+      - `cost-of-living/texas/bexar-county/index.html`
     - `cost-of-living/texas/dallas/`
       - `cost-of-living/texas/dallas/index.html`
+    - `cost-of-living/texas/dallas-county/`
+      - `cost-of-living/texas/dallas-county/index.html`
     - `cost-of-living/texas/el-paso/`
       - `cost-of-living/texas/el-paso/index.html`
     - `cost-of-living/texas/fort-worth/`
       - `cost-of-living/texas/fort-worth/index.html`
+    - `cost-of-living/texas/harris-county/`
+      - `cost-of-living/texas/harris-county/index.html`
     - `cost-of-living/texas/irving/`
       - `cost-of-living/texas/irving/index.html`
+    - `cost-of-living/texas/travis-county/`
+      - `cost-of-living/texas/travis-county/index.html`
     - `cost-of-living/texas/index.html`
   - `cost-of-living/utah/`
+    - `cost-of-living/utah/salt-lake-county/`
+      - `cost-of-living/utah/salt-lake-county/index.html`
     - `cost-of-living/utah/index.html`
   - `cost-of-living/vermont/`
     - `cost-of-living/vermont/index.html`
@@ -172,6 +218,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
       - `cost-of-living/virginia/virginia-beach/index.html`
     - `cost-of-living/virginia/index.html`
   - `cost-of-living/washington/`
+    - `cost-of-living/washington/king-county/`
+      - `cost-of-living/washington/king-county/index.html`
     - `cost-of-living/washington/tacoma/`
       - `cost-of-living/washington/tacoma/index.html`
     - `cost-of-living/washington/index.html`
@@ -191,6 +239,9 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `data/published_manifest.json`
 - `deck-building-cost-by-state/`
   - `deck-building-cost-by-state/index.html`
+- `docs/`
+  - `docs/monetization_admin_server_plan.md`
+  - `docs/ux_ui_strategy_databyarea.md`
 - `electrician-rates-by-state/`
   - `electrician-rates-by-state/index.html`
 - `foundation-repair-cost-by-state/`
@@ -207,6 +258,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `insurance-costs/alaska/`
     - `insurance-costs/alaska/index.html`
   - `insurance-costs/arizona/`
+    - `insurance-costs/arizona/maricopa-county/`
+      - `insurance-costs/arizona/maricopa-county/index.html`
     - `insurance-costs/arizona/index.html`
   - `insurance-costs/arkansas/`
     - `insurance-costs/arkansas/index.html`
@@ -217,12 +270,18 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
       - `insurance-costs/california/fremont/index.html`
     - `insurance-costs/california/huntington-beach/`
       - `insurance-costs/california/huntington-beach/index.html`
+    - `insurance-costs/california/los-angeles-county/`
+      - `insurance-costs/california/los-angeles-county/index.html`
     - `insurance-costs/california/modesto/`
       - `insurance-costs/california/modesto/index.html`
+    - `insurance-costs/california/orange-county/`
+      - `insurance-costs/california/orange-county/index.html`
     - `insurance-costs/california/riverside/`
       - `insurance-costs/california/riverside/index.html`
     - `insurance-costs/california/san-diego/`
       - `insurance-costs/california/san-diego/index.html`
+    - `insurance-costs/california/san-diego-county/`
+      - `insurance-costs/california/san-diego-county/index.html`
     - `insurance-costs/california/index.html`
   - `insurance-costs/colorado/`
     - `insurance-costs/colorado/index.html`
@@ -231,8 +290,14 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `insurance-costs/delaware/`
     - `insurance-costs/delaware/index.html`
   - `insurance-costs/florida/`
+    - `insurance-costs/florida/hillsborough-county/`
+      - `insurance-costs/florida/hillsborough-county/index.html`
     - `insurance-costs/florida/jacksonville/`
       - `insurance-costs/florida/jacksonville/index.html`
+    - `insurance-costs/florida/miami-dade-county/`
+      - `insurance-costs/florida/miami-dade-county/index.html`
+    - `insurance-costs/florida/orange-county/`
+      - `insurance-costs/florida/orange-county/index.html`
     - `insurance-costs/florida/tampa/`
       - `insurance-costs/florida/tampa/index.html`
     - `insurance-costs/florida/index.html`
@@ -245,6 +310,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `insurance-costs/idaho/`
     - `insurance-costs/idaho/index.html`
   - `insurance-costs/illinois/`
+    - `insurance-costs/illinois/cook-county/`
+      - `insurance-costs/illinois/cook-county/index.html`
     - `insurance-costs/illinois/index.html`
   - `insurance-costs/indiana/`
     - `insurance-costs/indiana/index.html`
@@ -269,6 +336,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
       - `insurance-costs/massachusetts/boston/index.html`
     - `insurance-costs/massachusetts/index.html`
   - `insurance-costs/michigan/`
+    - `insurance-costs/michigan/wayne-county/`
+      - `insurance-costs/michigan/wayne-county/index.html`
     - `insurance-costs/michigan/index.html`
   - `insurance-costs/minnesota/`
     - `insurance-costs/minnesota/index.html`
@@ -283,6 +352,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
       - `insurance-costs/nebraska/omaha/index.html`
     - `insurance-costs/nebraska/index.html`
   - `insurance-costs/nevada/`
+    - `insurance-costs/nevada/clark-county/`
+      - `insurance-costs/nevada/clark-county/index.html`
     - `insurance-costs/nevada/index.html`
   - `insurance-costs/new-hampshire/`
     - `insurance-costs/new-hampshire/index.html`
@@ -295,12 +366,20 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
       - `insurance-costs/new-mexico/albuquerque/index.html`
     - `insurance-costs/new-mexico/index.html`
   - `insurance-costs/new-york/`
+    - `insurance-costs/new-york/kings-county/`
+      - `insurance-costs/new-york/kings-county/index.html`
+    - `insurance-costs/new-york/new-york-county/`
+      - `insurance-costs/new-york/new-york-county/index.html`
+    - `insurance-costs/new-york/queens-county/`
+      - `insurance-costs/new-york/queens-county/index.html`
     - `insurance-costs/new-york/rochester/`
       - `insurance-costs/new-york/rochester/index.html`
     - `insurance-costs/new-york/index.html`
   - `insurance-costs/north-carolina/`
     - `insurance-costs/north-carolina/charlotte/`
       - `insurance-costs/north-carolina/charlotte/index.html`
+    - `insurance-costs/north-carolina/wake-county/`
+      - `insurance-costs/north-carolina/wake-county/index.html`
     - `insurance-costs/north-carolina/index.html`
   - `insurance-costs/north-dakota/`
     - `insurance-costs/north-dakota/fargo/`
@@ -309,6 +388,10 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `insurance-costs/ohio/`
     - `insurance-costs/ohio/cincinnati/`
       - `insurance-costs/ohio/cincinnati/index.html`
+    - `insurance-costs/ohio/cuyahoga-county/`
+      - `insurance-costs/ohio/cuyahoga-county/index.html`
+    - `insurance-costs/ohio/franklin-county/`
+      - `insurance-costs/ohio/franklin-county/index.html`
     - `insurance-costs/ohio/index.html`
   - `insurance-costs/oklahoma/`
     - `insurance-costs/oklahoma/index.html`
@@ -317,6 +400,10 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
       - `insurance-costs/oregon/portland/index.html`
     - `insurance-costs/oregon/index.html`
   - `insurance-costs/pennsylvania/`
+    - `insurance-costs/pennsylvania/allegheny-county/`
+      - `insurance-costs/pennsylvania/allegheny-county/index.html`
+    - `insurance-costs/pennsylvania/philadelphia-county/`
+      - `insurance-costs/pennsylvania/philadelphia-county/index.html`
     - `insurance-costs/pennsylvania/index.html`
   - `insurance-costs/rhode-island/`
     - `insurance-costs/rhode-island/index.html`
@@ -327,14 +414,24 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `insurance-costs/tennessee/`
     - `insurance-costs/tennessee/index.html`
   - `insurance-costs/texas/`
+    - `insurance-costs/texas/bexar-county/`
+      - `insurance-costs/texas/bexar-county/index.html`
     - `insurance-costs/texas/corpus-christi/`
       - `insurance-costs/texas/corpus-christi/index.html`
+    - `insurance-costs/texas/dallas-county/`
+      - `insurance-costs/texas/dallas-county/index.html`
+    - `insurance-costs/texas/harris-county/`
+      - `insurance-costs/texas/harris-county/index.html`
     - `insurance-costs/texas/houston/`
       - `insurance-costs/texas/houston/index.html`
+    - `insurance-costs/texas/travis-county/`
+      - `insurance-costs/texas/travis-county/index.html`
     - `insurance-costs/texas/index.html`
   - `insurance-costs/utah/`
     - `insurance-costs/utah/salt-lake-city/`
       - `insurance-costs/utah/salt-lake-city/index.html`
+    - `insurance-costs/utah/salt-lake-county/`
+      - `insurance-costs/utah/salt-lake-county/index.html`
     - `insurance-costs/utah/west-valley-city/`
       - `insurance-costs/utah/west-valley-city/index.html`
     - `insurance-costs/utah/index.html`
@@ -345,6 +442,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `insurance-costs/virginia/`
     - `insurance-costs/virginia/index.html`
   - `insurance-costs/washington/`
+    - `insurance-costs/washington/king-county/`
+      - `insurance-costs/washington/king-county/index.html`
     - `insurance-costs/washington/spokane/`
       - `insurance-costs/washington/spokane/index.html`
     - `insurance-costs/washington/index.html`
@@ -369,6 +468,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `property-taxes/arizona/`
     - `property-taxes/arizona/gilbert/`
       - `property-taxes/arizona/gilbert/index.html`
+    - `property-taxes/arizona/maricopa-county/`
+      - `property-taxes/arizona/maricopa-county/index.html`
     - `property-taxes/arizona/index.html`
   - `property-taxes/arkansas/`
     - `property-taxes/arkansas/index.html`
@@ -377,12 +478,18 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
       - `property-taxes/california/bakersfield/index.html`
     - `property-taxes/california/chula-vista/`
       - `property-taxes/california/chula-vista/index.html`
+    - `property-taxes/california/los-angeles-county/`
+      - `property-taxes/california/los-angeles-county/index.html`
     - `property-taxes/california/moreno-valley/`
       - `property-taxes/california/moreno-valley/index.html`
+    - `property-taxes/california/orange-county/`
+      - `property-taxes/california/orange-county/index.html`
     - `property-taxes/california/sacramento/`
       - `property-taxes/california/sacramento/index.html`
     - `property-taxes/california/san-bernardino/`
       - `property-taxes/california/san-bernardino/index.html`
+    - `property-taxes/california/san-diego-county/`
+      - `property-taxes/california/san-diego-county/index.html`
     - `property-taxes/california/san-francisco/`
       - `property-taxes/california/san-francisco/index.html`
     - `property-taxes/california/index.html`
@@ -399,8 +506,14 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `property-taxes/delaware/`
     - `property-taxes/delaware/index.html`
   - `property-taxes/florida/`
+    - `property-taxes/florida/hillsborough-county/`
+      - `property-taxes/florida/hillsborough-county/index.html`
     - `property-taxes/florida/miami/`
       - `property-taxes/florida/miami/index.html`
+    - `property-taxes/florida/miami-dade-county/`
+      - `property-taxes/florida/miami-dade-county/index.html`
+    - `property-taxes/florida/orange-county/`
+      - `property-taxes/florida/orange-county/index.html`
     - `property-taxes/florida/st-petersburg/`
       - `property-taxes/florida/st-petersburg/index.html`
     - `property-taxes/florida/index.html`
@@ -415,6 +528,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `property-taxes/illinois/`
     - `property-taxes/illinois/chicago/`
       - `property-taxes/illinois/chicago/index.html`
+    - `property-taxes/illinois/cook-county/`
+      - `property-taxes/illinois/cook-county/index.html`
     - `property-taxes/illinois/index.html`
   - `property-taxes/indiana/`
     - `property-taxes/indiana/index.html`
@@ -433,6 +548,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `property-taxes/massachusetts/`
     - `property-taxes/massachusetts/index.html`
   - `property-taxes/michigan/`
+    - `property-taxes/michigan/wayne-county/`
+      - `property-taxes/michigan/wayne-county/index.html`
     - `property-taxes/michigan/index.html`
   - `property-taxes/minnesota/`
     - `property-taxes/minnesota/minneapolis/`
@@ -449,6 +566,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `property-taxes/nebraska/`
     - `property-taxes/nebraska/index.html`
   - `property-taxes/nevada/`
+    - `property-taxes/nevada/clark-county/`
+      - `property-taxes/nevada/clark-county/index.html`
     - `property-taxes/nevada/index.html`
   - `property-taxes/new-hampshire/`
     - `property-taxes/new-hampshire/index.html`
@@ -459,14 +578,26 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `property-taxes/new-york/`
     - `property-taxes/new-york/buffalo/`
       - `property-taxes/new-york/buffalo/index.html`
+    - `property-taxes/new-york/kings-county/`
+      - `property-taxes/new-york/kings-county/index.html`
+    - `property-taxes/new-york/new-york-county/`
+      - `property-taxes/new-york/new-york-county/index.html`
+    - `property-taxes/new-york/queens-county/`
+      - `property-taxes/new-york/queens-county/index.html`
     - `property-taxes/new-york/index.html`
   - `property-taxes/north-carolina/`
+    - `property-taxes/north-carolina/wake-county/`
+      - `property-taxes/north-carolina/wake-county/index.html`
     - `property-taxes/north-carolina/index.html`
   - `property-taxes/north-dakota/`
     - `property-taxes/north-dakota/index.html`
   - `property-taxes/ohio/`
     - `property-taxes/ohio/cleveland/`
       - `property-taxes/ohio/cleveland/index.html`
+    - `property-taxes/ohio/cuyahoga-county/`
+      - `property-taxes/ohio/cuyahoga-county/index.html`
+    - `property-taxes/ohio/franklin-county/`
+      - `property-taxes/ohio/franklin-county/index.html`
     - `property-taxes/ohio/index.html`
   - `property-taxes/oklahoma/`
     - `property-taxes/oklahoma/oklahoma-city/`
@@ -475,6 +606,10 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `property-taxes/oregon/`
     - `property-taxes/oregon/index.html`
   - `property-taxes/pennsylvania/`
+    - `property-taxes/pennsylvania/allegheny-county/`
+      - `property-taxes/pennsylvania/allegheny-county/index.html`
+    - `property-taxes/pennsylvania/philadelphia-county/`
+      - `property-taxes/pennsylvania/philadelphia-county/index.html`
     - `property-taxes/pennsylvania/index.html`
   - `property-taxes/rhode-island/`
     - `property-taxes/rhode-island/providence/`
@@ -491,14 +626,24 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
       - `property-taxes/texas/amarillo/index.html`
     - `property-taxes/texas/austin/`
       - `property-taxes/texas/austin/index.html`
+    - `property-taxes/texas/bexar-county/`
+      - `property-taxes/texas/bexar-county/index.html`
+    - `property-taxes/texas/dallas-county/`
+      - `property-taxes/texas/dallas-county/index.html`
+    - `property-taxes/texas/harris-county/`
+      - `property-taxes/texas/harris-county/index.html`
     - `property-taxes/texas/lubbock/`
       - `property-taxes/texas/lubbock/index.html`
     - `property-taxes/texas/san-antonio/`
       - `property-taxes/texas/san-antonio/index.html`
+    - `property-taxes/texas/travis-county/`
+      - `property-taxes/texas/travis-county/index.html`
     - `property-taxes/texas/index.html`
   - `property-taxes/utah/`
     - `property-taxes/utah/provo/`
       - `property-taxes/utah/provo/index.html`
+    - `property-taxes/utah/salt-lake-county/`
+      - `property-taxes/utah/salt-lake-county/index.html`
     - `property-taxes/utah/index.html`
   - `property-taxes/vermont/`
     - `property-taxes/vermont/index.html`
@@ -507,6 +652,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
       - `property-taxes/virginia/norfolk/index.html`
     - `property-taxes/virginia/index.html`
   - `property-taxes/washington/`
+    - `property-taxes/washington/king-county/`
+      - `property-taxes/washington/king-county/index.html`
     - `property-taxes/washington/index.html`
   - `property-taxes/west-virginia/`
     - `property-taxes/west-virginia/index.html`
@@ -662,6 +809,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `utility-costs/arizona/`
     - `utility-costs/arizona/chandler/`
       - `utility-costs/arizona/chandler/index.html`
+    - `utility-costs/arizona/maricopa-county/`
+      - `utility-costs/arizona/maricopa-county/index.html`
     - `utility-costs/arizona/index.html`
   - `utility-costs/arkansas/`
     - `utility-costs/arkansas/little-rock/`
@@ -678,8 +827,14 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
       - `utility-costs/california/long-beach/index.html`
     - `utility-costs/california/los-angeles/`
       - `utility-costs/california/los-angeles/index.html`
+    - `utility-costs/california/los-angeles-county/`
+      - `utility-costs/california/los-angeles-county/index.html`
     - `utility-costs/california/oakland/`
       - `utility-costs/california/oakland/index.html`
+    - `utility-costs/california/orange-county/`
+      - `utility-costs/california/orange-county/index.html`
+    - `utility-costs/california/san-diego-county/`
+      - `utility-costs/california/san-diego-county/index.html`
     - `utility-costs/california/san-jose/`
       - `utility-costs/california/san-jose/index.html`
     - `utility-costs/california/santa-clarita/`
@@ -694,6 +849,12 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
       - `utility-costs/delaware/wilmington/index.html`
     - `utility-costs/delaware/index.html`
   - `utility-costs/florida/`
+    - `utility-costs/florida/hillsborough-county/`
+      - `utility-costs/florida/hillsborough-county/index.html`
+    - `utility-costs/florida/miami-dade-county/`
+      - `utility-costs/florida/miami-dade-county/index.html`
+    - `utility-costs/florida/orange-county/`
+      - `utility-costs/florida/orange-county/index.html`
     - `utility-costs/florida/orlando/`
       - `utility-costs/florida/orlando/index.html`
     - `utility-costs/florida/index.html`
@@ -706,6 +867,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `utility-costs/idaho/`
     - `utility-costs/idaho/index.html`
   - `utility-costs/illinois/`
+    - `utility-costs/illinois/cook-county/`
+      - `utility-costs/illinois/cook-county/index.html`
     - `utility-costs/illinois/index.html`
   - `utility-costs/indiana/`
     - `utility-costs/indiana/index.html`
@@ -730,6 +893,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `utility-costs/michigan/`
     - `utility-costs/michigan/detroit/`
       - `utility-costs/michigan/detroit/index.html`
+    - `utility-costs/michigan/wayne-county/`
+      - `utility-costs/michigan/wayne-county/index.html`
     - `utility-costs/michigan/index.html`
   - `utility-costs/minnesota/`
     - `utility-costs/minnesota/ada/`
@@ -1438,6 +1603,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `utility-costs/nebraska/`
     - `utility-costs/nebraska/index.html`
   - `utility-costs/nevada/`
+    - `utility-costs/nevada/clark-county/`
+      - `utility-costs/nevada/clark-county/index.html`
     - `utility-costs/nevada/reno/`
       - `utility-costs/nevada/reno/index.html`
     - `utility-costs/nevada/index.html`
@@ -1450,22 +1617,38 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `utility-costs/new-mexico/`
     - `utility-costs/new-mexico/index.html`
   - `utility-costs/new-york/`
+    - `utility-costs/new-york/kings-county/`
+      - `utility-costs/new-york/kings-county/index.html`
+    - `utility-costs/new-york/new-york-county/`
+      - `utility-costs/new-york/new-york-county/index.html`
+    - `utility-costs/new-york/queens-county/`
+      - `utility-costs/new-york/queens-county/index.html`
     - `utility-costs/new-york/index.html`
   - `utility-costs/north-carolina/`
+    - `utility-costs/north-carolina/wake-county/`
+      - `utility-costs/north-carolina/wake-county/index.html`
     - `utility-costs/north-carolina/index.html`
   - `utility-costs/north-dakota/`
     - `utility-costs/north-dakota/index.html`
   - `utility-costs/ohio/`
     - `utility-costs/ohio/columbus/`
       - `utility-costs/ohio/columbus/index.html`
+    - `utility-costs/ohio/cuyahoga-county/`
+      - `utility-costs/ohio/cuyahoga-county/index.html`
+    - `utility-costs/ohio/franklin-county/`
+      - `utility-costs/ohio/franklin-county/index.html`
     - `utility-costs/ohio/index.html`
   - `utility-costs/oklahoma/`
     - `utility-costs/oklahoma/index.html`
   - `utility-costs/oregon/`
     - `utility-costs/oregon/index.html`
   - `utility-costs/pennsylvania/`
+    - `utility-costs/pennsylvania/allegheny-county/`
+      - `utility-costs/pennsylvania/allegheny-county/index.html`
     - `utility-costs/pennsylvania/philadelphia/`
       - `utility-costs/pennsylvania/philadelphia/index.html`
+    - `utility-costs/pennsylvania/philadelphia-county/`
+      - `utility-costs/pennsylvania/philadelphia-county/index.html`
     - `utility-costs/pennsylvania/index.html`
   - `utility-costs/rhode-island/`
     - `utility-costs/rhode-island/index.html`
@@ -1478,12 +1661,22 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `utility-costs/tennessee/`
     - `utility-costs/tennessee/index.html`
   - `utility-costs/texas/`
+    - `utility-costs/texas/bexar-county/`
+      - `utility-costs/texas/bexar-county/index.html`
+    - `utility-costs/texas/dallas-county/`
+      - `utility-costs/texas/dallas-county/index.html`
     - `utility-costs/texas/garland/`
       - `utility-costs/texas/garland/index.html`
+    - `utility-costs/texas/harris-county/`
+      - `utility-costs/texas/harris-county/index.html`
     - `utility-costs/texas/plano/`
       - `utility-costs/texas/plano/index.html`
+    - `utility-costs/texas/travis-county/`
+      - `utility-costs/texas/travis-county/index.html`
     - `utility-costs/texas/index.html`
   - `utility-costs/utah/`
+    - `utility-costs/utah/salt-lake-county/`
+      - `utility-costs/utah/salt-lake-county/index.html`
     - `utility-costs/utah/index.html`
   - `utility-costs/vermont/`
     - `utility-costs/vermont/index.html`
@@ -1492,6 +1685,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
       - `utility-costs/virginia/richmond/index.html`
     - `utility-costs/virginia/index.html`
   - `utility-costs/washington/`
+    - `utility-costs/washington/king-county/`
+      - `utility-costs/washington/king-county/index.html`
     - `utility-costs/washington/seattle/`
       - `utility-costs/washington/seattle/index.html`
     - `utility-costs/washington/index.html`
@@ -1523,6 +1718,7 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
 - `FULL_AUTOMATION_SINGLE_GENERATOR.md`
 - `index.html`
 - `index_everywhere.py`
+- `LEAFLET_GEOJSON_STEPS.md`
 - `makesitemap.py`
 - `newfile.py`
 - `one_button_daily.py`
