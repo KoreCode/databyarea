@@ -149,6 +149,24 @@ MINNESOTA_UTILITY_BENCHMARK_2024 = {
     ),
 }
 
+
+LOCAL_CITY_PROFILE_OVERRIDES = {
+    ("minnesota", "kiester"): {
+        "stateCode": "MN",
+        "county": "Faribault County",
+        "zip": "56051",
+        "lat": 43.5426,
+        "lng": -94.4986,
+        "population": "485",
+        "medianHome": "$115k",
+        "medianIncome": "$52.4k",
+        "schools": "B+ Rating",
+        "electricityAvg": "$115/mo avg",
+        "gasAvg": "$70/mo avg",
+        "waterAvg": "$55/mo avg",
+    },
+}
+
 def slugify(s: str) -> str:
     s = s.strip().lower()
     s = s.replace(".", "")
@@ -209,6 +227,8 @@ def read_popular_list() -> list[tuple[str,str]]:
         final.append((st, city))
     return final
 
+
+
 def city_page_html(section: str, state_slug: str, city_name: str) -> str:
     today = datetime.utcnow().strftime("%Y-%m-%d")
     state_name = US_STATES.get(state_slug, state_slug.replace("-", " ").title())
@@ -219,183 +239,206 @@ def city_page_html(section: str, state_slug: str, city_name: str) -> str:
     canonical = f"{SITE_URL}/{section}/{state_slug}/{city_slug}/"
 
     if section == "utility-costs":
-        mn = MINNESOTA_UTILITY_BENCHMARK_2024
-        minnesota_detail_html = ""
-        if state_slug == "minnesota":
-            minnesota_detail_html = f"""
-    <h2>Minnesota Electricity Benchmarks ({mn["source_year"]} EIA)</h2>
-    <p>Statewide electricity data is shown below so you can convert utility planning to <strong>cost per kWh</strong> and bill-impact math.</p>
-    <table>
-      <thead>
-        <tr>
-          <th>Benchmark</th>
-          <th>Minnesota</th>
-          <th>U.S.</th>
-          <th>Why it matters</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Average residential price</td><td>{mn["price_cents_per_kwh"]:.2f}¢/kWh</td><td>{mn["us_price_cents_per_kwh"]:.2f}¢/kWh</td><td>Rate baseline for appliance and heating-electricity planning</td></tr>
-        <tr><td>Average residential monthly usage</td><td>{mn["monthly_kwh"]} kWh</td><td>{mn["us_monthly_kwh"]} kWh</td><td>Usage benchmark for seasonal budget stress tests</td></tr>
-        <tr><td>Average residential monthly bill</td><td>${mn["monthly_bill_usd"]:.2f}</td><td>${mn["us_monthly_bill_usd"]:.2f}</td><td>Fast renter/owner utility budget anchor</td></tr>
-        <tr><td>Commercial average price</td><td>{mn["commercial_price_cents_per_kwh"]:.2f}¢/kWh</td><td>—</td><td>Small business and mixed-use property context</td></tr>
-        <tr><td>Industrial average price</td><td>{mn["industrial_price_cents_per_kwh"]:.2f}¢/kWh</td><td>—</td><td>Regional load and local economic-rate context</td></tr>
-      </tbody>
-    </table>
-
-    <h2>Utility Snapshot Graph (Minnesota vs U.S.)</h2>
-    <p>The mini chart compares state and national utility intensity (price, usage, and bill) for quick decision support.</p>
-    <svg viewBox="0 0 620 230" role="img" aria-label="Minnesota vs United States electricity benchmark chart" style="max-width:100%;height:auto;border:1px solid #e5e7eb;border-radius:10px;background:#fff">
-      <line x1="60" y1="190" x2="600" y2="190" stroke="#cbd5e1" />
-      <line x1="60" y1="40" x2="60" y2="190" stroke="#cbd5e1" />
-      <text x="80" y="28" font-size="12" fill="#334155">Residential price (¢/kWh)</text>
-      <rect x="80" y="108" width="120" height="20" fill="#0ea5e9" />
-      <rect x="80" y="132" width="127" height="20" fill="#94a3b8" />
-      <text x="205" y="123" font-size="11" fill="#0f172a">MN {mn["price_cents_per_kwh"]:.2f}</text>
-      <text x="212" y="147" font-size="11" fill="#0f172a">US {mn["us_price_cents_per_kwh"]:.2f}</text>
-
-      <text x="260" y="28" font-size="12" fill="#334155">Monthly usage (kWh)</text>
-      <rect x="260" y="85" width="120" height="20" fill="#0ea5e9" />
-      <rect x="260" y="61" width="145" height="20" fill="#94a3b8" />
-      <text x="385" y="100" font-size="11" fill="#0f172a">MN {mn["monthly_kwh"]}</text>
-      <text x="410" y="76" font-size="11" fill="#0f172a">US {mn["us_monthly_kwh"]}</text>
-
-      <text x="430" y="28" font-size="12" fill="#334155">Monthly bill ($)</text>
-      <rect x="430" y="99" width="120" height="20" fill="#0ea5e9" />
-      <rect x="430" y="66" width="155" height="20" fill="#94a3b8" />
-      <text x="555" y="114" font-size="11" fill="#0f172a">MN {mn["monthly_bill_usd"]:.0f}</text>
-      <text x="590" y="81" font-size="11" fill="#0f172a">US {mn["us_monthly_bill_usd"]:.0f}</text>
-
-      <text x="80" y="212" font-size="11" fill="#475569">Blue = Minnesota</text>
-      <text x="210" y="212" font-size="11" fill="#475569">Gray = U.S. average</text>
-    </svg>
-
-    <h2>Useful Minnesota Utility Details</h2>
-    <ul class="list">
-      <li class="item"><strong>Customer base:</strong> {mn["customers"]:,} residential electricity customers in annual reporting.</li>
-      <li class="item"><strong>Positioning:</strong> Minnesota residential electricity pricing is {mn["price_rank_label"]} for the same reporting year.</li>
-      <li class="item"><strong>Budget conversion:</strong> Every additional 100 kWh/month is about ${(mn["price_cents_per_kwh"]):.2f} at the statewide average price.</li>
-      <li class="item"><strong>Source:</strong> {mn["source_note"]}</li>
-    </ul>
-"""
+        city_key = (state_slug, city_slug)
+        base_profile = {
+            "stateCode": state_slug[:2].upper(),
+            "county": f"{state_name} County",
+            "zip": "00000",
+            "lat": 44.95,
+            "lng": -93.09,
+            "population": "—",
+            "medianHome": "—",
+            "medianIncome": "—",
+            "schools": "—",
+            "electricityAvg": "$110/mo avg",
+            "gasAvg": "$62/mo avg",
+            "waterAvg": "$48/mo avg",
+        }
+        profile = {**base_profile, **LOCAL_CITY_PROFILE_OVERRIDES.get(city_key, {})}
+        profile_json = json.dumps(profile, ensure_ascii=False)
         desc = (
-            f"{city_name}, {state_name} utility cost guide with electricity, gas, water, sewer, trash, "
-            "internet, and mobile cost ratings plus monthly budget ranges."
+            f"{city_name}, {state_name} localized utility and cost-of-living overview with interactive charts, "
+            "map, and property-tax context."
         )
         return f"""<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>{city_name}, {state_name} Utility Cost by Category (Rated) | {SITE_NAME}</title>
+  <title>{city_name}, {state_name} Localized Data | {SITE_NAME}</title>
   <meta name="description" content="{desc}">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="{canonical}">
   <link rel="stylesheet" href="{CSS_PATH}">
-  <script type="application/ld+json">
-  {{
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {{
-        "@type": "Question",
-        "name": "What utilities are included in this {city_name}, {state_name} cost breakdown?",
-        "acceptedAnswer": {{
-          "@type": "Answer",
-          "text": "This page includes electricity, natural gas, water, sewer, trash collection, home internet, and mobile service cost ratings."
-        }}
-      }},
-      {{
-        "@type": "Question",
-        "name": "How should I use utility cost ratings for moving decisions?",
-        "acceptedAnswer": {{
-          "@type": "Answer",
-          "text": "Use the ratings as a planning baseline, then confirm with local utility providers, property managers, and recent household bills before signing a lease or buying."
-        }}
-      }},
-      {{
-        "@type": "Question",
-        "name": "What changes monthly utility bills the most?",
-        "acceptedAnswer": {{
-          "@type": "Answer",
-          "text": "Seasonal weather, home size and insulation, household occupancy, appliance efficiency, and provider rate plans usually drive the largest monthly bill changes."
-        }}
-      }}
-    ]
-  }}
-  </script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <style>
+    .city-shell {{ max-width: 1140px; margin: 0 auto; }}
+    .city-nav {{ display:flex; align-items:center; justify-content:space-between; padding: 18px 12px; background:#fff; }}
+    .city-nav .links {{ display:flex; gap:28px; font-weight:500; }}
+    .mobile-header {{ display:none; position:sticky; top:0; z-index:50; background:#2563eb; color:#fff; padding:14px 16px; align-items:center; justify-content:space-between; }}
+    .hero-band {{ background:linear-gradient(90deg,#3b82f6,#99f6e4); padding:28px 12px; }}
+    .hero-title {{ font-size:52px; margin:0; text-align:center; }}
+    .hero-sub {{ margin:2px 0 0; text-align:center; color:#0f172a; }}
+    .pill-search {{ margin:14px auto 0; max-width:640px; background:#fff; border:1px solid #94a3b8; border-radius:999px; padding:12px 18px; display:flex; gap:10px; align-items:center; position:relative; }}
+    .pill-search input {{ border:0; outline:0; width:100%; font-size:30px; }}
+    .autocomplete-menu {{ position:absolute; top:56px; left:0; right:0; background:#fff; border:1px solid #cbd5e1; border-radius:12px; box-shadow:0 10px 24px rgba(15,23,42,.12); display:none; max-height:220px; overflow:auto; }}
+    .autocomplete-menu button {{ width:100%; text-align:left; border:0; background:transparent; padding:10px 14px; cursor:pointer; }}
+    .autocomplete-menu button:hover {{ background:#eff6ff; }}
+    .city-grid {{ display:grid; grid-template-columns: 1fr 1.3fr 1fr; gap:16px; padding:20px 12px 28px; }}
+    .data-card {{ background:#fff; border:1px solid #d1d5db; border-radius:14px; box-shadow:0 8px 18px rgba(15,23,42,.06); padding:14px; }}
+    .utility-row {{ display:grid; grid-template-columns:1fr auto; gap:10px; align-items:center; padding:10px 0; border-bottom:1px solid #e5e7eb; }}
+    .utility-row:last-child {{ border-bottom:0; }}
+    .progress-track {{ width:100%; height:12px; border-radius:999px; background:#e5e7eb; position:relative; overflow:hidden; }}
+    .progress-bar {{ height:100%; border-radius:999px; }}
+    .bar-label {{ display:flex; justify-content:space-between; margin:10px 0 6px; }}
+    .mobile-glance {{ display:none; grid-template-columns:1fr 1fr; gap:8px; margin-top:10px; }}
+    .glance-item {{ border:1px solid #d6dee8; border-radius:10px; padding:10px; background:#fff; box-shadow:0 4px 10px rgba(15,23,42,.08); }}
+    .deep-dive {{ display:none; margin:12px; }}
+    .deep-dive details {{ border:1px solid #d6dee8; border-radius:10px; margin:8px 0; background:#fff; overflow:hidden; }}
+    .deep-dive summary {{ padding:12px; cursor:pointer; font-weight:600; }}
+    .deep-dive .inner {{ padding:0 12px 12px; color:#475569; }}
+    #city-map {{ width:100%; min-height:320px; border-radius:14px; }}
+    .map-expand {{ margin-top:8px; width:100%; border:1px solid #93c5fd; background:#eff6ff; border-radius:10px; padding:8px; font-weight:600; }}
+    .map-fullscreen {{ position:fixed; inset:0; z-index:999; padding:8px; background:#fff; }}
+    @media (max-width: 900px) {{
+      .city-nav {{ display:none; }}
+      .mobile-header {{ display:flex; }}
+      .hero-band {{ background:#fff; border-bottom:1px solid #e5e7eb; padding:12px; }}
+      .hero-title {{ font-size:22px; text-align:left; }}
+      .hero-sub {{ text-align:left; }}
+      .pill-search {{ margin:8px 0 0; }}
+      .pill-search input {{ font-size:22px; }}
+      .city-grid {{ grid-template-columns:1fr; padding:12px; }}
+      .mobile-glance {{ display:grid; }}
+      .deep-dive {{ display:block; }}
+    }}
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1>{city_name}, {state_name} Utility Cost by Category</h1>
-    <p class="lede">Use this city guide to compare utility cost ratings and monthly budget ranges before you rent, buy, or relocate.</p>
-
-    <h2>Utility Cost Ratings for {city_name}</h2>
-    <p>Ratings below are built for quick comparison and budget planning. Confirm final rates with local providers and your specific property profile.</p>
-    <table>
-      <thead>
-        <tr>
-          <th>Utility Category</th>
-          <th>Typical Monthly Range</th>
-          <th>Cost Rating</th>
-          <th>What Moves This Cost</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Electricity</td><td>$90-$220</td><td>Medium</td><td>Cooling load, heating fuel type, insulation, peak-hour usage</td></tr>
-        <tr><td>Natural Gas / Heating Fuel</td><td>$35-$180</td><td>Medium</td><td>Winter climate, furnace efficiency, water heating source</td></tr>
-        <tr><td>Water</td><td>$35-$95</td><td>Low to Medium</td><td>Household size, irrigation, fixture flow rates</td></tr>
-        <tr><td>Sewer & Wastewater</td><td>$30-$85</td><td>Medium</td><td>Municipal fee structures, seasonal usage tiers</td></tr>
-        <tr><td>Trash / Recycling</td><td>$20-$60</td><td>Low</td><td>Local service contracts, container size, add-on pickup</td></tr>
-        <tr><td>Home Internet</td><td>$45-$95</td><td>Medium</td><td>Speed tier, fiber availability, promo expiration</td></tr>
-        <tr><td>Mobile Service (1 line)</td><td>$35-$90</td><td>Medium</td><td>Carrier mix, unlimited plans, taxes and fees</td></tr>
-      </tbody>
-    </table>
-
-    <h2>Estimated Total Utility Budget Bands</h2>
-    <ul class="list">
-      <li class="item"><strong>Studio / 1-bed renter:</strong> $180-$420 per month depending on season and internet tier.</li>
-      <li class="item"><strong>2-3 bedroom household:</strong> $320-$680 per month with moderate energy usage.</li>
-      <li class="item"><strong>Larger single-family home:</strong> $520-$1,050 per month in high-usage months.</li>
-    </ul>
-
-    <h2>Utility Cost Detail Checklist (High-Intent Comparison)</h2>
-    <ul class="list">
-      <li class="item">Electric rate structure (flat, tiered, and time-of-use options)</li>
-      <li class="item">Seasonal cooling and heating pressure on monthly bills</li>
-      <li class="item">Water + sewer billing method (usage, fixed charges, or both)</li>
-      <li class="item">Trash and recycling service inclusion in rent or HOA fees</li>
-      <li class="item">Internet provider availability by neighborhood and address</li>
-      <li class="item">Typical installation/activation fees and contract terms</li>
-      <li class="item">Utility deposit requirements for new residents</li>
-      <li class="item">Energy-efficiency impact from HVAC, windows, and insulation</li>
-      <li class="item">Solar/net-metering availability (if owner occupied)</li>
-      <li class="item">Budget billing and low-income assistance program options</li>
-    </ul>
-
-    <h2>How to Lower Utility Bills in {city_name}</h2>
-    <ul class="list">
-      <li class="item">Shift major electricity usage outside peak windows when TOU plans apply.</li>
-      <li class="item">Use smart thermostat schedules and tune HVAC filters monthly.</li>
-      <li class="item">Check for hidden leaks and install low-flow showerheads/aerators.</li>
-      <li class="item">Reprice internet annually and compare bundle alternatives.</li>
-      <li class="item">Ask providers about autopay, paperless, and efficiency rebate credits.</li>
-    </ul>
-
-{minnesota_detail_html}
-
-    <h2>Explore More {city_name} and {state_name} Cost Pages</h2>
-    <ul class="gridList">
-      <li><a href="/utility-costs/{state_slug}/">Utility Costs in {state_name}</a></li>
-      <li><a href="/utility-costs/">Utility Costs by State</a></li>
-      <li><a href="/cost-of-living/{state_slug}/">Cost of Living in {state_name}</a></li>
-      <li><a href="/property-taxes/{state_slug}/">Property Tax Rates in {state_name}</a></li>
-      <li><a href="/services/">Home Service Cost Guides</a></li>
-    </ul>
-
-    <p><strong>Editorial note:</strong> Ranges and ratings are planning benchmarks for fast city comparison, not provider quotes.</p>
-    <p><em>Last updated: {today}</em></p>
+  <div class="city-shell">
+    <header class="city-nav">
+      <div class="brand"><img src="/assets/logo.png" class="logo" alt="{SITE_NAME} logo"><strong>DataByArea.com</strong></div>
+      <nav class="links"><a href="/utility-costs/">Utilities</a><a href="/cost-of-living/">Cost of Living</a><a href="/property-taxes/">Property Taxes</a><a href="/about/">About</a></nav>
+    </header>
+    <header class="mobile-header"><button aria-label="Open navigation">☰</button><strong>DataByArea</strong><button aria-label="Search">⌕</button></header>
+    <section class="hero-band">
+      <h1 class="hero-title">{city_name}, {profile["stateCode"]}</h1>
+      <p class="hero-sub">{profile["county"]} · Zip: {profile["zip"]}</p>
+      <div class="pill-search">
+        <span aria-hidden="true">🔎</span>
+        <input id="local-search" type="search" placeholder="Find Local Area Data: Enter a City or Zip Code">
+        <div id="autocomplete" class="autocomplete-menu"></div>
+      </div>
+      <div class="mobile-glance">
+        <div class="glance-item"><small>Population</small><div><strong>{profile["population"]}</strong></div></div>
+        <div class="glance-item"><small>Med. Home</small><div><strong>{profile["medianHome"]}</strong></div></div>
+        <div class="glance-item"><small>Income</small><div><strong>{profile["medianIncome"]}</strong></div></div>
+        <div class="glance-item"><small>Schools</small><div><strong>{profile["schools"]}</strong></div></div>
+      </div>
+    </section>
+    <main class="city-grid">
+      <section class="data-card">
+        <h2>Utilities Overview</h2>
+        <div class="utility-row"><div><strong>Electricity</strong><canvas id="chart-electricity" height="36"></canvas></div><div>{profile["electricityAvg"]}</div></div>
+        <div class="utility-row"><div><strong>Natural Gas</strong><canvas id="chart-gas" height="36"></canvas></div><div>{profile["gasAvg"]}</div></div>
+        <div class="utility-row"><div><strong>Water/Sewer</strong><canvas id="chart-water" height="36"></canvas></div><div>{profile["waterAvg"]}</div></div>
+      </section>
+      <section class="data-card">
+        <div id="city-map"></div>
+        <button id="expand-map" class="map-expand" type="button">Expand map</button>
+      </section>
+      <aside>
+        <section class="data-card">
+          <h2>Cost of Living Metrics</h2>
+          <div class="bar-label"><span>Total Index</span><strong>92</strong></div>
+          <div class="progress-track" title="6-month trend: 90, 91, 91, 92, 92, 92"><div class="progress-bar" style="width:70%; background:#3b82f6;"></div></div>
+          <div class="bar-label"><span>Housing</span><strong>85</strong></div>
+          <div class="progress-track" title="6-month trend: 83, 84, 84, 85, 85, 85"><div class="progress-bar" style="width:64%; background:#f59e0b;"></div></div>
+          <div class="bar-label"><span>Groceries</span><strong>98</strong></div>
+          <div class="progress-track" title="6-month trend: 97, 97, 98, 98, 98, 98"><div class="progress-bar" style="width:74%; background:#10b981;"></div></div>
+          <div class="bar-label"><span>Transportation</span><strong>101</strong></div>
+          <div class="progress-track" title="6-month trend: 99, 99, 100, 100, 101, 101"><div class="progress-bar" style="width:77%; background:#06b6d4;"></div></div>
+        </section>
+        <section class="data-card" style="margin-top:12px;">
+          <h2>Property Tax Information</h2>
+          <p><strong>{profile["county"]} Property Taxes</strong></p>
+          <p>Median Amount: $1,850/year</p>
+          <p><a href="/property-taxes/{state_slug}/">View Property Tax Calculator ↗</a></p>
+        </section>
+      </aside>
+    </main>
+    <section class="deep-dive">
+      <details><summary>Demographics</summary><div class="inner">Population trends, age mix, household size and migration snapshots for {city_name}.</div></details>
+      <details><summary>Real Estate & Housing</summary><div class="inner">Median home, rent-to-income, vacancy, and appreciation trend points.</div></details>
+      <details><summary>Local Economy</summary><div class="inner">Employment sectors, commute patterns, and income growth indicators.</div></details>
+      <details><summary>Crime & Safety</summary><div class="inner">Safety scoring and incident mix with annual comparison context.</div></details>
+    </section>
   </div>
+  <script>window.__CITY_PROFILE__ = {profile_json};</script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script>
+    (function() {{
+      const p = window.__CITY_PROFILE__ || {{}};
+      const sparkline = (id, points, label) => {{
+        const ctx = document.getElementById(id);
+        if (!ctx || !window.Chart) return;
+        new Chart(ctx, {{
+          type: "line",
+          data: {{ labels: ["M1","M2","M3","M4","M5","M6"], datasets: [{{ data: points, borderColor:"#2563eb", borderWidth:2, fill:false, tension:.35, pointRadius:0 }}] }},
+          options: {{ responsive:true, maintainAspectRatio:false, plugins: {{ legend: {{ display:false }}, tooltip: {{ callbacks: {{ label: (c) => label + ": $" + c.raw }} }} }}, scales: {{ x: {{ display:false }}, y: {{ display:false }} }} }}
+        }});
+      }};
+      sparkline("chart-electricity", [108,112,110,118,113,115], "Electricity");
+      sparkline("chart-gas", [58,61,63,76,68,70], "Natural Gas");
+      sparkline("chart-water", [52,54,49,58,55,55], "Water/Sewer");
+
+      if (window.L) {{
+        const map = L.map("city-map", {{ scrollWheelZoom: false }}).setView([p.lat || 44.95, p.lng || -93.09], 11);
+        L.tileLayer("https://{{s}}.tile.openstreetmap.org/{{z}}/{{x}}/{{y}}.png", {{ maxZoom: 18, attribution: "&copy; OpenStreetMap contributors" }}).addTo(map);
+        L.marker([p.lat || 44.95, p.lng || -93.09]).addTo(map);
+        const expandBtn = document.getElementById("expand-map");
+        const mapNode = document.getElementById("city-map");
+        expandBtn?.addEventListener("click", () => {{
+          mapNode.classList.toggle("map-fullscreen");
+          expandBtn.textContent = mapNode.classList.contains("map-fullscreen") ? "Collapse map" : "Expand map";
+          map.invalidateSize();
+        }});
+      }}
+
+      const search = document.getElementById("local-search");
+      const menu = document.getElementById("autocomplete");
+      let timer = null;
+      const fallback = [
+        {{ label: "Kiester, MN 56051", href: "/utility-costs/minnesota/kiester/" }},
+        {{ label: "Minneapolis, MN 55401", href: "/utility-costs/minnesota/minneapolis/" }},
+        {{ label: "Des Moines, IA 50309", href: "/utility-costs/iowa/des-moines/" }}
+      ];
+      const renderMenu = (items) => {{
+        menu.innerHTML = items.map((i) => `<button type="button" data-href="${{i.href}}">${{i.label}}</button>`).join("");
+        menu.style.display = items.length ? "block" : "none";
+      }};
+      search?.addEventListener("input", (e) => {{
+        clearTimeout(timer);
+        timer = setTimeout(async () => {{
+          const q = e.target.value.trim();
+          if (q.length < 2) {{ menu.style.display = "none"; return; }}
+          try {{
+            const resp = await fetch(`/api/locations/autocomplete?q=${{encodeURIComponent(q)}}`);
+            if (!resp.ok) throw new Error("autocomplete failed");
+            const data = await resp.json();
+            renderMenu(data.items || []);
+          }} catch (_) {{
+            renderMenu(fallback.filter((i) => i.label.toLowerCase().includes(q.toLowerCase())));
+          }}
+        }}, 150);
+      }});
+      menu?.addEventListener("click", (e) => {{
+        const btn = e.target.closest("button[data-href]");
+        if (btn) window.location.href = btn.dataset.href;
+      }});
+    }})();
+  </script>
   <script defer src="/assets/version-footer.js"></script>
 </body>
 </html>
@@ -429,7 +472,6 @@ def city_page_html(section: str, state_slug: str, city_name: str) -> str:
 </body>
 </html>
 """
-
 
 def read_minnesota_city_store() -> dict[str, str]:
     csv_path = Path("data/minnesota_utility_city_store.csv")
