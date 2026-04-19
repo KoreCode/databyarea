@@ -34,6 +34,19 @@ US_STATES = {
     "virginia":"Virginia","washington":"Washington","west-virginia":"West Virginia","wisconsin":"Wisconsin","wyoming":"Wyoming",
 }
 
+STATE_ABBR = {
+    "alabama": "AL", "alaska": "AK", "arizona": "AZ", "arkansas": "AR", "california": "CA",
+    "colorado": "CO", "connecticut": "CT", "delaware": "DE", "florida": "FL", "georgia": "GA",
+    "hawaii": "HI", "idaho": "ID", "illinois": "IL", "indiana": "IN", "iowa": "IA", "kansas": "KS",
+    "kentucky": "KY", "louisiana": "LA", "maine": "ME", "maryland": "MD", "massachusetts": "MA",
+    "michigan": "MI", "minnesota": "MN", "mississippi": "MS", "missouri": "MO", "montana": "MT",
+    "nebraska": "NE", "nevada": "NV", "new-hampshire": "NH", "new-jersey": "NJ", "new-mexico": "NM",
+    "new-york": "NY", "north-carolina": "NC", "north-dakota": "ND", "ohio": "OH", "oklahoma": "OK",
+    "oregon": "OR", "pennsylvania": "PA", "rhode-island": "RI", "south-carolina": "SC",
+    "south-dakota": "SD", "tennessee": "TN", "texas": "TX", "utah": "UT", "vermont": "VT",
+    "virginia": "VA", "washington": "WA", "west-virginia": "WV", "wisconsin": "WI", "wyoming": "WY",
+}
+
 SECTION_META = {
     "cost-of-living": {
         "title": "Cost of Living",
@@ -198,6 +211,11 @@ def section_index_html(section: str) -> str:
         f'<li class="item"><a href="/{other}/">{SECTION_META[other]["title"]}</a></li>'
         for other in SECTIONS if other != section
     )
+    state_url_by_abbr = ",".join(
+        f'"{abbr}":"/{section}/{slug}/"'
+        for slug, abbr in sorted(STATE_ABBR.items(), key=lambda x: US_STATES[x[0]])
+    )
+
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -206,6 +224,7 @@ def section_index_html(section: str) -> str:
   <meta name="description" content="{desc}" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="{CSS_PATH}" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsvectormap@1.7.0/dist/css/jsvectormap.min.css" />
   <link rel="canonical" href="{canonical}" />
 </head>
 <body>
@@ -265,7 +284,11 @@ def section_index_html(section: str) -> str:
       <h2 class="sectionTitle">Pick a location: state → county → city</h2>
       <p>Start with your state, then use county and city examples to refine comparisons and planning.</p>
       <div class="selectionGrid">
-        <img class="selectionVisual" src="/assets/state-selection-visual.svg" alt="Illustration for selecting states, counties, and cities" loading="lazy" />
+        <div class="interactiveMapCard">
+          <h3>Select a state on the map</h3>
+          <p class="mutedSmall">Click or tap any state to jump straight to its {section_title.lower()} page.</p>
+          <div id="state-map" class="stateMap" aria-label="Interactive map of the United States"></div>
+        </div>
         <div class="selectionColumns">
           <div class="card">
             <h3>States</h3>
@@ -315,6 +338,44 @@ def section_index_html(section: str) -> str:
       }});
     }}
     q.addEventListener('input', filter);
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/jsvectormap@1.7.0/dist/js/jsvectormap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jsvectormap@1.7.0/dist/maps/us-merc-en.js"></script>
+  <script>
+    const stateUrlByAbbr = {{{state_url_by_abbr}}};
+    new jsVectorMap({{
+      selector: '#state-map',
+      map: 'us_merc_en',
+      zoomButtons: true,
+      selectedRegions: [],
+      onRegionTooltipShow(event, tooltip, code) {{
+        const abbr = code.split('-')[1];
+        if (!abbr || !stateUrlByAbbr[abbr]) {{
+          return;
+        }}
+        tooltip.text(`${{tooltip.text()}} — View details`);
+      }},
+      onRegionClick(event, code) {{
+        const abbr = code.split('-')[1];
+        const target = stateUrlByAbbr[abbr];
+        if (target) {{
+          window.location.href = target;
+        }}
+      }},
+      regionStyle: {{
+        initial: {{
+          fill: '#d8e7f6',
+          stroke: '#7d99b5',
+          strokeWidth: 1
+        }},
+        hover: {{
+          fill: '#9ec0e2'
+        }},
+        selected: {{
+          fill: '#4f7292'
+        }}
+      }}
+    }});
   </script>
   <script defer src="/assets/version-footer.js"></script>
 </body>
