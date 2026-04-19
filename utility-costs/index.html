@@ -6,6 +6,7 @@
   <meta name="description" content="Browse utility costs estimates across all 50 U.S. states. Use quick search plus cross-category links for complete comparisons." />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsvectormap@1.7.0/dist/css/jsvectormap.min.css" />
   <link rel="canonical" href="https://databyarea.com/utility-costs/" />
 </head>
 <body>
@@ -67,18 +68,110 @@
       <h2 class="sectionTitle">Pick a location: state → county → city</h2>
       <p>Start with your state, then use county and city examples to refine comparisons and planning.</p>
       <div class="selectionGrid">
-        <div class="selectionVisual stateHoverMap" aria-label="Interactive state selection hover map">
-          <h3>State hover map</h3>
-          <p class="mutedSmall">Hover or tap a state to open its utility costs page.</p>
-          <div class="stateHoverGrid">
-            <a href="/utility-costs/alabama/" aria-label="Alabama">AL</a><a href="/utility-costs/alaska/" aria-label="Alaska">AK</a><a href="/utility-costs/arizona/" aria-label="Arizona">AZ</a><a href="/utility-costs/arkansas/" aria-label="Arkansas">AR</a><a href="/utility-costs/california/" aria-label="California">CA</a><a href="/utility-costs/colorado/" aria-label="Colorado">CO</a><a href="/utility-costs/connecticut/" aria-label="Connecticut">CT</a><a href="/utility-costs/delaware/" aria-label="Delaware">DE</a><a href="/utility-costs/florida/" aria-label="Florida">FL</a><a href="/utility-costs/georgia/" aria-label="Georgia">GA</a><a href="/utility-costs/hawaii/" aria-label="Hawaii">HI</a><a href="/utility-costs/idaho/" aria-label="Idaho">ID</a><a href="/utility-costs/illinois/" aria-label="Illinois">IL</a><a href="/utility-costs/indiana/" aria-label="Indiana">IN</a><a href="/utility-costs/iowa/" aria-label="Iowa">IA</a><a href="/utility-costs/kansas/" aria-label="Kansas">KS</a><a href="/utility-costs/kentucky/" aria-label="Kentucky">KY</a><a href="/utility-costs/louisiana/" aria-label="Louisiana">LA</a><a href="/utility-costs/maine/" aria-label="Maine">ME</a><a href="/utility-costs/maryland/" aria-label="Maryland">MD</a><a href="/utility-costs/massachusetts/" aria-label="Massachusetts">MA</a><a href="/utility-costs/michigan/" aria-label="Michigan">MI</a><a href="/utility-costs/minnesota/" aria-label="Minnesota">MN</a><a href="/utility-costs/mississippi/" aria-label="Mississippi">MS</a><a href="/utility-costs/missouri/" aria-label="Missouri">MO</a><a href="/utility-costs/montana/" aria-label="Montana">MT</a><a href="/utility-costs/nebraska/" aria-label="Nebraska">NE</a><a href="/utility-costs/nevada/" aria-label="Nevada">NV</a><a href="/utility-costs/new-hampshire/" aria-label="New Hampshire">NH</a><a href="/utility-costs/new-jersey/" aria-label="New Jersey">NJ</a><a href="/utility-costs/new-mexico/" aria-label="New Mexico">NM</a><a href="/utility-costs/new-york/" aria-label="New York">NY</a><a href="/utility-costs/north-carolina/" aria-label="North Carolina">NC</a><a href="/utility-costs/north-dakota/" aria-label="North Dakota">ND</a><a href="/utility-costs/ohio/" aria-label="Ohio">OH</a><a href="/utility-costs/oklahoma/" aria-label="Oklahoma">OK</a><a href="/utility-costs/oregon/" aria-label="Oregon">OR</a><a href="/utility-costs/pennsylvania/" aria-label="Pennsylvania">PA</a><a href="/utility-costs/rhode-island/" aria-label="Rhode Island">RI</a><a href="/utility-costs/south-carolina/" aria-label="South Carolina">SC</a><a href="/utility-costs/south-dakota/" aria-label="South Dakota">SD</a><a href="/utility-costs/tennessee/" aria-label="Tennessee">TN</a><a href="/utility-costs/texas/" aria-label="Texas">TX</a><a href="/utility-costs/utah/" aria-label="Utah">UT</a><a href="/utility-costs/vermont/" aria-label="Vermont">VT</a><a href="/utility-costs/virginia/" aria-label="Virginia">VA</a><a href="/utility-costs/washington/" aria-label="Washington">WA</a><a href="/utility-costs/west-virginia/" aria-label="West Virginia">WV</a><a href="/utility-costs/wisconsin/" aria-label="Wisconsin">WI</a><a href="/utility-costs/wyoming/" aria-label="Wyoming">WY</a>
-          </div>
+        <div class="interactiveMapCard">
+          <h3>Select a state on the map</h3>
+          <p class="mutedSmall">Click or tap any state to jump straight to its utility costs page.</p>
+          <div id="state-map" class="stateMap" aria-label="Interactive map of the United States"></div>
         </div>
         <div class="selectionColumns">
           <div class="card">
             <h3>States</h3>
-            <ul id="state-list" class="listColumns">
-              <li class="item"><a href="/utility-costs/alabama/">Alabama</a></li>
+            <ul class="listColumns">
+              <li><a href="/utility-costs/alabama/">Alabama</a></li>
+<li><a href="/utility-costs/alaska/">Alaska</a></li>
+<li><a href="/utility-costs/arizona/">Arizona</a></li>
+<li><a href="/utility-costs/arkansas/">Arkansas</a></li>
+<li><a href="/utility-costs/california/">California</a></li>
+<li><a href="/utility-costs/colorado/">Colorado</a></li>
+<li><a href="/utility-costs/connecticut/">Connecticut</a></li>
+<li><a href="/utility-costs/delaware/">Delaware</a></li>
+<li><a href="/utility-costs/florida/">Florida</a></li>
+<li><a href="/utility-costs/georgia/">Georgia</a></li>
+<li><a href="/utility-costs/hawaii/">Hawaii</a></li>
+<li><a href="/utility-costs/idaho/">Idaho</a></li>
+<li><a href="/utility-costs/illinois/">Illinois</a></li>
+<li><a href="/utility-costs/indiana/">Indiana</a></li>
+<li><a href="/utility-costs/iowa/">Iowa</a></li>
+<li><a href="/utility-costs/kansas/">Kansas</a></li>
+<li><a href="/utility-costs/kentucky/">Kentucky</a></li>
+<li><a href="/utility-costs/louisiana/">Louisiana</a></li>
+<li><a href="/utility-costs/maine/">Maine</a></li>
+<li><a href="/utility-costs/maryland/">Maryland</a></li>
+<li><a href="/utility-costs/massachusetts/">Massachusetts</a></li>
+<li><a href="/utility-costs/michigan/">Michigan</a></li>
+<li><a href="/utility-costs/minnesota/">Minnesota</a></li>
+<li><a href="/utility-costs/mississippi/">Mississippi</a></li>
+<li><a href="/utility-costs/missouri/">Missouri</a></li>
+<li><a href="/utility-costs/montana/">Montana</a></li>
+<li><a href="/utility-costs/nebraska/">Nebraska</a></li>
+<li><a href="/utility-costs/nevada/">Nevada</a></li>
+<li><a href="/utility-costs/new-hampshire/">New Hampshire</a></li>
+<li><a href="/utility-costs/new-jersey/">New Jersey</a></li>
+<li><a href="/utility-costs/new-mexico/">New Mexico</a></li>
+<li><a href="/utility-costs/new-york/">New York</a></li>
+<li><a href="/utility-costs/north-carolina/">North Carolina</a></li>
+<li><a href="/utility-costs/north-dakota/">North Dakota</a></li>
+<li><a href="/utility-costs/ohio/">Ohio</a></li>
+<li><a href="/utility-costs/oklahoma/">Oklahoma</a></li>
+<li><a href="/utility-costs/oregon/">Oregon</a></li>
+<li><a href="/utility-costs/pennsylvania/">Pennsylvania</a></li>
+<li><a href="/utility-costs/rhode-island/">Rhode Island</a></li>
+<li><a href="/utility-costs/south-carolina/">South Carolina</a></li>
+<li><a href="/utility-costs/south-dakota/">South Dakota</a></li>
+<li><a href="/utility-costs/tennessee/">Tennessee</a></li>
+<li><a href="/utility-costs/texas/">Texas</a></li>
+<li><a href="/utility-costs/utah/">Utah</a></li>
+<li><a href="/utility-costs/vermont/">Vermont</a></li>
+<li><a href="/utility-costs/virginia/">Virginia</a></li>
+<li><a href="/utility-costs/washington/">Washington</a></li>
+<li><a href="/utility-costs/west-virginia/">West Virginia</a></li>
+<li><a href="/utility-costs/wisconsin/">Wisconsin</a></li>
+<li><a href="/utility-costs/wyoming/">Wyoming</a></li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Popular counties</h3>
+            <ul class="listColumns">
+              <li>Los Angeles County, CA</li>
+<li>Cook County, IL</li>
+<li>Harris County, TX</li>
+<li>Maricopa County, AZ</li>
+<li>King County, WA</li>
+<li>Miami-Dade County, FL</li>
+<li>Clark County, NV</li>
+<li>Wayne County, MI</li>
+<li>Travis County, TX</li>
+<li>Salt Lake County, UT</li>
+<li>Wake County, NC</li>
+<li>Allegheny County, PA</li>
+            </ul>
+            <p class="mutedSmall">County-level detail varies by dataset and update cycle.</p>
+          </div>
+          <div class="card">
+            <h3>Popular cities</h3>
+            <ul class="listColumns">
+              <li>New York, NY</li>
+<li>Los Angeles, CA</li>
+<li>Chicago, IL</li>
+<li>Houston, TX</li>
+<li>Phoenix, AZ</li>
+<li>Philadelphia, PA</li>
+<li>San Antonio, TX</li>
+<li>San Diego, CA</li>
+<li>Dallas, TX</li>
+<li>Austin, TX</li>
+<li>Jacksonville, FL</li>
+<li>Columbus, OH</li>
+            </ul>
+            <p class="mutedSmall">City pages help benchmark local differences inside each state.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="sectionTitle">Browse states</h2>
+    <ul id="list" class="list">
+      <li class="item"><a href="/utility-costs/alabama/">Alabama</a></li>
 <li class="item"><a href="/utility-costs/alaska/">Alaska</a></li>
 <li class="item"><a href="/utility-costs/arizona/">Arizona</a></li>
 <li class="item"><a href="/utility-costs/arkansas/">Arkansas</a></li>
@@ -128,47 +221,7 @@
 <li class="item"><a href="/utility-costs/west-virginia/">West Virginia</a></li>
 <li class="item"><a href="/utility-costs/wisconsin/">Wisconsin</a></li>
 <li class="item"><a href="/utility-costs/wyoming/">Wyoming</a></li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>Popular counties</h3>
-            <ul class="listColumns">
-              <li>Los Angeles County, CA</li>
-<li>Cook County, IL</li>
-<li>Harris County, TX</li>
-<li>Maricopa County, AZ</li>
-<li>King County, WA</li>
-<li>Miami-Dade County, FL</li>
-<li>Clark County, NV</li>
-<li>Wayne County, MI</li>
-<li>Travis County, TX</li>
-<li>Salt Lake County, UT</li>
-<li>Wake County, NC</li>
-<li>Allegheny County, PA</li>
-            </ul>
-            <p class="mutedSmall">County-level detail varies by dataset and update cycle.</p>
-          </div>
-          <div class="card">
-            <h3>Popular cities</h3>
-            <ul class="listColumns">
-              <li>New York, NY</li>
-<li>Los Angeles, CA</li>
-<li>Chicago, IL</li>
-<li>Houston, TX</li>
-<li>Phoenix, AZ</li>
-<li>Philadelphia, PA</li>
-<li>San Antonio, TX</li>
-<li>San Diego, CA</li>
-<li>Dallas, TX</li>
-<li>Austin, TX</li>
-<li>Jacksonville, FL</li>
-<li>Columbus, OH</li>
-            </ul>
-            <p class="mutedSmall">City pages help benchmark local differences inside each state.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    </ul>
 
     <div class="footer">
       <p><strong>Disclaimer:</strong> Informational estimates only. Costs and rates vary by household, provider, and local area.</p>
@@ -180,7 +233,7 @@
 
   <script>
     const q = document.getElementById('q');
-    const items = Array.from(document.querySelectorAll('#state-list .item'));
+    const items = Array.from(document.querySelectorAll('#list .item'));
     function filter(){
       const term = q.value.trim().toLowerCase();
       items.forEach(li => {
@@ -189,6 +242,44 @@
       });
     }
     q.addEventListener('input', filter);
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/jsvectormap@1.7.0/dist/js/jsvectormap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jsvectormap@1.7.0/dist/maps/us-merc-en.js"></script>
+  <script>
+    const stateUrlByAbbr = {"AL":"/utility-costs/alabama/","AK":"/utility-costs/alaska/","AZ":"/utility-costs/arizona/","AR":"/utility-costs/arkansas/","CA":"/utility-costs/california/","CO":"/utility-costs/colorado/","CT":"/utility-costs/connecticut/","DE":"/utility-costs/delaware/","FL":"/utility-costs/florida/","GA":"/utility-costs/georgia/","HI":"/utility-costs/hawaii/","ID":"/utility-costs/idaho/","IL":"/utility-costs/illinois/","IN":"/utility-costs/indiana/","IA":"/utility-costs/iowa/","KS":"/utility-costs/kansas/","KY":"/utility-costs/kentucky/","LA":"/utility-costs/louisiana/","ME":"/utility-costs/maine/","MD":"/utility-costs/maryland/","MA":"/utility-costs/massachusetts/","MI":"/utility-costs/michigan/","MN":"/utility-costs/minnesota/","MS":"/utility-costs/mississippi/","MO":"/utility-costs/missouri/","MT":"/utility-costs/montana/","NE":"/utility-costs/nebraska/","NV":"/utility-costs/nevada/","NH":"/utility-costs/new-hampshire/","NJ":"/utility-costs/new-jersey/","NM":"/utility-costs/new-mexico/","NY":"/utility-costs/new-york/","NC":"/utility-costs/north-carolina/","ND":"/utility-costs/north-dakota/","OH":"/utility-costs/ohio/","OK":"/utility-costs/oklahoma/","OR":"/utility-costs/oregon/","PA":"/utility-costs/pennsylvania/","RI":"/utility-costs/rhode-island/","SC":"/utility-costs/south-carolina/","SD":"/utility-costs/south-dakota/","TN":"/utility-costs/tennessee/","TX":"/utility-costs/texas/","UT":"/utility-costs/utah/","VT":"/utility-costs/vermont/","VA":"/utility-costs/virginia/","WA":"/utility-costs/washington/","WV":"/utility-costs/west-virginia/","WI":"/utility-costs/wisconsin/","WY":"/utility-costs/wyoming/"};
+    new jsVectorMap({
+      selector: '#state-map',
+      map: 'us_merc_en',
+      zoomButtons: true,
+      selectedRegions: [],
+      onRegionTooltipShow(event, tooltip, code) {
+        const abbr = code.split('-')[1];
+        if (!abbr || !stateUrlByAbbr[abbr]) {
+          return;
+        }
+        tooltip.text(`${tooltip.text()} — View details`);
+      },
+      onRegionClick(event, code) {
+        const abbr = code.split('-')[1];
+        const target = stateUrlByAbbr[abbr];
+        if (target) {
+          window.location.href = target;
+        }
+      },
+      regionStyle: {
+        initial: {
+          fill: '#d8e7f6',
+          stroke: '#7d99b5',
+          strokeWidth: 1
+        },
+        hover: {
+          fill: '#9ec0e2'
+        },
+        selected: {
+          fill: '#4f7292'
+        }
+      }
+    });
   </script>
   <script defer src="/assets/version-footer.js"></script>
 </body>

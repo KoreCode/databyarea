@@ -6,6 +6,7 @@
   <meta name="description" content="Browse cost of living estimates across all 50 U.S. states. Use quick search plus cross-category links for complete comparisons." />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="/assets/styles.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsvectormap@1.7.0/dist/css/jsvectormap.min.css" />
   <link rel="canonical" href="https://databyarea.com/cost-of-living/" />
 </head>
 <body>
@@ -67,7 +68,11 @@
       <h2 class="sectionTitle">Pick a location: state → county → city</h2>
       <p>Start with your state, then use county and city examples to refine comparisons and planning.</p>
       <div class="selectionGrid">
-        <img class="selectionVisual" src="/assets/state-selection-visual.svg" alt="Illustration for selecting states, counties, and cities" loading="lazy" />
+        <div class="interactiveMapCard">
+          <h3>Select a state on the map</h3>
+          <p class="mutedSmall">Click or tap any state to jump straight to its cost of living page.</p>
+          <div id="state-map" class="stateMap" aria-label="Interactive map of the United States"></div>
+        </div>
         <div class="selectionColumns">
           <div class="card">
             <h3>States</h3>
@@ -237,6 +242,44 @@
       });
     }
     q.addEventListener('input', filter);
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/jsvectormap@1.7.0/dist/js/jsvectormap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jsvectormap@1.7.0/dist/maps/us-merc-en.js"></script>
+  <script>
+    const stateUrlByAbbr = {"AL":"/cost-of-living/alabama/","AK":"/cost-of-living/alaska/","AZ":"/cost-of-living/arizona/","AR":"/cost-of-living/arkansas/","CA":"/cost-of-living/california/","CO":"/cost-of-living/colorado/","CT":"/cost-of-living/connecticut/","DE":"/cost-of-living/delaware/","FL":"/cost-of-living/florida/","GA":"/cost-of-living/georgia/","HI":"/cost-of-living/hawaii/","ID":"/cost-of-living/idaho/","IL":"/cost-of-living/illinois/","IN":"/cost-of-living/indiana/","IA":"/cost-of-living/iowa/","KS":"/cost-of-living/kansas/","KY":"/cost-of-living/kentucky/","LA":"/cost-of-living/louisiana/","ME":"/cost-of-living/maine/","MD":"/cost-of-living/maryland/","MA":"/cost-of-living/massachusetts/","MI":"/cost-of-living/michigan/","MN":"/cost-of-living/minnesota/","MS":"/cost-of-living/mississippi/","MO":"/cost-of-living/missouri/","MT":"/cost-of-living/montana/","NE":"/cost-of-living/nebraska/","NV":"/cost-of-living/nevada/","NH":"/cost-of-living/new-hampshire/","NJ":"/cost-of-living/new-jersey/","NM":"/cost-of-living/new-mexico/","NY":"/cost-of-living/new-york/","NC":"/cost-of-living/north-carolina/","ND":"/cost-of-living/north-dakota/","OH":"/cost-of-living/ohio/","OK":"/cost-of-living/oklahoma/","OR":"/cost-of-living/oregon/","PA":"/cost-of-living/pennsylvania/","RI":"/cost-of-living/rhode-island/","SC":"/cost-of-living/south-carolina/","SD":"/cost-of-living/south-dakota/","TN":"/cost-of-living/tennessee/","TX":"/cost-of-living/texas/","UT":"/cost-of-living/utah/","VT":"/cost-of-living/vermont/","VA":"/cost-of-living/virginia/","WA":"/cost-of-living/washington/","WV":"/cost-of-living/west-virginia/","WI":"/cost-of-living/wisconsin/","WY":"/cost-of-living/wyoming/"};
+    new jsVectorMap({
+      selector: '#state-map',
+      map: 'us_merc_en',
+      zoomButtons: true,
+      selectedRegions: [],
+      onRegionTooltipShow(event, tooltip, code) {
+        const abbr = code.split('-')[1];
+        if (!abbr || !stateUrlByAbbr[abbr]) {
+          return;
+        }
+        tooltip.text(`${tooltip.text()} — View details`);
+      },
+      onRegionClick(event, code) {
+        const abbr = code.split('-')[1];
+        const target = stateUrlByAbbr[abbr];
+        if (target) {
+          window.location.href = target;
+        }
+      },
+      regionStyle: {
+        initial: {
+          fill: '#d8e7f6',
+          stroke: '#7d99b5',
+          strokeWidth: 1
+        },
+        hover: {
+          fill: '#9ec0e2'
+        },
+        selected: {
+          fill: '#4f7292'
+        }
+      }
+    });
   </script>
   <script defer src="/assets/version-footer.js"></script>
 </body>
