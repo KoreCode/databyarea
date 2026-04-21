@@ -185,6 +185,22 @@ GLOBAL_CORE = [
     "foundation-repair-cost-by-state",
 ]
 
+GEO_SIBLING_CATEGORIES = (
+    "utility-costs",
+    "cost-of-living",
+    "property-taxes",
+    "insurance-costs",
+)
+
+HIGH_DEMAND_MARKETS = (
+    "california",
+    "texas",
+    "florida",
+    "new-york",
+    "illinois",
+    "washington",
+)
+
 # =========================================================
 # BASIC HELPERS
 # =========================================================
@@ -216,6 +232,36 @@ def slug_to_title(slug: str) -> str:
 
 def href(slug: str) -> str:
     return f"/{slug.strip('/')}/"
+
+def parse_geo_slug(slug: str) -> tuple[str | None, str | None, str | None]:
+    parts = [p for p in slug.strip("/").split("/") if p]
+    if len(parts) < 2:
+        return None, None, None
+    category = parts[0]
+    if category not in GEO_SIBLING_CATEGORIES:
+        return None, None, None
+    state = parts[1]
+    city_or_county = parts[2] if len(parts) >= 3 else None
+    return category, state, city_or_county
+
+def has_slug(slug: str, queue_slugs: list[str], published_map: dict) -> bool:
+    return (slug in published_map) or (LINK_TO_QUEUED and slug in queue_slugs)
+
+def slug_label(slug: str) -> str:
+    parts = [p for p in slug.strip("/").split("/") if p]
+    if not parts:
+        return "DataByArea"
+    if len(parts) == 1:
+        return slug_to_title(parts[0])
+
+    if parts[0] in GEO_SIBLING_CATEGORIES:
+        category_name = slug_to_title(parts[0])
+        state_name = slug_to_title(parts[1])
+        if len(parts) == 2:
+            return f"{category_name} in {state_name}"
+        return f"{category_name} in {slug_to_title(parts[2])}, {state_name}"
+
+    return slug_to_title(parts[-1])
 
 # =========================================================
 # SYSTEM PAGES (PRIVACY / TERMS)
@@ -440,38 +486,156 @@ def build_related_links(current_slug: str, queue_slugs: list[str], published_map
     base, _intent = parse_slug(current_slug)
     cat = infer_category(base)
 
-    candidates = []
-    candidates.extend(CATEGORY_HUBS.get(cat, []))
-    candidates.extend(GLOBAL_CORE)
+    candidates: list[tuple[str, str]] = []
+    candidates.extend([(slug, "core-topic") for slug in CATEGORY_HUBS.get(cat, [])])
+    candidates.extend([(slug, "global-core") for slug in GLOBAL_CORE])
+
+    geo_category, geo_state, geo_place = parse_geo_slug(current_slug)
+    if geo_category and geo_state:
+        # Parent geography: city/county pages should point to state-level parent page.
+        if geo_place:
+            parent_slug = f"{geo_category}/{geo_state}"
+            candidates.append((parent_slug, "parent-geography"))
+
+        # Same geography, sibling categories (utility <-> COL <-> taxes <-> insurance).
+        geo_suffix = f"{geo_state}/{geo_place}" if geo_place else geo_state
+        for sibling_category in GEO_SIBLING_CATEGORIES:
+            sibling_slug = f"{sibling_category}/{geo_suffix}"
+            if sibling_slug != current_slug:
+                candidates.append((sibling_slug, "sibling-category"))
+
+        # Nearby/peer geographies: same state peers for city/county pages, top markets for state pages.
+        if geo_place:
+            for q_slug in queue_slugs:
+                q_category, q_state, q_place = parse_geo_slug(q_slug)
+                if (
+                    q_slug != current_slug
+                    and q_category == geo_category
+                    and q_state == geo_state
+                    and q_place
+                ):
+                    candidates.append((q_slug, "peer-geography"))
+        else:
+            for market_state in HIGH_DEMAND_MARKETS:
+                if market_state != geo_state:
+                    candidates.append((f"{geo_category}/{market_state}", "peer-geography"))
 
     # Pull neighbors from queue for natural topical adjacency
     try:
         idx = queue_slugs.index(current_slug)
         neighbors = queue_slugs[max(0, idx - 12): idx] + queue_slugs[idx + 1: idx + 13]
-        candidates.extend(neighbors)
+        candidates.extend([(slug, "queue-neighbor") for slug in neighbors])
     except ValueError:
         pass
 
     seen = set()
-    chosen = []
-    for c in candidates:
+    chosen: list[tuple[str, str]] = []
+    for c, relation in candidates:
         c = c.strip("/")
         if not c or c == current_slug or c in seen:
             continue
 
-        ok = (c in published_map) or (LINK_TO_QUEUED and c in queue_slugs)
+        ok = has_slug(c, queue_slugs, published_map)
         if not ok:
             continue
 
         seen.add(c)
-        chosen.append(c)
+        chosen.append((c, relation))
 
     chosen = chosen[:6]
     if not chosen:
         return ""
 
-    lis = "\n".join([f'  <li><a href="{href(s)}">{slug_to_title(s)}</a></li>' for s in chosen])
+    def anchor_text(slug: str, relation: str) -> str:
+        label = slug_label(slug)
+        if relation == "parent-geography":
+            return f"Statewide overview: {label}"
+        if relation == "sibling-category":
+            return f"Compare with {label}"
+        if relation == "peer-geography":
+            return f"Peer market snapshot: {label}"
+        if relation == "core-topic":
+            return f"Related service guide: {label}"
+        if relation == "global-core":
+            return f"Most-read national guide: {label}"
+        return f"Continue researching: {label}"
+
+    lis = "\n".join(
+        [f'  <li><a href="{href(slug)}">{anchor_text(slug, relation)}</a></li>' for slug, relation in chosen]
+    )
     return f"<ul>\n{lis}\n</ul>"
+
+def build_compare_module(current_slug: str, queue_slugs: list[str], published_map: dict) -> str:
+    geo_category, geo_state, geo_place = parse_geo_slug(current_slug)
+    if not geo_category or not geo_state:
+        return ""
+
+    if geo_place:
+        heading = f"Compare {slug_to_title(geo_place)}, {slug_to_title(geo_state)}"
+        sibling_suffix = f"{geo_state}/{geo_place}"
+    else:
+        heading = f"Compare {slug_to_title(geo_state)} with other markets"
+        sibling_suffix = geo_state
+
+    links: list[tuple[str, str]] = []
+    for sibling_category in GEO_SIBLING_CATEGORIES:
+        sibling_slug = f"{sibling_category}/{sibling_suffix}"
+        if sibling_slug != current_slug and has_slug(sibling_slug, queue_slugs, published_map):
+            links.append((sibling_slug, f"Compare against {slug_label(sibling_slug)}"))
+
+    if geo_place:
+        peer_prefix = f"{geo_category}/{geo_state}/"
+        peers = [
+            s for s in queue_slugs
+            if s.startswith(peer_prefix) and s != current_slug and has_slug(s, queue_slugs, published_map)
+        ][:3]
+        links.extend([(slug, f"Nearby benchmark: {slug_label(slug)}") for slug in peers])
+    else:
+        for market in HIGH_DEMAND_MARKETS:
+            if market == geo_state:
+                continue
+            peer_slug = f"{geo_category}/{market}"
+            if has_slug(peer_slug, queue_slugs, published_map):
+                links.append((peer_slug, f"State-to-state comparison: {slug_label(peer_slug)}"))
+            if len(links) >= 8:
+                break
+
+    if not links:
+        return ""
+
+    list_html = "\n".join([f'  <li><a href="{href(slug)}">{label}</a></li>' for slug, label in links[:8]])
+    return f"""
+<section aria-label="Comparison links">
+<h2>{heading}</h2>
+<p>Use these comparison pages to evaluate costs and taxes across related places before requesting quotes.</p>
+<ul>
+{list_html}
+</ul>
+</section>
+""".strip()
+
+def reorder_queue_for_clusters(remaining_slugs: list[str], published_map: dict) -> list[str]:
+    remaining_set = set(remaining_slugs)
+
+    def cluster_size(state: str) -> int:
+        return sum(
+            1
+            for category in GEO_SIBLING_CATEGORIES
+            if f"{category}/{state}" in remaining_set or f"{category}/{state}" in published_map
+        )
+
+    def sort_key(slug: str) -> tuple[int, int, int, int, str]:
+        category, state, place = parse_geo_slug(slug)
+        if not category or not state:
+            return (2, 2, 0, 0, slug)
+
+        demand_rank = HIGH_DEMAND_MARKETS.index(state) if state in HIGH_DEMAND_MARKETS else len(HIGH_DEMAND_MARKETS)
+        # Keep state + city/county pages for the same market tightly grouped.
+        level_rank = 0 if place is None else 1
+        completeness_rank = -cluster_size(state)
+        return (0, demand_rank, level_rank, completeness_rank, slug)
+
+    return sorted(remaining_slugs, key=sort_key)
 
 def build_prev_next(current_slug: str, queue_slugs: list[str], published_map: dict) -> str:
     # only published pages to avoid broken links
@@ -540,6 +704,7 @@ def build_page(slug: str, queue_slugs: list[str], published_map: dict) -> str:
 """
 
     related_html = build_related_links(slug, queue_slugs, published_map)
+    compare_html = build_compare_module(slug, queue_slugs, published_map)
     prev_next_html = build_prev_next(slug, queue_slugs, published_map)
 
     related_section = f"""
@@ -551,6 +716,8 @@ def build_page(slug: str, queue_slugs: list[str], published_map: dict) -> str:
 <h2>Keep exploring</h2>
 {prev_next_html}
 """.strip() if prev_next_html else ""
+
+    compare_section = compare_html if compare_html else ""
 
     today = datetime.utcnow().strftime("%Y-%m-%d")
     desc = f"Updated {today}. {service_name} {intent} with pricing factors, estimate tips, and FAQs."
@@ -594,6 +761,8 @@ def build_page(slug: str, queue_slugs: list[str], published_map: dict) -> str:
 </ul>
 
 {faq_html}
+
+{compare_section}
 
 {related_section}
 
@@ -686,7 +855,9 @@ def main(daily_max: int | None = None):
 
     daily_limit = daily_max if daily_max is not None else DAILY_MAX
     # Only publish new slugs, limited by daily_limit
-    remaining = [s for s in queue_slugs if s and s not in published][:daily_limit]
+    unpublished = [s for s in queue_slugs if s and s not in published]
+    prioritized_unpublished = reorder_queue_for_clusters(unpublished, published)
+    remaining = prioritized_unpublished[:daily_limit]
 
     if not remaining:
         save_json(MANIFEST_PATH, manifest)
