@@ -194,6 +194,29 @@
 - Audit records exist for run/cancel/retry/schedule edits.
 - Monetization pilot runs on a controlled subset with KPI dashboard.
 
+## 11.1) Definition of "Near Complete" (pre-GA gate)
+
+The project is considered **near complete** only when all checklist items below are true for **2 consecutive weeks**:
+
+### Product + delivery checklist
+- Core script-runner workflows are stable in production (p95 job success rate >= 98% and no Sev-1 incidents for 14 days).
+- Analytics is live end-to-end (events from admin + monetized page templates visible in dashboards within 15 minutes).
+- Payments are live for at least one monetization path (affiliate payout tracking or lead billing reconciliation active and verified weekly).
+- Onboarding flow is complete for internal operators (new operator can sign in, run a script, inspect logs, and schedule a job in <= 15 minutes without developer help).
+- At least one growth loop is active (example: geo-page CTA -> lead capture -> follow-up email/report -> return visit path is instrumented and running).
+
+### KPI gates (must all be met)
+- **Traffic:** >= 50,000 organic sessions/month on monetized templates.
+- **Conversion:** >= 2.5% visitor-to-lead conversion on pages with lead modules.
+- **MRR:** >= $8,000 monthly recurring revenue (or MRR-equivalent from repeating affiliate/lead contracts).
+- **Churn:** <= 4.0% monthly revenue churn across paying partners/customers.
+
+### KPI measurement notes
+- Traffic source of truth: GA4/Search Console blended reporting, reviewed weekly.
+- Conversion source of truth: server-side lead events matched to unique session IDs.
+- MRR source of truth: finance ledger with monthly close and reconciled payouts.
+- Churn formula: `(MRR lost in month) / (MRR at start of month)`.
+
 ## 12) Immediate Next Actions
 
 1. Create `script_registry.json` with 5 initial allowlisted scripts and param schemas.
