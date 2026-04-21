@@ -15,6 +15,8 @@ DAILY_MAX = int(os.getenv("DBA_DAILY_MAX", "10"))
 QUEUE_FILE = "data/core_pages.txt"
 MANIFEST_PATH = "published_manifest.json"
 SITEMAP_PATH = "sitemap.xml"
+SITEMAPS_DIR = "sitemaps"
+SITEMAP_SEGMENTS = ("states", "counties", "cities", "services")
 ROBOTS_PATH = "robots.txt"
 ALLOW_OVERWRITE = False
 OUTPUT_ROOT = "."
@@ -28,6 +30,15 @@ SITEMAP_EXCLUDE_DIRS = {
     "data",
     "logs",
     "node_modules",
+}
+STATE_SLUGS = {
+    "alabama", "alaska", "arizona", "arkansas", "california", "colorado", "connecticut", "delaware",
+    "florida", "georgia", "hawaii", "idaho", "illinois", "indiana", "iowa", "kansas", "kentucky",
+    "louisiana", "maine", "maryland", "massachusetts", "michigan", "minnesota", "mississippi",
+    "missouri", "montana", "nebraska", "nevada", "new-hampshire", "new-jersey", "new-mexico",
+    "new-york", "north-carolina", "north-dakota", "ohio", "oklahoma", "oregon", "pennsylvania",
+    "rhode-island", "south-carolina", "south-dakota", "tennessee", "texas", "utah", "vermont",
+    "virginia", "washington", "west-virginia", "wisconsin", "wyoming", "district-of-columbia",
 }
 
 # Ensure required legal pages exist (privacy-policy/terms)
@@ -640,17 +651,79 @@ def iter_public_index_pages():
         yield url_path, index_path
 
 def update_sitemap(manifest: dict):
-    urlset = ET.Element("urlset", xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
+    def classify_sitemap_segment(path: str) -> str:
+        parts = [p for p in path.strip("/").split("/") if p]
+        if not parts:
+            return "services"
+        if parts[0] in {"state", "states"}:
+            if len(parts) <= 2:
+                return "states"
+            if len(parts) == 3:
+                return "counties"
+            return "cities"
+        if len(parts) >= 2 and parts[1] in STATE_SLUGS:
+            if len(parts) == 2:
+                return "states"
+            if len(parts) == 3:
+                return "counties"
+            return "cities"
+        return "services"
+
+    def write_segment_sitemap(path: Path, pages: list[tuple[str, Path]]):
+        urlset = ET.Element("urlset", xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
+        for url_path, index_path in pages:
+            u = ET.SubElement(urlset, "url")
+            ET.SubElement(u, "loc").text = urljoin(SITE_URL.rstrip("/") + "/", url_path.lstrip("/"))
+            ET.SubElement(u, "lastmod").text = datetime.utcfromtimestamp(
+                index_path.stat().st_mtime
+            ).strftime("%Y-%m-%d")
+        ET.ElementTree(urlset).write(path, encoding="utf-8", xml_declaration=True)
+
+    def validate_sitemap_integrity(segment_paths: list[Path]) -> None:
+        ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+        missing = []
+        for xml_path in segment_paths:
+            root = ET.parse(xml_path).getroot()
+            for loc in root.findall("sm:url/sm:loc", ns):
+                loc_text = (loc.text or "").strip()
+                if not loc_text.startswith(SITE_URL):
+                    continue
+                rel_path = "/" + loc_text.replace(SITE_URL.rstrip("/"), "", 1).lstrip("/")
+                file_path = Path("index.html") if rel_path == "/" else Path(rel_path.strip("/")) / "index.html"
+                if not file_path.exists():
+                    missing.append(rel_path)
+        if missing:
+            raise RuntimeError(
+                "Sitemap integrity check failed. Missing index.html for: "
+                + ", ".join(sorted(set(missing))[:20])
+            )
+
     pages = sorted(set(iter_public_index_pages()), key=lambda item: item[0])
-
+    segments: dict[str, list[tuple[str, Path]]] = {name: [] for name in SITEMAP_SEGMENTS}
     for url_path, index_path in pages:
-        u = ET.SubElement(urlset, "url")
-        ET.SubElement(u, "loc").text = urljoin(SITE_URL.rstrip("/") + "/", url_path.lstrip("/"))
-        ET.SubElement(u, "lastmod").text = datetime.utcfromtimestamp(
-            index_path.stat().st_mtime
-        ).strftime("%Y-%m-%d")
+        segments[classify_sitemap_segment(url_path)].append((url_path, index_path))
 
-    ET.ElementTree(urlset).write(SITEMAP_PATH, encoding="utf-8", xml_declaration=True)
+    os.makedirs(SITEMAPS_DIR, exist_ok=True)
+    segment_paths: list[Path] = []
+    newest_lastmod = datetime.utcnow().strftime("%Y-%m-%d")
+    for name in SITEMAP_SEGMENTS:
+        seg_path = Path(SITEMAPS_DIR) / f"{name}.xml"
+        segment_paths.append(seg_path)
+        write_segment_sitemap(seg_path, sorted(set(segments[name]), key=lambda item: item[0]))
+        if segments[name]:
+            newest_lastmod = max(
+                newest_lastmod,
+                max(datetime.utcfromtimestamp(p.stat().st_mtime).strftime("%Y-%m-%d") for _, p in segments[name]),
+            )
+
+    sitemapindex = ET.Element("sitemapindex", xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
+    for name in SITEMAP_SEGMENTS:
+        sm = ET.SubElement(sitemapindex, "sitemap")
+        ET.SubElement(sm, "loc").text = f"{SITE_URL.rstrip('/')}/{SITEMAPS_DIR}/{name}.xml"
+        ET.SubElement(sm, "lastmod").text = newest_lastmod
+    ET.ElementTree(sitemapindex).write(SITEMAP_PATH, encoding="utf-8", xml_declaration=True)
+
+    validate_sitemap_integrity(segment_paths)
 
 def update_robots():
     with open(ROBOTS_PATH, "w", encoding="utf-8") as f:

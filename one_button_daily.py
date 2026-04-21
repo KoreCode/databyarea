@@ -53,6 +53,8 @@ STATE_ENSURER = Path("scripts/ensure_states.py")
 
 MANIFEST_PATH = Path("published_manifest.json")
 SITEMAP_PATH = Path("sitemap.xml")
+SITEMAPS_DIR = Path("sitemaps")
+SITEMAP_SEGMENTS = ("states", "counties", "cities", "services")
 ROBOTS_PATH = Path("robots.txt")
 
 DEPLOY_DIR = Path("_deploy")
@@ -75,6 +77,15 @@ EXCLUDE_DIRS = {
 EXCLUDE_PREFIXES = (".trashed-",)
 EXCLUDE_EXTS = (".zip", ".7z", ".rar")
 EXCLUDE_FILES = {".DS_Store", "Thumbs.db"}
+STATE_SLUGS = {
+    "alabama", "alaska", "arizona", "arkansas", "california", "colorado", "connecticut", "delaware",
+    "florida", "georgia", "hawaii", "idaho", "illinois", "indiana", "iowa", "kansas", "kentucky",
+    "louisiana", "maine", "maryland", "massachusetts", "michigan", "minnesota", "mississippi",
+    "missouri", "montana", "nebraska", "nevada", "new-hampshire", "new-jersey", "new-mexico",
+    "new-york", "north-carolina", "north-dakota", "ohio", "oklahoma", "oregon", "pennsylvania",
+    "rhode-island", "south-carolina", "south-dakota", "tennessee", "texas", "utah", "vermont",
+    "virginia", "washington", "west-virginia", "wisconsin", "wyoming", "district-of-columbia",
+}
 
 def utc_date_str() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%d")
@@ -101,6 +112,7 @@ def write_run_summary(summary: dict) -> None:
         f"- New manifest slugs: `{summary.get('new_manifest_slugs_count')}`",
         f"- New index pages: `{summary.get('new_url_paths_count')}`",
         f"- Sitemap URLs total: `{summary.get('sitemap_urls_total')}`",
+        f"- Sitemap segment counts: `{summary.get('sitemap_segment_counts')}`",
         f"- Deploy zip: `{summary.get('deploy_zip')}`",
         "",
         "## Return Codes",
@@ -250,18 +262,80 @@ def scan_all_index_pages() -> list[str]:
     url_paths = sorted(set(url_paths), key=lambda x: (x.count("/"), x))
     return url_paths
 
-def rebuild_sitemap_from_filesystem() -> int:
-    urlset = ET.Element("urlset", xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
+def rebuild_sitemap_from_filesystem() -> dict[str, int]:
+    def classify_sitemap_segment(path: str) -> str:
+        parts = [p for p in path.strip("/").split("/") if p]
+        if not parts:
+            return "services"
+        if parts[0] in {"state", "states"}:
+            if len(parts) <= 2:
+                return "states"
+            if len(parts) == 3:
+                return "counties"
+            return "cities"
+        if len(parts) >= 2 and parts[1] in STATE_SLUGS:
+            if len(parts) == 2:
+                return "states"
+            if len(parts) == 3:
+                return "counties"
+            return "cities"
+        return "services"
+
+    def write_urlset(path: Path, url_paths: list[str], today_str: str) -> None:
+        urlset = ET.Element("urlset", xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
+        for url_path in url_paths:
+            u = ET.SubElement(urlset, "url")
+            ET.SubElement(u, "loc").text = urljoin(SITE_URL.rstrip("/") + "/", url_path.lstrip("/"))
+            ET.SubElement(u, "lastmod").text = today_str
+        ET.ElementTree(urlset).write(path, encoding="utf-8", xml_declaration=True)
+
+    def url_to_index_file(url_path: str) -> Path:
+        if url_path == "/":
+            return Path("index.html")
+        return Path(url_path.strip("/")) / "index.html"
+
+    def validate_sitemaps(segment_paths: dict[str, Path]) -> None:
+        ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+        missing: list[str] = []
+        for xml_path in segment_paths.values():
+            root = ET.parse(xml_path).getroot()
+            for loc in root.findall("sm:url/sm:loc", ns):
+                loc_text = (loc.text or "").strip()
+                if not loc_text.startswith(SITE_URL):
+                    continue
+                rel = "/" + loc_text.replace(SITE_URL.rstrip("/"), "", 1).lstrip("/")
+                if not url_to_index_file(rel).exists():
+                    missing.append(rel)
+        if missing:
+            raise RuntimeError(
+                "Sitemap integrity check failed. Missing index.html for: "
+                + ", ".join(sorted(set(missing))[:20])
+            )
+
     today = datetime.utcnow().strftime("%Y-%m-%d")
-
     urls = scan_all_index_pages()
+    segments: dict[str, list[str]] = {name: [] for name in SITEMAP_SEGMENTS}
     for path in urls:
-        u = ET.SubElement(urlset, "url")
-        ET.SubElement(u, "loc").text = urljoin(SITE_URL.rstrip("/") + "/", path.lstrip("/"))
-        ET.SubElement(u, "lastmod").text = today
+        segments[classify_sitemap_segment(path)].append(path)
 
-    ET.ElementTree(urlset).write(SITEMAP_PATH, encoding="utf-8", xml_declaration=True)
-    return len(urls)
+    SITEMAPS_DIR.mkdir(parents=True, exist_ok=True)
+    segment_paths: dict[str, Path] = {}
+    for name in SITEMAP_SEGMENTS:
+        seg_path = SITEMAPS_DIR / f"{name}.xml"
+        segment_paths[name] = seg_path
+        write_urlset(seg_path, sorted(set(segments[name])), today)
+
+    index_root = ET.Element("sitemapindex", xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
+    for name in SITEMAP_SEGMENTS:
+        sm = ET.SubElement(index_root, "sitemap")
+        ET.SubElement(sm, "loc").text = f"{SITE_URL.rstrip('/')}/{(SITEMAPS_DIR / f'{name}.xml').as_posix()}"
+        ET.SubElement(sm, "lastmod").text = today
+    ET.ElementTree(index_root).write(SITEMAP_PATH, encoding="utf-8", xml_declaration=True)
+
+    validate_sitemaps(segment_paths)
+    counts = {name: len(set(segments[name])) for name in SITEMAP_SEGMENTS}
+    counts["total"] = sum(counts.values())
+    return counts
 
 def update_robots():
     ROBOTS_PATH.write_text(
@@ -372,7 +446,7 @@ def main():
             _, _ = run_cmd_capture([sys.executable, str(EMPTY_DIR_CLEANER)])
 
     # 4-5) Rebuild sitemap + robots from filesystem (includes city pages)
-    total_sitemap_urls = rebuild_sitemap_from_filesystem()
+    sitemap_counts = rebuild_sitemap_from_filesystem()
     update_robots()
 
     # 6) Build deploy zip
@@ -406,7 +480,8 @@ def main():
         "new_manifest_slugs": new_manifest_slugs,
         "new_url_paths_count": len(new_url_paths),
         "new_url_paths": new_url_paths,
-        "sitemap_urls_total": total_sitemap_urls,
+        "sitemap_urls_total": sitemap_counts["total"],
+        "sitemap_segment_counts": sitemap_counts,
         "deploy_zip": zip_path.as_posix(),
         "zip_files_added": files_added,
         "zip_files_skipped": files_skipped,
@@ -436,7 +511,7 @@ def main():
         "relink_rc": relink_rc,
         "clean": bool(args.clean),
         "clean_rc": clean_rc,
-        "sitemap_urls": total_sitemap_urls,
+        "sitemap_urls": sitemap_counts["total"],
         "zip": zip_path.as_posix(),
         "python": sys.version.split()[0],
         "new_manifest_slugs": len(new_manifest_slugs),
@@ -478,7 +553,8 @@ def main():
     else:
         print("New index pages found on disk: 0")
 
-    print("\nSitemap URLs total:", total_sitemap_urls)
+    print("\nSitemap URLs total:", sitemap_counts["total"])
+    print("Sitemap segment counts:", sitemap_counts)
     print("Deploy zip:", zip_path.as_posix())
     print(f"Zip contents -> Added files: {files_added} | Skipped: {files_skipped}")
     print(f"Version footer script tags injected: {injected}")
