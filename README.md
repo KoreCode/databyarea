@@ -1,6 +1,11 @@
 # databyarea
 DataByArea
 
+## Positioning (current focus)
+- **Primary persona:** U.S. homeowners and renters planning a near-term move or budgeting decision.
+- **Top use case:** Compare location-based household costs (utilities, insurance, property taxes, and cost of living) at state/county/city level before choosing where to live.
+- **One-sentence value proposition:** **“This site helps U.S. movers and household budget planners compare local living costs across places in under 5 minutes.”**
+
 ## Automation
 
 ### Generator mode
