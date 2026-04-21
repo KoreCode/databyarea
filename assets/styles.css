@@ -21,6 +21,17 @@ a:hover{text-decoration:underline}
 a:focus-visible{outline:3px solid #93b4d2;outline-offset:2px;border-radius:8px}
 
 .container{max-width:var(--max);margin:0 auto;padding:0 16px}
+.skip-link{
+  position:absolute;
+  left:12px;
+  top:-44px;
+  z-index:100;
+  background:#0f172a;
+  color:#fff;
+  padding:10px 12px;
+  border-radius:8px;
+}
+.skip-link:focus{top:12px}
 
 .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);background:var(--surface)}
 .brand{display:flex;align-items:center;gap:10px;color:#0f172a}
@@ -165,10 +176,13 @@ a:focus-visible{outline:3px solid #93b4d2;outline-offset:2px;border-radius:8px}
   margin:0 -16px;
   padding:16px 24px;
   border-bottom:1px solid #d7e3ee;
+  position:sticky;
+  top:0;
+  z-index:10;
 }
 
 .home-nav .brand-text strong{font-size:28px}
-.home-navlinks{gap:28px}
+.home-navlinks{gap:18px}
 .home-navlinks .pill{font-size:16px}
 
 .home-hero{
@@ -205,8 +219,9 @@ a:focus-visible{outline:3px solid #93b4d2;outline-offset:2px;border-radius:8px}
 .home-title{
   margin:4px 0 14px;
   text-align:center;
-  font-size:52px;
+  font-size:clamp(2rem,4.6vw,3rem);
   line-height:1.15;
+  text-wrap:balance;
 }
 
 .home-feature-grid{
@@ -285,7 +300,7 @@ a:focus-visible{outline:3px solid #93b4d2;outline-offset:2px;border-radius:8px}
 }
 
 .insight-card h3{margin:0;font-size:18px}
-.insight-card p{margin:0 0 6px;font-size:15px;color:#334155}
+.insight-card p{margin:0 0 6px;font-size:15px;color:#334155;line-height:1.45}
 .insight-link{font-size:15px;color:#2b596f;text-decoration:underline}
 
 .states-panel{margin-top:12px}
@@ -313,17 +328,17 @@ a:focus-visible{outline:3px solid #93b4d2;outline-offset:2px;border-radius:8px}
 
   .home-shell{margin:8px auto 16px}
   .home-nav{margin:0 -12px;padding:12px}
-  .home-nav .brand-text strong{font-size:26px}
-  .home-navlinks{gap:10px;flex-wrap:wrap}
-  .home-navlinks .pill{font-size:18px}
+  .home-nav .brand-text strong{font-size:22px}
+  .home-navlinks{gap:8px;flex-wrap:wrap}
+  .home-navlinks .pill{font-size:15px}
   .home-hero{margin:0 -12px;padding:16px 12px 18px}
   .home-search{min-height:56px;padding:0 14px}
   .search-icon{font-size:20px}
-  .home-search-input{font-size:17px}
+  .home-search-input{font-size:16px}
   .home-main{padding:12px 0 8px}
-  .home-title{font-size:40px}
+  .home-title{font-size:clamp(1.8rem,6vw,2.4rem)}
   .home-feature-grid{grid-template-columns:1fr}
-  .home-panel h2,.states-header h2{font-size:30px}
+  .home-panel h2,.states-header h2{font-size:26px}
   .featured-card{grid-template-columns:1fr}
   .featured-map{min-height:170px;font-size:18px}
   .featured-content h3{font-size:28px}
@@ -331,12 +346,12 @@ a:focus-visible{outline:3px solid #93b4d2;outline-offset:2px;border-radius:8px}
   .featured-content .zip{font-size:18px}
   .featured-btn{font-size:20px}
   .insight-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .insight-card h3{font-size:22px}
-  .insight-card p{font-size:18px}
-  .insight-link{font-size:18px}
-  .states-header a{font-size:20px}
+  .insight-card h3{font-size:20px}
+  .insight-card p{font-size:16px}
+  .insight-link{font-size:16px}
+  .states-header a{font-size:16px}
   .states-links{grid-template-columns:repeat(3,minmax(0,1fr))}
-  .states-links a{font-size:18px}
+  .states-links a{font-size:16px}
   .home-footer{font-size:16px}
   .stateHoverGrid{grid-template-columns:repeat(8,minmax(0,1fr))}
   .selectionGrid{grid-template-columns:1fr}
@@ -354,10 +369,14 @@ a:focus-visible{outline:3px solid #93b4d2;outline-offset:2px;border-radius:8px}
   .filter-ribbon{display:none}
   .filter-ribbon.open{display:flex}
 
-  .home-title{font-size:33px}
-  .home-search-input{font-size:22px}
+  .home-title{font-size:clamp(1.6rem,7.2vw,2rem)}
+  .home-search-input{font-size:16px}
+  .home-nav{padding:10px 12px}
+  .home-navlinks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%}
+  .home-navlinks .pill{display:block;padding:6px 8px;border:1px solid #ced9e4;border-radius:8px;background:#fff;text-align:center}
   .insight-grid{grid-template-columns:1fr}
   .states-links{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .states-links a{font-size:15px}
   .stateHoverGrid{grid-template-columns:repeat(5,minmax(0,1fr))}
   .selectionColumns{grid-template-columns:1fr}
   .stateMap{height:280px}
