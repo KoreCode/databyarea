@@ -35,6 +35,7 @@ import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import urljoin
+from scripts.generators.validate import seo_coverage_report
 
 SITE_URL = "https://databyarea.com"
 
@@ -101,6 +102,7 @@ def write_run_summary(summary: dict) -> None:
         f"- New manifest slugs: `{summary.get('new_manifest_slugs_count')}`",
         f"- New index pages: `{summary.get('new_url_paths_count')}`",
         f"- Sitemap URLs total: `{summary.get('sitemap_urls_total')}`",
+        f"- SEO pages evaluated: `{(summary.get('seo_coverage_report') or {}).get('evaluated_pages', 0)}`",
         f"- Deploy zip: `{summary.get('deploy_zip')}`",
         "",
         "## Return Codes",
@@ -108,7 +110,11 @@ def write_run_summary(summary: dict) -> None:
         f"- generator: `{summary.get('make_rc')}`",
         f"- relink: `{summary.get('relink_rc')}`",
         f"- clean: `{summary.get('clean_rc')}`",
+        "",
+        "## SEO Coverage Report",
     ]
+    for field, data in (summary.get("seo_coverage_report") or {}).get("field_coverage", {}).items():
+        lines.append(f"- {field}: `{data.get('present', 0)}/{(summary.get('seo_coverage_report') or {}).get('evaluated_pages', 0)}` ({data.get('pct', 0)}%)")
     RUN_SUMMARY_MD.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 def git_commit_short() -> str:
@@ -395,6 +401,19 @@ def main():
 
     new_manifest_slugs = diff_manifest(before_manifest, after_manifest)
     new_url_paths = sorted(after_urls - before_urls)
+    seo_paths = [
+        Path(category) / "index.html"
+        for category in ["utility-costs", "cost-of-living", "property-taxes", "insurance-costs"]
+    ]
+    seo_paths.extend(
+        Path(path.strip("/")) / "index.html"
+        for path in new_url_paths
+        if path.startswith("/utility-costs/")
+        or path.startswith("/cost-of-living/")
+        or path.startswith("/property-taxes/")
+        or path.startswith("/insurance-costs/")
+    )
+    seo_report = seo_coverage_report(sorted(set(seo_paths)))
     summary = {
         "date_utc": date,
         "generator": str(generator),
@@ -415,6 +434,7 @@ def main():
         "make_rc": make_rc,
         "relink_rc": relink_rc,
         "clean_rc": clean_rc,
+        "seo_coverage_report": seo_report,
     }
     write_run_summary(summary)
     ensure_version_footer_js()
@@ -479,6 +499,10 @@ def main():
         print("New index pages found on disk: 0")
 
     print("\nSitemap URLs total:", total_sitemap_urls)
+    print("SEO coverage report (required fields):")
+    print(f"  Evaluated pages: {seo_report.get('evaluated_pages', 0)}")
+    for field, data in seo_report.get("field_coverage", {}).items():
+        print(f"  - {field}: {data.get('present', 0)}/{seo_report.get('evaluated_pages', 0)} ({data.get('pct', 0)}%)")
     print("Deploy zip:", zip_path.as_posix())
     print(f"Zip contents -> Added files: {files_added} | Skipped: {files_skipped}")
     print(f"Version footer script tags injected: {injected}")

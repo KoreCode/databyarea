@@ -6,6 +6,7 @@ from datetime import datetime
 from pathlib import Path
 from urllib.parse import urljoin
 import xml.etree.ElementTree as ET
+from generators.utils import build_jsonld_blocks, build_seo_payload, render_jsonld_scripts
 
 # =========================================================
 # CONFIG (EDIT THESE IF NEEDED)
@@ -554,14 +555,36 @@ def build_page(slug: str, queue_slugs: list[str], published_map: dict) -> str:
 
     today = datetime.utcnow().strftime("%Y-%m-%d")
     desc = f"Updated {today}. {service_name} {intent} with pricing factors, estimate tips, and FAQs."
+    seo = build_seo_payload(
+        path=slug,
+        title=f"{service_name} {intent.title()} ({year} Guide)",
+        description=desc,
+        page_type="service",
+        site_url=SITE_URL,
+        updated_iso=today,
+    )
+    jsonld = render_jsonld_scripts(build_jsonld_blocks(seo=seo, page_type="service"))
 
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>{service_name} {intent.title()} ({year} Guide)</title>
-<meta name="description" content="{desc}">
+<title>{seo["title"]}</title>
+<meta name="description" content="{seo["description"]}">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="{seo["canonical"]}">
+<meta property="og:type" content="{seo["og_type"]}">
+<meta property="og:site_name" content="{seo["site_name"]}">
+<meta property="og:title" content="{seo["title"]}">
+<meta property="og:description" content="{seo["description"]}">
+<meta property="og:url" content="{seo["canonical"]}">
+<meta property="og:image" content="{seo["image_url"]}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{seo["title"]}">
+<meta name="twitter:description" content="{seo["description"]}">
+<meta name="twitter:image" content="{seo["image_url"]}">
+{jsonld}
 </head>
 <body>
 

@@ -9,9 +9,17 @@ from __future__ import annotations
 import argparse
 from datetime import datetime
 from pathlib import Path
+from generators.utils import (
+    SITE_URL,
+    build_jsonld_blocks,
+    build_seo_payload,
+    canonical_url,
+    render_jsonld_scripts,
+    render_seo_meta_tags,
+)
+from generators.validate import validate_generated_pages
 
 SITE_NAME = "DataByArea"
-SITE_URL = "https://databyarea.com"
 CSS_PATH = "/assets/styles.css"
 
 SECTIONS = [
@@ -101,12 +109,29 @@ def state_index_html(section: str, state_slug: str) -> str:
     state_name = US_STATES[state_slug]
     section_meta = SECTION_META[section]
     section_title = section_meta["title"]
-    canonical = f"{SITE_URL}/{section}/{state_slug}/"
     desc = (
         f"Explore {section_title.lower()} in {state_name}. "
         f"Compare state averages and city-level differences."
     )
     today = datetime.utcnow().strftime("%Y-%m-%d")
+    seo = build_seo_payload(
+        path=f"{section}/{state_slug}",
+        title=f"{section_title} in {state_name} | {SITE_NAME}",
+        description=desc,
+        page_type="state_detail",
+        site_url=SITE_URL,
+        updated_iso=today,
+    )
+    meta_tags = render_seo_meta_tags(seo)
+    jsonld = render_jsonld_scripts(build_jsonld_blocks(
+        seo=seo,
+        page_type="state_detail",
+        breadcrumb_items=[
+            {"name": "Home", "url": canonical_url("/")},
+            {"name": section_title, "url": canonical_url(section)},
+            {"name": state_name, "url": seo["canonical"]},
+        ],
+    ))
     related_links = []
     for other_section in SECTIONS:
         if other_section == section:
@@ -120,12 +145,9 @@ def state_index_html(section: str, state_slug: str) -> str:
 <html lang=\"en\">
 <head>
   <meta charset=\"utf-8\">
-  <title>{section_title} in {state_name} | {SITE_NAME}</title>
-  <meta name=\"description\" content=\"{desc}\">
-  <meta name=\"robots\" content=\"index,follow,max-image-preview:large\">
-  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
-  <link rel=\"canonical\" href=\"{canonical}\">
+  {meta_tags}
   <link rel=\"stylesheet\" href=\"{CSS_PATH}\">
+  {jsonld}
 </head>
 <body>
   <div class=\"container\">
@@ -192,11 +214,26 @@ def state_index_html(section: str, state_slug: str) -> str:
 def section_index_html(section: str) -> str:
     section_meta = SECTION_META[section]
     section_title = section_meta["title"]
-    canonical = f"{SITE_URL}/{section}/"
     desc = (
         f"Browse {section_title.lower()} estimates across all 50 U.S. states. "
         f"Use quick search plus cross-category links for complete comparisons."
     )
+    seo = build_seo_payload(
+        path=section,
+        title=f"{section_title} by State | Data By Area",
+        description=desc,
+        page_type="section_hub",
+        site_url=SITE_URL,
+    )
+    meta_tags = render_seo_meta_tags(seo)
+    jsonld = render_jsonld_scripts(build_jsonld_blocks(
+        seo=seo,
+        page_type="section_hub",
+        breadcrumb_items=[
+            {"name": "Home", "url": canonical_url("/")},
+            {"name": section_title, "url": seo["canonical"]},
+        ],
+    ))
     state_items = "\n".join(
         f'<li class="item"><a href="/{section}/{slug}/">{name}</a></li>'
         for slug, name in sorted(US_STATES.items(), key=lambda x: x[1])
@@ -220,12 +257,10 @@ def section_index_html(section: str) -> str:
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>{section_title} by State | Data By Area</title>
-  <meta name="description" content="{desc}" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  {meta_tags}
   <link rel="stylesheet" href="{CSS_PATH}" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsvectormap@1.7.0/dist/css/jsvectormap.min.css" />
-  <link rel="canonical" href="{canonical}" />
+  {jsonld}
 </head>
 <body>
   <div class="container">
@@ -395,6 +430,7 @@ def main() -> None:
     created = 0
     updated = 0
     unchanged = 0
+    touched_paths: list[Path] = []
 
     for section in SECTIONS:
         section_dir = Path(section)
@@ -404,6 +440,7 @@ def main() -> None:
         if not section_index.exists():
             section_index.write_text(rendered, encoding="utf-8")
             created += 1
+            touched_paths.append(section_index)
             print(f"Created: /{section}/")
         else:
             current = section_index.read_text(encoding="utf-8", errors="ignore")
@@ -412,9 +449,13 @@ def main() -> None:
             else:
                 section_index.write_text(rendered, encoding="utf-8")
                 updated += 1
+                touched_paths.append(section_index)
                 print(f"Updated: /{section}/")
 
     if args.sections_only:
+        errors = validate_generated_pages(touched_paths)
+        if errors:
+            raise SystemExit("SEO validation failed:\n" + "\n".join(errors))
         print(f"Category template generation complete. Created {created}, updated {updated}, unchanged {unchanged}.")
         return
 
@@ -427,6 +468,7 @@ def main() -> None:
             if not index_path.exists():
                 index_path.write_text(rendered, encoding="utf-8")
                 created += 1
+                touched_paths.append(index_path)
                 print(f"Created: /{section}/{state_slug}/")
                 continue
             current = index_path.read_text(encoding="utf-8", errors="ignore")
@@ -435,8 +477,12 @@ def main() -> None:
                 continue
             index_path.write_text(rendered, encoding="utf-8")
             updated += 1
+            touched_paths.append(index_path)
             print(f"Updated: /{section}/{state_slug}/")
 
+    errors = validate_generated_pages(touched_paths)
+    if errors:
+        raise SystemExit("SEO validation failed:\n" + "\n".join(errors))
     print(f"State coverage check complete. Created {created}, updated {updated}, unchanged {unchanged}.")
 
 

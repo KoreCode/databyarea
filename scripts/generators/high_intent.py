@@ -1,29 +1,20 @@
 import csv
-import json
 from datetime import date
 
 from .registry import register
-from .utils import make_key, norm
+from .utils import (
+    SITE_URL,
+    build_jsonld_blocks,
+    build_seo_payload,
+    canonical_url,
+    make_key,
+    norm,
+    render_jsonld_scripts,
+)
 
 
 def money(n: int) -> str:
     return "${:,.0f}".format(n)
-
-
-def faq_jsonld(title: str, faqs: list[dict]) -> str:
-    data = {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            {
-                "@type": "Question",
-                "name": f["q"],
-                "acceptedAnswer": {"@type": "Answer", "text": f["a"]},
-            }
-            for f in faqs
-        ],
-    }
-    return json.dumps(data, ensure_ascii=False)
 
 
 def make_faqs(service: str, unit: str, low: int, high: int, avg: int):
@@ -68,7 +59,25 @@ def build_mdx(row: dict) -> str:
     related2 = row.get("related_slug2", "").strip()
 
     faqs = make_faqs(service, unit, low, high, avg)
-    faq_ld = faq_jsonld(title, faqs)
+    description = f"Updated {today}. Learn typical {service.lower()} pricing by state, what drives costs, and how to get accurate local estimates."
+    seo = build_seo_payload(
+        path=slug,
+        title=title,
+        description=description,
+        page_type="high_intent",
+        site_url=SITE_URL,
+        updated_iso=today,
+    )
+    jsonld_blocks = build_jsonld_blocks(
+        seo=seo,
+        page_type="high_intent",
+        breadcrumb_items=[
+            {"name": "Home", "url": canonical_url("/")},
+            {"name": title, "url": seo["canonical"]},
+        ],
+        faq_items=faqs,
+    )
+    jsonld = render_jsonld_scripts(jsonld_blocks)
 
     related_links = []
     if related1:
@@ -81,12 +90,13 @@ def build_mdx(row: dict) -> str:
 
     return f"""---
 title: "{title}"
-description: "Updated {today}. Learn typical {service.lower()} pricing by state, what drives costs, and how to get accurate local estimates."
+description: "{description}"
 slug: "{slug}"
 updated: "{today}"
+canonical: "{seo["canonical"]}"
 ---
 
-<script type="application/ld+json">{faq_ld}</script>
+{jsonld}
 
 # {h1}
 
