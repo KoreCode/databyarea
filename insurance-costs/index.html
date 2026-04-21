@@ -9,24 +9,23 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsvectormap@1.7.0/dist/css/jsvectormap.min.css" />
   <link rel="canonical" href="https://databyarea.com/insurance-costs/" />
 </head>
-<body>
-  <div class="container">
-    <div class="nav">
-      <div class="brand">
-        <img src="/assets/logo.png" alt="Data By Area logo" class="logo">
+<body class="home-page">
+  <div class="container home-shell">
+    <header class="nav home-nav">
+      <a class="brand" href="/" aria-label="DataByArea home">
+        <img src="/assets/logo.png" alt="DataByArea logo" class="logo">
         <div class="brand-text">
-          <strong>Data By Area</strong>
-          <span>Costs • Rates • Public Data</span>
+          <strong>DataByArea.com</strong>
         </div>
-      </div>
-      <div class="navlinks">
-        <a class="pill" href="/">Home</a>
+      </a>
+      <nav class="navlinks home-navlinks" aria-label="Main navigation">
+        <a class="pill" href="/utility-costs/">Utilities</a>
         <a class="pill" href="/cost-of-living/">Cost of Living</a>
-        <a class="pill" href="/utility-costs/">Utility Costs</a>
-        <a class="pill" href="/property-taxes/">Property Tax Rates</a>
-        <a class="pill" href="/insurance-costs/">Insurance Costs</a>
-      </div>
-    </div>
+        <a class="pill" href="/property-taxes/">Property Taxes</a>
+        <a class="pill" href="/insurance-costs/" aria-current="page">Insurance</a>
+        <a class="pill" href="/about/">About</a>
+      </nav>
+    </header>
 
     <div class="hero">
       <h1>Insurance Costs by State</h1>
@@ -223,7 +222,7 @@
 <li class="item"><a href="/insurance-costs/wyoming/">Wyoming</a></li>
     </ul>
 
-    <div class="footer">
+    <div class="footer home-footer">
       <p><strong>Disclaimer:</strong> Informational estimates only. Costs and rates vary by household, provider, and local area.</p>
       <p><a href="/about/">About</a> · <a href="/privacy/">Privacy Policy</a> · <a href="/contact/">Contact</a></p>
       <p>© <span id="y"></span> DataByArea.com</p>
