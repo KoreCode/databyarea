@@ -5,11 +5,13 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import subprocess
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlparse
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 REPORT_PATH = REPO_ROOT / "_deploy" / "agent_quality_report.json"
@@ -80,6 +82,75 @@ def agent_content_guardian() -> dict[str, Any]:
     }
 
 
+def agent_internal_link_guardian() -> dict[str, Any]:
+    pages = []
+    for index_file in REPO_ROOT.glob("**/index.html"):
+        rel = index_file.relative_to(REPO_ROOT)
+        if rel.parts and rel.parts[0] in {".git", "_deploy", "assets", "scripts", "data", "site"}:
+            continue
+        pages.append(index_file)
+
+    href_pattern = re.compile(r'href=["\']([^"\']+)["\']', re.IGNORECASE)
+    page_urls = set()
+    file_to_url = {}
+    for page in pages:
+        rel_dir = page.parent.relative_to(REPO_ROOT)
+        rel_dir_url = str(rel_dir).replace("\\", "/").strip("/")
+        url = "/" if str(rel_dir) == "." else f"/{rel_dir_url}/"
+        file_to_url[page] = url
+        page_urls.add(url)
+
+    outbound_counts: dict[str, int] = {url: 0 for url in page_urls}
+    inbound_counts: dict[str, int] = {url: 0 for url in page_urls}
+
+    for page in pages:
+        html = page.read_text(encoding="utf-8", errors="ignore")
+        current_url = file_to_url[page]
+        seen_targets = set()
+        for match in href_pattern.findall(html):
+            href = match.strip()
+            if not href or href.startswith(("mailto:", "tel:", "#", "javascript:")):
+                continue
+
+            parsed = urlparse(href)
+            if parsed.scheme or parsed.netloc:
+                continue
+
+            if href.startswith("/"):
+                target = href
+            else:
+                target = f"{current_url.rstrip('/')}/{href}"
+            target = target.split("#", 1)[0].split("?", 1)[0]
+            if not target.endswith("/"):
+                if target.endswith("/index.html"):
+                    target = target[:-10]
+                else:
+                    target = f"{target}/"
+            if target in page_urls and target not in seen_targets:
+                outbound_counts[current_url] += 1
+                inbound_counts[target] += 1
+                seen_targets.add(target)
+
+    exempt_urls = {"/", "/privacy-policy/", "/terms/", "/contact/", "/about/"}
+    orphan_pages = sorted([u for u, count in inbound_counts.items() if count == 0 and u not in exempt_urls])
+    min_internal_links = 3
+    low_link_pages = sorted(
+        [u for u, count in outbound_counts.items() if count < min_internal_links and u not in exempt_urls]
+    )
+
+    return {
+        "agent": "Internal Link Guardian",
+        "task": "Check orphan pages and low internal-link pages",
+        "result": {
+            "ok": not orphan_pages and not low_link_pages,
+            "pages_scanned": len(page_urls),
+            "minimum_internal_links": min_internal_links,
+            "orphan_pages": orphan_pages[:100],
+            "low_internal_link_pages": low_link_pages[:100],
+        },
+    }
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Run multi-agent quality checks and optional generation.")
     parser.add_argument("--generate", action="store_true", help="Also run the site generator agent.")
@@ -90,6 +161,7 @@ def main() -> int:
         agent_site_builder(enabled=args.generate),
         agent_seo_auditor(),
         agent_content_guardian(),
+        agent_internal_link_guardian(),
     ]
     overall_ok = all((item.get("result") or {}).get("ok", False) for item in checks)
 
