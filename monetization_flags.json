@@ -1,0 +1,50 @@
+{
+  "global": {
+    "affiliate_enabled": false,
+    "lead_form_enabled": false,
+    "quality_threshold_passed": false,
+    "max_above_fold_units": 1
+  },
+  "page_type": {
+    "home_services": {
+      "affiliate_enabled": true,
+      "lead_form_enabled": false
+    },
+    "utilities": {
+      "affiliate_enabled": false,
+      "lead_form_enabled": false
+    },
+    "insurance": {
+      "affiliate_enabled": false,
+      "lead_form_enabled": false
+    },
+    "property_taxes": {
+      "affiliate_enabled": false,
+      "lead_form_enabled": false
+    }
+  },
+  "geography": {
+    "us": {
+      "affiliate_enabled": true,
+      "lead_form_enabled": false
+    },
+    "by_state": {
+      "affiliate_enabled": true,
+      "lead_form_enabled": false
+    }
+  },
+  "sensitive_templates": {
+    "enabled": false,
+    "keywords": [
+      "insurance",
+      "tax",
+      "medicare",
+      "loan",
+      "mortgage",
+      "credit",
+      "legal",
+      "bankruptcy",
+      "debt"
+    ]
+  }
+}

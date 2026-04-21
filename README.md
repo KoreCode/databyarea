@@ -97,6 +97,50 @@ DataByArea
   - `&key=YOUR_KEY`
   - `&kp=admin_key`
 
+### Monetization feature flags and rollout
+- File: `monetization_flags.json` (repo root).
+- `scripts/build_site.py` reads this file when rendering pages and controls:
+  - Affiliate recommendation module placement (below the primary informational section)
+  - Optional lead form placement (near the bottom of the page)
+  - Per-page-type and per-geography enablement
+  - Sensitive template suppression until quality threshold passes
+
+#### Config shape
+- `global`: default switches and shared safety controls
+  - `affiliate_enabled`
+  - `lead_form_enabled`
+  - `quality_threshold_passed`
+  - `max_above_fold_units` (set to `1` to keep strict top-of-page cap)
+- `page_type`: overrides keyed by inferred template class (`home_services`, `utilities`, `insurance`, `property_taxes`)
+- `geography`: overrides keyed by inferred geography (`us`, `by_state`)
+- `sensitive_templates`: keyword guardrail and master enable switch
+
+#### Rollout procedure (enable/disable)
+1. Start safe:
+   - Keep `global.lead_form_enabled=false`
+   - Keep `global.quality_threshold_passed=false`
+   - Keep `sensitive_templates.enabled=false`
+2. Enable affiliate on low-risk templates first:
+   - Set `page_type.home_services.affiliate_enabled=true`
+   - Keep `insurance` and `property_taxes` disabled
+3. Generate a small batch:
+   - `python3 scripts/build_site.py --daily-max 5`
+4. Measure module performance using HTML markers:
+   - Affiliate module marker: `.dba-affiliate-module`
+   - Lead module marker: `.dba-lead-form-module`
+5. Expand geography gradually:
+   - Toggle `geography.by_state` and then `geography.us` as metrics hold
+6. Enable lead form only after quality and SEO checks:
+   - Turn on `lead_form_enabled` in targeted `page_type`/`geography` scopes
+7. Sensitive/YMYL-like templates:
+   - Keep disabled until review completes
+   - To permit, set both:
+     - `global.quality_threshold_passed=true`
+     - `sensitive_templates.enabled=true`
+8. Fast rollback:
+   - Set `global.affiliate_enabled=false` and/or `global.lead_form_enabled=false`
+   - Re-run generator to publish templates without those modules
+
 ## Ops Files
 - `DIRECTORY_TREE.md` — clean repository tree map.
 - `AUTOMATION_STATUS.md` — current automation enablement status and scheduler line.
