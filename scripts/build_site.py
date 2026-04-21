@@ -18,6 +18,7 @@ SITEMAP_PATH = "sitemap.xml"
 ROBOTS_PATH = "robots.txt"
 ALLOW_OVERWRITE = False
 OUTPUT_ROOT = "."
+MONETIZATION_FLAGS_PATH = "monetization_flags.json"
 SITEMAP_EXCLUDE_DIRS = {
     ".git",
     "__pycache__",
@@ -28,6 +29,39 @@ SITEMAP_EXCLUDE_DIRS = {
     "data",
     "logs",
     "node_modules",
+}
+
+DEFAULT_MONETIZATION_FLAGS = {
+    "global": {
+        "affiliate_enabled": False,
+        "lead_form_enabled": False,
+        "quality_threshold_passed": False,
+        "max_above_fold_units": 1,
+    },
+    "page_type": {
+        "home_services": {"affiliate_enabled": True, "lead_form_enabled": False},
+        "utilities": {"affiliate_enabled": False, "lead_form_enabled": False},
+        "insurance": {"affiliate_enabled": False, "lead_form_enabled": False},
+        "property_taxes": {"affiliate_enabled": False, "lead_form_enabled": False},
+    },
+    "geography": {
+        "us": {"affiliate_enabled": True, "lead_form_enabled": False},
+        "by_state": {"affiliate_enabled": True, "lead_form_enabled": False},
+    },
+    "sensitive_templates": {
+        "enabled": False,
+        "keywords": [
+            "insurance",
+            "tax",
+            "medicare",
+            "loan",
+            "mortgage",
+            "credit",
+            "legal",
+            "bankruptcy",
+            "debt",
+        ],
+    },
 }
 
 # Ensure required legal pages exist (privacy-policy/terms)
@@ -433,6 +467,104 @@ def money_range(rng: random.Random):
     avg = int((low + high) / 2)
     return low, high, avg
 
+def merge_dict(base: dict, override: dict) -> dict:
+    merged = dict(base)
+    for key, value in override.items():
+        if isinstance(value, dict) and isinstance(merged.get(key), dict):
+            merged[key] = merge_dict(merged[key], value)
+        else:
+            merged[key] = value
+    return merged
+
+def load_monetization_flags(path: str = MONETIZATION_FLAGS_PATH) -> dict:
+    file_flags = load_json(path, {})
+    if not isinstance(file_flags, dict):
+        return DEFAULT_MONETIZATION_FLAGS
+    return merge_dict(DEFAULT_MONETIZATION_FLAGS, file_flags)
+
+def infer_page_type(slug: str, base: str) -> str:
+    s = f"{slug} {base}".lower()
+    if "insurance" in s:
+        return "insurance"
+    if "tax" in s:
+        return "property_taxes"
+    if "utility" in s or "energy" in s:
+        return "utilities"
+    return "home_services"
+
+def infer_geography(slug: str) -> str:
+    if "-by-state" in slug:
+        return "by_state"
+    return "us"
+
+def is_sensitive_template(slug: str, base: str, flags: dict) -> bool:
+    sensitive_cfg = flags.get("sensitive_templates", {})
+    keywords = sensitive_cfg.get("keywords", [])
+    haystack = f"{slug} {base}".lower()
+    return any(str(keyword).lower() in haystack for keyword in keywords)
+
+def get_monetization_settings(slug: str, base: str, flags: dict) -> dict:
+    page_type = infer_page_type(slug, base)
+    geography = infer_geography(slug)
+    global_cfg = flags.get("global", {})
+
+    settings = {
+        "affiliate_enabled": bool(global_cfg.get("affiliate_enabled", False)),
+        "lead_form_enabled": bool(global_cfg.get("lead_form_enabled", False)),
+        "quality_threshold_passed": bool(global_cfg.get("quality_threshold_passed", False)),
+        "max_above_fold_units": int(global_cfg.get("max_above_fold_units", 1)),
+        "page_type": page_type,
+        "geography": geography,
+    }
+
+    for scope in (
+        flags.get("page_type", {}).get(page_type, {}),
+        flags.get("geography", {}).get(geography, {}),
+    ):
+        if "affiliate_enabled" in scope:
+            settings["affiliate_enabled"] = bool(scope["affiliate_enabled"])
+        if "lead_form_enabled" in scope:
+            settings["lead_form_enabled"] = bool(scope["lead_form_enabled"])
+        if "max_above_fold_units" in scope:
+            settings["max_above_fold_units"] = int(scope["max_above_fold_units"])
+
+    if is_sensitive_template(slug, base, flags):
+        sensitive_enabled = bool(flags.get("sensitive_templates", {}).get("enabled", False))
+        if not settings["quality_threshold_passed"] or not sensitive_enabled:
+            settings["affiliate_enabled"] = False
+            settings["lead_form_enabled"] = False
+
+    return settings
+
+def build_affiliate_module(service_name: str, page_type: str, geography: str) -> str:
+    return f"""
+<section class="dba-monetization-module dba-affiliate-module" data-module="affiliate-recommendation" data-page-type="{page_type}" data-geography="{geography}">
+  <h2>Recommended local quote options</h2>
+  <p>
+    <strong>Affiliate disclosure:</strong> We may earn a commission if you request quotes through partner links.
+  </p>
+  <ul>
+    <li><a href="/contact/">Compare vetted {service_name.lower()} providers</a></li>
+    <li><a href="/contact/">Request multiple quotes in one step</a></li>
+  </ul>
+</section>
+""".strip()
+
+def build_lead_form_module(service_name: str, page_type: str, geography: str) -> str:
+    return f"""
+<section class="dba-monetization-module dba-lead-form-module" data-module="lead-form" data-page-type="{page_type}" data-geography="{geography}">
+  <h2>Need {service_name.lower()} quotes near you?</h2>
+  <p>Share your project details and location to get matched with providers.</p>
+  <form method="post" action="/contact/" class="dba-lead-form">
+    <label for="zip">ZIP code</label><br>
+    <input id="zip" name="zip" type="text" inputmode="numeric" pattern="[0-9]{5}" placeholder="e.g., 30309"><br><br>
+    <label for="project">Project type</label><br>
+    <input id="project" name="project" type="text" placeholder="e.g., panel upgrade"><br><br>
+    <button type="submit">Get quote options</button>
+  </form>
+</section>
+""".strip()
+
 # =========================================================
 # INTERNAL LINKING BUILDERS
 # =========================================================
@@ -510,6 +642,8 @@ def build_page(slug: str, queue_slugs: list[str], published_map: dict) -> str:
     tone = SERVICE_TONES.get(tone_key, SERVICE_TONES["general"])
 
     low, high, avg = money_range(rng)
+    monetization_flags = load_monetization_flags()
+    monetization = get_monetization_settings(slug, base, monetization_flags)
 
     intro = rng.choice([
         f"Pricing for {base} work can vary more than most homeowners expect, especially when state rules and labor markets differ.",
@@ -554,6 +688,14 @@ def build_page(slug: str, queue_slugs: list[str], published_map: dict) -> str:
 
     today = datetime.utcnow().strftime("%Y-%m-%d")
     desc = f"Updated {today}. {service_name} {intent} with pricing factors, estimate tips, and FAQs."
+    affiliate_block = (
+        build_affiliate_module(service_name, monetization["page_type"], monetization["geography"])
+        if monetization["affiliate_enabled"] else ""
+    )
+    lead_form_block = (
+        build_lead_form_module(service_name, monetization["page_type"], monetization["geography"])
+        if monetization["lead_form_enabled"] else ""
+    )
 
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -593,11 +735,15 @@ def build_page(slug: str, queue_slugs: list[str], published_map: dict) -> str:
   <li>Clarify what causes additional charges</li>
 </ul>
 
+{affiliate_block}
+
 {faq_html}
 
 {related_section}
 
 {keep_exploring_section}
+
+{lead_form_block}
 
 <p><strong>Last updated:</strong> {today}</p>
 </main>
