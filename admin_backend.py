@@ -15,7 +15,10 @@ Run:
 from __future__ import annotations
 
 import argparse
+import hmac
 import json
+import logging
+import os
 import subprocess
 import sys
 import threading
@@ -25,7 +28,6 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any
 from urllib.parse import parse_qs, urlparse
-import os
 
 REPO_ROOT = Path(__file__).resolve().parent
 DAILY_LOG = REPO_ROOT / ".daily_runs.json"
@@ -35,6 +37,28 @@ RUN_TIMEOUT_SECONDS = 1800
 RUN_LOCK = threading.Lock()
 ADMIN_ACCESS_KEY = os.getenv("ADMIN_ACCESS_KEY", "").strip()
 ADMIN_KEY_PARAM = os.getenv("ADMIN_KEY_PARAM", "admin_key").strip() or "admin_key"
+RATE_LIMIT_REQUESTS = int(os.getenv("ADMIN_RATE_LIMIT_REQUESTS", "60"))
+RATE_LIMIT_WINDOW_SECONDS = int(os.getenv("ADMIN_RATE_LIMIT_WINDOW_SECONDS", "60"))
+MAX_POST_BYTES = int(os.getenv("ADMIN_MAX_POST_BYTES", "65536"))
+LOG_DIR = REPO_ROOT / "_deploy" / "logs"
+LOG_DIR.mkdir(parents=True, exist_ok=True)
+ADMIN_LOG_PATH = LOG_DIR / "admin_backend.log"
+BACKUP_DIR = REPO_ROOT / "_deploy" / "backups"
+BACKUP_DIR.mkdir(parents=True, exist_ok=True)
+SERVER_STARTED_AT = time.time()
+REQUEST_COUNTS: dict[str, list[float]] = {}
+REQUEST_LOCK = threading.Lock()
+
+logger = logging.getLogger("databyarea.admin")
+if not logger.handlers:
+    logger.setLevel(logging.INFO)
+    formatter = logging.Formatter("%(asctime)s %(levelname)s %(message)s")
+    file_handler = logging.FileHandler(ADMIN_LOG_PATH, encoding="utf-8")
+    file_handler.setFormatter(formatter)
+    stream_handler = logging.StreamHandler(sys.stdout)
+    stream_handler.setFormatter(formatter)
+    logger.addHandler(file_handler)
+    logger.addHandler(stream_handler)
 
 SCRIPT_CATALOG: dict[str, dict[str, Any]] = {
     "one_button_daily": {
@@ -91,6 +115,13 @@ SCRIPT_CATALOG: dict[str, dict[str, Any]] = {
         "safe_args": [],
         "examples": [[]],
     },
+    "backup_snapshot": {
+        "path": "scripts/backup_snapshot.py",
+        "description": "Creates timestamped backup tarball of critical operational artifacts.",
+        "safe_args": ["--include-site", "--retention-days"],
+        "value_args": ["--retention-days"],
+        "examples": [[], ["--retention-days", "14"], ["--include-site"]],
+    },
 }
 
 SETTINGS = {
@@ -105,6 +136,10 @@ SETTINGS = {
     "run_timeout_seconds": RUN_TIMEOUT_SECONDS,
     "admin_key_param": ADMIN_KEY_PARAM,
     "admin_access_key_configured": bool(ADMIN_ACCESS_KEY),
+    "admin_log_path": str(ADMIN_LOG_PATH),
+    "backup_directory": str(BACKUP_DIR),
+    "rate_limit": {"requests": RATE_LIMIT_REQUESTS, "window_seconds": RATE_LIMIT_WINDOW_SECONDS},
+    "max_post_bytes": MAX_POST_BYTES,
 }
 
 
@@ -115,6 +150,27 @@ def load_json(path: Path, default: Any) -> Any:
         return json.loads(path.read_text(encoding="utf-8"))
     except Exception:
         return default
+
+
+def _client_ip(handler: "Handler") -> str:
+    forwarded = handler.headers.get("X-Forwarded-For", "").strip()
+    if forwarded:
+        return forwarded.split(",")[0].strip()
+    return handler.client_address[0] if handler.client_address else "unknown"
+
+
+def _rate_limited(ip: str) -> tuple[bool, int]:
+    now = time.time()
+    floor = now - RATE_LIMIT_WINDOW_SECONDS
+    with REQUEST_LOCK:
+        bucket = [ts for ts in REQUEST_COUNTS.get(ip, []) if ts >= floor]
+        if len(bucket) >= RATE_LIMIT_REQUESTS:
+            retry_after = max(1, int(bucket[0] + RATE_LIMIT_WINDOW_SECONDS - now))
+            REQUEST_COUNTS[ip] = bucket
+            return True, retry_after
+        bucket.append(now)
+        REQUEST_COUNTS[ip] = bucket
+    return False, 0
 
 
 def validate_args(script_key: str, args: list[str]) -> tuple[bool, list[str], str]:
@@ -430,19 +486,42 @@ class Handler(BaseHTTPRequestHandler):
         # If no ADMIN_ACCESS_KEY is configured, keep current behavior open.
         if not ADMIN_ACCESS_KEY:
             return True
-        return self._extract_admin_key() == ADMIN_ACCESS_KEY
+        provided = self._extract_admin_key()
+        if not provided:
+            return False
+        return hmac.compare_digest(provided, ADMIN_ACCESS_KEY)
 
-    def _send_json(self, payload: Any, status: int = 200) -> None:
+    def log_message(self, format: str, *args: Any) -> None:
+        logger.info("http %s - %s", self.address_string(), format % args)
+
+    def _apply_security_headers(self) -> None:
+        self.send_header("X-Content-Type-Options", "nosniff")
+        self.send_header("X-Frame-Options", "DENY")
+        self.send_header("Referrer-Policy", "no-referrer")
+        self.send_header("Permissions-Policy", "camera=(), microphone=(), geolocation=()")
+        self.send_header("Cache-Control", "no-store")
+        self.send_header(
+            "Content-Security-Policy",
+            "default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; "
+            "connect-src 'self'; img-src 'self' data:;",
+        )
+
+    def _send_json(self, payload: Any, status: int = 200, extra_headers: dict[str, str] | None = None) -> None:
         raw = json.dumps(payload, ensure_ascii=False).encode("utf-8")
         self.send_response(status)
+        self._apply_security_headers()
         self.send_header("Content-Type", "application/json; charset=utf-8")
         self.send_header("Content-Length", str(len(raw)))
+        if extra_headers:
+            for header, value in extra_headers.items():
+                self.send_header(header, value)
         self.end_headers()
         self.wfile.write(raw)
 
     def _send_html(self, html: str) -> None:
         raw = html.encode("utf-8")
         self.send_response(200)
+        self._apply_security_headers()
         self.send_header("Content-Type", "text/html; charset=utf-8")
         self.send_header("Content-Length", str(len(raw)))
         self.end_headers()
@@ -450,6 +529,16 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         path, _ = self._path_parts()
+        ip = _client_ip(self)
+        limited, retry_after = _rate_limited(ip)
+        if limited:
+            self._send_json(
+                {"ok": False, "error": "Rate limit exceeded"},
+                status=429,
+                extra_headers={"Retry-After": str(retry_after)},
+            )
+            return
+        logger.info("GET %s ip=%s", path, ip)
         if path != "/api/health" and not self._authorized():
             self._send_json({"ok": False, "error": f"Unauthorized. Supply {ADMIN_KEY_PARAM}=... in URL or X-Admin-Key header."}, status=401)
             return
@@ -465,7 +554,15 @@ class Handler(BaseHTTPRequestHandler):
             self._send_json(payload)
             return
         if path == "/api/health":
-            self._send_json({"ok": True, "utc": datetime.now(timezone.utc).isoformat()})
+            uptime_seconds = int(time.time() - SERVER_STARTED_AT)
+            self._send_json(
+                {
+                    "ok": True,
+                    "utc": datetime.now(timezone.utc).isoformat(),
+                    "uptime_seconds": uptime_seconds,
+                    "started_at_utc": datetime.fromtimestamp(SERVER_STARTED_AT, tz=timezone.utc).isoformat(),
+                }
+            )
             return
         if path == "/api/history":
             self._send_json(
@@ -482,6 +579,16 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_POST(self):
         path, _ = self._path_parts()
+        ip = _client_ip(self)
+        limited, retry_after = _rate_limited(ip)
+        if limited:
+            self._send_json(
+                {"ok": False, "error": "Rate limit exceeded"},
+                status=429,
+                extra_headers={"Retry-After": str(retry_after)},
+            )
+            return
+        logger.info("POST %s ip=%s", path, ip)
         if not self._authorized():
             self._send_json({"ok": False, "error": f"Unauthorized. Supply {ADMIN_KEY_PARAM}=... in URL or X-Admin-Key header."}, status=401)
             return
@@ -491,6 +598,9 @@ class Handler(BaseHTTPRequestHandler):
             return
 
         length = int(self.headers.get("Content-Length", "0"))
+        if length > MAX_POST_BYTES:
+            self._send_json({"ok": False, "error": f"Payload too large (>{MAX_POST_BYTES} bytes)"}, status=413)
+            return
         body = self.rfile.read(length) if length > 0 else b"{}"
         try:
             payload = json.loads(body.decode("utf-8"))
@@ -515,8 +625,8 @@ def main() -> None:
     args = parser.parse_args()
 
     server = ThreadingHTTPServer((args.host, args.port), Handler)
-    print(f"Admin backend running at http://{args.host}:{args.port}")
-    print("Press Ctrl+C to stop.")
+    logger.info("Admin backend running at http://%s:%s", args.host, args.port)
+    logger.info("Press Ctrl+C to stop.")
     server.serve_forever()
 
 
