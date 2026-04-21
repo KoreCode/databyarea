@@ -51,6 +51,9 @@ jobs:
           echo "Generated HTML files: $count"
           test "$count" -gt 0
 
+      - name: Check for unresolved merge markers
+        run: python scripts/check_conflict_markers.py
+
       - name: Commit and push changes if needed
         run: |
           git config user.name "github-actions[bot]"
