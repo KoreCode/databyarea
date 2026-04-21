@@ -86,6 +86,13 @@ DataByArea
   - Optional URL/header auth key via env vars:
     - `ADMIN_ACCESS_KEY` (secret value)
     - `ADMIN_KEY_PARAM` (query variable name, default `admin_key`)
+  - Baseline security hardening:
+    - Per-IP rate limiting via `ADMIN_RATE_LIMIT_REQUESTS` and `ADMIN_RATE_LIMIT_WINDOW_SECONDS`
+    - Request body cap via `ADMIN_MAX_POST_BYTES`
+    - Security response headers (`CSP`, `X-Frame-Options`, `nosniff`, etc.)
+  - Baseline observability:
+    - Admin request/runtime logs at `_deploy/logs/admin_backend.log`
+    - Health endpoint (`/api/health`) includes uptime metadata
 
 ### Admin access on your domain
 - Example local URL with key: `http://127.0.0.1:8787/?admin_key=YOUR_KEY`
@@ -151,6 +158,7 @@ DataByArea
 - `AUTOMATION_STATUS.md` — current automation enablement status and scheduler line.
 - `CLOUDFLARE_GITHUB_AUTODEPLOY.md` — Cloudflare + GitHub auto-deploy + domain admin routing steps.
 - `FULL_AUTOMATION_SINGLE_GENERATOR.md` — full end-to-end setup (GitHub Actions + Cloudflare) with single generator mode.
+- `docs/technical-quality-baseline.md` — technical baseline for error tracking, uptime monitoring, backups, and security hardening.
 
 ## Site Version Footer
 - A small version badge is injected at the bottom-right of pages via `/assets/version-footer.js`.
