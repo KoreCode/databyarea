@@ -13,6 +13,8 @@ DataByArea
 - After each run, a summary is written to:
   - `_deploy/last_daily_run_summary.json`
   - `_deploy/last_daily_run_summary.md`
+- A required publish gate now runs after generation (`python3 scripts/site_quality_agents.py`) and fails fast before any commit/push/deploy step when critical checks fail.
+- The publish gate writes its status back into both daily summary files so pass/fail is visible in run history.
 - State coverage check runs first via `scripts/ensure_states.py` to keep state-level hubs in place.
 - SEO baseline is refreshed each run by rebuilding `sitemap.xml`, `robots.txt`, and generating internal-link-ready state/city pages.
 - City publishing is forced inside the one-button pipeline so both daily and manual runs attempt to add up to `--cities` new city pages each run.
@@ -21,6 +23,7 @@ DataByArea
 - Command used by runner script: `./run_daily.sh`
   - Runs: `DBA_AUTORUN=1 python3 one_button_daily.py --services 1 --cities 10 --relink --clean`
   - Runs: `python3 one_button_daily.py --services 1 --cities 10 --relink --clean`
+  - Then runs required gate: `python3 scripts/site_quality_agents.py` (non-zero exit blocks downstream publish actions).
 - Install cron job: `./setup_autorun.sh`
   - Default schedule is daily at `03:15 UTC`
   - Override schedule: `CRON_EXPR=\"0 2 * * *\" ./setup_autorun.sh`
@@ -52,6 +55,14 @@ DataByArea
 - Run all quality agents: `python3 scripts/site_quality_agents.py`
 - Run quality agents + regenerate site: `python3 scripts/site_quality_agents.py --generate`
 - Report output: `_deploy/agent_quality_report.json`
+- Gate also annotates:
+  - `_deploy/last_daily_run_summary.json`
+  - `_deploy/last_daily_run_summary.md`
+- Required gate checks include:
+  - missing `<title>` / meta description
+  - canonical mismatch
+  - missing JSON-LD on page types that should include it
+  - broken internal links for newly published paths
 - Admin backend script key: `agent_quality_review`
 
 ### Admin backend
