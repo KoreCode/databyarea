@@ -32,6 +32,9 @@ jobs:
       - name: Regenerate tree map
         run: python scripts/generate_tree_map.py
 
+      - name: Check for unresolved merge markers
+        run: python scripts/check_conflict_markers.py
+
       - name: Commit and push changes if any
         run: |
           git config user.name "github-actions[bot]"
