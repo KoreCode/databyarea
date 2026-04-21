@@ -102,6 +102,11 @@ def write_run_summary(summary: dict) -> None:
         f"- New index pages: `{summary.get('new_url_paths_count')}`",
         f"- Sitemap URLs total: `{summary.get('sitemap_urls_total')}`",
         f"- Deploy zip: `{summary.get('deploy_zip')}`",
+        f"- Pages published: `{summary.get('pages_published')}`",
+        f"- Pages failing SEO checks: `{summary.get('pages_failing_seo_checks')}`",
+        f"- Monetized pages by template: `{summary.get('monetized_pages_count_by_template')}`",
+        f"- Estimated CTR placeholder: `{(summary.get('estimated_analytics_placeholders') or {}).get('estimated_ctr')}`",
+        f"- Estimated RPM placeholder: `{(summary.get('estimated_analytics_placeholders') or {}).get('estimated_rpm')}`",
         "",
         "## Return Codes",
         f"- city publisher: `{summary.get('city_rc')}`",
@@ -415,6 +420,19 @@ def main():
         "make_rc": make_rc,
         "relink_rc": relink_rc,
         "clean_rc": clean_rc,
+        "pages_published": len(after_urls),
+        "pages_failing_seo_checks": None,
+        "monetized_pages_count_by_template": {},
+        "estimated_analytics_placeholders": {
+            "estimated_ctr": None,
+            "estimated_rpm": None,
+            "status": "placeholder_for_future_analytics_ingestion",
+        },
+        "rollback_criteria": {
+            "if_seo_failure_rate_gt": 0.15,
+            "action": "auto_disable_monetization_flags_for_newest_cohort",
+        },
+        "rollback_action": None,
     }
     write_run_summary(summary)
     ensure_version_footer_js()
