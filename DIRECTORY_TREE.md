@@ -4,8 +4,10 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
 
 - `.github/`
   - `.github/workflows/`
+    - `.github/workflows/content-distribution-automation.yml`
     - `.github/workflows/daily-automation.yml`
     - `.github/workflows/daily-generator.yml`
+    - `.github/workflows/weekly-kpi-report.yml`
 - `_trash/`
   - `_trash/.trashed-1772080145-Generate-DataByArea`
   - `_trash/List.py`
@@ -232,15 +234,21 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `cost-of-living/index.html`
 - `data/`
   - `data/cities.csv`
+  - `data/content_briefs.json`
+  - `data/content_ops_config.json`
   - `data/core_pages.txt`
   - `data/generate_csv_system.py`
   - `data/index.html`
   - `data/minnesota_utility_city_store.csv`
   - `data/published_manifest.json`
+  - `data/weekly_kpi_inputs.json`
 - `deck-building-cost-by-state/`
   - `deck-building-cost-by-state/index.html`
 - `docs/`
+  - `docs/90-day-execution-board.md`
   - `docs/monetization_admin_server_plan.md`
+  - `docs/site-audit-backlog-2026-04-21.md`
+  - `docs/technical-quality-baseline.md`
   - `docs/ux_ui_strategy_databyarea.md`
 - `electrician-rates-by-state/`
   - `electrician-rates-by-state/index.html`
@@ -676,8 +684,11 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
     - `scripts/generators/validate.py`
     - `scripts/generators/validate_keys.py`
   - `scripts/.gitignore`
+  - `scripts/backup_snapshot.py`
   - `scripts/build_site.py`
+  - `scripts/check_conflict_markers.py`
   - `scripts/cleanup_empty_dirs.py`
+  - `scripts/content_distribution_workflow.py`
   - `scripts/eia_client.py`
   - `scripts/eia_pipeline.py`
   - `scripts/ensure_states.py`
@@ -686,6 +697,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `scripts/index.html`
   - `scripts/oldgen.py`
   - `scripts/site_quality_agents.py`
+  - `scripts/uptime_monitor.py`
+  - `scripts/weekly_kpi_report.py`
 - `site/`
   - `site/api-dashboard/`
     - `site/api-dashboard/index.html`
@@ -799,6 +812,11 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
     - `site/utility-costs/wyoming/`
       - `site/utility-costs/wyoming/index.html`
     - `site/utility-costs/index.html`
+- `sitemaps/`
+  - `sitemaps/cities.xml`
+  - `sitemaps/counties.xml`
+  - `sitemaps/services.xml`
+  - `sitemaps/states.xml`
 - `terms/`
   - `terms/index.html`
 - `utility-costs/`
@@ -1720,6 +1738,7 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
 - `index_everywhere.py`
 - `LEAFLET_GEOJSON_STEPS.md`
 - `makesitemap.py`
+- `monetization_flags.json`
 - `newfile.py`
 - `one_button_daily.py`
 - `popular_cities.csv`

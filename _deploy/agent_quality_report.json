@@ -1,0 +1,77 @@
+{
+  "ran_at_utc": "2026-04-22T05:35:00.428351+00:00",
+  "overall_ok": true,
+  "checks": [
+    {
+      "agent": "Code Guardian",
+      "task": "Python syntax validation",
+      "result": {
+        "ok": true,
+        "returncode": 0,
+        "cmd": [
+          "/opt/hostedtoolcache/Python/3.11.15/x64/bin/python3",
+          "-m",
+          "py_compile",
+          "admin_backend.py",
+          "one_button_daily.py",
+          "publish_popular_cities_daily.py",
+          "scripts/build_site.py",
+          "scripts/site_quality_agents.py",
+          "scripts/eia_client.py"
+        ],
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    {
+      "agent": "Site Builder",
+      "task": "Generate site pages",
+      "result": {
+        "ok": true,
+        "skipped": true,
+        "note": "Generation disabled. Use --generate."
+      }
+    },
+    {
+      "agent": "SEO Auditor",
+      "task": "Check critical crawl/index files",
+      "result": {
+        "ok": true,
+        "missing": [],
+        "checked": [
+          "index.html",
+          "sitemap.xml",
+          "robots.txt"
+        ]
+      }
+    },
+    {
+      "agent": "Visitor Happiness Analyst",
+      "task": "Check breadth of state landing pages",
+      "result": {
+        "ok": true,
+        "state_pages_per_category": {
+          "insurance-costs": 50,
+          "utility-costs": 50,
+          "property-taxes": 50,
+          "cost-of-living": 50
+        }
+      }
+    },
+    {
+      "agent": "Publish Gate Auditor",
+      "task": "Validate newly published pages for metadata, canonical, schema, and internal links",
+      "result": {
+        "ok": true,
+        "checked_new_paths": 0,
+        "issues": {
+          "missing_title_or_meta_description": [],
+          "canonical_mismatch": [],
+          "missing_jsonld": [],
+          "broken_internal_links": [],
+          "missing_files": []
+        }
+      }
+    }
+  ]
+}
