@@ -115,6 +115,23 @@
 
 ## 7) Monetization Strategy
 
+## 7.0 Revenue Model Decision (Selected)
+
+**Chosen model:** **Hybrid = Lead Generation + Affiliate**.
+
+### Why this model
+- Matches high-intent, local SEO traffic where users are already comparing providers/costs.
+- Diversifies revenue: lead payouts for service requests + affiliate commissions for tools/services that do not require form fills.
+- Works with phased rollout: start with lightweight affiliate blocks, then scale geo-routed lead forms once QA and routing are stable.
+
+### Service stack recommendation (phase 1)
+1. **Lead generation routing/tracking:** LeadProsper (or equivalent) for buyer routing, caps, and ping/post controls.
+2. **Affiliate tracking/network:** Impact (or equivalent) for broad advertiser coverage and reliable partner reporting.
+3. **Fallback/expansion options:** Everflow + direct partner deals once volume justifies custom terms.
+
+### Operating rule
+- Default monetization template for high-intent pages should include both: one affiliate module and one lead form block, with strict UX caps and disclosure compliance.
+
 ## 7.1 Revenue Streams
 
 1. **Affiliate modules** on high-intent pages (home services, utilities, insurance).
