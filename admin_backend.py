@@ -125,6 +125,20 @@ SCRIPT_CATALOG: dict[str, dict[str, Any]] = {
         "value_args": ["--retention-days"],
         "examples": [[], ["--retention-days", "14"], ["--include-site"]],
     },
+    "content_distribution_workflow": {
+        "path": "scripts/content_distribution_workflow.py",
+        "description": "Builds content calendar, article drafts, social repurposing, and publish queue outputs.",
+        "safe_args": ["--config", "--briefs", "--days", "--start-date"],
+        "value_args": ["--config", "--briefs", "--days", "--start-date"],
+        "examples": [[], ["--days", "14"], ["--start-date", "2026-04-22"]],
+    },
+    "weekly_kpi_report": {
+        "path": "scripts/weekly_kpi_report.py",
+        "description": "Generates weekly KPI report artifacts and optional webhook delivery payload.",
+        "safe_args": ["--input", "--webhook-url", "--dry-run"],
+        "value_args": ["--input", "--webhook-url"],
+        "examples": [[], ["--input", "data/weekly_kpi_inputs.json"], ["--dry-run"]],
+    },
 }
 
 SETTINGS = {

@@ -1,0 +1,18 @@
+{
+  "publishing": {
+    "articles_per_day": 1,
+    "publish_times_utc": [
+      "14:00"
+    ]
+  },
+  "distribution_channels": [
+    "x",
+    "linkedin",
+    "facebook",
+    "newsletter"
+  ],
+  "templates": {
+    "article_body": "# {{title}}\n\n## Why this matters\n{{summary}}\n\n## Key takeaway\nFocus keyword: **{{primary_keyword}}**\n\n## Who this is for\n{{target_audience}}\n\n## Next step\nCompare local numbers at https://databyarea.com/{{section}}/{{slug}}/\n",
+    "social_post": "{{hook}}\n\nNew guide: {{title}}\n{{cta}}\nhttps://databyarea.com/{{section}}/{{slug}}/"
+  }
+}

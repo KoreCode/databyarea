@@ -1,0 +1,40 @@
+name: Content Distribution Automation
+
+on:
+  schedule:
+    - cron: '0 9 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  automate-content-and-distribution:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run content distribution automation
+        run: |
+          python -m py_compile scripts/content_distribution_workflow.py
+          python scripts/content_distribution_workflow.py --days 14
+
+      - name: Commit and push outputs if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add _deploy/content_ops data/content_ops_config.json data/content_briefs.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "chore: automate content calendar and distribution queue"
+          git push

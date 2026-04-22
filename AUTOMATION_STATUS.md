@@ -4,6 +4,8 @@
 - Daily target: **1 service + 10 cities**
 - Scheduler expression: `15 3 * * *` (UTC)
 - Publish behavior: **fail-fast quality gate enabled** (`python3 scripts/site_quality_agents.py` must pass before any commit/push/deploy continuation).
+- Content/distribution scheduler: **enabled** via `.github/workflows/content-distribution-automation.yml` at `0 9 * * *` (UTC).
+- Weekly KPI report scheduler: **enabled** via `.github/workflows/weekly-kpi-report.yml` at `0 12 * * 1` (UTC, Mondays).
 
 ## Current environment status
 
