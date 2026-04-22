@@ -70,6 +70,39 @@ DataByArea
   - broken internal links for newly published paths
 - Admin backend script key: `agent_quality_review`
 
+### Content + distribution automation
+- Script: `scripts/content_distribution_workflow.py`
+- Purpose: automate the content calendar, template-based article draft generation, social repurposing, and scheduled publish queue output.
+- Config/input files:
+  - `data/content_ops_config.json`
+  - `data/content_briefs.json`
+- Output artifacts:
+  - `_deploy/content_ops/content_calendar.json`
+  - `_deploy/content_ops/article_drafts.json`
+  - `_deploy/content_ops/social_posts.json`
+  - `_deploy/content_ops/publish_queue.json`
+  - `_deploy/content_ops/content_ops_summary.md`
+- Example command:
+  - `python3 scripts/content_distribution_workflow.py --days 14`
+- Automation workflow:
+  - `.github/workflows/content-distribution-automation.yml` (daily at `09:00 UTC`)
+
+### Weekly KPI reporting automation
+- Script: `scripts/weekly_kpi_report.py`
+- Purpose: automatically produce a weekly KPI report with traffic, signups, conversion, MRR, churn, and top channel breakdown plus week-over-week deltas.
+- Input baseline:
+  - `data/weekly_kpi_inputs.json`
+- Output artifacts:
+  - `_deploy/reports/weekly_kpi_<period_end>.json`
+  - `_deploy/reports/weekly_kpi_<period_end>.md`
+  - `_deploy/reports/latest_weekly_kpi_report.json`
+- Optional delivery:
+  - set `DBA_KPI_WEBHOOK_URL` to send the report payload to Slack/Discord/Zapier/custom endpoint.
+- Example command:
+  - `python3 scripts/weekly_kpi_report.py --input data/weekly_kpi_inputs.json`
+- Automation workflow:
+  - `.github/workflows/weekly-kpi-report.yml` (weekly on Monday at `12:00 UTC`)
+
 ### Admin backend
 - Run: `python3 admin_backend.py --host 127.0.0.1 --port 8787`
 - Open: `http://127.0.0.1:8787`

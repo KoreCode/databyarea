@@ -1,0 +1,54 @@
+{
+  "generated_at_utc": "2026-04-22T00:32:24.626425+00:00",
+  "period_start": "2026-04-13",
+  "period_end": "2026-04-19",
+  "current_week": {
+    "traffic": 128400,
+    "signups": 3290,
+    "conversion_rate": 0.0256,
+    "mrr": 74210.5,
+    "churn_rate": 0.031,
+    "top_channels": [
+      {
+        "channel": "organic_search",
+        "traffic": 72400,
+        "signups": 1902,
+        "conversion_rate": 0.0263,
+        "share_percent": 56.4
+      },
+      {
+        "channel": "direct",
+        "traffic": 23600,
+        "signups": 552,
+        "conversion_rate": 0.0234,
+        "share_percent": 18.4
+      },
+      {
+        "channel": "social",
+        "traffic": 18200,
+        "signups": 471,
+        "conversion_rate": 0.0259,
+        "share_percent": 14.2
+      }
+    ]
+  },
+  "previous_week": {
+    "traffic": 121100,
+    "signups": 3022,
+    "conversion_rate": 0.0249,
+    "mrr": 70110.0,
+    "churn_rate": 0.034
+  },
+  "week_over_week": {
+    "traffic": 6.028075970272502,
+    "signups": 8.868299139642621,
+    "conversion_rate": 2.8112449799196897,
+    "mrr": 5.848666381400656,
+    "churn_rate": -8.823529411764714
+  },
+  "delivery": {
+    "attempted": false,
+    "ok": null,
+    "detail": "not requested"
+  }
+}
