@@ -6,6 +6,7 @@ Provides:
 - Runner settings/status
 - Recent run history and latest daily summary
 - API endpoint to trigger approved scripts
+- Lead capture + CRM pipeline + auto-tagging + follow-up sequencing APIs
 
 Run:
   python3 admin_backend.py
@@ -28,6 +29,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any
 from urllib.parse import parse_qs, urlparse
+from uuid import uuid4
 
 REPO_ROOT = Path(__file__).resolve().parent
 DAILY_LOG = REPO_ROOT / ".daily_runs.json"
@@ -45,6 +47,7 @@ LOG_DIR.mkdir(parents=True, exist_ok=True)
 ADMIN_LOG_PATH = LOG_DIR / "admin_backend.log"
 BACKUP_DIR = REPO_ROOT / "_deploy" / "backups"
 BACKUP_DIR.mkdir(parents=True, exist_ok=True)
+LEADS_DB = REPO_ROOT / "_deploy" / "crm_leads.json"
 SERVER_STARTED_AT = time.time()
 REQUEST_COUNTS: dict[str, list[float]] = {}
 REQUEST_LOCK = threading.Lock()
@@ -141,6 +144,19 @@ SETTINGS = {
     "rate_limit": {"requests": RATE_LIMIT_REQUESTS, "window_seconds": RATE_LIMIT_WINDOW_SECONDS},
     "max_post_bytes": MAX_POST_BYTES,
 }
+CRM_PIPELINE_STAGES = ["new", "qualified", "proposal", "negotiation", "won", "lost"]
+CRM_SEQUENCE_BY_INTENT = {
+    "high_intent": [
+        {"offset_hours": 0, "channel": "email", "template": "instant-qualification"},
+        {"offset_hours": 24, "channel": "sms", "template": "day1-checkin"},
+        {"offset_hours": 72, "channel": "email", "template": "case-study-offer"},
+    ],
+    "default": [
+        {"offset_hours": 4, "channel": "email", "template": "intro-and-next-step"},
+        {"offset_hours": 48, "channel": "email", "template": "value-recap"},
+        {"offset_hours": 120, "channel": "sms", "template": "final-follow-up"},
+    ],
+}
 
 
 def load_json(path: Path, default: Any) -> Any:
@@ -150,6 +166,149 @@ def load_json(path: Path, default: Any) -> Any:
         return json.loads(path.read_text(encoding="utf-8"))
     except Exception:
         return default
+
+
+def save_json(path: Path, payload: Any) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def load_crm_state() -> dict[str, Any]:
+    base = {"leads": []}
+    loaded = load_json(LEADS_DB, base)
+    if not isinstance(loaded, dict):
+        return base
+    leads = loaded.get("leads", [])
+    if not isinstance(leads, list):
+        loaded["leads"] = []
+    return loaded
+
+
+def _iso_utc() -> str:
+    return datetime.now(timezone.utc).isoformat()
+
+
+def _is_high_intent(payload: dict[str, Any]) -> bool:
+    text = " ".join(str(payload.get(k, "")).lower() for k in ("message", "timeline", "service", "budget"))
+    high_intent_terms = ("asap", "urgent", "immediately", "this week", "quote", "ready")
+    return any(term in text for term in high_intent_terms)
+
+
+def _auto_tags(payload: dict[str, Any]) -> list[str]:
+    tags = {"website_form"}
+    for key in ("service", "location", "source"):
+        value = str(payload.get(key, "")).strip().lower()
+        if value:
+            tags.add(f"{key}:{value.replace(' ', '-')}")
+    budget = str(payload.get("budget", "")).strip().lower()
+    if budget:
+        if any(s in budget for s in ("5000", "10000", "premium", "high")):
+            tags.add("budget:high")
+        elif any(s in budget for s in ("1000", "low", "starter")):
+            tags.add("budget:entry")
+        else:
+            tags.add("budget:mid")
+    tags.add("intent:high" if _is_high_intent(payload) else "intent:nurture")
+    return sorted(tags)
+
+
+def _build_sequence(tags: list[str], created_at: str) -> list[dict[str, Any]]:
+    created_ts = datetime.fromisoformat(created_at)
+    template = CRM_SEQUENCE_BY_INTENT["high_intent" if "intent:high" in tags else "default"]
+    sequence: list[dict[str, Any]] = []
+    for step in template:
+        due = created_ts.timestamp() + int(step["offset_hours"]) * 3600
+        sequence.append(
+            {
+                **step,
+                "status": "queued",
+                "due_at_utc": datetime.fromtimestamp(due, tz=timezone.utc).isoformat(),
+                "sent_at_utc": None,
+            }
+        )
+    return sequence
+
+
+def capture_lead(payload: dict[str, Any], ip: str) -> tuple[bool, dict[str, Any], int]:
+    required = ("name", "email")
+    missing = [field for field in required if not str(payload.get(field, "")).strip()]
+    if missing:
+        return False, {"ok": False, "error": f"Missing required fields: {', '.join(missing)}"}, 400
+
+    state = load_crm_state()
+    created_at = _iso_utc()
+    tags = _auto_tags(payload)
+    lead = {
+        "id": f"lead_{uuid4().hex[:12]}",
+        "name": str(payload.get("name", "")).strip(),
+        "email": str(payload.get("email", "")).strip().lower(),
+        "phone": str(payload.get("phone", "")).strip(),
+        "service": str(payload.get("service", "")).strip(),
+        "location": str(payload.get("location", "")).strip(),
+        "source": str(payload.get("source", "web_form")).strip() or "web_form",
+        "message": str(payload.get("message", "")).strip(),
+        "budget": str(payload.get("budget", "")).strip(),
+        "timeline": str(payload.get("timeline", "")).strip(),
+        "consent": bool(payload.get("consent", True)),
+        "captured_from_ip": ip,
+        "created_at_utc": created_at,
+        "updated_at_utc": created_at,
+        "stage": "new",
+        "tags": tags,
+        "follow_up_sequence": _build_sequence(tags, created_at),
+        "activity": [{"event": "captured", "utc": created_at, "note": "Lead captured from form"}],
+    }
+    state["leads"].append(lead)
+    save_json(LEADS_DB, state)
+    return True, {"ok": True, "lead": lead}, 201
+
+
+def list_leads(stage: str = "", tag: str = "") -> dict[str, Any]:
+    state = load_crm_state()
+    leads = state.get("leads", [])
+    if stage:
+        leads = [lead for lead in leads if lead.get("stage") == stage]
+    if tag:
+        leads = [lead for lead in leads if tag in lead.get("tags", [])]
+    leads = sorted(leads, key=lambda lead: lead.get("created_at_utc", ""), reverse=True)
+    return {"ok": True, "count": len(leads), "leads": leads}
+
+
+def update_lead_stage(lead_id: str, stage: str) -> tuple[bool, dict[str, Any], int]:
+    if stage not in CRM_PIPELINE_STAGES:
+        return False, {"ok": False, "error": f"Invalid stage '{stage}'. Allowed: {CRM_PIPELINE_STAGES}"}, 400
+    state = load_crm_state()
+    now = _iso_utc()
+    for lead in state.get("leads", []):
+        if lead.get("id") != lead_id:
+            continue
+        previous = lead.get("stage")
+        lead["stage"] = stage
+        lead["updated_at_utc"] = now
+        lead.setdefault("activity", []).append({"event": "stage_changed", "utc": now, "note": f"{previous} -> {stage}"})
+        save_json(LEADS_DB, state)
+        return True, {"ok": True, "lead": lead}, 200
+    return False, {"ok": False, "error": f"Lead not found: {lead_id}"}, 404
+
+
+def advance_follow_up(lead_id: str) -> tuple[bool, dict[str, Any], int]:
+    state = load_crm_state()
+    now = _iso_utc()
+    for lead in state.get("leads", []):
+        if lead.get("id") != lead_id:
+            continue
+        for step in lead.get("follow_up_sequence", []):
+            if step.get("status") == "queued":
+                step["status"] = "sent"
+                step["sent_at_utc"] = now
+                lead["updated_at_utc"] = now
+                lead.setdefault("activity", []).append(
+                    {"event": "follow_up_sent", "utc": now, "note": f"{step.get('channel')}:{step.get('template')}"}
+                )
+                save_json(LEADS_DB, state)
+                return True, {"ok": True, "lead": lead, "sent_step": step}, 200
+        return False, {"ok": False, "error": "No queued follow-up steps remaining for this lead"}, 409
+    return False, {"ok": False, "error": f"Lead not found: {lead_id}"}, 404
 
 
 def _client_ip(handler: "Handler") -> str:
@@ -550,6 +709,11 @@ class Handler(BaseHTTPRequestHandler):
             payload = {
                 "scripts": SCRIPT_CATALOG,
                 "settings": SETTINGS,
+                "crm": {
+                    "pipeline_stages": CRM_PIPELINE_STAGES,
+                    "sequence_templates": CRM_SEQUENCE_BY_INTENT,
+                    "lead_store_path": str(LEADS_DB),
+                },
             }
             self._send_json(payload)
             return
@@ -575,6 +739,13 @@ class Handler(BaseHTTPRequestHandler):
         if path == "/api/last-summary":
             self._send_json(load_json(SUMMARY_JSON, {"note": "No summary generated yet."}))
             return
+        if path == "/api/leads":
+            parsed = urlparse(self.path)
+            query = parse_qs(parsed.query)
+            stage = (query.get("stage") or [""])[0].strip()
+            tag = (query.get("tag") or [""])[0].strip()
+            self._send_json(list_leads(stage=stage, tag=tag))
+            return
         self._send_json({"error": "Not found"}, status=404)
 
     def do_POST(self):
@@ -593,10 +764,6 @@ class Handler(BaseHTTPRequestHandler):
             self._send_json({"ok": False, "error": f"Unauthorized. Supply {ADMIN_KEY_PARAM}=... in URL or X-Admin-Key header."}, status=401)
             return
 
-        if path != "/api/run":
-            self._send_json({"error": "Not found"}, status=404)
-            return
-
         length = int(self.headers.get("Content-Length", "0"))
         if length > MAX_POST_BYTES:
             self._send_json({"ok": False, "error": f"Payload too large (>{MAX_POST_BYTES} bytes)"}, status=413)
@@ -608,14 +775,35 @@ class Handler(BaseHTTPRequestHandler):
             self._send_json({"ok": False, "error": "Invalid JSON body"}, status=400)
             return
 
-        script_key = str(payload.get("script", "")).strip()
-        args = payload.get("args", [])
-        if not isinstance(args, list) or not all(isinstance(a, str) for a in args):
-            self._send_json({"ok": False, "error": "args must be a list of strings"}, status=400)
+        if path == "/api/run":
+            script_key = str(payload.get("script", "")).strip()
+            args = payload.get("args", [])
+            if not isinstance(args, list) or not all(isinstance(a, str) for a in args):
+                self._send_json({"ok": False, "error": "args must be a list of strings"}, status=400)
+                return
+            result = run_script(script_key, args)
+            self._send_json(result, status=200 if result.get("ok") else 400)
             return
 
-        result = run_script(script_key, args)
-        self._send_json(result, status=200 if result.get("ok") else 400)
+        if path == "/api/leads/capture":
+            ok, result, status = capture_lead(payload, ip)
+            self._send_json(result, status=status if not ok else 201)
+            return
+
+        if path.startswith("/api/leads/") and path.endswith("/stage"):
+            lead_id = path.removeprefix("/api/leads/").removesuffix("/stage").strip("/")
+            stage = str(payload.get("stage", "")).strip()
+            ok, result, status = update_lead_stage(lead_id, stage)
+            self._send_json(result, status=status)
+            return
+
+        if path.startswith("/api/leads/") and path.endswith("/follow-up/advance"):
+            lead_id = path.removeprefix("/api/leads/").removesuffix("/follow-up/advance").strip("/")
+            ok, result, status = advance_follow_up(lead_id)
+            self._send_json(result, status=status)
+            return
+
+        self._send_json({"error": "Not found"}, status=404)
 
 
 def main() -> None:
