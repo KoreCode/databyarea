@@ -27,6 +27,9 @@ import argparse
 import csv
 import json
 import re
+import urllib.parse
+import urllib.request
+from functools import lru_cache
 from datetime import datetime, timezone
 from pathlib import Path
 from html import escape
@@ -34,6 +37,8 @@ from html import escape
 SITE_NAME = "DataByArea"
 SITE_URL = "https://databyarea.com"
 CSS_PATH = "/assets/styles.css"
+DEFAULT_CENSUS_API_KEY = "a8fbaff5b31f948e263efac8e6c03b9ad8deeea0"
+ACS_DATASET = "2023/acs/acs5"
 
 POPULAR_CSV = Path("data/popular_cities.csv")
 POPULAR_CSV_FALLBACK = Path("popular_cities.csv")
@@ -57,6 +62,19 @@ US_STATES = {
     "oregon":"Oregon","pennsylvania":"Pennsylvania","rhode-island":"Rhode Island","south-carolina":"South Carolina",
     "south-dakota":"South Dakota","tennessee":"Tennessee","texas":"Texas","utah":"Utah","vermont":"Vermont",
     "virginia":"Virginia","washington":"Washington","west-virginia":"West Virginia","wisconsin":"Wisconsin","wyoming":"Wyoming",
+}
+
+STATE_FIPS_BY_SLUG = {
+    "alabama": "01", "alaska": "02", "arizona": "04", "arkansas": "05", "california": "06",
+    "colorado": "08", "connecticut": "09", "delaware": "10", "florida": "12", "georgia": "13",
+    "hawaii": "15", "idaho": "16", "illinois": "17", "indiana": "18", "iowa": "19",
+    "kansas": "20", "kentucky": "21", "louisiana": "22", "maine": "23", "maryland": "24",
+    "massachusetts": "25", "michigan": "26", "minnesota": "27", "mississippi": "28", "missouri": "29",
+    "montana": "30", "nebraska": "31", "nevada": "32", "new-hampshire": "33", "new-jersey": "34",
+    "new-mexico": "35", "new-york": "36", "north-carolina": "37", "north-dakota": "38", "ohio": "39",
+    "oklahoma": "40", "oregon": "41", "pennsylvania": "42", "rhode-island": "44", "south-carolina": "45",
+    "south-dakota": "46", "tennessee": "47", "texas": "48", "utah": "49", "vermont": "50",
+    "virginia": "51", "washington": "53", "west-virginia": "54", "wisconsin": "55", "wyoming": "56",
 }
 
 SECTION_META = {
@@ -157,6 +175,95 @@ def slugify(s: str) -> str:
     s = re.sub(r"\s+", "-", s).strip("-")
     s = re.sub(r"-{2,}", "-", s)
     return s
+
+
+def _normalize_place_name(name: str) -> str:
+    base = name.split(",")[0].strip().lower()
+    for suffix in (
+        " city", " town", " village", " borough", " municipality", " metro government",
+        " urban county", " consolidated government", " cdp",
+    ):
+        if base.endswith(suffix):
+            base = base[: -len(suffix)].strip()
+    base = base.replace("saint ", "st ")
+    return slugify(base)
+
+
+def _safe_int(v: str | None) -> int | None:
+    if v in (None, "", "-666666666", "-888888888", "-999999999"):
+        return None
+    try:
+        return int(float(v))
+    except Exception:
+        return None
+
+
+def _census_get_rows(url: str) -> list[list[str]]:
+    try:
+        with urllib.request.urlopen(url, timeout=20) as resp:
+            payload = json.loads(resp.read().decode("utf-8"))
+    except Exception:
+        return []
+    return payload if isinstance(payload, list) and len(payload) > 1 else []
+
+
+@lru_cache(maxsize=64)
+def _census_state_property_tax_rows(state_slug: str, api_key: str) -> dict[str, dict]:
+    state_fips = STATE_FIPS_BY_SLUG.get(state_slug)
+    if not state_fips:
+        return {}
+    vars_ = ["NAME", "B25103_001E", "B25077_001E", "B19013_001E"]
+    query = {
+        "get": ",".join(vars_),
+        "for": "place:*",
+        "in": f"state:{state_fips}",
+        "key": api_key,
+    }
+    url = f"https://api.census.gov/data/{ACS_DATASET}?{urllib.parse.urlencode(query)}"
+    rows = _census_get_rows(url)
+    if not rows:
+        return {}
+
+    header = rows[0]
+    i_name = header.index("NAME")
+    i_tax = header.index("B25103_001E")
+    i_value = header.index("B25077_001E")
+    i_income = header.index("B19013_001E")
+    i_place = header.index("place")
+
+    out: dict[str, dict] = {}
+    for row in rows[1:]:
+        name = row[i_name]
+        city_key = _normalize_place_name(name)
+        med_tax = _safe_int(row[i_tax])
+        med_home_value = _safe_int(row[i_value])
+        med_income = _safe_int(row[i_income])
+        effective_rate_pct = None
+        if med_tax and med_home_value and med_home_value > 0:
+            effective_rate_pct = round((med_tax / med_home_value) * 100, 3)
+        out[city_key] = {
+            "city_name": name.split(",")[0].strip(),
+            "place_fips": row[i_place],
+            "median_property_tax_usd": med_tax,
+            "median_home_value_usd": med_home_value,
+            "median_household_income_usd": med_income,
+            "effective_property_tax_rate_pct": effective_rate_pct,
+            "dataset": ACS_DATASET,
+        }
+    return out
+
+
+def get_city_property_tax_profile(state_slug: str, city_name: str) -> dict | None:
+    api_key = DEFAULT_CENSUS_API_KEY
+    data = _census_state_property_tax_rows(state_slug, api_key)
+    if not data:
+        return None
+    key = _normalize_place_name(city_name)
+    value = data.get(key)
+    if value:
+        return value
+    alt = slugify(city_name.lower().replace("saint ", "st "))
+    return data.get(alt)
 
 def utc_date_str() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%d")
@@ -401,6 +508,75 @@ def city_page_html(section: str, state_slug: str, city_name: str) -> str:
 </html>
 """
 
+    if section == "property-taxes":
+        profile = get_city_property_tax_profile(state_slug, city_name)
+        canonical = f"{SITE_URL}/{section}/{state_slug}/{city_slug}/"
+        title = f"{city_name}, {state_name} Property Tax Rates (Census ACS) | {SITE_NAME}"
+        desc = (
+            f"Property tax estimates for {city_name}, {state_name} from U.S. Census ACS data, "
+            "including median annual property tax, home value, and effective rate."
+        )
+        stats_html = "<p>City-level ACS property tax data is not currently available for this place. Check back after the next data refresh.</p>"
+        if profile and profile.get("median_property_tax_usd") and profile.get("median_home_value_usd"):
+            med_tax = profile["median_property_tax_usd"]
+            med_home = profile["median_home_value_usd"]
+            med_income = profile.get("median_household_income_usd")
+            eff_rate = profile.get("effective_property_tax_rate_pct")
+            monthly_tax = round(med_tax / 12, 2)
+            tax_to_income_pct = round((med_tax / med_income) * 100, 2) if med_income else None
+            tax_on_300k = round((eff_rate / 100) * 300000, 2) if eff_rate else None
+            stats_html = f"""
+    <h2>Property Tax Snapshot ({city_name})</h2>
+    <table>
+      <thead>
+        <tr><th>Metric</th><th>Value</th><th>Why it matters</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Median annual property tax paid</td><td>${med_tax:,.0f}</td><td>Annual homeowner tax burden benchmark</td></tr>
+        <tr><td>Median owner-occupied home value</td><td>${med_home:,.0f}</td><td>Used to estimate effective property tax rate</td></tr>
+        <tr><td>Estimated effective property tax rate</td><td>{eff_rate:.3f}%</td><td>Normalizes tax load across home values</td></tr>
+        <tr><td>Estimated monthly property tax carry</td><td>${monthly_tax:,.2f}</td><td>Useful for monthly escrow planning</td></tr>
+        <tr><td>Estimated annual tax on $300,000 home</td><td>${tax_on_300k:,.2f}</td><td>Quick “any-home-value” scenario planning</td></tr>
+        <tr><td>Median household income</td><td>{f'${med_income:,.0f}' if med_income else 'Not available'}</td><td>Context for affordability and burden</td></tr>
+        <tr><td>Property tax as share of median income</td><td>{f'{tax_to_income_pct:.2f}%' if tax_to_income_pct is not None else 'Not available'}</td><td>Another tax-rate-style burden indicator</td></tr>
+      </tbody>
+    </table>
+"""
+        return f"""<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{title}</title>
+  <meta name="description" content="{desc}">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="{canonical}">
+  <link rel="stylesheet" href="{CSS_PATH}">
+</head>
+<body>
+  <div class="container">
+    <h1>{city_name}, {state_name} Property Tax Rates</h1>
+    <p class="lede">City-level property tax benchmarks built from U.S. Census ACS data for quick homeowner comparison.</p>
+{stats_html}
+    <h2>Methodology</h2>
+    <ul class="list">
+      <li class="item">Primary source: U.S. Census Bureau, ACS 5-year ({ACS_DATASET.split('/')[0]}) detailed tables for places.</li>
+      <li class="item">Effective property tax rate = median annual real estate taxes ÷ median owner-occupied home value.</li>
+      <li class="item">These are benchmark medians, not parcel-level assessor tax bills.</li>
+    </ul>
+    <h2>More tax pages</h2>
+    <ul class="gridList">
+      <li><a href="/property-taxes/{state_slug}/">Property Taxes in {state_name}</a></li>
+      <li><a href="/property-taxes/">Property Taxes by State</a></li>
+      <li><a href="/cost-of-living/{state_slug}/">Cost of Living in {state_name}</a></li>
+    </ul>
+    <p><em>Last updated: {today}</em></p>
+  </div>
+  <script defer src="/assets/version-footer.js"></script>
+</body>
+</html>
+"""
+
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -459,6 +635,21 @@ def refresh_existing_utility_city_pages(state_slug_filter: str | None = None) ->
         else:
             city_name = city_slug.replace("-", " ").title()
         path.write_text(city_page_html("utility-costs", state_slug, city_name), encoding="utf-8")
+        refreshed += 1
+    return refreshed
+
+
+def refresh_existing_property_tax_pages(state_slug_filter: str | None = None) -> int:
+    refreshed = 0
+    for path in Path("property-taxes").glob("*/*/index.html"):
+        state_slug = path.parts[1]
+        city_slug = path.parts[2]
+        if state_slug_filter and state_slug != state_slug_filter:
+            continue
+        if city_slug.endswith(("-county", "-parish", "-borough", "-census-area")):
+            continue
+        city_name = city_slug.replace("-", " ").title()
+        path.write_text(city_page_html("property-taxes", state_slug, city_name), encoding="utf-8")
         refreshed += 1
     return refreshed
 
@@ -787,12 +978,22 @@ def main():
         default=None,
         help="Optional state slug filter for refresh modes (example: minnesota).",
     )
+    ap.add_argument(
+        "--refresh-property-tax-pages",
+        action="store_true",
+        help="Rewrite all existing /property-taxes/<state>/<city>/ pages with Census ACS-powered tax data.",
+    )
     args = ap.parse_args()
 
     if args.refresh_utility_city_pages:
         state_filter = slugify(args.state) if args.state else None
         refreshed = refresh_existing_utility_city_pages(state_filter)
         print(f"Refreshed utility city pages: {refreshed}.")
+        return
+    if args.refresh_property_tax_pages:
+        state_filter = slugify(args.state) if args.state else None
+        refreshed = refresh_existing_property_tax_pages(state_filter)
+        print(f"Refreshed property tax city pages: {refreshed}.")
         return
 
     run_log = load_json(RUN_LOG, {})
