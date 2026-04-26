@@ -108,6 +108,113 @@
     };
   }
 
+
+
+  function enhanceCityListDropdowns() {
+    var grids = document.querySelectorAll('.cityGrid');
+    grids.forEach(function (grid) {
+      var items = grid.querySelectorAll('li');
+      if (items.length <= 12 || grid.closest('.city-dropdown')) return;
+      var wrapper = document.createElement('details');
+      wrapper.className = 'city-dropdown';
+      wrapper.open = false;
+      var summary = document.createElement('summary');
+      summary.textContent = 'Browse all cities (' + items.length + ')';
+      wrapper.appendChild(summary);
+      grid.parentNode.insertBefore(wrapper, grid);
+      wrapper.appendChild(grid);
+    });
+  }
+
+  function routeInsightCityLinks() {
+    var params = new URLSearchParams(window.location.search);
+    var cityKey = params.get('city');
+    if (!cityKey || cityKey.indexOf('/') === -1) return;
+    var parts = cityKey.split('/').filter(Boolean);
+    if (parts.length !== 2) return;
+    var dashboardUrl = '/' + parts[0] + '/' + parts[1] + '/?tab=insights';
+    document.querySelectorAll('a.cityLink').forEach(function (link) {
+      link.href = dashboardUrl;
+    });
+    document.querySelectorAll('.insight-card').forEach(function (link) {
+      link.href = dashboardUrl;
+    });
+  }
+
+  function initAreaInsightTab() {
+    if (!document.body || !document.body.classList.contains('area-dashboard-page')) return;
+    var params = new URLSearchParams(window.location.search);
+    var tab = params.get('tab');
+    var tabBar = document.querySelector('.area-pill-tabs');
+    if (!tabBar) return;
+
+    var insightTab = tabBar.querySelector('[data-area-tab="insights"]');
+    if (!insightTab) {
+      insightTab = document.createElement('a');
+      insightTab.className = 'area-tab';
+      insightTab.dataset.areaTab = 'insights';
+      insightTab.href = window.location.pathname + '?tab=insights';
+      insightTab.innerHTML = '<span aria-hidden="true">📍</span> Insight Pages';
+      tabBar.insertBefore(insightTab, tabBar.firstChild);
+    }
+
+    if (tab === 'insights') {
+      tabBar.querySelectorAll('.area-tab').forEach(function (node) {
+        node.classList.remove('active');
+        node.removeAttribute('aria-current');
+      });
+      insightTab.classList.add('active');
+      insightTab.setAttribute('aria-current', 'page');
+    }
+
+    var hero = document.querySelector('.area-hero');
+    if (!hero || hero.querySelector('.city-dashboard-select')) return;
+    var currentPath = window.location.pathname.replace(/^\//, '').replace(/\/$/, '');
+    var currentParts = currentPath.split('/');
+    if (currentParts.length !== 2) return;
+    var stateDir = currentParts[0];
+
+    fetch('/sitemap.xml').then(function (response) {
+      return response.ok ? response.text() : '';
+    }).then(function (xmlText) {
+      if (!xmlText) return;
+      var parser = new DOMParser();
+      var xml = parser.parseFromString(xmlText, 'application/xml');
+      var urls = Array.from(xml.querySelectorAll('url > loc')).map(function (loc) { return loc.textContent || ''; });
+      var cityPages = urls
+        .map(function (url) {
+          try {
+            var p = new URL(url).pathname;
+            var bits = p.replace(/^\//, '').replace(/\/$/, '').split('/');
+            return bits.length === 2 && bits[0] === stateDir ? bits : null;
+          } catch (e) {
+            return null;
+          }
+        })
+        .filter(Boolean)
+        .sort(function (a, b) { return a[1].localeCompare(b[1]); });
+      if (cityPages.length < 8) return;
+
+      var wrap = document.createElement('div');
+      wrap.className = 'city-dashboard-select';
+      wrap.innerHTML = '<label for="dashboard-city-picker">Switch city dashboard</label><select id="dashboard-city-picker" aria-label="Switch city dashboard"></select>';
+      var select = wrap.querySelector('select');
+      cityPages.forEach(function (bits) {
+        var citySlug = bits[1];
+        var option = document.createElement('option');
+        option.value = '/' + bits[0] + '/' + citySlug + '/?tab=insights';
+        option.textContent = citySlug.replace(/-/g, ' ').replace(/\b\w/g, function (c) { return c.toUpperCase(); });
+        if (citySlug === currentParts[1]) option.selected = true;
+        select.appendChild(option);
+      });
+      select.addEventListener('change', function () {
+        window.location.href = select.value;
+      });
+      hero.appendChild(wrap);
+    }).catch(function () {});
+  }
+
+
   function initExplorer() {
     if (!document.body || document.querySelector('.explorer')) return;
     var container = document.querySelector('.container');
@@ -166,6 +273,9 @@
   }
 
   initExplorer();
+  enhanceCityListDropdowns();
+  routeInsightCityLinks();
+  initAreaInsightTab();
 
   const root = document.createElement('div');
   root.id = 'site-version-footer';
