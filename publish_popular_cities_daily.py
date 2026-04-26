@@ -801,14 +801,35 @@ def inject_city_block(section: str, state_slug: str, city_pairs: list[tuple[str,
 
     state_name = US_STATES[state_slug]
     cities = _merged_city_names(state_slug, city_pairs, section, max_links)
-    if not cities:
-        return False
-
+    city_options = "\n".join(
+        f'<option value="/{section}/{state_slug}/{slugify(c)}/">{escape(c)}</option>' for c in cities
+    ) if cities else ""
     lis = "\n".join(
         f'<li><a class="cityLink" href="/{section}/{state_slug}/{slugify(c)}/">{escape(c)}</a></li>' for c in cities
+    ) if cities else '<li>No city pages are published for this state yet.</li>'
+    section_title = SECTION_META[section]["title"]
+    section_links = "\n".join(
+        f'<a class="pill" href="/{other_section}/{state_slug}/">{SECTION_META[other_section]["title"]}</a>'
+        for other_section in SECTIONS
     )
 
     block = f"""<!-- POPULAR_CITIES:START -->
+<div class="card">
+<h2 class="sectionTitle">{state_name} insights dashboard</h2>
+<p>Jump between insight pages for {state_name} and choose a city to open local detail pages.</p>
+<div class="navlinks">
+{section_links}
+</div>
+<label for="{section}-{state_slug}-city-selector"><strong>City selector ({section_title})</strong></label>
+<select
+  id="{section}-{state_slug}-city-selector"
+  style="display:block;width:100%;max-width:420px;margin:.5rem 0 1rem;padding:.55rem;border-radius:10px;border:1px solid #d5dfeb;background:#fff;"
+  onchange="if(this.value) window.location.href=this.value;"
+>
+  <option value="">Choose a city page...</option>
+{city_options}
+</select>
+</div>
 <div class="card">
 <h2 class="sectionTitle">Popular cities in {state_name}</h2>
 <p class="cityListMeta">Browse {len(cities)} total city pages in {state_name}.</p>

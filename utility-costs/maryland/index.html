@@ -62,6 +62,25 @@
     <!-- COUNTY_PAGES:ANCHOR -->
     <!-- POPULAR_CITIES:START -->
 <div class="card">
+<h2 class="sectionTitle">Maryland insights dashboard</h2>
+<p>Jump between insight pages for Maryland and choose a city to open local detail pages.</p>
+<div class="navlinks">
+<a class="pill" href="/cost-of-living/maryland/">Cost of Living</a>
+<a class="pill" href="/utility-costs/maryland/">Utility Costs</a>
+<a class="pill" href="/property-taxes/maryland/">Property Tax Rates</a>
+<a class="pill" href="/insurance-costs/maryland/">Insurance Costs</a>
+</div>
+<label for="utility-costs-maryland-city-selector"><strong>City selector (Utility Costs)</strong></label>
+<select
+  id="utility-costs-maryland-city-selector"
+  style="display:block;width:100%;max-width:420px;margin:.5rem 0 1rem;padding:.55rem;border-radius:10px;border:1px solid #d5dfeb;background:#fff;"
+  onchange="if(this.value) window.location.href=this.value;"
+>
+  <option value="">Choose a city page...</option>
+<option value="/utility-costs/maryland/baltimore/">Baltimore</option>
+</select>
+</div>
+<div class="card">
 <h2 class="sectionTitle">Popular cities in Maryland</h2>
 <p class="cityListMeta">Browse 1 total city pages in Maryland.</p>
 <ul class="gridList cityGrid">

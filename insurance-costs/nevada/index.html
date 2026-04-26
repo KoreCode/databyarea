@@ -72,6 +72,26 @@
     <!-- COUNTY_PAGES:ANCHOR -->
     <!-- POPULAR_CITIES:START -->
 <div class="card">
+<h2 class="sectionTitle">Nevada insights dashboard</h2>
+<p>Jump between insight pages for Nevada and choose a city to open local detail pages.</p>
+<div class="navlinks">
+<a class="pill" href="/cost-of-living/nevada/">Cost of Living</a>
+<a class="pill" href="/utility-costs/nevada/">Utility Costs</a>
+<a class="pill" href="/property-taxes/nevada/">Property Tax Rates</a>
+<a class="pill" href="/insurance-costs/nevada/">Insurance Costs</a>
+</div>
+<label for="insurance-costs-nevada-city-selector"><strong>City selector (Insurance Costs)</strong></label>
+<select
+  id="insurance-costs-nevada-city-selector"
+  style="display:block;width:100%;max-width:420px;margin:.5rem 0 1rem;padding:.55rem;border-radius:10px;border:1px solid #d5dfeb;background:#fff;"
+  onchange="if(this.value) window.location.href=this.value;"
+>
+  <option value="">Choose a city page...</option>
+<option value="/insurance-costs/nevada/las-vegas/">Las Vegas</option>
+<option value="/insurance-costs/nevada/reno/">Reno</option>
+</select>
+</div>
+<div class="card">
 <h2 class="sectionTitle">Popular cities in Nevada</h2>
 <p class="cityListMeta">Browse 2 total city pages in Nevada.</p>
 <ul class="gridList cityGrid">

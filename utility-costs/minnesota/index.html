@@ -62,6 +62,48 @@
     <!-- COUNTY_PAGES:ANCHOR -->
     <!-- POPULAR_CITIES:START -->
 <div class="card">
+<h2 class="sectionTitle">Minnesota insights dashboard</h2>
+<p>Jump between insight pages for Minnesota and choose a city to open local detail pages.</p>
+<div class="navlinks">
+<a class="pill" href="/cost-of-living/minnesota/">Cost of Living</a>
+<a class="pill" href="/utility-costs/minnesota/">Utility Costs</a>
+<a class="pill" href="/property-taxes/minnesota/">Property Tax Rates</a>
+<a class="pill" href="/insurance-costs/minnesota/">Insurance Costs</a>
+</div>
+<label for="utility-costs-minnesota-city-selector"><strong>City selector (Utility Costs)</strong></label>
+<select
+  id="utility-costs-minnesota-city-selector"
+  style="display:block;width:100%;max-width:420px;margin:.5rem 0 1rem;padding:.55rem;border-radius:10px;border:1px solid #d5dfeb;background:#fff;"
+  onchange="if(this.value) window.location.href=this.value;"
+>
+  <option value="">Choose a city page...</option>
+<option value="/utility-costs/minnesota/minneapolis/">Minneapolis</option>
+<option value="/utility-costs/minnesota/ada/">Ada</option>
+<option value="/utility-costs/minnesota/adrian/">Adrian</option>
+<option value="/utility-costs/minnesota/afton/">Afton</option>
+<option value="/utility-costs/minnesota/albany/">Albany</option>
+<option value="/utility-costs/minnesota/albert-lea/">Albert Lea</option>
+<option value="/utility-costs/minnesota/albertville/">Albertville</option>
+<option value="/utility-costs/minnesota/alexandria/">Alexandria</option>
+<option value="/utility-costs/minnesota/andover/">Andover</option>
+<option value="/utility-costs/minnesota/annandale/">Annandale</option>
+<option value="/utility-costs/minnesota/apple-valley/">Apple Valley</option>
+<option value="/utility-costs/minnesota/appleton/">Appleton</option>
+<option value="/utility-costs/minnesota/arden-hills/">Arden Hills</option>
+<option value="/utility-costs/minnesota/arlington/">Arlington</option>
+<option value="/utility-costs/minnesota/arnold/">Arnold</option>
+<option value="/utility-costs/minnesota/atwater/">Atwater</option>
+<option value="/utility-costs/minnesota/aurora/">Aurora</option>
+<option value="/utility-costs/minnesota/austin/">Austin</option>
+<option value="/utility-costs/minnesota/avon/">Avon</option>
+<option value="/utility-costs/minnesota/babbitt/">Babbitt</option>
+<option value="/utility-costs/minnesota/bagley/">Bagley</option>
+<option value="/utility-costs/minnesota/barnesville/">Barnesville</option>
+<option value="/utility-costs/minnesota/baudette/">Baudette</option>
+<option value="/utility-costs/minnesota/baxter/">Baxter</option>
+</select>
+</div>
+<div class="card">
 <h2 class="sectionTitle">Popular cities in Minnesota</h2>
 <p class="cityListMeta">Browse 24 total city pages in Minnesota.</p>
 <ul class="gridList cityGrid">

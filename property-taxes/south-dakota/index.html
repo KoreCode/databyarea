@@ -62,6 +62,25 @@
     <!-- COUNTY_PAGES:ANCHOR -->
     <!-- POPULAR_CITIES:START -->
 <div class="card">
+<h2 class="sectionTitle">South Dakota insights dashboard</h2>
+<p>Jump between insight pages for South Dakota and choose a city to open local detail pages.</p>
+<div class="navlinks">
+<a class="pill" href="/cost-of-living/south-dakota/">Cost of Living</a>
+<a class="pill" href="/utility-costs/south-dakota/">Utility Costs</a>
+<a class="pill" href="/property-taxes/south-dakota/">Property Tax Rates</a>
+<a class="pill" href="/insurance-costs/south-dakota/">Insurance Costs</a>
+</div>
+<label for="property-taxes-south-dakota-city-selector"><strong>City selector (Property Tax Rates)</strong></label>
+<select
+  id="property-taxes-south-dakota-city-selector"
+  style="display:block;width:100%;max-width:420px;margin:.5rem 0 1rem;padding:.55rem;border-radius:10px;border:1px solid #d5dfeb;background:#fff;"
+  onchange="if(this.value) window.location.href=this.value;"
+>
+  <option value="">Choose a city page...</option>
+<option value="/property-taxes/south-dakota/sioux-falls/">Sioux Falls</option>
+</select>
+</div>
+<div class="card">
 <h2 class="sectionTitle">Popular cities in South Dakota</h2>
 <p class="cityListMeta">Browse 1 total city pages in South Dakota.</p>
 <ul class="gridList cityGrid">

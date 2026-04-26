@@ -74,6 +74,47 @@
     <!-- COUNTY_PAGES:ANCHOR -->
     <!-- POPULAR_CITIES:START -->
 <div class="card">
+<h2 class="sectionTitle">California insights dashboard</h2>
+<p>Jump between insight pages for California and choose a city to open local detail pages.</p>
+<div class="navlinks">
+<a class="pill" href="/cost-of-living/california/">Cost of Living</a>
+<a class="pill" href="/utility-costs/california/">Utility Costs</a>
+<a class="pill" href="/property-taxes/california/">Property Tax Rates</a>
+<a class="pill" href="/insurance-costs/california/">Insurance Costs</a>
+</div>
+<label for="cost-of-living-california-city-selector"><strong>City selector (Cost of Living)</strong></label>
+<select
+  id="cost-of-living-california-city-selector"
+  style="display:block;width:100%;max-width:420px;margin:.5rem 0 1rem;padding:.55rem;border-radius:10px;border:1px solid #d5dfeb;background:#fff;"
+  onchange="if(this.value) window.location.href=this.value;"
+>
+  <option value="">Choose a city page...</option>
+<option value="/cost-of-living/california/los-angeles/">Los Angeles</option>
+<option value="/cost-of-living/california/san-diego/">San Diego</option>
+<option value="/cost-of-living/california/san-jose/">San Jose</option>
+<option value="/cost-of-living/california/san-francisco/">San Francisco</option>
+<option value="/cost-of-living/california/fresno/">Fresno</option>
+<option value="/cost-of-living/california/sacramento/">Sacramento</option>
+<option value="/cost-of-living/california/oakland/">Oakland</option>
+<option value="/cost-of-living/california/long-beach/">Long Beach</option>
+<option value="/cost-of-living/california/bakersfield/">Bakersfield</option>
+<option value="/cost-of-living/california/anaheim/">Anaheim</option>
+<option value="/cost-of-living/california/riverside/">Riverside</option>
+<option value="/cost-of-living/california/stockton/">Stockton</option>
+<option value="/cost-of-living/california/irvine/">Irvine</option>
+<option value="/cost-of-living/california/chula-vista/">Chula Vista</option>
+<option value="/cost-of-living/california/fremont/">Fremont</option>
+<option value="/cost-of-living/california/santa-ana/">Santa Ana</option>
+<option value="/cost-of-living/california/santa-clarita/">Santa Clarita</option>
+<option value="/cost-of-living/california/san-bernardino/">San Bernardino</option>
+<option value="/cost-of-living/california/modesto/">Modesto</option>
+<option value="/cost-of-living/california/oxnard/">Oxnard</option>
+<option value="/cost-of-living/california/fontana/">Fontana</option>
+<option value="/cost-of-living/california/moreno-valley/">Moreno Valley</option>
+<option value="/cost-of-living/california/huntington-beach/">Huntington Beach</option>
+</select>
+</div>
+<div class="card">
 <h2 class="sectionTitle">Popular cities in California</h2>
 <p class="cityListMeta">Browse 23 total city pages in California.</p>
 <ul class="gridList cityGrid">
