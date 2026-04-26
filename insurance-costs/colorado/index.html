@@ -62,6 +62,26 @@
     <!-- COUNTY_PAGES:ANCHOR -->
     <!-- POPULAR_CITIES:START -->
 <div class="card">
+<h2 class="sectionTitle">Colorado insights dashboard</h2>
+<p>Jump between insight pages for Colorado and choose a city to open local detail pages.</p>
+<div class="navlinks">
+<a class="pill" href="/cost-of-living/colorado/">Cost of Living</a>
+<a class="pill" href="/utility-costs/colorado/">Utility Costs</a>
+<a class="pill" href="/property-taxes/colorado/">Property Tax Rates</a>
+<a class="pill" href="/insurance-costs/colorado/">Insurance Costs</a>
+</div>
+<label for="insurance-costs-colorado-city-selector"><strong>City selector (Insurance Costs)</strong></label>
+<select
+  id="insurance-costs-colorado-city-selector"
+  style="display:block;width:100%;max-width:420px;margin:.5rem 0 1rem;padding:.55rem;border-radius:10px;border:1px solid #d5dfeb;background:#fff;"
+  onchange="if(this.value) window.location.href=this.value;"
+>
+  <option value="">Choose a city page...</option>
+<option value="/insurance-costs/colorado/denver/">Denver</option>
+<option value="/insurance-costs/colorado/colorado-springs/">Colorado Springs</option>
+</select>
+</div>
+<div class="card">
 <h2 class="sectionTitle">Popular cities in Colorado</h2>
 <p class="cityListMeta">Browse 2 total city pages in Colorado.</p>
 <ul class="gridList cityGrid">

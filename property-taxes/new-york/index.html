@@ -74,6 +74,28 @@
     <!-- COUNTY_PAGES:ANCHOR -->
     <!-- POPULAR_CITIES:START -->
 <div class="card">
+<h2 class="sectionTitle">New York insights dashboard</h2>
+<p>Jump between insight pages for New York and choose a city to open local detail pages.</p>
+<div class="navlinks">
+<a class="pill" href="/cost-of-living/new-york/">Cost of Living</a>
+<a class="pill" href="/utility-costs/new-york/">Utility Costs</a>
+<a class="pill" href="/property-taxes/new-york/">Property Tax Rates</a>
+<a class="pill" href="/insurance-costs/new-york/">Insurance Costs</a>
+</div>
+<label for="property-taxes-new-york-city-selector"><strong>City selector (Property Tax Rates)</strong></label>
+<select
+  id="property-taxes-new-york-city-selector"
+  style="display:block;width:100%;max-width:420px;margin:.5rem 0 1rem;padding:.55rem;border-radius:10px;border:1px solid #d5dfeb;background:#fff;"
+  onchange="if(this.value) window.location.href=this.value;"
+>
+  <option value="">Choose a city page...</option>
+<option value="/property-taxes/new-york/new-york/">New York</option>
+<option value="/property-taxes/new-york/buffalo/">Buffalo</option>
+<option value="/property-taxes/new-york/rochester/">Rochester</option>
+<option value="/property-taxes/new-york/yonkers/">Yonkers</option>
+</select>
+</div>
+<div class="card">
 <h2 class="sectionTitle">Popular cities in New York</h2>
 <p class="cityListMeta">Browse 4 total city pages in New York.</p>
 <ul class="gridList cityGrid">

@@ -60,6 +60,35 @@
     </div>
 
     <!-- COUNTY_PAGES:ANCHOR -->
+    <!-- POPULAR_CITIES:START -->
+<div class="card">
+<h2 class="sectionTitle">Alaska insights dashboard</h2>
+<p>Jump between insight pages for Alaska and choose a city to open local detail pages.</p>
+<div class="navlinks">
+<a class="pill" href="/cost-of-living/alaska/">Cost of Living</a>
+<a class="pill" href="/utility-costs/alaska/">Utility Costs</a>
+<a class="pill" href="/property-taxes/alaska/">Property Tax Rates</a>
+<a class="pill" href="/insurance-costs/alaska/">Insurance Costs</a>
+</div>
+<label for="insurance-costs-alaska-city-selector"><strong>City selector (Insurance Costs)</strong></label>
+<select
+  id="insurance-costs-alaska-city-selector"
+  style="display:block;width:100%;max-width:420px;margin:.5rem 0 1rem;padding:.55rem;border-radius:10px;border:1px solid #d5dfeb;background:#fff;"
+  onchange="if(this.value) window.location.href=this.value;"
+>
+  <option value="">Choose a city page...</option>
+
+</select>
+</div>
+<div class="card">
+<h2 class="sectionTitle">Popular cities in Alaska</h2>
+<p class="cityListMeta">Browse 0 total city pages in Alaska.</p>
+<ul class="gridList cityGrid">
+<li>No city pages are published for this state yet.</li>
+</ul>
+</div>
+<!-- POPULAR_CITIES:END -->
+
     <!-- POPULAR_CITIES:ANCHOR -->
 
     <div class="footer">

@@ -72,6 +72,27 @@
     <!-- COUNTY_PAGES:ANCHOR -->
     <!-- POPULAR_CITIES:START -->
 <div class="card">
+<h2 class="sectionTitle">Utah insights dashboard</h2>
+<p>Jump between insight pages for Utah and choose a city to open local detail pages.</p>
+<div class="navlinks">
+<a class="pill" href="/cost-of-living/utah/">Cost of Living</a>
+<a class="pill" href="/utility-costs/utah/">Utility Costs</a>
+<a class="pill" href="/property-taxes/utah/">Property Tax Rates</a>
+<a class="pill" href="/insurance-costs/utah/">Insurance Costs</a>
+</div>
+<label for="insurance-costs-utah-city-selector"><strong>City selector (Insurance Costs)</strong></label>
+<select
+  id="insurance-costs-utah-city-selector"
+  style="display:block;width:100%;max-width:420px;margin:.5rem 0 1rem;padding:.55rem;border-radius:10px;border:1px solid #d5dfeb;background:#fff;"
+  onchange="if(this.value) window.location.href=this.value;"
+>
+  <option value="">Choose a city page...</option>
+<option value="/insurance-costs/utah/salt-lake-city/">Salt Lake City</option>
+<option value="/insurance-costs/utah/provo/">Provo</option>
+<option value="/insurance-costs/utah/west-valley-city/">West Valley City</option>
+</select>
+</div>
+<div class="card">
 <h2 class="sectionTitle">Popular cities in Utah</h2>
 <p class="cityListMeta">Browse 3 total city pages in Utah.</p>
 <ul class="gridList cityGrid">

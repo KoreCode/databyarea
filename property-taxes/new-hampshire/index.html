@@ -62,6 +62,25 @@
     <!-- COUNTY_PAGES:ANCHOR -->
     <!-- POPULAR_CITIES:START -->
 <div class="card">
+<h2 class="sectionTitle">New Hampshire insights dashboard</h2>
+<p>Jump between insight pages for New Hampshire and choose a city to open local detail pages.</p>
+<div class="navlinks">
+<a class="pill" href="/cost-of-living/new-hampshire/">Cost of Living</a>
+<a class="pill" href="/utility-costs/new-hampshire/">Utility Costs</a>
+<a class="pill" href="/property-taxes/new-hampshire/">Property Tax Rates</a>
+<a class="pill" href="/insurance-costs/new-hampshire/">Insurance Costs</a>
+</div>
+<label for="property-taxes-new-hampshire-city-selector"><strong>City selector (Property Tax Rates)</strong></label>
+<select
+  id="property-taxes-new-hampshire-city-selector"
+  style="display:block;width:100%;max-width:420px;margin:.5rem 0 1rem;padding:.55rem;border-radius:10px;border:1px solid #d5dfeb;background:#fff;"
+  onchange="if(this.value) window.location.href=this.value;"
+>
+  <option value="">Choose a city page...</option>
+<option value="/property-taxes/new-hampshire/manchester/">Manchester</option>
+</select>
+</div>
+<div class="card">
 <h2 class="sectionTitle">Popular cities in New Hampshire</h2>
 <p class="cityListMeta">Browse 1 total city pages in New Hampshire.</p>
 <ul class="gridList cityGrid">

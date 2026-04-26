@@ -73,6 +73,26 @@
     <!-- COUNTY_PAGES:ANCHOR -->
     <!-- POPULAR_CITIES:START -->
 <div class="card">
+<h2 class="sectionTitle">Pennsylvania insights dashboard</h2>
+<p>Jump between insight pages for Pennsylvania and choose a city to open local detail pages.</p>
+<div class="navlinks">
+<a class="pill" href="/cost-of-living/pennsylvania/">Cost of Living</a>
+<a class="pill" href="/utility-costs/pennsylvania/">Utility Costs</a>
+<a class="pill" href="/property-taxes/pennsylvania/">Property Tax Rates</a>
+<a class="pill" href="/insurance-costs/pennsylvania/">Insurance Costs</a>
+</div>
+<label for="utility-costs-pennsylvania-city-selector"><strong>City selector (Utility Costs)</strong></label>
+<select
+  id="utility-costs-pennsylvania-city-selector"
+  style="display:block;width:100%;max-width:420px;margin:.5rem 0 1rem;padding:.55rem;border-radius:10px;border:1px solid #d5dfeb;background:#fff;"
+  onchange="if(this.value) window.location.href=this.value;"
+>
+  <option value="">Choose a city page...</option>
+<option value="/utility-costs/pennsylvania/philadelphia/">Philadelphia</option>
+<option value="/utility-costs/pennsylvania/pittsburgh/">Pittsburgh</option>
+</select>
+</div>
+<div class="card">
 <h2 class="sectionTitle">Popular cities in Pennsylvania</h2>
 <p class="cityListMeta">Browse 2 total city pages in Pennsylvania.</p>
 <ul class="gridList cityGrid">

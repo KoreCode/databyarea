@@ -62,6 +62,25 @@
     <!-- COUNTY_PAGES:ANCHOR -->
     <!-- POPULAR_CITIES:START -->
 <div class="card">
+<h2 class="sectionTitle">Maine insights dashboard</h2>
+<p>Jump between insight pages for Maine and choose a city to open local detail pages.</p>
+<div class="navlinks">
+<a class="pill" href="/cost-of-living/maine/">Cost of Living</a>
+<a class="pill" href="/utility-costs/maine/">Utility Costs</a>
+<a class="pill" href="/property-taxes/maine/">Property Tax Rates</a>
+<a class="pill" href="/insurance-costs/maine/">Insurance Costs</a>
+</div>
+<label for="insurance-costs-maine-city-selector"><strong>City selector (Insurance Costs)</strong></label>
+<select
+  id="insurance-costs-maine-city-selector"
+  style="display:block;width:100%;max-width:420px;margin:.5rem 0 1rem;padding:.55rem;border-radius:10px;border:1px solid #d5dfeb;background:#fff;"
+  onchange="if(this.value) window.location.href=this.value;"
+>
+  <option value="">Choose a city page...</option>
+<option value="/insurance-costs/maine/portland/">Portland</option>
+</select>
+</div>
+<div class="card">
 <h2 class="sectionTitle">Popular cities in Maine</h2>
 <p class="cityListMeta">Browse 1 total city pages in Maine.</p>
 <ul class="gridList cityGrid">

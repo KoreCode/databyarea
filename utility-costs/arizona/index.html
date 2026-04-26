@@ -72,6 +72,29 @@
     <!-- COUNTY_PAGES:ANCHOR -->
     <!-- POPULAR_CITIES:START -->
 <div class="card">
+<h2 class="sectionTitle">Arizona insights dashboard</h2>
+<p>Jump between insight pages for Arizona and choose a city to open local detail pages.</p>
+<div class="navlinks">
+<a class="pill" href="/cost-of-living/arizona/">Cost of Living</a>
+<a class="pill" href="/utility-costs/arizona/">Utility Costs</a>
+<a class="pill" href="/property-taxes/arizona/">Property Tax Rates</a>
+<a class="pill" href="/insurance-costs/arizona/">Insurance Costs</a>
+</div>
+<label for="utility-costs-arizona-city-selector"><strong>City selector (Utility Costs)</strong></label>
+<select
+  id="utility-costs-arizona-city-selector"
+  style="display:block;width:100%;max-width:420px;margin:.5rem 0 1rem;padding:.55rem;border-radius:10px;border:1px solid #d5dfeb;background:#fff;"
+  onchange="if(this.value) window.location.href=this.value;"
+>
+  <option value="">Choose a city page...</option>
+<option value="/utility-costs/arizona/phoenix/">Phoenix</option>
+<option value="/utility-costs/arizona/tucson/">Tucson</option>
+<option value="/utility-costs/arizona/mesa/">Mesa</option>
+<option value="/utility-costs/arizona/chandler/">Chandler</option>
+<option value="/utility-costs/arizona/gilbert/">Gilbert</option>
+</select>
+</div>
+<div class="card">
 <h2 class="sectionTitle">Popular cities in Arizona</h2>
 <p class="cityListMeta">Browse 5 total city pages in Arizona.</p>
 <ul class="gridList cityGrid">

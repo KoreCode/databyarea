@@ -75,6 +75,37 @@
     <!-- COUNTY_PAGES:ANCHOR -->
     <!-- POPULAR_CITIES:START -->
 <div class="card">
+<h2 class="sectionTitle">Texas insights dashboard</h2>
+<p>Jump between insight pages for Texas and choose a city to open local detail pages.</p>
+<div class="navlinks">
+<a class="pill" href="/cost-of-living/texas/">Cost of Living</a>
+<a class="pill" href="/utility-costs/texas/">Utility Costs</a>
+<a class="pill" href="/property-taxes/texas/">Property Tax Rates</a>
+<a class="pill" href="/insurance-costs/texas/">Insurance Costs</a>
+</div>
+<label for="insurance-costs-texas-city-selector"><strong>City selector (Insurance Costs)</strong></label>
+<select
+  id="insurance-costs-texas-city-selector"
+  style="display:block;width:100%;max-width:420px;margin:.5rem 0 1rem;padding:.55rem;border-radius:10px;border:1px solid #d5dfeb;background:#fff;"
+  onchange="if(this.value) window.location.href=this.value;"
+>
+  <option value="">Choose a city page...</option>
+<option value="/insurance-costs/texas/houston/">Houston</option>
+<option value="/insurance-costs/texas/san-antonio/">San Antonio</option>
+<option value="/insurance-costs/texas/dallas/">Dallas</option>
+<option value="/insurance-costs/texas/austin/">Austin</option>
+<option value="/insurance-costs/texas/fort-worth/">Fort Worth</option>
+<option value="/insurance-costs/texas/el-paso/">El Paso</option>
+<option value="/insurance-costs/texas/arlington/">Arlington</option>
+<option value="/insurance-costs/texas/plano/">Plano</option>
+<option value="/insurance-costs/texas/lubbock/">Lubbock</option>
+<option value="/insurance-costs/texas/irving/">Irving</option>
+<option value="/insurance-costs/texas/garland/">Garland</option>
+<option value="/insurance-costs/texas/amarillo/">Amarillo</option>
+<option value="/insurance-costs/texas/corpus-christi/">Corpus Christi</option>
+</select>
+</div>
+<div class="card">
 <h2 class="sectionTitle">Popular cities in Texas</h2>
 <p class="cityListMeta">Browse 13 total city pages in Texas.</p>
 <ul class="gridList cityGrid">
