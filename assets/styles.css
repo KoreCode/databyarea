@@ -76,6 +76,14 @@ a:focus-visible{outline:3px solid #93b4d2;outline-offset:2px;border-radius:8px}
 .cityLink{display:block;padding:10px 12px;font-weight:600;color:#153b5a;background:linear-gradient(135deg,#eff5fb,#f9fcff)}
 .cityLink:hover{text-decoration:none;background:linear-gradient(135deg,#e0ebf7,#eef5fc)}
 
+.city-dropdown{margin-top:8px;border:1px solid var(--line);border-radius:10px;background:#f8fbff;padding:8px 10px}
+.city-dropdown summary{cursor:pointer;font-weight:700;color:#1f4f77}
+.city-dropdown .cityGrid{margin-top:10px}
+.city-dashboard-select{margin-top:12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.city-dashboard-select label{font-size:13px;color:#35556f;font-weight:700;margin:0}
+.city-dashboard-select select{min-width:220px;border:1px solid #b9ccde;border-radius:8px;padding:8px 10px;background:#fff}
+
+
 .sectionTitle{margin:0 0 10px;font-size:36px;line-height:1.1}
 .compactTop{margin-top:16px}
 .list{margin:10px 0 0;padding-left:18px}
