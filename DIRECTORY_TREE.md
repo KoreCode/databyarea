@@ -462,6 +462,9 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `insurance-costs/wyoming/`
     - `insurance-costs/wyoming/index.html`
   - `insurance-costs/index.html`
+- `minnesota/`
+  - `minnesota/kiester/`
+    - `minnesota/kiester/index.html`
 - `plumber-rates-by-state/`
   - `plumber-rates-by-state/index.html`
 - `privacy/`
