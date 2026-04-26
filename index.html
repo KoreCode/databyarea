@@ -21,31 +21,10 @@
   <link rel="stylesheet" href="/assets/styles.css" />
   <link rel="canonical" href="https://databyarea.com/" />
   <link rel="sitemap" type="application/xml" title="Sitemap" href="https://databyarea.com/sitemap.xml" />
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "DataByArea",
-      "url": "https://databyarea.com/",
-      "description": "Compare cost of living, utility costs, property tax rates, and insurance costs by area.",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://databyarea.com/cost-of-living/?q={search_term_string}",
-        "query-input": "required name=search_term_string"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "DataByArea",
-        "url": "https://databyarea.com/",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://databyarea.com/assets/logo.png"
-        }
-      }
-    }
-  </script>
 </head>
 <body class="home-page">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
   <div class="container home-shell">
     <header class="nav home-nav">
       <a class="brand" href="/" aria-label="DataByArea home">
@@ -64,26 +43,40 @@
     </header>
 
     <section class="home-hero" aria-label="Site search">
-      <form class="home-search" action="/cost-of-living/" method="get">
-        <label class="sr-only" for="home-search-input">Enter City, State, or ZIP Code</label>
+      <div class="hero-copy">
+        <p class="eyebrow">Trusted U.S. locality data platform</p>
+        <h1 class="home-title">Explore Comprehensive Localized Data Across the U.S.</h1>
+        <p class="home-subtitle">Search by city, county, ZIP, or state to compare the costs that shape your budget.</p>
+      </div>
+      <form class="home-search" action="/cost-of-living/" method="get" role="search">
+        <label class="sr-only" for="home-search-input">Enter city, state, county, or ZIP code</label>
         <span class="search-icon" aria-hidden="true">🔎</span>
-        <input id="home-search-input" class="home-search-input" name="q" type="search" placeholder="Enter City, State, or Zip Code..." />
+        <input id="home-search-input" class="home-search-input" name="q" type="search" placeholder="Enter City, State, County, or ZIP Code" autocomplete="off" />
+        <button class="search-btn" type="submit">Search</button>
       </form>
+      <ul class="quick-tags" aria-label="Popular destinations">
+        <li><a href="/cost-of-living/california/">California</a></li>
+        <li><a href="/cost-of-living/texas/">Texas</a></li>
+        <li><a href="/cost-of-living/florida/">Florida</a></li>
+        <li><a href="/cost-of-living/new-york/">New York</a></li>
+      </ul>
     </section>
 
     <main id="main-content" class="home-main">
-      <h1 class="home-title">Explore Comprehensive Localized Data Across the U.S.</h1>
-
       <section class="home-feature-grid" aria-label="Top insights">
         <article class="home-panel insights-panel">
-          <h2>Top Insights by Category</h2>
+          <div class="panel-head">
+            <h2>Top Insights by Category</h2>
+            <p>Zero-fluff snapshots for the categories people compare most often.</p>
+          </div>
+
           <div class="insight-grid">
             <a class="insight-card" href="/utility-costs/">
               <span class="insight-icon" aria-hidden="true">⚡</span>
               <div>
                 <h3>Utilities</h3>
                 <p>Compare electricity, gas, water, and internet costs by state.</p>
-                <span class="insight-link">Explore utilities ↗</span>
+                <span class="insight-link">Explore utilities →</span>
               </div>
             </a>
             <a class="insight-card" href="/cost-of-living/">
@@ -91,7 +84,7 @@
               <div>
                 <h3>Cost of Living</h3>
                 <p>Review housing, groceries, healthcare, and transportation costs.</p>
-                <span class="insight-link">Explore cost of living ↗</span>
+                <span class="insight-link">Explore cost of living →</span>
               </div>
             </a>
             <a class="insight-card" href="/property-taxes/">
@@ -99,7 +92,7 @@
               <div>
                 <h3>Property Taxes</h3>
                 <p>See effective tax rates and how they vary across locations.</p>
-                <span class="insight-link">Explore property taxes ↗</span>
+                <span class="insight-link">Explore property taxes →</span>
               </div>
             </a>
             <a class="insight-card" href="/insurance-costs/">
@@ -107,7 +100,7 @@
               <div>
                 <h3>Insurance</h3>
                 <p>Compare home and auto insurance costs in each state.</p>
-                <span class="insight-link">Explore insurance ↗</span>
+                <span class="insight-link">Explore insurance →</span>
               </div>
             </a>
             <a class="insight-card" href="/about/">
@@ -115,15 +108,7 @@
               <div>
                 <h3>Data Sources</h3>
                 <p>Understand the methodology and public datasets used.</p>
-                <span class="insight-link">Read methodology ↗</span>
-              </div>
-            </a>
-            <a class="insight-card" href="/minnesota/kiester/">
-              <span class="insight-icon" aria-hidden="true">📍</span>
-              <div>
-                <h3>Area Profile Dashboard</h3>
-                <p>Preview the dense city-level dashboard experience for Kiester, Minnesota.</p>
-                <span class="insight-link">Open Kiester profile ↗</span>
+                <span class="insight-link">Read methodology →</span>
               </div>
             </a>
             <a class="insight-card" href="/contact/">
@@ -131,17 +116,27 @@
               <div>
                 <h3>Contact</h3>
                 <p>Report issues, request coverage, or suggest data improvements.</p>
-                <span class="insight-link">Get support ↗</span>
+                <span class="insight-link">Get support →</span>
               </div>
             </a>
           </div>
         </article>
+
+        <aside class="home-panel trust-panel" aria-label="Why users choose DataByArea">
+          <h2>Why choose DataByArea</h2>
+          <ul class="trust-list">
+            <li><strong>State-wide coverage:</strong> 50 states and growing city/county depth.</li>
+            <li><strong>Standardized comparisons:</strong> Same structure across all datasets.</li>
+            <li><strong>Source transparency:</strong> Built from public datasets with plain-English notes.</li>
+            <li><strong>Fast lookup:</strong> Lightweight pages optimized for quick decisions.</li>
+          </ul>
+        </aside>
       </section>
 
       <section class="home-panel states-panel" aria-label="Browse by state">
         <div class="states-header">
           <h2>Browse by State</h2>
-          <a href="/cost-of-living/">View All States ›</a>
+          <a href="/cost-of-living/">View all states →</a>
         </div>
         <div class="states-links">
           <a href="/cost-of-living/alabama/">Alabama</a>
@@ -168,6 +163,32 @@
           <a href="/cost-of-living/michigan/">Michigan</a>
           <a href="/cost-of-living/minnesota/">Minnesota</a>
           <a href="/cost-of-living/mississippi/">Mississippi</a>
+          <a href="/cost-of-living/missouri/">Missouri</a>
+          <a href="/cost-of-living/montana/">Montana</a>
+          <a href="/cost-of-living/nebraska/">Nebraska</a>
+          <a href="/cost-of-living/nevada/">Nevada</a>
+          <a href="/cost-of-living/new-hampshire/">New Hampshire</a>
+          <a href="/cost-of-living/new-jersey/">New Jersey</a>
+          <a href="/cost-of-living/new-mexico/">New Mexico</a>
+          <a href="/cost-of-living/new-york/">New York</a>
+          <a href="/cost-of-living/north-carolina/">North Carolina</a>
+          <a href="/cost-of-living/north-dakota/">North Dakota</a>
+          <a href="/cost-of-living/ohio/">Ohio</a>
+          <a href="/cost-of-living/oklahoma/">Oklahoma</a>
+          <a href="/cost-of-living/oregon/">Oregon</a>
+          <a href="/cost-of-living/pennsylvania/">Pennsylvania</a>
+          <a href="/cost-of-living/rhode-island/">Rhode Island</a>
+          <a href="/cost-of-living/south-carolina/">South Carolina</a>
+          <a href="/cost-of-living/south-dakota/">South Dakota</a>
+          <a href="/cost-of-living/tennessee/">Tennessee</a>
+          <a href="/cost-of-living/texas/">Texas</a>
+          <a href="/cost-of-living/utah/">Utah</a>
+          <a href="/cost-of-living/vermont/">Vermont</a>
+          <a href="/cost-of-living/virginia/">Virginia</a>
+          <a href="/cost-of-living/washington/">Washington</a>
+          <a href="/cost-of-living/west-virginia/">West Virginia</a>
+          <a href="/cost-of-living/wisconsin/">Wisconsin</a>
+          <a href="/cost-of-living/wyoming/">Wyoming</a>
         </div>
       </section>
     </main>
