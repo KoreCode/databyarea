@@ -1,7 +1,7 @@
 {
-  "commit_short": "fc6afda",
-  "updated_utc": "2026-04-26T05:47:05.830399+00:00",
+  "commit_short": "9ab98ea",
+  "updated_utc": "2026-04-27T06:10:20.786002+00:00",
   "services_requested": 1,
   "cities_requested": 10,
-  "deploy_zip": "_deploy/databyarea-deploy-2026-04-26.zip"
+  "deploy_zip": "_deploy/databyarea-deploy-2026-04-27.zip"
 }
