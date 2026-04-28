@@ -1,120 +1,293 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Utility Costs in Arizona | DataByArea</title>
-  <meta name="description" content="Explore utility costs in Arizona. Compare state averages and city-level differences.">
-  <meta name="robots" content="index,follow,max-image-preview:large">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="canonical" href="https://databyarea.com/utility-costs/arizona/">
-  <link rel="stylesheet" href="/assets/styles.css">
+  <meta charset="utf-8" />
+  <title>Arizona Area Profile | DataByArea</title>
+  <meta name="description" content="Arizona area profile dashboard with utility rates, demographics, schools, local economy, real estate, climate and nearby city comparisons." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="canonical" href="https://databyarea.com/utility-costs/arizona/" />
+  <link rel="stylesheet" href="/assets/styles.css" />
 </head>
-<body>
-  <div class="container">
-    <div class="nav">
-      <div class="brand">
-        <img src="/assets/logo.png" alt="Data By Area logo" class="logo">
-        <div class="brand-text">
-          <strong>Data By Area</strong>
-          <span>Costs • Rates • Public Data</span>
-        </div>
-      </div>
-      <div class="navlinks">
-        <a class="pill" href="/">Home</a>
+<body class="area-dashboard-page">
+  <div class="container area-dashboard-shell">
+    <header class="nav area-top-nav">
+      <a class="brand" href="/" aria-label="databyarea.com home">
+        <img src="/assets/logo.png" alt="DataByArea logo" class="logo" width="170" height="34" decoding="async" fetchpriority="high">
+        <div class="brand-text"><strong>databyarea.com</strong></div>
+      </a>
+
+      <nav class="navlinks area-main-tabs" aria-label="Main category tabs">
+        <a class="pill" href="/property-taxes/">Property Tax</a>
+        <a class="pill" href="/utility-costs/">Utilities</a>
         <a class="pill" href="/cost-of-living/">Cost of Living</a>
-        <a class="pill" href="/utility-costs/">Utility Costs</a>
-        <a class="pill" href="/property-taxes/">Property Tax Rates</a>
-        <a class="pill" href="/insurance-costs/">Insurance Costs</a>
-      </div>
-    </div>
+        <a class="pill" href="#demographics-panel">Demographics</a>
+        <a class="pill" href="#schools-panel">Schools</a>
+        <a class="pill" href="#economy-panel">Local Economy</a>
+        <a class="pill" href="#real-estate-panel">Real Estate</a>
+        <a class="pill" href="#climate-panel">Climate/Weather</a>
+      </nav>
 
-    <div class="hero">
-      <h1>Utility Costs in Arizona</h1>
-      <p>Explore utility costs in Arizona. Compare state averages and city-level differences.</p>
-      <div class="breadcrumbs">
-        <a href="/">Home</a> › <a href="/utility-costs/">Utility Costs</a> › <span>Arizona</span>
-      </div>
-    </div>
+      <nav class="navlinks area-account-links" aria-label="Quick account links">
+        <a class="pill" href="/">Home</a>
+        <a class="pill" href="/property-taxes/">Property Tax</a>
+        <a class="pill" href="/login/">Login</a>
+        <a class="pill" href="/signup/">Sign up</a>
+      </nav>
+    </header>
 
-    <div class="grid">
-      <div class="card">
-        <h2>What you can compare</h2>
-        <p>Use this page to review electricity, natural gas, water, sewer, and internet costs across Arizona.</p>
-        <ul class="list">
-          <li class="item">Statewide averages and regional variation</li>
-          <li class="item">City-level snapshots for major metros</li>
-          <li class="item">Cross-category links for fuller context</li>
-        </ul>
-      </div>
+    <main id="main-content" class="area-dashboard-main">
+      <section class="area-hero" aria-labelledby="area-title">
+        <h1 id="area-title">Arizona Area Profile</h1>
+        <p>Arizona, United States</p>
+      </section>
 
-      <div class="card">
-        <h2>Related Arizona pages</h2>
-        <p>Explore other cost categories for Arizona.</p>
-        <ul class="list">
-          <li><a href="/cost-of-living/arizona/">Cost of Living in Arizona</a></li>
-<li><a href="/property-taxes/arizona/">Property Tax Rates in Arizona</a></li>
-<li><a href="/insurance-costs/arizona/">Insurance Costs in Arizona</a></li>
-        </ul>
-        <a class="btn" href="/utility-costs/">Back to Utility Costs states</a>
-      </div>
-    </div>
+      <nav class="area-pill-tabs" aria-label="Area dashboard sections">
+        <a class="area-tab active" href="#utilities-panel" aria-current="page"><span aria-hidden="true">🏛️</span> Property Tax</a>
+        <a class="area-tab" href="#utilities-panel"><span aria-hidden="true">⚡</span> Utilities</a>
+        <a class="area-tab" href="#schools-panel"><span aria-hidden="true">💵</span> Cost of Living</a>
+        <a class="area-tab" href="#demographics-panel"><span aria-hidden="true">👥</span> Demographics</a>
+        <a class="area-tab" href="#schools-panel"><span aria-hidden="true">🎓</span> Schools</a>
+        <a class="area-tab" href="#economy-panel"><span aria-hidden="true">🏭</span> Local Economy</a>
+        <a class="area-tab" href="#real-estate-panel"><span aria-hidden="true">🏠</span> Real Estate</a>
+        <a class="area-tab" href="#climate-panel"><span aria-hidden="true">🌦️</span> Climate/Weather</a>
+      </nav>
 
-    <!-- COUNTY_PAGES:START -->
-<div class="card">
-<h2 class="sectionTitle">Counties in Arizona</h2>
-<p class="cityListMeta">Browse 1 county pages with city-level links.</p>
-<ul class="gridList cityGrid">
-<li><a class="cityLink" href="/utility-costs/arizona/maricopa-county/">Maricopa County</a> <span class="mutedSmall">(5 cities)</span></li>
-</ul>
-</div>
-<!-- COUNTY_PAGES:END -->
+      <!-- TODO(data-pipeline): replace placeholders with Census, EIA, BLS, NOAA, county assessor, and district performance feeds. -->
+      <section class="area-grid" aria-label="Arizona data dashboard">
+        <article class="area-card utilities" id="utilities-panel">
+          <h2>Utilities</h2>
 
-    <!-- COUNTY_PAGES:ANCHOR -->
-    <!-- POPULAR_CITIES:START -->
-<div class="card">
-<h2 class="sectionTitle">Arizona insights dashboard</h2>
-<p>Jump between insight pages for Arizona and choose a city to open local detail pages.</p>
-<div class="navlinks">
-<a class="pill" href="/cost-of-living/arizona/">Cost of Living</a>
-<a class="pill" href="/utility-costs/arizona/">Utility Costs</a>
-<a class="pill" href="/property-taxes/arizona/">Property Tax Rates</a>
-<a class="pill" href="/insurance-costs/arizona/">Insurance Costs</a>
-</div>
-<label for="utility-costs-arizona-city-selector"><strong>City selector (Utility Costs)</strong></label>
-<select
-  id="utility-costs-arizona-city-selector"
-  style="display:block;width:100%;max-width:420px;margin:.5rem 0 1rem;padding:.55rem;border-radius:10px;border:1px solid #d5dfeb;background:#fff;"
-  onchange="if(this.value) window.location.href=this.value;"
->
-  <option value="">Choose a city page...</option>
-<option value="/utility-costs/arizona/phoenix/">Phoenix</option>
-<option value="/utility-costs/arizona/tucson/">Tucson</option>
-<option value="/utility-costs/arizona/mesa/">Mesa</option>
-<option value="/utility-costs/arizona/chandler/">Chandler</option>
-<option value="/utility-costs/arizona/gilbert/">Gilbert</option>
-</select>
-</div>
-<div class="card">
-<h2 class="sectionTitle">Popular cities in Arizona</h2>
-<p class="cityListMeta">Browse 5 total city pages in Arizona.</p>
-<ul class="gridList cityGrid">
-<li><a class="cityLink" href="/utility-costs/arizona/phoenix/">Phoenix</a></li>
-<li><a class="cityLink" href="/utility-costs/arizona/tucson/">Tucson</a></li>
-<li><a class="cityLink" href="/utility-costs/arizona/mesa/">Mesa</a></li>
-<li><a class="cityLink" href="/utility-costs/arizona/chandler/">Chandler</a></li>
-<li><a class="cityLink" href="/utility-costs/arizona/gilbert/">Gilbert</a></li>
-</ul>
-</div>
-<!-- POPULAR_CITIES:END -->
+          <h3>Electric Rate Consumption</h3>
+          <div class="mini-bars" role="img" aria-label="Monthly electric use trend for Arizona">
+            <span style="--h:22%"></span><span style="--h:28%"></span><span style="--h:34%"></span><span style="--h:45%"></span>
+            <span style="--h:62%"></span><span style="--h:74%"></span><span style="--h:48%"></span><span style="--h:56%"></span>
+            <span style="--h:67%"></span><span style="--h:82%"></span><span style="--h:61%"></span><span style="--h:57%"></span>
+          </div>
 
-    <!-- POPULAR_CITIES:ANCHOR -->
+          <h3>Water Consumption</h3>
+          <div class="mini-bars water" role="img" aria-label="Monthly water consumption trend for Arizona">
+            <span style="--h:66%"></span><span style="--h:48%"></span><span style="--h:44%"></span><span style="--h:36%"></span>
+            <span style="--h:30%"></span><span style="--h:26%"></span><span style="--h:34%"></span><span style="--h:37%"></span>
+            <span style="--h:33%"></span><span style="--h:55%"></span><span style="--h:49%"></span><span style="--h:58%"></span>
+          </div>
 
-    <div class="footer">
-      <p><strong>Disclaimer:</strong> Informational estimates only. Costs and rates vary by household, provider, and local area.</p>
-      <p><a href="/about/">About</a> · <a href="/privacy/">Privacy Policy</a> · <a href="/contact/">Contact</a></p>
-      <p>Last updated: 2026-04-28</p>
-    </div>
+          <h3>Gas Rate (CCF)</h3>
+          <div class="mini-bars gas" role="img" aria-label="Monthly gas rate trend for Arizona">
+            <span style="--h:28%"></span><span style="--h:36%"></span><span style="--h:43%"></span><span style="--h:52%"></span>
+            <span style="--h:61%"></span><span style="--h:47%"></span><span style="--h:55%"></span><span style="--h:63%"></span>
+            <span style="--h:49%"></span><span style="--h:45%"></span><span style="--h:52%"></span><span style="--h:57%"></span>
+          </div>
+
+          <table class="compact-table" aria-label="Utilities baseline table">
+            <caption>Utilities baseline (placeholder)</caption>
+            <thead><tr><th>Metric</th><th>Value</th></tr></thead>
+            <tbody>
+              <tr><td>Electricity rate</td><td>$0.154/kWh</td></tr>
+              <tr><td>Water bill avg</td><td>$48/mo</td></tr>
+              <tr><td>Gas rate</td><td>$1.18/CCF</td></tr>
+            </tbody>
+          </table>
+
+          <div class="quick-links" aria-label="Utilities shortcuts">
+            <a href="/property-taxes/">Property Tax</a>
+            <a href="/utility-costs/">Utilities</a>
+            <a href="/cost-of-living/">Cost of Living</a>
+          </div>
+        </article>
+
+        <article class="area-card demographics" id="demographics-panel">
+          <h2>Demographics</h2>
+
+          <h3>Population Age Pyramid</h3>
+          <div class="pyramid" role="img" aria-label="Age pyramid split by male and female percentages">
+            <div><span style="--w:68%"></span><span style="--w:64%"></span></div>
+            <div><span style="--w:75%"></span><span style="--w:71%"></span></div>
+            <div><span style="--w:83%"></span><span style="--w:78%"></span></div>
+            <div><span style="--w:92%"></span><span style="--w:90%"></span></div>
+            <div><span style="--w:100%"></span><span style="--w:97%"></span></div>
+            <div><span style="--w:84%"></span><span style="--w:88%"></span></div>
+            <div><span style="--w:72%"></span><span style="--w:79%"></span></div>
+          </div>
+
+          <h3>Income Distribution</h3>
+          <div class="income-bars" role="img" aria-label="Income bracket distribution bars">
+            <span style="--w:72%"></span>
+            <span style="--w:88%"></span>
+            <span style="--w:100%"></span>
+            <span style="--w:79%"></span>
+            <span style="--w:52%"></span>
+          </div>
+
+          <h3>Annual Income Distribution</h3>
+          <div class="mini-metrics">
+            <div><strong>Median household</strong><span>$63,200</span></div>
+            <div><strong>Per capita</strong><span>$33,900</span></div>
+            <div><strong>Poverty rate</strong><span>9.8%</span></div>
+          </div>
+
+          <table class="compact-table" aria-label="Demographic summary table">
+            <caption>Demographic table (placeholder)</caption>
+            <thead><tr><th>Measure</th><th>Estimate</th></tr></thead>
+            <tbody>
+              <tr><td>Population</td><td>507</td></tr>
+              <tr><td>Median age</td><td>39.7</td></tr>
+              <tr><td>Bachelor+</td><td>22.4%</td></tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article class="area-card schools" id="schools-panel">
+          <h2>Schools</h2>
+
+          <h3>Test Score Trends</h3>
+          <svg viewBox="0 0 320 120" role="img" aria-label="Five-year school test score trend line">
+            <polyline points="12,96 68,84 124,78 180,67 236,63 302,52" fill="none" stroke="#1f4f77" stroke-width="3"/>
+            <line x1="10" y1="100" x2="305" y2="100" stroke="#aec0d4" />
+            <line x1="10" y1="18" x2="10" y2="100" stroke="#aec0d4" />
+          </svg>
+
+          <div class="gauge-grid" aria-label="Cost index gauges">
+            <div class="gauge-card"><h3>Grocery Index</h3><div class="gauge" style="--v:68"></div><p>9.1</p></div>
+            <div class="gauge-card"><h3>Housing Index</h3><div class="gauge" style="--v:62"></div><p>8.6</p></div>
+            <div class="gauge-card"><h3>Transportation Index</h3><div class="gauge" style="--v:58"></div><p>7.2</p></div>
+            <div class="gauge-card"><h3>Utility Index</h3><div class="gauge" style="--v:64"></div><p>7.9</p></div>
+          </div>
+
+          <table class="compact-table" aria-label="School and index fallback table">
+            <caption>Schools and index values (placeholder)</caption>
+            <thead><tr><th>Indicator</th><th>Value</th></tr></thead>
+            <tbody>
+              <tr><td>Math proficiency</td><td>53%</td></tr>
+              <tr><td>Reading proficiency</td><td>58%</td></tr>
+              <tr><td>Student-teacher ratio</td><td>14:1</td></tr>
+            </tbody>
+          </table>
+
+          <div class="quick-links" aria-label="Schools shortcuts">
+            <a href="/property-taxes/">Property Tax</a>
+            <a href="/cost-of-living/">Cost of Living</a>
+            <a href="#schools-panel">Schools</a>
+          </div>
+        </article>
+
+        <article class="area-card economy" id="economy-panel">
+          <h2>Local Economy</h2>
+          <h3>Industry Job Types</h3>
+          <div class="h-bars" role="img" aria-label="Top industry share horizontal bars">
+            <div><span>Manufacturing</span><i style="--w:74%">31%</i></div>
+            <div><span>Agriculture</span><i style="--w:64%">26%</i></div>
+            <div><span>Healthcare</span><i style="--w:52%">19%</i></div>
+            <div><span>Retail</span><i style="--w:39%">14%</i></div>
+            <div><span>Other Services</span><i style="--w:31%">10%</i></div>
+          </div>
+
+          <table class="compact-table" aria-label="Local economy table fallback">
+            <caption>Local economy fallback table (placeholder)</caption>
+            <thead><tr><th>Metric</th><th>Value</th></tr></thead>
+            <tbody>
+              <tr><td>Unemployment</td><td>3.6%</td></tr>
+              <tr><td>Median wage</td><td>$48,400</td></tr>
+              <tr><td>Labor force</td><td>264</td></tr>
+            </tbody>
+          </table>
+
+          <div class="quick-links" aria-label="Local economy shortcuts">
+            <a href="#demographics-panel">Demographics</a>
+            <a href="#economy-panel">Local Economy</a>
+            <a href="#economy-panel">Lead Economy</a>
+          </div>
+
+          <section class="mini-climate" aria-label="Climate mini panel">
+            <h3>Climate</h3>
+            <p>Winter avg: 15°F · Summer avg: 82°F · Snowfall: 43 in</p>
+          </section>
+        </article>
+
+        <article class="area-card real-estate" id="real-estate-panel">
+          <h2>Real Estate</h2>
+          <h3>Median Home Value Trend</h3>
+          <svg viewBox="0 0 320 120" role="img" aria-label="Median home value trend by year">
+            <polyline points="12,96 68,89 124,78 180,66 236,58 302,39" fill="none" stroke="#1f7f87" stroke-width="3"/>
+            <line x1="10" y1="100" x2="305" y2="100" stroke="#aec0d4" />
+            <line x1="10" y1="18" x2="10" y2="100" stroke="#aec0d4" />
+          </svg>
+
+          <h3>Property Tax Breakdown</h3>
+          <div class="donut-row">
+            <div class="donut" role="img" aria-label="Property tax breakdown donut chart"></div>
+            <ul>
+              <li>County levy: 42%</li>
+              <li>School district: 34%</li>
+              <li>City/other: 24%</li>
+            </ul>
+          </div>
+
+          <table class="compact-table" aria-label="Real estate fallback values">
+            <caption>Real estate table (placeholder)</caption>
+            <thead><tr><th>Indicator</th><th>Value</th></tr></thead>
+            <tbody>
+              <tr><td>Median home value</td><td>$189,300</td></tr>
+              <tr><td>Median property tax</td><td>$2,190</td></tr>
+              <tr><td>Rent (2-bed)</td><td>$975/mo</td></tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article class="area-card climate" id="climate-panel">
+          <h2>Climate/Weather</h2>
+          <div class="climate-top" role="img" aria-label="Climate summary with weather icon">
+            <span class="weather-icon" aria-hidden="true">⛅</span>
+            <div><strong>Precipitation</strong><p>31.5 in/year</p></div>
+            <div><strong>Water Stress Index</strong><p>Low</p></div>
+          </div>
+          <div class="mini-metrics">
+            <div><strong>Avg High (Jul)</strong><span>82°F</span></div>
+            <div><strong>Avg Low (Jan)</strong><span>8°F</span></div>
+            <div><strong>Humidity</strong><span>72%</span></div>
+          </div>
+          <table class="compact-table" aria-label="Climate fallback table">
+            <caption>Climate table (placeholder)</caption>
+            <thead><tr><th>Measure</th><th>Value</th></tr></thead>
+            <tbody>
+              <tr><td>Sunny days</td><td>196</td></tr>
+              <tr><td>Annual snowfall</td><td>43 in</td></tr>
+              <tr><td>NOAA hazard risk score</td><td>Moderate</td></tr>
+            </tbody>
+          </table>
+        </article>
+
+        <aside class="area-card comparison" aria-label="Nearby comparison tool">
+          <h2>Nearby Comparison Tool</h2>
+          <article class="comparison-card">
+            <h3>Blue Earth, MN</h3>
+            <p>Median property tax: <strong>$2,540</strong></p>
+            <p>Difference vs Arizona: <strong>+16%</strong></p>
+            <a href="/property-taxes/minnesota/">View Report</a>
+          </article>
+          <article class="comparison-card">
+            <h3>Wells, MN</h3>
+            <p>Composite cost index: <strong>95.8</strong></p>
+            <p>Difference vs Arizona: <strong>+3.2 pts</strong></p>
+            <a href="/cost-of-living/minnesota/">View Profile</a>
+          </article>
+          <article class="comparison-card">
+            <h3>Albert Lea, MN</h3>
+            <p>Residential electric rate: <strong>$0.166/kWh</strong></p>
+            <p>Difference vs Arizona: <strong>+$0.012</strong></p>
+            <a href="/utility-costs/minnesota/">View Report</a>
+          </article>
+        </aside>
+      </section>
+
+      <p class="mutedSmall area-note"><strong>Methodology note:</strong> Values shown are realistic placeholder estimates for layout prototyping. TODO: wire in Census (ACS), EIA electricity/gas, BLS labor, NOAA climate, county assessor tax, housing, and school report-card feeds.</p>
+    </main>
+
+    <footer class="footer home-footer">
+      <p>© <span id="y"></span> DataByArea | <a href="/privacy/">Privacy Policy</a> | <a href="/terms/">Terms of Service</a> | <a href="/about/">Data Sources</a> | <a href="/contact/">Contact</a></p>
+    </footer>
   </div>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
   <script defer src="/assets/version-footer.js"></script>
 </body>
 </html>
