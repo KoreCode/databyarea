@@ -272,10 +272,70 @@
     });
   }
 
+
+  function syncInsightSelectorsAndTabs() {
+    var path = window.location.pathname.replace(/\/+$/, '');
+    var parts = path.split('/').filter(Boolean);
+    if (parts.length < 2) return;
+
+    var categories = ['cost-of-living', 'utility-costs', 'property-taxes', 'insurance-costs'];
+    var activeCategory = categories.indexOf(parts[0]) >= 0 ? parts[0] : null;
+    var stateSlug = activeCategory ? parts[1] : null;
+    var citySlug = parts.length >= 3 ? parts[2] : null;
+
+    document.querySelectorAll('.card .navlinks').forEach(function (nav) {
+      var links = nav.querySelectorAll('a.pill[href]');
+      links.forEach(function (link) {
+        var href = link.getAttribute('href') || '';
+        var normalized = href.replace(/^https?:\/\/[^/]+/i, '').replace(/\/+$/, '');
+        var hrefParts = normalized.split('/').filter(Boolean);
+        var category = hrefParts.length >= 1 ? hrefParts[0] : null;
+        var sameState = stateSlug && hrefParts.length >= 2 && hrefParts[1] === stateSlug;
+        var shouldActivate = activeCategory && category === activeCategory && (sameState || hrefParts.length === 1);
+        if (shouldActivate) {
+          link.classList.add('active');
+          link.setAttribute('aria-current', 'page');
+        } else {
+          link.classList.remove('active');
+          link.removeAttribute('aria-current');
+        }
+      });
+    });
+
+    var params = new URLSearchParams(window.location.search);
+    var preferredCategory = params.get('insight') || activeCategory;
+
+    document.querySelectorAll('select[id$="-city-selector"]').forEach(function (select) {
+      if (!stateSlug) return;
+      var idCategory = select.id.split('-').slice(0, -3).join('-');
+      if (categories.indexOf(idCategory) === -1) return;
+
+      var targetCategory = categories.indexOf(preferredCategory) >= 0 ? preferredCategory : idCategory;
+      Array.from(select.options).forEach(function (option) {
+        var value = option.value || '';
+        if (!value || value === '#') return;
+        var valuePath = value.replace(/^https?:\/\/[^/]+/i, '').replace(/\/+$/, '');
+        var bits = valuePath.split('/').filter(Boolean);
+        if (bits.length < 3) return;
+        var city = bits[2];
+        option.value = '/' + targetCategory + '/' + stateSlug + '/' + city + '/';
+      });
+
+      if (citySlug) {
+        var selectedValue = '/' + targetCategory + '/' + stateSlug + '/' + citySlug + '/';
+        var match = Array.from(select.options).find(function (opt) { return opt.value === selectedValue; });
+        if (match) {
+          select.value = selectedValue;
+        }
+      }
+    });
+  }
+
   initExplorer();
   enhanceCityListDropdowns();
   routeInsightCityLinks();
   initAreaInsightTab();
+  syncInsightSelectorsAndTabs();
 
   const root = document.createElement('div');
   root.id = 'site-version-footer';
