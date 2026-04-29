@@ -1,5 +1,6 @@
 import os
 import json
+import re
 from datetime import datetime
 
 # =========================
@@ -10,6 +11,7 @@ QUEUE_FILE = "data/core_pages.txt"
 OUTPUT_ROOT = "."
 MAX_PAGES_TO_UPDATE = 50   # safety cap per run
 DRY_RUN = False            # set True to preview only
+CITY_MIGRATION_MAP_PATH = "data/city_url_migration_map.json"
 
 # Marker comments — do not change
 START_MARKER = "<!-- INTERNAL_LINKS_START -->"
@@ -57,11 +59,30 @@ def build_links(slug, published_slugs):
 """.strip()
 
 
+
+
+def load_city_url_migration_map(path):
+    payload = load_json(path, {"mappings": []})
+    mappings = payload.get("mappings", [])
+    return {m.get("legacy_url"): m.get("canonical_url") for m in mappings if m.get("legacy_url") and m.get("canonical_url")}
+
+
+def canonicalize_city_insight_links(html, migration_map):
+    if not migration_map:
+        return html
+
+    updated = html
+    for legacy_url, canonical_url in migration_map.items():
+        escaped = re.escape(legacy_url)
+        updated = re.sub(rf"href=[\"']{escaped}[\"']", f'href="{canonical_url}"', updated)
+        updated = re.sub(rf"href=[\"']{escaped[:-1]}[\"']", f'href="{canonical_url}"', updated)
+    return updated
 # =========================
 # MAIN RELINK LOGIC
 # =========================
 def main():
     manifest = load_json(MANIFEST_PATH, {"published": {}})
+    city_migration_map = load_city_url_migration_map(CITY_MIGRATION_MAP_PATH)
     published = manifest.get("published", {})
 
     if not published:
@@ -104,6 +125,8 @@ def main():
         after = html.split(END_MARKER)[-1]
 
         new_html = before + block + after
+
+        new_html = canonicalize_city_insight_links(new_html, city_migration_map)
 
         if new_html == html:
             continue

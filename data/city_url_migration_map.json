@@ -1,0 +1,3861 @@
+{
+  "mappings": [
+    {
+      "legacy_url": "/cost-of-living/arizona/maricopa-county/",
+      "canonical_url": "/arizona/maricopa-county/?tab=cost-of-living",
+      "state_slug": "arizona",
+      "city_slug": "maricopa-county",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/arizona/mesa/",
+      "canonical_url": "/arizona/mesa/?tab=cost-of-living",
+      "state_slug": "arizona",
+      "city_slug": "mesa",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/arizona/phoenix/",
+      "canonical_url": "/arizona/phoenix/?tab=cost-of-living",
+      "state_slug": "arizona",
+      "city_slug": "phoenix",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/arizona/tucson/",
+      "canonical_url": "/arizona/tucson/?tab=cost-of-living",
+      "state_slug": "arizona",
+      "city_slug": "tucson",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/california/los-angeles-county/",
+      "canonical_url": "/california/los-angeles-county/?tab=cost-of-living",
+      "state_slug": "california",
+      "city_slug": "los-angeles-county",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/california/orange-county/",
+      "canonical_url": "/california/orange-county/?tab=cost-of-living",
+      "state_slug": "california",
+      "city_slug": "orange-county",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/california/oxnard/",
+      "canonical_url": "/california/oxnard/?tab=cost-of-living",
+      "state_slug": "california",
+      "city_slug": "oxnard",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/california/san-diego-county/",
+      "canonical_url": "/california/san-diego-county/?tab=cost-of-living",
+      "state_slug": "california",
+      "city_slug": "san-diego-county",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/california/santa-ana/",
+      "canonical_url": "/california/santa-ana/?tab=cost-of-living",
+      "state_slug": "california",
+      "city_slug": "santa-ana",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/california/stockton/",
+      "canonical_url": "/california/stockton/?tab=cost-of-living",
+      "state_slug": "california",
+      "city_slug": "stockton",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/florida/hillsborough-county/",
+      "canonical_url": "/florida/hillsborough-county/?tab=cost-of-living",
+      "state_slug": "florida",
+      "city_slug": "hillsborough-county",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/florida/miami-dade-county/",
+      "canonical_url": "/florida/miami-dade-county/?tab=cost-of-living",
+      "state_slug": "florida",
+      "city_slug": "miami-dade-county",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/florida/orange-county/",
+      "canonical_url": "/florida/orange-county/?tab=cost-of-living",
+      "state_slug": "florida",
+      "city_slug": "orange-county",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/illinois/cook-county/",
+      "canonical_url": "/illinois/cook-county/?tab=cost-of-living",
+      "state_slug": "illinois",
+      "city_slug": "cook-county",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/indiana/indianapolis/",
+      "canonical_url": "/indiana/indianapolis/?tab=cost-of-living",
+      "state_slug": "indiana",
+      "city_slug": "indianapolis",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/louisiana/baton-rouge/",
+      "canonical_url": "/louisiana/baton-rouge/?tab=cost-of-living",
+      "state_slug": "louisiana",
+      "city_slug": "baton-rouge",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/louisiana/new-orleans/",
+      "canonical_url": "/louisiana/new-orleans/?tab=cost-of-living",
+      "state_slug": "louisiana",
+      "city_slug": "new-orleans",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/maine/portland/",
+      "canonical_url": "/maine/portland/?tab=cost-of-living",
+      "state_slug": "maine",
+      "city_slug": "portland",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/michigan/wayne-county/",
+      "canonical_url": "/michigan/wayne-county/?tab=cost-of-living",
+      "state_slug": "michigan",
+      "city_slug": "wayne-county",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/missouri/kansas-city/",
+      "canonical_url": "/missouri/kansas-city/?tab=cost-of-living",
+      "state_slug": "missouri",
+      "city_slug": "kansas-city",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/nevada/clark-county/",
+      "canonical_url": "/nevada/clark-county/?tab=cost-of-living",
+      "state_slug": "nevada",
+      "city_slug": "clark-county",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/nevada/las-vegas/",
+      "canonical_url": "/nevada/las-vegas/?tab=cost-of-living",
+      "state_slug": "nevada",
+      "city_slug": "las-vegas",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/new-jersey/jersey-city/",
+      "canonical_url": "/new-jersey/jersey-city/?tab=cost-of-living",
+      "state_slug": "new-jersey",
+      "city_slug": "jersey-city",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/new-york/kings-county/",
+      "canonical_url": "/new-york/kings-county/?tab=cost-of-living",
+      "state_slug": "new-york",
+      "city_slug": "kings-county",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/new-york/new-york-county/",
+      "canonical_url": "/new-york/new-york-county/?tab=cost-of-living",
+      "state_slug": "new-york",
+      "city_slug": "new-york-county",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/new-york/new-york/",
+      "canonical_url": "/new-york/new-york/?tab=cost-of-living",
+      "state_slug": "new-york",
+      "city_slug": "new-york",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/new-york/queens-county/",
+      "canonical_url": "/new-york/queens-county/?tab=cost-of-living",
+      "state_slug": "new-york",
+      "city_slug": "queens-county",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/new-york/yonkers/",
+      "canonical_url": "/new-york/yonkers/?tab=cost-of-living",
+      "state_slug": "new-york",
+      "city_slug": "yonkers",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/north-carolina/raleigh/",
+      "canonical_url": "/north-carolina/raleigh/?tab=cost-of-living",
+      "state_slug": "north-carolina",
+      "city_slug": "raleigh",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/north-carolina/wake-county/",
+      "canonical_url": "/north-carolina/wake-county/?tab=cost-of-living",
+      "state_slug": "north-carolina",
+      "city_slug": "wake-county",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/ohio/cuyahoga-county/",
+      "canonical_url": "/ohio/cuyahoga-county/?tab=cost-of-living",
+      "state_slug": "ohio",
+      "city_slug": "cuyahoga-county",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/ohio/franklin-county/",
+      "canonical_url": "/ohio/franklin-county/?tab=cost-of-living",
+      "state_slug": "ohio",
+      "city_slug": "franklin-county",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/pennsylvania/allegheny-county/",
+      "canonical_url": "/pennsylvania/allegheny-county/?tab=cost-of-living",
+      "state_slug": "pennsylvania",
+      "city_slug": "allegheny-county",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/pennsylvania/philadelphia-county/",
+      "canonical_url": "/pennsylvania/philadelphia-county/?tab=cost-of-living",
+      "state_slug": "pennsylvania",
+      "city_slug": "philadelphia-county",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/pennsylvania/pittsburgh/",
+      "canonical_url": "/pennsylvania/pittsburgh/?tab=cost-of-living",
+      "state_slug": "pennsylvania",
+      "city_slug": "pittsburgh",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/south-carolina/charleston/",
+      "canonical_url": "/south-carolina/charleston/?tab=cost-of-living",
+      "state_slug": "south-carolina",
+      "city_slug": "charleston",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/south-dakota/sioux-falls/",
+      "canonical_url": "/south-dakota/sioux-falls/?tab=cost-of-living",
+      "state_slug": "south-dakota",
+      "city_slug": "sioux-falls",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/tennessee/nashville/",
+      "canonical_url": "/tennessee/nashville/?tab=cost-of-living",
+      "state_slug": "tennessee",
+      "city_slug": "nashville",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/texas/arlington/",
+      "canonical_url": "/texas/arlington/?tab=cost-of-living",
+      "state_slug": "texas",
+      "city_slug": "arlington",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/texas/bexar-county/",
+      "canonical_url": "/texas/bexar-county/?tab=cost-of-living",
+      "state_slug": "texas",
+      "city_slug": "bexar-county",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/texas/dallas-county/",
+      "canonical_url": "/texas/dallas-county/?tab=cost-of-living",
+      "state_slug": "texas",
+      "city_slug": "dallas-county",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/texas/dallas/",
+      "canonical_url": "/texas/dallas/?tab=cost-of-living",
+      "state_slug": "texas",
+      "city_slug": "dallas",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/texas/el-paso/",
+      "canonical_url": "/texas/el-paso/?tab=cost-of-living",
+      "state_slug": "texas",
+      "city_slug": "el-paso",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/texas/fort-worth/",
+      "canonical_url": "/texas/fort-worth/?tab=cost-of-living",
+      "state_slug": "texas",
+      "city_slug": "fort-worth",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/texas/harris-county/",
+      "canonical_url": "/texas/harris-county/?tab=cost-of-living",
+      "state_slug": "texas",
+      "city_slug": "harris-county",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/texas/irving/",
+      "canonical_url": "/texas/irving/?tab=cost-of-living",
+      "state_slug": "texas",
+      "city_slug": "irving",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/texas/travis-county/",
+      "canonical_url": "/texas/travis-county/?tab=cost-of-living",
+      "state_slug": "texas",
+      "city_slug": "travis-county",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/utah/salt-lake-county/",
+      "canonical_url": "/utah/salt-lake-county/?tab=cost-of-living",
+      "state_slug": "utah",
+      "city_slug": "salt-lake-county",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/virginia/virginia-beach/",
+      "canonical_url": "/virginia/virginia-beach/?tab=cost-of-living",
+      "state_slug": "virginia",
+      "city_slug": "virginia-beach",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/washington/king-county/",
+      "canonical_url": "/washington/king-county/?tab=cost-of-living",
+      "state_slug": "washington",
+      "city_slug": "king-county",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/cost-of-living/washington/tacoma/",
+      "canonical_url": "/washington/tacoma/?tab=cost-of-living",
+      "state_slug": "washington",
+      "city_slug": "tacoma",
+      "tab": "cost-of-living"
+    },
+    {
+      "legacy_url": "/insurance-costs/alabama/birmingham/",
+      "canonical_url": "/alabama/birmingham/?tab=insurance",
+      "state_slug": "alabama",
+      "city_slug": "birmingham",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/arizona/maricopa-county/",
+      "canonical_url": "/arizona/maricopa-county/?tab=insurance",
+      "state_slug": "arizona",
+      "city_slug": "maricopa-county",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/california/anaheim/",
+      "canonical_url": "/california/anaheim/?tab=insurance",
+      "state_slug": "california",
+      "city_slug": "anaheim",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/california/fremont/",
+      "canonical_url": "/california/fremont/?tab=insurance",
+      "state_slug": "california",
+      "city_slug": "fremont",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/california/huntington-beach/",
+      "canonical_url": "/california/huntington-beach/?tab=insurance",
+      "state_slug": "california",
+      "city_slug": "huntington-beach",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/california/los-angeles-county/",
+      "canonical_url": "/california/los-angeles-county/?tab=insurance",
+      "state_slug": "california",
+      "city_slug": "los-angeles-county",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/california/modesto/",
+      "canonical_url": "/california/modesto/?tab=insurance",
+      "state_slug": "california",
+      "city_slug": "modesto",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/california/orange-county/",
+      "canonical_url": "/california/orange-county/?tab=insurance",
+      "state_slug": "california",
+      "city_slug": "orange-county",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/california/riverside/",
+      "canonical_url": "/california/riverside/?tab=insurance",
+      "state_slug": "california",
+      "city_slug": "riverside",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/california/san-diego-county/",
+      "canonical_url": "/california/san-diego-county/?tab=insurance",
+      "state_slug": "california",
+      "city_slug": "san-diego-county",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/california/san-diego/",
+      "canonical_url": "/california/san-diego/?tab=insurance",
+      "state_slug": "california",
+      "city_slug": "san-diego",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/florida/hillsborough-county/",
+      "canonical_url": "/florida/hillsborough-county/?tab=insurance",
+      "state_slug": "florida",
+      "city_slug": "hillsborough-county",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/florida/jacksonville/",
+      "canonical_url": "/florida/jacksonville/?tab=insurance",
+      "state_slug": "florida",
+      "city_slug": "jacksonville",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/florida/miami-dade-county/",
+      "canonical_url": "/florida/miami-dade-county/?tab=insurance",
+      "state_slug": "florida",
+      "city_slug": "miami-dade-county",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/florida/orange-county/",
+      "canonical_url": "/florida/orange-county/?tab=insurance",
+      "state_slug": "florida",
+      "city_slug": "orange-county",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/florida/tampa/",
+      "canonical_url": "/florida/tampa/?tab=insurance",
+      "state_slug": "florida",
+      "city_slug": "tampa",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/hawaii/honolulu/",
+      "canonical_url": "/hawaii/honolulu/?tab=insurance",
+      "state_slug": "hawaii",
+      "city_slug": "honolulu",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/illinois/cook-county/",
+      "canonical_url": "/illinois/cook-county/?tab=insurance",
+      "state_slug": "illinois",
+      "city_slug": "cook-county",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/iowa/des-moines/",
+      "canonical_url": "/iowa/des-moines/?tab=insurance",
+      "state_slug": "iowa",
+      "city_slug": "des-moines",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/kansas/wichita/",
+      "canonical_url": "/kansas/wichita/?tab=insurance",
+      "state_slug": "kansas",
+      "city_slug": "wichita",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/massachusetts/boston/",
+      "canonical_url": "/massachusetts/boston/?tab=insurance",
+      "state_slug": "massachusetts",
+      "city_slug": "boston",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/michigan/wayne-county/",
+      "canonical_url": "/michigan/wayne-county/?tab=insurance",
+      "state_slug": "michigan",
+      "city_slug": "wayne-county",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/nebraska/omaha/",
+      "canonical_url": "/nebraska/omaha/?tab=insurance",
+      "state_slug": "nebraska",
+      "city_slug": "omaha",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/nevada/clark-county/",
+      "canonical_url": "/nevada/clark-county/?tab=insurance",
+      "state_slug": "nevada",
+      "city_slug": "clark-county",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/new-jersey/newark/",
+      "canonical_url": "/new-jersey/newark/?tab=insurance",
+      "state_slug": "new-jersey",
+      "city_slug": "newark",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/new-mexico/albuquerque/",
+      "canonical_url": "/new-mexico/albuquerque/?tab=insurance",
+      "state_slug": "new-mexico",
+      "city_slug": "albuquerque",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/new-york/kings-county/",
+      "canonical_url": "/new-york/kings-county/?tab=insurance",
+      "state_slug": "new-york",
+      "city_slug": "kings-county",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/new-york/new-york-county/",
+      "canonical_url": "/new-york/new-york-county/?tab=insurance",
+      "state_slug": "new-york",
+      "city_slug": "new-york-county",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/new-york/queens-county/",
+      "canonical_url": "/new-york/queens-county/?tab=insurance",
+      "state_slug": "new-york",
+      "city_slug": "queens-county",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/new-york/rochester/",
+      "canonical_url": "/new-york/rochester/?tab=insurance",
+      "state_slug": "new-york",
+      "city_slug": "rochester",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/north-carolina/charlotte/",
+      "canonical_url": "/north-carolina/charlotte/?tab=insurance",
+      "state_slug": "north-carolina",
+      "city_slug": "charlotte",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/north-carolina/wake-county/",
+      "canonical_url": "/north-carolina/wake-county/?tab=insurance",
+      "state_slug": "north-carolina",
+      "city_slug": "wake-county",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/north-dakota/fargo/",
+      "canonical_url": "/north-dakota/fargo/?tab=insurance",
+      "state_slug": "north-dakota",
+      "city_slug": "fargo",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/ohio/cincinnati/",
+      "canonical_url": "/ohio/cincinnati/?tab=insurance",
+      "state_slug": "ohio",
+      "city_slug": "cincinnati",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/ohio/cuyahoga-county/",
+      "canonical_url": "/ohio/cuyahoga-county/?tab=insurance",
+      "state_slug": "ohio",
+      "city_slug": "cuyahoga-county",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/ohio/franklin-county/",
+      "canonical_url": "/ohio/franklin-county/?tab=insurance",
+      "state_slug": "ohio",
+      "city_slug": "franklin-county",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/oregon/portland/",
+      "canonical_url": "/oregon/portland/?tab=insurance",
+      "state_slug": "oregon",
+      "city_slug": "portland",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/pennsylvania/allegheny-county/",
+      "canonical_url": "/pennsylvania/allegheny-county/?tab=insurance",
+      "state_slug": "pennsylvania",
+      "city_slug": "allegheny-county",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/pennsylvania/philadelphia-county/",
+      "canonical_url": "/pennsylvania/philadelphia-county/?tab=insurance",
+      "state_slug": "pennsylvania",
+      "city_slug": "philadelphia-county",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/texas/bexar-county/",
+      "canonical_url": "/texas/bexar-county/?tab=insurance",
+      "state_slug": "texas",
+      "city_slug": "bexar-county",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/texas/corpus-christi/",
+      "canonical_url": "/texas/corpus-christi/?tab=insurance",
+      "state_slug": "texas",
+      "city_slug": "corpus-christi",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/texas/dallas-county/",
+      "canonical_url": "/texas/dallas-county/?tab=insurance",
+      "state_slug": "texas",
+      "city_slug": "dallas-county",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/texas/harris-county/",
+      "canonical_url": "/texas/harris-county/?tab=insurance",
+      "state_slug": "texas",
+      "city_slug": "harris-county",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/texas/houston/",
+      "canonical_url": "/texas/houston/?tab=insurance",
+      "state_slug": "texas",
+      "city_slug": "houston",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/texas/travis-county/",
+      "canonical_url": "/texas/travis-county/?tab=insurance",
+      "state_slug": "texas",
+      "city_slug": "travis-county",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/utah/salt-lake-city/",
+      "canonical_url": "/utah/salt-lake-city/?tab=insurance",
+      "state_slug": "utah",
+      "city_slug": "salt-lake-city",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/utah/salt-lake-county/",
+      "canonical_url": "/utah/salt-lake-county/?tab=insurance",
+      "state_slug": "utah",
+      "city_slug": "salt-lake-county",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/utah/west-valley-city/",
+      "canonical_url": "/utah/west-valley-city/?tab=insurance",
+      "state_slug": "utah",
+      "city_slug": "west-valley-city",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/vermont/burlington/",
+      "canonical_url": "/vermont/burlington/?tab=insurance",
+      "state_slug": "vermont",
+      "city_slug": "burlington",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/washington/king-county/",
+      "canonical_url": "/washington/king-county/?tab=insurance",
+      "state_slug": "washington",
+      "city_slug": "king-county",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/insurance-costs/washington/spokane/",
+      "canonical_url": "/washington/spokane/?tab=insurance",
+      "state_slug": "washington",
+      "city_slug": "spokane",
+      "tab": "insurance"
+    },
+    {
+      "legacy_url": "/property-taxes/arizona/gilbert/",
+      "canonical_url": "/arizona/gilbert/?tab=property-taxes",
+      "state_slug": "arizona",
+      "city_slug": "gilbert",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/arizona/maricopa-county/",
+      "canonical_url": "/arizona/maricopa-county/?tab=property-taxes",
+      "state_slug": "arizona",
+      "city_slug": "maricopa-county",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/california/bakersfield/",
+      "canonical_url": "/california/bakersfield/?tab=property-taxes",
+      "state_slug": "california",
+      "city_slug": "bakersfield",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/california/chula-vista/",
+      "canonical_url": "/california/chula-vista/?tab=property-taxes",
+      "state_slug": "california",
+      "city_slug": "chula-vista",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/california/los-angeles-county/",
+      "canonical_url": "/california/los-angeles-county/?tab=property-taxes",
+      "state_slug": "california",
+      "city_slug": "los-angeles-county",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/california/moreno-valley/",
+      "canonical_url": "/california/moreno-valley/?tab=property-taxes",
+      "state_slug": "california",
+      "city_slug": "moreno-valley",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/california/orange-county/",
+      "canonical_url": "/california/orange-county/?tab=property-taxes",
+      "state_slug": "california",
+      "city_slug": "orange-county",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/california/sacramento/",
+      "canonical_url": "/california/sacramento/?tab=property-taxes",
+      "state_slug": "california",
+      "city_slug": "sacramento",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/california/san-bernardino/",
+      "canonical_url": "/california/san-bernardino/?tab=property-taxes",
+      "state_slug": "california",
+      "city_slug": "san-bernardino",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/california/san-diego-county/",
+      "canonical_url": "/california/san-diego-county/?tab=property-taxes",
+      "state_slug": "california",
+      "city_slug": "san-diego-county",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/california/san-francisco/",
+      "canonical_url": "/california/san-francisco/?tab=property-taxes",
+      "state_slug": "california",
+      "city_slug": "san-francisco",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/colorado/colorado-springs/",
+      "canonical_url": "/colorado/colorado-springs/?tab=property-taxes",
+      "state_slug": "colorado",
+      "city_slug": "colorado-springs",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/colorado/denver/",
+      "canonical_url": "/colorado/denver/?tab=property-taxes",
+      "state_slug": "colorado",
+      "city_slug": "denver",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/connecticut/bridgeport/",
+      "canonical_url": "/connecticut/bridgeport/?tab=property-taxes",
+      "state_slug": "connecticut",
+      "city_slug": "bridgeport",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/florida/hillsborough-county/",
+      "canonical_url": "/florida/hillsborough-county/?tab=property-taxes",
+      "state_slug": "florida",
+      "city_slug": "hillsborough-county",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/florida/miami-dade-county/",
+      "canonical_url": "/florida/miami-dade-county/?tab=property-taxes",
+      "state_slug": "florida",
+      "city_slug": "miami-dade-county",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/florida/miami/",
+      "canonical_url": "/florida/miami/?tab=property-taxes",
+      "state_slug": "florida",
+      "city_slug": "miami",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/florida/orange-county/",
+      "canonical_url": "/florida/orange-county/?tab=property-taxes",
+      "state_slug": "florida",
+      "city_slug": "orange-county",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/florida/st-petersburg/",
+      "canonical_url": "/florida/st-petersburg/?tab=property-taxes",
+      "state_slug": "florida",
+      "city_slug": "st-petersburg",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/idaho/boise/",
+      "canonical_url": "/idaho/boise/?tab=property-taxes",
+      "state_slug": "idaho",
+      "city_slug": "boise",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/illinois/chicago/",
+      "canonical_url": "/illinois/chicago/?tab=property-taxes",
+      "state_slug": "illinois",
+      "city_slug": "chicago",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/illinois/cook-county/",
+      "canonical_url": "/illinois/cook-county/?tab=property-taxes",
+      "state_slug": "illinois",
+      "city_slug": "cook-county",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/michigan/wayne-county/",
+      "canonical_url": "/michigan/wayne-county/?tab=property-taxes",
+      "state_slug": "michigan",
+      "city_slug": "wayne-county",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/minnesota/minneapolis/",
+      "canonical_url": "/minnesota/minneapolis/?tab=property-taxes",
+      "state_slug": "minnesota",
+      "city_slug": "minneapolis",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/montana/billings/",
+      "canonical_url": "/montana/billings/?tab=property-taxes",
+      "state_slug": "montana",
+      "city_slug": "billings",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/nevada/clark-county/",
+      "canonical_url": "/nevada/clark-county/?tab=property-taxes",
+      "state_slug": "nevada",
+      "city_slug": "clark-county",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/new-york/buffalo/",
+      "canonical_url": "/new-york/buffalo/?tab=property-taxes",
+      "state_slug": "new-york",
+      "city_slug": "buffalo",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/new-york/kings-county/",
+      "canonical_url": "/new-york/kings-county/?tab=property-taxes",
+      "state_slug": "new-york",
+      "city_slug": "kings-county",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/new-york/new-york-county/",
+      "canonical_url": "/new-york/new-york-county/?tab=property-taxes",
+      "state_slug": "new-york",
+      "city_slug": "new-york-county",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/new-york/queens-county/",
+      "canonical_url": "/new-york/queens-county/?tab=property-taxes",
+      "state_slug": "new-york",
+      "city_slug": "queens-county",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/north-carolina/wake-county/",
+      "canonical_url": "/north-carolina/wake-county/?tab=property-taxes",
+      "state_slug": "north-carolina",
+      "city_slug": "wake-county",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/ohio/cleveland/",
+      "canonical_url": "/ohio/cleveland/?tab=property-taxes",
+      "state_slug": "ohio",
+      "city_slug": "cleveland",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/ohio/cuyahoga-county/",
+      "canonical_url": "/ohio/cuyahoga-county/?tab=property-taxes",
+      "state_slug": "ohio",
+      "city_slug": "cuyahoga-county",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/ohio/franklin-county/",
+      "canonical_url": "/ohio/franklin-county/?tab=property-taxes",
+      "state_slug": "ohio",
+      "city_slug": "franklin-county",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/oklahoma/oklahoma-city/",
+      "canonical_url": "/oklahoma/oklahoma-city/?tab=property-taxes",
+      "state_slug": "oklahoma",
+      "city_slug": "oklahoma-city",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/pennsylvania/allegheny-county/",
+      "canonical_url": "/pennsylvania/allegheny-county/?tab=property-taxes",
+      "state_slug": "pennsylvania",
+      "city_slug": "allegheny-county",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/pennsylvania/philadelphia-county/",
+      "canonical_url": "/pennsylvania/philadelphia-county/?tab=property-taxes",
+      "state_slug": "pennsylvania",
+      "city_slug": "philadelphia-county",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/rhode-island/providence/",
+      "canonical_url": "/rhode-island/providence/?tab=property-taxes",
+      "state_slug": "rhode-island",
+      "city_slug": "providence",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/texas/amarillo/",
+      "canonical_url": "/texas/amarillo/?tab=property-taxes",
+      "state_slug": "texas",
+      "city_slug": "amarillo",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/texas/austin/",
+      "canonical_url": "/texas/austin/?tab=property-taxes",
+      "state_slug": "texas",
+      "city_slug": "austin",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/texas/bexar-county/",
+      "canonical_url": "/texas/bexar-county/?tab=property-taxes",
+      "state_slug": "texas",
+      "city_slug": "bexar-county",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/texas/dallas-county/",
+      "canonical_url": "/texas/dallas-county/?tab=property-taxes",
+      "state_slug": "texas",
+      "city_slug": "dallas-county",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/texas/harris-county/",
+      "canonical_url": "/texas/harris-county/?tab=property-taxes",
+      "state_slug": "texas",
+      "city_slug": "harris-county",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/texas/lubbock/",
+      "canonical_url": "/texas/lubbock/?tab=property-taxes",
+      "state_slug": "texas",
+      "city_slug": "lubbock",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/texas/san-antonio/",
+      "canonical_url": "/texas/san-antonio/?tab=property-taxes",
+      "state_slug": "texas",
+      "city_slug": "san-antonio",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/texas/travis-county/",
+      "canonical_url": "/texas/travis-county/?tab=property-taxes",
+      "state_slug": "texas",
+      "city_slug": "travis-county",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/utah/provo/",
+      "canonical_url": "/utah/provo/?tab=property-taxes",
+      "state_slug": "utah",
+      "city_slug": "provo",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/utah/salt-lake-county/",
+      "canonical_url": "/utah/salt-lake-county/?tab=property-taxes",
+      "state_slug": "utah",
+      "city_slug": "salt-lake-county",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/virginia/norfolk/",
+      "canonical_url": "/virginia/norfolk/?tab=property-taxes",
+      "state_slug": "virginia",
+      "city_slug": "norfolk",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/washington/king-county/",
+      "canonical_url": "/washington/king-county/?tab=property-taxes",
+      "state_slug": "washington",
+      "city_slug": "king-county",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/property-taxes/wisconsin/milwaukee/",
+      "canonical_url": "/wisconsin/milwaukee/?tab=property-taxes",
+      "state_slug": "wisconsin",
+      "city_slug": "milwaukee",
+      "tab": "property-taxes"
+    },
+    {
+      "legacy_url": "/utility-costs/arizona/chandler/",
+      "canonical_url": "/arizona/chandler/?tab=utilities",
+      "state_slug": "arizona",
+      "city_slug": "chandler",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/arizona/maricopa-county/",
+      "canonical_url": "/arizona/maricopa-county/?tab=utilities",
+      "state_slug": "arizona",
+      "city_slug": "maricopa-county",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/arkansas/little-rock/",
+      "canonical_url": "/arkansas/little-rock/?tab=utilities",
+      "state_slug": "arkansas",
+      "city_slug": "little-rock",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/california/fontana/",
+      "canonical_url": "/california/fontana/?tab=utilities",
+      "state_slug": "california",
+      "city_slug": "fontana",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/california/fresno/",
+      "canonical_url": "/california/fresno/?tab=utilities",
+      "state_slug": "california",
+      "city_slug": "fresno",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/california/irvine/",
+      "canonical_url": "/california/irvine/?tab=utilities",
+      "state_slug": "california",
+      "city_slug": "irvine",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/california/long-beach/",
+      "canonical_url": "/california/long-beach/?tab=utilities",
+      "state_slug": "california",
+      "city_slug": "long-beach",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/california/los-angeles-county/",
+      "canonical_url": "/california/los-angeles-county/?tab=utilities",
+      "state_slug": "california",
+      "city_slug": "los-angeles-county",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/california/los-angeles/",
+      "canonical_url": "/california/los-angeles/?tab=utilities",
+      "state_slug": "california",
+      "city_slug": "los-angeles",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/california/oakland/",
+      "canonical_url": "/california/oakland/?tab=utilities",
+      "state_slug": "california",
+      "city_slug": "oakland",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/california/orange-county/",
+      "canonical_url": "/california/orange-county/?tab=utilities",
+      "state_slug": "california",
+      "city_slug": "orange-county",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/california/san-diego-county/",
+      "canonical_url": "/california/san-diego-county/?tab=utilities",
+      "state_slug": "california",
+      "city_slug": "san-diego-county",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/california/san-jose/",
+      "canonical_url": "/california/san-jose/?tab=utilities",
+      "state_slug": "california",
+      "city_slug": "san-jose",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/california/santa-clarita/",
+      "canonical_url": "/california/santa-clarita/?tab=utilities",
+      "state_slug": "california",
+      "city_slug": "santa-clarita",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/delaware/wilmington/",
+      "canonical_url": "/delaware/wilmington/?tab=utilities",
+      "state_slug": "delaware",
+      "city_slug": "wilmington",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/florida/hillsborough-county/",
+      "canonical_url": "/florida/hillsborough-county/?tab=utilities",
+      "state_slug": "florida",
+      "city_slug": "hillsborough-county",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/florida/miami-dade-county/",
+      "canonical_url": "/florida/miami-dade-county/?tab=utilities",
+      "state_slug": "florida",
+      "city_slug": "miami-dade-county",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/florida/orange-county/",
+      "canonical_url": "/florida/orange-county/?tab=utilities",
+      "state_slug": "florida",
+      "city_slug": "orange-county",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/florida/orlando/",
+      "canonical_url": "/florida/orlando/?tab=utilities",
+      "state_slug": "florida",
+      "city_slug": "orlando",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/georgia/atlanta/",
+      "canonical_url": "/georgia/atlanta/?tab=utilities",
+      "state_slug": "georgia",
+      "city_slug": "atlanta",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/illinois/cook-county/",
+      "canonical_url": "/illinois/cook-county/?tab=utilities",
+      "state_slug": "illinois",
+      "city_slug": "cook-county",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/kentucky/louisville/",
+      "canonical_url": "/kentucky/louisville/?tab=utilities",
+      "state_slug": "kentucky",
+      "city_slug": "louisville",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/maryland/baltimore/",
+      "canonical_url": "/maryland/baltimore/?tab=utilities",
+      "state_slug": "maryland",
+      "city_slug": "baltimore",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/michigan/detroit/",
+      "canonical_url": "/michigan/detroit/?tab=utilities",
+      "state_slug": "michigan",
+      "city_slug": "detroit",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/michigan/wayne-county/",
+      "canonical_url": "/michigan/wayne-county/?tab=utilities",
+      "state_slug": "michigan",
+      "city_slug": "wayne-county",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/ada/",
+      "canonical_url": "/minnesota/ada/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "ada",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/adrian/",
+      "canonical_url": "/minnesota/adrian/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "adrian",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/afton/",
+      "canonical_url": "/minnesota/afton/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "afton",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/albany/",
+      "canonical_url": "/minnesota/albany/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "albany",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/albert-lea/",
+      "canonical_url": "/minnesota/albert-lea/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "albert-lea",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/albertville/",
+      "canonical_url": "/minnesota/albertville/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "albertville",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/alexandria/",
+      "canonical_url": "/minnesota/alexandria/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "alexandria",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/andover/",
+      "canonical_url": "/minnesota/andover/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "andover",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/annandale/",
+      "canonical_url": "/minnesota/annandale/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "annandale",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/apple-valley/",
+      "canonical_url": "/minnesota/apple-valley/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "apple-valley",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/appleton/",
+      "canonical_url": "/minnesota/appleton/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "appleton",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/arden-hills/",
+      "canonical_url": "/minnesota/arden-hills/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "arden-hills",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/arlington/",
+      "canonical_url": "/minnesota/arlington/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "arlington",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/arnold/",
+      "canonical_url": "/minnesota/arnold/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "arnold",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/atwater/",
+      "canonical_url": "/minnesota/atwater/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "atwater",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/aurora/",
+      "canonical_url": "/minnesota/aurora/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "aurora",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/austin/",
+      "canonical_url": "/minnesota/austin/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "austin",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/avon/",
+      "canonical_url": "/minnesota/avon/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "avon",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/babbitt/",
+      "canonical_url": "/minnesota/babbitt/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "babbitt",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/bagley/",
+      "canonical_url": "/minnesota/bagley/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "bagley",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/barnesville/",
+      "canonical_url": "/minnesota/barnesville/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "barnesville",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/baudette/",
+      "canonical_url": "/minnesota/baudette/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "baudette",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/baxter/",
+      "canonical_url": "/minnesota/baxter/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "baxter",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/bayport/",
+      "canonical_url": "/minnesota/bayport/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "bayport",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/belle-plaine/",
+      "canonical_url": "/minnesota/belle-plaine/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "belle-plaine",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/bemidji/",
+      "canonical_url": "/minnesota/bemidji/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "bemidji",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/benson/",
+      "canonical_url": "/minnesota/benson/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "benson",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/big-lake/",
+      "canonical_url": "/minnesota/big-lake/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "big-lake",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/birchwood/",
+      "canonical_url": "/minnesota/birchwood/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "birchwood",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/blaine/",
+      "canonical_url": "/minnesota/blaine/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "blaine",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/blooming-prairie/",
+      "canonical_url": "/minnesota/blooming-prairie/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "blooming-prairie",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/bloomington/",
+      "canonical_url": "/minnesota/bloomington/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "bloomington",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/braham/",
+      "canonical_url": "/minnesota/braham/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "braham",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/brainerd/",
+      "canonical_url": "/minnesota/brainerd/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "brainerd",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/branch/",
+      "canonical_url": "/minnesota/branch/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "branch",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/breckenridge/",
+      "canonical_url": "/minnesota/breckenridge/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "breckenridge",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/breezy-point/",
+      "canonical_url": "/minnesota/breezy-point/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "breezy-point",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/brooklyn-center/",
+      "canonical_url": "/minnesota/brooklyn-center/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "brooklyn-center",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/brooklyn-park/",
+      "canonical_url": "/minnesota/brooklyn-park/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "brooklyn-park",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/buffalo/",
+      "canonical_url": "/minnesota/buffalo/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "buffalo",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/burnsville/",
+      "canonical_url": "/minnesota/burnsville/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "burnsville",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/byron/",
+      "canonical_url": "/minnesota/byron/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "byron",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/caledonia/",
+      "canonical_url": "/minnesota/caledonia/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "caledonia",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/cambridge/",
+      "canonical_url": "/minnesota/cambridge/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "cambridge",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/canby/",
+      "canonical_url": "/minnesota/canby/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "canby",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/cannon-falls/",
+      "canonical_url": "/minnesota/cannon-falls/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "cannon-falls",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/center-city/",
+      "canonical_url": "/minnesota/center-city/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "center-city",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/centerville/",
+      "canonical_url": "/minnesota/centerville/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "centerville",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/champlin/",
+      "canonical_url": "/minnesota/champlin/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "champlin",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/chanhassen/",
+      "canonical_url": "/minnesota/chanhassen/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "chanhassen",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/chaska/",
+      "canonical_url": "/minnesota/chaska/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "chaska",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/chatfield/",
+      "canonical_url": "/minnesota/chatfield/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "chatfield",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/chisago-city/",
+      "canonical_url": "/minnesota/chisago-city/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "chisago-city",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/chisholm/",
+      "canonical_url": "/minnesota/chisholm/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "chisholm",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/circle-pines/",
+      "canonical_url": "/minnesota/circle-pines/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "circle-pines",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/clara-city/",
+      "canonical_url": "/minnesota/clara-city/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "clara-city",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/cloquet/",
+      "canonical_url": "/minnesota/cloquet/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "cloquet",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/cohasset/",
+      "canonical_url": "/minnesota/cohasset/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "cohasset",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/cokato/",
+      "canonical_url": "/minnesota/cokato/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "cokato",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/cold-spring/",
+      "canonical_url": "/minnesota/cold-spring/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "cold-spring",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/coleraine/",
+      "canonical_url": "/minnesota/coleraine/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "coleraine",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/collegeville/",
+      "canonical_url": "/minnesota/collegeville/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "collegeville",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/cologne/",
+      "canonical_url": "/minnesota/cologne/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "cologne",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/columbia-heights/",
+      "canonical_url": "/minnesota/columbia-heights/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "columbia-heights",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/columbus/",
+      "canonical_url": "/minnesota/columbus/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "columbus",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/coon-rapids/",
+      "canonical_url": "/minnesota/coon-rapids/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "coon-rapids",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/corcoran/",
+      "canonical_url": "/minnesota/corcoran/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "corcoran",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/cottage-grove/",
+      "canonical_url": "/minnesota/cottage-grove/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "cottage-grove",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/crookston/",
+      "canonical_url": "/minnesota/crookston/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "crookston",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/crosby/",
+      "canonical_url": "/minnesota/crosby/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "crosby",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/cross-lake/",
+      "canonical_url": "/minnesota/cross-lake/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "cross-lake",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/crystal/",
+      "canonical_url": "/minnesota/crystal/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "crystal",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/dassel/",
+      "canonical_url": "/minnesota/dassel/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "dassel",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/dawson/",
+      "canonical_url": "/minnesota/dawson/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "dawson",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/dayton/",
+      "canonical_url": "/minnesota/dayton/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "dayton",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/deephaven/",
+      "canonical_url": "/minnesota/deephaven/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "deephaven",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/delano/",
+      "canonical_url": "/minnesota/delano/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "delano",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/dellwood/",
+      "canonical_url": "/minnesota/dellwood/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "dellwood",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/detroit-lakes/",
+      "canonical_url": "/minnesota/detroit-lakes/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "detroit-lakes",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/dilworth/",
+      "canonical_url": "/minnesota/dilworth/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "dilworth",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/dodge-center/",
+      "canonical_url": "/minnesota/dodge-center/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "dodge-center",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/duluth/",
+      "canonical_url": "/minnesota/duluth/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "duluth",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/dundas/",
+      "canonical_url": "/minnesota/dundas/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "dundas",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/eagan/",
+      "canonical_url": "/minnesota/eagan/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "eagan",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/eagle-lake/",
+      "canonical_url": "/minnesota/eagle-lake/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "eagle-lake",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/east-bethel/",
+      "canonical_url": "/minnesota/east-bethel/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "east-bethel",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/east-grand-forks/",
+      "canonical_url": "/minnesota/east-grand-forks/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "east-grand-forks",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/east-gull-lake/",
+      "canonical_url": "/minnesota/east-gull-lake/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "east-gull-lake",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/eden-prairie/",
+      "canonical_url": "/minnesota/eden-prairie/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "eden-prairie",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/eden-valley/",
+      "canonical_url": "/minnesota/eden-valley/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "eden-valley",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/edgerton/",
+      "canonical_url": "/minnesota/edgerton/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "edgerton",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/edina/",
+      "canonical_url": "/minnesota/edina/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "edina",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/elbow-lake/",
+      "canonical_url": "/minnesota/elbow-lake/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "elbow-lake",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/elgin/",
+      "canonical_url": "/minnesota/elgin/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "elgin",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/elk-river/",
+      "canonical_url": "/minnesota/elk-river/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "elk-river",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/elko-new-market/",
+      "canonical_url": "/minnesota/elko-new-market/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "elko-new-market",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/ely/",
+      "canonical_url": "/minnesota/ely/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "ely",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/esko/",
+      "canonical_url": "/minnesota/esko/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "esko",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/eveleth/",
+      "canonical_url": "/minnesota/eveleth/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "eveleth",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/excelsior/",
+      "canonical_url": "/minnesota/excelsior/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "excelsior",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/eyota/",
+      "canonical_url": "/minnesota/eyota/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "eyota",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/fairfax/",
+      "canonical_url": "/minnesota/fairfax/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "fairfax",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/fairmont/",
+      "canonical_url": "/minnesota/fairmont/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "fairmont",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/falcon-heights/",
+      "canonical_url": "/minnesota/falcon-heights/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "falcon-heights",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/farmington/",
+      "canonical_url": "/minnesota/farmington/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "farmington",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/fergus-falls/",
+      "canonical_url": "/minnesota/fergus-falls/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "fergus-falls",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/foley/",
+      "canonical_url": "/minnesota/foley/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "foley",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/forest-lake/",
+      "canonical_url": "/minnesota/forest-lake/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "forest-lake",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/fosston/",
+      "canonical_url": "/minnesota/fosston/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "fosston",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/frazee/",
+      "canonical_url": "/minnesota/frazee/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "frazee",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/fridley/",
+      "canonical_url": "/minnesota/fridley/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "fridley",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/fulda/",
+      "canonical_url": "/minnesota/fulda/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "fulda",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/gaylord/",
+      "canonical_url": "/minnesota/gaylord/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "gaylord",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/gilbert/",
+      "canonical_url": "/minnesota/gilbert/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "gilbert",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/glencoe/",
+      "canonical_url": "/minnesota/glencoe/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "glencoe",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/glenwood/",
+      "canonical_url": "/minnesota/glenwood/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "glenwood",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/glyndon/",
+      "canonical_url": "/minnesota/glyndon/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "glyndon",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/golden-valley/",
+      "canonical_url": "/minnesota/golden-valley/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "golden-valley",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/goodview/",
+      "canonical_url": "/minnesota/goodview/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "goodview",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/grand-marais/",
+      "canonical_url": "/minnesota/grand-marais/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "grand-marais",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/grand-meadow/",
+      "canonical_url": "/minnesota/grand-meadow/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "grand-meadow",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/grand-rapids/",
+      "canonical_url": "/minnesota/grand-rapids/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "grand-rapids",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/granite-falls/",
+      "canonical_url": "/minnesota/granite-falls/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "granite-falls",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/greenfield/",
+      "canonical_url": "/minnesota/greenfield/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "greenfield",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/hallock/",
+      "canonical_url": "/minnesota/hallock/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "hallock",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/ham-lake/",
+      "canonical_url": "/minnesota/ham-lake/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "ham-lake",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/hanover/",
+      "canonical_url": "/minnesota/hanover/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "hanover",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/harris/",
+      "canonical_url": "/minnesota/harris/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "harris",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/hastings/",
+      "canonical_url": "/minnesota/hastings/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "hastings",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/hawley/",
+      "canonical_url": "/minnesota/hawley/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "hawley",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/hayfield/",
+      "canonical_url": "/minnesota/hayfield/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "hayfield",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/hector/",
+      "canonical_url": "/minnesota/hector/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "hector",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/hermantown/",
+      "canonical_url": "/minnesota/hermantown/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "hermantown",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/hibbing/",
+      "canonical_url": "/minnesota/hibbing/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "hibbing",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/hinckley/",
+      "canonical_url": "/minnesota/hinckley/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "hinckley",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/hopkins/",
+      "canonical_url": "/minnesota/hopkins/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "hopkins",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/howard-lake/",
+      "canonical_url": "/minnesota/howard-lake/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "howard-lake",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/hoyt-lakes/",
+      "canonical_url": "/minnesota/hoyt-lakes/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "hoyt-lakes",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/hugo/",
+      "canonical_url": "/minnesota/hugo/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "hugo",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/hutchinson/",
+      "canonical_url": "/minnesota/hutchinson/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "hutchinson",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/independence/",
+      "canonical_url": "/minnesota/independence/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "independence",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/international-falls/",
+      "canonical_url": "/minnesota/international-falls/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "international-falls",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/inver-grove-heights/",
+      "canonical_url": "/minnesota/inver-grove-heights/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "inver-grove-heights",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/ivanhoe/",
+      "canonical_url": "/minnesota/ivanhoe/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "ivanhoe",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/janesville/",
+      "canonical_url": "/minnesota/janesville/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "janesville",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/jordan/",
+      "canonical_url": "/minnesota/jordan/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "jordan",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/kasson/",
+      "canonical_url": "/minnesota/kasson/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "kasson",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/keewatin/",
+      "canonical_url": "/minnesota/keewatin/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "keewatin",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/kenyon/",
+      "canonical_url": "/minnesota/kenyon/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "kenyon",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/la-crescent/",
+      "canonical_url": "/minnesota/la-crescent/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "la-crescent",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/lake-city/",
+      "canonical_url": "/minnesota/lake-city/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "lake-city",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/lake-crystal/",
+      "canonical_url": "/minnesota/lake-crystal/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "lake-crystal",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/lake-elmo/",
+      "canonical_url": "/minnesota/lake-elmo/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "lake-elmo",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/lake-saint-croix-beach/",
+      "canonical_url": "/minnesota/lake-saint-croix-beach/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "lake-saint-croix-beach",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/lake-shore/",
+      "canonical_url": "/minnesota/lake-shore/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "lake-shore",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/lakefield/",
+      "canonical_url": "/minnesota/lakefield/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "lakefield",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/lakeland/",
+      "canonical_url": "/minnesota/lakeland/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "lakeland",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/lakeville/",
+      "canonical_url": "/minnesota/lakeville/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "lakeville",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/lauderdale/",
+      "canonical_url": "/minnesota/lauderdale/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "lauderdale",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/le-center/",
+      "canonical_url": "/minnesota/le-center/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "le-center",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/lester-prairie/",
+      "canonical_url": "/minnesota/lester-prairie/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "lester-prairie",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/lewiston/",
+      "canonical_url": "/minnesota/lewiston/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "lewiston",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/lexington/",
+      "canonical_url": "/minnesota/lexington/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "lexington",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/lindstrom/",
+      "canonical_url": "/minnesota/lindstrom/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "lindstrom",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/lino-lakes/",
+      "canonical_url": "/minnesota/lino-lakes/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "lino-lakes",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/litchfield/",
+      "canonical_url": "/minnesota/litchfield/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "litchfield",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/little-canada/",
+      "canonical_url": "/minnesota/little-canada/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "little-canada",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/little-falls/",
+      "canonical_url": "/minnesota/little-falls/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "little-falls",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/little-rock/",
+      "canonical_url": "/minnesota/little-rock/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "little-rock",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/long-lake/",
+      "canonical_url": "/minnesota/long-lake/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "long-lake",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/long-prairie/",
+      "canonical_url": "/minnesota/long-prairie/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "long-prairie",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/lonsdale/",
+      "canonical_url": "/minnesota/lonsdale/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "lonsdale",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/luverne/",
+      "canonical_url": "/minnesota/luverne/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "luverne",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/madelia/",
+      "canonical_url": "/minnesota/madelia/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "madelia",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/madison-lake/",
+      "canonical_url": "/minnesota/madison-lake/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "madison-lake",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/madison/",
+      "canonical_url": "/minnesota/madison/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "madison",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/mahtomedi/",
+      "canonical_url": "/minnesota/mahtomedi/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "mahtomedi",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/mankato/",
+      "canonical_url": "/minnesota/mankato/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "mankato",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/mantorville/",
+      "canonical_url": "/minnesota/mantorville/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "mantorville",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/maple-grove/",
+      "canonical_url": "/minnesota/maple-grove/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "maple-grove",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/maple-lake/",
+      "canonical_url": "/minnesota/maple-lake/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "maple-lake",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/maple-plain/",
+      "canonical_url": "/minnesota/maple-plain/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "maple-plain",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/mapleton/",
+      "canonical_url": "/minnesota/mapleton/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "mapleton",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/maplewood/",
+      "canonical_url": "/minnesota/maplewood/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "maplewood",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/mayer/",
+      "canonical_url": "/minnesota/mayer/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "mayer",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/medford/",
+      "canonical_url": "/minnesota/medford/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "medford",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/medina/",
+      "canonical_url": "/minnesota/medina/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "medina",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/melrose/",
+      "canonical_url": "/minnesota/melrose/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "melrose",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/menahga/",
+      "canonical_url": "/minnesota/menahga/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "menahga",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/mendota-heights/",
+      "canonical_url": "/minnesota/mendota-heights/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "mendota-heights",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/milaca/",
+      "canonical_url": "/minnesota/milaca/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "milaca",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/minneapolis/",
+      "canonical_url": "/minnesota/minneapolis/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "minneapolis",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/minneota/",
+      "canonical_url": "/minnesota/minneota/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "minneota",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/minnetonka-mills/",
+      "canonical_url": "/minnesota/minnetonka-mills/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "minnetonka-mills",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/minnetonka/",
+      "canonical_url": "/minnesota/minnetonka/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "minnetonka",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/minnetrista/",
+      "canonical_url": "/minnesota/minnetrista/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "minnetrista",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/montevideo/",
+      "canonical_url": "/minnesota/montevideo/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "montevideo",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/montgomery/",
+      "canonical_url": "/minnesota/montgomery/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "montgomery",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/monticello/",
+      "canonical_url": "/minnesota/monticello/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "monticello",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/montrose/",
+      "canonical_url": "/minnesota/montrose/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "montrose",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/moorhead/",
+      "canonical_url": "/minnesota/moorhead/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "moorhead",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/moose-lake/",
+      "canonical_url": "/minnesota/moose-lake/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "moose-lake",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/mora/",
+      "canonical_url": "/minnesota/mora/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "mora",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/morris/",
+      "canonical_url": "/minnesota/morris/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "morris",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/mound/",
+      "canonical_url": "/minnesota/mound/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "mound",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/mounds-view/",
+      "canonical_url": "/minnesota/mounds-view/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "mounds-view",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/mountain-iron/",
+      "canonical_url": "/minnesota/mountain-iron/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "mountain-iron",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/mountain-lake/",
+      "canonical_url": "/minnesota/mountain-lake/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "mountain-lake",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/new-brighton/",
+      "canonical_url": "/minnesota/new-brighton/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "new-brighton",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/new-hope/",
+      "canonical_url": "/minnesota/new-hope/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "new-hope",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/new-london/",
+      "canonical_url": "/minnesota/new-london/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "new-london",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/new-prague/",
+      "canonical_url": "/minnesota/new-prague/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "new-prague",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/new-richland/",
+      "canonical_url": "/minnesota/new-richland/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "new-richland",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/new-ulm/",
+      "canonical_url": "/minnesota/new-ulm/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "new-ulm",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/new-york-mills/",
+      "canonical_url": "/minnesota/new-york-mills/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "new-york-mills",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/newport/",
+      "canonical_url": "/minnesota/newport/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "newport",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/nisswa/",
+      "canonical_url": "/minnesota/nisswa/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "nisswa",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/north-branch/",
+      "canonical_url": "/minnesota/north-branch/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "north-branch",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/north-mankato/",
+      "canonical_url": "/minnesota/north-mankato/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "north-mankato",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/north-oaks/",
+      "canonical_url": "/minnesota/north-oaks/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "north-oaks",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/north-saint-paul/",
+      "canonical_url": "/minnesota/north-saint-paul/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "north-saint-paul",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/northfield/",
+      "canonical_url": "/minnesota/northfield/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "northfield",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/norwood-historical/",
+      "canonical_url": "/minnesota/norwood-historical/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "norwood-historical",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/norwood-young-america/",
+      "canonical_url": "/minnesota/norwood-young-america/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "norwood-young-america",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/nowthen/",
+      "canonical_url": "/minnesota/nowthen/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "nowthen",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/oak-grove/",
+      "canonical_url": "/minnesota/oak-grove/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "oak-grove",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/oak-park-heights/",
+      "canonical_url": "/minnesota/oak-park-heights/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "oak-park-heights",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/oakdale/",
+      "canonical_url": "/minnesota/oakdale/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "oakdale",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/oakport/",
+      "canonical_url": "/minnesota/oakport/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "oakport",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/olivia/",
+      "canonical_url": "/minnesota/olivia/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "olivia",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/orono/",
+      "canonical_url": "/minnesota/orono/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "orono",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/oronoco/",
+      "canonical_url": "/minnesota/oronoco/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "oronoco",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/ortonville/",
+      "canonical_url": "/minnesota/ortonville/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "ortonville",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/osakis/",
+      "canonical_url": "/minnesota/osakis/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "osakis",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/osseo/",
+      "canonical_url": "/minnesota/osseo/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "osseo",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/otsego/",
+      "canonical_url": "/minnesota/otsego/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "otsego",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/owatonna/",
+      "canonical_url": "/minnesota/owatonna/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "owatonna",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/park-rapids/",
+      "canonical_url": "/minnesota/park-rapids/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "park-rapids",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/parkers-prairie/",
+      "canonical_url": "/minnesota/parkers-prairie/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "parkers-prairie",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/parkville/",
+      "canonical_url": "/minnesota/parkville/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "parkville",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/paynesville/",
+      "canonical_url": "/minnesota/paynesville/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "paynesville",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/pelican-rapids/",
+      "canonical_url": "/minnesota/pelican-rapids/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "pelican-rapids",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/pequot-lakes/",
+      "canonical_url": "/minnesota/pequot-lakes/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "pequot-lakes",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/perham/",
+      "canonical_url": "/minnesota/perham/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "perham",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/pierz/",
+      "canonical_url": "/minnesota/pierz/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "pierz",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/pine-city/",
+      "canonical_url": "/minnesota/pine-city/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "pine-city",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/pine-island/",
+      "canonical_url": "/minnesota/pine-island/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "pine-island",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/plainview/",
+      "canonical_url": "/minnesota/plainview/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "plainview",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/plymouth/",
+      "canonical_url": "/minnesota/plymouth/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "plymouth",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/preston/",
+      "canonical_url": "/minnesota/preston/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "preston",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/princeton/",
+      "canonical_url": "/minnesota/princeton/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "princeton",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/prior-lake/",
+      "canonical_url": "/minnesota/prior-lake/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "prior-lake",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/proctor/",
+      "canonical_url": "/minnesota/proctor/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "proctor",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/red-lake-falls/",
+      "canonical_url": "/minnesota/red-lake-falls/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "red-lake-falls",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/red-wing/",
+      "canonical_url": "/minnesota/red-wing/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "red-wing",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/redby/",
+      "canonical_url": "/minnesota/redby/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "redby",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/redwood-falls/",
+      "canonical_url": "/minnesota/redwood-falls/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "redwood-falls",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/richfield/",
+      "canonical_url": "/minnesota/richfield/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "richfield",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/richmond/",
+      "canonical_url": "/minnesota/richmond/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "richmond",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/robbinsdale/",
+      "canonical_url": "/minnesota/robbinsdale/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "robbinsdale",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/rochester/",
+      "canonical_url": "/minnesota/rochester/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "rochester",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/rock-creek/",
+      "canonical_url": "/minnesota/rock-creek/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "rock-creek",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/rockford/",
+      "canonical_url": "/minnesota/rockford/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "rockford",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/rockville/",
+      "canonical_url": "/minnesota/rockville/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "rockville",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/rogers/",
+      "canonical_url": "/minnesota/rogers/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "rogers",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/rosemount/",
+      "canonical_url": "/minnesota/rosemount/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "rosemount",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/roseville/",
+      "canonical_url": "/minnesota/roseville/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "roseville",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/royalton/",
+      "canonical_url": "/minnesota/royalton/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "royalton",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/rush-city/",
+      "canonical_url": "/minnesota/rush-city/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "rush-city",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/rushford/",
+      "canonical_url": "/minnesota/rushford/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "rushford",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/saint-anthony/",
+      "canonical_url": "/minnesota/saint-anthony/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "saint-anthony",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/saint-augusta/",
+      "canonical_url": "/minnesota/saint-augusta/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "saint-augusta",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/saint-bonifacius/",
+      "canonical_url": "/minnesota/saint-bonifacius/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "saint-bonifacius",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/saint-charles/",
+      "canonical_url": "/minnesota/saint-charles/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "saint-charles",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/saint-cloud/",
+      "canonical_url": "/minnesota/saint-cloud/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "saint-cloud",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/saint-francis/",
+      "canonical_url": "/minnesota/saint-francis/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "saint-francis",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/saint-james/",
+      "canonical_url": "/minnesota/saint-james/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "saint-james",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/saint-joseph/",
+      "canonical_url": "/minnesota/saint-joseph/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "saint-joseph",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/saint-louis-park/",
+      "canonical_url": "/minnesota/saint-louis-park/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "saint-louis-park",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/saint-louis/",
+      "canonical_url": "/minnesota/saint-louis/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "saint-louis",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/saint-michael/",
+      "canonical_url": "/minnesota/saint-michael/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "saint-michael",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/saint-paul-park/",
+      "canonical_url": "/minnesota/saint-paul-park/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "saint-paul-park",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/saint-paul/",
+      "canonical_url": "/minnesota/saint-paul/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "saint-paul",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/saint-peter/",
+      "canonical_url": "/minnesota/saint-peter/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "saint-peter",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/sandstone/",
+      "canonical_url": "/minnesota/sandstone/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "sandstone",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/sartell/",
+      "canonical_url": "/minnesota/sartell/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "sartell",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/sauk-centre/",
+      "canonical_url": "/minnesota/sauk-centre/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "sauk-centre",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/sauk-rapids/",
+      "canonical_url": "/minnesota/sauk-rapids/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "sauk-rapids",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/savage/",
+      "canonical_url": "/minnesota/savage/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "savage",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/scandia/",
+      "canonical_url": "/minnesota/scandia/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "scandia",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/shafer/",
+      "canonical_url": "/minnesota/shafer/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "shafer",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/shakopee/",
+      "canonical_url": "/minnesota/shakopee/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "shakopee",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/sherburn/",
+      "canonical_url": "/minnesota/sherburn/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "sherburn",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/shoreview/",
+      "canonical_url": "/minnesota/shoreview/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "shoreview",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/shorewood/",
+      "canonical_url": "/minnesota/shorewood/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "shorewood",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/silver-bay/",
+      "canonical_url": "/minnesota/silver-bay/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "silver-bay",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/slayton/",
+      "canonical_url": "/minnesota/slayton/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "slayton",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/sleepy-eye/",
+      "canonical_url": "/minnesota/sleepy-eye/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "sleepy-eye",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/south-saint-paul/",
+      "canonical_url": "/minnesota/south-saint-paul/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "south-saint-paul",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/spicer/",
+      "canonical_url": "/minnesota/spicer/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "spicer",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/spring-grove/",
+      "canonical_url": "/minnesota/spring-grove/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "spring-grove",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/spring-lake-park/",
+      "canonical_url": "/minnesota/spring-lake-park/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "spring-lake-park",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/spring-park/",
+      "canonical_url": "/minnesota/spring-park/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "spring-park",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/spring-valley/",
+      "canonical_url": "/minnesota/spring-valley/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "spring-valley",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/springfield/",
+      "canonical_url": "/minnesota/springfield/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "springfield",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/stacy/",
+      "canonical_url": "/minnesota/stacy/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "stacy",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/staples/",
+      "canonical_url": "/minnesota/staples/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "staples",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/starbuck/",
+      "canonical_url": "/minnesota/starbuck/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "starbuck",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/stewartville/",
+      "canonical_url": "/minnesota/stewartville/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "stewartville",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/stillwater/",
+      "canonical_url": "/minnesota/stillwater/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "stillwater",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/taylors-falls/",
+      "canonical_url": "/minnesota/taylors-falls/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "taylors-falls",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/thief-river-falls/",
+      "canonical_url": "/minnesota/thief-river-falls/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "thief-river-falls",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/tonka-bay/",
+      "canonical_url": "/minnesota/tonka-bay/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "tonka-bay",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/tracy/",
+      "canonical_url": "/minnesota/tracy/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "tracy",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/truman/",
+      "canonical_url": "/minnesota/truman/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "truman",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/two-harbors/",
+      "canonical_url": "/minnesota/two-harbors/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "two-harbors",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/tyler/",
+      "canonical_url": "/minnesota/tyler/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "tyler",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/vadnais-heights/",
+      "canonical_url": "/minnesota/vadnais-heights/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "vadnais-heights",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/victoria/",
+      "canonical_url": "/minnesota/victoria/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "victoria",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/vineland/",
+      "canonical_url": "/minnesota/vineland/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "vineland",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/virginia/",
+      "canonical_url": "/minnesota/virginia/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "virginia",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/waconia/",
+      "canonical_url": "/minnesota/waconia/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "waconia",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/waite-park/",
+      "canonical_url": "/minnesota/waite-park/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "waite-park",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/walker/",
+      "canonical_url": "/minnesota/walker/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "walker",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/wanamingo/",
+      "canonical_url": "/minnesota/wanamingo/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "wanamingo",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/warren/",
+      "canonical_url": "/minnesota/warren/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "warren",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/warroad/",
+      "canonical_url": "/minnesota/warroad/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "warroad",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/watertown/",
+      "canonical_url": "/minnesota/watertown/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "watertown",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/waterville/",
+      "canonical_url": "/minnesota/waterville/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "waterville",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/waverly/",
+      "canonical_url": "/minnesota/waverly/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "waverly",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/wayzata/",
+      "canonical_url": "/minnesota/wayzata/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "wayzata",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/wells/",
+      "canonical_url": "/minnesota/wells/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "wells",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/west-coon-rapids/",
+      "canonical_url": "/minnesota/west-coon-rapids/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "west-coon-rapids",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/west-saint-paul/",
+      "canonical_url": "/minnesota/west-saint-paul/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "west-saint-paul",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/wheaton/",
+      "canonical_url": "/minnesota/wheaton/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "wheaton",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/white-bear-lake/",
+      "canonical_url": "/minnesota/white-bear-lake/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "white-bear-lake",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/willmar/",
+      "canonical_url": "/minnesota/willmar/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "willmar",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/windom/",
+      "canonical_url": "/minnesota/windom/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "windom",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/winnebago/",
+      "canonical_url": "/minnesota/winnebago/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "winnebago",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/winsted/",
+      "canonical_url": "/minnesota/winsted/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "winsted",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/winthrop/",
+      "canonical_url": "/minnesota/winthrop/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "winthrop",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/woodbury/",
+      "canonical_url": "/minnesota/woodbury/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "woodbury",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/worthington/",
+      "canonical_url": "/minnesota/worthington/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "worthington",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/wyoming/",
+      "canonical_url": "/minnesota/wyoming/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "wyoming",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/young-america-historical/",
+      "canonical_url": "/minnesota/young-america-historical/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "young-america-historical",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/zimmerman/",
+      "canonical_url": "/minnesota/zimmerman/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "zimmerman",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/minnesota/zumbrota/",
+      "canonical_url": "/minnesota/zumbrota/?tab=utilities",
+      "state_slug": "minnesota",
+      "city_slug": "zumbrota",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/missouri/st-louis/",
+      "canonical_url": "/missouri/st-louis/?tab=utilities",
+      "state_slug": "missouri",
+      "city_slug": "st-louis",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/nevada/clark-county/",
+      "canonical_url": "/nevada/clark-county/?tab=utilities",
+      "state_slug": "nevada",
+      "city_slug": "clark-county",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/nevada/reno/",
+      "canonical_url": "/nevada/reno/?tab=utilities",
+      "state_slug": "nevada",
+      "city_slug": "reno",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/new-hampshire/manchester/",
+      "canonical_url": "/new-hampshire/manchester/?tab=utilities",
+      "state_slug": "new-hampshire",
+      "city_slug": "manchester",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/new-york/kings-county/",
+      "canonical_url": "/new-york/kings-county/?tab=utilities",
+      "state_slug": "new-york",
+      "city_slug": "kings-county",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/new-york/new-york-county/",
+      "canonical_url": "/new-york/new-york-county/?tab=utilities",
+      "state_slug": "new-york",
+      "city_slug": "new-york-county",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/new-york/queens-county/",
+      "canonical_url": "/new-york/queens-county/?tab=utilities",
+      "state_slug": "new-york",
+      "city_slug": "queens-county",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/north-carolina/wake-county/",
+      "canonical_url": "/north-carolina/wake-county/?tab=utilities",
+      "state_slug": "north-carolina",
+      "city_slug": "wake-county",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/ohio/columbus/",
+      "canonical_url": "/ohio/columbus/?tab=utilities",
+      "state_slug": "ohio",
+      "city_slug": "columbus",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/ohio/cuyahoga-county/",
+      "canonical_url": "/ohio/cuyahoga-county/?tab=utilities",
+      "state_slug": "ohio",
+      "city_slug": "cuyahoga-county",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/ohio/franklin-county/",
+      "canonical_url": "/ohio/franklin-county/?tab=utilities",
+      "state_slug": "ohio",
+      "city_slug": "franklin-county",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/pennsylvania/allegheny-county/",
+      "canonical_url": "/pennsylvania/allegheny-county/?tab=utilities",
+      "state_slug": "pennsylvania",
+      "city_slug": "allegheny-county",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/pennsylvania/philadelphia-county/",
+      "canonical_url": "/pennsylvania/philadelphia-county/?tab=utilities",
+      "state_slug": "pennsylvania",
+      "city_slug": "philadelphia-county",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/pennsylvania/philadelphia/",
+      "canonical_url": "/pennsylvania/philadelphia/?tab=utilities",
+      "state_slug": "pennsylvania",
+      "city_slug": "philadelphia",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/south-carolina/columbia/",
+      "canonical_url": "/south-carolina/columbia/?tab=utilities",
+      "state_slug": "south-carolina",
+      "city_slug": "columbia",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/texas/bexar-county/",
+      "canonical_url": "/texas/bexar-county/?tab=utilities",
+      "state_slug": "texas",
+      "city_slug": "bexar-county",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/texas/dallas-county/",
+      "canonical_url": "/texas/dallas-county/?tab=utilities",
+      "state_slug": "texas",
+      "city_slug": "dallas-county",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/texas/garland/",
+      "canonical_url": "/texas/garland/?tab=utilities",
+      "state_slug": "texas",
+      "city_slug": "garland",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/texas/harris-county/",
+      "canonical_url": "/texas/harris-county/?tab=utilities",
+      "state_slug": "texas",
+      "city_slug": "harris-county",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/texas/plano/",
+      "canonical_url": "/texas/plano/?tab=utilities",
+      "state_slug": "texas",
+      "city_slug": "plano",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/texas/travis-county/",
+      "canonical_url": "/texas/travis-county/?tab=utilities",
+      "state_slug": "texas",
+      "city_slug": "travis-county",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/utah/salt-lake-county/",
+      "canonical_url": "/utah/salt-lake-county/?tab=utilities",
+      "state_slug": "utah",
+      "city_slug": "salt-lake-county",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/virginia/richmond/",
+      "canonical_url": "/virginia/richmond/?tab=utilities",
+      "state_slug": "virginia",
+      "city_slug": "richmond",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/washington/king-county/",
+      "canonical_url": "/washington/king-county/?tab=utilities",
+      "state_slug": "washington",
+      "city_slug": "king-county",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/washington/seattle/",
+      "canonical_url": "/washington/seattle/?tab=utilities",
+      "state_slug": "washington",
+      "city_slug": "seattle",
+      "tab": "utilities"
+    },
+    {
+      "legacy_url": "/utility-costs/wyoming/cheyenne/",
+      "canonical_url": "/wyoming/cheyenne/?tab=utilities",
+      "state_slug": "wyoming",
+      "city_slug": "cheyenne",
+      "tab": "utilities"
+    }
+  ]
+}
