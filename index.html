@@ -51,7 +51,8 @@
       <form class="home-search" action="/cost-of-living/" method="get" role="search">
         <label class="sr-only" for="home-search-input">Enter city, state, county, or ZIP code</label>
         <span class="search-icon" aria-hidden="true">🔎</span>
-        <input id="home-search-input" class="home-search-input" name="q" type="search" placeholder="Enter City, State, County, or ZIP Code" autocomplete="off" />
+        <input id="home-search-input" class="home-search-input" name="q" type="search" placeholder="Enter City, State, County, or ZIP Code" autocomplete="off" list="home-search-suggestions" />
+        <datalist id="home-search-suggestions"></datalist>
         <button class="search-btn" type="submit">Search</button>
       </form>
       <ul class="quick-tags" aria-label="Popular destinations">
@@ -200,6 +201,46 @@
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
+
+    (function () {
+      var searchInput = document.getElementById('home-search-input');
+      var suggestionsList = document.getElementById('home-search-suggestions');
+
+      if (!searchInput || !suggestionsList) return;
+
+      var suggestions = [
+        'Utilities', 'Cost of Living', 'Property Taxes', 'Insurance',
+        'California', 'Texas', 'Florida', 'New York', 'Pennsylvania', 'Illinois',
+        'Los Angeles, California', 'Miami, Florida', 'Austin, Texas', 'Seattle, Washington',
+        'Cook County, Illinois', 'King County, Washington', '90210', '10001'
+      ];
+
+      var debounceTimer;
+
+      function renderSuggestions(query) {
+        var normalized = query.trim().toLowerCase();
+        suggestionsList.innerHTML = '';
+        if (!normalized) return;
+
+        suggestions
+          .filter(function (item) {
+            return item.toLowerCase().indexOf(normalized) !== -1;
+          })
+          .slice(0, 8)
+          .forEach(function (item) {
+            var option = document.createElement('option');
+            option.value = item;
+            suggestionsList.appendChild(option);
+          });
+      }
+
+      searchInput.addEventListener('input', function (event) {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(function () {
+          renderSuggestions(event.target.value);
+        }, 300);
+      });
+    })();
   </script>
   <script defer src="/assets/version-footer.js"></script>
 </body>
