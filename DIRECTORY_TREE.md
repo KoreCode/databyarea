@@ -234,6 +234,7 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `cost-of-living/index.html`
 - `data/`
   - `data/cities.csv`
+  - `data/city_url_migration_map.json`
   - `data/content_briefs.json`
   - `data/content_ops_config.json`
   - `data/core_pages.txt`
@@ -246,6 +247,9 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `deck-building-cost-by-state/index.html`
 - `docs/`
   - `docs/90-day-execution-board.md`
+  - `docs/canonical-city-dashboard-migration-plan.md`
+  - `docs/DUPLICATION_REMEDIATION_PROMPTS.md`
+  - `docs/insight-landing-page-component.tsx`
   - `docs/monetization_admin_server_plan.md`
   - `docs/site-audit-backlog-2026-04-21.md`
   - `docs/technical-quality-baseline.md`
@@ -1486,6 +1490,7 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `scripts/backup_snapshot.py`
   - `scripts/build_site.py`
   - `scripts/check_conflict_markers.py`
+  - `scripts/city_url_migration.py`
   - `scripts/cleanup_empty_dirs.py`
   - `scripts/content_distribution_workflow.py`
   - `scripts/eia_client.py`
