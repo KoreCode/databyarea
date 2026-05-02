@@ -812,6 +812,13 @@ def inject_city_block(section: str, state_slug: str, city_pairs: list[tuple[str,
         f'<a class="pill" href="/{other_section}/{state_slug}/">{SECTION_META[other_section]["title"]}</a>'
         for other_section in SECTIONS
     )
+    state_options = "\n".join(
+        (
+            f'<option value="/{section}/{slug}/"{" selected" if slug == state_slug else ""}>'
+            f'{escape(name)}</option>'
+        )
+        for slug, name in US_STATES.items()
+    )
 
     block = f"""<!-- POPULAR_CITIES:START -->
 <div class="card">
@@ -820,6 +827,14 @@ def inject_city_block(section: str, state_slug: str, city_pairs: list[tuple[str,
 <div class="navlinks">
 {section_links}
 </div>
+<label for="{section}-state-selector"><strong>State selector ({section_title})</strong></label>
+<select
+  id="{section}-state-selector"
+  style="display:block;width:100%;max-width:420px;margin:.5rem 0 1rem;padding:.55rem;border-radius:10px;border:1px solid #d5dfeb;background:#fff;"
+  onchange="if(this.value) window.location.href=this.value;"
+>
+{state_options}
+</select>
 <label for="{section}-{state_slug}-city-selector"><strong>City selector ({section_title})</strong></label>
 <select
   id="{section}-{state_slug}-city-selector"
