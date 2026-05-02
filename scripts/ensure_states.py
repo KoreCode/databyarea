@@ -260,26 +260,6 @@ def section_index_html(section: str) -> str:
       </div>
     </div>
 
-    <div class="grid">
-      <div class="card">
-        <h2>Included data & tools</h2>
-        <p>Quickly compare by state, then drill into county and city-level pages where available.</p>
-        <ul class="list">
-          <li class="item">{section_meta["summary"].capitalize()}</li>
-          <li class="item">State-by-state pages with related category links</li>
-          <li class="item">Crawlable links for every U.S. state</li>
-          <li class="item">User-friendly navigation designed for mobile and desktop</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h2>Related categories</h2>
-        <p>Use matching pages to understand total cost pressure in the same location.</p>
-        <ul class="list">
-          {related_sections}
-        </ul>
-      </div>
-    </div>
-
     <div class="card compactTop">
       <h2 class="sectionTitle">Pick a location: state → county → city</h2>
       <p>Start with your state, then use county and city examples to refine comparisons and planning.</p>
@@ -311,6 +291,26 @@ def section_index_html(section: str) -> str:
             <p class="mutedSmall">City pages help benchmark local differences inside each state.</p>
           </div>
         </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h2>Included data & tools</h2>
+        <p>Quickly compare by state, then drill into county and city-level pages where available.</p>
+        <ul class="list">
+          <li class="item">{section_meta["summary"].capitalize()}</li>
+          <li class="item">State-by-state pages with related category links</li>
+          <li class="item">Crawlable links for every U.S. state</li>
+          <li class="item">User-friendly navigation designed for mobile and desktop</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Related categories</h2>
+        <p>Use matching pages to understand total cost pressure in the same location.</p>
+        <ul class="list">
+          {related_sections}
+        </ul>
       </div>
     </div>
 
