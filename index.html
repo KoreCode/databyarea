@@ -240,6 +240,13 @@
           renderSuggestions(event.target.value);
         }, 300);
       });
+
+      var params = new URLSearchParams(window.location.search);
+      var prefill = params.get('q');
+      if (prefill) {
+        searchInput.value = prefill;
+        renderSuggestions(prefill);
+      }
     })();
   </script>
   <script defer src="/assets/version-footer.js"></script>
