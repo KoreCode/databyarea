@@ -2,60 +2,86 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>About</title>
-  <meta name="description" content="About Data By Area." />
+  <title>About Data By Area</title>
+  <meta name="description" content="Learn what Data By Area is, how we organize U.S. cost and rate data, and how to use the site." />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="/assets/styles.css" />
   <link rel="canonical" href="https://databyarea.com/about/" />
-  <meta property="og:title" content="About" />
-  <meta property="og:description" content="About Data By Area." />
+  <meta property="og:title" content="About Data By Area" />
+  <meta property="og:description" content="What Data By Area publishes and how to use it." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://databyarea.com/about/" />
 </head>
 <body>
   <div class="container">
-    
-    <div class="topcard">
-      <div class="brandrow">
+    <header class="nav" aria-label="Primary">
+      <a class="brand" href="/" aria-label="Data By Area home">
         <img src="/assets/logo.png" class="logo" alt="Data By Area logo">
-        <div class="brandtext">
-          <div class="brandname">Data By Area</div>
-          <div class="brandtag">Costs • Rates • Public Data</div>
+        <span class="brand-text"><strong>Data By Area</strong><span>Costs • Rates • Public Data</span></span>
+      </a>
+      <nav class="navlinks" aria-label="Site sections">
+        <a class="pill" href="/">Home</a>
+        <a class="pill" href="/cost-of-living/">Cost of Living</a>
+        <a class="pill" href="/utility-costs/">Utility Costs</a>
+        <a class="pill" href="/property-taxes/">Property Tax</a>
+        <a class="pill" href="/insurance-costs/">Insurance Costs</a>
+      </nav>
+    </header>
+
+    <section class="hero" aria-labelledby="about-title">
+      <div class="hero-inner">
+        <div>
+          <p class="breadcrumbs"><a href="/">Home</a> / About</p>
+          <h1 id="about-title">About Data By Area</h1>
+          <p>
+            We make U.S. location-based cost and rate data easier to explore.
+            Our pages are designed to be quick, clear, and useful for everyday comparisons.
+          </p>
         </div>
       </div>
+    </section>
 
-      <div class="heromini">
-        <h1>Compare Costs &amp; Rates by State</h1>
-        <p>Cost of living, utilities, property taxes, and insurance — organized by location.</p>
+    <main class="grid" style="margin-top: 10px; margin-bottom: 18px;">
+      <article class="card">
+        <h2>What this site is</h2>
+        <p>
+          Data By Area is a public data directory focused on geographic comparisons across the United States.
+          We organize information into simple state-by-state pages so visitors can scan patterns quickly.
+        </p>
+      </article>
 
-        <div class="badges">
-          <span class="badge"><span class="dot"></span> 50 states</span>
-          <span class="badge">Fast pages</span>
-          <span class="badge gold"><span class="goldDot"></span> Gold accents only</span>
-        </div>
+      <article class="card">
+        <h2>What you can compare</h2>
+        <ul class="list">
+          <li>Cost of living metrics</li>
+          <li>Utility costs</li>
+          <li>Property tax rates</li>
+          <li>Insurance costs</li>
+        </ul>
+      </article>
 
-        
-        <div class="navrow"><a class="pill" href="/">Home</a><a class="pill" href="/cost-of-living/">Cost of Living</a><a class="pill" href="/utility-costs/">Utility Costs</a><a class="pill" href="/property-taxes/">Property Tax</a><a class="pill" href="/insurance-costs/">Insurance Costs</a></div>
-      </div>
-    </div>
-    
-    <div class="card" style="margin-top: 18px;">
-      <h2>About</h2>
-      <p>Data By Area is a simple directory of location-based comparisons across the United States.</p><p>We publish fast, clean pages that help you explore broad cost and rate patterns by state.</p>
-    </div>
+      <article class="card">
+        <h2>How to use Data By Area</h2>
+        <p>
+          Start with a category, choose a state, and compare values with nearby or national benchmarks.
+          For major decisions, always combine this information with local quotes and official sources.
+        </p>
+      </article>
+    </main>
+
     <div class="footer">
-  <p>
-    <strong>Disclaimer:</strong> Informational estimates only. Costs and rates vary by household,
-    provider, and local area. Not financial, legal, or tax advice.
-  </p>
-  <p>
-    <a href="/about/">About</a> ·
-    <a href="/privacy/">Privacy Policy</a> ·
-    <a href="/contact/">Contact</a>
-  </p>
-  <p>© <span id="y"></span> DataByArea.com</p>
-</div>
-<script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+      <p>
+        <strong>Disclaimer:</strong> Informational estimates only. Costs and rates vary by household,
+        provider, and local area. Not financial, legal, or tax advice.
+      </p>
+      <p>
+        <a href="/about/">About</a> ·
+        <a href="/privacy/">Privacy Policy</a> ·
+        <a href="/contact/">Contact</a>
+      </p>
+      <p>© <span id="y"></span> DataByArea.com</p>
+    </div>
+    <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
   </div>
   <script defer src="/assets/version-footer.js"></script>
 </body>
