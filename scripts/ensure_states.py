@@ -339,43 +339,83 @@ def section_index_html(section: str) -> str:
     }}
     q.addEventListener('input', filter);
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/jsvectormap@1.7.0/dist/js/jsvectormap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jsvectormap@1.7.0/dist/maps/us-merc-en.js"></script>
   <script>
     const stateUrlByAbbr = {{{state_url_by_abbr}}};
-    new jsVectorMap({{
-      selector: '#state-map',
-      map: 'us_merc_en',
-      zoomButtons: true,
-      selectedRegions: [],
-      onRegionTooltipShow(event, tooltip, code) {{
-        const abbr = code.split('-')[1];
-        if (!abbr || !stateUrlByAbbr[abbr]) {{
-          return;
-        }}
-        tooltip.text(`${{tooltip.text()}} — View details`);
-      }},
-      onRegionClick(event, code) {{
-        const abbr = code.split('-')[1];
-        const target = stateUrlByAbbr[abbr];
-        if (target) {{
-          window.location.href = target;
-        }}
-      }},
-      regionStyle: {{
-        initial: {{
-          fill: '#d8e7f6',
-          stroke: '#7d99b5',
-          strokeWidth: 1
+    const mapHost = document.getElementById('state-map');
+
+    function loadScriptOnce(src) {{
+      if (document.querySelector(`script[src="${{src}}"]`)) return Promise.resolve();
+      return new Promise((resolve, reject) => {{
+        const script = document.createElement('script');
+        script.src = src;
+        script.onload = resolve;
+        script.onerror = reject;
+        document.head.appendChild(script);
+      }});
+    }}
+
+    function initStateMap() {{
+      if (!window.jsVectorMap || !mapHost || mapHost.dataset.mapReady === '1') return;
+      mapHost.dataset.mapReady = '1';
+      new jsVectorMap({{
+        selector: '#state-map',
+        map: 'us_merc_en',
+        zoomButtons: true,
+        selectedRegions: [],
+        onRegionTooltipShow(event, tooltip, code) {{
+          const abbr = code.split('-')[1];
+          if (!abbr || !stateUrlByAbbr[abbr]) {{
+            return;
+          }}
+          tooltip.text(`${{tooltip.text()}} — View details`);
         }},
-        hover: {{
-          fill: '#9ec0e2'
+        onRegionClick(event, code) {{
+          const abbr = code.split('-')[1];
+          const target = stateUrlByAbbr[abbr];
+          if (target) {{
+            window.location.href = target;
+          }}
         }},
-        selected: {{
-          fill: '#4f7292'
+        regionStyle: {{
+          initial: {{
+            fill: '#d8e7f6',
+            stroke: '#7d99b5',
+            strokeWidth: 1
+          }},
+          hover: {{
+            fill: '#9ec0e2'
+          }},
+          selected: {{
+            fill: '#4f7292'
+          }}
         }}
-      }}
-    }});
+      }});
+    }}
+
+    function loadAndInitMap() {{
+      if (!mapHost || mapHost.dataset.mapRequested === '1') return;
+      mapHost.dataset.mapRequested = '1';
+      Promise.all([
+        loadScriptOnce('https://cdn.jsdelivr.net/npm/jsvectormap@1.7.0/dist/js/jsvectormap.min.js'),
+        loadScriptOnce('https://cdn.jsdelivr.net/npm/jsvectormap@1.7.0/dist/maps/us-merc-en.js')
+      ]).then(initStateMap).catch(() => {{
+        mapHost.innerHTML = '<p class="mutedSmall" style="padding:12px;">Map unavailable right now. Use the state list to navigate.</p>';
+      }});
+    }}
+
+    if ('IntersectionObserver' in window && mapHost) {{
+      const mapObserver = new IntersectionObserver((entries, observer) => {{
+        entries.forEach((entry) => {{
+          if (entry.isIntersecting) {{
+            loadAndInitMap();
+            observer.disconnect();
+          }}
+        }});
+      }}, {{ rootMargin: '200px 0px' }});
+      mapObserver.observe(mapHost);
+    }} else {{
+      loadAndInitMap();
+    }}
   </script>
   <script defer src="/assets/version-footer.js"></script>
 </body>
