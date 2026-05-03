@@ -1,27 +1,14 @@
 {
-  "generated_at_utc": "2026-05-02T09:58:20.503574+00:00",
+  "generated_at_utc": "2026-05-03T10:04:30.613873+00:00",
   "config_path": "data/content_ops_config.json",
   "briefs_path": "data/content_briefs.json",
   "calendar": [
     {
-      "date_utc": "2026-05-02",
+      "date_utc": "2026-05-03",
       "time_utc": "14:00",
       "title": "Best States for Lower Utility Bills in 2026",
       "slug": "best-states-lower-utility-bills-2026",
       "section": "utility-costs",
-      "workflow": [
-        "draft",
-        "review",
-        "social",
-        "schedule"
-      ]
-    },
-    {
-      "date_utc": "2026-05-03",
-      "time_utc": "14:00",
-      "title": "Property Tax Hotspots to Avoid Overpaying",
-      "slug": "property-tax-hotspots-to-avoid-overpaying",
-      "section": "property-taxes",
       "workflow": [
         "draft",
         "review",
@@ -32,9 +19,9 @@
     {
       "date_utc": "2026-05-04",
       "time_utc": "14:00",
-      "title": "How to Compare Insurance Costs Before Relocating",
-      "slug": "compare-insurance-costs-before-relocating",
-      "section": "home-insurance",
+      "title": "Property Tax Hotspots to Avoid Overpaying",
+      "slug": "property-tax-hotspots-to-avoid-overpaying",
+      "section": "property-taxes",
       "workflow": [
         "draft",
         "review",
@@ -45,9 +32,9 @@
     {
       "date_utc": "2026-05-05",
       "time_utc": "14:00",
-      "title": "Best States for Lower Utility Bills in 2026",
-      "slug": "best-states-lower-utility-bills-2026",
-      "section": "utility-costs",
+      "title": "How to Compare Insurance Costs Before Relocating",
+      "slug": "compare-insurance-costs-before-relocating",
+      "section": "home-insurance",
       "workflow": [
         "draft",
         "review",
@@ -58,9 +45,9 @@
     {
       "date_utc": "2026-05-06",
       "time_utc": "14:00",
-      "title": "Property Tax Hotspots to Avoid Overpaying",
-      "slug": "property-tax-hotspots-to-avoid-overpaying",
-      "section": "property-taxes",
+      "title": "Best States for Lower Utility Bills in 2026",
+      "slug": "best-states-lower-utility-bills-2026",
+      "section": "utility-costs",
       "workflow": [
         "draft",
         "review",
@@ -71,9 +58,9 @@
     {
       "date_utc": "2026-05-07",
       "time_utc": "14:00",
-      "title": "How to Compare Insurance Costs Before Relocating",
-      "slug": "compare-insurance-costs-before-relocating",
-      "section": "home-insurance",
+      "title": "Property Tax Hotspots to Avoid Overpaying",
+      "slug": "property-tax-hotspots-to-avoid-overpaying",
+      "section": "property-taxes",
       "workflow": [
         "draft",
         "review",
@@ -84,9 +71,9 @@
     {
       "date_utc": "2026-05-08",
       "time_utc": "14:00",
-      "title": "Best States for Lower Utility Bills in 2026",
-      "slug": "best-states-lower-utility-bills-2026",
-      "section": "utility-costs",
+      "title": "How to Compare Insurance Costs Before Relocating",
+      "slug": "compare-insurance-costs-before-relocating",
+      "section": "home-insurance",
       "workflow": [
         "draft",
         "review",
@@ -97,9 +84,9 @@
     {
       "date_utc": "2026-05-09",
       "time_utc": "14:00",
-      "title": "Property Tax Hotspots to Avoid Overpaying",
-      "slug": "property-tax-hotspots-to-avoid-overpaying",
-      "section": "property-taxes",
+      "title": "Best States for Lower Utility Bills in 2026",
+      "slug": "best-states-lower-utility-bills-2026",
+      "section": "utility-costs",
       "workflow": [
         "draft",
         "review",
@@ -110,6 +97,19 @@
     {
       "date_utc": "2026-05-10",
       "time_utc": "14:00",
+      "title": "Property Tax Hotspots to Avoid Overpaying",
+      "slug": "property-tax-hotspots-to-avoid-overpaying",
+      "section": "property-taxes",
+      "workflow": [
+        "draft",
+        "review",
+        "social",
+        "schedule"
+      ]
+    },
+    {
+      "date_utc": "2026-05-11",
+      "time_utc": "14:00",
       "title": "How to Compare Insurance Costs Before Relocating",
       "slug": "compare-insurance-costs-before-relocating",
       "section": "home-insurance",
@@ -121,7 +121,7 @@
       ]
     },
     {
-      "date_utc": "2026-05-11",
+      "date_utc": "2026-05-12",
       "time_utc": "14:00",
       "title": "Best States for Lower Utility Bills in 2026",
       "slug": "best-states-lower-utility-bills-2026",
@@ -134,7 +134,7 @@
       ]
     },
     {
-      "date_utc": "2026-05-12",
+      "date_utc": "2026-05-13",
       "time_utc": "14:00",
       "title": "Property Tax Hotspots to Avoid Overpaying",
       "slug": "property-tax-hotspots-to-avoid-overpaying",
@@ -147,7 +147,7 @@
       ]
     },
     {
-      "date_utc": "2026-05-13",
+      "date_utc": "2026-05-14",
       "time_utc": "14:00",
       "title": "How to Compare Insurance Costs Before Relocating",
       "slug": "compare-insurance-costs-before-relocating",
@@ -160,7 +160,7 @@
       ]
     },
     {
-      "date_utc": "2026-05-14",
+      "date_utc": "2026-05-15",
       "time_utc": "14:00",
       "title": "Best States for Lower Utility Bills in 2026",
       "slug": "best-states-lower-utility-bills-2026",
@@ -173,7 +173,7 @@
       ]
     },
     {
-      "date_utc": "2026-05-15",
+      "date_utc": "2026-05-16",
       "time_utc": "14:00",
       "title": "Property Tax Hotspots to Avoid Overpaying",
       "slug": "property-tax-hotspots-to-avoid-overpaying",
@@ -191,88 +191,88 @@
       "title": "Best States for Lower Utility Bills in 2026",
       "slug": "best-states-lower-utility-bills-2026",
       "section": "utility-costs",
-      "publish_date_utc": "2026-05-02",
-      "publish_time_utc": "14:00",
-      "template_source": "data/content_ops_config.json",
-      "draft_markdown": "# Best States for Lower Utility Bills in 2026\n\n## Why this matters\nA side-by-side breakdown of electricity, natural gas, and water-cost trends by state to help movers identify lower monthly utility burdens.\n\n## Key takeaway\nFocus keyword: **utility costs by state**\n\n## Who this is for\nHouseholds planning a move within 6 months\n\n## Next step\nCompare local numbers at https://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/\n"
-    },
-    {
-      "title": "Property Tax Hotspots to Avoid Overpaying",
-      "slug": "property-tax-hotspots-to-avoid-overpaying",
-      "section": "property-taxes",
       "publish_date_utc": "2026-05-03",
       "publish_time_utc": "14:00",
       "template_source": "data/content_ops_config.json",
-      "draft_markdown": "# Property Tax Hotspots to Avoid Overpaying\n\n## Why this matters\nHighlights counties where property-tax burdens are rising fastest and explains how to compare effective rates before buying.\n\n## Key takeaway\nFocus keyword: **property tax by county**\n\n## Who this is for\nHomebuyers researching county-level tax exposure\n\n## Next step\nCompare local numbers at https://databyarea.com/property-taxes/property-tax-hotspots-to-avoid-overpaying/\n"
+      "draft_markdown": "# Best States for Lower Utility Bills in 2026\n\n## Why this matters\nA side-by-side breakdown of electricity, natural gas, and water-cost trends by state to help movers identify lower monthly utility burdens.\n\n## Key takeaway\nFocus keyword: **utility costs by state**\n\n## Who this is for\nHouseholds planning a move within 6 months\n\n## Next step\nCompare local numbers at https://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/\n"
     },
     {
-      "title": "How to Compare Insurance Costs Before Relocating",
-      "slug": "compare-insurance-costs-before-relocating",
-      "section": "home-insurance",
+      "title": "Property Tax Hotspots to Avoid Overpaying",
+      "slug": "property-tax-hotspots-to-avoid-overpaying",
+      "section": "property-taxes",
       "publish_date_utc": "2026-05-04",
       "publish_time_utc": "14:00",
       "template_source": "data/content_ops_config.json",
-      "draft_markdown": "# How to Compare Insurance Costs Before Relocating\n\n## Why this matters\nFramework for evaluating insurance premiums by state and city, plus simple ranges to estimate annual variance.\n\n## Key takeaway\nFocus keyword: **insurance costs by state**\n\n## Who this is for\nFamilies balancing housing and insurance budgets\n\n## Next step\nCompare local numbers at https://databyarea.com/home-insurance/compare-insurance-costs-before-relocating/\n"
+      "draft_markdown": "# Property Tax Hotspots to Avoid Overpaying\n\n## Why this matters\nHighlights counties where property-tax burdens are rising fastest and explains how to compare effective rates before buying.\n\n## Key takeaway\nFocus keyword: **property tax by county**\n\n## Who this is for\nHomebuyers researching county-level tax exposure\n\n## Next step\nCompare local numbers at https://databyarea.com/property-taxes/property-tax-hotspots-to-avoid-overpaying/\n"
     },
     {
-      "title": "Best States for Lower Utility Bills in 2026",
-      "slug": "best-states-lower-utility-bills-2026",
-      "section": "utility-costs",
+      "title": "How to Compare Insurance Costs Before Relocating",
+      "slug": "compare-insurance-costs-before-relocating",
+      "section": "home-insurance",
       "publish_date_utc": "2026-05-05",
       "publish_time_utc": "14:00",
       "template_source": "data/content_ops_config.json",
-      "draft_markdown": "# Best States for Lower Utility Bills in 2026\n\n## Why this matters\nA side-by-side breakdown of electricity, natural gas, and water-cost trends by state to help movers identify lower monthly utility burdens.\n\n## Key takeaway\nFocus keyword: **utility costs by state**\n\n## Who this is for\nHouseholds planning a move within 6 months\n\n## Next step\nCompare local numbers at https://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/\n"
+      "draft_markdown": "# How to Compare Insurance Costs Before Relocating\n\n## Why this matters\nFramework for evaluating insurance premiums by state and city, plus simple ranges to estimate annual variance.\n\n## Key takeaway\nFocus keyword: **insurance costs by state**\n\n## Who this is for\nFamilies balancing housing and insurance budgets\n\n## Next step\nCompare local numbers at https://databyarea.com/home-insurance/compare-insurance-costs-before-relocating/\n"
     },
     {
-      "title": "Property Tax Hotspots to Avoid Overpaying",
-      "slug": "property-tax-hotspots-to-avoid-overpaying",
-      "section": "property-taxes",
+      "title": "Best States for Lower Utility Bills in 2026",
+      "slug": "best-states-lower-utility-bills-2026",
+      "section": "utility-costs",
       "publish_date_utc": "2026-05-06",
       "publish_time_utc": "14:00",
       "template_source": "data/content_ops_config.json",
-      "draft_markdown": "# Property Tax Hotspots to Avoid Overpaying\n\n## Why this matters\nHighlights counties where property-tax burdens are rising fastest and explains how to compare effective rates before buying.\n\n## Key takeaway\nFocus keyword: **property tax by county**\n\n## Who this is for\nHomebuyers researching county-level tax exposure\n\n## Next step\nCompare local numbers at https://databyarea.com/property-taxes/property-tax-hotspots-to-avoid-overpaying/\n"
+      "draft_markdown": "# Best States for Lower Utility Bills in 2026\n\n## Why this matters\nA side-by-side breakdown of electricity, natural gas, and water-cost trends by state to help movers identify lower monthly utility burdens.\n\n## Key takeaway\nFocus keyword: **utility costs by state**\n\n## Who this is for\nHouseholds planning a move within 6 months\n\n## Next step\nCompare local numbers at https://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/\n"
     },
     {
-      "title": "How to Compare Insurance Costs Before Relocating",
-      "slug": "compare-insurance-costs-before-relocating",
-      "section": "home-insurance",
+      "title": "Property Tax Hotspots to Avoid Overpaying",
+      "slug": "property-tax-hotspots-to-avoid-overpaying",
+      "section": "property-taxes",
       "publish_date_utc": "2026-05-07",
       "publish_time_utc": "14:00",
       "template_source": "data/content_ops_config.json",
-      "draft_markdown": "# How to Compare Insurance Costs Before Relocating\n\n## Why this matters\nFramework for evaluating insurance premiums by state and city, plus simple ranges to estimate annual variance.\n\n## Key takeaway\nFocus keyword: **insurance costs by state**\n\n## Who this is for\nFamilies balancing housing and insurance budgets\n\n## Next step\nCompare local numbers at https://databyarea.com/home-insurance/compare-insurance-costs-before-relocating/\n"
+      "draft_markdown": "# Property Tax Hotspots to Avoid Overpaying\n\n## Why this matters\nHighlights counties where property-tax burdens are rising fastest and explains how to compare effective rates before buying.\n\n## Key takeaway\nFocus keyword: **property tax by county**\n\n## Who this is for\nHomebuyers researching county-level tax exposure\n\n## Next step\nCompare local numbers at https://databyarea.com/property-taxes/property-tax-hotspots-to-avoid-overpaying/\n"
     },
     {
-      "title": "Best States for Lower Utility Bills in 2026",
-      "slug": "best-states-lower-utility-bills-2026",
-      "section": "utility-costs",
+      "title": "How to Compare Insurance Costs Before Relocating",
+      "slug": "compare-insurance-costs-before-relocating",
+      "section": "home-insurance",
       "publish_date_utc": "2026-05-08",
       "publish_time_utc": "14:00",
       "template_source": "data/content_ops_config.json",
-      "draft_markdown": "# Best States for Lower Utility Bills in 2026\n\n## Why this matters\nA side-by-side breakdown of electricity, natural gas, and water-cost trends by state to help movers identify lower monthly utility burdens.\n\n## Key takeaway\nFocus keyword: **utility costs by state**\n\n## Who this is for\nHouseholds planning a move within 6 months\n\n## Next step\nCompare local numbers at https://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/\n"
+      "draft_markdown": "# How to Compare Insurance Costs Before Relocating\n\n## Why this matters\nFramework for evaluating insurance premiums by state and city, plus simple ranges to estimate annual variance.\n\n## Key takeaway\nFocus keyword: **insurance costs by state**\n\n## Who this is for\nFamilies balancing housing and insurance budgets\n\n## Next step\nCompare local numbers at https://databyarea.com/home-insurance/compare-insurance-costs-before-relocating/\n"
     },
     {
-      "title": "Property Tax Hotspots to Avoid Overpaying",
-      "slug": "property-tax-hotspots-to-avoid-overpaying",
-      "section": "property-taxes",
+      "title": "Best States for Lower Utility Bills in 2026",
+      "slug": "best-states-lower-utility-bills-2026",
+      "section": "utility-costs",
       "publish_date_utc": "2026-05-09",
       "publish_time_utc": "14:00",
       "template_source": "data/content_ops_config.json",
-      "draft_markdown": "# Property Tax Hotspots to Avoid Overpaying\n\n## Why this matters\nHighlights counties where property-tax burdens are rising fastest and explains how to compare effective rates before buying.\n\n## Key takeaway\nFocus keyword: **property tax by county**\n\n## Who this is for\nHomebuyers researching county-level tax exposure\n\n## Next step\nCompare local numbers at https://databyarea.com/property-taxes/property-tax-hotspots-to-avoid-overpaying/\n"
+      "draft_markdown": "# Best States for Lower Utility Bills in 2026\n\n## Why this matters\nA side-by-side breakdown of electricity, natural gas, and water-cost trends by state to help movers identify lower monthly utility burdens.\n\n## Key takeaway\nFocus keyword: **utility costs by state**\n\n## Who this is for\nHouseholds planning a move within 6 months\n\n## Next step\nCompare local numbers at https://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/\n"
     },
     {
-      "title": "How to Compare Insurance Costs Before Relocating",
-      "slug": "compare-insurance-costs-before-relocating",
-      "section": "home-insurance",
+      "title": "Property Tax Hotspots to Avoid Overpaying",
+      "slug": "property-tax-hotspots-to-avoid-overpaying",
+      "section": "property-taxes",
       "publish_date_utc": "2026-05-10",
       "publish_time_utc": "14:00",
       "template_source": "data/content_ops_config.json",
+      "draft_markdown": "# Property Tax Hotspots to Avoid Overpaying\n\n## Why this matters\nHighlights counties where property-tax burdens are rising fastest and explains how to compare effective rates before buying.\n\n## Key takeaway\nFocus keyword: **property tax by county**\n\n## Who this is for\nHomebuyers researching county-level tax exposure\n\n## Next step\nCompare local numbers at https://databyarea.com/property-taxes/property-tax-hotspots-to-avoid-overpaying/\n"
+    },
+    {
+      "title": "How to Compare Insurance Costs Before Relocating",
+      "slug": "compare-insurance-costs-before-relocating",
+      "section": "home-insurance",
+      "publish_date_utc": "2026-05-11",
+      "publish_time_utc": "14:00",
+      "template_source": "data/content_ops_config.json",
       "draft_markdown": "# How to Compare Insurance Costs Before Relocating\n\n## Why this matters\nFramework for evaluating insurance premiums by state and city, plus simple ranges to estimate annual variance.\n\n## Key takeaway\nFocus keyword: **insurance costs by state**\n\n## Who this is for\nFamilies balancing housing and insurance budgets\n\n## Next step\nCompare local numbers at https://databyarea.com/home-insurance/compare-insurance-costs-before-relocating/\n"
     },
     {
       "title": "Best States for Lower Utility Bills in 2026",
       "slug": "best-states-lower-utility-bills-2026",
       "section": "utility-costs",
-      "publish_date_utc": "2026-05-11",
+      "publish_date_utc": "2026-05-12",
       "publish_time_utc": "14:00",
       "template_source": "data/content_ops_config.json",
       "draft_markdown": "# Best States for Lower Utility Bills in 2026\n\n## Why this matters\nA side-by-side breakdown of electricity, natural gas, and water-cost trends by state to help movers identify lower monthly utility burdens.\n\n## Key takeaway\nFocus keyword: **utility costs by state**\n\n## Who this is for\nHouseholds planning a move within 6 months\n\n## Next step\nCompare local numbers at https://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/\n"
@@ -281,7 +281,7 @@
       "title": "Property Tax Hotspots to Avoid Overpaying",
       "slug": "property-tax-hotspots-to-avoid-overpaying",
       "section": "property-taxes",
-      "publish_date_utc": "2026-05-12",
+      "publish_date_utc": "2026-05-13",
       "publish_time_utc": "14:00",
       "template_source": "data/content_ops_config.json",
       "draft_markdown": "# Property Tax Hotspots to Avoid Overpaying\n\n## Why this matters\nHighlights counties where property-tax burdens are rising fastest and explains how to compare effective rates before buying.\n\n## Key takeaway\nFocus keyword: **property tax by county**\n\n## Who this is for\nHomebuyers researching county-level tax exposure\n\n## Next step\nCompare local numbers at https://databyarea.com/property-taxes/property-tax-hotspots-to-avoid-overpaying/\n"
@@ -290,7 +290,7 @@
       "title": "How to Compare Insurance Costs Before Relocating",
       "slug": "compare-insurance-costs-before-relocating",
       "section": "home-insurance",
-      "publish_date_utc": "2026-05-13",
+      "publish_date_utc": "2026-05-14",
       "publish_time_utc": "14:00",
       "template_source": "data/content_ops_config.json",
       "draft_markdown": "# How to Compare Insurance Costs Before Relocating\n\n## Why this matters\nFramework for evaluating insurance premiums by state and city, plus simple ranges to estimate annual variance.\n\n## Key takeaway\nFocus keyword: **insurance costs by state**\n\n## Who this is for\nFamilies balancing housing and insurance budgets\n\n## Next step\nCompare local numbers at https://databyarea.com/home-insurance/compare-insurance-costs-before-relocating/\n"
@@ -299,7 +299,7 @@
       "title": "Best States for Lower Utility Bills in 2026",
       "slug": "best-states-lower-utility-bills-2026",
       "section": "utility-costs",
-      "publish_date_utc": "2026-05-14",
+      "publish_date_utc": "2026-05-15",
       "publish_time_utc": "14:00",
       "template_source": "data/content_ops_config.json",
       "draft_markdown": "# Best States for Lower Utility Bills in 2026\n\n## Why this matters\nA side-by-side breakdown of electricity, natural gas, and water-cost trends by state to help movers identify lower monthly utility burdens.\n\n## Key takeaway\nFocus keyword: **utility costs by state**\n\n## Who this is for\nHouseholds planning a move within 6 months\n\n## Next step\nCompare local numbers at https://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/\n"
@@ -308,7 +308,7 @@
       "title": "Property Tax Hotspots to Avoid Overpaying",
       "slug": "property-tax-hotspots-to-avoid-overpaying",
       "section": "property-taxes",
-      "publish_date_utc": "2026-05-15",
+      "publish_date_utc": "2026-05-16",
       "publish_time_utc": "14:00",
       "template_source": "data/content_ops_config.json",
       "draft_markdown": "# Property Tax Hotspots to Avoid Overpaying\n\n## Why this matters\nHighlights counties where property-tax burdens are rising fastest and explains how to compare effective rates before buying.\n\n## Key takeaway\nFocus keyword: **property tax by county**\n\n## Who this is for\nHomebuyers researching county-level tax exposure\n\n## Next step\nCompare local numbers at https://databyarea.com/property-taxes/property-tax-hotspots-to-avoid-overpaying/\n"
@@ -318,337 +318,337 @@
     {
       "channel": "x",
       "slug": "best-states-lower-utility-bills-2026",
-      "publish_date_utc": "2026-05-02",
-      "post": "Trying to cut monthly bills before you move?\n\nNew guide: Best States for Lower Utility Bills in 2026\nSee which states currently trend lower for utility spend.\nhttps://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/"
-    },
-    {
-      "channel": "linkedin",
-      "slug": "best-states-lower-utility-bills-2026",
-      "publish_date_utc": "2026-05-02",
-      "post": "Trying to cut monthly bills before you move?\n\nNew guide: Best States for Lower Utility Bills in 2026\nSee which states currently trend lower for utility spend.\nhttps://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/"
-    },
-    {
-      "channel": "facebook",
-      "slug": "best-states-lower-utility-bills-2026",
-      "publish_date_utc": "2026-05-02",
-      "post": "Trying to cut monthly bills before you move?\n\nNew guide: Best States for Lower Utility Bills in 2026\nSee which states currently trend lower for utility spend.\nhttps://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/"
-    },
-    {
-      "channel": "newsletter",
-      "slug": "best-states-lower-utility-bills-2026",
-      "publish_date_utc": "2026-05-02",
-      "post": "Trying to cut monthly bills before you move?\n\nNew guide: Best States for Lower Utility Bills in 2026\nSee which states currently trend lower for utility spend.\nhttps://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/"
-    },
-    {
-      "channel": "x",
-      "slug": "property-tax-hotspots-to-avoid-overpaying",
       "publish_date_utc": "2026-05-03",
-      "post": "House hunting this quarter? Check taxes before signing.\n\nNew guide: Property Tax Hotspots to Avoid Overpaying\nUse county-level tax pages to pressure-test your budget.\nhttps://databyarea.com/property-taxes/property-tax-hotspots-to-avoid-overpaying/"
+      "post": "Trying to cut monthly bills before you move?\n\nNew guide: Best States for Lower Utility Bills in 2026\nSee which states currently trend lower for utility spend.\nhttps://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/"
     },
     {
       "channel": "linkedin",
-      "slug": "property-tax-hotspots-to-avoid-overpaying",
+      "slug": "best-states-lower-utility-bills-2026",
       "publish_date_utc": "2026-05-03",
-      "post": "House hunting this quarter? Check taxes before signing.\n\nNew guide: Property Tax Hotspots to Avoid Overpaying\nUse county-level tax pages to pressure-test your budget.\nhttps://databyarea.com/property-taxes/property-tax-hotspots-to-avoid-overpaying/"
+      "post": "Trying to cut monthly bills before you move?\n\nNew guide: Best States for Lower Utility Bills in 2026\nSee which states currently trend lower for utility spend.\nhttps://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/"
     },
     {
       "channel": "facebook",
-      "slug": "property-tax-hotspots-to-avoid-overpaying",
+      "slug": "best-states-lower-utility-bills-2026",
       "publish_date_utc": "2026-05-03",
-      "post": "House hunting this quarter? Check taxes before signing.\n\nNew guide: Property Tax Hotspots to Avoid Overpaying\nUse county-level tax pages to pressure-test your budget.\nhttps://databyarea.com/property-taxes/property-tax-hotspots-to-avoid-overpaying/"
+      "post": "Trying to cut monthly bills before you move?\n\nNew guide: Best States for Lower Utility Bills in 2026\nSee which states currently trend lower for utility spend.\nhttps://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/"
     },
     {
       "channel": "newsletter",
-      "slug": "property-tax-hotspots-to-avoid-overpaying",
+      "slug": "best-states-lower-utility-bills-2026",
       "publish_date_utc": "2026-05-03",
-      "post": "House hunting this quarter? Check taxes before signing.\n\nNew guide: Property Tax Hotspots to Avoid Overpaying\nUse county-level tax pages to pressure-test your budget.\nhttps://databyarea.com/property-taxes/property-tax-hotspots-to-avoid-overpaying/"
+      "post": "Trying to cut monthly bills before you move?\n\nNew guide: Best States for Lower Utility Bills in 2026\nSee which states currently trend lower for utility spend.\nhttps://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/"
     },
     {
       "channel": "x",
-      "slug": "compare-insurance-costs-before-relocating",
+      "slug": "property-tax-hotspots-to-avoid-overpaying",
       "publish_date_utc": "2026-05-04",
-      "post": "Insurance can erase a cheaper mortgage fast.\n\nNew guide: How to Compare Insurance Costs Before Relocating\nCompare insurance variance before choosing a city.\nhttps://databyarea.com/home-insurance/compare-insurance-costs-before-relocating/"
+      "post": "House hunting this quarter? Check taxes before signing.\n\nNew guide: Property Tax Hotspots to Avoid Overpaying\nUse county-level tax pages to pressure-test your budget.\nhttps://databyarea.com/property-taxes/property-tax-hotspots-to-avoid-overpaying/"
     },
     {
       "channel": "linkedin",
-      "slug": "compare-insurance-costs-before-relocating",
+      "slug": "property-tax-hotspots-to-avoid-overpaying",
       "publish_date_utc": "2026-05-04",
-      "post": "Insurance can erase a cheaper mortgage fast.\n\nNew guide: How to Compare Insurance Costs Before Relocating\nCompare insurance variance before choosing a city.\nhttps://databyarea.com/home-insurance/compare-insurance-costs-before-relocating/"
+      "post": "House hunting this quarter? Check taxes before signing.\n\nNew guide: Property Tax Hotspots to Avoid Overpaying\nUse county-level tax pages to pressure-test your budget.\nhttps://databyarea.com/property-taxes/property-tax-hotspots-to-avoid-overpaying/"
     },
     {
       "channel": "facebook",
-      "slug": "compare-insurance-costs-before-relocating",
+      "slug": "property-tax-hotspots-to-avoid-overpaying",
       "publish_date_utc": "2026-05-04",
-      "post": "Insurance can erase a cheaper mortgage fast.\n\nNew guide: How to Compare Insurance Costs Before Relocating\nCompare insurance variance before choosing a city.\nhttps://databyarea.com/home-insurance/compare-insurance-costs-before-relocating/"
+      "post": "House hunting this quarter? Check taxes before signing.\n\nNew guide: Property Tax Hotspots to Avoid Overpaying\nUse county-level tax pages to pressure-test your budget.\nhttps://databyarea.com/property-taxes/property-tax-hotspots-to-avoid-overpaying/"
     },
     {
       "channel": "newsletter",
-      "slug": "compare-insurance-costs-before-relocating",
+      "slug": "property-tax-hotspots-to-avoid-overpaying",
       "publish_date_utc": "2026-05-04",
-      "post": "Insurance can erase a cheaper mortgage fast.\n\nNew guide: How to Compare Insurance Costs Before Relocating\nCompare insurance variance before choosing a city.\nhttps://databyarea.com/home-insurance/compare-insurance-costs-before-relocating/"
+      "post": "House hunting this quarter? Check taxes before signing.\n\nNew guide: Property Tax Hotspots to Avoid Overpaying\nUse county-level tax pages to pressure-test your budget.\nhttps://databyarea.com/property-taxes/property-tax-hotspots-to-avoid-overpaying/"
     },
     {
       "channel": "x",
-      "slug": "best-states-lower-utility-bills-2026",
+      "slug": "compare-insurance-costs-before-relocating",
       "publish_date_utc": "2026-05-05",
-      "post": "Trying to cut monthly bills before you move?\n\nNew guide: Best States for Lower Utility Bills in 2026\nSee which states currently trend lower for utility spend.\nhttps://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/"
+      "post": "Insurance can erase a cheaper mortgage fast.\n\nNew guide: How to Compare Insurance Costs Before Relocating\nCompare insurance variance before choosing a city.\nhttps://databyarea.com/home-insurance/compare-insurance-costs-before-relocating/"
     },
     {
       "channel": "linkedin",
-      "slug": "best-states-lower-utility-bills-2026",
+      "slug": "compare-insurance-costs-before-relocating",
       "publish_date_utc": "2026-05-05",
-      "post": "Trying to cut monthly bills before you move?\n\nNew guide: Best States for Lower Utility Bills in 2026\nSee which states currently trend lower for utility spend.\nhttps://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/"
+      "post": "Insurance can erase a cheaper mortgage fast.\n\nNew guide: How to Compare Insurance Costs Before Relocating\nCompare insurance variance before choosing a city.\nhttps://databyarea.com/home-insurance/compare-insurance-costs-before-relocating/"
     },
     {
       "channel": "facebook",
-      "slug": "best-states-lower-utility-bills-2026",
+      "slug": "compare-insurance-costs-before-relocating",
       "publish_date_utc": "2026-05-05",
-      "post": "Trying to cut monthly bills before you move?\n\nNew guide: Best States for Lower Utility Bills in 2026\nSee which states currently trend lower for utility spend.\nhttps://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/"
+      "post": "Insurance can erase a cheaper mortgage fast.\n\nNew guide: How to Compare Insurance Costs Before Relocating\nCompare insurance variance before choosing a city.\nhttps://databyarea.com/home-insurance/compare-insurance-costs-before-relocating/"
     },
     {
       "channel": "newsletter",
-      "slug": "best-states-lower-utility-bills-2026",
+      "slug": "compare-insurance-costs-before-relocating",
       "publish_date_utc": "2026-05-05",
-      "post": "Trying to cut monthly bills before you move?\n\nNew guide: Best States for Lower Utility Bills in 2026\nSee which states currently trend lower for utility spend.\nhttps://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/"
+      "post": "Insurance can erase a cheaper mortgage fast.\n\nNew guide: How to Compare Insurance Costs Before Relocating\nCompare insurance variance before choosing a city.\nhttps://databyarea.com/home-insurance/compare-insurance-costs-before-relocating/"
     },
     {
       "channel": "x",
-      "slug": "property-tax-hotspots-to-avoid-overpaying",
+      "slug": "best-states-lower-utility-bills-2026",
       "publish_date_utc": "2026-05-06",
-      "post": "House hunting this quarter? Check taxes before signing.\n\nNew guide: Property Tax Hotspots to Avoid Overpaying\nUse county-level tax pages to pressure-test your budget.\nhttps://databyarea.com/property-taxes/property-tax-hotspots-to-avoid-overpaying/"
+      "post": "Trying to cut monthly bills before you move?\n\nNew guide: Best States for Lower Utility Bills in 2026\nSee which states currently trend lower for utility spend.\nhttps://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/"
     },
     {
       "channel": "linkedin",
-      "slug": "property-tax-hotspots-to-avoid-overpaying",
+      "slug": "best-states-lower-utility-bills-2026",
       "publish_date_utc": "2026-05-06",
-      "post": "House hunting this quarter? Check taxes before signing.\n\nNew guide: Property Tax Hotspots to Avoid Overpaying\nUse county-level tax pages to pressure-test your budget.\nhttps://databyarea.com/property-taxes/property-tax-hotspots-to-avoid-overpaying/"
+      "post": "Trying to cut monthly bills before you move?\n\nNew guide: Best States for Lower Utility Bills in 2026\nSee which states currently trend lower for utility spend.\nhttps://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/"
     },
     {
       "channel": "facebook",
-      "slug": "property-tax-hotspots-to-avoid-overpaying",
+      "slug": "best-states-lower-utility-bills-2026",
       "publish_date_utc": "2026-05-06",
-      "post": "House hunting this quarter? Check taxes before signing.\n\nNew guide: Property Tax Hotspots to Avoid Overpaying\nUse county-level tax pages to pressure-test your budget.\nhttps://databyarea.com/property-taxes/property-tax-hotspots-to-avoid-overpaying/"
+      "post": "Trying to cut monthly bills before you move?\n\nNew guide: Best States for Lower Utility Bills in 2026\nSee which states currently trend lower for utility spend.\nhttps://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/"
     },
     {
       "channel": "newsletter",
-      "slug": "property-tax-hotspots-to-avoid-overpaying",
+      "slug": "best-states-lower-utility-bills-2026",
       "publish_date_utc": "2026-05-06",
-      "post": "House hunting this quarter? Check taxes before signing.\n\nNew guide: Property Tax Hotspots to Avoid Overpaying\nUse county-level tax pages to pressure-test your budget.\nhttps://databyarea.com/property-taxes/property-tax-hotspots-to-avoid-overpaying/"
+      "post": "Trying to cut monthly bills before you move?\n\nNew guide: Best States for Lower Utility Bills in 2026\nSee which states currently trend lower for utility spend.\nhttps://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/"
     },
     {
       "channel": "x",
-      "slug": "compare-insurance-costs-before-relocating",
+      "slug": "property-tax-hotspots-to-avoid-overpaying",
       "publish_date_utc": "2026-05-07",
-      "post": "Insurance can erase a cheaper mortgage fast.\n\nNew guide: How to Compare Insurance Costs Before Relocating\nCompare insurance variance before choosing a city.\nhttps://databyarea.com/home-insurance/compare-insurance-costs-before-relocating/"
+      "post": "House hunting this quarter? Check taxes before signing.\n\nNew guide: Property Tax Hotspots to Avoid Overpaying\nUse county-level tax pages to pressure-test your budget.\nhttps://databyarea.com/property-taxes/property-tax-hotspots-to-avoid-overpaying/"
     },
     {
       "channel": "linkedin",
-      "slug": "compare-insurance-costs-before-relocating",
+      "slug": "property-tax-hotspots-to-avoid-overpaying",
       "publish_date_utc": "2026-05-07",
-      "post": "Insurance can erase a cheaper mortgage fast.\n\nNew guide: How to Compare Insurance Costs Before Relocating\nCompare insurance variance before choosing a city.\nhttps://databyarea.com/home-insurance/compare-insurance-costs-before-relocating/"
+      "post": "House hunting this quarter? Check taxes before signing.\n\nNew guide: Property Tax Hotspots to Avoid Overpaying\nUse county-level tax pages to pressure-test your budget.\nhttps://databyarea.com/property-taxes/property-tax-hotspots-to-avoid-overpaying/"
     },
     {
       "channel": "facebook",
-      "slug": "compare-insurance-costs-before-relocating",
+      "slug": "property-tax-hotspots-to-avoid-overpaying",
       "publish_date_utc": "2026-05-07",
-      "post": "Insurance can erase a cheaper mortgage fast.\n\nNew guide: How to Compare Insurance Costs Before Relocating\nCompare insurance variance before choosing a city.\nhttps://databyarea.com/home-insurance/compare-insurance-costs-before-relocating/"
+      "post": "House hunting this quarter? Check taxes before signing.\n\nNew guide: Property Tax Hotspots to Avoid Overpaying\nUse county-level tax pages to pressure-test your budget.\nhttps://databyarea.com/property-taxes/property-tax-hotspots-to-avoid-overpaying/"
     },
     {
       "channel": "newsletter",
-      "slug": "compare-insurance-costs-before-relocating",
+      "slug": "property-tax-hotspots-to-avoid-overpaying",
       "publish_date_utc": "2026-05-07",
-      "post": "Insurance can erase a cheaper mortgage fast.\n\nNew guide: How to Compare Insurance Costs Before Relocating\nCompare insurance variance before choosing a city.\nhttps://databyarea.com/home-insurance/compare-insurance-costs-before-relocating/"
+      "post": "House hunting this quarter? Check taxes before signing.\n\nNew guide: Property Tax Hotspots to Avoid Overpaying\nUse county-level tax pages to pressure-test your budget.\nhttps://databyarea.com/property-taxes/property-tax-hotspots-to-avoid-overpaying/"
     },
     {
       "channel": "x",
-      "slug": "best-states-lower-utility-bills-2026",
+      "slug": "compare-insurance-costs-before-relocating",
       "publish_date_utc": "2026-05-08",
-      "post": "Trying to cut monthly bills before you move?\n\nNew guide: Best States for Lower Utility Bills in 2026\nSee which states currently trend lower for utility spend.\nhttps://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/"
+      "post": "Insurance can erase a cheaper mortgage fast.\n\nNew guide: How to Compare Insurance Costs Before Relocating\nCompare insurance variance before choosing a city.\nhttps://databyarea.com/home-insurance/compare-insurance-costs-before-relocating/"
     },
     {
       "channel": "linkedin",
-      "slug": "best-states-lower-utility-bills-2026",
+      "slug": "compare-insurance-costs-before-relocating",
       "publish_date_utc": "2026-05-08",
-      "post": "Trying to cut monthly bills before you move?\n\nNew guide: Best States for Lower Utility Bills in 2026\nSee which states currently trend lower for utility spend.\nhttps://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/"
+      "post": "Insurance can erase a cheaper mortgage fast.\n\nNew guide: How to Compare Insurance Costs Before Relocating\nCompare insurance variance before choosing a city.\nhttps://databyarea.com/home-insurance/compare-insurance-costs-before-relocating/"
     },
     {
       "channel": "facebook",
-      "slug": "best-states-lower-utility-bills-2026",
+      "slug": "compare-insurance-costs-before-relocating",
       "publish_date_utc": "2026-05-08",
-      "post": "Trying to cut monthly bills before you move?\n\nNew guide: Best States for Lower Utility Bills in 2026\nSee which states currently trend lower for utility spend.\nhttps://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/"
+      "post": "Insurance can erase a cheaper mortgage fast.\n\nNew guide: How to Compare Insurance Costs Before Relocating\nCompare insurance variance before choosing a city.\nhttps://databyarea.com/home-insurance/compare-insurance-costs-before-relocating/"
     },
     {
       "channel": "newsletter",
-      "slug": "best-states-lower-utility-bills-2026",
+      "slug": "compare-insurance-costs-before-relocating",
       "publish_date_utc": "2026-05-08",
-      "post": "Trying to cut monthly bills before you move?\n\nNew guide: Best States for Lower Utility Bills in 2026\nSee which states currently trend lower for utility spend.\nhttps://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/"
+      "post": "Insurance can erase a cheaper mortgage fast.\n\nNew guide: How to Compare Insurance Costs Before Relocating\nCompare insurance variance before choosing a city.\nhttps://databyarea.com/home-insurance/compare-insurance-costs-before-relocating/"
     },
     {
       "channel": "x",
-      "slug": "property-tax-hotspots-to-avoid-overpaying",
+      "slug": "best-states-lower-utility-bills-2026",
       "publish_date_utc": "2026-05-09",
-      "post": "House hunting this quarter? Check taxes before signing.\n\nNew guide: Property Tax Hotspots to Avoid Overpaying\nUse county-level tax pages to pressure-test your budget.\nhttps://databyarea.com/property-taxes/property-tax-hotspots-to-avoid-overpaying/"
+      "post": "Trying to cut monthly bills before you move?\n\nNew guide: Best States for Lower Utility Bills in 2026\nSee which states currently trend lower for utility spend.\nhttps://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/"
     },
     {
       "channel": "linkedin",
-      "slug": "property-tax-hotspots-to-avoid-overpaying",
+      "slug": "best-states-lower-utility-bills-2026",
       "publish_date_utc": "2026-05-09",
-      "post": "House hunting this quarter? Check taxes before signing.\n\nNew guide: Property Tax Hotspots to Avoid Overpaying\nUse county-level tax pages to pressure-test your budget.\nhttps://databyarea.com/property-taxes/property-tax-hotspots-to-avoid-overpaying/"
+      "post": "Trying to cut monthly bills before you move?\n\nNew guide: Best States for Lower Utility Bills in 2026\nSee which states currently trend lower for utility spend.\nhttps://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/"
     },
     {
       "channel": "facebook",
-      "slug": "property-tax-hotspots-to-avoid-overpaying",
+      "slug": "best-states-lower-utility-bills-2026",
       "publish_date_utc": "2026-05-09",
-      "post": "House hunting this quarter? Check taxes before signing.\n\nNew guide: Property Tax Hotspots to Avoid Overpaying\nUse county-level tax pages to pressure-test your budget.\nhttps://databyarea.com/property-taxes/property-tax-hotspots-to-avoid-overpaying/"
+      "post": "Trying to cut monthly bills before you move?\n\nNew guide: Best States for Lower Utility Bills in 2026\nSee which states currently trend lower for utility spend.\nhttps://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/"
     },
     {
       "channel": "newsletter",
-      "slug": "property-tax-hotspots-to-avoid-overpaying",
+      "slug": "best-states-lower-utility-bills-2026",
       "publish_date_utc": "2026-05-09",
-      "post": "House hunting this quarter? Check taxes before signing.\n\nNew guide: Property Tax Hotspots to Avoid Overpaying\nUse county-level tax pages to pressure-test your budget.\nhttps://databyarea.com/property-taxes/property-tax-hotspots-to-avoid-overpaying/"
+      "post": "Trying to cut monthly bills before you move?\n\nNew guide: Best States for Lower Utility Bills in 2026\nSee which states currently trend lower for utility spend.\nhttps://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/"
     },
     {
       "channel": "x",
-      "slug": "compare-insurance-costs-before-relocating",
+      "slug": "property-tax-hotspots-to-avoid-overpaying",
       "publish_date_utc": "2026-05-10",
-      "post": "Insurance can erase a cheaper mortgage fast.\n\nNew guide: How to Compare Insurance Costs Before Relocating\nCompare insurance variance before choosing a city.\nhttps://databyarea.com/home-insurance/compare-insurance-costs-before-relocating/"
+      "post": "House hunting this quarter? Check taxes before signing.\n\nNew guide: Property Tax Hotspots to Avoid Overpaying\nUse county-level tax pages to pressure-test your budget.\nhttps://databyarea.com/property-taxes/property-tax-hotspots-to-avoid-overpaying/"
     },
     {
       "channel": "linkedin",
-      "slug": "compare-insurance-costs-before-relocating",
+      "slug": "property-tax-hotspots-to-avoid-overpaying",
       "publish_date_utc": "2026-05-10",
-      "post": "Insurance can erase a cheaper mortgage fast.\n\nNew guide: How to Compare Insurance Costs Before Relocating\nCompare insurance variance before choosing a city.\nhttps://databyarea.com/home-insurance/compare-insurance-costs-before-relocating/"
+      "post": "House hunting this quarter? Check taxes before signing.\n\nNew guide: Property Tax Hotspots to Avoid Overpaying\nUse county-level tax pages to pressure-test your budget.\nhttps://databyarea.com/property-taxes/property-tax-hotspots-to-avoid-overpaying/"
     },
     {
       "channel": "facebook",
-      "slug": "compare-insurance-costs-before-relocating",
+      "slug": "property-tax-hotspots-to-avoid-overpaying",
       "publish_date_utc": "2026-05-10",
-      "post": "Insurance can erase a cheaper mortgage fast.\n\nNew guide: How to Compare Insurance Costs Before Relocating\nCompare insurance variance before choosing a city.\nhttps://databyarea.com/home-insurance/compare-insurance-costs-before-relocating/"
+      "post": "House hunting this quarter? Check taxes before signing.\n\nNew guide: Property Tax Hotspots to Avoid Overpaying\nUse county-level tax pages to pressure-test your budget.\nhttps://databyarea.com/property-taxes/property-tax-hotspots-to-avoid-overpaying/"
     },
     {
       "channel": "newsletter",
-      "slug": "compare-insurance-costs-before-relocating",
+      "slug": "property-tax-hotspots-to-avoid-overpaying",
       "publish_date_utc": "2026-05-10",
-      "post": "Insurance can erase a cheaper mortgage fast.\n\nNew guide: How to Compare Insurance Costs Before Relocating\nCompare insurance variance before choosing a city.\nhttps://databyarea.com/home-insurance/compare-insurance-costs-before-relocating/"
-    },
-    {
-      "channel": "x",
-      "slug": "best-states-lower-utility-bills-2026",
-      "publish_date_utc": "2026-05-11",
-      "post": "Trying to cut monthly bills before you move?\n\nNew guide: Best States for Lower Utility Bills in 2026\nSee which states currently trend lower for utility spend.\nhttps://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/"
-    },
-    {
-      "channel": "linkedin",
-      "slug": "best-states-lower-utility-bills-2026",
-      "publish_date_utc": "2026-05-11",
-      "post": "Trying to cut monthly bills before you move?\n\nNew guide: Best States for Lower Utility Bills in 2026\nSee which states currently trend lower for utility spend.\nhttps://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/"
-    },
-    {
-      "channel": "facebook",
-      "slug": "best-states-lower-utility-bills-2026",
-      "publish_date_utc": "2026-05-11",
-      "post": "Trying to cut monthly bills before you move?\n\nNew guide: Best States for Lower Utility Bills in 2026\nSee which states currently trend lower for utility spend.\nhttps://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/"
-    },
-    {
-      "channel": "newsletter",
-      "slug": "best-states-lower-utility-bills-2026",
-      "publish_date_utc": "2026-05-11",
-      "post": "Trying to cut monthly bills before you move?\n\nNew guide: Best States for Lower Utility Bills in 2026\nSee which states currently trend lower for utility spend.\nhttps://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/"
-    },
-    {
-      "channel": "x",
-      "slug": "property-tax-hotspots-to-avoid-overpaying",
-      "publish_date_utc": "2026-05-12",
-      "post": "House hunting this quarter? Check taxes before signing.\n\nNew guide: Property Tax Hotspots to Avoid Overpaying\nUse county-level tax pages to pressure-test your budget.\nhttps://databyarea.com/property-taxes/property-tax-hotspots-to-avoid-overpaying/"
-    },
-    {
-      "channel": "linkedin",
-      "slug": "property-tax-hotspots-to-avoid-overpaying",
-      "publish_date_utc": "2026-05-12",
-      "post": "House hunting this quarter? Check taxes before signing.\n\nNew guide: Property Tax Hotspots to Avoid Overpaying\nUse county-level tax pages to pressure-test your budget.\nhttps://databyarea.com/property-taxes/property-tax-hotspots-to-avoid-overpaying/"
-    },
-    {
-      "channel": "facebook",
-      "slug": "property-tax-hotspots-to-avoid-overpaying",
-      "publish_date_utc": "2026-05-12",
-      "post": "House hunting this quarter? Check taxes before signing.\n\nNew guide: Property Tax Hotspots to Avoid Overpaying\nUse county-level tax pages to pressure-test your budget.\nhttps://databyarea.com/property-taxes/property-tax-hotspots-to-avoid-overpaying/"
-    },
-    {
-      "channel": "newsletter",
-      "slug": "property-tax-hotspots-to-avoid-overpaying",
-      "publish_date_utc": "2026-05-12",
       "post": "House hunting this quarter? Check taxes before signing.\n\nNew guide: Property Tax Hotspots to Avoid Overpaying\nUse county-level tax pages to pressure-test your budget.\nhttps://databyarea.com/property-taxes/property-tax-hotspots-to-avoid-overpaying/"
     },
     {
       "channel": "x",
       "slug": "compare-insurance-costs-before-relocating",
-      "publish_date_utc": "2026-05-13",
+      "publish_date_utc": "2026-05-11",
       "post": "Insurance can erase a cheaper mortgage fast.\n\nNew guide: How to Compare Insurance Costs Before Relocating\nCompare insurance variance before choosing a city.\nhttps://databyarea.com/home-insurance/compare-insurance-costs-before-relocating/"
     },
     {
       "channel": "linkedin",
       "slug": "compare-insurance-costs-before-relocating",
-      "publish_date_utc": "2026-05-13",
+      "publish_date_utc": "2026-05-11",
       "post": "Insurance can erase a cheaper mortgage fast.\n\nNew guide: How to Compare Insurance Costs Before Relocating\nCompare insurance variance before choosing a city.\nhttps://databyarea.com/home-insurance/compare-insurance-costs-before-relocating/"
     },
     {
       "channel": "facebook",
       "slug": "compare-insurance-costs-before-relocating",
-      "publish_date_utc": "2026-05-13",
+      "publish_date_utc": "2026-05-11",
       "post": "Insurance can erase a cheaper mortgage fast.\n\nNew guide: How to Compare Insurance Costs Before Relocating\nCompare insurance variance before choosing a city.\nhttps://databyarea.com/home-insurance/compare-insurance-costs-before-relocating/"
     },
     {
       "channel": "newsletter",
       "slug": "compare-insurance-costs-before-relocating",
-      "publish_date_utc": "2026-05-13",
+      "publish_date_utc": "2026-05-11",
       "post": "Insurance can erase a cheaper mortgage fast.\n\nNew guide: How to Compare Insurance Costs Before Relocating\nCompare insurance variance before choosing a city.\nhttps://databyarea.com/home-insurance/compare-insurance-costs-before-relocating/"
     },
     {
       "channel": "x",
       "slug": "best-states-lower-utility-bills-2026",
-      "publish_date_utc": "2026-05-14",
+      "publish_date_utc": "2026-05-12",
       "post": "Trying to cut monthly bills before you move?\n\nNew guide: Best States for Lower Utility Bills in 2026\nSee which states currently trend lower for utility spend.\nhttps://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/"
     },
     {
       "channel": "linkedin",
       "slug": "best-states-lower-utility-bills-2026",
-      "publish_date_utc": "2026-05-14",
+      "publish_date_utc": "2026-05-12",
       "post": "Trying to cut monthly bills before you move?\n\nNew guide: Best States for Lower Utility Bills in 2026\nSee which states currently trend lower for utility spend.\nhttps://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/"
     },
     {
       "channel": "facebook",
       "slug": "best-states-lower-utility-bills-2026",
-      "publish_date_utc": "2026-05-14",
+      "publish_date_utc": "2026-05-12",
       "post": "Trying to cut monthly bills before you move?\n\nNew guide: Best States for Lower Utility Bills in 2026\nSee which states currently trend lower for utility spend.\nhttps://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/"
     },
     {
       "channel": "newsletter",
       "slug": "best-states-lower-utility-bills-2026",
-      "publish_date_utc": "2026-05-14",
+      "publish_date_utc": "2026-05-12",
       "post": "Trying to cut monthly bills before you move?\n\nNew guide: Best States for Lower Utility Bills in 2026\nSee which states currently trend lower for utility spend.\nhttps://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/"
     },
     {
       "channel": "x",
       "slug": "property-tax-hotspots-to-avoid-overpaying",
-      "publish_date_utc": "2026-05-15",
+      "publish_date_utc": "2026-05-13",
       "post": "House hunting this quarter? Check taxes before signing.\n\nNew guide: Property Tax Hotspots to Avoid Overpaying\nUse county-level tax pages to pressure-test your budget.\nhttps://databyarea.com/property-taxes/property-tax-hotspots-to-avoid-overpaying/"
     },
     {
       "channel": "linkedin",
       "slug": "property-tax-hotspots-to-avoid-overpaying",
-      "publish_date_utc": "2026-05-15",
+      "publish_date_utc": "2026-05-13",
       "post": "House hunting this quarter? Check taxes before signing.\n\nNew guide: Property Tax Hotspots to Avoid Overpaying\nUse county-level tax pages to pressure-test your budget.\nhttps://databyarea.com/property-taxes/property-tax-hotspots-to-avoid-overpaying/"
     },
     {
       "channel": "facebook",
       "slug": "property-tax-hotspots-to-avoid-overpaying",
-      "publish_date_utc": "2026-05-15",
+      "publish_date_utc": "2026-05-13",
       "post": "House hunting this quarter? Check taxes before signing.\n\nNew guide: Property Tax Hotspots to Avoid Overpaying\nUse county-level tax pages to pressure-test your budget.\nhttps://databyarea.com/property-taxes/property-tax-hotspots-to-avoid-overpaying/"
     },
     {
       "channel": "newsletter",
       "slug": "property-tax-hotspots-to-avoid-overpaying",
+      "publish_date_utc": "2026-05-13",
+      "post": "House hunting this quarter? Check taxes before signing.\n\nNew guide: Property Tax Hotspots to Avoid Overpaying\nUse county-level tax pages to pressure-test your budget.\nhttps://databyarea.com/property-taxes/property-tax-hotspots-to-avoid-overpaying/"
+    },
+    {
+      "channel": "x",
+      "slug": "compare-insurance-costs-before-relocating",
+      "publish_date_utc": "2026-05-14",
+      "post": "Insurance can erase a cheaper mortgage fast.\n\nNew guide: How to Compare Insurance Costs Before Relocating\nCompare insurance variance before choosing a city.\nhttps://databyarea.com/home-insurance/compare-insurance-costs-before-relocating/"
+    },
+    {
+      "channel": "linkedin",
+      "slug": "compare-insurance-costs-before-relocating",
+      "publish_date_utc": "2026-05-14",
+      "post": "Insurance can erase a cheaper mortgage fast.\n\nNew guide: How to Compare Insurance Costs Before Relocating\nCompare insurance variance before choosing a city.\nhttps://databyarea.com/home-insurance/compare-insurance-costs-before-relocating/"
+    },
+    {
+      "channel": "facebook",
+      "slug": "compare-insurance-costs-before-relocating",
+      "publish_date_utc": "2026-05-14",
+      "post": "Insurance can erase a cheaper mortgage fast.\n\nNew guide: How to Compare Insurance Costs Before Relocating\nCompare insurance variance before choosing a city.\nhttps://databyarea.com/home-insurance/compare-insurance-costs-before-relocating/"
+    },
+    {
+      "channel": "newsletter",
+      "slug": "compare-insurance-costs-before-relocating",
+      "publish_date_utc": "2026-05-14",
+      "post": "Insurance can erase a cheaper mortgage fast.\n\nNew guide: How to Compare Insurance Costs Before Relocating\nCompare insurance variance before choosing a city.\nhttps://databyarea.com/home-insurance/compare-insurance-costs-before-relocating/"
+    },
+    {
+      "channel": "x",
+      "slug": "best-states-lower-utility-bills-2026",
       "publish_date_utc": "2026-05-15",
+      "post": "Trying to cut monthly bills before you move?\n\nNew guide: Best States for Lower Utility Bills in 2026\nSee which states currently trend lower for utility spend.\nhttps://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/"
+    },
+    {
+      "channel": "linkedin",
+      "slug": "best-states-lower-utility-bills-2026",
+      "publish_date_utc": "2026-05-15",
+      "post": "Trying to cut monthly bills before you move?\n\nNew guide: Best States for Lower Utility Bills in 2026\nSee which states currently trend lower for utility spend.\nhttps://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/"
+    },
+    {
+      "channel": "facebook",
+      "slug": "best-states-lower-utility-bills-2026",
+      "publish_date_utc": "2026-05-15",
+      "post": "Trying to cut monthly bills before you move?\n\nNew guide: Best States for Lower Utility Bills in 2026\nSee which states currently trend lower for utility spend.\nhttps://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/"
+    },
+    {
+      "channel": "newsletter",
+      "slug": "best-states-lower-utility-bills-2026",
+      "publish_date_utc": "2026-05-15",
+      "post": "Trying to cut monthly bills before you move?\n\nNew guide: Best States for Lower Utility Bills in 2026\nSee which states currently trend lower for utility spend.\nhttps://databyarea.com/utility-costs/best-states-lower-utility-bills-2026/"
+    },
+    {
+      "channel": "x",
+      "slug": "property-tax-hotspots-to-avoid-overpaying",
+      "publish_date_utc": "2026-05-16",
+      "post": "House hunting this quarter? Check taxes before signing.\n\nNew guide: Property Tax Hotspots to Avoid Overpaying\nUse county-level tax pages to pressure-test your budget.\nhttps://databyarea.com/property-taxes/property-tax-hotspots-to-avoid-overpaying/"
+    },
+    {
+      "channel": "linkedin",
+      "slug": "property-tax-hotspots-to-avoid-overpaying",
+      "publish_date_utc": "2026-05-16",
+      "post": "House hunting this quarter? Check taxes before signing.\n\nNew guide: Property Tax Hotspots to Avoid Overpaying\nUse county-level tax pages to pressure-test your budget.\nhttps://databyarea.com/property-taxes/property-tax-hotspots-to-avoid-overpaying/"
+    },
+    {
+      "channel": "facebook",
+      "slug": "property-tax-hotspots-to-avoid-overpaying",
+      "publish_date_utc": "2026-05-16",
+      "post": "House hunting this quarter? Check taxes before signing.\n\nNew guide: Property Tax Hotspots to Avoid Overpaying\nUse county-level tax pages to pressure-test your budget.\nhttps://databyarea.com/property-taxes/property-tax-hotspots-to-avoid-overpaying/"
+    },
+    {
+      "channel": "newsletter",
+      "slug": "property-tax-hotspots-to-avoid-overpaying",
+      "publish_date_utc": "2026-05-16",
       "post": "House hunting this quarter? Check taxes before signing.\n\nNew guide: Property Tax Hotspots to Avoid Overpaying\nUse county-level tax pages to pressure-test your budget.\nhttps://databyarea.com/property-taxes/property-tax-hotspots-to-avoid-overpaying/"
     }
   ],
@@ -656,85 +656,85 @@
     {
       "url_path": "/utility-costs/best-states-lower-utility-bills-2026/",
       "status": "scheduled",
-      "publish_at_utc": "2026-05-02T14:00:00+00:00",
-      "source": "content_distribution_workflow"
-    },
-    {
-      "url_path": "/property-taxes/property-tax-hotspots-to-avoid-overpaying/",
-      "status": "scheduled",
       "publish_at_utc": "2026-05-03T14:00:00+00:00",
       "source": "content_distribution_workflow"
     },
     {
-      "url_path": "/home-insurance/compare-insurance-costs-before-relocating/",
+      "url_path": "/property-taxes/property-tax-hotspots-to-avoid-overpaying/",
       "status": "scheduled",
       "publish_at_utc": "2026-05-04T14:00:00+00:00",
       "source": "content_distribution_workflow"
     },
     {
-      "url_path": "/utility-costs/best-states-lower-utility-bills-2026/",
+      "url_path": "/home-insurance/compare-insurance-costs-before-relocating/",
       "status": "scheduled",
       "publish_at_utc": "2026-05-05T14:00:00+00:00",
       "source": "content_distribution_workflow"
     },
     {
-      "url_path": "/property-taxes/property-tax-hotspots-to-avoid-overpaying/",
+      "url_path": "/utility-costs/best-states-lower-utility-bills-2026/",
       "status": "scheduled",
       "publish_at_utc": "2026-05-06T14:00:00+00:00",
       "source": "content_distribution_workflow"
     },
     {
-      "url_path": "/home-insurance/compare-insurance-costs-before-relocating/",
+      "url_path": "/property-taxes/property-tax-hotspots-to-avoid-overpaying/",
       "status": "scheduled",
       "publish_at_utc": "2026-05-07T14:00:00+00:00",
       "source": "content_distribution_workflow"
     },
     {
-      "url_path": "/utility-costs/best-states-lower-utility-bills-2026/",
+      "url_path": "/home-insurance/compare-insurance-costs-before-relocating/",
       "status": "scheduled",
       "publish_at_utc": "2026-05-08T14:00:00+00:00",
       "source": "content_distribution_workflow"
     },
     {
-      "url_path": "/property-taxes/property-tax-hotspots-to-avoid-overpaying/",
+      "url_path": "/utility-costs/best-states-lower-utility-bills-2026/",
       "status": "scheduled",
       "publish_at_utc": "2026-05-09T14:00:00+00:00",
       "source": "content_distribution_workflow"
     },
     {
-      "url_path": "/home-insurance/compare-insurance-costs-before-relocating/",
+      "url_path": "/property-taxes/property-tax-hotspots-to-avoid-overpaying/",
       "status": "scheduled",
       "publish_at_utc": "2026-05-10T14:00:00+00:00",
       "source": "content_distribution_workflow"
     },
     {
-      "url_path": "/utility-costs/best-states-lower-utility-bills-2026/",
+      "url_path": "/home-insurance/compare-insurance-costs-before-relocating/",
       "status": "scheduled",
       "publish_at_utc": "2026-05-11T14:00:00+00:00",
       "source": "content_distribution_workflow"
     },
     {
-      "url_path": "/property-taxes/property-tax-hotspots-to-avoid-overpaying/",
+      "url_path": "/utility-costs/best-states-lower-utility-bills-2026/",
       "status": "scheduled",
       "publish_at_utc": "2026-05-12T14:00:00+00:00",
       "source": "content_distribution_workflow"
     },
     {
-      "url_path": "/home-insurance/compare-insurance-costs-before-relocating/",
+      "url_path": "/property-taxes/property-tax-hotspots-to-avoid-overpaying/",
       "status": "scheduled",
       "publish_at_utc": "2026-05-13T14:00:00+00:00",
       "source": "content_distribution_workflow"
     },
     {
-      "url_path": "/utility-costs/best-states-lower-utility-bills-2026/",
+      "url_path": "/home-insurance/compare-insurance-costs-before-relocating/",
       "status": "scheduled",
       "publish_at_utc": "2026-05-14T14:00:00+00:00",
       "source": "content_distribution_workflow"
     },
     {
-      "url_path": "/property-taxes/property-tax-hotspots-to-avoid-overpaying/",
+      "url_path": "/utility-costs/best-states-lower-utility-bills-2026/",
       "status": "scheduled",
       "publish_at_utc": "2026-05-15T14:00:00+00:00",
+      "source": "content_distribution_workflow"
+    },
+    {
+      "url_path": "/property-taxes/property-tax-hotspots-to-avoid-overpaying/",
+      "status": "scheduled",
+      "publish_at_utc": "2026-05-16T14:00:00+00:00",
       "source": "content_distribution_workflow"
     }
   ]
