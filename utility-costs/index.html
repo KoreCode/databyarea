@@ -243,43 +243,83 @@
     }
     q.addEventListener('input', filter);
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/jsvectormap@1.7.0/dist/js/jsvectormap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jsvectormap@1.7.0/dist/maps/us-merc-en.js"></script>
   <script>
     const stateUrlByAbbr = {"AL":"/utility-costs/alabama/","AK":"/utility-costs/alaska/","AZ":"/utility-costs/arizona/","AR":"/utility-costs/arkansas/","CA":"/utility-costs/california/","CO":"/utility-costs/colorado/","CT":"/utility-costs/connecticut/","DE":"/utility-costs/delaware/","FL":"/utility-costs/florida/","GA":"/utility-costs/georgia/","HI":"/utility-costs/hawaii/","ID":"/utility-costs/idaho/","IL":"/utility-costs/illinois/","IN":"/utility-costs/indiana/","IA":"/utility-costs/iowa/","KS":"/utility-costs/kansas/","KY":"/utility-costs/kentucky/","LA":"/utility-costs/louisiana/","ME":"/utility-costs/maine/","MD":"/utility-costs/maryland/","MA":"/utility-costs/massachusetts/","MI":"/utility-costs/michigan/","MN":"/utility-costs/minnesota/","MS":"/utility-costs/mississippi/","MO":"/utility-costs/missouri/","MT":"/utility-costs/montana/","NE":"/utility-costs/nebraska/","NV":"/utility-costs/nevada/","NH":"/utility-costs/new-hampshire/","NJ":"/utility-costs/new-jersey/","NM":"/utility-costs/new-mexico/","NY":"/utility-costs/new-york/","NC":"/utility-costs/north-carolina/","ND":"/utility-costs/north-dakota/","OH":"/utility-costs/ohio/","OK":"/utility-costs/oklahoma/","OR":"/utility-costs/oregon/","PA":"/utility-costs/pennsylvania/","RI":"/utility-costs/rhode-island/","SC":"/utility-costs/south-carolina/","SD":"/utility-costs/south-dakota/","TN":"/utility-costs/tennessee/","TX":"/utility-costs/texas/","UT":"/utility-costs/utah/","VT":"/utility-costs/vermont/","VA":"/utility-costs/virginia/","WA":"/utility-costs/washington/","WV":"/utility-costs/west-virginia/","WI":"/utility-costs/wisconsin/","WY":"/utility-costs/wyoming/"};
-    new jsVectorMap({
-      selector: '#state-map',
-      map: 'us_merc_en',
-      zoomButtons: true,
-      selectedRegions: [],
-      onRegionTooltipShow(event, tooltip, code) {
-        const abbr = code.split('-')[1];
-        if (!abbr || !stateUrlByAbbr[abbr]) {
-          return;
-        }
-        tooltip.text(`${tooltip.text()} — View details`);
-      },
-      onRegionClick(event, code) {
-        const abbr = code.split('-')[1];
-        const target = stateUrlByAbbr[abbr];
-        if (target) {
-          window.location.href = target;
-        }
-      },
-      regionStyle: {
-        initial: {
-          fill: '#d8e7f6',
-          stroke: '#7d99b5',
-          strokeWidth: 1
+    const mapHost = document.getElementById('state-map');
+
+    function loadScriptOnce(src) {
+      if (document.querySelector(`script[src="${src}"]`)) return Promise.resolve();
+      return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = src;
+        script.onload = resolve;
+        script.onerror = reject;
+        document.head.appendChild(script);
+      });
+    }
+
+    function initStateMap() {
+      if (!window.jsVectorMap || !mapHost || mapHost.dataset.mapReady === '1') return;
+      mapHost.dataset.mapReady = '1';
+      new jsVectorMap({
+        selector: '#state-map',
+        map: 'us_merc_en',
+        zoomButtons: true,
+        selectedRegions: [],
+        onRegionTooltipShow(event, tooltip, code) {
+          const abbr = code.split('-')[1];
+          if (!abbr || !stateUrlByAbbr[abbr]) {
+            return;
+          }
+          tooltip.text(`${tooltip.text()} — View details`);
         },
-        hover: {
-          fill: '#9ec0e2'
+        onRegionClick(event, code) {
+          const abbr = code.split('-')[1];
+          const target = stateUrlByAbbr[abbr];
+          if (target) {
+            window.location.href = target;
+          }
         },
-        selected: {
-          fill: '#4f7292'
+        regionStyle: {
+          initial: {
+            fill: '#d8e7f6',
+            stroke: '#7d99b5',
+            strokeWidth: 1
+          },
+          hover: {
+            fill: '#9ec0e2'
+          },
+          selected: {
+            fill: '#4f7292'
+          }
         }
-      }
-    });
+      });
+    }
+
+    function loadAndInitMap() {
+      if (!mapHost || mapHost.dataset.mapRequested === '1') return;
+      mapHost.dataset.mapRequested = '1';
+      Promise.all([
+        loadScriptOnce('https://cdn.jsdelivr.net/npm/jsvectormap@1.7.0/dist/js/jsvectormap.min.js'),
+        loadScriptOnce('https://cdn.jsdelivr.net/npm/jsvectormap@1.7.0/dist/maps/us-merc-en.js')
+      ]).then(initStateMap).catch(() => {
+        mapHost.innerHTML = '<p class="mutedSmall" style="padding:12px;">Map unavailable right now. Use the state list to navigate.</p>';
+      });
+    }
+
+    if ('IntersectionObserver' in window && mapHost) {
+      const mapObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            loadAndInitMap();
+            observer.disconnect();
+          }
+        });
+      }, { rootMargin: '200px 0px' });
+      mapObserver.observe(mapHost);
+    } else {
+      loadAndInitMap();
+    }
   </script>
   <script defer src="/assets/version-footer.js"></script>
 </body>
