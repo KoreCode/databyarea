@@ -217,12 +217,12 @@
 
   function initExplorer() {
     if (!document.body || document.querySelector('.explorer')) return;
-    var container = document.querySelector('.container');
-    var footer = document.querySelector('.footer');
-    if (!container || !footer) return;
+    var container = document.querySelector('.container') || document.body;
+    var footer = container.querySelector('.footer') || document.querySelector('.footer');
+    if (!footer) return;
     footer.insertAdjacentHTML('beforebegin', buildExplorerMarkup());
 
-    var explorer = container.querySelector('[data-sitewide-explorer="true"]');
+    var explorer = container.querySelector('[data-sitewide-explorer="true"]') || document.querySelector('[data-sitewide-explorer="true"]');
     if (!explorer) return;
     var data = regionDataByPage();
     var nodes = explorer.querySelectorAll('.region-node');
