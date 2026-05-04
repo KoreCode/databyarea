@@ -1,6 +1,6 @@
 # Weekly KPI Report
 
-- Generated at (UTC): `2026-04-30T02:05:44.031180+00:00`
+- Generated at (UTC): `2026-05-04T14:08:40.538724+00:00`
 - Coverage: `2026-04-13 → 2026-04-19`
 
 ## Core KPIs
