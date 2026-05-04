@@ -299,12 +299,25 @@
     function loadAndInitMap() {
       if (!mapHost || mapHost.dataset.mapRequested === '1') return;
       mapHost.dataset.mapRequested = '1';
-      Promise.all([
-        loadScriptOnce('https://cdn.jsdelivr.net/npm/jsvectormap@1.7.0/dist/js/jsvectormap.min.js'),
-        loadScriptOnce('https://cdn.jsdelivr.net/npm/jsvectormap@1.7.0/dist/maps/us-merc-en.js')
-      ]).then(initStateMap).catch(() => {
-        mapHost.innerHTML = '<p class="mutedSmall" style="padding:12px;">Map unavailable right now. Use the state list to navigate.</p>';
-      });
+
+      const localAssets = [
+        '/assets/vendor/jsvectormap/1.7.0/jsvectormap.min.js',
+        '/assets/vendor/jsvectormap/1.7.0/us-merc-en.js'
+      ];
+      const cdnAssets = [
+        'https://cdn.jsdelivr.net/npm/jsvectormap@1.7.0/dist/js/jsvectormap.min.js',
+        'https://cdn.jsdelivr.net/npm/jsvectormap@1.7.0/dist/maps/us-merc-en.js'
+      ];
+
+      const loadAssets = (assets) => Promise.all(assets.map((asset) => loadScriptOnce(asset)));
+
+      loadAssets(localAssets)
+        .then(initStateMap)
+        .catch(() => loadAssets(cdnAssets)
+          .then(initStateMap)
+          .catch(() => {
+            mapHost.innerHTML = '<p class="mutedSmall" style="padding:12px;">Map unavailable right now. Use the state list to navigate.</p>';
+          }));
     }
 
     if ('IntersectionObserver' in window && mapHost) {
