@@ -1,7 +1,7 @@
 {
-  "commit_short": "d9fa6ae4",
-  "updated_utc": "2026-05-17T06:30:06.656230+00:00",
+  "commit_short": "1381cc09",
+  "updated_utc": "2026-05-18T07:05:51.348110+00:00",
   "services_requested": 1,
   "cities_requested": 10,
-  "deploy_zip": "_deploy/databyarea-deploy-2026-05-17.zip"
+  "deploy_zip": "_deploy/databyarea-deploy-2026-05-18.zip"
 }
