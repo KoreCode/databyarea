@@ -14,14 +14,13 @@
     <header class="nav area-top-nav">
       <a class="brand" href="/" aria-label="databyarea.com home">
         <img src="/assets/logo.png" alt="DataByArea logo" class="logo" width="170" height="34" decoding="async" fetchpriority="high">
-        <div class="brand-text"><strong>databyarea.com</strong></div>
+        <div class="brand-text"><strong>DataByArea.com</strong></div>
       </a>
 
-      <nav class="navlinks area-account-links" aria-label="Quick account links">
+      <nav class="navlinks area-account-links" aria-label="Main navigation">
         <a class="pill" href="/">Home</a>
-        <a class="pill" href="/property-taxes/">Property Tax</a>
-        <a class="pill" href="/login/">Login</a>
-        <a class="pill" href="/signup/">Sign up</a>
+        <a class="pill" href="/about/">About</a>
+        <a class="pill" href="/contact/">Contact</a>
       </nav>
     </header>
 
@@ -32,9 +31,9 @@
       </section>
 
       <nav class="area-pill-tabs" aria-label="Area dashboard sections">
-        <a class="area-tab active" href="#utilities-panel" aria-current="page"><span aria-hidden="true">🏛️</span> Property Tax</a>
+        <a class="area-tab active" href="#real-estate-panel" aria-current="page"><span aria-hidden="true">🏛️</span> Property Tax</a>
         <a class="area-tab" href="#utilities-panel"><span aria-hidden="true">⚡</span> Utilities</a>
-        <a class="area-tab" href="#schools-panel"><span aria-hidden="true">💵</span> Cost of Living</a>
+        <a class="area-tab" href="#real-estate-panel"><span aria-hidden="true">💵</span> Cost of Living</a>
         <a class="area-tab" href="#demographics-panel"><span aria-hidden="true">👥</span> Demographics</a>
         <a class="area-tab" href="#schools-panel"><span aria-hidden="true">🎓</span> Schools</a>
         <a class="area-tab" href="#economy-panel"><span aria-hidden="true">🏭</span> Local Economy</a>
@@ -276,7 +275,40 @@
       <p>© <span id="y"></span> DataByArea | <a href="/privacy/">Privacy Policy</a> | <a href="/terms/">Terms of Service</a> | <a href="/about/">Data Sources</a> | <a href="/contact/">Contact</a></p>
     </footer>
   </div>
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+  <script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  (function () {
+    var tabs = document.querySelectorAll('.area-pill-tabs .area-tab');
+    var areaGrid = document.querySelector('.area-grid');
+    if (!tabs.length || !areaGrid) return;
+
+    function activateTab(tab) {
+      tabs.forEach(function (item) {
+        item.classList.remove('active');
+        item.removeAttribute('aria-current');
+      });
+      tab.classList.add('active');
+      tab.setAttribute('aria-current', 'page');
+
+      var panelId = tab.getAttribute('href');
+      if (!panelId || panelId.charAt(0) !== '#') return;
+
+      var panel = document.querySelector(panelId);
+      if (!panel || !areaGrid.contains(panel)) return;
+
+      areaGrid.prepend(panel);
+      areaGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    tabs.forEach(function (tab) {
+      tab.addEventListener('click', function (event) {
+        event.preventDefault();
+        activateTab(tab);
+      });
+    });
+  })();
+</script>
   <script defer src="/assets/version-footer.js"></script>
 </body>
 </html>
