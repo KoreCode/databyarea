@@ -359,10 +359,14 @@ a:focus-visible{outline:3px solid #93b4d2;outline-offset:2px;border-radius:8px}
 }
 
 .area-top-nav{
+  position:sticky;
+  top:0;
+  z-index:120;
   margin:0 -16px;
   padding:8px 16px;
   gap:10px;
   border-bottom:1px solid #bfd0df;
+  background:#f6fafd;
 }
 
 .area-top-nav .brand-text strong{font-size:24px;text-transform:lowercase}
@@ -383,10 +387,15 @@ a:focus-visible{outline:3px solid #93b4d2;outline-offset:2px;border-radius:8px}
 .area-hero p{margin:3px 0 0;font-size:23px;color:#d5ebf7}
 
 .area-pill-tabs{
+  position:sticky;
+  top:64px;
+  z-index:110;
   display:flex;
   flex-wrap:wrap;
   gap:8px;
   padding:10px 2px 8px;
+  background:#f6fafd;
+  border-bottom:1px solid #d4e1eb;
 }
 
 .area-tab{
@@ -422,6 +431,18 @@ a:focus-visible{outline:3px solid #93b4d2;outline-offset:2px;border-radius:8px}
 .area-card h2{margin:0 0 8px;font-size:33px;line-height:1.12;color:#163e5a}
 .area-card h3{margin:8px 0 5px;font-size:22px;line-height:1.2;color:#1f3f53}
 
+
+.area-card h2.is-targeted{
+  font-weight:800;
+  color:#0f516f;
+  text-decoration:underline;
+  text-underline-offset:4px;
+}
+
+.area-card.is-targeted{
+  box-shadow:0 0 0 3px rgba(23,116,137,.24),0 4px 14px rgba(15,23,42,.14);
+  border-color:#6ea8bb;
+}
 .mini-bars{
   height:88px;
   display:grid;

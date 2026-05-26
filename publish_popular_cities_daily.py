@@ -26,6 +26,7 @@
 import argparse
 import csv
 import json
+import os
 import re
 import urllib.parse
 import urllib.request
@@ -37,7 +38,7 @@ from html import escape
 SITE_NAME = "DataByArea"
 SITE_URL = "https://databyarea.com"
 CSS_PATH = "/assets/styles.css"
-DEFAULT_CENSUS_API_KEY = "a8fbaff5b31f948e263efac8e6c03b9ad8deeea0"
+DEFAULT_CENSUS_API_KEY = os.getenv("CENSUS_API_KEY", "").strip()
 ACS_DATASET = "2023/acs/acs5"
 
 POPULAR_CSV = Path("data/popular_cities.csv")
@@ -255,6 +256,8 @@ def _census_state_property_tax_rows(state_slug: str, api_key: str) -> dict[str, 
 
 def get_city_property_tax_profile(state_slug: str, city_name: str) -> dict | None:
     api_key = DEFAULT_CENSUS_API_KEY
+    if not api_key:
+        return None
     data = _census_state_property_tax_rows(state_slug, api_key)
     if not data:
         return None
