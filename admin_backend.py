@@ -20,6 +20,7 @@ import hmac
 import json
 import logging
 import os
+import sqlite3
 import subprocess
 import sys
 import threading
@@ -28,7 +29,8 @@ from datetime import datetime, timezone
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any
-from urllib.parse import parse_qs, urlparse
+from urllib.parse import parse_qs, quote, urlencode, urlparse
+from urllib.request import Request, urlopen
 from uuid import uuid4
 
 REPO_ROOT = Path(__file__).resolve().parent
@@ -51,6 +53,164 @@ LEADS_DB = REPO_ROOT / "_deploy" / "crm_leads.json"
 SERVER_STARTED_AT = time.time()
 REQUEST_COUNTS: dict[str, list[float]] = {}
 REQUEST_LOCK = threading.Lock()
+
+DATA_DB = REPO_ROOT / "data" / "databyarea_local.db"
+CITY_PAGE_ROOT = REPO_ROOT
+DATA_DB.parent.mkdir(parents=True, exist_ok=True)
+
+API_KEYS = {
+    "fbi": os.getenv("DATA_GOV_FBI_API_KEY", "k2jJkNhwAoQDgGXCTvXwvHpuyeFRyD49YwMvbTrC"),
+    "census": os.getenv("CENSUS_API_KEY", "a8fbaff5b31f948e263efac8e6c03b9ad8deeea0"),
+    "eia": os.getenv("EIA_API_KEY", "2OKDrEV0VEb6XGdTbFfRVXzEzIdnBMbhJyTGjtog"),
+    "bls": os.getenv("BLS_API_KEY", "2bc6633b9a5f45ab901af3ee3a43e0c1"),
+    "ncdc": os.getenv("NCDC_API_TOKEN", "gBfLvnYkHcPaGKrxekXCYefqJRJoamQA"),
+}
+
+
+def ensure_city_data_db() -> None:
+    with sqlite3.connect(DATA_DB) as conn:
+        conn.execute(
+            """
+            CREATE TABLE IF NOT EXISTS city_data (
+                state_slug TEXT NOT NULL,
+                city_slug TEXT NOT NULL,
+                city_name TEXT NOT NULL,
+                state_name TEXT NOT NULL,
+                data_json TEXT NOT NULL,
+                source_json TEXT NOT NULL,
+                updated_at_utc TEXT NOT NULL,
+                PRIMARY KEY (state_slug, city_slug)
+            )
+            """
+        )
+
+
+def _http_get_json(url: str, headers: dict[str, str] | None = None) -> dict[str, Any]:
+    req = Request(url, headers=headers or {})
+    with urlopen(req, timeout=25) as resp:
+        return json.loads(resp.read().decode("utf-8"))
+
+
+def _safe_metric(fetcher, fallback: Any = None) -> Any:
+    try:
+        return fetcher()
+    except Exception:
+        return fallback
+
+
+def fetch_city_metrics_from_apis(city_name: str, state_name: str) -> tuple[dict[str, Any], dict[str, Any]]:
+    qcity = quote(city_name)
+    qstate = quote(state_name)
+    sources: dict[str, Any] = {}
+
+    census = _safe_metric(lambda: _http_get_json(f"https://api.census.gov/data/2023/acs/acs5?get=NAME,B19013_001E,B25077_001E&for=place:*&in=state:*&key={API_KEYS['census']}"), [])
+    sources["census"] = "https://api.census.gov/data/2023/acs/acs5"
+    population = None
+    median_income = None
+    median_home_value = None
+    if isinstance(census, list) and len(census) > 1:
+        headers = census[0]
+        try:
+            i_name = headers.index("NAME")
+            i_income = headers.index("B19013_001E")
+            i_home = headers.index("B25077_001E")
+            for row in census[1:]:
+                name = row[i_name]
+                if city_name.lower() in name.lower() and state_name.lower() in name.lower():
+                    median_income = row[i_income]
+                    median_home_value = row[i_home]
+                    break
+        except Exception:
+            pass
+
+    eia = _safe_metric(lambda: _http_get_json(f"https://api.eia.gov/v2/electricity/retail-sales/data/?api_key={API_KEYS['eia']}&frequency=monthly&data[0]=price&sort[0][column]=period&sort[0][direction]=desc&offset=0&length=1"), {})
+    sources["eia"] = "https://api.eia.gov/v2/electricity/retail-sales/data/"
+    electricity_price = None
+    try:
+        electricity_price = eia.get("response", {}).get("data", [])[0].get("price")
+    except Exception:
+        pass
+
+    bls = _safe_metric(lambda: _http_get_json("https://api.bls.gov/publicAPI/v2/timeseries/data/LAUCN270010000000005?registrationkey=" + API_KEYS["bls"]), {})
+    sources["bls"] = "https://api.bls.gov/publicAPI/v2/timeseries/data/"
+    unemployment_rate = None
+    try:
+        unemployment_rate = bls.get("Results", {}).get("series", [])[0].get("data", [])[0].get("value")
+    except Exception:
+        pass
+
+    ncdc = _safe_metric(lambda: _http_get_json(f"https://www.ncei.noaa.gov/cdo-web/api/v2/stations?datasetid=GHCND&limit=1&locationid=FIPS:27", headers={"token": API_KEYS["ncdc"]}), {})
+    sources["ncdc"] = "https://www.ncei.noaa.gov/cdo-web/api/v2/"
+    weather_station = None
+    try:
+        weather_station = ncdc.get("results", [])[0].get("name")
+    except Exception:
+        pass
+
+    fema = _safe_metric(lambda: _http_get_json("https://www.fema.gov/api/open/v1/NriCounty"), {})
+    sources["fema"] = "https://www.fema.gov/api/open/v1/NriCounty"
+    fema_sample_records = len(fema.get("NriCounty", [])) if isinstance(fema, dict) else 0
+
+    fbi = _safe_metric(lambda: _http_get_json(f"https://api.usa.gov/crime/fbi/cde/arrest/state/MN/all?API_KEY={API_KEYS['fbi']}&from=2024&to=2024"), {})
+    sources["fbi"] = "https://api.usa.gov/crime/fbi/cde/arrest/state/{state}/all"
+    arrests_sample = len(fbi.get("data", [])) if isinstance(fbi, dict) else 0
+
+    payload = {
+        "city": city_name,
+        "state": state_name,
+        "population": population,
+        "median_household_income": median_income,
+        "median_home_value": median_home_value,
+        "electricity_price_cents_per_kwh": electricity_price,
+        "unemployment_rate": unemployment_rate,
+        "weather_station": weather_station,
+        "fema_county_records_sample": fema_sample_records,
+        "fbi_arrest_records_sample": arrests_sample,
+        "refreshed_at_utc": _iso_utc(),
+    }
+    return payload, sources
+
+
+def get_city_data(state_slug: str, city_slug: str) -> dict[str, Any] | None:
+    ensure_city_data_db()
+    with sqlite3.connect(DATA_DB) as conn:
+        row = conn.execute("SELECT city_name,state_name,data_json,source_json,updated_at_utc FROM city_data WHERE state_slug=? AND city_slug=?", (state_slug, city_slug)).fetchone()
+    if not row:
+        return None
+    return {
+        "state_slug": state_slug, "city_slug": city_slug, "city_name": row[0], "state_name": row[1],
+        "data": json.loads(row[2]), "sources": json.loads(row[3]), "updated_at_utc": row[4], "from_cache": True
+    }
+
+
+def upsert_city_data(state_slug: str, city_slug: str, city_name: str, state_name: str, data: dict[str, Any], sources: dict[str, Any]) -> dict[str, Any]:
+    ensure_city_data_db()
+    now = _iso_utc()
+    with sqlite3.connect(DATA_DB) as conn:
+        conn.execute("""INSERT INTO city_data(state_slug,city_slug,city_name,state_name,data_json,source_json,updated_at_utc)
+                     VALUES(?,?,?,?,?,?,?)
+                     ON CONFLICT(state_slug,city_slug) DO UPDATE SET city_name=excluded.city_name,state_name=excluded.state_name,data_json=excluded.data_json,source_json=excluded.source_json,updated_at_utc=excluded.updated_at_utc""",
+                     (state_slug, city_slug, city_name, state_name, json.dumps(data), json.dumps(sources), now))
+    return {"state_slug": state_slug, "city_slug": city_slug, "city_name": city_name, "state_name": state_name, "data": data, "sources": sources, "updated_at_utc": now, "from_cache": False}
+
+
+def city_page_html(record: dict[str, Any]) -> str:
+    d = record["data"]
+    return f"""<!doctype html><html><head><meta charset='utf-8'><title>{record['city_name']}, {record['state_name']} Data | DataByArea</title></head><body><h1>{record['city_name']}, {record['state_name']}</h1><p>Population: {d.get('population','N/A')}</p><p>Median household income: {d.get('median_household_income','N/A')}</p><p>Median home value: {d.get('median_home_value','N/A')}</p><p>Electricity price (c/kWh): {d.get('electricity_price_cents_per_kwh','N/A')}</p><p>Unemployment rate: {d.get('unemployment_rate','N/A')}</p><p>Weather station: {d.get('weather_station','N/A')}</p><p>FEMA risk sample records: {d.get('fema_county_records_sample','N/A')}</p><p>FBI arrest sample records: {d.get('fbi_arrest_records_sample','N/A')}</p></body></html>"""
+
+
+def ensure_city_page(state_slug: str, city_slug: str) -> dict[str, Any]:
+    city_name = city_slug.replace('-', ' ').title()
+    state_name = state_slug.replace('-', ' ').title()
+    record = get_city_data(state_slug, city_slug)
+    if not record:
+        data, sources = fetch_city_metrics_from_apis(city_name, state_name)
+        record = upsert_city_data(state_slug, city_slug, city_name, state_name, data, sources)
+    out_path = CITY_PAGE_ROOT / state_slug / city_slug / 'index.html'
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text(city_page_html(record), encoding='utf-8')
+    return record
+
 
 logger = logging.getLogger("databyarea.admin")
 if not logger.handlers:
@@ -753,6 +913,27 @@ class Handler(BaseHTTPRequestHandler):
         if path == "/api/last-summary":
             self._send_json(load_json(SUMMARY_JSON, {"note": "No summary generated yet."}))
             return
+        if path.startswith("/api/databyarea/"):
+            parts = [p for p in path.split("/") if p]
+            if len(parts) == 4:
+                _, _, state_slug, city_slug = parts
+                record = get_city_data(state_slug, city_slug)
+                if not record:
+                    city_name = city_slug.replace("-", " ").title()
+                    state_name = state_slug.replace("-", " ").title()
+                    data, sources = fetch_city_metrics_from_apis(city_name, state_name)
+                    record = upsert_city_data(state_slug, city_slug, city_name, state_name, data, sources)
+                self._send_json({"ok": True, "record": record})
+                return
+
+        if path.startswith("/minnesota/"):
+            parts = [p for p in path.split("/") if p]
+            if len(parts) == 2:
+                _, city_slug = parts
+                record = ensure_city_page("minnesota", city_slug)
+                self._send_html(city_page_html(record))
+                return
+
         if path == "/api/leads":
             parsed = urlparse(self.path)
             query = parse_qs(parsed.query)
