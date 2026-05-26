@@ -234,79 +234,14 @@
   <script>
     const q = document.getElementById('q');
     const items = Array.from(document.querySelectorAll('#list .item'));
-    const stateLinks = Array.from(document.querySelectorAll('#list .item a')).map(function (a) {
-      return { label: a.textContent.trim(), url: a.getAttribute('href') };
-    });
-    const suggestionList = document.createElement('datalist');
-    suggestionList.id = 'q-suggestions';
-    document.body.appendChild(suggestionList);
-    q.setAttribute('list', 'q-suggestions');
-
-    function normalize(value) {
-      return (value || '').toLowerCase().replace(/[^a-z0-9]/g, '');
-    }
-
-    let routeIndex = [];
-    fetch('/sitemap.xml').then(function (response) {
-      return response.ok ? response.text() : '';
-    }).then(function (xmlText) {
-      if (!xmlText) return;
-      const xml = new DOMParser().parseFromString(xmlText, 'application/xml');
-      const urls = Array.from(xml.querySelectorAll('url > loc')).map(function (loc) { return loc.textContent || ''; });
-      routeIndex = urls.map(function (u) {
-        try {
-          const path = new URL(u).pathname;
-          const bits = path.replace(/^\//, '').replace(/\/$/, '').split('/');
-          if (bits[0] !== 'cost-of-living' || bits.length < 2) return null;
-          if (bits.length === 2) return { label: bits[1].replace(/-/g, ' '), url: path };
-          if (bits.length === 3) return { label: bits[2].replace(/-/g, ' ') + ', ' + bits[1].replace(/-/g, ' '), url: path };
-        } catch (e) {}
-        return null;
-      }).filter(Boolean);
-      renderSuggestions(q.value);
-    }).catch(function () {});
-
-    function filter() {
+    function filter(){
       const term = q.value.trim().toLowerCase();
-      items.forEach(function (li) {
+      items.forEach(li => {
         const text = li.textContent.toLowerCase();
         li.style.display = text.includes(term) ? '' : 'none';
       });
-      renderSuggestions(term);
     }
-
-    function renderSuggestions(term) {
-      const n = normalize(term);
-      suggestionList.innerHTML = '';
-      if (!n) return;
-      routeIndex.concat(stateLinks)
-        .filter(function (entry) { return normalize(entry.label).indexOf(n) !== -1; })
-        .slice(0, 10)
-        .forEach(function (entry) {
-          const option = document.createElement('option');
-          option.value = entry.label.replace(/\b\w/g, function (c) { return c.toUpperCase(); });
-          suggestionList.appendChild(option);
-        });
-    }
-
-    function routeSearch() {
-      const term = q.value.trim();
-      if (!term) return;
-      const n = normalize(term);
-      const merged = routeIndex.concat(stateLinks);
-      const match = merged.find(function (entry) { return normalize(entry.label) === n; }) ||
-        merged.find(function (entry) { return normalize(entry.label).indexOf(n) === 0; });
-      if (match) window.location.href = match.url;
-    }
-
     q.addEventListener('input', filter);
-    q.addEventListener('change', routeSearch);
-    q.addEventListener('keydown', function (event) {
-      if (event.key === 'Enter') {
-        event.preventDefault();
-        routeSearch();
-      }
-    });
   </script>
   <script>
     const stateUrlByAbbr = {"AL":"/cost-of-living/alabama/","AK":"/cost-of-living/alaska/","AZ":"/cost-of-living/arizona/","AR":"/cost-of-living/arkansas/","CA":"/cost-of-living/california/","CO":"/cost-of-living/colorado/","CT":"/cost-of-living/connecticut/","DE":"/cost-of-living/delaware/","FL":"/cost-of-living/florida/","GA":"/cost-of-living/georgia/","HI":"/cost-of-living/hawaii/","ID":"/cost-of-living/idaho/","IL":"/cost-of-living/illinois/","IN":"/cost-of-living/indiana/","IA":"/cost-of-living/iowa/","KS":"/cost-of-living/kansas/","KY":"/cost-of-living/kentucky/","LA":"/cost-of-living/louisiana/","ME":"/cost-of-living/maine/","MD":"/cost-of-living/maryland/","MA":"/cost-of-living/massachusetts/","MI":"/cost-of-living/michigan/","MN":"/cost-of-living/minnesota/","MS":"/cost-of-living/mississippi/","MO":"/cost-of-living/missouri/","MT":"/cost-of-living/montana/","NE":"/cost-of-living/nebraska/","NV":"/cost-of-living/nevada/","NH":"/cost-of-living/new-hampshire/","NJ":"/cost-of-living/new-jersey/","NM":"/cost-of-living/new-mexico/","NY":"/cost-of-living/new-york/","NC":"/cost-of-living/north-carolina/","ND":"/cost-of-living/north-dakota/","OH":"/cost-of-living/ohio/","OK":"/cost-of-living/oklahoma/","OR":"/cost-of-living/oregon/","PA":"/cost-of-living/pennsylvania/","RI":"/cost-of-living/rhode-island/","SC":"/cost-of-living/south-carolina/","SD":"/cost-of-living/south-dakota/","TN":"/cost-of-living/tennessee/","TX":"/cost-of-living/texas/","UT":"/cost-of-living/utah/","VT":"/cost-of-living/vermont/","VA":"/cost-of-living/virginia/","WA":"/cost-of-living/washington/","WV":"/cost-of-living/west-virginia/","WI":"/cost-of-living/wisconsin/","WY":"/cost-of-living/wyoming/"};
