@@ -59,11 +59,9 @@ CITY_PAGE_ROOT = REPO_ROOT
 DATA_DB.parent.mkdir(parents=True, exist_ok=True)
 
 API_KEYS = {
-    "fbi": os.getenv("DATA_GOV_FBI_API_KEY", "k2jJkNhwAoQDgGXCTvXwvHpuyeFRyD49YwMvbTrC"),
-    "census": os.getenv("CENSUS_API_KEY", "a8fbaff5b31f948e263efac8e6c03b9ad8deeea0"),
-    "eia": os.getenv("EIA_API_KEY", "2OKDrEV0VEb6XGdTbFfRVXzEzIdnBMbhJyTGjtog"),
-    "bls": os.getenv("BLS_API_KEY", "2bc6633b9a5f45ab901af3ee3a43e0c1"),
-    "ncdc": os.getenv("NCDC_API_TOKEN", "gBfLvnYkHcPaGKrxekXCYefqJRJoamQA"),
+    "census": os.getenv("CENSUS_API_KEY", "").strip(),
+    "eia": os.getenv("EIA_API_KEY", "").strip(),
+    "bls": os.getenv("BLS_API_KEY", "").strip(),
 }
 
 
@@ -99,12 +97,15 @@ def _safe_metric(fetcher, fallback: Any = None) -> Any:
 
 
 def fetch_city_metrics_from_apis(city_name: str, state_name: str) -> tuple[dict[str, Any], dict[str, Any]]:
-    qcity = quote(city_name)
-    qstate = quote(state_name)
     sources: dict[str, Any] = {}
 
-    census = _safe_metric(lambda: _http_get_json(f"https://api.census.gov/data/2023/acs/acs5?get=NAME,B19013_001E,B25077_001E&for=place:*&in=state:*&key={API_KEYS['census']}"), [])
-    sources["census"] = "https://api.census.gov/data/2023/acs/acs5"
+    census = []
+    if API_KEYS["census"]:
+        census = _safe_metric(lambda: _http_get_json(
+            f"https://api.census.gov/data/2023/acs/acs5?get=NAME,B19013_001E,B25077_001E&for=place:*&in=state:*&key={API_KEYS['census']}"
+        ), [])
+        sources["census"] = "https://api.census.gov/data/2023/acs/acs5"
+
     population = None
     median_income = None
     median_home_value = None
@@ -123,37 +124,31 @@ def fetch_city_metrics_from_apis(city_name: str, state_name: str) -> tuple[dict[
         except Exception:
             pass
 
-    eia = _safe_metric(lambda: _http_get_json(f"https://api.eia.gov/v2/electricity/retail-sales/data/?api_key={API_KEYS['eia']}&frequency=monthly&data[0]=price&sort[0][column]=period&sort[0][direction]=desc&offset=0&length=1"), {})
-    sources["eia"] = "https://api.eia.gov/v2/electricity/retail-sales/data/"
+    eia = {}
+    if API_KEYS["eia"]:
+        eia = _safe_metric(lambda: _http_get_json(
+            f"https://api.eia.gov/v2/electricity/retail-sales/data/?api_key={API_KEYS['eia']}&frequency=monthly&data[0]=price&sort[0][column]=period&sort[0][direction]=desc&offset=0&length=1"
+        ), {})
+        sources["eia"] = "https://api.eia.gov/v2/electricity/retail-sales/data/"
+
     electricity_price = None
     try:
         electricity_price = eia.get("response", {}).get("data", [])[0].get("price")
     except Exception:
         pass
 
-    bls = _safe_metric(lambda: _http_get_json("https://api.bls.gov/publicAPI/v2/timeseries/data/LAUCN270010000000005?registrationkey=" + API_KEYS["bls"]), {})
-    sources["bls"] = "https://api.bls.gov/publicAPI/v2/timeseries/data/"
+    bls = {}
+    if API_KEYS["bls"]:
+        bls = _safe_metric(lambda: _http_get_json(
+            "https://api.bls.gov/publicAPI/v2/timeseries/data/LAUCN270010000000005?registrationkey=" + API_KEYS["bls"]
+        ), {})
+        sources["bls"] = "https://api.bls.gov/publicAPI/v2/timeseries/data/"
+
     unemployment_rate = None
     try:
         unemployment_rate = bls.get("Results", {}).get("series", [])[0].get("data", [])[0].get("value")
     except Exception:
         pass
-
-    ncdc = _safe_metric(lambda: _http_get_json(f"https://www.ncei.noaa.gov/cdo-web/api/v2/stations?datasetid=GHCND&limit=1&locationid=FIPS:27", headers={"token": API_KEYS["ncdc"]}), {})
-    sources["ncdc"] = "https://www.ncei.noaa.gov/cdo-web/api/v2/"
-    weather_station = None
-    try:
-        weather_station = ncdc.get("results", [])[0].get("name")
-    except Exception:
-        pass
-
-    fema = _safe_metric(lambda: _http_get_json("https://www.fema.gov/api/open/v1/NriCounty"), {})
-    sources["fema"] = "https://www.fema.gov/api/open/v1/NriCounty"
-    fema_sample_records = len(fema.get("NriCounty", [])) if isinstance(fema, dict) else 0
-
-    fbi = _safe_metric(lambda: _http_get_json(f"https://api.usa.gov/crime/fbi/cde/arrest/state/MN/all?API_KEY={API_KEYS['fbi']}&from=2024&to=2024"), {})
-    sources["fbi"] = "https://api.usa.gov/crime/fbi/cde/arrest/state/{state}/all"
-    arrests_sample = len(fbi.get("data", [])) if isinstance(fbi, dict) else 0
 
     payload = {
         "city": city_name,
@@ -163,9 +158,6 @@ def fetch_city_metrics_from_apis(city_name: str, state_name: str) -> tuple[dict[
         "median_home_value": median_home_value,
         "electricity_price_cents_per_kwh": electricity_price,
         "unemployment_rate": unemployment_rate,
-        "weather_station": weather_station,
-        "fema_county_records_sample": fema_sample_records,
-        "fbi_arrest_records_sample": arrests_sample,
         "refreshed_at_utc": _iso_utc(),
     }
     return payload, sources
@@ -196,7 +188,7 @@ def upsert_city_data(state_slug: str, city_slug: str, city_name: str, state_name
 
 def city_page_html(record: dict[str, Any]) -> str:
     d = record["data"]
-    return f"""<!doctype html><html><head><meta charset='utf-8'><title>{record['city_name']}, {record['state_name']} Data | DataByArea</title></head><body><h1>{record['city_name']}, {record['state_name']}</h1><p>Population: {d.get('population','N/A')}</p><p>Median household income: {d.get('median_household_income','N/A')}</p><p>Median home value: {d.get('median_home_value','N/A')}</p><p>Electricity price (c/kWh): {d.get('electricity_price_cents_per_kwh','N/A')}</p><p>Unemployment rate: {d.get('unemployment_rate','N/A')}</p><p>Weather station: {d.get('weather_station','N/A')}</p><p>FEMA risk sample records: {d.get('fema_county_records_sample','N/A')}</p><p>FBI arrest sample records: {d.get('fbi_arrest_records_sample','N/A')}</p></body></html>"""
+    return f"""<!doctype html><html><head><meta charset='utf-8'><title>{record['city_name']}, {record['state_name']} Data | DataByArea</title></head><body><h1>{record['city_name']}, {record['state_name']}</h1><p>Population: {d.get('population','N/A')}</p><p>Median household income: {d.get('median_household_income','N/A')}</p><p>Median home value: {d.get('median_home_value','N/A')}</p><p>Electricity price (c/kWh): {d.get('electricity_price_cents_per_kwh','N/A')}</p><p>Unemployment rate: {d.get('unemployment_rate','N/A')}</p></body></html>"""
 
 
 def ensure_city_page(state_slug: str, city_slug: str) -> dict[str, Any]:

@@ -281,7 +281,15 @@
   (function () {
     var tabs = document.querySelectorAll('.area-pill-tabs .area-tab');
     var areaGrid = document.querySelector('.area-grid');
+    var stickyHeader = document.querySelector('.area-top-nav');
+    var stickyTabs = document.querySelector('.area-pill-tabs');
     if (!tabs.length || !areaGrid) return;
+
+    function getStickyOffset() {
+      var headerHeight = stickyHeader ? stickyHeader.offsetHeight : 0;
+      var tabsHeight = stickyTabs ? stickyTabs.offsetHeight : 0;
+      return headerHeight + tabsHeight + 12;
+    }
 
     function activateTab(tab) {
       tabs.forEach(function (item) {
@@ -297,8 +305,19 @@
       var panel = document.querySelector(panelId);
       if (!panel || !areaGrid.contains(panel)) return;
 
-      areaGrid.prepend(panel);
-      areaGrid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      var title = panel.querySelector('h2');
+      document.querySelectorAll('.area-card.is-targeted').forEach(function (card) {
+        card.classList.remove('is-targeted');
+      });
+      document.querySelectorAll('.area-card h2.is-targeted').forEach(function (heading) {
+        heading.classList.remove('is-targeted');
+      });
+
+      panel.classList.add('is-targeted');
+      if (title) title.classList.add('is-targeted');
+
+      var top = panel.getBoundingClientRect().top + window.scrollY - getStickyOffset();
+      window.scrollTo({ top: top, behavior: 'smooth' });
     }
 
     tabs.forEach(function (tab) {
