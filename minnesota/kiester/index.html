@@ -71,9 +71,9 @@
             <caption>Utilities baseline (placeholder)</caption>
             <thead><tr><th>Metric</th><th>Value</th></tr></thead>
             <tbody>
-              <tr><td>Electricity rate</td><td>$0.154/kWh</td></tr>
-              <tr><td>Water bill avg</td><td>$48/mo</td></tr>
-              <tr><td>Gas rate</td><td>$1.18/CCF</td></tr>
+              <tr><td>Electricity rate</td><td data-field="electricity_rate">$0.154/kWh</td></tr>
+              <tr><td>Water bill avg</td><td data-field="water_bill">$48/mo</td></tr>
+              <tr><td>Gas rate</td><td data-field="gas_rate">$1.18/CCF</td></tr>
             </tbody>
           </table>
 
@@ -118,9 +118,9 @@
             <caption>Demographic table (placeholder)</caption>
             <thead><tr><th>Measure</th><th>Estimate</th></tr></thead>
             <tbody>
-              <tr><td>Population</td><td>507</td></tr>
-              <tr><td>Median age</td><td>39.7</td></tr>
-              <tr><td>Bachelor+</td><td>22.4%</td></tr>
+              <tr><td>Population</td><td data-field="population">507</td></tr>
+              <tr><td>Median age</td><td data-field="median_age">39.7</td></tr>
+              <tr><td>Bachelor+</td><td data-field="bachelors_plus">22.4%</td></tr>
             </tbody>
           </table>
         </article>
@@ -146,9 +146,9 @@
             <caption>Schools and index values (placeholder)</caption>
             <thead><tr><th>Indicator</th><th>Value</th></tr></thead>
             <tbody>
-              <tr><td>Math proficiency</td><td>53%</td></tr>
-              <tr><td>Reading proficiency</td><td>58%</td></tr>
-              <tr><td>Student-teacher ratio</td><td>14:1</td></tr>
+              <tr><td>Math proficiency</td><td data-field="math_proficiency">53%</td></tr>
+              <tr><td>Reading proficiency</td><td data-field="reading_proficiency">58%</td></tr>
+              <tr><td>Student-teacher ratio</td><td data-field="student_teacher_ratio">14:1</td></tr>
             </tbody>
           </table>
 
@@ -174,9 +174,9 @@
             <caption>Local economy fallback table (placeholder)</caption>
             <thead><tr><th>Metric</th><th>Value</th></tr></thead>
             <tbody>
-              <tr><td>Unemployment</td><td>3.6%</td></tr>
-              <tr><td>Median wage</td><td>$48,400</td></tr>
-              <tr><td>Labor force</td><td>264</td></tr>
+              <tr><td>Unemployment</td><td data-field="unemployment">3.6%</td></tr>
+              <tr><td>Median wage</td><td data-field="median_wage">$48,400</td></tr>
+              <tr><td>Labor force</td><td data-field="labor_force">264</td></tr>
             </tbody>
           </table>
 
@@ -215,9 +215,9 @@
             <caption>Real estate table (placeholder)</caption>
             <thead><tr><th>Indicator</th><th>Value</th></tr></thead>
             <tbody>
-              <tr><td>Median home value</td><td>$189,300</td></tr>
-              <tr><td>Median property tax</td><td>$2,190</td></tr>
-              <tr><td>Rent (2-bed)</td><td>$975/mo</td></tr>
+              <tr><td>Median home value</td><td data-field="home_value">$189,300</td></tr>
+              <tr><td>Median property tax</td><td data-field="property_tax">$2,190</td></tr>
+              <tr><td>Rent (2-bed)</td><td data-field="rent_2br">$975/mo</td></tr>
             </tbody>
           </table>
         </article>
@@ -238,9 +238,9 @@
             <caption>Climate table (placeholder)</caption>
             <thead><tr><th>Measure</th><th>Value</th></tr></thead>
             <tbody>
-              <tr><td>Sunny days</td><td>196</td></tr>
-              <tr><td>Annual snowfall</td><td>43 in</td></tr>
-              <tr><td>NOAA hazard risk score</td><td>Moderate</td></tr>
+              <tr><td>Sunny days</td><td data-field="sunny_days">196</td></tr>
+              <tr><td>Annual snowfall</td><td data-field="annual_snowfall">43 in</td></tr>
+              <tr><td>NOAA hazard risk score</td><td data-field="hazard_risk">Moderate</td></tr>
             </tbody>
           </table>
         </article>
@@ -309,6 +309,78 @@
     });
   })();
 </script>
+  <script>
+  (function () {
+    var fieldNodes = document.querySelectorAll('[data-field]');
+    if (!fieldNodes.length) return;
+
+    var defaults = {};
+    fieldNodes.forEach(function (node) {
+      defaults[node.dataset.field] = node.textContent.trim();
+    });
+
+    function toNumber(value) {
+      var num = Number(value);
+      return Number.isFinite(num) ? num : null;
+    }
+
+    function formatters(key, value) {
+      if (value == null || value === '') return null;
+      var n = toNumber(value);
+      switch (key) {
+        case 'electricity_rate':
+          return n == null ? null : '$' + n.toFixed(3) + '/kWh';
+        case 'water_bill':
+          return n == null ? null : '$' + Math.round(n) + '/mo';
+        case 'gas_rate':
+          return n == null ? null : '$' + n.toFixed(2) + '/CCF';
+        case 'population':
+        case 'labor_force':
+        case 'sunny_days':
+          return n == null ? null : n.toLocaleString();
+        case 'median_age':
+          return n == null ? null : n.toFixed(1);
+        case 'bachelors_plus':
+        case 'unemployment':
+        case 'math_proficiency':
+        case 'reading_proficiency':
+          return n == null ? null : n.toFixed(1) + '%';
+        case 'median_wage':
+        case 'home_value':
+        case 'property_tax':
+          return n == null ? null : '$' + Math.round(n).toLocaleString();
+        case 'rent_2br':
+          return n == null ? null : '$' + Math.round(n).toLocaleString() + '/mo';
+        case 'annual_snowfall':
+          return n == null ? null : n.toFixed(1) + ' in';
+        default:
+          return String(value);
+      }
+    }
+
+    function applyData(metrics) {
+      fieldNodes.forEach(function (node) {
+        var key = node.dataset.field;
+        var raw = metrics[key];
+        var formatted = formatters(key, raw);
+        node.textContent = formatted || defaults[key];
+      });
+    }
+
+    fetch('/api/databyarea/minnesota/kiester')
+      .then(function (res) {
+        if (!res.ok) throw new Error('City data request failed');
+        return res.json();
+      })
+      .then(function (payload) {
+        var metrics = payload && payload.record && payload.record.data ? payload.record.data : {};
+        applyData(metrics);
+      })
+      .catch(function () {
+        applyData({});
+      });
+  })();
+  </script>
   <script defer src="/assets/version-footer.js"></script>
 </body>
 </html>
