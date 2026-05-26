@@ -273,6 +273,41 @@
   }
 
 
+
+  function initStateCitySearch() {
+    if (window.location.pathname.indexOf('/cost-of-living/') !== 0) return;
+    var bits = window.location.pathname.replace(/^\//, '').replace(/\/$/, '').split('/');
+    if (bits.length !== 2) return;
+    var citySelector = document.querySelector('select[id^="cost-of-living-"][id$="-city-selector"]');
+    if (!citySelector || citySelector.dataset.searchReady === '1') return;
+    citySelector.dataset.searchReady = '1';
+
+    var wrap = document.createElement('div');
+    wrap.className = 'city-search-inline';
+    wrap.innerHTML = '<label for="state-city-search"><strong>Search city or ZIP (Cost of Living)</strong></label><input id="state-city-search" class="input" type="search" placeholder="Type a city (e.g., Kiester, MN) or ZIP" autocomplete="off" list="state-city-search-list"><datalist id="state-city-search-list"></datalist>';
+    citySelector.parentNode.insertBefore(wrap, citySelector);
+
+    var input = wrap.querySelector('#state-city-search');
+    var datalist = wrap.querySelector('#state-city-search-list');
+    var options = Array.from(citySelector.options).filter(function (o) { return o.value; }).map(function (o) { return { label: o.textContent.trim(), url: o.value }; });
+    function norm(v){ return (v || '').toLowerCase().replace(/[^a-z0-9]/g, ''); }
+    function render(term) {
+      var n = norm(term); datalist.innerHTML = ''; if (!n) return;
+      options.filter(function (entry) { return norm(entry.label).indexOf(n) !== -1; }).slice(0, 8).forEach(function (entry) {
+        var opt = document.createElement('option'); opt.value = entry.label; datalist.appendChild(opt);
+      });
+      if ('kiestermn'.indexOf(n) === 0) { var ki = document.createElement('option'); ki.value = 'Kiester, MN'; datalist.appendChild(ki); }
+    }
+    function go() {
+      var n = norm(input.value); if (!n) return;
+      var found = options.find(function (entry) { return norm(entry.label) === n; }) || options.find(function (entry) { return norm(entry.label).indexOf(n) === 0; });
+      if (found) window.location.href = found.url;
+    }
+    input.addEventListener('input', function () { render(input.value); });
+    input.addEventListener('change', go);
+    input.addEventListener('keydown', function (event) { if (event.key === 'Enter') { event.preventDefault(); go(); } });
+  }
+
   function syncInsightSelectorsAndTabs() {
     var path = window.location.pathname.replace(/\/+$/, '');
     var parts = path.split('/').filter(Boolean);
@@ -336,6 +371,7 @@
   routeInsightCityLinks();
   initAreaInsightTab();
   syncInsightSelectorsAndTabs();
+  initStateCitySearch();
 
   const root = document.createElement('div');
   root.id = 'site-version-footer';
