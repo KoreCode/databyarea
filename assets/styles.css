@@ -191,7 +191,7 @@ a:focus-visible{outline:3px solid #93b4d2;outline-offset:2px;border-radius:8px}
 }
 
 .home-nav .brand-text strong{font-size:28px}
-.home-navlinks{gap:18px}
+.home-navlinks{gap:18px;margin-left:auto;justify-content:flex-end;align-items:center}
 .home-navlinks .pill{font-size:16px}
 
 .home-hero{
