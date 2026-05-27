@@ -64,6 +64,19 @@ API_KEYS = {
     "bls": os.getenv("BLS_API_KEY", "").strip(),
 }
 
+STATE_FIPS = {
+    "alabama": "01", "alaska": "02", "arizona": "04", "arkansas": "05", "california": "06", "colorado": "08",
+    "connecticut": "09", "delaware": "10", "district of columbia": "11", "florida": "12", "georgia": "13",
+    "hawaii": "15", "idaho": "16", "illinois": "17", "indiana": "18", "iowa": "19", "kansas": "20",
+    "kentucky": "21", "louisiana": "22", "maine": "23", "maryland": "24", "massachusetts": "25",
+    "michigan": "26", "minnesota": "27", "mississippi": "28", "missouri": "29", "montana": "30",
+    "nebraska": "31", "nevada": "32", "new hampshire": "33", "new jersey": "34", "new mexico": "35",
+    "new york": "36", "north carolina": "37", "north dakota": "38", "ohio": "39", "oklahoma": "40",
+    "oregon": "41", "pennsylvania": "42", "rhode island": "44", "south carolina": "45", "south dakota": "46",
+    "tennessee": "47", "texas": "48", "utah": "49", "vermont": "50", "virginia": "51", "washington": "53",
+    "west virginia": "54", "wisconsin": "55", "wyoming": "56",
+}
+
 
 def ensure_city_data_db() -> None:
     with sqlite3.connect(DATA_DB) as conn:
@@ -102,27 +115,51 @@ def fetch_city_metrics_from_apis(city_name: str, state_name: str) -> tuple[dict[
     census = []
     if API_KEYS["census"]:
         census = _safe_metric(lambda: _http_get_json(
-            f"https://api.census.gov/data/2023/acs/acs5?get=NAME,B19013_001E,B25077_001E&for=place:*&in=state:*&key={API_KEYS['census']}"
+            f"https://api.census.gov/data/2023/acs/acs5?get=NAME,B19013_001E,B25077_001E,B25103_001E&for=place:*&in=state:*&key={API_KEYS['census']}"
         ), [])
         sources["census"] = "https://api.census.gov/data/2023/acs/acs5"
 
     population = None
     median_income = None
     median_home_value = None
+    median_property_tax_paid = None
     if isinstance(census, list) and len(census) > 1:
         headers = census[0]
         try:
             i_name = headers.index("NAME")
             i_income = headers.index("B19013_001E")
             i_home = headers.index("B25077_001E")
+            i_prop_tax = headers.index("B25103_001E") if "B25103_001E" in headers else None
             for row in census[1:]:
                 name = row[i_name]
                 if city_name.lower() in name.lower() and state_name.lower() in name.lower():
                     median_income = row[i_income]
                     median_home_value = row[i_home]
+                    if i_prop_tax is not None:
+                        median_property_tax_paid = row[i_prop_tax]
                     break
         except Exception:
             pass
+
+    state_sales_tax_rate_pct = None
+    if API_KEYS["census"]:
+        state_fips = STATE_FIPS.get(state_name.lower())
+        if state_fips:
+            state_tax = _safe_metric(lambda: _http_get_json(
+                f"https://api.census.gov/data/2023/acs/acs5?get=NAME,B08134_001E,B08134_002E&for=state:{state_fips}&key={API_KEYS['census']}"
+            ), [])
+            if isinstance(state_tax, list) and len(state_tax) > 1:
+                head = state_tax[0]
+                row = state_tax[1]
+                try:
+                    i_rev = head.index("B08134_001E")
+                    i_tax = head.index("B08134_002E")
+                    revenue = float(row[i_rev]) if row[i_rev] not in ("", None) else 0.0
+                    tax = float(row[i_tax]) if row[i_tax] not in ("", None) else 0.0
+                    if revenue > 0:
+                        state_sales_tax_rate_pct = round((tax / revenue) * 100, 3)
+                except Exception:
+                    pass
 
     eia = {}
     if API_KEYS["eia"]:
@@ -132,10 +169,21 @@ def fetch_city_metrics_from_apis(city_name: str, state_name: str) -> tuple[dict[
         sources["eia"] = "https://api.eia.gov/v2/electricity/retail-sales/data/"
 
     electricity_price = None
+    gasoline_price_usd_per_gallon = None
     try:
         electricity_price = eia.get("response", {}).get("data", [])[0].get("price")
     except Exception:
         pass
+    if API_KEYS["eia"]:
+        fuel = _safe_metric(lambda: _http_get_json(
+            f"https://api.eia.gov/v2/petroleum/pri/gnd/data/?api_key={API_KEYS['eia']}&frequency=weekly&data[0]=value&facets[product][]=EPMR&facets[duoarea][]=NUS&sort[0][column]=period&sort[0][direction]=desc&offset=0&length=1"
+        ), {})
+        if fuel:
+            sources["eia_fuel"] = "https://api.eia.gov/v2/petroleum/pri/gnd/data/"
+        try:
+            gasoline_price_usd_per_gallon = fuel.get("response", {}).get("data", [])[0].get("value")
+        except Exception:
+            pass
 
     bls = {}
     if API_KEYS["bls"]:
@@ -156,7 +204,10 @@ def fetch_city_metrics_from_apis(city_name: str, state_name: str) -> tuple[dict[
         "population": population,
         "median_household_income": median_income,
         "median_home_value": median_home_value,
+        "median_property_tax_paid_usd": median_property_tax_paid,
+        "estimated_state_sales_tax_rate_percent": state_sales_tax_rate_pct,
         "electricity_price_cents_per_kwh": electricity_price,
+        "gasoline_price_usd_per_gallon": gasoline_price_usd_per_gallon,
         "unemployment_rate": unemployment_rate,
         "refreshed_at_utc": _iso_utc(),
     }
@@ -188,7 +239,7 @@ def upsert_city_data(state_slug: str, city_slug: str, city_name: str, state_name
 
 def city_page_html(record: dict[str, Any]) -> str:
     d = record["data"]
-    return f"""<!doctype html><html><head><meta charset='utf-8'><title>{record['city_name']}, {record['state_name']} Data | DataByArea</title></head><body><h1>{record['city_name']}, {record['state_name']}</h1><p>Population: {d.get('population','N/A')}</p><p>Median household income: {d.get('median_household_income','N/A')}</p><p>Median home value: {d.get('median_home_value','N/A')}</p><p>Electricity price (c/kWh): {d.get('electricity_price_cents_per_kwh','N/A')}</p><p>Unemployment rate: {d.get('unemployment_rate','N/A')}</p></body></html>"""
+    return f"""<!doctype html><html><head><meta charset='utf-8'><title>{record['city_name']}, {record['state_name']} Data | DataByArea</title></head><body><h1>{record['city_name']}, {record['state_name']}</h1><p>Population: {d.get('population','N/A')}</p><p>Median household income: {d.get('median_household_income','N/A')}</p><p>Median home value: {d.get('median_home_value','N/A')}</p><p>Median property tax paid (USD): {d.get('median_property_tax_paid_usd','N/A')}</p><p>Estimated state sales tax rate (%): {d.get('estimated_state_sales_tax_rate_percent','N/A')}</p><p>Electricity price (c/kWh): {d.get('electricity_price_cents_per_kwh','N/A')}</p><p>Gasoline price (USD/gal): {d.get('gasoline_price_usd_per_gallon','N/A')}</p><p>Unemployment rate: {d.get('unemployment_rate','N/A')}</p></body></html>"""
 
 
 def ensure_city_page(state_slug: str, city_slug: str) -> dict[str, Any]:

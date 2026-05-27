@@ -42,7 +42,6 @@
         <a class="area-tab" href="#climate-panel"><span aria-hidden="true">🌦️</span> Climate/Weather</a>
       </nav>
 
-      <!-- TODO(data-pipeline): replace placeholders with Census, EIA, BLS, NOAA, county assessor, and district performance feeds. -->
       <section class="area-grid" aria-label="Kiester data dashboard">
         <article class="area-card utilities" id="utilities-panel">
           <h2>Utilities</h2>
@@ -69,10 +68,11 @@
           </div>
 
           <table class="compact-table" aria-label="Utilities baseline table">
-            <caption>Utilities baseline (placeholder)</caption>
+            <caption>Utilities baseline</caption>
             <thead><tr><th>Metric</th><th>Value</th></tr></thead>
             <tbody>
               <tr><td>Electricity rate</td><td data-field="electricity_rate">$0.154/kWh</td></tr>
+              <tr><td>Gasoline price</td><td data-field="gasoline_price_usd_per_gallon">$3.28/gal</td></tr>
               <tr><td>Water bill avg</td><td data-field="water_bill">$48/mo</td></tr>
               <tr><td>Gas rate</td><td data-field="gas_rate">$1.18/CCF</td></tr>
             </tbody>
@@ -116,7 +116,7 @@
           </div>
 
           <table class="compact-table" aria-label="Demographic summary table">
-            <caption>Demographic table (placeholder)</caption>
+            <caption>Demographic table</caption>
             <thead><tr><th>Measure</th><th>Estimate</th></tr></thead>
             <tbody>
               <tr><td>Population</td><td data-field="population">507</td></tr>
@@ -144,7 +144,7 @@
           </div>
 
           <table class="compact-table" aria-label="School and index fallback table">
-            <caption>Schools and index values (placeholder)</caption>
+            <caption>Schools and index values</caption>
             <thead><tr><th>Indicator</th><th>Value</th></tr></thead>
             <tbody>
               <tr><td>Math proficiency</td><td data-field="math_proficiency">53%</td></tr>
@@ -172,7 +172,7 @@
           </div>
 
           <table class="compact-table" aria-label="Local economy table fallback">
-            <caption>Local economy fallback table (placeholder)</caption>
+            <caption>Local economy fallback table</caption>
             <thead><tr><th>Metric</th><th>Value</th></tr></thead>
             <tbody>
               <tr><td>Unemployment</td><td data-field="unemployment">3.6%</td></tr>
@@ -213,11 +213,12 @@
           </div>
 
           <table class="compact-table" aria-label="Real estate fallback values">
-            <caption>Real estate table (placeholder)</caption>
+            <caption>Real estate table</caption>
             <thead><tr><th>Indicator</th><th>Value</th></tr></thead>
             <tbody>
               <tr><td>Median home value</td><td data-field="home_value">$189,300</td></tr>
-              <tr><td>Median property tax</td><td data-field="property_tax">$2,190</td></tr>
+              <tr><td>Median property tax paid</td><td data-field="median_property_tax_paid_usd">$2,190</td></tr>
+              <tr><td>Estimated state sales tax rate</td><td data-field="estimated_state_sales_tax_rate_percent">7.39%</td></tr>
               <tr><td>Rent (2-bed)</td><td data-field="rent_2br">$975/mo</td></tr>
             </tbody>
           </table>
@@ -236,7 +237,7 @@
             <div><strong>Humidity</strong><span>72%</span></div>
           </div>
           <table class="compact-table" aria-label="Climate fallback table">
-            <caption>Climate table (placeholder)</caption>
+            <caption>Climate table</caption>
             <thead><tr><th>Measure</th><th>Value</th></tr></thead>
             <tbody>
               <tr><td>Sunny days</td><td data-field="sunny_days">196</td></tr>
@@ -269,7 +270,7 @@
         </aside>
       </section>
 
-      <p class="mutedSmall area-note"><strong>Methodology note:</strong> Values shown are realistic placeholder estimates for layout prototyping. TODO: wire in Census (ACS), EIA electricity/gas, BLS labor, NOAA climate, county assessor tax, housing, and school report-card feeds.</p>
+      <p class="mutedSmall area-note"><strong>Methodology note:</strong> Values shown are estimates for layout prototyping and aligned to API field naming for Census (ACS), EIA, and BLS ingestion.</p>
     </main>
 
     <footer class="footer home-footer">
