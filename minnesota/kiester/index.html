@@ -83,7 +83,8 @@
             <a href="/utility-costs/">Utilities</a>
             <a href="/cost-of-living/">Cost of Living</a>
           </div>
-        </article>
+
+                  </article>
 
         <article class="area-card demographics" id="demographics-panel">
           <h2>Demographics</h2>
@@ -335,11 +336,6 @@
     var fieldNodes = document.querySelectorAll('[data-field]');
     if (!fieldNodes.length) return;
 
-    var defaults = {};
-    fieldNodes.forEach(function (node) {
-      defaults[node.dataset.field] = node.textContent.trim();
-    });
-
     function toNumber(value) {
       var num = Number(value);
       return Number.isFinite(num) ? num : null;
@@ -380,11 +376,37 @@
     }
 
     function applyData(metrics) {
+      var cardsWithData = new Set();
+
       fieldNodes.forEach(function (node) {
         var key = node.dataset.field;
         var raw = metrics[key];
-        var formatted = formatters(key, raw);
-        node.textContent = formatted || defaults[key];
+        var row = node.closest('tr');
+        var hasValue = raw != null && raw !== '';
+
+        if (hasValue) {
+          var formatted = formatters(key, raw);
+          node.textContent = formatted || String(raw);
+          if (row) row.style.display = '';
+
+          var card = node.closest('.area-card');
+          if (card) cardsWithData.add(card);
+        } else if (row) {
+          row.style.display = 'none';
+        }
+      });
+
+      document.querySelectorAll('.area-card').forEach(function (card) {
+        if (card.classList.contains('comparison')) return;
+
+        var dataCells = card.querySelectorAll('[data-field]');
+        if (!dataCells.length) return;
+
+        if (!cardsWithData.has(card)) {
+          card.style.display = 'none';
+        } else {
+          card.style.display = '';
+        }
       });
     }
 
