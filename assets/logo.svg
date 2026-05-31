@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1320 260" role="img" aria-labelledby="title desc">
+  <title id="title">DataByArea.com logo</title>
+  <desc id="desc">A navy location pin with an upward blue analytics arrow followed by the DataByArea.com wordmark.</desc>
+  <defs>
+    <linearGradient id="navy" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0b315f"/>
+      <stop offset="1" stop-color="#061f43"/>
+    </linearGradient>
+    <linearGradient id="sky" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#4aa6d2"/>
+      <stop offset="1" stop-color="#7fc6e4"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#08284f" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#softShadow)">
+    <path d="M147 246C108 195 66 155 66 100C66 47 109 9 158 9C207 9 250 47 250 100C250 155 208 195 169 246C164 253 152 253 147 246Z" fill="url(#navy)"/>
+    <circle cx="158" cy="101" r="57" fill="#ffffff"/>
+    <circle cx="158" cy="101" r="39" fill="#ffffff"/>
+  </g>
+
+  <g fill="none" stroke="url(#sky)" stroke-linecap="round" stroke-linejoin="round" filter="url(#softShadow)">
+    <path d="M35 166L144 57L184 98L257 25" stroke-width="23"/>
+    <path d="M223 33L267 14L249 59" stroke-width="20" fill="url(#sky)" stroke="none"/>
+    <circle cx="35" cy="166" r="11" fill="#ffffff" stroke-width="13"/>
+  </g>
+
+  <g font-family="Inter, Segoe UI, Arial, Helvetica, sans-serif" font-weight="800" dominant-baseline="middle">
+    <text x="305" y="132" font-size="128" fill="#64b4da">Data</text>
+    <text x="610" y="132" font-size="128" fill="#082b59">ByArea</text>
+    <text x="1100" y="150" font-size="74" fill="#082b59">.com</text>
+  </g>
+</svg>
