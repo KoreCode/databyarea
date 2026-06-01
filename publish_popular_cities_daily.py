@@ -699,7 +699,7 @@ def ensure_state_index(section: str, state_slug: str):
   <div class="container">
     <div class="nav">
       <div class="brand">
-        <img src="/assets/logo.svg" alt="Data By Area logo" class="logo">
+        <img src="/assets/logo.png" alt="Data By Area logo" class="logo">
         <div class="brand-text">
           <strong>Data By Area</strong>
           <span>Costs • Rates • Public Data</span>
