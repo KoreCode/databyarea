@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" role="img" aria-labelledby="title desc">
+  <title id="title">DataByArea logo mark</title>
+  <desc id="desc">Blue location pin with an upward data trend arrow.</desc>
+  <defs>
+    <linearGradient id="pin" x1="31" y1="24" x2="142" y2="164" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#73d7ff"/>
+      <stop offset="0.42" stop-color="#237fe4"/>
+      <stop offset="1" stop-color="#0d45c7"/>
+    </linearGradient>
+    <linearGradient id="line" x1="12" y1="118" x2="162" y2="28" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#12dfff"/>
+      <stop offset="1" stop-color="#7af8ff"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="shadow" x="-25%" y="-20%" width="150%" height="160%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#082f6f" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <path d="M90 169c-9-11-22-23-35-36C37 115 24 97 24 73 24 34 53 9 90 9s66 25 66 64c0 24-13 42-31 60-13 13-26 25-35 36Z" fill="url(#pin)" filter="url(#shadow)"/>
+  <path d="M44 77a46 46 0 0 1 82-29" fill="none" stroke="#8bdcff" stroke-width="13" stroke-linecap="round" opacity=".92"/>
+  <path d="M135 79a46 46 0 0 1-77 34" fill="none" stroke="#0c58c8" stroke-width="13" stroke-linecap="round" opacity=".95"/>
+  <path d="M39 102h23l24-30 23 20 39-42" fill="none" stroke="#073f9f" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" opacity=".5"/>
+  <path d="M35 98h23l24-30 23 20 46-49" fill="none" stroke="url(#line)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/>
+  <path d="M133 34l31-12-10 32-7-13-14-7Z" fill="url(#line)" filter="url(#glow)"/>
+  <circle cx="24" cy="101" r="9" fill="#21dbff" filter="url(#glow)"/>
+</svg>
