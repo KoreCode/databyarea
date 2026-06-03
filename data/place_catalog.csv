@@ -1,0 +1,450 @@
+label,city,state_slug,state_abbr,url,population
+Alabama,,alabama,AL,/alabama/,
+Alaska,,alaska,AK,/alaska/,
+Arizona,,arizona,AZ,/arizona/,
+Arkansas,,arkansas,AR,/arkansas/,
+California,,california,CA,/california/,
+Colorado,,colorado,CO,/colorado/,
+Connecticut,,connecticut,CT,/connecticut/,
+Delaware,,delaware,DE,/delaware/,
+Florida,,florida,FL,/florida/,
+Georgia,,georgia,GA,/georgia/,
+Hawaii,,hawaii,HI,/hawaii/,
+Idaho,,idaho,ID,/idaho/,
+Illinois,,illinois,IL,/illinois/,
+Indiana,,indiana,IN,/indiana/,
+Iowa,,iowa,IA,/iowa/,
+Kansas,,kansas,KS,/kansas/,
+Kentucky,,kentucky,KY,/kentucky/,
+Louisiana,,louisiana,LA,/louisiana/,
+Maine,,maine,ME,/maine/,
+Maryland,,maryland,MD,/maryland/,
+Massachusetts,,massachusetts,MA,/massachusetts/,
+Michigan,,michigan,MI,/michigan/,
+Minnesota,,minnesota,MN,/minnesota/,
+"Ada, MN",Ada,minnesota,MN,/minnesota/ada/?tab=insights,1740
+"Adrian, MN",Adrian,minnesota,MN,/minnesota/adrian/?tab=insights,1220
+"Afton, MN",Afton,minnesota,MN,/minnesota/afton/?tab=insights,2966
+"Albany, MN",Albany,minnesota,MN,/minnesota/albany/?tab=insights,2647
+"Albert Lea, MN",Albert Lea,minnesota,MN,/minnesota/albert-lea/?tab=insights,18492
+"Albertville, MN",Albertville,minnesota,MN,/minnesota/albertville/?tab=insights,7896
+"Alexandria, MN",Alexandria,minnesota,MN,/minnesota/alexandria/?tab=insights,11843
+"Andover, MN",Andover,minnesota,MN,/minnesota/andover/?tab=insights,32213
+"Annandale, MN",Annandale,minnesota,MN,/minnesota/annandale/?tab=insights,3330
+"Anoka, MN",Anoka,minnesota,MN,/minnesota/anoka/?tab=insights,17921
+"Anoka County, MN",Anoka County,minnesota,MN,/minnesota/anoka-county/?tab=insights,363887
+"Apple Valley, MN",Apple Valley,minnesota,MN,/minnesota/apple-valley/?tab=insights,51221
+"Appleton, MN",Appleton,minnesota,MN,/minnesota/appleton/?tab=insights,1341
+"Arden Hills, MN",Arden Hills,minnesota,MN,/minnesota/arden-hills/?tab=insights,9939
+"Arlington, MN",Arlington,minnesota,MN,/minnesota/arlington/?tab=insights,2169
+"Arnold, MN",Arnold,minnesota,MN,/minnesota/arnold/?tab=insights,2960
+"Atwater, MN",Atwater,minnesota,MN,/minnesota/atwater/?tab=insights,1124
+"Aurora, MN",Aurora,minnesota,MN,/minnesota/aurora/?tab=insights,1666
+"Austin, MN",Austin,minnesota,MN,/minnesota/austin/?tab=insights,26174
+"Avon, MN",Avon,minnesota,MN,/minnesota/avon/?tab=insights,1466
+"Babbitt, MN",Babbitt,minnesota,MN,/minnesota/babbitt/?tab=insights,1397
+"Bagley, MN",Bagley,minnesota,MN,/minnesota/bagley/?tab=insights,1285
+"Barnesville, MN",Barnesville,minnesota,MN,/minnesota/barnesville/?tab=insights,2759
+"Baudette, MN",Baudette,minnesota,MN,/minnesota/baudette/?tab=insights,966
+"Baxter, MN",Baxter,minnesota,MN,/minnesota/baxter/?tab=insights,8612
+"Bayport, MN",Bayport,minnesota,MN,/minnesota/bayport/?tab=insights,4024
+"Becker County, MN",Becker County,minnesota,MN,/minnesota/becker-county/?tab=insights,35183
+"Belle Plaine, MN",Belle Plaine,minnesota,MN,/minnesota/belle-plaine/?tab=insights,6918
+"Beltrami, MN",Beltrami,minnesota,MN,/minnesota/beltrami/?tab=insights,46228
+"Bemidji, MN",Bemidji,minnesota,MN,/minnesota/bemidji/?tab=insights,14574
+"Benson, MN",Benson,minnesota,MN,/minnesota/benson/?tab=insights,5355
+"Benton County, MN",Benton County,minnesota,MN,/minnesota/benton-county/?tab=insights,206873
+"Big Lake, MN",Big Lake,minnesota,MN,/minnesota/big-lake/?tab=insights,10368
+"Birchwood, MN",Birchwood,minnesota,MN,/minnesota/birchwood/?tab=insights,1139
+"Blaine, MN",Blaine,minnesota,MN,/minnesota/blaine/?tab=insights,62124
+"Blooming Prairie, MN",Blooming Prairie,minnesota,MN,/minnesota/blooming-prairie/?tab=insights,1974
+"Bloomington, MN",Bloomington,minnesota,MN,/minnesota/bloomington/?tab=insights,89987
+"Braham, MN",Braham,minnesota,MN,/minnesota/braham/?tab=insights,1769
+"Brainerd, MN",Brainerd,minnesota,MN,/minnesota/brainerd/?tab=insights,14395
+"Branch, MN",Branch,minnesota,MN,/minnesota/branch/?tab=insights,2696
+"Breckenridge, MN",Breckenridge,minnesota,MN,/minnesota/breckenridge/?tab=insights,3290
+"Breezy Point, MN",Breezy Point,minnesota,MN,/minnesota/breezy-point/?tab=insights,2574
+"Brooklyn Center, MN",Brooklyn Center,minnesota,MN,/minnesota/brooklyn-center/?tab=insights,33782
+"Brooklyn Park, MN",Brooklyn Park,minnesota,MN,/minnesota/brooklyn-park/?tab=insights,86478
+"Brown, MN",Brown,minnesota,MN,/minnesota/brown/?tab=insights,268740
+"Buffalo, MN",Buffalo,minnesota,MN,/minnesota/buffalo/?tab=insights,16026
+"Burnsville, MN",Burnsville,minnesota,MN,/minnesota/burnsville/?tab=insights,61481
+"Byron, MN",Byron,minnesota,MN,/minnesota/byron/?tab=insights,5328
+"Caledonia, MN",Caledonia,minnesota,MN,/minnesota/caledonia/?tab=insights,2787
+"Cambridge, MN",Cambridge,minnesota,MN,/minnesota/cambridge/?tab=insights,8451
+"Canby, MN",Canby,minnesota,MN,/minnesota/canby/?tab=insights,1709
+"Cannon Falls, MN",Cannon Falls,minnesota,MN,/minnesota/cannon-falls/?tab=insights,4220
+"Carlton County, MN",Carlton County,minnesota,MN,/minnesota/carlton-county/?tab=insights,36207
+"Carver County, MN",Carver County,minnesota,MN,/minnesota/carver-county/?tab=insights,106922
+"Cass, MN",Cass,minnesota,MN,/minnesota/cass/?tab=insights,26598
+"Center City, MN",Center City,minnesota,MN,/minnesota/center-city/?tab=insights,629
+"Centerville, MN",Centerville,minnesota,MN,/minnesota/centerville/?tab=insights,3930
+"Champlin, MN",Champlin,minnesota,MN,/minnesota/champlin/?tab=insights,23919
+"Chanhassen, MN",Chanhassen,minnesota,MN,/minnesota/chanhassen/?tab=insights,25947
+"Chaska, MN",Chaska,minnesota,MN,/minnesota/chaska/?tab=insights,27810
+"Chatfield, MN",Chatfield,minnesota,MN,/minnesota/chatfield/?tab=insights,2799
+"Chippewa, MN",Chippewa,minnesota,MN,/minnesota/chippewa/?tab=insights,66297
+"Chisago, MN",Chisago,minnesota,MN,/minnesota/chisago/?tab=insights,56621
+"Chisago City, MN",Chisago City,minnesota,MN,/minnesota/chisago-city/?tab=insights,5558
+"Chisholm, MN",Chisholm,minnesota,MN,/minnesota/chisholm/?tab=insights,4775
+"Circle Pines, MN",Circle Pines,minnesota,MN,/minnesota/circle-pines/?tab=insights,5025
+"Clara City, MN",Clara City,minnesota,MN,/minnesota/clara-city/?tab=insights,1423
+"Cloquet, MN",Cloquet,minnesota,MN,/minnesota/cloquet/?tab=insights,12568
+"Cohasset, MN",Cohasset,minnesota,MN,/minnesota/cohasset/?tab=insights,2689
+"Cokato, MN",Cokato,minnesota,MN,/minnesota/cokato/?tab=insights,2799
+"Cold Spring, MN",Cold Spring,minnesota,MN,/minnesota/cold-spring/?tab=insights,4164
+"Coleraine, MN",Coleraine,minnesota,MN,/minnesota/coleraine/?tab=insights,2006
+"Collegeville, MN",Collegeville,minnesota,MN,/minnesota/collegeville/?tab=insights,3516
+"Cologne, MN",Cologne,minnesota,MN,/minnesota/cologne/?tab=insights,1605
+"Columbia Heights, MN",Columbia Heights,minnesota,MN,/minnesota/columbia-heights/?tab=insights,21973
+"Columbus, MN",Columbus,minnesota,MN,/minnesota/columbus/?tab=insights,4007
+"Coon Rapids, MN",Coon Rapids,minnesota,MN,/minnesota/coon-rapids/?tab=insights,63599
+"Corcoran, MN",Corcoran,minnesota,MN,/minnesota/corcoran/?tab=insights,5552
+"Cottage Grove, MN",Cottage Grove,minnesota,MN,/minnesota/cottage-grove/?tab=insights,35918
+"Crookston, MN",Crookston,minnesota,MN,/minnesota/crookston/?tab=insights,7482
+"Crosby, MN",Crosby,minnesota,MN,/minnesota/crosby/?tab=insights,2345
+"Cross Lake, MN",Cross Lake,minnesota,MN,/minnesota/cross-lake/?tab=insights,2141
+"Crow Wing, MN",Crow Wing,minnesota,MN,/minnesota/crow-wing/?tab=insights,66123
+"Crystal, MN",Crystal,minnesota,MN,/minnesota/crystal/?tab=insights,22943
+"Dakota, MN",Dakota,minnesota,MN,/minnesota/dakota/?tab=insights,21582
+"Dassel, MN",Dassel,minnesota,MN,/minnesota/dassel/?tab=insights,1472
+"Dawson, MN",Dawson,minnesota,MN,/minnesota/dawson/?tab=insights,1466
+"Dayton, MN",Dayton,minnesota,MN,/minnesota/dayton/?tab=insights,5096
+"Deephaven, MN",Deephaven,minnesota,MN,/minnesota/deephaven/?tab=insights,3899
+"Delano, MN",Delano,minnesota,MN,/minnesota/delano/?tab=insights,5875
+"Dellwood, MN",Dellwood,minnesota,MN,/minnesota/dellwood/?tab=insights,1171
+"Detroit Lakes, MN",Detroit Lakes,minnesota,MN,/minnesota/detroit-lakes/?tab=insights,9869
+"Dilworth, MN",Dilworth,minnesota,MN,/minnesota/dilworth/?tab=insights,4612
+"Dodge, MN",Dodge,minnesota,MN,/minnesota/dodge/?tab=insights,89396
+"Dodge Center, MN",Dodge Center,minnesota,MN,/minnesota/dodge-center/?tab=insights,2844
+"Douglas County, MN",Douglas County,minnesota,MN,/minnesota/douglas-county/?tab=insights,42938
+"Duluth, MN",Duluth,minnesota,MN,/minnesota/duluth/?tab=insights,86697
+"Dundas, MN",Dundas,minnesota,MN,/minnesota/dundas/?tab=insights,1712
+"Eagan, MN",Eagan,minnesota,MN,/minnesota/eagan/?tab=insights,68855
+"Eagle Lake, MN",Eagle Lake,minnesota,MN,/minnesota/eagle-lake/?tab=insights,3278
+"East Bethel, MN",East Bethel,minnesota,MN,/minnesota/east-bethel/?tab=insights,11786
+"East Grand Forks, MN",East Grand Forks,minnesota,MN,/minnesota/east-grand-forks/?tab=insights,9176
+"East Gull Lake, MN",East Gull Lake,minnesota,MN,/minnesota/east-gull-lake/?tab=insights,986
+"Eden Prairie, MN",Eden Prairie,minnesota,MN,/minnesota/eden-prairie/?tab=insights,64198
+"Eden Valley, MN",Eden Valley,minnesota,MN,/minnesota/eden-valley/?tab=insights,1027
+"Edgerton, MN",Edgerton,minnesota,MN,/minnesota/edgerton/?tab=insights,1139
+"Edina, MN",Edina,minnesota,MN,/minnesota/edina/?tab=insights,53494
+"Elbow Lake, MN",Elbow Lake,minnesota,MN,/minnesota/elbow-lake/?tab=insights,1276
+"Elgin, MN",Elgin,minnesota,MN,/minnesota/elgin/?tab=insights,1055
+"Elk River, MN",Elk River,minnesota,MN,/minnesota/elk-river/?tab=insights,25835
+"Elko New Market, MN",Elko New Market,minnesota,MN,/minnesota/elko-new-market/?tab=insights,4846
+"Ely, MN",Ely,minnesota,MN,/minnesota/ely/?tab=insights,3924
+"Esko, MN",Esko,minnesota,MN,/minnesota/esko/?tab=insights,1869
+"Eveleth, MN",Eveleth,minnesota,MN,/minnesota/eveleth/?tab=insights,3493
+"Excelsior, MN",Excelsior,minnesota,MN,/minnesota/excelsior/?tab=insights,2355
+"Eyota, MN",Eyota,minnesota,MN,/minnesota/eyota/?tab=insights,2006
+"Fairfax, MN",Fairfax,minnesota,MN,/minnesota/fairfax/?tab=insights,1172
+"Fairmont, MN",Fairmont,minnesota,MN,/minnesota/fairmont/?tab=insights,10487
+"Falcon Heights, MN",Falcon Heights,minnesota,MN,/minnesota/falcon-heights/?tab=insights,5571
+"Faribault, MN",Faribault,minnesota,MN,/minnesota/faribault/?tab=insights,24453
+"Farmington, MN",Farmington,minnesota,MN,/minnesota/farmington/?tab=insights,24531
+"Fergus Falls, MN",Fergus Falls,minnesota,MN,/minnesota/fergus-falls/?tab=insights,14119
+"Foley, MN",Foley,minnesota,MN,/minnesota/foley/?tab=insights,2711
+"Forest Lake, MN",Forest Lake,minnesota,MN,/minnesota/forest-lake/?tab=insights,20611
+"Fosston, MN",Fosston,minnesota,MN,/minnesota/fosston/?tab=insights,1434
+"Frazee, MN",Frazee,minnesota,MN,/minnesota/frazee/?tab=insights,1335
+"Freeborn, MN",Freeborn,minnesota,MN,/minnesota/freeborn/?tab=insights,30895
+"Fridley, MN",Fridley,minnesota,MN,/minnesota/fridley/?tab=insights,29590
+"Fulda, MN",Fulda,minnesota,MN,/minnesota/fulda/?tab=insights,1371
+"Gaylord, MN",Gaylord,minnesota,MN,/minnesota/gaylord/?tab=insights,2245
+"Gilbert, MN",Gilbert,minnesota,MN,/minnesota/gilbert/?tab=insights,1792
+"Glencoe, MN",Glencoe,minnesota,MN,/minnesota/glencoe/?tab=insights,5521
+"Glenwood, MN",Glenwood,minnesota,MN,/minnesota/glenwood/?tab=insights,2568
+"Glyndon, MN",Glyndon,minnesota,MN,/minnesota/glyndon/?tab=insights,1380
+"Golden Valley, MN",Golden Valley,minnesota,MN,/minnesota/golden-valley/?tab=insights,21270
+"Goodhue County, MN",Goodhue County,minnesota,MN,/minnesota/goodhue-county/?tab=insights,47582
+"Goodview, MN",Goodview,minnesota,MN,/minnesota/goodview/?tab=insights,4158
+"Grand Marais, MN",Grand Marais,minnesota,MN,/minnesota/grand-marais/?tab=insights,1337
+"Grand Meadow, MN",Grand Meadow,minnesota,MN,/minnesota/grand-meadow/?tab=insights,1127
+"Grand Rapids, MN",Grand Rapids,minnesota,MN,/minnesota/grand-rapids/?tab=insights,11127
+"Granite Falls, MN",Granite Falls,minnesota,MN,/minnesota/granite-falls/?tab=insights,2747
+"Grant County, MN",Grant County,minnesota,MN,/minnesota/grant-county/?tab=insights,99123
+"Greenfield, MN",Greenfield,minnesota,MN,/minnesota/greenfield/?tab=insights,2919
+"Hallock, MN",Hallock,minnesota,MN,/minnesota/hallock/?tab=insights,906
+"Ham Lake, MN",Ham Lake,minnesota,MN,/minnesota/ham-lake/?tab=insights,16464
+"Hanover, MN",Hanover,minnesota,MN,/minnesota/hanover/?tab=insights,3289
+"Harris, MN",Harris,minnesota,MN,/minnesota/harris/?tab=insights,1125
+"Hastings, MN",Hastings,minnesota,MN,/minnesota/hastings/?tab=insights,22554
+"Hawley, MN",Hawley,minnesota,MN,/minnesota/hawley/?tab=insights,2179
+"Hayfield, MN",Hayfield,minnesota,MN,/minnesota/hayfield/?tab=insights,1364
+"Hector, MN",Hector,minnesota,MN,/minnesota/hector/?tab=insights,1076
+"Hennepin, MN",Hennepin,minnesota,MN,/minnesota/hennepin/?tab=insights,1281565
+"Hermantown, MN",Hermantown,minnesota,MN,/minnesota/hermantown/?tab=insights,10221
+"Hibbing, MN",Hibbing,minnesota,MN,/minnesota/hibbing/?tab=insights,16214
+"Hinckley, MN",Hinckley,minnesota,MN,/minnesota/hinckley/?tab=insights,1904
+"Hopkins, MN",Hopkins,minnesota,MN,/minnesota/hopkins/?tab=insights,17591
+"Houston County, MN",Houston County,minnesota,MN,/minnesota/houston-county/?tab=insights,18843
+"Howard Lake, MN",Howard Lake,minnesota,MN,/minnesota/howard-lake/?tab=insights,2071
+"Hoyt Lakes, MN",Hoyt Lakes,minnesota,MN,/minnesota/hoyt-lakes/?tab=insights,2020
+"Hubbard, MN",Hubbard,minnesota,MN,/minnesota/hubbard/?tab=insights,21344
+"Hugo, MN",Hugo,minnesota,MN,/minnesota/hugo/?tab=insights,14388
+"Hutchinson, MN",Hutchinson,minnesota,MN,/minnesota/hutchinson/?tab=insights,13913
+"Independence, MN",Independence,minnesota,MN,/minnesota/independence/?tab=insights,3741
+"International Falls, MN",International Falls,minnesota,MN,/minnesota/international-falls/?tab=insights,5802
+"Inver Grove Heights, MN",Inver Grove Heights,minnesota,MN,/minnesota/inver-grove-heights/?tab=insights,35801
+"Isanti County, MN",Isanti County,minnesota,MN,/minnesota/isanti-county/?tab=insights,41135
+"Itasca, MN",Itasca,minnesota,MN,/minnesota/itasca/?tab=insights,45014
+"Ivanhoe, MN",Ivanhoe,minnesota,MN,/minnesota/ivanhoe/?tab=insights,560
+"Janesville, MN",Janesville,minnesota,MN,/minnesota/janesville/?tab=insights,2254
+"Jordan, MN",Jordan,minnesota,MN,/minnesota/jordan/?tab=insights,6076
+"Kandiyohi, MN",Kandiyohi,minnesota,MN,/minnesota/kandiyohi/?tab=insights,43732
+"Kasson, MN",Kasson,minnesota,MN,/minnesota/kasson/?tab=insights,6851
+"Keewatin, MN",Keewatin,minnesota,MN,/minnesota/keewatin/?tab=insights,984
+"Kenyon, MN",Kenyon,minnesota,MN,/minnesota/kenyon/?tab=insights,1894
+"Kiester, MN",Kiester,minnesota,MN,/minnesota/kiester/?tab=insights,
+"La Crescent, MN",La Crescent,minnesota,MN,/minnesota/la-crescent/?tab=insights,5276
+"Lake City, MN",Lake City,minnesota,MN,/minnesota/lake-city/?tab=insights,5027
+"Lake Crystal, MN",Lake Crystal,minnesota,MN,/minnesota/lake-crystal/?tab=insights,2539
+"Lake Elmo, MN",Lake Elmo,minnesota,MN,/minnesota/lake-elmo/?tab=insights,8406
+"Lake Saint Croix Beach, MN",Lake Saint Croix Beach,minnesota,MN,/minnesota/lake-saint-croix-beach/?tab=insights,1051
+"Lake Shore, MN",Lake Shore,minnesota,MN,/minnesota/lake-shore/?tab=insights,1056
+"Lakefield, MN",Lakefield,minnesota,MN,/minnesota/lakefield/?tab=insights,1735
+"Lakeland, MN",Lakeland,minnesota,MN,/minnesota/lakeland/?tab=insights,1839
+"Lakeville, MN",Lakeville,minnesota,MN,/minnesota/lakeville/?tab=insights,60633
+"Lauderdale, MN",Lauderdale,minnesota,MN,/minnesota/lauderdale/?tab=insights,2271
+"Le Center, MN",Le Center,minnesota,MN,/minnesota/le-center/?tab=insights,2517
+"Le Sueur County, MN",Le Sueur County,minnesota,MN,/minnesota/le-sueur-county/?tab=insights,28674
+"Lester Prairie, MN",Lester Prairie,minnesota,MN,/minnesota/lester-prairie/?tab=insights,1894
+"Lewiston, MN",Lewiston,minnesota,MN,/minnesota/lewiston/?tab=insights,1939
+"Lexington, MN",Lexington,minnesota,MN,/minnesota/lexington/?tab=insights,2049
+"Lincoln County, MN",Lincoln County,minnesota,MN,/minnesota/lincoln-county/?tab=insights,86810
+"Lindstrom, MN",Lindstrom,minnesota,MN,/minnesota/lindstrom/?tab=insights,4888
+"Lino Lakes, MN",Lino Lakes,minnesota,MN,/minnesota/lino-lakes/?tab=insights,21399
+"Litchfield, MN",Litchfield,minnesota,MN,/minnesota/litchfield/?tab=insights,6657
+"Little Canada, MN",Little Canada,minnesota,MN,/minnesota/little-canada/?tab=insights,10819
+"Little Falls, MN",Little Falls,minnesota,MN,/minnesota/little-falls/?tab=insights,9140
+"Little Rock, MN",Little Rock,minnesota,MN,/minnesota/little-rock/?tab=insights,1208
+"Long Lake, MN",Long Lake,minnesota,MN,/minnesota/long-lake/?tab=insights,1800
+"Long Prairie, MN",Long Prairie,minnesota,MN,/minnesota/long-prairie/?tab=insights,3661
+"Lonsdale, MN",Lonsdale,minnesota,MN,/minnesota/lonsdale/?tab=insights,4686
+"Luverne, MN",Luverne,minnesota,MN,/minnesota/luverne/?tab=insights,4946
+"Lyon, MN",Lyon,minnesota,MN,/minnesota/lyon/?tab=insights,59235
+"Madelia, MN",Madelia,minnesota,MN,/minnesota/madelia/?tab=insights,2396
+"Madison, MN",Madison,minnesota,MN,/minnesota/madison/?tab=insights,1462
+"Madison Lake, MN",Madison Lake,minnesota,MN,/minnesota/madison-lake/?tab=insights,1247
+"Mahtomedi, MN",Mahtomedi,minnesota,MN,/minnesota/mahtomedi/?tab=insights,8138
+"Mankato, MN",Mankato,minnesota,MN,/minnesota/mankato/?tab=insights,44488
+"Mantorville, MN",Mantorville,minnesota,MN,/minnesota/mantorville/?tab=insights,1111
+"Maple Grove, MN",Maple Grove,minnesota,MN,/minnesota/maple-grove/?tab=insights,70253
+"Maple Lake, MN",Maple Lake,minnesota,MN,/minnesota/maple-lake/?tab=insights,2159
+"Maple Plain, MN",Maple Plain,minnesota,MN,/minnesota/maple-plain/?tab=insights,1743
+"Mapleton, MN",Mapleton,minnesota,MN,/minnesota/mapleton/?tab=insights,1886
+"Maplewood, MN",Maplewood,minnesota,MN,/minnesota/maplewood/?tab=insights,42088
+"Mayer, MN",Mayer,minnesota,MN,/minnesota/mayer/?tab=insights,1903
+"Mcleod, MN",Mcleod,minnesota,MN,/minnesota/mcleod/?tab=insights,36771
+"Medford, MN",Medford,minnesota,MN,/minnesota/medford/?tab=insights,1249
+"Medina, MN",Medina,minnesota,MN,/minnesota/medina/?tab=insights,6047
+"Melrose, MN",Melrose,minnesota,MN,/minnesota/melrose/?tab=insights,3616
+"Menahga, MN",Menahga,minnesota,MN,/minnesota/menahga/?tab=insights,1340
+"Mendota Heights, MN",Mendota Heights,minnesota,MN,/minnesota/mendota-heights/?tab=insights,11744
+"Milaca, MN",Milaca,minnesota,MN,/minnesota/milaca/?tab=insights,3021
+"Mille Lacs, MN",Mille Lacs,minnesota,MN,/minnesota/mille-lacs/?tab=insights,26459
+"Minneapolis, MN",Minneapolis,minnesota,MN,/minnesota/minneapolis/?tab=insights,429954
+"Minneota, MN",Minneota,minnesota,MN,/minnesota/minneota/?tab=insights,1366
+"Minnetonka, MN",Minnetonka,minnesota,MN,/minnesota/minnetonka/?tab=insights,53781
+"Minnetonka Mills, MN",Minnetonka Mills,minnesota,MN,/minnesota/minnetonka-mills/?tab=insights,50117
+"Minnetrista, MN",Minnetrista,minnesota,MN,/minnesota/minnetrista/?tab=insights,8262
+"Montevideo, MN",Montevideo,minnesota,MN,/minnesota/montevideo/?tab=insights,5398
+"Montgomery, MN",Montgomery,minnesota,MN,/minnesota/montgomery/?tab=insights,2915
+"Monticello, MN",Monticello,minnesota,MN,/minnesota/monticello/?tab=insights,13299
+"Montrose, MN",Montrose,minnesota,MN,/minnesota/montrose/?tab=insights,3079
+"Moorhead, MN",Moorhead,minnesota,MN,/minnesota/moorhead/?tab=insights,44505
+"Moose Lake, MN",Moose Lake,minnesota,MN,/minnesota/moose-lake/?tab=insights,2789
+"Mora, MN",Mora,minnesota,MN,/minnesota/mora/?tab=insights,3462
+"Morris, MN",Morris,minnesota,MN,/minnesota/morris/?tab=insights,5105
+"Morrison, MN",Morrison,minnesota,MN,/minnesota/morrison/?tab=insights,34010
+"Mound, MN",Mound,minnesota,MN,/minnesota/mound/?tab=insights,9336
+"Mounds View, MN",Mounds View,minnesota,MN,/minnesota/mounds-view/?tab=insights,13249
+"Mountain Iron, MN",Mountain Iron,minnesota,MN,/minnesota/mountain-iron/?tab=insights,2878
+"Mountain Lake, MN",Mountain Lake,minnesota,MN,/minnesota/mountain-lake/?tab=insights,1999
+"Mower, MN",Mower,minnesota,MN,/minnesota/mower/?tab=insights,40029
+"New Brighton, MN",New Brighton,minnesota,MN,/minnesota/new-brighton/?tab=insights,23454
+"New Hope, MN",New Hope,minnesota,MN,/minnesota/new-hope/?tab=insights,21032
+"New London, MN",New London,minnesota,MN,/minnesota/new-london/?tab=insights,1328
+"New Prague, MN",New Prague,minnesota,MN,/minnesota/new-prague/?tab=insights,8162
+"New Richland, MN",New Richland,minnesota,MN,/minnesota/new-richland/?tab=insights,1229
+"New Ulm, MN",New Ulm,minnesota,MN,/minnesota/new-ulm/?tab=insights,14120
+"New York Mills, MN",New York Mills,minnesota,MN,/minnesota/new-york-mills/?tab=insights,1225
+"Newport, MN",Newport,minnesota,MN,/minnesota/newport/?tab=insights,3480
+"Nicollet County, MN",Nicollet County,minnesota,MN,/minnesota/nicollet-county/?tab=insights,34454
+"Nisswa, MN",Nisswa,minnesota,MN,/minnesota/nisswa/?tab=insights,1967
+"Nobles, MN",Nobles,minnesota,MN,/minnesota/nobles/?tab=insights,22290
+"North Branch, MN",North Branch,minnesota,MN,/minnesota/north-branch/?tab=insights,10787
+"North Mankato, MN",North Mankato,minnesota,MN,/minnesota/north-mankato/?tab=insights,14275
+"North Oaks, MN",North Oaks,minnesota,MN,/minnesota/north-oaks/?tab=insights,5272
+"North Saint Paul, MN",North Saint Paul,minnesota,MN,/minnesota/north-saint-paul/?tab=insights,11460
+"Northfield, MN",Northfield,minnesota,MN,/minnesota/northfield/?tab=insights,20380
+"Norwood Historical, MN",Norwood Historical,minnesota,MN,/minnesota/norwood-historical/?tab=insights,1506
+"Norwood Young America, MN",Norwood Young America,minnesota,MN,/minnesota/norwood-young-america/?tab=insights,3863
+"Nowthen, MN",Nowthen,minnesota,MN,/minnesota/nowthen/?tab=insights,4536
+"Oak Grove, MN",Oak Grove,minnesota,MN,/minnesota/oak-grove/?tab=insights,8439
+"Oak Park Heights, MN",Oak Park Heights,minnesota,MN,/minnesota/oak-park-heights/?tab=insights,4849
+"Oakdale, MN",Oakdale,minnesota,MN,/minnesota/oakdale/?tab=insights,23181
+"Oakport, MN",Oakport,minnesota,MN,/minnesota/oakport/?tab=insights,1387
+"Olivia, MN",Olivia,minnesota,MN,/minnesota/olivia/?tab=insights,2343
+"Olmsted, MN",Olmsted,minnesota,MN,/minnesota/olmsted/?tab=insights,162847
+"Orono, MN",Orono,minnesota,MN,/minnesota/orono/?tab=insights,8006
+"Oronoco, MN",Oronoco,minnesota,MN,/minnesota/oronoco/?tab=insights,1802
+"Ortonville, MN",Ortonville,minnesota,MN,/minnesota/ortonville/?tab=insights,2021
+"Osakis, MN",Osakis,minnesota,MN,/minnesota/osakis/?tab=insights,1771
+"Osseo, MN",Osseo,minnesota,MN,/minnesota/osseo/?tab=insights,2748
+"Otsego, MN",Otsego,minnesota,MN,/minnesota/otsego/?tab=insights,15551
+"Otter Tail, MN",Otter Tail,minnesota,MN,/minnesota/otter-tail/?tab=insights,60081
+"Owatonna, MN",Owatonna,minnesota,MN,/minnesota/owatonna/?tab=insights,26420
+"Park Rapids, MN",Park Rapids,minnesota,MN,/minnesota/park-rapids/?tab=insights,4142
+"Parkers Prairie, MN",Parkers Prairie,minnesota,MN,/minnesota/parkers-prairie/?tab=insights,1020
+"Parkville, MN",Parkville,minnesota,MN,/minnesota/parkville/?tab=insights,2525
+"Paynesville, MN",Paynesville,minnesota,MN,/minnesota/paynesville/?tab=insights,2388
+"Pelican Rapids, MN",Pelican Rapids,minnesota,MN,/minnesota/pelican-rapids/?tab=insights,2577
+"Pennington, MN",Pennington,minnesota,MN,/minnesota/pennington/?tab=insights,109222
+"Pequot Lakes, MN",Pequot Lakes,minnesota,MN,/minnesota/pequot-lakes/?tab=insights,2395
+"Perham, MN",Perham,minnesota,MN,/minnesota/perham/?tab=insights,3278
+"Pierz, MN",Pierz,minnesota,MN,/minnesota/pierz/?tab=insights,1418
+"Pine, MN",Pine,minnesota,MN,/minnesota/pine/?tab=insights,28876
+"Pine City, MN",Pine City,minnesota,MN,/minnesota/pine-city/?tab=insights,3130
+"Pine Island, MN",Pine Island,minnesota,MN,/minnesota/pine-island/?tab=insights,3769
+"Plainview, MN",Plainview,minnesota,MN,/minnesota/plainview/?tab=insights,3237
+"Plymouth, MN",Plymouth,minnesota,MN,/minnesota/plymouth/?tab=insights,75907
+"Polk, MN",Polk,minnesota,MN,/minnesota/polk/?tab=insights,87433
+"Preston, MN",Preston,minnesota,MN,/minnesota/preston/?tab=insights,1299
+"Princeton, MN",Princeton,minnesota,MN,/minnesota/princeton/?tab=insights,4680
+"Prior Lake, MN",Prior Lake,minnesota,MN,/minnesota/prior-lake/?tab=insights,27617
+"Proctor, MN",Proctor,minnesota,MN,/minnesota/proctor/?tab=insights,3120
+"Ramsey, MN",Ramsey,minnesota,MN,/minnesota/ramsey/?tab=insights,27646
+"Red Lake Falls, MN",Red Lake Falls,minnesota,MN,/minnesota/red-lake-falls/?tab=insights,1339
+"Red Wing, MN",Red Wing,minnesota,MN,/minnesota/red-wing/?tab=insights,16547
+"Redby, MN",Redby,minnesota,MN,/minnesota/redby/?tab=insights,1334
+"Redwood Falls, MN",Redwood Falls,minnesota,MN,/minnesota/redwood-falls/?tab=insights,5102
+"Rice County, MN",Rice County,minnesota,MN,/minnesota/rice-county/?tab=insights,67097
+"Richfield, MN",Richfield,minnesota,MN,/minnesota/richfield/?tab=insights,36216
+"Richmond, MN",Richmond,minnesota,MN,/minnesota/richmond/?tab=insights,1557
+"Robbinsdale, MN",Robbinsdale,minnesota,MN,/minnesota/robbinsdale/?tab=insights,14646
+"Rochester, MN",Rochester,minnesota,MN,/minnesota/rochester/?tab=insights,112225
+"Rock, MN",Rock,minnesota,MN,/minnesota/rock/?tab=insights,163687
+"Rock Creek, MN",Rock Creek,minnesota,MN,/minnesota/rock-creek/?tab=insights,1682
+"Rockford, MN",Rockford,minnesota,MN,/minnesota/rockford/?tab=insights,4358
+"Rockville, MN",Rockville,minnesota,MN,/minnesota/rockville/?tab=insights,2514
+"Rogers, MN",Rogers,minnesota,MN,/minnesota/rogers/?tab=insights,12562
+"Rosemount, MN",Rosemount,minnesota,MN,/minnesota/rosemount/?tab=insights,25650
+"Roseville, MN",Roseville,minnesota,MN,/minnesota/roseville/?tab=insights,35580
+"Royalton, MN",Royalton,minnesota,MN,/minnesota/royalton/?tab=insights,1281
+"Rush City, MN",Rush City,minnesota,MN,/minnesota/rush-city/?tab=insights,3228
+"Rushford, MN",Rushford,minnesota,MN,/minnesota/rushford/?tab=insights,1860
+"Saint Anthony, MN",Saint Anthony,minnesota,MN,/minnesota/saint-anthony/?tab=insights,8226
+"Saint Augusta, MN",Saint Augusta,minnesota,MN,/minnesota/saint-augusta/?tab=insights,3317
+"Saint Bonifacius, MN",Saint Bonifacius,minnesota,MN,/minnesota/saint-bonifacius/?tab=insights,2283
+"Saint Charles, MN",Saint Charles,minnesota,MN,/minnesota/saint-charles/?tab=insights,3735
+"Saint Cloud, MN",Saint Cloud,minnesota,MN,/minnesota/saint-cloud/?tab=insights,65842
+"Saint Francis, MN",Saint Francis,minnesota,MN,/minnesota/saint-francis/?tab=insights,7218
+"Saint James, MN",Saint James,minnesota,MN,/minnesota/saint-james/?tab=insights,4605
+"Saint Joseph, MN",Saint Joseph,minnesota,MN,/minnesota/saint-joseph/?tab=insights,6534
+"Saint Louis, MN",Saint Louis,minnesota,MN,/minnesota/saint-louis/?tab=insights,0
+"Saint Louis Park, MN",Saint Louis Park,minnesota,MN,/minnesota/saint-louis-park/?tab=insights,45250
+"Saint Michael, MN",Saint Michael,minnesota,MN,/minnesota/saint-michael/?tab=insights,16399
+"Saint Paul, MN",Saint Paul,minnesota,MN,/minnesota/saint-paul/?tab=insights,311527
+"Saint Paul Park, MN",Saint Paul Park,minnesota,MN,/minnesota/saint-paul-park/?tab=insights,5279
+"Saint Peter, MN",Saint Peter,minnesota,MN,/minnesota/saint-peter/?tab=insights,11196
+"Sandstone, MN",Sandstone,minnesota,MN,/minnesota/sandstone/?tab=insights,2462
+"Sartell, MN",Sartell,minnesota,MN,/minnesota/sartell/?tab=insights,19351
+"Sauk Centre, MN",Sauk Centre,minnesota,MN,/minnesota/sauk-centre/?tab=insights,4555
+"Sauk Rapids, MN",Sauk Rapids,minnesota,MN,/minnesota/sauk-rapids/?tab=insights,13862
+"Savage, MN",Savage,minnesota,MN,/minnesota/savage/?tab=insights,32465
+"Scandia, MN",Scandia,minnesota,MN,/minnesota/scandia/?tab=insights,4057
+"Shafer, MN",Shafer,minnesota,MN,/minnesota/shafer/?tab=insights,1142
+"Shakopee, MN",Shakopee,minnesota,MN,/minnesota/shakopee/?tab=insights,43698
+"Sherburn, MN",Sherburn,minnesota,MN,/minnesota/sherburn/?tab=insights,1058
+"Sherburne, MN",Sherburne,minnesota,MN,/minnesota/sherburne/?tab=insights,97183
+"Shoreview, MN",Shoreview,minnesota,MN,/minnesota/shoreview/?tab=insights,26921
+"Shorewood, MN",Shorewood,minnesota,MN,/minnesota/shorewood/?tab=insights,7783
+"Silver Bay, MN",Silver Bay,minnesota,MN,/minnesota/silver-bay/?tab=insights,1813
+"Slayton, MN",Slayton,minnesota,MN,/minnesota/slayton/?tab=insights,2013
+"Sleepy Eye, MN",Sleepy Eye,minnesota,MN,/minnesota/sleepy-eye/?tab=insights,3452
+"South Saint Paul, MN",South Saint Paul,minnesota,MN,/minnesota/south-saint-paul/?tab=insights,20160
+"Spicer, MN",Spicer,minnesota,MN,/minnesota/spicer/?tab=insights,1112
+"Spring Grove, MN",Spring Grove,minnesota,MN,/minnesota/spring-grove/?tab=insights,1293
+"Spring Lake Park, MN",Spring Lake Park,minnesota,MN,/minnesota/spring-lake-park/?tab=insights,7188
+"Spring Park, MN",Spring Park,minnesota,MN,/minnesota/spring-park/?tab=insights,1734
+"Spring Valley, MN",Spring Valley,minnesota,MN,/minnesota/spring-valley/?tab=insights,2413
+"Springfield, MN",Springfield,minnesota,MN,/minnesota/springfield/?tab=insights,2068
+"Stacy, MN",Stacy,minnesota,MN,/minnesota/stacy/?tab=insights,1703
+"Staples, MN",Staples,minnesota,MN,/minnesota/staples/?tab=insights,2885
+"Starbuck, MN",Starbuck,minnesota,MN,/minnesota/starbuck/?tab=insights,1264
+"Stearns, MN",Stearns,minnesota,MN,/minnesota/stearns/?tab=insights,158292
+"Stevens, MN",Stevens,minnesota,MN,/minnesota/stevens/?tab=insights,46445
+"Stewartville, MN",Stewartville,minnesota,MN,/minnesota/stewartville/?tab=insights,6687
+"Stillwater, MN",Stillwater,minnesota,MN,/minnesota/stillwater/?tab=insights,18924
+"Taylors Falls, MN",Taylors Falls,minnesota,MN,/minnesota/taylors-falls/?tab=insights,1055
+"Thief River Falls, MN",Thief River Falls,minnesota,MN,/minnesota/thief-river-falls/?tab=insights,8749
+"Tonka Bay, MN",Tonka Bay,minnesota,MN,/minnesota/tonka-bay/?tab=insights,1442
+"Tracy, MN",Tracy,minnesota,MN,/minnesota/tracy/?tab=insights,2117
+"Truman, MN",Truman,minnesota,MN,/minnesota/truman/?tab=insights,1092
+"Two Harbors, MN",Two Harbors,minnesota,MN,/minnesota/two-harbors/?tab=insights,3633
+"Tyler, MN",Tyler,minnesota,MN,/minnesota/tyler/?tab=insights,1138
+"Vadnais Heights, MN",Vadnais Heights,minnesota,MN,/minnesota/vadnais-heights/?tab=insights,12912
+"Victoria, MN",Victoria,minnesota,MN,/minnesota/victoria/?tab=insights,10546
+"Vineland, MN",Vineland,minnesota,MN,/minnesota/vineland/?tab=insights,1001
+"Virginia, MN",Virginia,minnesota,MN,/minnesota/virginia/?tab=insights,8421
+"Wabasha County, MN",Wabasha County,minnesota,MN,/minnesota/wabasha-county/?tab=insights,21387
+"Waconia, MN",Waconia,minnesota,MN,/minnesota/waconia/?tab=insights,13033
+"Waite Park, MN",Waite Park,minnesota,MN,/minnesota/waite-park/?tab=insights,8341
+"Walker, MN",Walker,minnesota,MN,/minnesota/walker/?tab=insights,966
+"Wanamingo, MN",Wanamingo,minnesota,MN,/minnesota/wanamingo/?tab=insights,1113
+"Warren, MN",Warren,minnesota,MN,/minnesota/warren/?tab=insights,1351
+"Warroad, MN",Warroad,minnesota,MN,/minnesota/warroad/?tab=insights,1830
+"Waseca County, MN",Waseca County,minnesota,MN,/minnesota/waseca-county/?tab=insights,18968
+"Washington County, MN",Washington County,minnesota,MN,/minnesota/washington-county/?tab=insights,209349
+"Watertown, MN",Watertown,minnesota,MN,/minnesota/watertown/?tab=insights,4289
+"Waterville, MN",Waterville,minnesota,MN,/minnesota/waterville/?tab=insights,1849
+"Waverly, MN",Waverly,minnesota,MN,/minnesota/waverly/?tab=insights,1396
+"Wayzata, MN",Wayzata,minnesota,MN,/minnesota/wayzata/?tab=insights,4434
+"Wells, MN",Wells,minnesota,MN,/minnesota/wells/?tab=insights,2247
+"West Coon Rapids, MN",West Coon Rapids,minnesota,MN,/minnesota/west-coon-rapids/?tab=insights,62528
+"West Saint Paul, MN",West Saint Paul,minnesota,MN,/minnesota/west-saint-paul/?tab=insights,19540
+"Wheaton, MN",Wheaton,minnesota,MN,/minnesota/wheaton/?tab=insights,1362
+"White Bear Lake, MN",White Bear Lake,minnesota,MN,/minnesota/white-bear-lake/?tab=insights,24883
+"Willmar, MN",Willmar,minnesota,MN,/minnesota/willmar/?tab=insights,21015
+"Windom, MN",Windom,minnesota,MN,/minnesota/windom/?tab=insights,4798
+"Winnebago, MN",Winnebago,minnesota,MN,/minnesota/winnebago/?tab=insights,1391
+"Winona, MN",Winona,minnesota,MN,/minnesota/winona/?tab=insights,27094
+"Winona County, MN",Winona County,minnesota,MN,/minnesota/winona-county/?tab=insights,49671
+"Winsted, MN",Winsted,minnesota,MN,/minnesota/winsted/?tab=insights,2240
+"Winthrop, MN",Winthrop,minnesota,MN,/minnesota/winthrop/?tab=insights,1363
+"Woodbury, MN",Woodbury,minnesota,MN,/minnesota/woodbury/?tab=insights,75102
+"Worthington, MN",Worthington,minnesota,MN,/minnesota/worthington/?tab=insights,14786
+"Wright, MN",Wright,minnesota,MN,/minnesota/wright/?tab=insights,141337
+"Wyoming, MN",Wyoming,minnesota,MN,/minnesota/wyoming/?tab=insights,7813
+"Young America Historical, MN",Young America Historical,minnesota,MN,/minnesota/young-america-historical/?tab=insights,1530
+"Zimmerman, MN",Zimmerman,minnesota,MN,/minnesota/zimmerman/?tab=insights,6189
+"Zumbrota, MN",Zumbrota,minnesota,MN,/minnesota/zumbrota/?tab=insights,3726
+Mississippi,,mississippi,MS,/mississippi/,
+Missouri,,missouri,MO,/missouri/,
+Montana,,montana,MT,/montana/,
+Nebraska,,nebraska,NE,/nebraska/,
+Nevada,,nevada,NV,/nevada/,
+New Hampshire,,new-hampshire,NH,/new-hampshire/,
+New Jersey,,new-jersey,NJ,/new-jersey/,
+New Mexico,,new-mexico,NM,/new-mexico/,
+New York,,new-york,NY,/new-york/,
+North Carolina,,north-carolina,NC,/north-carolina/,
+North Dakota,,north-dakota,ND,/north-dakota/,
+Ohio,,ohio,OH,/ohio/,
+Oklahoma,,oklahoma,OK,/oklahoma/,
+Oregon,,oregon,OR,/oregon/,
+Pennsylvania,,pennsylvania,PA,/pennsylvania/,
+Rhode Island,,rhode-island,RI,/rhode-island/,
+South Carolina,,south-carolina,SC,/south-carolina/,
+South Dakota,,south-dakota,SD,/south-dakota/,
+Tennessee,,tennessee,TN,/tennessee/,
+Texas,,texas,TX,/texas/,
+Utah,,utah,UT,/utah/,
+Vermont,,vermont,VT,/vermont/,
+Virginia,,virginia,VA,/virginia/,
+Washington,,washington,WA,/washington/,
+West Virginia,,west-virginia,WV,/west-virginia/,
+Wisconsin,,wisconsin,WI,/wisconsin/,
+Wyoming,,wyoming,WY,/wyoming/,
