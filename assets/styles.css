@@ -364,15 +364,19 @@ a:focus-visible{outline:3px solid #93b4d2;outline-offset:2px;border-radius:8px}
   z-index:120;
   margin:0 -16px;
   padding:8px 16px;
-  gap:10px;
+  gap:6px 18px;
   border-bottom:1px solid #bfd0df;
   background:#f6fafd;
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr);
+  align-items:start;
 }
 
+.area-top-nav .brand{grid-row:1 / span 2}
 .area-top-nav .brand-text strong{font-size:24px;text-transform:lowercase}
 .area-top-nav .pill{font-size:16px}
-.area-main-tabs{gap:12px}
-.area-account-links{gap:18px;margin-left:auto;justify-content:flex-end}
+.area-main-tabs{grid-column:2;gap:12px;justify-content:flex-end;text-align:right}
+.area-account-links{grid-column:2;gap:18px;margin-left:0;justify-content:flex-end;text-align:right}
 .area-dashboard-main{padding:0 4px 14px}
 
 .area-hero{
