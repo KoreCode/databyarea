@@ -376,23 +376,37 @@
     }
 
     function applyData(metrics) {
-      if (!metrics || !Object.keys(metrics).length) return;
+      var cardsWithData = new Set();
 
       fieldNodes.forEach(function (node) {
         var key = node.dataset.field;
-        if (!Object.prototype.hasOwnProperty.call(metrics, key)) return;
-
         var raw = metrics[key];
-        if (raw == null || raw === '') return;
-
-        var formatted = formatters(key, raw);
-        node.textContent = formatted || String(raw);
-
         var row = node.closest('tr');
-        if (row) row.style.display = '';
+        var hasValue = raw != null && raw !== '';
 
-        var card = node.closest('.area-card');
-        if (card) card.style.display = '';
+        if (hasValue) {
+          var formatted = formatters(key, raw);
+          node.textContent = formatted || String(raw);
+          if (row) row.style.display = '';
+
+          var card = node.closest('.area-card');
+          if (card) cardsWithData.add(card);
+        } else if (row) {
+          row.style.display = 'none';
+        }
+      });
+
+      document.querySelectorAll('.area-card').forEach(function (card) {
+        if (card.classList.contains('comparison')) return;
+
+        var dataCells = card.querySelectorAll('[data-field]');
+        if (!dataCells.length) return;
+
+        if (!cardsWithData.has(card)) {
+          card.style.display = 'none';
+        } else {
+          card.style.display = '';
+        }
       });
     }
 
@@ -402,11 +416,11 @@
         return res.json();
       })
       .then(function (payload) {
-        var metrics = payload && payload.record && payload.record.data ? payload.record.data : null;
+        var metrics = payload && payload.record && payload.record.data ? payload.record.data : {};
         applyData(metrics);
       })
       .catch(function () {
-        // Keep the server-rendered fallback values visible when the optional API is unavailable.
+        applyData({});
       });
   })();
   </script>
