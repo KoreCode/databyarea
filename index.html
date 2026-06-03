@@ -2,253 +2,133 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Data By Area | Cost of Living, Utility Costs, Property Taxes & Insurance by State</title>
-  <meta name="description" content="Compare cost of living, utility costs, property tax rates, and insurance costs by area. Browse state pages across the United States." />
+  <title>DataByArea.com | Geographic Data Search</title>
+  <meta name="description" content="Discover clear, actionable geographic data for cities, ZIP codes, regions, and metrics with DataByArea.com." />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="index,follow,max-image-preview:large" />
-  <meta name="theme-color" content="#0f172a" />
+  <meta name="theme-color" content="#061a33" />
   <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="DataByArea" />
-  <meta property="og:title" content="Data By Area | Cost of Living, Utility Costs, Property Taxes & Insurance by State" />
-  <meta property="og:description" content="Compare cost of living, utility costs, property tax rates, and insurance costs by area. Browse state pages across the United States." />
+  <meta property="og:site_name" content="DataByArea.com" />
+  <meta property="og:title" content="DataByArea.com | Geographic Data Search" />
+  <meta property="og:description" content="Discover clear, actionable geographic data for your next big decision." />
   <meta property="og:url" content="https://databyarea.com/" />
-  <meta property="og:image" content="https://databyarea.com/assets/logo.png" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Data By Area | Cost of Living, Utility Costs, Property Taxes & Insurance by State" />
-  <meta name="twitter:description" content="Compare cost of living, utility costs, property tax rates, and insurance costs by area." />
-  <meta name="twitter:image" content="https://databyarea.com/assets/logo.png" />
-  <link rel="preload" href="/assets/styles.css" as="style" />
-  <link rel="stylesheet" href="/assets/styles.css" />
+  <meta name="twitter:title" content="DataByArea.com | Geographic Data Search" />
+  <meta name="twitter:description" content="Discover clear, actionable geographic data for your next big decision." />
   <link rel="canonical" href="https://databyarea.com/" />
-  <link rel="sitemap" type="application/xml" title="Sitemap" href="https://databyarea.com/sitemap.xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            navy: '#061a33',
+            'navy-soft': '#0a2748',
+            'brand-blue': '#1188ff',
+            coral: '#ff6b4a',
+            cyan: '#22d3ee',
+          },
+          boxShadow: {
+            glow: '0 0 24px rgba(34, 211, 238, .55), 0 0 54px rgba(17, 136, 255, .35)',
+          },
+        },
+      },
+    };
+  </script>
 </head>
-<body class="home-page">
-  <a class="skip-link" href="#main-content">Skip to content</a>
+<body class="bg-white font-sans text-slate-900 antialiased">
+  <a class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-navy focus:px-4 focus:py-2 focus:text-white" href="#main-content">Skip to content</a>
 
-  <div class="container home-shell">
-    <header class="nav home-nav">
-      <a class="brand" href="/" aria-label="DataByArea home">
-        <img src="/assets/logo.png" alt="DataByArea logo" class="logo" width="170" height="34" decoding="async" fetchpriority="high">
-        <div class="brand-text">
-          <strong>DataByArea.com</strong>
-        </div>
-      </a>
-      <nav class="navlinks home-navlinks" aria-label="Account and support navigation">
-        <a class="pill" href="/login/">Log in</a>
-        <a class="pill" href="/signup/">Sign up</a>
-        <a class="pill" href="/pricing/">Pricing</a>
-        <a class="pill" href="/contact/">Support</a>
+  <header class="mx-auto flex max-w-7xl flex-col gap-5 px-5 py-5 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+    <a href="/" class="flex items-center gap-3" aria-label="DataByArea.com home">
+      <span class="flex h-11 w-11 items-center justify-center rounded-2xl bg-white shadow-sm ring-1 ring-slate-200" aria-hidden="true">
+        <svg class="h-9 w-9" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="pinGradient" x1="19" y1="12" x2="61" y2="70" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#67e8f9" />
+              <stop offset="0.52" stop-color="#1188ff" />
+              <stop offset="1" stop-color="#1d4ed8" />
+            </linearGradient>
+          </defs>
+          <path d="M40 74S18 50.7 18 32.6C18 19.7 27.8 10 40 10s22 9.7 22 22.6C62 50.7 40 74 40 74Z" fill="url(#pinGradient)" />
+          <path d="M24 35.4c3.9-11.9 17.4-17.2 28.1-10.8" stroke="#dff9ff" stroke-width="7" stroke-linecap="round" />
+          <path d="M16 51h10.4L38.2 38.8l10.2 9.5L65 25" stroke="#22d3ee" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M53.5 24.6 66 22l-1.6 12.8" stroke="#22d3ee" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+          <circle cx="16" cy="51" r="5" fill="#22d3ee" />
+        </svg>
+      </span>
+      <span class="text-xl font-extrabold tracking-tight text-navy sm:text-2xl">DataByArea.com</span>
+    </a>
+
+    <div class="flex flex-col gap-4 md:flex-row md:items-center lg:gap-8">
+      <nav class="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-medium text-slate-500 sm:text-base" aria-label="Primary navigation">
+        <a class="transition hover:text-navy" href="/">Home</a>
+        <a class="transition hover:text-navy" href="/regions/">Regions</a>
+        <a class="transition hover:text-navy" href="/metrics/">Metrics</a>
+        <a class="transition hover:text-navy" href="/api/">API</a>
+        <a class="transition hover:text-navy" href="/pricing/">Pricing</a>
       </nav>
-    </header>
-
-    <section class="home-hero" aria-label="Site search">
-      <div class="hero-copy">
-        <p class="eyebrow">Trusted U.S. locality data platform</p>
-        <h1 class="home-title">Explore Comprehensive Localized Data Across the U.S.</h1>
-        <p class="home-subtitle">Search by city, county, ZIP, or state to compare the costs that shape your budget.</p>
+      <div class="flex flex-wrap items-center gap-3">
+        <a class="rounded-lg bg-coral px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-orange-500 hover:shadow-md" href="/login/">Sign In</a>
+        <a class="rounded-lg bg-brand-blue px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-blue-600 hover:shadow-md" href="/signup/">Get Started</a>
       </div>
-      <form class="home-search" action="/cost-of-living/" method="get" role="search">
-        <label class="sr-only" for="home-search-input">Enter city, state, county, or ZIP code</label>
-        <span class="search-icon" aria-hidden="true">🔎</span>
-        <input id="home-search-input" class="home-search-input" name="q" type="search" placeholder="Enter City, State, County, or ZIP Code" autocomplete="off" list="home-search-suggestions" />
-        <datalist id="home-search-suggestions"></datalist>
-        <button class="search-btn" type="submit">Search</button>
-      </form>
-      <ul class="quick-tags" aria-label="Popular destinations">
-        <li><a href="/cost-of-living/california/">California</a></li>
-        <li><a href="/cost-of-living/texas/">Texas</a></li>
-        <li><a href="/cost-of-living/florida/">Florida</a></li>
-        <li><a href="/cost-of-living/new-york/">New York</a></li>
-      </ul>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8" aria-label="Geographic data search">
+      <div class="flex min-h-[440px] flex-col items-center justify-center bg-navy px-5 py-24 text-center shadow-2xl shadow-slate-900/20 sm:px-10">
+        <div class="flex flex-col items-center justify-center gap-5 sm:flex-row sm:gap-6">
+          <span class="drop-shadow-[0_0_28px_rgba(34,211,238,.75)]" aria-hidden="true">
+            <svg class="h-24 w-24 sm:h-32 sm:w-32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="heroPinGradient" x1="23" y1="9" x2="78" y2="88" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#93f3ff" />
+                  <stop offset="0.5" stop-color="#1188ff" />
+                  <stop offset="1" stop-color="#1d4ed8" />
+                </linearGradient>
+              </defs>
+              <path d="M50 93S21 62.7 21 38.9C21 22 33.9 9 50 9s29 13 29 29.9C79 62.7 50 93 50 93Z" fill="url(#heroPinGradient)" />
+              <path d="M29 43c5.2-15.6 22.8-22.5 36.9-14.1" stroke="#dff9ff" stroke-width="8" stroke-linecap="round" />
+              <path d="M14 64h13.7l15.5-16 13.4 12.5L78.4 30" stroke="#22d3ee" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M63.4 29.4 80 26l-2.2 16.8" stroke="#22d3ee" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+              <circle cx="14" cy="64" r="6.5" fill="#22d3ee" class="drop-shadow-[0_0_14px_rgba(34,211,238,.95)]" />
+            </svg>
+          </span>
+          <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-6xl lg:text-7xl">
+            DataByArea.com
+          </h1>
+        </div>
+
+        <form class="mt-12 flex w-full max-w-3xl flex-col gap-3 rounded-[2rem] bg-white p-2 shadow-glow sm:flex-row sm:items-center sm:rounded-full" action="/search/" method="get" role="search">
+          <label class="sr-only" for="home-search-input">Search geographic data</label>
+          <div class="flex min-w-0 flex-1 items-center gap-3 px-4 py-2">
+            <svg class="h-6 w-6 flex-none text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"></circle>
+              <path d="m21 21-4.35-4.35"></path>
+            </svg>
+            <input id="home-search-input" name="q" type="search" autocomplete="off" placeholder="Search geographic data (e.g., city, zip code)..." class="w-full min-w-0 bg-transparent text-base text-slate-700 outline-none placeholder:text-slate-400 sm:text-lg" />
+          </div>
+          <button type="submit" class="rounded-2xl bg-navy px-7 py-3 text-base font-bold text-white transition hover:bg-navy-soft sm:rounded-full">Search</button>
+        </form>
+      </div>
     </section>
 
-    <main id="main-content" class="home-main">
-      <section class="home-feature-grid" aria-label="Top insights">
-        <article class="home-panel insights-panel">
-          <div class="panel-head">
-            <h2>Top Insights by Category</h2>
-            <p>Zero-fluff snapshots for the categories people compare most often.</p>
-          </div>
-
-          <div class="insight-grid">
-            <a class="insight-card" href="/cost-of-living/?insight=utility-costs">
-              <span class="insight-icon" aria-hidden="true">⚡</span>
-              <div>
-                <h3>Utilities</h3>
-                <p>Compare electricity, gas, water, and internet costs by state.</p>
-                <span class="insight-link">Explore utilities →</span>
-              </div>
-            </a>
-            <a class="insight-card" href="/cost-of-living/">
-              <span class="insight-icon" aria-hidden="true">🏠</span>
-              <div>
-                <h3>Cost of Living</h3>
-                <p>Review housing, groceries, healthcare, and transportation costs.</p>
-                <span class="insight-link">Explore cost of living →</span>
-              </div>
-            </a>
-            <a class="insight-card" href="/cost-of-living/?insight=property-taxes">
-              <span class="insight-icon" aria-hidden="true">📊</span>
-              <div>
-                <h3>Property Taxes</h3>
-                <p>See effective tax rates and how they vary across locations.</p>
-                <span class="insight-link">Explore property taxes →</span>
-              </div>
-            </a>
-            <a class="insight-card" href="/cost-of-living/?insight=insurance-costs">
-              <span class="insight-icon" aria-hidden="true">🛡️</span>
-              <div>
-                <h3>Insurance</h3>
-                <p>Compare home and auto insurance costs in each state.</p>
-                <span class="insight-link">Explore insurance →</span>
-              </div>
-            </a>
-            <a class="insight-card" href="/about/">
-              <span class="insight-icon" aria-hidden="true">🎓</span>
-              <div>
-                <h3>Data Sources</h3>
-                <p>Understand the methodology and public datasets used.</p>
-                <span class="insight-link">Read methodology →</span>
-              </div>
-            </a>
-            <a class="insight-card" href="/contact/">
-              <span class="insight-icon" aria-hidden="true">💬</span>
-              <div>
-                <h3>Contact</h3>
-                <p>Report issues, request coverage, or suggest data improvements.</p>
-                <span class="insight-link">Get support →</span>
-              </div>
-            </a>
-          </div>
-        </article>
-
-        <aside class="home-panel trust-panel" aria-label="Why users choose DataByArea">
-          <h2>Why choose DataByArea</h2>
-          <ul class="trust-list">
-            <li><strong>State-wide coverage:</strong> 50 states and growing city/county depth.</li>
-            <li><strong>Standardized comparisons:</strong> Same structure across all datasets.</li>
-            <li><strong>Source transparency:</strong> Built from public datasets with plain-English notes.</li>
-            <li><strong>Fast lookup:</strong> Lightweight pages optimized for quick decisions.</li>
-          </ul>
-        </aside>
-      </section>
-
-      <section class="home-panel states-panel" aria-label="Browse by state">
-        <div class="states-header">
-          <h2>Browse by State</h2>
-          <a href="/cost-of-living/">View all states →</a>
-        </div>
-        <div class="states-links">
-          <a href="/cost-of-living/alabama/">Alabama</a>
-          <a href="/cost-of-living/alaska/">Alaska</a>
-          <a href="/cost-of-living/arizona/">Arizona</a>
-          <a href="/cost-of-living/arkansas/">Arkansas</a>
-          <a href="/cost-of-living/california/">California</a>
-          <a href="/cost-of-living/colorado/">Colorado</a>
-          <a href="/cost-of-living/connecticut/">Connecticut</a>
-          <a href="/cost-of-living/delaware/">Delaware</a>
-          <a href="/cost-of-living/florida/">Florida</a>
-          <a href="/cost-of-living/georgia/">Georgia</a>
-          <a href="/cost-of-living/hawaii/">Hawaii</a>
-          <a href="/cost-of-living/idaho/">Idaho</a>
-          <a href="/cost-of-living/illinois/">Illinois</a>
-          <a href="/cost-of-living/indiana/">Indiana</a>
-          <a href="/cost-of-living/iowa/">Iowa</a>
-          <a href="/cost-of-living/kansas/">Kansas</a>
-          <a href="/cost-of-living/kentucky/">Kentucky</a>
-          <a href="/cost-of-living/louisiana/">Louisiana</a>
-          <a href="/cost-of-living/maine/">Maine</a>
-          <a href="/cost-of-living/maryland/">Maryland</a>
-          <a href="/cost-of-living/massachusetts/">Massachusetts</a>
-          <a href="/cost-of-living/michigan/">Michigan</a>
-          <a href="/cost-of-living/minnesota/">Minnesota</a>
-          <a href="/cost-of-living/mississippi/">Mississippi</a>
-          <a href="/cost-of-living/missouri/">Missouri</a>
-          <a href="/cost-of-living/montana/">Montana</a>
-          <a href="/cost-of-living/nebraska/">Nebraska</a>
-          <a href="/cost-of-living/nevada/">Nevada</a>
-          <a href="/cost-of-living/new-hampshire/">New Hampshire</a>
-          <a href="/cost-of-living/new-jersey/">New Jersey</a>
-          <a href="/cost-of-living/new-mexico/">New Mexico</a>
-          <a href="/cost-of-living/new-york/">New York</a>
-          <a href="/cost-of-living/north-carolina/">North Carolina</a>
-          <a href="/cost-of-living/north-dakota/">North Dakota</a>
-          <a href="/cost-of-living/ohio/">Ohio</a>
-          <a href="/cost-of-living/oklahoma/">Oklahoma</a>
-          <a href="/cost-of-living/oregon/">Oregon</a>
-          <a href="/cost-of-living/pennsylvania/">Pennsylvania</a>
-          <a href="/cost-of-living/rhode-island/">Rhode Island</a>
-          <a href="/cost-of-living/south-carolina/">South Carolina</a>
-          <a href="/cost-of-living/south-dakota/">South Dakota</a>
-          <a href="/cost-of-living/tennessee/">Tennessee</a>
-          <a href="/cost-of-living/texas/">Texas</a>
-          <a href="/cost-of-living/utah/">Utah</a>
-          <a href="/cost-of-living/vermont/">Vermont</a>
-          <a href="/cost-of-living/virginia/">Virginia</a>
-          <a href="/cost-of-living/washington/">Washington</a>
-          <a href="/cost-of-living/west-virginia/">West Virginia</a>
-          <a href="/cost-of-living/wisconsin/">Wisconsin</a>
-          <a href="/cost-of-living/wyoming/">Wyoming</a>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer home-footer">
-      <p>© <span id="y"></span> DataByArea | <a href="/privacy/">Privacy Policy</a> | <a href="/terms/">Terms of Service</a> | <a href="/about/">Data Sources (EIA, Census)</a> | <a href="/contact/">Contact</a></p>
-    </footer>
-  </div>
-
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-
-    (function () {
-      var searchInput = document.getElementById('home-search-input');
-      var suggestionsList = document.getElementById('home-search-suggestions');
-
-      if (!searchInput || !suggestionsList) return;
-
-      var suggestions = [
-        'Utilities', 'Cost of Living', 'Property Taxes', 'Insurance',
-        'California', 'Texas', 'Florida', 'New York', 'Pennsylvania', 'Illinois',
-        'Los Angeles, California', 'Miami, Florida', 'Austin, Texas', 'Seattle, Washington',
-        'Cook County, Illinois', 'King County, Washington', '90210', '10001',
-        'Kiester, MN'
-      ];
-
-      var debounceTimer;
-
-      function renderSuggestions(query) {
-        var normalized = query.trim().toLowerCase();
-        suggestionsList.innerHTML = '';
-        if (!normalized) return;
-
-        suggestions
-          .filter(function (item) {
-            return item.toLowerCase().indexOf(normalized) !== -1;
-          })
-          .slice(0, 8)
-          .forEach(function (item) {
-            var option = document.createElement('option');
-            option.value = item;
-            suggestionsList.appendChild(option);
-          });
-      }
-
-      searchInput.addEventListener('input', function (event) {
-        clearTimeout(debounceTimer);
-        debounceTimer = setTimeout(function () {
-          renderSuggestions(event.target.value);
-        }, 300);
-      });
-
-      var params = new URLSearchParams(window.location.search);
-      var prefill = params.get('q');
-      if (prefill) {
-        searchInput.value = prefill;
-        renderSuggestions(prefill);
-      }
-    })();
-  </script>
-  <script defer src="/assets/version-footer.js"></script>
+    <section class="mx-auto max-w-7xl px-5 pb-16 pt-6 sm:px-6 lg:px-8" aria-label="Secondary navigation">
+      <div class="flex flex-wrap items-center justify-start gap-6 text-sm font-medium text-slate-600 sm:justify-end sm:text-base">
+        <a class="transition hover:text-navy" href="/regions/">Regions</a>
+        <a class="transition hover:text-navy" href="/metrics/">Metrics</a>
+        <a class="transition hover:text-navy" href="/api/">API</a>
+        <a class="rounded-lg bg-brand-blue px-5 py-2.5 font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-blue-600 hover:shadow-md" href="/signup/">Get Started</a>
+      </div>
+      <p class="mx-auto mt-10 max-w-4xl text-center text-xl font-medium text-slate-700 sm:text-2xl">Discover clear, actionable geographic data for your next big decision.</p>
+    </section>
+  </main>
 </body>
 </html>
