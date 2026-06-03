@@ -26,7 +26,6 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
 - `assets/`
   - `assets/.trashed-1771794496-logo.png`
   - `assets/index.html`
-  - `assets/logo-mark.svg`
   - `assets/logo.png`
   - `assets/logoww.png`
   - `assets/site-version.json`
