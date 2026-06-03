@@ -366,12 +366,210 @@
     });
   }
 
+
+  var US_STATE_META = {
+    al: ['alabama', 'Alabama'], ak: ['alaska', 'Alaska'], az: ['arizona', 'Arizona'], ar: ['arkansas', 'Arkansas'], ca: ['california', 'California'], co: ['colorado', 'Colorado'], ct: ['connecticut', 'Connecticut'], de: ['delaware', 'Delaware'], dc: ['district-of-columbia', 'District of Columbia'], fl: ['florida', 'Florida'], ga: ['georgia', 'Georgia'], hi: ['hawaii', 'Hawaii'], id: ['idaho', 'Idaho'], il: ['illinois', 'Illinois'], in: ['indiana', 'Indiana'], ia: ['iowa', 'Iowa'], ks: ['kansas', 'Kansas'], ky: ['kentucky', 'Kentucky'], la: ['louisiana', 'Louisiana'], me: ['maine', 'Maine'], md: ['maryland', 'Maryland'], ma: ['massachusetts', 'Massachusetts'], mi: ['michigan', 'Michigan'], mn: ['minnesota', 'Minnesota'], ms: ['mississippi', 'Mississippi'], mo: ['missouri', 'Missouri'], mt: ['montana', 'Montana'], ne: ['nebraska', 'Nebraska'], nv: ['nevada', 'Nevada'], nh: ['new-hampshire', 'New Hampshire'], nj: ['new-jersey', 'New Jersey'], nm: ['new-mexico', 'New Mexico'], ny: ['new-york', 'New York'], nc: ['north-carolina', 'North Carolina'], nd: ['north-dakota', 'North Dakota'], oh: ['ohio', 'Ohio'], ok: ['oklahoma', 'Oklahoma'], or: ['oregon', 'Oregon'], pa: ['pennsylvania', 'Pennsylvania'], ri: ['rhode-island', 'Rhode Island'], sc: ['south-carolina', 'South Carolina'], sd: ['south-dakota', 'South Dakota'], tn: ['tennessee', 'Tennessee'], tx: ['texas', 'Texas'], ut: ['utah', 'Utah'], vt: ['vermont', 'Vermont'], va: ['virginia', 'Virginia'], wa: ['washington', 'Washington'], wv: ['west-virginia', 'West Virginia'], wi: ['wisconsin', 'Wisconsin'], wy: ['wyoming', 'Wyoming']
+  };
+  var US_STATE_BY_SLUG = Object.keys(US_STATE_META).reduce(function (acc, abbr) {
+    acc[US_STATE_META[abbr][0]] = { abbr: abbr.toUpperCase(), name: US_STATE_META[abbr][1] };
+    return acc;
+  }, {});
+
+  function normalizePlace(value) {
+    return (value || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+  }
+
+  function slugifyPlace(value) {
+    return (value || '').toLowerCase().trim().replace(/&/g, ' and ').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  }
+
+  function parseCsvLine(line) {
+    var cells = [];
+    var cell = '';
+    var quoted = false;
+    for (var i = 0; i < line.length; i += 1) {
+      var ch = line.charAt(i);
+      if (ch === '"') {
+        if (quoted && line.charAt(i + 1) === '"') {
+          cell += '"';
+          i += 1;
+        } else {
+          quoted = !quoted;
+        }
+      } else if (ch === ',' && !quoted) {
+        cells.push(cell);
+        cell = '';
+      } else {
+        cell += ch;
+      }
+    }
+    cells.push(cell);
+    return cells;
+  }
+
+  function initHomeSearchAutocomplete() {
+    var form = document.querySelector('form[role="search"]');
+    var input = document.querySelector('#home-search-input');
+    if (!form || !input || input.dataset.placeAutocompleteReady === '1') return;
+    input.dataset.placeAutocompleteReady = '1';
+
+    var datalistId = input.getAttribute('list') || 'home-search-suggestions';
+    var datalist = document.getElementById(datalistId);
+    if (!datalist) {
+      datalist = document.createElement('datalist');
+      datalist.id = datalistId;
+      input.setAttribute('list', datalistId);
+      input.parentNode.appendChild(datalist);
+    }
+
+    var catalogPromise;
+    var zipCache = {};
+
+    function loadCatalog() {
+      if (catalogPromise) return catalogPromise;
+      catalogPromise = fetch('/data/place_catalog.csv', { cache: 'force-cache' }).then(function (response) {
+        return response.ok ? response.text() : '';
+      }).then(function (csvText) {
+        var seen = {};
+        var rows = csvText.split(/\r?\n/).slice(1);
+        var entries = rows.map(function (line) {
+          if (!line.trim()) return null;
+          var cells = parseCsvLine(line);
+          var label = cells[0];
+          var city = cells[1];
+          var stateSlug = cells[2];
+          var stateAbbr = cells[3];
+          var url = cells[4];
+          var state = US_STATE_BY_SLUG[stateSlug];
+          if (!label || !stateSlug || !stateAbbr || !url || !state) return null;
+          return {
+            label: label,
+            aliases: city ? [label, city + ', ' + state.name, city, slugifyPlace(city)] : [label, stateAbbr, stateSlug],
+            url: url,
+            cityNorm: normalizePlace(city || label),
+            stateSlug: stateSlug,
+            stateAbbr: stateAbbr,
+            population: Number(cells[5] || 0)
+          };
+        }).filter(function (entry) {
+          if (!entry) return false;
+          var key = entry.url;
+          if (seen[key]) return false;
+          seen[key] = true;
+          return true;
+        });
+        return entries.sort(function (a, b) { return b.population - a.population || a.label.localeCompare(b.label); });
+      }).catch(function () { return []; });
+      return catalogPromise;
+    }
+
+    function findPlace(entries, query, stateAbbr) {
+      var n = normalizePlace(query);
+      var stateSlug = stateAbbr && US_STATE_META[stateAbbr.toLowerCase()] ? US_STATE_META[stateAbbr.toLowerCase()][0] : '';
+      if (!n) return null;
+      var scoped = stateSlug ? entries.filter(function (entry) { return entry.stateSlug === stateSlug; }) : entries;
+      return scoped.find(function (entry) {
+        return entry.aliases.some(function (alias) { return normalizePlace(alias) === n; });
+      }) || scoped.find(function (entry) {
+        return entry.aliases.some(function (alias) { return normalizePlace(alias).indexOf(n) === 0; });
+      }) || scoped.find(function (entry) {
+        return entry.aliases.some(function (alias) { return normalizePlace(alias).indexOf(n) !== -1; });
+      });
+    }
+
+    function renderSuggestions(term) {
+      var n = normalizePlace(term);
+      datalist.innerHTML = '';
+      if (n.length < 2) return;
+      loadCatalog().then(function (entries) {
+        datalist.innerHTML = '';
+        entries.filter(function (entry) {
+          return entry.aliases.some(function (alias) { return normalizePlace(alias).indexOf(n) !== -1; });
+        }).slice(0, 10).forEach(function (entry) {
+          var option = document.createElement('option');
+          option.value = entry.label;
+          datalist.appendChild(option);
+        });
+      });
+    }
+
+    function lookupZip(zip) {
+      if (zipCache[zip]) return zipCache[zip];
+      zipCache[zip] = fetch('https://api.zippopotam.us/us/' + encodeURIComponent(zip), { cache: 'force-cache' }).then(function (response) {
+        return response.ok ? response.json() : null;
+      }).then(function (data) {
+        var place = data && data.places && data.places[0];
+        if (!place) return null;
+        return {
+          city: place['place name'],
+          stateAbbr: place['state abbreviation'],
+          label: zip + ' — ' + place['place name'] + ', ' + place['state abbreviation']
+        };
+      }).catch(function () { return null; });
+      return zipCache[zip];
+    }
+
+    function navigateTo(url) {
+      if (url) window.location.href = url;
+    }
+
+    function runSearch(event) {
+      if (event) event.preventDefault();
+      var raw = input.value.trim();
+      if (!raw) return;
+      var zipMatch = raw.match(/(?:^|\D)(\d{5})(?:-\d{4})?(?:\D|$)/);
+      if (zipMatch) {
+        lookupZip(zipMatch[1]).then(function (zipPlace) {
+          if (!zipPlace) {
+            form.submit();
+            return;
+          }
+          loadCatalog().then(function (entries) {
+            var found = findPlace(entries, zipPlace.city, zipPlace.stateAbbr);
+            if (found) {
+              navigateTo(found.url);
+            } else {
+              input.value = zipPlace.city + ', ' + zipPlace.stateAbbr;
+              form.submit();
+            }
+          });
+        });
+        return;
+      }
+      loadCatalog().then(function (entries) {
+        var found = findPlace(entries, raw);
+        if (found) {
+          navigateTo(found.url);
+        } else {
+          form.submit();
+        }
+      });
+    }
+
+    input.addEventListener('input', function () {
+      var raw = input.value.trim();
+      renderSuggestions(raw);
+      var zipOnly = raw.match(/^\d{5}$/);
+      if (!zipOnly) return;
+      lookupZip(raw).then(function (zipPlace) {
+        if (!zipPlace) return;
+        var option = document.createElement('option');
+        option.value = zipPlace.label;
+        datalist.innerHTML = '';
+        datalist.appendChild(option);
+      });
+    });
+    input.addEventListener('change', function () { renderSuggestions(input.value); });
+    form.addEventListener('submit', runSearch);
+  }
+
   initExplorer();
   enhanceCityListDropdowns();
   routeInsightCityLinks();
   initAreaInsightTab();
   syncInsightSelectorsAndTabs();
   initStateCitySearch();
+  initHomeSearchAutocomplete();
 
   const root = document.createElement('div');
   root.id = 'site-version-footer';
