@@ -45,7 +45,7 @@
 <body class="bg-white font-sans text-slate-900 antialiased">
   <a class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-navy focus:px-4 focus:py-2 focus:text-white" href="#main-content">Skip to content</a>
 
-  <header class="mx-auto flex max-w-7xl flex-col gap-5 px-5 py-5 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+  <header class="mx-auto flex max-w-7xl flex-col gap-5 px-5 py-5 sm:flex-row sm:items-start sm:justify-between sm:px-6 lg:items-center lg:px-8">
     <a href="/" class="flex items-center gap-3" aria-label="DataByArea.com home">
       <span class="flex h-11 w-11 items-center justify-center rounded-2xl bg-white shadow-sm ring-1 ring-slate-200" aria-hidden="true">
         <svg class="h-9 w-9" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -66,15 +66,15 @@
       <span class="text-xl font-extrabold tracking-tight text-navy sm:text-2xl">DataByArea.com</span>
     </a>
 
-    <div class="flex flex-col gap-4 md:flex-row md:items-center lg:gap-8">
-      <nav class="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-medium text-slate-500 sm:text-base" aria-label="Primary navigation">
+    <div class="flex flex-col items-start gap-4 sm:items-end md:flex-row md:items-center md:justify-end lg:gap-8">
+      <nav class="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-medium text-slate-500 sm:justify-end sm:text-base" aria-label="Primary navigation">
         <a class="transition hover:text-navy" href="/">Home</a>
         <a class="transition hover:text-navy" href="/regions/">Regions</a>
         <a class="transition hover:text-navy" href="/metrics/">Metrics</a>
         <a class="transition hover:text-navy" href="/api/">API</a>
         <a class="transition hover:text-navy" href="/pricing/">Pricing</a>
       </nav>
-      <div class="flex flex-wrap items-center gap-3">
+      <div class="flex flex-wrap items-center gap-3 sm:justify-end">
         <a class="rounded-lg bg-coral px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-orange-500 hover:shadow-md" href="/login/">Sign In</a>
         <a class="rounded-lg bg-brand-blue px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-blue-600 hover:shadow-md" href="/signup/">Get Started</a>
       </div>
