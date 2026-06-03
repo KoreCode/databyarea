@@ -320,8 +320,19 @@
           }));
     }
 
-    // Insight landing pages are state-selection pages, so load the map as soon as the page is visited.
-    loadAndInitMap();
+    if ('IntersectionObserver' in window && mapHost) {
+      const mapObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            loadAndInitMap();
+            observer.disconnect();
+          }
+        });
+      }, { rootMargin: '200px 0px' });
+      mapObserver.observe(mapHost);
+    } else {
+      loadAndInitMap();
+    }
   </script>
   <script defer src="/assets/version-footer.js"></script>
 </body>

@@ -1581,6 +1581,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `scripts/site_quality_agents.py`
   - `scripts/uptime_monitor.py`
   - `scripts/weekly_kpi_report.py`
+- `search/`
+  - `search/index.html`
 - `site/`
   - `site/api-dashboard/`
     - `site/api-dashboard/index.html`
