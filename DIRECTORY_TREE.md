@@ -255,6 +255,7 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `data/generate_csv_system.py`
   - `data/index.html`
   - `data/minnesota_utility_city_store.csv`
+  - `data/place_catalog.csv`
   - `data/published_manifest.json`
   - `data/weekly_kpi_inputs.json`
 - `deck-building-cost-by-state/`
