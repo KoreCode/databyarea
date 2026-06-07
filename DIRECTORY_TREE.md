@@ -1580,6 +1580,7 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `scripts/index.html`
   - `scripts/oldgen.py`
   - `scripts/site_quality_agents.py`
+  - `scripts/update_homepage_modules.py`
   - `scripts/uptime_monitor.py`
   - `scripts/weekly_kpi_report.py`
 - `search/`
