@@ -56,14 +56,14 @@
     <div class="flex flex-col items-start gap-4 sm:items-end md:flex-row md:items-center md:justify-end lg:gap-8">
       <nav class="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-medium text-slate-500 sm:justify-end sm:text-base" aria-label="Primary navigation">
         <a class="transition hover:text-navy" href="/">Home</a>
-        <a class="transition hover:text-navy" href="/regions/">Regions</a>
-        <a class="transition hover:text-navy" href="/metrics/">Metrics</a>
-        <a class="transition hover:text-navy" href="/api/">API</a>
-        <a class="transition hover:text-navy" href="/pricing/">Pricing</a>
+        <a class="transition hover:text-navy" href="/cost-of-living/">Cost of Living</a>
+        <a class="transition hover:text-navy" href="/utility-costs/">Utilities</a>
+        <a class="transition hover:text-navy" href="/property-taxes/">Property Taxes</a>
+        <a class="transition hover:text-navy" href="/insurance-costs/">Insurance</a>
       </nav>
       <div class="flex flex-wrap items-center gap-3 sm:justify-end">
-        <a class="rounded-lg bg-coral px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-orange-500 hover:shadow-md" href="/login/">Sign In</a>
-        <a class="rounded-lg bg-brand-blue px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-blue-600 hover:shadow-md" href="/signup/">Get Started</a>
+        <a class="rounded-lg bg-coral px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-orange-500 hover:shadow-md" href="/search/">Search</a>
+        <a class="rounded-lg bg-brand-blue px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-blue-600 hover:shadow-md" href="/contact/">Contact</a>
       </div>
     </div>
   </header>
@@ -98,113 +98,164 @@
       <p class="mx-auto max-w-4xl text-center text-xl font-medium text-slate-700 sm:text-2xl">Discover clear, actionable geographic data for your next big decision.</p>
     </section>
 
-    <section class="mx-auto max-w-7xl px-5 pb-20 sm:px-6 lg:px-8" aria-labelledby="regional-insights-title">
+    <section class="mx-auto max-w-7xl px-5 pb-20 sm:px-6 lg:px-8" aria-labelledby="homepage-data-title">
       <div class="rounded-[2rem] bg-slate-50 p-6 shadow-inner ring-1 ring-slate-200 sm:p-8 lg:p-10">
         <div class="mx-auto max-w-3xl text-center">
-          <p class="text-sm font-bold uppercase tracking-[0.24em] text-brand-blue">Regional insight preview</p>
-          <h2 id="regional-insights-title" class="mt-3 text-3xl font-extrabold tracking-tight text-navy sm:text-4xl">Compare U.S. regions with city-style data panels</h2>
-          <p class="mt-4 text-lg text-slate-600">The same dashboard concepts used on local profiles scale up to regional planning: utilities, demographics, schools, economy, real estate, climate, and nearby comparisons in one scan-friendly view.</p>
+          <p class="text-sm font-bold uppercase tracking-[0.24em] text-brand-blue">Live repository data</p>
+          <h2 id="homepage-data-title" class="mt-3 text-3xl font-extrabold tracking-tight text-navy sm:text-4xl">Explore current DataByArea guides</h2>
+          <p class="mt-4 text-lg text-slate-600">These homepage modules are refreshed from city population data, curated popular cities, publish manifests, and generated guide directories so each link points to a page that exists.</p>
         </div>
 
-        <div class="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          <article class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
-            <div class="flex items-center justify-between gap-4">
-              <h3 class="text-xl font-bold text-navy">Utilities</h3>
-              <span class="rounded-full bg-cyan/10 px-3 py-1 text-sm font-semibold text-sky-700">Regional energy</span>
+        <div class="mt-10">
+          <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p class="text-sm font-bold uppercase tracking-[0.18em] text-coral">Popular cities</p>
+              <h3 class="mt-2 text-2xl font-extrabold text-navy">Curated city guides with live local pages</h3>
             </div>
-            <p class="mt-3 text-sm text-slate-600">Benchmark electric, water, and gas pressure across Midwest, Sun Belt, Northeast, Mountain West, and Pacific regions.</p>
-            <div class="mt-5 flex h-28 items-end gap-2 rounded-2xl bg-slate-100 p-4" role="img" aria-label="Regional utility cost bars">
-              <span class="w-full rounded-t-lg bg-brand-blue" style="height:42%"></span>
-              <span class="w-full rounded-t-lg bg-brand-blue" style="height:56%"></span>
-              <span class="w-full rounded-t-lg bg-brand-blue" style="height:68%"></span>
-              <span class="w-full rounded-t-lg bg-brand-blue" style="height:61%"></span>
-              <span class="w-full rounded-t-lg bg-brand-blue" style="height:74%"></span>
-              <span class="w-full rounded-t-lg bg-brand-blue" style="height:59%"></span>
-            </div>
-            <dl class="mt-5 grid grid-cols-2 gap-3 text-sm">
-              <div class="rounded-2xl bg-slate-50 p-3"><dt class="font-semibold text-slate-500">Electric range</dt><dd class="mt-1 font-bold text-navy">$0.12–$0.24/kWh</dd></div>
-              <div class="rounded-2xl bg-slate-50 p-3"><dt class="font-semibold text-slate-500">Water trend</dt><dd class="mt-1 font-bold text-navy">Seasonal peaks</dd></div>
-            </dl>
-            <a class="mt-5 inline-flex font-semibold text-brand-blue hover:text-blue-700" href="/utility-costs/">Browse utility costs →</a>
-          </article>
+            <p class="text-sm text-slate-500">Sourced from <code>popular_cities.csv</code> and <code>data/cities.csv</code>.</p>
+          </div>
+          <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <a class="group rounded-3xl bg-white p-5 shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-md hover:ring-brand-blue" href="/cost-of-living/new-york/new-york/">
+            <span class="text-sm font-semibold uppercase tracking-[0.18em] text-brand-blue">Cost of living</span>
+            <h3 class="mt-3 text-xl font-extrabold text-navy group-hover:text-brand-blue">New York, New York</h3>
+            <p class="mt-2 text-sm text-slate-600">Population 8,804,190</p>
+            <span class="mt-4 inline-flex font-semibold text-brand-blue">Open local guide →</span>
+          </a>
+          <a class="group rounded-3xl bg-white p-5 shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-md hover:ring-brand-blue" href="/utility-costs/california/los-angeles/">
+            <span class="text-sm font-semibold uppercase tracking-[0.18em] text-brand-blue">Utility costs</span>
+            <h3 class="mt-3 text-xl font-extrabold text-navy group-hover:text-brand-blue">Los Angeles, California</h3>
+            <p class="mt-2 text-sm text-slate-600">Population 3,820,914</p>
+            <span class="mt-4 inline-flex font-semibold text-brand-blue">Open local guide →</span>
+          </a>
+          <a class="group rounded-3xl bg-white p-5 shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-md hover:ring-brand-blue" href="/property-taxes/illinois/chicago/">
+            <span class="text-sm font-semibold uppercase tracking-[0.18em] text-brand-blue">Property taxes</span>
+            <h3 class="mt-3 text-xl font-extrabold text-navy group-hover:text-brand-blue">Chicago, Illinois</h3>
+            <p class="mt-2 text-sm text-slate-600">Population 2,746,388</p>
+            <span class="mt-4 inline-flex font-semibold text-brand-blue">Open local guide →</span>
+          </a>
+          <a class="group rounded-3xl bg-white p-5 shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-md hover:ring-brand-blue" href="/insurance-costs/texas/houston/">
+            <span class="text-sm font-semibold uppercase tracking-[0.18em] text-brand-blue">Insurance costs</span>
+            <h3 class="mt-3 text-xl font-extrabold text-navy group-hover:text-brand-blue">Houston, Texas</h3>
+            <p class="mt-2 text-sm text-slate-600">Population 2,314,157</p>
+            <span class="mt-4 inline-flex font-semibold text-brand-blue">Open local guide →</span>
+          </a>
+          <a class="group rounded-3xl bg-white p-5 shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-md hover:ring-brand-blue" href="/cost-of-living/arizona/phoenix/">
+            <span class="text-sm font-semibold uppercase tracking-[0.18em] text-brand-blue">Cost of living</span>
+            <h3 class="mt-3 text-xl font-extrabold text-navy group-hover:text-brand-blue">Phoenix, Arizona</h3>
+            <p class="mt-2 text-sm text-slate-600">Population 1,650,070</p>
+            <span class="mt-4 inline-flex font-semibold text-brand-blue">Open local guide →</span>
+          </a>
+          <a class="group rounded-3xl bg-white p-5 shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-md hover:ring-brand-blue" href="/utility-costs/pennsylvania/philadelphia/">
+            <span class="text-sm font-semibold uppercase tracking-[0.18em] text-brand-blue">Utility costs</span>
+            <h3 class="mt-3 text-xl font-extrabold text-navy group-hover:text-brand-blue">Philadelphia, Pennsylvania</h3>
+            <p class="mt-2 text-sm text-slate-600">Population 1,573,916</p>
+            <span class="mt-4 inline-flex font-semibold text-brand-blue">Open local guide →</span>
+          </a>
+          <a class="group rounded-3xl bg-white p-5 shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-md hover:ring-brand-blue" href="/property-taxes/texas/san-antonio/">
+            <span class="text-sm font-semibold uppercase tracking-[0.18em] text-brand-blue">Property taxes</span>
+            <h3 class="mt-3 text-xl font-extrabold text-navy group-hover:text-brand-blue">San Antonio, Texas</h3>
+            <p class="mt-2 text-sm text-slate-600">Population 1,434,625</p>
+            <span class="mt-4 inline-flex font-semibold text-brand-blue">Open local guide →</span>
+          </a>
+          <a class="group rounded-3xl bg-white p-5 shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-md hover:ring-brand-blue" href="/insurance-costs/california/san-diego/">
+            <span class="text-sm font-semibold uppercase tracking-[0.18em] text-brand-blue">Insurance costs</span>
+            <h3 class="mt-3 text-xl font-extrabold text-navy group-hover:text-brand-blue">San Diego, California</h3>
+            <p class="mt-2 text-sm text-slate-600">Population 1,386,932</p>
+            <span class="mt-4 inline-flex font-semibold text-brand-blue">Open local guide →</span>
+          </a>
+          </div>
+        </div>
 
-          <article class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
-            <div class="flex items-center justify-between gap-4">
-              <h3 class="text-xl font-bold text-navy">Demographics</h3>
-              <span class="rounded-full bg-blue-50 px-3 py-1 text-sm font-semibold text-blue-700">Population mix</span>
+        <div class="mt-12 grid gap-8 lg:grid-cols-[1fr_1.1fr]">
+          <div>
+            <p class="text-sm font-bold uppercase tracking-[0.18em] text-coral">Recently updated guides</p>
+            <h3 class="mt-2 text-2xl font-extrabold text-navy">Latest published cost resources</h3>
+            <p class="mt-3 text-sm text-slate-600">Ordered from the repository publish manifests and filtered to existing guide pages.</p>
+            <ul class="mt-5 space-y-3">
+          <li class="flex items-center justify-between gap-4 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-200">
+            <div>
+              <a class="font-bold text-navy hover:text-brand-blue" href="/garage-door-repair-cost-by-state/">Garage Door Repair Cost</a>
+              <p class="mt-1 text-sm text-slate-500">Published Apr 1, 2026</p>
             </div>
-            <p class="mt-3 text-sm text-slate-600">Track regional age balance, household income, education attainment, migration pressure, and workforce depth.</p>
-            <div class="mt-5 space-y-2" role="img" aria-label="Regional age and income distribution bars">
-              <div class="h-3 rounded-full bg-slate-100"><span class="block h-3 rounded-full bg-coral" style="width:72%"></span></div>
-              <div class="h-3 rounded-full bg-slate-100"><span class="block h-3 rounded-full bg-coral" style="width:88%"></span></div>
-              <div class="h-3 rounded-full bg-slate-100"><span class="block h-3 rounded-full bg-coral" style="width:64%"></span></div>
-              <div class="h-3 rounded-full bg-slate-100"><span class="block h-3 rounded-full bg-coral" style="width:79%"></span></div>
-              <div class="h-3 rounded-full bg-slate-100"><span class="block h-3 rounded-full bg-coral" style="width:55%"></span></div>
+            <span class="flex-none text-brand-blue" aria-hidden="true">→</span>
+          </li>
+          <li class="flex items-center justify-between gap-4 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-200">
+            <div>
+              <a class="font-bold text-navy hover:text-brand-blue" href="/foundation-repair-cost-by-state/">Foundation Repair Cost</a>
+              <p class="mt-1 text-sm text-slate-500">Published Mar 31, 2026</p>
             </div>
-            <dl class="mt-5 grid grid-cols-3 gap-3 text-sm">
-              <div class="rounded-2xl bg-slate-50 p-3"><dt class="font-semibold text-slate-500">Median age</dt><dd class="mt-1 font-bold text-navy">38–42</dd></div>
-              <div class="rounded-2xl bg-slate-50 p-3"><dt class="font-semibold text-slate-500">Income</dt><dd class="mt-1 font-bold text-navy">$58k–$94k</dd></div>
-              <div class="rounded-2xl bg-slate-50 p-3"><dt class="font-semibold text-slate-500">Bachelor+</dt><dd class="mt-1 font-bold text-navy">24–43%</dd></div>
-            </dl>
-            <a class="mt-5 inline-flex font-semibold text-brand-blue hover:text-blue-700" href="/cost-of-living/">Explore state regions →</a>
-          </article>
+            <span class="flex-none text-brand-blue" aria-hidden="true">→</span>
+          </li>
+          <li class="flex items-center justify-between gap-4 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-200">
+            <div>
+              <a class="font-bold text-navy hover:text-brand-blue" href="/water-heater-installation-cost-by-state/">Water Heater Installation Cost</a>
+              <p class="mt-1 text-sm text-slate-500">Published Mar 30, 2026</p>
+            </div>
+            <span class="flex-none text-brand-blue" aria-hidden="true">→</span>
+          </li>
+          <li class="flex items-center justify-between gap-4 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-200">
+            <div>
+              <a class="font-bold text-navy hover:text-brand-blue" href="/window-replacement-cost-by-state/">Window Replacement Cost</a>
+              <p class="mt-1 text-sm text-slate-500">Published Mar 29, 2026</p>
+            </div>
+            <span class="flex-none text-brand-blue" aria-hidden="true">→</span>
+          </li>
+          <li class="flex items-center justify-between gap-4 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-200">
+            <div>
+              <a class="font-bold text-navy hover:text-brand-blue" href="/concrete-driveway-cost-by-state/">Concrete Driveway Cost</a>
+              <p class="mt-1 text-sm text-slate-500">Published Mar 28, 2026</p>
+            </div>
+            <span class="flex-none text-brand-blue" aria-hidden="true">→</span>
+          </li>
+          <li class="flex items-center justify-between gap-4 rounded-2xl bg-white p-4 shadow-sm ring-1 ring-slate-200">
+            <div>
+              <a class="font-bold text-navy hover:text-brand-blue" href="/deck-building-cost-by-state/">Deck Building Cost</a>
+              <p class="mt-1 text-sm text-slate-500">Published Mar 27, 2026</p>
+            </div>
+            <span class="flex-none text-brand-blue" aria-hidden="true">→</span>
+          </li>
+            </ul>
+          </div>
 
-          <article class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
-            <div class="flex items-center justify-between gap-4">
-              <h3 class="text-xl font-bold text-navy">Schools & cost index</h3>
-              <span class="rounded-full bg-emerald-50 px-3 py-1 text-sm font-semibold text-emerald-700">Family planning</span>
+          <div>
+            <p class="text-sm font-bold uppercase tracking-[0.18em] text-coral">Explore by metric</p>
+            <h3 class="mt-2 text-2xl font-extrabold text-navy">Generated coverage by topic</h3>
+            <p class="mt-3 text-sm text-slate-600">Counts include every available <code>index.html</code> under each generated metric directory.</p>
+            <div class="mt-5 grid gap-4 sm:grid-cols-2">
+          <a class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-md hover:ring-brand-blue" href="/cost-of-living/">
+            <div class="flex items-start justify-between gap-4">
+              <h3 class="text-xl font-extrabold text-navy">Cost of living</h3>
+              <span class="rounded-full bg-blue-50 px-3 py-1 text-sm font-bold text-blue-700">102 pages</span>
             </div>
-            <p class="mt-3 text-sm text-slate-600">Pair school performance proxies with grocery, housing, transportation, and utility indexes before drilling into states and cities.</p>
-            <div class="mt-5 grid grid-cols-2 gap-3 text-center text-sm">
-              <div class="rounded-2xl bg-slate-50 p-4"><div class="mx-auto h-16 w-16 rounded-full border-[10px] border-brand-blue border-r-slate-200"></div><p class="mt-2 font-bold text-navy">Housing 102</p></div>
-              <div class="rounded-2xl bg-slate-50 p-4"><div class="mx-auto h-16 w-16 rounded-full border-[10px] border-coral border-r-slate-200"></div><p class="mt-2 font-bold text-navy">Transport 96</p></div>
+            <p class="mt-3 text-sm text-slate-600">Compare household budgets and affordability</p>
+            <span class="mt-5 inline-flex font-semibold text-brand-blue">Explore this metric →</span>
+          </a>
+          <a class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-md hover:ring-brand-blue" href="/utility-costs/">
+            <div class="flex items-start justify-between gap-4">
+              <h3 class="text-xl font-extrabold text-navy">Utility costs</h3>
+              <span class="rounded-full bg-blue-50 px-3 py-1 text-sm font-bold text-blue-700">449 pages</span>
             </div>
-            <a class="mt-5 inline-flex font-semibold text-brand-blue hover:text-blue-700" href="/cost-of-living/">Compare cost of living →</a>
-          </article>
-
-          <article class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
-            <div class="flex items-center justify-between gap-4">
-              <h3 class="text-xl font-bold text-navy">Local economy</h3>
-              <span class="rounded-full bg-indigo-50 px-3 py-1 text-sm font-semibold text-indigo-700">Jobs mix</span>
+            <p class="mt-3 text-sm text-slate-600">Review electric, gas, and water cost guides</p>
+            <span class="mt-5 inline-flex font-semibold text-brand-blue">Explore this metric →</span>
+          </a>
+          <a class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-md hover:ring-brand-blue" href="/property-taxes/">
+            <div class="flex items-start justify-between gap-4">
+              <h3 class="text-xl font-extrabold text-navy">Property taxes</h3>
+              <span class="rounded-full bg-blue-50 px-3 py-1 text-sm font-bold text-blue-700">102 pages</span>
             </div>
-            <p class="mt-3 text-sm text-slate-600">Understand whether a region leans toward healthcare, manufacturing, government, logistics, tourism, agriculture, or technology employment.</p>
-            <div class="mt-5 space-y-3 text-sm" role="img" aria-label="Regional industry share bars">
-              <div><div class="flex justify-between"><span>Healthcare</span><strong>21%</strong></div><div class="mt-1 h-2 rounded-full bg-slate-100"><span class="block h-2 rounded-full bg-navy" style="width:70%"></span></div></div>
-              <div><div class="flex justify-between"><span>Manufacturing</span><strong>16%</strong></div><div class="mt-1 h-2 rounded-full bg-slate-100"><span class="block h-2 rounded-full bg-navy" style="width:55%"></span></div></div>
-              <div><div class="flex justify-between"><span>Professional services</span><strong>14%</strong></div><div class="mt-1 h-2 rounded-full bg-slate-100"><span class="block h-2 rounded-full bg-navy" style="width:48%"></span></div></div>
+            <p class="mt-3 text-sm text-slate-600">Browse local tax burden and housing levy pages</p>
+            <span class="mt-5 inline-flex font-semibold text-brand-blue">Explore this metric →</span>
+          </a>
+          <a class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200 transition hover:-translate-y-0.5 hover:shadow-md hover:ring-brand-blue" href="/insurance-costs/">
+            <div class="flex items-start justify-between gap-4">
+              <h3 class="text-xl font-extrabold text-navy">Insurance costs</h3>
+              <span class="rounded-full bg-blue-50 px-3 py-1 text-sm font-bold text-blue-700">102 pages</span>
             </div>
-            <a class="mt-5 inline-flex font-semibold text-brand-blue hover:text-blue-700" href="/property-taxes/">View tax metrics →</a>
-          </article>
-
-          <article class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
-            <div class="flex items-center justify-between gap-4">
-              <h3 class="text-xl font-bold text-navy">Real estate & taxes</h3>
-              <span class="rounded-full bg-amber-50 px-3 py-1 text-sm font-semibold text-amber-700">Housing burden</span>
+            <p class="mt-3 text-sm text-slate-600">Compare location-based insurance and risk cost guides</p>
+            <span class="mt-5 inline-flex font-semibold text-brand-blue">Explore this metric →</span>
+          </a>
             </div>
-            <p class="mt-3 text-sm text-slate-600">Scale a city-style home value and property tax view into region-level affordability and levy comparisons.</p>
-            <div class="mt-5 grid grid-cols-[110px_1fr] items-center gap-4">
-              <div class="h-24 w-24 rounded-full" style="background:conic-gradient(#1188ff 0 42%, #ff6b4a 42% 73%, #22d3ee 73% 100%)" role="img" aria-label="Regional property tax breakdown donut"></div>
-              <ul class="space-y-2 text-sm text-slate-600">
-                <li><strong class="text-navy">42%</strong> county and municipal levy</li>
-                <li><strong class="text-navy">31%</strong> school district levy</li>
-                <li><strong class="text-navy">27%</strong> special districts and other</li>
-              </ul>
-            </div>
-            <a class="mt-5 inline-flex font-semibold text-brand-blue hover:text-blue-700" href="/property-taxes/">Browse property taxes →</a>
-          </article>
-
-          <article class="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-slate-200">
-            <div class="flex items-center justify-between gap-4">
-              <h3 class="text-xl font-bold text-navy">Climate & comparisons</h3>
-              <span class="rounded-full bg-sky-50 px-3 py-1 text-sm font-semibold text-sky-700">Risk context</span>
-            </div>
-            <p class="mt-3 text-sm text-slate-600">Add climate normals, precipitation, snowfall, heat, and hazard context to nearby-region comparison cards.</p>
-            <div class="mt-5 rounded-2xl bg-slate-50 p-4">
-              <div class="flex items-center gap-4"><span class="text-4xl" aria-hidden="true">⛅</span><div><strong class="text-navy">Regional climate band</strong><p class="text-sm text-slate-600">Winter lows, summer highs, water stress, and severe-weather exposure.</p></div></div>
-              <div class="mt-4 grid grid-cols-3 gap-2 text-center text-sm"><span class="rounded-xl bg-white p-2 font-semibold text-navy">Snow</span><span class="rounded-xl bg-white p-2 font-semibold text-navy">Heat</span><span class="rounded-xl bg-white p-2 font-semibold text-navy">Water</span></div>
-            </div>
-            <a class="mt-5 inline-flex font-semibold text-brand-blue hover:text-blue-700" href="/insurance-costs/">Compare risk costs →</a>
-          </article>
+          </div>
         </div>
       </div>
     </section>
