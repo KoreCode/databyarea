@@ -1,44 +1,35 @@
-name: Daily Generator
+name: Production Pass
 
 on:
-  schedule:
-    - cron: "15 11 * * *"   # daily at 11:15 UTC
+  push:
+  pull_request:
   workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: databyarea-production-checks
-  cancel-in-progress: false
+  group: production-pass-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
-  validate-production-readiness:
+  production-check:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out repo
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      - name: Set up Python
+      - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-
-      - name: Show Python version
-        run: python --version
 
       - name: Install dependencies
         run: |
           if [ -f requirements.txt ]; then
             pip install -r requirements.txt
           fi
-
-      - name: Ensure output folders exist
-        run: |
-          mkdir -p _deploy/reports data
 
       - name: Build search index
         run: python scripts/build_search_index.py

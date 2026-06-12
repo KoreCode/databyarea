@@ -14,7 +14,7 @@ from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
 EIA_API_URL = "https://api.eia.gov/v2/"
-DEFAULT_EIA_API_KEY = "2OKDrEV0VEb6XGdTbFfRVXzEzIdnBMbhJyTGjtog"
+DEFAULT_EIA_API_KEY = ""
 DEFAULT_CACHE_TTL_SECONDS = 6 * 60 * 60
 DEFAULT_MIN_REQUEST_INTERVAL_SECONDS = 0.35
 DEFAULT_MAX_RETRIES = 3
@@ -29,7 +29,7 @@ class EIAClientError(RuntimeError):
 
 
 def resolve_api_key() -> str:
-    """Resolve EIA API key from env, falling back to configured project key."""
+    """Resolve EIA API key from the environment."""
     return os.getenv("EIA_API_KEY", DEFAULT_EIA_API_KEY).strip()
 
 

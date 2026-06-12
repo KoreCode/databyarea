@@ -1,159 +1,394 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Insurance Costs in Minnesota | DataByArea</title>
-  <meta name="description" content="Explore insurance costs in Minnesota. Compare state averages and city-level differences.">
-  <meta name="robots" content="index,follow,max-image-preview:large">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="canonical" href="https://databyarea.com/insurance-costs/minnesota/">
-  <link rel="stylesheet" href="/assets/styles.css">
+  <meta charset="utf-8" />
+  <title>Insurance Costs in Minnesota | Home, Auto, Renters, Health | DataByArea</title>
+  <meta name="description" content="Minnesota insurance cost guide with home, auto, renters, and health insurance planning ranges, risk drivers, local comparison notes, buyer checklist, and related cost links." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="canonical" href="https://databyarea.com/insurance-costs/minnesota/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <style>
+    .insurance-state-page{background:linear-gradient(180deg,#e8f0f8,#f6f9fc 30%,#edf3f8);color:#102033}
+    .insurance-main{padding:0 4px 18px}
+    .insurance-hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(320px,.9fr);gap:18px;margin:0 -16px;padding:24px 22px;background:linear-gradient(112deg,#193956,#0f6572 58%,#2f6a58);color:#f4fbff}
+    .insurance-hero h1{max-width:13ch;margin:0;font-size:52px;line-height:1.03;letter-spacing:0}
+    .insurance-hero p{max-width:72ch;margin:9px 0 0;color:#d9eef7;font-size:18px;line-height:1.48}
+    .insurance-breadcrumbs{margin:0 0 10px;color:#cde6f3;font-size:14px}
+    .insurance-breadcrumbs a{color:#fff;font-weight:800}
+    .insurance-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:17px}
+    .insurance-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:9px 14px;border-radius:8px;font-size:14px;font-weight:900;text-decoration:none}
+    .insurance-actions a:first-child{background:#ff704d;color:#fff}
+    .insurance-actions a:not(:first-child){border:1px solid rgba(255,255,255,.42);background:#fff;color:#0f516f}
+    .insurance-panel{align-self:stretch;border:1px solid rgba(229,247,250,.42);border-radius:12px;background:rgba(255,255,255,.13);padding:14px;box-shadow:0 14px 30px rgba(5,38,51,.18)}
+    .insurance-panel h2{margin:0 0 10px;color:#fff;font-size:18px}
+    .insurance-panel-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+    .insurance-panel-grid div{border:1px solid rgba(229,247,250,.24);border-radius:10px;background:rgba(255,255,255,.13);padding:10px}
+    .insurance-panel-grid strong{display:block;color:#fff;font-size:24px;line-height:1}
+    .insurance-panel-grid span{display:block;margin-top:5px;color:#d3edf4;font-size:12px;font-weight:800;text-transform:uppercase}
+    .insurance-source{margin:11px 0 0;color:#cfeaf2;font-size:12px;line-height:1.4}
+    .insurance-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:14px}
+    .insurance-card{border:1px solid #c9d7e4;border-radius:12px;background:#fff;padding:15px;box-shadow:0 8px 18px rgba(15,23,42,.07)}
+    .insurance-card h2{margin:0 0 8px;color:#163e5a;font-size:24px;line-height:1.15}
+    .insurance-card h3{margin:0 0 7px;color:#173f5c;font-size:18px;line-height:1.2}
+    .insurance-card p{margin:0;color:#456175;font-size:14px;line-height:1.47}
+    .insurance-kpi{display:block;margin-bottom:5px;color:#0f6a75;font-size:30px;font-weight:900;line-height:1}
+    .insurance-label{display:block;margin-bottom:7px;color:#667c8e;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.06em}
+    .insurance-wide{grid-column:span 2}
+    .insurance-full{grid-column:1 / -1}
+    .insurance-table-wrap{overflow:auto;border:1px solid #d8e2ec;border-radius:10px}
+    .insurance-table{width:100%;min-width:760px;border-collapse:collapse;font-size:13px}
+    .insurance-table caption{text-align:left;font-weight:900;color:#2f4d62;padding:0 0 7px}
+    .insurance-table th,.insurance-table td{border-bottom:1px solid #d8e2ec;padding:9px 10px;text-align:left;vertical-align:top}
+    .insurance-table thead th{background:#edf4fa;color:#274c64;font-size:11px;text-transform:uppercase}
+    .insurance-table tbody th{color:#173f5c}
+    .insurance-table td{color:#102f43;font-weight:800}
+    .insurance-table tr:last-child th,.insurance-table tr:last-child td{border-bottom:0}
+    .range-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+    .range-card{border:1px solid #d5e3ec;border-radius:11px;background:#f8fbff;padding:12px}
+    .range-card strong{display:block;color:#173f5c;font-size:17px}
+    .range-card span{display:block;margin-top:4px;color:#0f6a75;font-size:24px;font-weight:900}
+    .range-card p{margin-top:6px;font-size:13px}
+    .risk-stack{display:grid;gap:8px}
+    .risk-stack div{display:grid;grid-template-columns:130px 1fr auto;gap:8px;align-items:center}
+    .risk-stack span{color:#36586e;font-size:13px;font-weight:900}
+    .risk-stack i{height:14px;border-radius:999px;background:linear-gradient(90deg,#0f6a75,#66a95f);width:var(--w)}
+    .risk-stack b{color:#102f43;font-size:13px}
+    .insurance-links{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
+    .insurance-links a{display:flex;align-items:center;justify-content:center;min-height:42px;border:1px solid #cfe0eb;border-radius:9px;background:#f7fbff;color:#183f58;font-size:13px;font-weight:900;text-align:center;text-decoration:none}
+    .insurance-links a:hover{border-color:#8bb7ca;background:#eef7ff}
+    .city-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+    .city-card{display:flex;flex-direction:column;justify-content:space-between;min-height:145px;border:1px solid #d1e1eb;border-radius:12px;background:#fff;padding:12px;text-decoration:none;box-shadow:0 1px 4px rgba(15,23,42,.05)}
+    .city-card strong{display:block;color:#163e5a;font-size:17px}
+    .city-card span{display:block;margin-top:5px;color:#456175;font-size:13px;line-height:1.4}
+    .city-card em{display:block;margin-top:10px;color:#0f6a75;font-style:normal;font-size:12px;font-weight:900;text-transform:uppercase}
+    .city-card:hover{border-color:#8bb7ca;background:#f7fbff;text-decoration:none}
+    .selector-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;margin-top:10px}
+    .selector-row select{min-width:0;border:1px solid #c6d8e5;border-radius:9px;background:#fff;color:#102f43;padding:10px 11px;font-size:14px;font-weight:800}
+    .selector-row button{border:0;border-radius:9px;background:#0f6a75;color:#fff;padding:10px 13px;font-size:13px;font-weight:900;cursor:pointer}
+    .source-list{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+    .source-list li{border:1px solid #d8e2ec;border-radius:9px;background:#f8fbff;padding:9px;color:#456175;font-size:13px;line-height:1.45}
+    .source-list strong{color:#173f5c}
+    @media (max-width:1100px){
+      .insurance-hero{grid-template-columns:1fr}
+      .insurance-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .city-grid,.insurance-links,.range-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+    @media (max-width:700px){
+      .insurance-hero{margin:0 -12px;padding:18px 12px}
+      .insurance-hero h1{font-size:36px}
+      .insurance-grid,.city-grid,.insurance-links,.selector-row,.insurance-panel-grid,.range-grid{grid-template-columns:1fr}
+      .insurance-wide{grid-column:auto}
+      .insurance-actions a{width:100%}
+      .risk-stack div{grid-template-columns:104px 1fr auto}
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What insurance types are included in the Minnesota guide?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The guide covers home insurance, auto insurance, renters insurance, and health insurance planning context."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why do Minnesota home insurance costs vary by property?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Home insurance varies by replacement cost, roof age, claim history, wind and hail exposure, fire protection, deductible, coverage limits, and local rebuilding costs."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How should I compare insurance costs before moving?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Compare quotes for the exact address, vehicle, driver profile, coverage limits, deductibles, bundle options, and any property-specific risk factors."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
-<body>
-  <div class="container">
-    <div class="nav">
-      <div class="brand">
-        <img src="/assets/logo.png" alt="Data By Area logo" class="logo">
-        <div class="brand-text">
-          <strong>Data By Area</strong>
-          <span>Costs • Rates • Public Data</span>
+<body class="area-dashboard-page insurance-state-page">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="container area-dashboard-shell">
+    <header class="area-top-nav area-home-header">
+      <a href="/" class="area-home-brand" aria-label="DataByArea.com home">
+        <span class="area-home-logo" aria-hidden="true">
+          <img src="/assets/logo-icon.svg" alt="" width="36" height="36" decoding="async" fetchpriority="high" />
+        </span>
+        <span>DataByArea.com</span>
+      </a>
+
+      <div class="area-home-actions">
+        <a class="area-home-button search" href="/search/">Search Data</a>
+        <a class="area-home-login" href="/login/">Log In</a>
+        <a class="area-home-button signup" href="/signup/">Sign Up</a>
+      </div>
+    </header>
+
+    <main id="main-content" class="insurance-main">
+      <section class="insurance-hero" aria-labelledby="insurance-title">
+        <div>
+          <div class="insurance-breadcrumbs"><a href="/">Home</a> &rsaquo; <a href="/insurance-costs/">Insurance Costs</a> &rsaquo; Minnesota</div>
+          <h1 id="insurance-title">Insurance Costs in Minnesota</h1>
+          <p>Minnesota insurance costs depend on weather risk, roof age, rebuilding cost, vehicle use, driving record, coverage limits, deductibles, household profile, and provider appetite. Use this guide to frame the quote questions before comparing exact addresses or policies.</p>
+          <div class="insurance-actions">
+            <a href="#insurance-ranges">Planning Ranges</a>
+            <a href="#risk-drivers">Risk Drivers</a>
+            <a href="#city-pages">Local Pages</a>
+            <a href="/cost-of-living/minnesota/">Cost of Living</a>
+          </div>
         </div>
-      </div>
-      <div class="navlinks">
-        <a class="pill" href="/">Home</a>
-        <a class="pill" href="/cost-of-living/">Cost of Living</a>
-        <a class="pill" href="/utility-costs/">Utility Costs</a>
-        <a class="pill" href="/property-taxes/">Property Tax Rates</a>
-        <a class="pill" href="/insurance-costs/">Insurance Costs</a>
-      </div>
-    </div>
+        <aside class="insurance-panel" aria-label="Minnesota insurance snapshot">
+          <h2>Insurance Planning Snapshot</h2>
+          <div class="insurance-panel-grid">
+            <div><strong>Home</strong><span>Weather and rebuild cost</span></div>
+            <div><strong>Auto</strong><span>Driver and vehicle profile</span></div>
+            <div><strong>Renters</strong><span>Low fixed-cost coverage</span></div>
+            <div><strong>Health</strong><span>Plan and subsidy driven</span></div>
+          </div>
+          <p class="insurance-source">Use this page for planning. Final premiums require quotes using the exact address, vehicle, household, coverage limits, and deductible.</p>
+        </aside>
+      </section>
 
-    <div class="hero">
-      <h1>Insurance Costs in Minnesota</h1>
-      <p>Explore insurance costs in Minnesota. Compare state averages and city-level differences.</p>
-      <div class="breadcrumbs">
-        <a href="/">Home</a> › <a href="/insurance-costs/">Insurance Costs</a> › <span>Minnesota</span>
-      </div>
-    </div>
+      <section class="insurance-grid" aria-label="Minnesota insurance cost summary">
+        <article class="insurance-card">
+          <span class="insurance-label">Home insurance</span>
+          <span class="insurance-kpi">Property-specific</span>
+          <p>Roof age, replacement cost, wind and hail exposure, distance to fire service, and claim history can matter more than city average.</p>
+        </article>
+        <article class="insurance-card">
+          <span class="insurance-label">Auto insurance</span>
+          <span class="insurance-kpi">Profile-driven</span>
+          <p>Driving record, vehicle type, mileage, garaging ZIP, coverage limits, deductibles, and discounts drive the quote.</p>
+        </article>
+        <article class="insurance-card">
+          <span class="insurance-label">Renters</span>
+          <span class="insurance-kpi">Usually modest</span>
+          <p>Renters coverage is often a small monthly cost, but liability limits and replacement-cost coverage still matter.</p>
+        </article>
+        <article class="insurance-card">
+          <span class="insurance-label">Health</span>
+          <span class="insurance-kpi">Plan-based</span>
+          <p>Premiums depend on plan tier, network, household income, subsidies, age, county availability, and employer coverage.</p>
+        </article>
 
-    <div class="grid">
-      <div class="card">
-        <h2>What you can compare</h2>
-        <p>Use this page to review auto, home, renters, and health insurance benchmarks across Minnesota.</p>
-        <ul class="list">
-          <li class="item">Statewide averages and regional variation</li>
-          <li class="item">City-level snapshots for major metros</li>
-          <li class="item">Cross-category links for fuller context</li>
-        </ul>
-      </div>
+        <section class="insurance-card insurance-full" id="insurance-ranges" aria-labelledby="ranges-title">
+          <h2 id="ranges-title">Monthly Insurance Planning Ranges</h2>
+          <p>These ranges are not quotes. They help estimate the insurance portion of a Minnesota household budget.</p>
+          <div class="range-grid" style="margin-top:12px">
+            <div class="range-card">
+              <strong>Homeowners</strong>
+              <span>$110-$310</span>
+              <p>Single-family home planning range, heavily affected by replacement cost, roof age, deductible, and weather risk.</p>
+            </div>
+            <div class="range-card">
+              <strong>Auto</strong>
+              <span>$90-$240</span>
+              <p>One vehicle with typical coverage. Younger drivers, violations, full coverage, or high-value vehicles can raise this.</p>
+            </div>
+            <div class="range-card">
+              <strong>Renters</strong>
+              <span>$12-$35</span>
+              <p>Common low-cost coverage for personal property and liability, with higher limits or riders increasing premium.</p>
+            </div>
+            <div class="range-card">
+              <strong>Health</strong>
+              <span>Varies</span>
+              <p>Plan choice, employer contribution, subsidy eligibility, network, and household size dominate the final monthly cost.</p>
+            </div>
+          </div>
+        </section>
 
-      <div class="card">
-        <h2>Related Minnesota pages</h2>
-        <p>Explore other cost categories for Minnesota.</p>
-        <ul class="list">
-          <li><a href="/cost-of-living/minnesota/">Cost of Living in Minnesota</a></li>
-<li><a href="/utility-costs/minnesota/">Utility Costs in Minnesota</a></li>
-<li><a href="/property-taxes/minnesota/">Property Tax Rates in Minnesota</a></li>
-        </ul>
-        <a class="btn" href="/insurance-costs/">Back to Insurance Costs states</a>
-      </div>
-    </div>
+        <article class="insurance-card insurance-wide" id="risk-drivers">
+          <h2>What Moves Premiums</h2>
+          <div class="risk-stack" aria-label="Minnesota insurance premium drivers" style="margin-top:10px">
+            <div><span>Coverage limits</span><i style="--w:92%"></i><b>Highest</b></div>
+            <div><span>Claim history</span><i style="--w:80%"></i><b>High</b></div>
+            <div><span>Roof age</span><i style="--w:70%"></i><b>High</b></div>
+            <div><span>Deductible</span><i style="--w:58%"></i><b>Medium</b></div>
+            <div><span>Weather risk</span><i style="--w:54%"></i><b>Local</b></div>
+            <div><span>Credit/discounts</span><i style="--w:46%"></i><b>Varies</b></div>
+          </div>
+        </article>
 
-    <!-- COUNTY_PAGES:ANCHOR -->
-    <!-- POPULAR_CITIES:START -->
-<div class="card">
-<h2 class="sectionTitle">Minnesota insights dashboard</h2>
-<p>Jump between insight pages for Minnesota and choose a city to open local detail pages.</p>
-<div class="navlinks">
-<a class="pill" href="/cost-of-living/minnesota/">Cost of Living</a>
-<a class="pill" href="/utility-costs/minnesota/">Utility Costs</a>
-<a class="pill" href="/property-taxes/minnesota/">Property Tax Rates</a>
-<a class="pill" href="/insurance-costs/minnesota/">Insurance Costs</a>
-</div>
-<label for="insurance-costs-state-selector"><strong>State selector (Insurance Costs)</strong></label>
-<select
-  id="insurance-costs-state-selector"
-  style="display:block;width:100%;max-width:420px;margin:.5rem 0 1rem;padding:.55rem;border-radius:10px;border:1px solid #d5dfeb;background:#fff;"
-  onchange="if(this.value) window.location.href=this.value;"
->
-<option value="/insurance-costs/alabama/">Alabama</option>
-<option value="/insurance-costs/alaska/">Alaska</option>
-<option value="/insurance-costs/arizona/">Arizona</option>
-<option value="/insurance-costs/arkansas/">Arkansas</option>
-<option value="/insurance-costs/california/">California</option>
-<option value="/insurance-costs/colorado/">Colorado</option>
-<option value="/insurance-costs/connecticut/">Connecticut</option>
-<option value="/insurance-costs/delaware/">Delaware</option>
-<option value="/insurance-costs/florida/">Florida</option>
-<option value="/insurance-costs/georgia/">Georgia</option>
-<option value="/insurance-costs/hawaii/">Hawaii</option>
-<option value="/insurance-costs/idaho/">Idaho</option>
-<option value="/insurance-costs/illinois/">Illinois</option>
-<option value="/insurance-costs/indiana/">Indiana</option>
-<option value="/insurance-costs/iowa/">Iowa</option>
-<option value="/insurance-costs/kansas/">Kansas</option>
-<option value="/insurance-costs/kentucky/">Kentucky</option>
-<option value="/insurance-costs/louisiana/">Louisiana</option>
-<option value="/insurance-costs/maine/">Maine</option>
-<option value="/insurance-costs/maryland/">Maryland</option>
-<option value="/insurance-costs/massachusetts/">Massachusetts</option>
-<option value="/insurance-costs/michigan/">Michigan</option>
-<option value="/insurance-costs/minnesota/" selected>Minnesota</option>
-<option value="/insurance-costs/mississippi/">Mississippi</option>
-<option value="/insurance-costs/missouri/">Missouri</option>
-<option value="/insurance-costs/montana/">Montana</option>
-<option value="/insurance-costs/nebraska/">Nebraska</option>
-<option value="/insurance-costs/nevada/">Nevada</option>
-<option value="/insurance-costs/new-hampshire/">New Hampshire</option>
-<option value="/insurance-costs/new-jersey/">New Jersey</option>
-<option value="/insurance-costs/new-mexico/">New Mexico</option>
-<option value="/insurance-costs/new-york/">New York</option>
-<option value="/insurance-costs/north-carolina/">North Carolina</option>
-<option value="/insurance-costs/north-dakota/">North Dakota</option>
-<option value="/insurance-costs/ohio/">Ohio</option>
-<option value="/insurance-costs/oklahoma/">Oklahoma</option>
-<option value="/insurance-costs/oregon/">Oregon</option>
-<option value="/insurance-costs/pennsylvania/">Pennsylvania</option>
-<option value="/insurance-costs/rhode-island/">Rhode Island</option>
-<option value="/insurance-costs/south-carolina/">South Carolina</option>
-<option value="/insurance-costs/south-dakota/">South Dakota</option>
-<option value="/insurance-costs/tennessee/">Tennessee</option>
-<option value="/insurance-costs/texas/">Texas</option>
-<option value="/insurance-costs/utah/">Utah</option>
-<option value="/insurance-costs/vermont/">Vermont</option>
-<option value="/insurance-costs/virginia/">Virginia</option>
-<option value="/insurance-costs/washington/">Washington</option>
-<option value="/insurance-costs/west-virginia/">West Virginia</option>
-<option value="/insurance-costs/wisconsin/">Wisconsin</option>
-<option value="/insurance-costs/wyoming/">Wyoming</option>
-</select>
-<label for="insurance-costs-minnesota-city-selector"><strong>City selector (Insurance Costs)</strong></label>
-<select
-  id="insurance-costs-minnesota-city-selector"
-  style="display:block;width:100%;max-width:420px;margin:.5rem 0 1rem;padding:.55rem;border-radius:10px;border:1px solid #d5dfeb;background:#fff;"
-  onchange="if(this.value) window.location.href=this.value;"
->
-  <option value="">Choose a city page...</option>
-<option value="/insurance-costs/minnesota/minneapolis/">Minneapolis</option>
-</select>
-</div>
-<div class="card">
-<h2 class="sectionTitle">Popular cities in Minnesota</h2>
-<p class="cityListMeta">Browse 1 total city pages in Minnesota.</p>
-<ul class="gridList cityGrid">
-<li><a class="cityLink" href="/insurance-costs/minnesota/minneapolis/">Minneapolis</a></li>
-</ul>
-</div>
-<!-- POPULAR_CITIES:END -->
+        <article class="insurance-card insurance-wide">
+          <h2>Quote Checklist</h2>
+          <ul class="source-list">
+            <li><strong>Match coverage limits:</strong> Compare dwelling, liability, personal property, collision, comprehensive, and medical coverage consistently.</li>
+            <li><strong>Check deductibles:</strong> A cheaper premium may hide a much larger wind/hail, roof, or auto deductible.</li>
+            <li><strong>Ask about exclusions:</strong> Roof age, water backup, sewer backup, flood, hail, and replacement-cost terms can change the value of a policy.</li>
+            <li><strong>Bundle carefully:</strong> Home and auto bundle discounts can help, but compare the total package against separate carriers.</li>
+          </ul>
+        </article>
 
-    <!-- POPULAR_CITIES:ANCHOR -->
+        <section class="insurance-card insurance-full" aria-labelledby="insurance-types-title">
+          <h2 id="insurance-types-title">Minnesota Insurance Categories</h2>
+          <div class="insurance-table-wrap" style="margin-top:12px">
+            <table class="insurance-table" aria-label="Minnesota insurance category planning table">
+              <thead>
+                <tr>
+                  <th>Insurance Type</th>
+                  <th>Best Comparison Question</th>
+                  <th>Local Factor</th>
+                  <th>Budget Risk</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Homeowners</th><td>Is the dwelling limit enough to rebuild locally?</td><td>Roof age, wind/hail exposure, fire protection, rebuild labor.</td><td>Underinsured dwelling or large weather deductible.</td></tr>
+                <tr><th scope="row">Auto</th><td>Are limits, deductibles, and drivers identical across quotes?</td><td>Garaging ZIP, commute, vehicle, driver history, usage.</td><td>Low liability limits or high collision/comprehensive deductible.</td></tr>
+                <tr><th scope="row">Renters</th><td>Does it cover replacement cost and enough liability?</td><td>Building type, location, personal property, add-on riders.</td><td>Assuming landlord insurance covers tenant property.</td></tr>
+                <tr><th scope="row">Health</th><td>Are doctors, hospitals, prescriptions, and subsidies included?</td><td>County plan availability, employer contribution, network.</td><td>Low premium but high deductible or out-of-network exposure.</td></tr>
+                <tr><th scope="row">Umbrella</th><td>Do assets or driving/property risks justify extra liability?</td><td>Homeownership, drivers, rentals, boats, recreational vehicles.</td><td>Insufficient liability protection after a severe claim.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
 
-    <div class="footer">
-      <p><strong>Disclaimer:</strong> Informational estimates only. Costs and rates vary by household, provider, and local area.</p>
-      <p><a href="/about/">About</a> · <a href="/privacy/">Privacy Policy</a> · <a href="/contact/">Contact</a></p>
+        <section class="insurance-card insurance-full" aria-labelledby="area-comparison-title">
+          <h2 id="area-comparison-title">Minnesota Area Insurance Notes</h2>
+          <p>Use local pages to combine insurance context with home values, property taxes, utilities, and climate factors.</p>
+          <div class="insurance-table-wrap" style="margin-top:12px">
+            <table class="insurance-table" aria-label="Minnesota insurance area comparison table">
+              <thead>
+                <tr>
+                  <th>Area</th>
+                  <th>Market Type</th>
+                  <th>Insurance Watch Item</th>
+                  <th>Open</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Kiester</th><td>Small town</td><td>Roof age, replacement cost, distance to services, winter weather, and wind/hail exposure.</td><td><a href="/minnesota/kiester/">City dashboard</a></td></tr>
+                <tr><th scope="row">Wells</th><td>Nearby rural peer</td><td>Useful comparison for similar home age, service access, and rural auto usage.</td><td><a href="/minnesota/wells/">City dashboard</a></td></tr>
+                <tr><th scope="row">Albert Lea</th><td>Regional city</td><td>Compare home replacement cost, lake/water exposure, and commute patterns.</td><td><a href="/minnesota/albert-lea/">City dashboard</a></td></tr>
+                <tr><th scope="row">Rochester</th><td>Regional center</td><td>Higher home values can raise dwelling limits; auto and health networks may differ.</td><td><a href="/minnesota/rochester/">City dashboard</a></td></tr>
+                <tr><th scope="row">Mankato</th><td>Regional/student market</td><td>Rental coverage, auto usage, and property type matter for household budgets.</td><td><a href="/minnesota/mankato/">City dashboard</a></td></tr>
+                <tr><th scope="row">Duluth</th><td>Northern city</td><td>Weather, older housing stock, roof condition, and winter driving exposure matter.</td><td><a href="/minnesota/duluth/">City dashboard</a></td></tr>
+                <tr><th scope="row">Minneapolis</th><td>Large city</td><td>Urban auto risk, property type, home value, and renters coverage vary by neighborhood.</td><td><a href="/minnesota/minneapolis/">City dashboard</a></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <article class="insurance-card insurance-wide">
+          <h2>Related Minnesota Cost Pages</h2>
+          <p>Insurance belongs in the full household budget alongside housing, utilities, and property taxes.</p>
+          <div class="insurance-links" style="margin-top:10px">
+            <a href="/cost-of-living/minnesota/">Cost of Living</a>
+            <a href="/utility-costs/minnesota/">Utilities</a>
+            <a href="/property-taxes/minnesota/">Property Taxes</a>
+            <a href="/insurance-costs/minnesota/">Insurance</a>
+          </div>
+        </article>
+
+        <article class="insurance-card insurance-wide">
+          <h2>Switch State</h2>
+          <p>Open another state insurance profile without returning to the national hub.</p>
+          <form data-state-selector>
+            <label class="mutedSmall" for="insurance-state-selector">Choose a state</label>
+            <div class="selector-row">
+              <select id="insurance-state-selector" autocomplete="off" data-dba-state-select data-dba-category="insurance-costs" data-current-state="minnesota">
+                <option value="">Choose a state...</option>
+                <option value="/insurance-costs/iowa/">Iowa</option>
+                <option value="/insurance-costs/north-dakota/">North Dakota</option>
+                <option value="/insurance-costs/south-dakota/">South Dakota</option>
+                <option value="/insurance-costs/wisconsin/">Wisconsin</option>
+                <option value="/insurance-costs/illinois/">Illinois</option>
+                <option value="/insurance-costs/california/">California</option>
+                <option value="/insurance-costs/texas/">Texas</option>
+                <option value="/insurance-costs/florida/">Florida</option>
+              </select>
+              <button type="submit">View State</button>
+            </div>
+          </form>
+        </article>
+
+        <section class="insurance-card insurance-full" id="city-pages" aria-labelledby="city-pages-title">
+          <h2 id="city-pages-title">Minnesota Insurance and City Pages</h2>
+          <p>Open available insurance pages or broader city dashboards when a dedicated insurance page is not yet available.</p>
+          <div class="city-grid" style="margin-top:12px">
+            <a class="city-card" href="/minnesota/minneapolis/"><strong>Minneapolis</strong><span>Large-city dashboard for property, cost, climate, and insurance planning context.</span><em>Open city dashboard</em></a>
+            <a class="city-card" href="/minnesota/kiester/"><strong>Kiester</strong><span>City dashboard with climate, housing, taxes, and insurance context for local comparisons.</span><em>Open city dashboard</em></a>
+            <a class="city-card" href="/minnesota/wells/"><strong>Wells</strong><span>Nearby rural benchmark for home, auto, and local cost comparison.</span><em>Open city dashboard</em></a>
+            <a class="city-card" href="/minnesota/winnebago/"><strong>Winnebago</strong><span>Faribault County comparison point for housing, climate, and insurance planning.</span><em>Open city dashboard</em></a>
+            <a class="city-card" href="/minnesota/albert-lea/"><strong>Albert Lea</strong><span>Regional southern Minnesota dashboard for property and household cost context.</span><em>Open city dashboard</em></a>
+            <a class="city-card" href="/minnesota/rochester/"><strong>Rochester</strong><span>Regional center dashboard for higher home values and insurance budget planning.</span><em>Open city dashboard</em></a>
+            <a class="city-card" href="/minnesota/mankato/"><strong>Mankato</strong><span>Regional and student-market dashboard for renters, auto, and property context.</span><em>Open city dashboard</em></a>
+            <a class="city-card" href="/minnesota/duluth/"><strong>Duluth</strong><span>Northern Minnesota dashboard with weather, housing, and ownership-risk context.</span><em>Open city dashboard</em></a>
+          </div>
+        </section>
+
+        <article class="insurance-card insurance-wide">
+          <h2>Find an Insurance Page</h2>
+          <p>Use the dropdown for available Minnesota insurance profiles and broader city dashboards.</p>
+          <form data-city-selector>
+            <label class="mutedSmall" for="insurance-city-selector">Choose a city</label>
+            <div class="selector-row">
+              <select id="insurance-city-selector" autocomplete="off" data-dba-city-select data-dba-state="minnesota" data-dba-category="insurance-costs">
+                <option value="">Choose a city page...</option>
+                <option value="/minnesota/minneapolis/">Minneapolis city dashboard</option>
+                <option value="/minnesota/kiester/">Kiester city dashboard</option>
+                <option value="/minnesota/wells/">Wells city dashboard</option>
+                <option value="/minnesota/winnebago/">Winnebago city dashboard</option>
+                <option value="/minnesota/albert-lea/">Albert Lea city dashboard</option>
+                <option value="/minnesota/rochester/">Rochester city dashboard</option>
+                <option value="/minnesota/mankato/">Mankato city dashboard</option>
+                <option value="/minnesota/duluth/">Duluth city dashboard</option>
+              </select>
+              <button type="submit">Open Page</button>
+            </div>
+          </form>
+        </article>
+
+        <article class="insurance-card insurance-wide">
+          <h2>Data Sources and Methodology</h2>
+          <ul class="source-list">
+            <li><strong>Use case:</strong> This page is a planning guide for comparing insurance pressure across Minnesota household budgets.</li>
+            <li><strong>Quote accuracy:</strong> Exact premiums require carrier quotes using the property, vehicle, driver, household, coverage limits, and deductible.</li>
+            <li><strong>Comparison approach:</strong> State and city pages combine public risk, housing, climate, and cost context to help users ask better quote questions.</li>
+          </ul>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer home-footer">
+      <p><strong>Disclaimer:</strong> Informational estimates only. Insurance premiums vary by carrier, coverage, deductible, property, vehicle, driver, household, and claim history.</p>
+      <p><a href="/about/">About</a> &middot; <a href="/privacy/">Privacy Policy</a> &middot; <a href="/contact/">Contact</a></p>
       <p>Last updated: 2026-06-12</p>
-    </div>
+    </footer>
   </div>
+
+  <script>
+    (function () {
+      function bindSelector(selector) {
+        var form = document.querySelector(selector);
+        if (!form) return;
+        var select = form.querySelector('select');
+        form.addEventListener('submit', function (event) {
+          event.preventDefault();
+          if (select && select.value) window.location.href = select.value;
+        });
+        select.addEventListener('change', function () {
+          if (select.value) window.location.href = select.value;
+        });
+      }
+      bindSelector('[data-state-selector]');
+      bindSelector('[data-city-selector]');
+    })();
+  </script>
+  <script defer src="/assets/search-autocomplete.js"></script>
   <script defer src="/assets/version-footer.js"></script>
 </body>
 </html>

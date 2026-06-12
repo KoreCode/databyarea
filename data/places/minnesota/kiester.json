@@ -1,0 +1,476 @@
+{
+  "schema_version": "dba.location.v1",
+  "updated_at": "2026-06-10",
+  "location": {
+    "type": "city",
+    "name": "Kiester",
+    "slug": "kiester",
+    "state_name": "Minnesota",
+    "state_slug": "minnesota",
+    "state_abbr": "MN",
+    "county_name": "Faribault County",
+    "county_slug": "faribault-county",
+    "country": "US",
+    "zip_codes": ["56051"],
+    "geo": {
+      "latitude": 43.54,
+      "longitude": -93.71,
+      "timezone": "America/Chicago"
+    }
+  },
+  "page": {
+    "canonical_path": "/minnesota/kiester/",
+    "api_path": "/api/databyarea/minnesota/kiester",
+    "template_path": "/minnesota/kiester-template/",
+    "title": "Kiester, MN Area Profile | DataByArea",
+    "description": "Kiester, MN area profile dashboard with utility rates, demographics, schools, local economy, real estate, climate, insurance, and nearby city comparisons.",
+    "robots": "index,follow"
+  },
+  "metrics": {
+    "population": {
+      "value": 507,
+      "unit": "people",
+      "display": "507",
+      "label": "Population",
+      "source_id": "city_static_seed",
+      "source_year": "2026",
+      "updated_at": "2026-06-10",
+      "confidence": "medium",
+      "status": "fallback",
+      "aliases": ["population"],
+      "notes": "Static seed until live Census place match is available."
+    },
+    "cost_index": {
+      "value": 95.8,
+      "unit": "index",
+      "display": "95.8",
+      "label": "Composite cost index",
+      "source_id": "city_static_seed",
+      "source_year": "2026",
+      "updated_at": "2026-06-10",
+      "confidence": "estimated",
+      "status": "fallback",
+      "aliases": ["cost_index", "composite_cost_index"],
+      "notes": "Planning index used for comparison display."
+    },
+    "grocery_index": {
+      "value": 9.1,
+      "unit": "index",
+      "display": "9.1",
+      "label": "Grocery index",
+      "source_id": "city_static_seed",
+      "source_year": "2026",
+      "updated_at": "2026-06-10",
+      "confidence": "estimated",
+      "status": "fallback",
+      "aliases": ["grocery_index"],
+      "notes": "Template chart fallback."
+    },
+    "housing_index": {
+      "value": 8.6,
+      "unit": "index",
+      "display": "8.6",
+      "label": "Housing index",
+      "source_id": "city_static_seed",
+      "source_year": "2026",
+      "updated_at": "2026-06-10",
+      "confidence": "estimated",
+      "status": "fallback",
+      "aliases": ["housing_index"],
+      "notes": "Template chart fallback."
+    },
+    "transportation_index": {
+      "value": 7.2,
+      "unit": "index",
+      "display": "7.2",
+      "label": "Transportation index",
+      "source_id": "city_static_seed",
+      "source_year": "2026",
+      "updated_at": "2026-06-10",
+      "confidence": "estimated",
+      "status": "fallback",
+      "aliases": ["transportation_index"],
+      "notes": "Template chart fallback."
+    },
+    "electricity_rate": {
+      "value": 0.154,
+      "unit": "usd_per_kwh",
+      "display": "$0.154/kWh",
+      "label": "Electricity rate",
+      "source_id": "eia_state_electricity",
+      "source_year": "2024",
+      "updated_at": "2026-06-10",
+      "confidence": "medium",
+      "status": "estimate",
+      "aliases": ["electricity_rate", "electricity_price_usd_per_kwh", "electricity_price_cents_per_kwh"],
+      "notes": "State/regional rate anchor; verify exact provider rate locally."
+    },
+    "gasoline_price": {
+      "value": 3.28,
+      "unit": "usd_per_gallon",
+      "display": "$3.28/gal",
+      "label": "Gasoline price",
+      "source_id": "eia_fuel",
+      "source_year": "2026",
+      "updated_at": "2026-06-10",
+      "confidence": "medium",
+      "status": "estimate",
+      "aliases": ["gasoline_price_usd_per_gallon"],
+      "notes": "Fuel price is regional and can change frequently."
+    },
+    "water_bill": {
+      "value": 48,
+      "unit": "usd_per_month",
+      "display": "$48/mo",
+      "label": "Average water bill",
+      "source_id": "city_static_seed",
+      "source_year": "2026",
+      "updated_at": "2026-06-10",
+      "confidence": "estimated",
+      "status": "fallback",
+      "aliases": ["water_bill", "average_water_bill_usd"],
+      "notes": "Planning fallback until local utility fee schedule is wired."
+    },
+    "gas_rate": {
+      "value": 1.18,
+      "unit": "usd_per_ccf",
+      "display": "$1.18/CCF",
+      "label": "Natural gas rate",
+      "source_id": "city_static_seed",
+      "source_year": "2026",
+      "updated_at": "2026-06-10",
+      "confidence": "estimated",
+      "status": "fallback",
+      "aliases": ["gas_rate", "natural_gas_price_per_ccf"],
+      "notes": "Planning fallback; verify provider and heating fuel."
+    },
+    "median_household_income": {
+      "value": 63200,
+      "unit": "usd",
+      "display": "$63,200",
+      "label": "Median household income",
+      "source_id": "city_static_seed",
+      "source_year": "2026",
+      "updated_at": "2026-06-10",
+      "confidence": "estimated",
+      "status": "fallback",
+      "aliases": ["median_household_income", "median_wage"],
+      "notes": "Static seed until Census ACS enrichment is confirmed."
+    },
+    "median_age": {
+      "value": 39.7,
+      "unit": "years",
+      "display": "39.7",
+      "label": "Median age",
+      "source_id": "city_static_seed",
+      "source_year": "2026",
+      "updated_at": "2026-06-10",
+      "confidence": "estimated",
+      "status": "fallback",
+      "aliases": ["median_age"],
+      "notes": "Static seed until Census ACS enrichment is confirmed."
+    },
+    "bachelors_plus": {
+      "value": 22.4,
+      "unit": "percent",
+      "display": "22.4%",
+      "label": "Bachelor's degree or higher",
+      "source_id": "city_static_seed",
+      "source_year": "2026",
+      "updated_at": "2026-06-10",
+      "confidence": "estimated",
+      "status": "fallback",
+      "aliases": ["bachelors_plus"],
+      "notes": "Static seed until Census ACS enrichment is confirmed."
+    },
+    "unemployment_rate": {
+      "value": 3.6,
+      "unit": "percent",
+      "display": "3.6%",
+      "label": "Unemployment rate",
+      "source_id": "city_static_seed",
+      "source_year": "2026",
+      "updated_at": "2026-06-10",
+      "confidence": "estimated",
+      "status": "fallback",
+      "aliases": ["unemployment", "unemployment_rate"],
+      "notes": "Planning fallback until BLS/local labor enrichment is confirmed."
+    },
+    "labor_force": {
+      "value": 264,
+      "unit": "people",
+      "display": "264",
+      "label": "Labor force",
+      "source_id": "city_static_seed",
+      "source_year": "2026",
+      "updated_at": "2026-06-10",
+      "confidence": "estimated",
+      "status": "fallback",
+      "aliases": ["labor_force"],
+      "notes": "Planning fallback."
+    },
+    "median_home_value": {
+      "value": 189300,
+      "unit": "usd",
+      "display": "$189,300",
+      "label": "Median home value",
+      "source_id": "city_static_seed",
+      "source_year": "2026",
+      "updated_at": "2026-06-10",
+      "confidence": "estimated",
+      "status": "fallback",
+      "aliases": ["median_home_value", "median_home_value_usd", "home_value"],
+      "notes": "Planning fallback until housing source is normalized."
+    },
+    "median_property_tax_paid": {
+      "value": 2190,
+      "unit": "usd",
+      "display": "$2,190",
+      "label": "Median property tax paid",
+      "source_id": "city_static_seed",
+      "source_year": "2026",
+      "updated_at": "2026-06-10",
+      "confidence": "estimated",
+      "status": "fallback",
+      "aliases": ["median_property_tax_paid_usd", "property_tax"],
+      "notes": "Verify parcel-level tax statement before financial decisions."
+    },
+    "estimated_state_sales_tax_rate": {
+      "value": 7.39,
+      "unit": "percent",
+      "display": "7.39%",
+      "label": "Estimated state sales tax rate",
+      "source_id": "city_static_seed",
+      "source_year": "2026",
+      "updated_at": "2026-06-10",
+      "confidence": "estimated",
+      "status": "fallback",
+      "aliases": ["estimated_state_sales_tax_rate_percent"],
+      "notes": "Planning value; local option taxes can vary."
+    },
+    "rent_2br": {
+      "value": 975,
+      "unit": "usd_per_month",
+      "display": "$975/mo",
+      "label": "Two-bedroom rent",
+      "source_id": "city_static_seed",
+      "source_year": "2026",
+      "updated_at": "2026-06-10",
+      "confidence": "estimated",
+      "status": "fallback",
+      "aliases": ["rent_2br", "rent_2br_usd", "median_gross_rent"],
+      "notes": "Local listing conditions can move quickly."
+    },
+    "sunny_days": {
+      "value": 196,
+      "unit": "days",
+      "display": "196",
+      "label": "Sunny days",
+      "source_id": "climate_static_seed",
+      "source_year": "2026",
+      "updated_at": "2026-06-10",
+      "confidence": "estimated",
+      "status": "fallback",
+      "aliases": ["sunny_days"],
+      "notes": "Static climate planning fallback."
+    },
+    "annual_snowfall": {
+      "value": 43,
+      "unit": "inches",
+      "display": "43 in",
+      "label": "Annual snowfall",
+      "source_id": "climate_static_seed",
+      "source_year": "2026",
+      "updated_at": "2026-06-10",
+      "confidence": "estimated",
+      "status": "fallback",
+      "aliases": ["annual_snowfall"],
+      "notes": "Static climate planning fallback."
+    },
+    "hazard_risk": {
+      "value": "Moderate",
+      "unit": "risk_level",
+      "display": "Moderate",
+      "label": "Hazard risk",
+      "source_id": "climate_static_seed",
+      "source_year": "2026",
+      "updated_at": "2026-06-10",
+      "confidence": "estimated",
+      "status": "fallback",
+      "aliases": ["hazard_risk", "risk_level"],
+      "notes": "High-level planning signal; not an insurance quote or parcel hazard report."
+    }
+  },
+  "sections": {
+    "cost_of_living": ["cost_index", "grocery_index", "housing_index", "transportation_index"],
+    "utilities": ["electricity_rate", "gasoline_price", "water_bill", "gas_rate"],
+    "demographics": ["population", "median_age", "bachelors_plus", "median_household_income"],
+    "economy": ["unemployment_rate", "median_household_income", "labor_force"],
+    "real_estate": ["median_home_value", "median_property_tax_paid", "estimated_state_sales_tax_rate", "rent_2br"],
+    "climate": ["sunny_days", "annual_snowfall", "hazard_risk"],
+    "insurance": ["hazard_risk"]
+  },
+  "charts": {
+    "electric_monthly_index": {
+      "type": "bar",
+      "title": "Monthly electric index",
+      "unit": "index",
+      "source_id": "city_static_seed",
+      "points": [
+        { "label": "Jan", "value": 22 },
+        { "label": "Feb", "value": 28 },
+        { "label": "Mar", "value": 34 },
+        { "label": "Apr", "value": 45 },
+        { "label": "May", "value": 62 },
+        { "label": "Jun", "value": 74 },
+        { "label": "Jul", "value": 48 },
+        { "label": "Aug", "value": 56 },
+        { "label": "Sep", "value": 67 },
+        { "label": "Oct", "value": 82 },
+        { "label": "Nov", "value": 61 },
+        { "label": "Dec", "value": 57 }
+      ]
+    },
+    "water_monthly_index": {
+      "type": "bar",
+      "title": "Monthly water index",
+      "unit": "index",
+      "source_id": "city_static_seed",
+      "points": [
+        { "label": "Jan", "value": 66 },
+        { "label": "Feb", "value": 48 },
+        { "label": "Mar", "value": 44 },
+        { "label": "Apr", "value": 36 },
+        { "label": "May", "value": 30 },
+        { "label": "Jun", "value": 26 },
+        { "label": "Jul", "value": 34 },
+        { "label": "Aug", "value": 37 },
+        { "label": "Sep", "value": 33 },
+        { "label": "Oct", "value": 55 },
+        { "label": "Nov", "value": 49 },
+        { "label": "Dec", "value": 58 }
+      ]
+    },
+    "gas_monthly_index": {
+      "type": "bar",
+      "title": "Monthly gas index",
+      "unit": "index",
+      "source_id": "city_static_seed",
+      "points": [
+        { "label": "Jan", "value": 28 },
+        { "label": "Feb", "value": 36 },
+        { "label": "Mar", "value": 43 },
+        { "label": "Apr", "value": 52 },
+        { "label": "May", "value": 61 },
+        { "label": "Jun", "value": 47 },
+        { "label": "Jul", "value": 55 },
+        { "label": "Aug", "value": 63 },
+        { "label": "Sep", "value": 49 },
+        { "label": "Oct", "value": 45 },
+        { "label": "Nov", "value": 52 },
+        { "label": "Dec", "value": 57 }
+      ]
+    }
+  },
+  "comparisons": {
+    "nearby_cities": [
+      {
+        "label": "Wells, MN",
+        "state_slug": "minnesota",
+        "city_slug": "wells",
+        "url": "/minnesota/wells/",
+        "aliases": ["wells", "wells mn", "56097"],
+        "metrics": {
+          "population": "2,410",
+          "cost_index": "99.0",
+          "median_home_value": "$171k",
+          "median_property_tax": "$2,260",
+          "electric_rate": "$0.158/kWh",
+          "risk_level": "Moderate"
+        },
+        "summary": "Closest useful peer for small-town household cost comparison.",
+        "distance": "Nearby",
+        "best_for": "Small-town peer"
+      },
+      {
+        "label": "Winnebago, MN",
+        "state_slug": "minnesota",
+        "city_slug": "winnebago",
+        "url": "/minnesota/winnebago/",
+        "aliases": ["winnebago", "winnebago mn", "56098"],
+        "metrics": {
+          "population": "1,370",
+          "cost_index": "96.7",
+          "median_home_value": "$164k",
+          "median_property_tax": "$2,110",
+          "electric_rate": "$0.156/kWh",
+          "risk_level": "Moderate"
+        },
+        "summary": "Nearby peer for housing, tax, and utility context.",
+        "distance": "Nearby",
+        "best_for": "Regional peer"
+      },
+      {
+        "label": "Albert Lea, MN",
+        "state_slug": "minnesota",
+        "city_slug": "albert-lea",
+        "url": "/minnesota/albert-lea/",
+        "aliases": ["albert lea", "albert lea mn", "56007"],
+        "metrics": {
+          "population": "18,420",
+          "cost_index": "101.4",
+          "median_home_value": "$174k",
+          "median_property_tax": "$2,540",
+          "electric_rate": "$0.166/kWh",
+          "risk_level": "Moderate"
+        },
+        "summary": "Larger regional market for comparing jobs, services, and household costs.",
+        "distance": "Regional",
+        "best_for": "Service hub"
+      }
+    ]
+  },
+  "sources": {
+    "city_static_seed": {
+      "name": "DataByArea city template seed values",
+      "publisher": "DataByArea.com",
+      "url": "https://databyarea.com/minnesota/kiester-template/",
+      "dataset": "Static fallback values captured from Kiester template",
+      "dataset_year": "2026",
+      "accessed_at": "2026-06-10",
+      "license": "Internal template seed"
+    },
+    "eia_state_electricity": {
+      "name": "EIA residential electricity benchmark",
+      "publisher": "U.S. Energy Information Administration",
+      "url": "https://www.eia.gov/electricity/",
+      "dataset": "Residential electricity price benchmark",
+      "dataset_year": "2024",
+      "accessed_at": "2026-06-10",
+      "license": "Public domain / U.S. government source"
+    },
+    "eia_fuel": {
+      "name": "EIA gasoline price benchmark",
+      "publisher": "U.S. Energy Information Administration",
+      "url": "https://www.eia.gov/petroleum/gasdiesel/",
+      "dataset": "Retail gasoline price benchmark",
+      "dataset_year": "2026",
+      "accessed_at": "2026-06-10",
+      "license": "Public domain / U.S. government source"
+    },
+    "climate_static_seed": {
+      "name": "DataByArea climate planning seed",
+      "publisher": "DataByArea.com",
+      "url": "https://databyarea.com/minnesota/kiester-template/",
+      "dataset": "Static climate fallback values captured from Kiester template",
+      "dataset_year": "2026",
+      "accessed_at": "2026-06-10",
+      "license": "Internal template seed"
+    }
+  },
+  "fallback_policy": {
+    "missing_metric": "Hide optional rows/cards when no fallback exists; otherwise show display value and source note.",
+    "api_enrichment": "Live API values may override fallback metrics when aliases match and source confidence is equal or higher.",
+    "template_rule": "Templates should read canonical keys first, then aliases, and show source/caveat metadata near metric groups."
+  }
+}

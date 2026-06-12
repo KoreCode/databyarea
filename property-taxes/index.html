@@ -2,338 +2,244 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Property Tax Rates by State | Data By Area</title>
-  <meta name="description" content="Browse property tax rates estimates across all 50 U.S. states. Use quick search plus cross-category links for complete comparisons." />
+  <title>Property Taxes by State, City, and ZIP | DataByArea</title>
+  <meta name="description" content="Compare property taxes by state, city, and ZIP with effective-rate context, homeowner burden, escrow planning, parcel checklist, and local tax profile links." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="/assets/styles.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsvectormap@1.7.0/dist/css/jsvectormap.min.css" />
   <link rel="canonical" href="https://databyarea.com/property-taxes/" />
+  <meta property="og:title" content="Property Taxes by State, City, and ZIP | DataByArea" />
+  <meta property="og:description" content="Compare property tax context, buyer checklist items, escrow risk, local levies, and parcel-level verification steps by location." />
+  <meta property="og:url" content="https://databyarea.com/property-taxes/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What should I check before relying on a property tax estimate?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Check the parcel tax statement, assessed value, classification, taxing districts, credits or exemptions, special assessments, and whether a sale or reassessment may change the bill."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are property tax pages tax advice?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. DataByArea property tax pages are informational planning guides. Verify parcel-level information with the county, city, assessor, or tax professional."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
-<body>
-  <div class="container">
-    <div class="nav">
-      <div class="brand">
-        <img src="/assets/logo.png" alt="Data By Area logo" class="logo">
-        <div class="brand-text">
-          <strong>Data By Area</strong>
-          <span>Costs • Rates • Public Data</span>
-        </div>
+<body class="area-dashboard-page insight-hub-page">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="container area-dashboard-shell">
+    <header class="area-top-nav area-home-header">
+      <a href="/" class="area-home-brand" aria-label="DataByArea.com home">
+        <span class="area-home-logo" aria-hidden="true"><img src="/assets/logo-icon.svg" alt="" width="36" height="36" decoding="async" fetchpriority="high" /></span>
+        <span>DataByArea.com</span>
+      </a>
+      <div class="area-home-actions">
+        <a class="area-home-button search" href="/search/">Search Data</a>
+        <a class="area-home-login" href="/login/">Log In</a>
+        <a class="area-home-button signup" href="/signup/">Sign Up</a>
       </div>
-      <div class="navlinks">
-        <a class="pill" href="/">Home</a>
-        <a class="pill" href="/cost-of-living/">Cost of Living</a>
-        <a class="pill" href="/utility-costs/">Utility Costs</a>
-        <a class="pill" href="/property-taxes/">Property Tax Rates</a>
-        <a class="pill" href="/insurance-costs/">Insurance Costs</a>
-      </div>
-    </div>
+    </header>
 
-    <div class="hero">
-      <h1>Property Tax Rates by State</h1>
-      <p>Browse property tax rates estimates across all 50 U.S. states. Use quick search plus cross-category links for complete comparisons.</p>
-      <div class="breadcrumbs"><a href="/">Home</a> › <span>Property Tax Rates</span></div>
-      <div class="badges">
-        <span class="badge"><span class="dot"></span> 50 states</span>
-        <span class="badge">Mobile friendly</span>
-        <span class="badge">Desktop friendly</span>
-      </div>
-      <div class="searchRow">
-        <input id="q" class="input" placeholder="Search a state (e.g., Minnesota)..." />
-      </div>
-    </div>
+    <nav class="insight-topics" aria-label="Insight pages">
+      <a href="/cost-of-living/">Cost of Living</a>
+      <a href="/utility-costs/">Utilities</a>
+      <a class="active" href="/property-taxes/">Property Taxes</a>
+      <a href="/insurance-costs/">Insurance</a>
+    </nav>
 
-    <div class="card compactTop">
-      <h2 class="sectionTitle">Pick a location: state → county → city</h2>
-      <p>Start with your state, then use county and city examples to refine comparisons and planning.</p>
-      <div class="selectionGrid">
-        <div class="interactiveMapCard">
-          <h3>Select a state on the map</h3>
-          <p class="mutedSmall">Click or tap any state to jump straight to its property tax rates page.</p>
-          <div id="state-map" class="stateMap" aria-label="Interactive map of the United States"></div>
-        </div>
-        <div class="selectionColumns">
-          <div class="card">
-            <h3>States</h3>
-            <ul class="listColumns">
-              <li><a href="/property-taxes/alabama/">Alabama</a></li>
-<li><a href="/property-taxes/alaska/">Alaska</a></li>
-<li><a href="/property-taxes/arizona/">Arizona</a></li>
-<li><a href="/property-taxes/arkansas/">Arkansas</a></li>
-<li><a href="/property-taxes/california/">California</a></li>
-<li><a href="/property-taxes/colorado/">Colorado</a></li>
-<li><a href="/property-taxes/connecticut/">Connecticut</a></li>
-<li><a href="/property-taxes/delaware/">Delaware</a></li>
-<li><a href="/property-taxes/florida/">Florida</a></li>
-<li><a href="/property-taxes/georgia/">Georgia</a></li>
-<li><a href="/property-taxes/hawaii/">Hawaii</a></li>
-<li><a href="/property-taxes/idaho/">Idaho</a></li>
-<li><a href="/property-taxes/illinois/">Illinois</a></li>
-<li><a href="/property-taxes/indiana/">Indiana</a></li>
-<li><a href="/property-taxes/iowa/">Iowa</a></li>
-<li><a href="/property-taxes/kansas/">Kansas</a></li>
-<li><a href="/property-taxes/kentucky/">Kentucky</a></li>
-<li><a href="/property-taxes/louisiana/">Louisiana</a></li>
-<li><a href="/property-taxes/maine/">Maine</a></li>
-<li><a href="/property-taxes/maryland/">Maryland</a></li>
-<li><a href="/property-taxes/massachusetts/">Massachusetts</a></li>
-<li><a href="/property-taxes/michigan/">Michigan</a></li>
-<li><a href="/property-taxes/minnesota/">Minnesota</a></li>
-<li><a href="/property-taxes/mississippi/">Mississippi</a></li>
-<li><a href="/property-taxes/missouri/">Missouri</a></li>
-<li><a href="/property-taxes/montana/">Montana</a></li>
-<li><a href="/property-taxes/nebraska/">Nebraska</a></li>
-<li><a href="/property-taxes/nevada/">Nevada</a></li>
-<li><a href="/property-taxes/new-hampshire/">New Hampshire</a></li>
-<li><a href="/property-taxes/new-jersey/">New Jersey</a></li>
-<li><a href="/property-taxes/new-mexico/">New Mexico</a></li>
-<li><a href="/property-taxes/new-york/">New York</a></li>
-<li><a href="/property-taxes/north-carolina/">North Carolina</a></li>
-<li><a href="/property-taxes/north-dakota/">North Dakota</a></li>
-<li><a href="/property-taxes/ohio/">Ohio</a></li>
-<li><a href="/property-taxes/oklahoma/">Oklahoma</a></li>
-<li><a href="/property-taxes/oregon/">Oregon</a></li>
-<li><a href="/property-taxes/pennsylvania/">Pennsylvania</a></li>
-<li><a href="/property-taxes/rhode-island/">Rhode Island</a></li>
-<li><a href="/property-taxes/south-carolina/">South Carolina</a></li>
-<li><a href="/property-taxes/south-dakota/">South Dakota</a></li>
-<li><a href="/property-taxes/tennessee/">Tennessee</a></li>
-<li><a href="/property-taxes/texas/">Texas</a></li>
-<li><a href="/property-taxes/utah/">Utah</a></li>
-<li><a href="/property-taxes/vermont/">Vermont</a></li>
-<li><a href="/property-taxes/virginia/">Virginia</a></li>
-<li><a href="/property-taxes/washington/">Washington</a></li>
-<li><a href="/property-taxes/west-virginia/">West Virginia</a></li>
-<li><a href="/property-taxes/wisconsin/">Wisconsin</a></li>
-<li><a href="/property-taxes/wyoming/">Wyoming</a></li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>Popular counties</h3>
-            <ul class="listColumns">
-              <li>Los Angeles County, CA</li>
-<li>Cook County, IL</li>
-<li>Harris County, TX</li>
-<li>Maricopa County, AZ</li>
-<li>King County, WA</li>
-<li>Miami-Dade County, FL</li>
-<li>Clark County, NV</li>
-<li>Wayne County, MI</li>
-<li>Travis County, TX</li>
-<li>Salt Lake County, UT</li>
-<li>Wake County, NC</li>
-<li>Allegheny County, PA</li>
-            </ul>
-            <p class="mutedSmall">County-level detail varies by dataset and update cycle.</p>
-          </div>
-          <div class="card">
-            <h3>Popular cities</h3>
-            <ul class="listColumns">
-              <li>New York, NY</li>
-<li>Los Angeles, CA</li>
-<li>Chicago, IL</li>
-<li>Houston, TX</li>
-<li>Phoenix, AZ</li>
-<li>Philadelphia, PA</li>
-<li>San Antonio, TX</li>
-<li>San Diego, CA</li>
-<li>Dallas, TX</li>
-<li>Austin, TX</li>
-<li>Jacksonville, FL</li>
-<li>Columbus, OH</li>
-            </ul>
-            <p class="mutedSmall">City pages help benchmark local differences inside each state.</p>
+    <main id="main-content" class="insight-main">
+      <section class="insight-hero" aria-labelledby="insight-title">
+        <div>
+          <div class="insight-breadcrumbs"><a href="/">Home</a> &rsaquo; Property Taxes</div>
+          <h1 id="insight-title">Property Taxes by State, City, and ZIP</h1>
+          <p>Compare property tax context before buying, refinancing, or estimating escrow. State averages are only a starting point; parcel value, local levies, school district, classification, credits, and special assessments decide the final bill.</p>
+          <div class="insight-actions">
+            <a href="#location-search">Find Location</a>
+            <a href="#tax-drivers">Tax Drivers</a>
+            <a href="#browse-states">Browse States</a>
+            <a href="/cost-of-living/">Cost of Living</a>
           </div>
         </div>
-      </div>
-    </div>
+        <aside class="insight-panel" id="location-search" aria-label="Find a property tax profile">
+          <h2>Start with a Location</h2>
+          <form class="insight-hero-tool" action="/search/" method="get" data-dba-search-form>
+            <div>
+              <label for="tax-search">Search city, state, or ZIP</label>
+              <div class="insight-hero-tool-row">
+                <input id="tax-search" name="q" type="search" autocomplete="off" placeholder="Try Minnesota, Minneapolis, or 56051" data-dba-autocomplete data-dba-category="property-taxes" data-dba-max-suggestions="12" />
+                <button type="submit">Search</button>
+              </div>
+            </div>
+          </form>
+          <div class="insight-hero-divider"></div>
+          <form class="insight-hero-tool" data-state-selector>
+            <div>
+              <label for="tax-state-selector">Browse by state</label>
+              <div class="insight-hero-tool-row">
+                <select id="tax-state-selector" autocomplete="off" data-dba-state-select data-dba-category="property-taxes">
+                  <option value="">Choose a state...</option>
+                </select>
+                <button type="submit">Open</button>
+              </div>
+            </div>
+          </form>
+          <div class="insight-hero-quick" aria-label="Popular property tax profiles">
+            <a href="/property-taxes/minnesota/">Minnesota</a>
+            <a href="/property-taxes/texas/">Texas</a>
+            <a href="/property-taxes/florida/">Florida</a>
+          </div>
+          <p class="insight-source">Use this as planning context only. Parcel tax statements and assessor records are the source for individual homes.</p>
+        </aside>
+      </section>
 
-    <div class="grid">
-      <div class="card">
-        <h2>Included data & tools</h2>
-        <p>Quickly compare by state, then drill into county and city-level pages where available.</p>
-        <ul class="list">
-          <li class="item">Effective property tax rates and homeowner tax burden</li>
-          <li class="item">State-by-state pages with related category links</li>
-          <li class="item">Crawlable links for every U.S. state</li>
-          <li class="item">User-friendly navigation designed for mobile and desktop</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h2>Related categories</h2>
-        <p>Use matching pages to understand total cost pressure in the same location.</p>
-        <ul class="list">
-          <li class="item"><a href="/cost-of-living/">Cost of Living</a></li>
-<li class="item"><a href="/utility-costs/">Utility Costs</a></li>
-<li class="item"><a href="/insurance-costs/">Insurance Costs</a></li>
-        </ul>
-      </div>
-    </div>
+      <section class="insight-grid" aria-label="Property tax overview">
+        <article class="insight-card">
+          <span class="insight-label">Core formula</span>
+          <span class="insight-kpi">Value + levy</span>
+          <p>The bill is not just a rate. Assessed value, classification, levy mix, credits, and districts interact.</p>
+        </article>
+        <article class="insight-card">
+          <span class="insight-label">Buyer risk</span>
+          <span class="insight-kpi">Escrow</span>
+          <p>Monthly payment estimates can miss tax changes after a sale, reassessment, homestead change, or levy update.</p>
+        </article>
+        <article class="insight-card">
+          <span class="insight-label">Local variation</span>
+          <span class="insight-kpi">High</span>
+          <p>Neighboring towns can have different county, city, school, township, and special district obligations.</p>
+        </article>
+        <article class="insight-card">
+          <span class="insight-label">Best document</span>
+          <span class="insight-kpi">Statement</span>
+          <p>Use the current parcel tax statement to confirm the actual annual bill, assessments, and district details.</p>
+        </article>
 
-    <h2 class="sectionTitle">Browse states</h2>
-    <ul id="list" class="list">
-      <li class="item"><a href="/property-taxes/alabama/">Alabama</a></li>
-<li class="item"><a href="/property-taxes/alaska/">Alaska</a></li>
-<li class="item"><a href="/property-taxes/arizona/">Arizona</a></li>
-<li class="item"><a href="/property-taxes/arkansas/">Arkansas</a></li>
-<li class="item"><a href="/property-taxes/california/">California</a></li>
-<li class="item"><a href="/property-taxes/colorado/">Colorado</a></li>
-<li class="item"><a href="/property-taxes/connecticut/">Connecticut</a></li>
-<li class="item"><a href="/property-taxes/delaware/">Delaware</a></li>
-<li class="item"><a href="/property-taxes/florida/">Florida</a></li>
-<li class="item"><a href="/property-taxes/georgia/">Georgia</a></li>
-<li class="item"><a href="/property-taxes/hawaii/">Hawaii</a></li>
-<li class="item"><a href="/property-taxes/idaho/">Idaho</a></li>
-<li class="item"><a href="/property-taxes/illinois/">Illinois</a></li>
-<li class="item"><a href="/property-taxes/indiana/">Indiana</a></li>
-<li class="item"><a href="/property-taxes/iowa/">Iowa</a></li>
-<li class="item"><a href="/property-taxes/kansas/">Kansas</a></li>
-<li class="item"><a href="/property-taxes/kentucky/">Kentucky</a></li>
-<li class="item"><a href="/property-taxes/louisiana/">Louisiana</a></li>
-<li class="item"><a href="/property-taxes/maine/">Maine</a></li>
-<li class="item"><a href="/property-taxes/maryland/">Maryland</a></li>
-<li class="item"><a href="/property-taxes/massachusetts/">Massachusetts</a></li>
-<li class="item"><a href="/property-taxes/michigan/">Michigan</a></li>
-<li class="item"><a href="/property-taxes/minnesota/">Minnesota</a></li>
-<li class="item"><a href="/property-taxes/mississippi/">Mississippi</a></li>
-<li class="item"><a href="/property-taxes/missouri/">Missouri</a></li>
-<li class="item"><a href="/property-taxes/montana/">Montana</a></li>
-<li class="item"><a href="/property-taxes/nebraska/">Nebraska</a></li>
-<li class="item"><a href="/property-taxes/nevada/">Nevada</a></li>
-<li class="item"><a href="/property-taxes/new-hampshire/">New Hampshire</a></li>
-<li class="item"><a href="/property-taxes/new-jersey/">New Jersey</a></li>
-<li class="item"><a href="/property-taxes/new-mexico/">New Mexico</a></li>
-<li class="item"><a href="/property-taxes/new-york/">New York</a></li>
-<li class="item"><a href="/property-taxes/north-carolina/">North Carolina</a></li>
-<li class="item"><a href="/property-taxes/north-dakota/">North Dakota</a></li>
-<li class="item"><a href="/property-taxes/ohio/">Ohio</a></li>
-<li class="item"><a href="/property-taxes/oklahoma/">Oklahoma</a></li>
-<li class="item"><a href="/property-taxes/oregon/">Oregon</a></li>
-<li class="item"><a href="/property-taxes/pennsylvania/">Pennsylvania</a></li>
-<li class="item"><a href="/property-taxes/rhode-island/">Rhode Island</a></li>
-<li class="item"><a href="/property-taxes/south-carolina/">South Carolina</a></li>
-<li class="item"><a href="/property-taxes/south-dakota/">South Dakota</a></li>
-<li class="item"><a href="/property-taxes/tennessee/">Tennessee</a></li>
-<li class="item"><a href="/property-taxes/texas/">Texas</a></li>
-<li class="item"><a href="/property-taxes/utah/">Utah</a></li>
-<li class="item"><a href="/property-taxes/vermont/">Vermont</a></li>
-<li class="item"><a href="/property-taxes/virginia/">Virginia</a></li>
-<li class="item"><a href="/property-taxes/washington/">Washington</a></li>
-<li class="item"><a href="/property-taxes/west-virginia/">West Virginia</a></li>
-<li class="item"><a href="/property-taxes/wisconsin/">Wisconsin</a></li>
-<li class="item"><a href="/property-taxes/wyoming/">Wyoming</a></li>
-    </ul>
+        <article class="insight-card insight-wide" id="tax-drivers">
+          <h2>What Usually Moves the Tax Bill</h2>
+          <div class="insight-stack" aria-label="Property tax drivers" style="margin-top:10px">
+            <div><span>Home value</span><i style="--w:94%"></i><b>Highest</b></div>
+            <div><span>School levy</span><i style="--w:78%"></i><b>High</b></div>
+            <div><span>City levy</span><i style="--w:66%"></i><b>High</b></div>
+            <div><span>County levy</span><i style="--w:58%"></i><b>Medium</b></div>
+            <div><span>Classification</span><i style="--w:52%"></i><b>Important</b></div>
+            <div><span>Assessments</span><i style="--w:42%"></i><b>Parcel-specific</b></div>
+          </div>
+        </article>
 
-    <div class="footer">
-      <p><strong>Disclaimer:</strong> Informational estimates only. Costs and rates vary by household, provider, and local area.</p>
-      <p><a href="/about/">About</a> · <a href="/privacy/">Privacy Policy</a> · <a href="/contact/">Contact</a></p>
-      <p>© <span id="y"></span> DataByArea.com</p>
-    </div>
-    <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+        <section class="insight-card insight-full" aria-labelledby="tax-featured-title">
+          <h2 id="tax-featured-title">Featured Property Tax Profiles</h2>
+          <p>Use state pages to frame the broad tax environment, then verify the actual parcel before buying or budgeting escrow.</p>
+          <div class="insight-feature-grid" style="margin-top:12px">
+            <a class="insight-feature-card" href="/property-taxes/minnesota/"><strong>Minnesota</strong><span>Local levy, school district, escrow, and parcel-statement planning context.</span><em>Open profile</em></a>
+            <a class="insight-feature-card" href="/property-taxes/texas/"><strong>Texas</strong><span>High property-tax visibility with strong county and school-district variation.</span><em>Open profile</em></a>
+            <a class="insight-feature-card" href="/property-taxes/florida/"><strong>Florida</strong><span>Homestead, assessment, local tax, and buyer verification considerations.</span><em>Open profile</em></a>
+            <a class="insight-feature-card" href="/property-taxes/california/"><strong>California</strong><span>Assessment rules, local charges, and purchase-price planning context.</span><em>Open profile</em></a>
+          </div>
+        </section>
+
+        <article class="insight-card insight-wide">
+          <h2>Buyer Checklist</h2>
+          <ul class="insight-list">
+            <li><strong>Read the parcel statement:</strong> confirm current tax, special assessments, districts, and payment schedule.</li>
+            <li><strong>Check classification:</strong> homestead, non-homestead, rental, agricultural, and commercial classes can differ.</li>
+            <li><strong>Ask about changes:</strong> recent sale, reassessment, levy vote, exemption change, or improvements can affect future taxes.</li>
+            <li><strong>Budget escrow carefully:</strong> lender estimates may not reflect the next reassessment or your future occupancy status.</li>
+          </ul>
+        </article>
+
+        <section class="insight-card insight-full" aria-labelledby="tax-table-title">
+          <h2 id="tax-table-title">Property Tax Items to Compare</h2>
+          <div class="insight-table-wrap" style="margin-top:12px">
+            <table class="insight-table">
+              <thead><tr><th>Item</th><th>Why It Matters</th><th>Question to Ask</th><th>Source</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Assessed value</th><td>Sets the value base for the tax calculation.</td><td>Is the value likely to reset after sale?</td><td>Assessor record.</td></tr>
+                <tr><th scope="row">Taxing districts</th><td>County, city, school, township, and special districts can all apply.</td><td>Which district lines apply to this parcel?</td><td>Tax statement and county GIS.</td></tr>
+                <tr><th scope="row">Special assessments</th><td>Street, utility, drainage, or improvement charges can add cost.</td><td>Are any assessments pending or already billed?</td><td>City/county records.</td></tr>
+                <tr><th scope="row">Credits/exemptions</th><td>Credits can make a seller's bill different from a buyer's future bill.</td><td>Will current credits continue?</td><td>Assessor or county tax office.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="insight-card insight-full" aria-labelledby="regional-tax-title">
+          <h2 id="regional-tax-title">Regional Property Tax Patterns</h2>
+          <p>Property tax pressure is local, but regional patterns help buyers know what to inspect before they fall in love with a listing.</p>
+          <div class="insight-table-wrap" style="margin-top:12px">
+            <table class="insight-table">
+              <thead><tr><th>Region</th><th>Common Tax Pattern</th><th>Buyer Risk</th><th>What to Verify</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Midwest</th><td>School, city, and county levy differences can be meaningful.</td><td>Lower home price can still carry a noticeable escrow bill.</td><td>Parcel statement, school district, special assessments.</td></tr>
+                <tr><th scope="row">Northeast</th><td>Older municipalities and high-service areas can carry higher tax burdens.</td><td>Tax bill may be a large part of monthly ownership cost.</td><td>Assessed value, exemptions, municipal and school levies.</td></tr>
+                <tr><th scope="row">South</th><td>State tax structure varies widely and may shift burden to property or sales tax.</td><td>Fast-growth areas can see reassessment or levy pressure.</td><td>Homestead rules, post-sale assessment, county tax office data.</td></tr>
+                <tr><th scope="row">West</th><td>Assessment rules and local charges vary sharply by state.</td><td>Purchase price, local bonds, and special districts can change the outlook.</td><td>Assessment rules, parcel history, bonds, special districts.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="insight-card insight-full" aria-labelledby="tax-state-signal-title">
+          <h2 id="tax-state-signal-title">State Property Tax Comparison Signals</h2>
+          <div class="insight-table-wrap" style="margin-top:12px">
+            <table class="insight-table">
+              <thead><tr><th>State</th><th>Planning Signal</th><th>Buyer Watch Item</th><th>Verification Source</th><th>Open</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Minnesota</th><td>Local levy and district context matter.</td><td>Escrow, homestead, special assessments.</td><td>County parcel tax statement.</td><td><a href="/property-taxes/minnesota/">Profile</a></td></tr>
+                <tr><th scope="row">Texas</th><td>Property taxes are a major ownership line item.</td><td>School district, homestead, appraisal changes.</td><td>County appraisal district and tax office.</td><td><a href="/property-taxes/texas/">Profile</a></td></tr>
+                <tr><th scope="row">Florida</th><td>Homestead and assessment rules are central.</td><td>Post-sale reset and local assessments.</td><td>County property appraiser and tax collector.</td><td><a href="/property-taxes/florida/">Profile</a></td></tr>
+                <tr><th scope="row">California</th><td>Purchase price and local charges matter.</td><td>Supplemental bills and special assessments.</td><td>County assessor and tax collector.</td><td><a href="/property-taxes/california/">Profile</a></td></tr>
+                <tr><th scope="row">New Jersey</th><td>Tax burden can be central to affordability.</td><td>Municipal and school levy differences.</td><td>Municipal/county tax records.</td><td><a href="/property-taxes/new-jersey/">Profile</a></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <article class="insight-card insight-full" id="browse-states">
+          <h2>Browse Property Taxes by State</h2>
+          <div class="insight-state-grid" data-state-link-grid="property-taxes" aria-label="Property tax state links">
+            <a href="/property-taxes/alabama/">Alabama</a><a href="/property-taxes/alaska/">Alaska</a><a href="/property-taxes/arizona/">Arizona</a><a href="/property-taxes/arkansas/">Arkansas</a><a href="/property-taxes/california/">California</a><a href="/property-taxes/colorado/">Colorado</a><a href="/property-taxes/connecticut/">Connecticut</a><a href="/property-taxes/delaware/">Delaware</a><a href="/property-taxes/florida/">Florida</a><a href="/property-taxes/georgia/">Georgia</a><a href="/property-taxes/hawaii/">Hawaii</a><a href="/property-taxes/idaho/">Idaho</a><a href="/property-taxes/illinois/">Illinois</a><a href="/property-taxes/indiana/">Indiana</a><a href="/property-taxes/iowa/">Iowa</a><a href="/property-taxes/kansas/">Kansas</a><a href="/property-taxes/kentucky/">Kentucky</a><a href="/property-taxes/louisiana/">Louisiana</a><a href="/property-taxes/maine/">Maine</a><a href="/property-taxes/maryland/">Maryland</a><a href="/property-taxes/massachusetts/">Massachusetts</a><a href="/property-taxes/michigan/">Michigan</a><a href="/property-taxes/minnesota/">Minnesota</a><a href="/property-taxes/mississippi/">Mississippi</a><a href="/property-taxes/missouri/">Missouri</a><a href="/property-taxes/montana/">Montana</a><a href="/property-taxes/nebraska/">Nebraska</a><a href="/property-taxes/nevada/">Nevada</a><a href="/property-taxes/new-hampshire/">New Hampshire</a><a href="/property-taxes/new-jersey/">New Jersey</a><a href="/property-taxes/new-mexico/">New Mexico</a><a href="/property-taxes/new-york/">New York</a><a href="/property-taxes/north-carolina/">North Carolina</a><a href="/property-taxes/north-dakota/">North Dakota</a><a href="/property-taxes/ohio/">Ohio</a><a href="/property-taxes/oklahoma/">Oklahoma</a><a href="/property-taxes/oregon/">Oregon</a><a href="/property-taxes/pennsylvania/">Pennsylvania</a><a href="/property-taxes/rhode-island/">Rhode Island</a><a href="/property-taxes/south-carolina/">South Carolina</a><a href="/property-taxes/south-dakota/">South Dakota</a><a href="/property-taxes/tennessee/">Tennessee</a><a href="/property-taxes/texas/">Texas</a><a href="/property-taxes/utah/">Utah</a><a href="/property-taxes/vermont/">Vermont</a><a href="/property-taxes/virginia/">Virginia</a><a href="/property-taxes/washington/">Washington</a><a href="/property-taxes/west-virginia/">West Virginia</a><a href="/property-taxes/wisconsin/">Wisconsin</a><a href="/property-taxes/wyoming/">Wyoming</a>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer home-footer">
+      <p><strong>Disclaimer:</strong> Informational estimates only. Property tax bills vary by parcel, district, classification, levy, exemption, and assessment status.</p>
+      <p><a href="/about/">About</a> &middot; <a href="/privacy/">Privacy Policy</a> &middot; <a href="/contact/">Contact</a></p>
+    </footer>
   </div>
 
   <script>
-    const q = document.getElementById('q');
-    const items = Array.from(document.querySelectorAll('#list .item'));
-    function filter(){
-      const term = q.value.trim().toLowerCase();
-      items.forEach(li => {
-        const text = li.textContent.toLowerCase();
-        li.style.display = text.includes(term) ? '' : 'none';
+    (function () {
+      var form = document.querySelector('[data-state-selector]');
+      if (!form) return;
+      var select = form.querySelector('select');
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        if (select && select.value) window.location.href = select.value;
       });
-    }
-    q.addEventListener('input', filter);
+      select.addEventListener('change', function () {
+        if (select.value) window.location.href = select.value;
+      });
+    })();
   </script>
-  <script>
-    const stateUrlByAbbr = {"AL":"/property-taxes/alabama/","AK":"/property-taxes/alaska/","AZ":"/property-taxes/arizona/","AR":"/property-taxes/arkansas/","CA":"/property-taxes/california/","CO":"/property-taxes/colorado/","CT":"/property-taxes/connecticut/","DE":"/property-taxes/delaware/","FL":"/property-taxes/florida/","GA":"/property-taxes/georgia/","HI":"/property-taxes/hawaii/","ID":"/property-taxes/idaho/","IL":"/property-taxes/illinois/","IN":"/property-taxes/indiana/","IA":"/property-taxes/iowa/","KS":"/property-taxes/kansas/","KY":"/property-taxes/kentucky/","LA":"/property-taxes/louisiana/","ME":"/property-taxes/maine/","MD":"/property-taxes/maryland/","MA":"/property-taxes/massachusetts/","MI":"/property-taxes/michigan/","MN":"/property-taxes/minnesota/","MS":"/property-taxes/mississippi/","MO":"/property-taxes/missouri/","MT":"/property-taxes/montana/","NE":"/property-taxes/nebraska/","NV":"/property-taxes/nevada/","NH":"/property-taxes/new-hampshire/","NJ":"/property-taxes/new-jersey/","NM":"/property-taxes/new-mexico/","NY":"/property-taxes/new-york/","NC":"/property-taxes/north-carolina/","ND":"/property-taxes/north-dakota/","OH":"/property-taxes/ohio/","OK":"/property-taxes/oklahoma/","OR":"/property-taxes/oregon/","PA":"/property-taxes/pennsylvania/","RI":"/property-taxes/rhode-island/","SC":"/property-taxes/south-carolina/","SD":"/property-taxes/south-dakota/","TN":"/property-taxes/tennessee/","TX":"/property-taxes/texas/","UT":"/property-taxes/utah/","VT":"/property-taxes/vermont/","VA":"/property-taxes/virginia/","WA":"/property-taxes/washington/","WV":"/property-taxes/west-virginia/","WI":"/property-taxes/wisconsin/","WY":"/property-taxes/wyoming/"};
-    const mapHost = document.getElementById('state-map');
-
-    function loadScriptOnce(src) {
-      if (document.querySelector(`script[src="${src}"]`)) return Promise.resolve();
-      return new Promise((resolve, reject) => {
-        const script = document.createElement('script');
-        script.src = src;
-        script.onload = resolve;
-        script.onerror = reject;
-        document.head.appendChild(script);
-      });
-    }
-
-    function initStateMap() {
-      if (!window.jsVectorMap || !mapHost || mapHost.dataset.mapReady === '1') return;
-      mapHost.dataset.mapReady = '1';
-      new jsVectorMap({
-        selector: '#state-map',
-        map: 'us_merc_en',
-        zoomButtons: true,
-        selectedRegions: [],
-        onRegionTooltipShow(event, tooltip, code) {
-          const abbr = code.split('-')[1];
-          if (!abbr || !stateUrlByAbbr[abbr]) {
-            return;
-          }
-          tooltip.text(`${tooltip.text()} — View details`);
-        },
-        onRegionClick(event, code) {
-          const abbr = code.split('-')[1];
-          const target = stateUrlByAbbr[abbr];
-          if (target) {
-            window.location.href = target;
-          }
-        },
-        regionStyle: {
-          initial: {
-            fill: '#d8e7f6',
-            stroke: '#7d99b5',
-            strokeWidth: 1
-          },
-          hover: {
-            fill: '#9ec0e2'
-          },
-          selected: {
-            fill: '#4f7292'
-          }
-        }
-      });
-    }
-
-    function loadAndInitMap() {
-      if (!mapHost || mapHost.dataset.mapRequested === '1') return;
-      mapHost.dataset.mapRequested = '1';
-
-      const localAssets = [
-        '/assets/vendor/jsvectormap/1.7.0/jsvectormap.min.js',
-        '/assets/vendor/jsvectormap/1.7.0/us-merc-en.js'
-      ];
-      const cdnAssets = [
-        'https://cdn.jsdelivr.net/npm/jsvectormap@1.7.0/dist/js/jsvectormap.min.js',
-        'https://cdn.jsdelivr.net/npm/jsvectormap@1.7.0/dist/maps/us-merc-en.js'
-      ];
-
-      const loadAssets = (assets) => Promise.all(assets.map((asset) => loadScriptOnce(asset)));
-
-      loadAssets(localAssets)
-        .then(initStateMap)
-        .catch(() => loadAssets(cdnAssets)
-          .then(initStateMap)
-          .catch(() => {
-            mapHost.innerHTML = '<p class="mutedSmall" style="padding:12px;">Map unavailable right now. Use the state list to navigate.</p>';
-          }));
-    }
-
-    if ('IntersectionObserver' in window && mapHost) {
-      const mapObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            loadAndInitMap();
-            observer.disconnect();
-          }
-        });
-      }, { rootMargin: '200px 0px' });
-      mapObserver.observe(mapHost);
-    } else {
-      loadAndInitMap();
-    }
-  </script>
+  <script defer src="/assets/search-autocomplete.js"></script>
   <script defer src="/assets/version-footer.js"></script>
 </body>
 </html>

@@ -8,6 +8,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: databyarea-content-writes
+  cancel-in-progress: false
+
 jobs:
   automate-content-and-distribution:
     runs-on: ubuntu-latest

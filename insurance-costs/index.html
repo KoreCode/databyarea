@@ -2,338 +2,244 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Insurance Costs by State | Data By Area</title>
-  <meta name="description" content="Browse insurance costs estimates across all 50 U.S. states. Use quick search plus cross-category links for complete comparisons." />
+  <title>Insurance Costs by State, City, and ZIP | DataByArea</title>
+  <meta name="description" content="Compare insurance costs by state, city, and ZIP with home, auto, renters, and health insurance planning context, risk drivers, quote checklist, and local profile links." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="/assets/styles.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsvectormap@1.7.0/dist/css/jsvectormap.min.css" />
   <link rel="canonical" href="https://databyarea.com/insurance-costs/" />
+  <meta property="og:title" content="Insurance Costs by State, City, and ZIP | DataByArea" />
+  <meta property="og:description" content="Compare home, auto, renters, and health insurance planning context by location with quote checklist and local risk drivers." />
+  <meta property="og:url" content="https://databyarea.com/insurance-costs/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Are insurance cost pages quotes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. DataByArea insurance pages are planning guides. Final premiums require carrier quotes using exact address, household, vehicle, coverage limits, deductibles, and claim history."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What should I match when comparing insurance quotes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Match coverage limits, deductibles, riders, exclusions, replacement-cost terms, driver and vehicle details, property details, and any bundle assumptions."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
-<body>
-  <div class="container">
-    <div class="nav">
-      <div class="brand">
-        <img src="/assets/logo.png" alt="Data By Area logo" class="logo">
-        <div class="brand-text">
-          <strong>Data By Area</strong>
-          <span>Costs • Rates • Public Data</span>
-        </div>
+<body class="area-dashboard-page insight-hub-page">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="container area-dashboard-shell">
+    <header class="area-top-nav area-home-header">
+      <a href="/" class="area-home-brand" aria-label="DataByArea.com home">
+        <span class="area-home-logo" aria-hidden="true"><img src="/assets/logo-icon.svg" alt="" width="36" height="36" decoding="async" fetchpriority="high" /></span>
+        <span>DataByArea.com</span>
+      </a>
+      <div class="area-home-actions">
+        <a class="area-home-button search" href="/search/">Search Data</a>
+        <a class="area-home-login" href="/login/">Log In</a>
+        <a class="area-home-button signup" href="/signup/">Sign Up</a>
       </div>
-      <div class="navlinks">
-        <a class="pill" href="/">Home</a>
-        <a class="pill" href="/cost-of-living/">Cost of Living</a>
-        <a class="pill" href="/utility-costs/">Utility Costs</a>
-        <a class="pill" href="/property-taxes/">Property Tax Rates</a>
-        <a class="pill" href="/insurance-costs/">Insurance Costs</a>
-      </div>
-    </div>
+    </header>
 
-    <div class="hero">
-      <h1>Insurance Costs by State</h1>
-      <p>Browse insurance costs estimates across all 50 U.S. states. Use quick search plus cross-category links for complete comparisons.</p>
-      <div class="breadcrumbs"><a href="/">Home</a> › <span>Insurance Costs</span></div>
-      <div class="badges">
-        <span class="badge"><span class="dot"></span> 50 states</span>
-        <span class="badge">Mobile friendly</span>
-        <span class="badge">Desktop friendly</span>
-      </div>
-      <div class="searchRow">
-        <input id="q" class="input" placeholder="Search a state (e.g., Minnesota)..." />
-      </div>
-    </div>
+    <nav class="insight-topics" aria-label="Insight pages">
+      <a href="/cost-of-living/">Cost of Living</a>
+      <a href="/utility-costs/">Utilities</a>
+      <a href="/property-taxes/">Property Taxes</a>
+      <a class="active" href="/insurance-costs/">Insurance</a>
+    </nav>
 
-    <div class="card compactTop">
-      <h2 class="sectionTitle">Pick a location: state → county → city</h2>
-      <p>Start with your state, then use county and city examples to refine comparisons and planning.</p>
-      <div class="selectionGrid">
-        <div class="interactiveMapCard">
-          <h3>Select a state on the map</h3>
-          <p class="mutedSmall">Click or tap any state to jump straight to its insurance costs page.</p>
-          <div id="state-map" class="stateMap" aria-label="Interactive map of the United States"></div>
-        </div>
-        <div class="selectionColumns">
-          <div class="card">
-            <h3>States</h3>
-            <ul class="listColumns">
-              <li><a href="/insurance-costs/alabama/">Alabama</a></li>
-<li><a href="/insurance-costs/alaska/">Alaska</a></li>
-<li><a href="/insurance-costs/arizona/">Arizona</a></li>
-<li><a href="/insurance-costs/arkansas/">Arkansas</a></li>
-<li><a href="/insurance-costs/california/">California</a></li>
-<li><a href="/insurance-costs/colorado/">Colorado</a></li>
-<li><a href="/insurance-costs/connecticut/">Connecticut</a></li>
-<li><a href="/insurance-costs/delaware/">Delaware</a></li>
-<li><a href="/insurance-costs/florida/">Florida</a></li>
-<li><a href="/insurance-costs/georgia/">Georgia</a></li>
-<li><a href="/insurance-costs/hawaii/">Hawaii</a></li>
-<li><a href="/insurance-costs/idaho/">Idaho</a></li>
-<li><a href="/insurance-costs/illinois/">Illinois</a></li>
-<li><a href="/insurance-costs/indiana/">Indiana</a></li>
-<li><a href="/insurance-costs/iowa/">Iowa</a></li>
-<li><a href="/insurance-costs/kansas/">Kansas</a></li>
-<li><a href="/insurance-costs/kentucky/">Kentucky</a></li>
-<li><a href="/insurance-costs/louisiana/">Louisiana</a></li>
-<li><a href="/insurance-costs/maine/">Maine</a></li>
-<li><a href="/insurance-costs/maryland/">Maryland</a></li>
-<li><a href="/insurance-costs/massachusetts/">Massachusetts</a></li>
-<li><a href="/insurance-costs/michigan/">Michigan</a></li>
-<li><a href="/insurance-costs/minnesota/">Minnesota</a></li>
-<li><a href="/insurance-costs/mississippi/">Mississippi</a></li>
-<li><a href="/insurance-costs/missouri/">Missouri</a></li>
-<li><a href="/insurance-costs/montana/">Montana</a></li>
-<li><a href="/insurance-costs/nebraska/">Nebraska</a></li>
-<li><a href="/insurance-costs/nevada/">Nevada</a></li>
-<li><a href="/insurance-costs/new-hampshire/">New Hampshire</a></li>
-<li><a href="/insurance-costs/new-jersey/">New Jersey</a></li>
-<li><a href="/insurance-costs/new-mexico/">New Mexico</a></li>
-<li><a href="/insurance-costs/new-york/">New York</a></li>
-<li><a href="/insurance-costs/north-carolina/">North Carolina</a></li>
-<li><a href="/insurance-costs/north-dakota/">North Dakota</a></li>
-<li><a href="/insurance-costs/ohio/">Ohio</a></li>
-<li><a href="/insurance-costs/oklahoma/">Oklahoma</a></li>
-<li><a href="/insurance-costs/oregon/">Oregon</a></li>
-<li><a href="/insurance-costs/pennsylvania/">Pennsylvania</a></li>
-<li><a href="/insurance-costs/rhode-island/">Rhode Island</a></li>
-<li><a href="/insurance-costs/south-carolina/">South Carolina</a></li>
-<li><a href="/insurance-costs/south-dakota/">South Dakota</a></li>
-<li><a href="/insurance-costs/tennessee/">Tennessee</a></li>
-<li><a href="/insurance-costs/texas/">Texas</a></li>
-<li><a href="/insurance-costs/utah/">Utah</a></li>
-<li><a href="/insurance-costs/vermont/">Vermont</a></li>
-<li><a href="/insurance-costs/virginia/">Virginia</a></li>
-<li><a href="/insurance-costs/washington/">Washington</a></li>
-<li><a href="/insurance-costs/west-virginia/">West Virginia</a></li>
-<li><a href="/insurance-costs/wisconsin/">Wisconsin</a></li>
-<li><a href="/insurance-costs/wyoming/">Wyoming</a></li>
-            </ul>
-          </div>
-          <div class="card">
-            <h3>Popular counties</h3>
-            <ul class="listColumns">
-              <li>Los Angeles County, CA</li>
-<li>Cook County, IL</li>
-<li>Harris County, TX</li>
-<li>Maricopa County, AZ</li>
-<li>King County, WA</li>
-<li>Miami-Dade County, FL</li>
-<li>Clark County, NV</li>
-<li>Wayne County, MI</li>
-<li>Travis County, TX</li>
-<li>Salt Lake County, UT</li>
-<li>Wake County, NC</li>
-<li>Allegheny County, PA</li>
-            </ul>
-            <p class="mutedSmall">County-level detail varies by dataset and update cycle.</p>
-          </div>
-          <div class="card">
-            <h3>Popular cities</h3>
-            <ul class="listColumns">
-              <li>New York, NY</li>
-<li>Los Angeles, CA</li>
-<li>Chicago, IL</li>
-<li>Houston, TX</li>
-<li>Phoenix, AZ</li>
-<li>Philadelphia, PA</li>
-<li>San Antonio, TX</li>
-<li>San Diego, CA</li>
-<li>Dallas, TX</li>
-<li>Austin, TX</li>
-<li>Jacksonville, FL</li>
-<li>Columbus, OH</li>
-            </ul>
-            <p class="mutedSmall">City pages help benchmark local differences inside each state.</p>
+    <main id="main-content" class="insight-main">
+      <section class="insight-hero" aria-labelledby="insight-title">
+        <div>
+          <div class="insight-breadcrumbs"><a href="/">Home</a> &rsaquo; Insurance Costs</div>
+          <h1 id="insight-title">Insurance Costs by State, City, and ZIP</h1>
+          <p>Compare home, auto, renters, and health insurance planning context before moving or budgeting. Insurance pricing is personal and address-specific, so use these pages to frame better quote questions rather than treat estimates as quotes.</p>
+          <div class="insight-actions">
+            <a href="#location-search">Find Location</a>
+            <a href="#risk-drivers">Risk Drivers</a>
+            <a href="#browse-states">Browse States</a>
+            <a href="/property-taxes/">Property Taxes</a>
           </div>
         </div>
-      </div>
-    </div>
+        <aside class="insight-panel" id="location-search" aria-label="Find an insurance cost profile">
+          <h2>Start with a Location</h2>
+          <form class="insight-hero-tool" action="/search/" method="get" data-dba-search-form>
+            <div>
+              <label for="insurance-search">Search city, state, or ZIP</label>
+              <div class="insight-hero-tool-row">
+                <input id="insurance-search" name="q" type="search" autocomplete="off" placeholder="Try Minnesota, Duluth, or 56051" data-dba-autocomplete data-dba-category="insurance-costs" data-dba-max-suggestions="12" />
+                <button type="submit">Search</button>
+              </div>
+            </div>
+          </form>
+          <div class="insight-hero-divider"></div>
+          <form class="insight-hero-tool" data-state-selector>
+            <div>
+              <label for="insurance-state-selector">Browse by state</label>
+              <div class="insight-hero-tool-row">
+                <select id="insurance-state-selector" autocomplete="off" data-dba-state-select data-dba-category="insurance-costs">
+                  <option value="">Choose a state...</option>
+                </select>
+                <button type="submit">Open</button>
+              </div>
+            </div>
+          </form>
+          <div class="insight-hero-quick" aria-label="Popular insurance profiles">
+            <a href="/insurance-costs/minnesota/">Minnesota</a>
+            <a href="/insurance-costs/texas/">Texas</a>
+            <a href="/insurance-costs/florida/">Florida</a>
+          </div>
+          <p class="insight-source">Final premiums require quotes using exact address, household, vehicle, coverage limits, and deductible.</p>
+        </aside>
+      </section>
 
-    <div class="grid">
-      <div class="card">
-        <h2>Included data & tools</h2>
-        <p>Quickly compare by state, then drill into county and city-level pages where available.</p>
-        <ul class="list">
-          <li class="item">Auto, home, renters, and health insurance benchmarks</li>
-          <li class="item">State-by-state pages with related category links</li>
-          <li class="item">Crawlable links for every U.S. state</li>
-          <li class="item">User-friendly navigation designed for mobile and desktop</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h2>Related categories</h2>
-        <p>Use matching pages to understand total cost pressure in the same location.</p>
-        <ul class="list">
-          <li class="item"><a href="/cost-of-living/">Cost of Living</a></li>
-<li class="item"><a href="/utility-costs/">Utility Costs</a></li>
-<li class="item"><a href="/property-taxes/">Property Tax Rates</a></li>
-        </ul>
-      </div>
-    </div>
+      <section class="insight-grid" aria-label="Insurance cost overview">
+        <article class="insight-card">
+          <span class="insight-label">Home insurance</span>
+          <span class="insight-kpi">Property</span>
+          <p>Replacement cost, roof age, wind and hail exposure, distance to fire service, and claim history can matter more than city average.</p>
+        </article>
+        <article class="insight-card">
+          <span class="insight-label">Auto insurance</span>
+          <span class="insight-kpi">Profile</span>
+          <p>Driving record, garaging ZIP, vehicle, mileage, coverage limits, deductibles, and discounts drive final auto premiums.</p>
+        </article>
+        <article class="insight-card">
+          <span class="insight-label">Renters</span>
+          <span class="insight-kpi">Modest</span>
+          <p>Renters insurance is often a smaller monthly line item, but liability limits, riders, and replacement-cost terms still matter.</p>
+        </article>
+        <article class="insight-card">
+          <span class="insight-label">Health</span>
+          <span class="insight-kpi">Plan</span>
+          <p>Health insurance cost depends on plan tier, network, subsidy eligibility, employer contribution, age, household size, and county availability.</p>
+        </article>
 
-    <h2 class="sectionTitle">Browse states</h2>
-    <ul id="list" class="list">
-      <li class="item"><a href="/insurance-costs/alabama/">Alabama</a></li>
-<li class="item"><a href="/insurance-costs/alaska/">Alaska</a></li>
-<li class="item"><a href="/insurance-costs/arizona/">Arizona</a></li>
-<li class="item"><a href="/insurance-costs/arkansas/">Arkansas</a></li>
-<li class="item"><a href="/insurance-costs/california/">California</a></li>
-<li class="item"><a href="/insurance-costs/colorado/">Colorado</a></li>
-<li class="item"><a href="/insurance-costs/connecticut/">Connecticut</a></li>
-<li class="item"><a href="/insurance-costs/delaware/">Delaware</a></li>
-<li class="item"><a href="/insurance-costs/florida/">Florida</a></li>
-<li class="item"><a href="/insurance-costs/georgia/">Georgia</a></li>
-<li class="item"><a href="/insurance-costs/hawaii/">Hawaii</a></li>
-<li class="item"><a href="/insurance-costs/idaho/">Idaho</a></li>
-<li class="item"><a href="/insurance-costs/illinois/">Illinois</a></li>
-<li class="item"><a href="/insurance-costs/indiana/">Indiana</a></li>
-<li class="item"><a href="/insurance-costs/iowa/">Iowa</a></li>
-<li class="item"><a href="/insurance-costs/kansas/">Kansas</a></li>
-<li class="item"><a href="/insurance-costs/kentucky/">Kentucky</a></li>
-<li class="item"><a href="/insurance-costs/louisiana/">Louisiana</a></li>
-<li class="item"><a href="/insurance-costs/maine/">Maine</a></li>
-<li class="item"><a href="/insurance-costs/maryland/">Maryland</a></li>
-<li class="item"><a href="/insurance-costs/massachusetts/">Massachusetts</a></li>
-<li class="item"><a href="/insurance-costs/michigan/">Michigan</a></li>
-<li class="item"><a href="/insurance-costs/minnesota/">Minnesota</a></li>
-<li class="item"><a href="/insurance-costs/mississippi/">Mississippi</a></li>
-<li class="item"><a href="/insurance-costs/missouri/">Missouri</a></li>
-<li class="item"><a href="/insurance-costs/montana/">Montana</a></li>
-<li class="item"><a href="/insurance-costs/nebraska/">Nebraska</a></li>
-<li class="item"><a href="/insurance-costs/nevada/">Nevada</a></li>
-<li class="item"><a href="/insurance-costs/new-hampshire/">New Hampshire</a></li>
-<li class="item"><a href="/insurance-costs/new-jersey/">New Jersey</a></li>
-<li class="item"><a href="/insurance-costs/new-mexico/">New Mexico</a></li>
-<li class="item"><a href="/insurance-costs/new-york/">New York</a></li>
-<li class="item"><a href="/insurance-costs/north-carolina/">North Carolina</a></li>
-<li class="item"><a href="/insurance-costs/north-dakota/">North Dakota</a></li>
-<li class="item"><a href="/insurance-costs/ohio/">Ohio</a></li>
-<li class="item"><a href="/insurance-costs/oklahoma/">Oklahoma</a></li>
-<li class="item"><a href="/insurance-costs/oregon/">Oregon</a></li>
-<li class="item"><a href="/insurance-costs/pennsylvania/">Pennsylvania</a></li>
-<li class="item"><a href="/insurance-costs/rhode-island/">Rhode Island</a></li>
-<li class="item"><a href="/insurance-costs/south-carolina/">South Carolina</a></li>
-<li class="item"><a href="/insurance-costs/south-dakota/">South Dakota</a></li>
-<li class="item"><a href="/insurance-costs/tennessee/">Tennessee</a></li>
-<li class="item"><a href="/insurance-costs/texas/">Texas</a></li>
-<li class="item"><a href="/insurance-costs/utah/">Utah</a></li>
-<li class="item"><a href="/insurance-costs/vermont/">Vermont</a></li>
-<li class="item"><a href="/insurance-costs/virginia/">Virginia</a></li>
-<li class="item"><a href="/insurance-costs/washington/">Washington</a></li>
-<li class="item"><a href="/insurance-costs/west-virginia/">West Virginia</a></li>
-<li class="item"><a href="/insurance-costs/wisconsin/">Wisconsin</a></li>
-<li class="item"><a href="/insurance-costs/wyoming/">Wyoming</a></li>
-    </ul>
+        <article class="insight-card insight-wide" id="risk-drivers">
+          <h2>What Usually Moves Premiums</h2>
+          <div class="insight-stack" aria-label="Insurance cost drivers" style="margin-top:10px">
+            <div><span>Coverage limits</span><i style="--w:94%"></i><b>Highest</b></div>
+            <div><span>Claims history</span><i style="--w:82%"></i><b>High</b></div>
+            <div><span>Property risk</span><i style="--w:74%"></i><b>High</b></div>
+            <div><span>Deductible</span><i style="--w:62%"></i><b>Medium</b></div>
+            <div><span>ZIP/address</span><i style="--w:58%"></i><b>Local</b></div>
+            <div><span>Discounts</span><i style="--w:44%"></i><b>Varies</b></div>
+          </div>
+        </article>
 
-    <div class="footer">
-      <p><strong>Disclaimer:</strong> Informational estimates only. Costs and rates vary by household, provider, and local area.</p>
-      <p><a href="/about/">About</a> · <a href="/privacy/">Privacy Policy</a> · <a href="/contact/">Contact</a></p>
-      <p>© <span id="y"></span> DataByArea.com</p>
-    </div>
-    <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+        <section class="insight-card insight-full" aria-labelledby="insurance-featured-title">
+          <h2 id="insurance-featured-title">Featured Insurance Cost Profiles</h2>
+          <p>Use state pages to frame local risk drivers, then compare actual quotes with matching coverage and deductibles.</p>
+          <div class="insight-feature-grid" style="margin-top:12px">
+            <a class="insight-feature-card" href="/insurance-costs/minnesota/"><strong>Minnesota</strong><span>Home, auto, renters, health, weather, and replacement-cost planning context.</span><em>Open profile</em></a>
+            <a class="insight-feature-card" href="/insurance-costs/texas/"><strong>Texas</strong><span>Weather exposure, auto profile, home replacement cost, and market variation.</span><em>Open profile</em></a>
+            <a class="insight-feature-card" href="/insurance-costs/florida/"><strong>Florida</strong><span>Coastal, storm, roof, flood, and home-insurance planning context.</span><em>Open profile</em></a>
+            <a class="insight-feature-card" href="/insurance-costs/california/"><strong>California</strong><span>Wildfire, rebuild cost, auto, renters, and health-plan context.</span><em>Open profile</em></a>
+          </div>
+        </section>
+
+        <article class="insight-card insight-wide">
+          <h2>Quote Checklist</h2>
+          <ul class="insight-list">
+            <li><strong>Match coverage:</strong> compare dwelling, liability, personal property, collision, comprehensive, and medical coverage consistently.</li>
+            <li><strong>Match deductibles:</strong> cheaper premiums can hide larger wind, hail, roof, collision, or comprehensive deductibles.</li>
+            <li><strong>Ask about exclusions:</strong> roof age, sewer backup, flood, hail, replacement cost, and actual cash value terms can change value.</li>
+            <li><strong>Compare the package:</strong> bundle discounts can help, but separate carriers may still produce a better total cost.</li>
+          </ul>
+        </article>
+
+        <section class="insight-card insight-full" aria-labelledby="insurance-table-title">
+          <h2 id="insurance-table-title">Insurance Categories to Compare</h2>
+          <div class="insight-table-wrap" style="margin-top:12px">
+            <table class="insight-table">
+              <thead><tr><th>Type</th><th>Main Local Factor</th><th>Question to Ask</th><th>Verification</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Homeowners</th><td>Replacement cost, roof age, weather exposure, fire protection.</td><td>Is dwelling coverage enough to rebuild locally?</td><td>Address-specific quote.</td></tr>
+                <tr><th scope="row">Auto</th><td>Garaging ZIP, commute, driver history, vehicle, coverage.</td><td>Are limits and deductibles identical across quotes?</td><td>Matched carrier quotes.</td></tr>
+                <tr><th scope="row">Renters</th><td>Building, personal property, liability, riders.</td><td>Does the policy cover replacement cost?</td><td>Policy declarations.</td></tr>
+                <tr><th scope="row">Health</th><td>County plan availability, network, subsidy, employer contribution.</td><td>Are doctors and prescriptions in network?</td><td>Marketplace or employer plan documents.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="insight-card insight-full" aria-labelledby="regional-insurance-title">
+          <h2 id="regional-insurance-title">Regional Insurance Cost Patterns</h2>
+          <p>Insurance is quote-specific, but regional risk patterns explain why two similar homes or drivers can price differently.</p>
+          <div class="insight-table-wrap" style="margin-top:12px">
+            <table class="insight-table">
+              <thead><tr><th>Region</th><th>Main Risk Signal</th><th>Policy Watch Item</th><th>What to Verify</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Upper Midwest</th><td>Wind, hail, snow, roof age, and rebuild cost.</td><td>Roof terms, wind/hail deductible, water backup.</td><td>Address-specific home quote and roof history.</td></tr>
+                <tr><th scope="row">Gulf and Atlantic Coast</th><td>Storm, wind, flood, roof, and coastal exposure.</td><td>Windstorm, flood, exclusions, replacement cost.</td><td>Carrier quote, flood zone, roof age, mitigation credits.</td></tr>
+                <tr><th scope="row">West</th><td>Wildfire, rebuild cost, earthquake, and carrier appetite.</td><td>Coverage availability, exclusions, deductibles.</td><td>Carrier eligibility, wildfire score, local rebuild cost.</td></tr>
+                <tr><th scope="row">Large metros</th><td>Auto claim frequency, theft, commute, and repair cost.</td><td>Liability limits, collision/comprehensive, garaging ZIP.</td><td>Matched auto quotes with identical limits and drivers.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="insight-card insight-full" aria-labelledby="insurance-state-signal-title">
+          <h2 id="insurance-state-signal-title">State Insurance Comparison Signals</h2>
+          <div class="insight-table-wrap" style="margin-top:12px">
+            <table class="insight-table">
+              <thead><tr><th>State</th><th>Planning Signal</th><th>Main Watch Item</th><th>Quote Check</th><th>Open</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Minnesota</th><td>Weather and replacement-cost context.</td><td>Wind/hail, roof age, water backup, auto profile.</td><td>Home and auto quotes with matching deductibles.</td><td><a href="/insurance-costs/minnesota/">Profile</a></td></tr>
+                <tr><th scope="row">Florida</th><td>Home insurance can dominate planning.</td><td>Wind, flood, roof, coastal exposure, exclusions.</td><td>Carrier quote, flood zone, mitigation details.</td><td><a href="/insurance-costs/florida/">Profile</a></td></tr>
+                <tr><th scope="row">Texas</th><td>Weather, auto, and property risk vary widely.</td><td>Hail, wind, roof, auto liability, deductibles.</td><td>Bundle and separate quotes with identical limits.</td><td><a href="/insurance-costs/texas/">Profile</a></td></tr>
+                <tr><th scope="row">California</th><td>Availability and rebuild cost can matter.</td><td>Wildfire, earthquake, replacement cost, carrier appetite.</td><td>Coverage eligibility and exclusions.</td><td><a href="/insurance-costs/california/">Profile</a></td></tr>
+                <tr><th scope="row">Louisiana</th><td>Storm and flood context can be central.</td><td>Wind, flood, roof, coastal distance.</td><td>Home, flood, windstorm, and deductible terms.</td><td><a href="/insurance-costs/louisiana/">Profile</a></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <article class="insight-card insight-full" id="browse-states">
+          <h2>Browse Insurance Costs by State</h2>
+          <div class="insight-state-grid" data-state-link-grid="insurance-costs" aria-label="Insurance cost state links">
+            <a href="/insurance-costs/alabama/">Alabama</a><a href="/insurance-costs/alaska/">Alaska</a><a href="/insurance-costs/arizona/">Arizona</a><a href="/insurance-costs/arkansas/">Arkansas</a><a href="/insurance-costs/california/">California</a><a href="/insurance-costs/colorado/">Colorado</a><a href="/insurance-costs/connecticut/">Connecticut</a><a href="/insurance-costs/delaware/">Delaware</a><a href="/insurance-costs/florida/">Florida</a><a href="/insurance-costs/georgia/">Georgia</a><a href="/insurance-costs/hawaii/">Hawaii</a><a href="/insurance-costs/idaho/">Idaho</a><a href="/insurance-costs/illinois/">Illinois</a><a href="/insurance-costs/indiana/">Indiana</a><a href="/insurance-costs/iowa/">Iowa</a><a href="/insurance-costs/kansas/">Kansas</a><a href="/insurance-costs/kentucky/">Kentucky</a><a href="/insurance-costs/louisiana/">Louisiana</a><a href="/insurance-costs/maine/">Maine</a><a href="/insurance-costs/maryland/">Maryland</a><a href="/insurance-costs/massachusetts/">Massachusetts</a><a href="/insurance-costs/michigan/">Michigan</a><a href="/insurance-costs/minnesota/">Minnesota</a><a href="/insurance-costs/mississippi/">Mississippi</a><a href="/insurance-costs/missouri/">Missouri</a><a href="/insurance-costs/montana/">Montana</a><a href="/insurance-costs/nebraska/">Nebraska</a><a href="/insurance-costs/nevada/">Nevada</a><a href="/insurance-costs/new-hampshire/">New Hampshire</a><a href="/insurance-costs/new-jersey/">New Jersey</a><a href="/insurance-costs/new-mexico/">New Mexico</a><a href="/insurance-costs/new-york/">New York</a><a href="/insurance-costs/north-carolina/">North Carolina</a><a href="/insurance-costs/north-dakota/">North Dakota</a><a href="/insurance-costs/ohio/">Ohio</a><a href="/insurance-costs/oklahoma/">Oklahoma</a><a href="/insurance-costs/oregon/">Oregon</a><a href="/insurance-costs/pennsylvania/">Pennsylvania</a><a href="/insurance-costs/rhode-island/">Rhode Island</a><a href="/insurance-costs/south-carolina/">South Carolina</a><a href="/insurance-costs/south-dakota/">South Dakota</a><a href="/insurance-costs/tennessee/">Tennessee</a><a href="/insurance-costs/texas/">Texas</a><a href="/insurance-costs/utah/">Utah</a><a href="/insurance-costs/vermont/">Vermont</a><a href="/insurance-costs/virginia/">Virginia</a><a href="/insurance-costs/washington/">Washington</a><a href="/insurance-costs/west-virginia/">West Virginia</a><a href="/insurance-costs/wisconsin/">Wisconsin</a><a href="/insurance-costs/wyoming/">Wyoming</a>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer home-footer">
+      <p><strong>Disclaimer:</strong> Informational estimates only. Insurance premiums vary by carrier, coverage, deductible, property, vehicle, driver, household, and claim history.</p>
+      <p><a href="/about/">About</a> &middot; <a href="/privacy/">Privacy Policy</a> &middot; <a href="/contact/">Contact</a></p>
+    </footer>
   </div>
 
   <script>
-    const q = document.getElementById('q');
-    const items = Array.from(document.querySelectorAll('#list .item'));
-    function filter(){
-      const term = q.value.trim().toLowerCase();
-      items.forEach(li => {
-        const text = li.textContent.toLowerCase();
-        li.style.display = text.includes(term) ? '' : 'none';
+    (function () {
+      var form = document.querySelector('[data-state-selector]');
+      if (!form) return;
+      var select = form.querySelector('select');
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        if (select && select.value) window.location.href = select.value;
       });
-    }
-    q.addEventListener('input', filter);
+      select.addEventListener('change', function () {
+        if (select.value) window.location.href = select.value;
+      });
+    })();
   </script>
-  <script>
-    const stateUrlByAbbr = {"AL":"/insurance-costs/alabama/","AK":"/insurance-costs/alaska/","AZ":"/insurance-costs/arizona/","AR":"/insurance-costs/arkansas/","CA":"/insurance-costs/california/","CO":"/insurance-costs/colorado/","CT":"/insurance-costs/connecticut/","DE":"/insurance-costs/delaware/","FL":"/insurance-costs/florida/","GA":"/insurance-costs/georgia/","HI":"/insurance-costs/hawaii/","ID":"/insurance-costs/idaho/","IL":"/insurance-costs/illinois/","IN":"/insurance-costs/indiana/","IA":"/insurance-costs/iowa/","KS":"/insurance-costs/kansas/","KY":"/insurance-costs/kentucky/","LA":"/insurance-costs/louisiana/","ME":"/insurance-costs/maine/","MD":"/insurance-costs/maryland/","MA":"/insurance-costs/massachusetts/","MI":"/insurance-costs/michigan/","MN":"/insurance-costs/minnesota/","MS":"/insurance-costs/mississippi/","MO":"/insurance-costs/missouri/","MT":"/insurance-costs/montana/","NE":"/insurance-costs/nebraska/","NV":"/insurance-costs/nevada/","NH":"/insurance-costs/new-hampshire/","NJ":"/insurance-costs/new-jersey/","NM":"/insurance-costs/new-mexico/","NY":"/insurance-costs/new-york/","NC":"/insurance-costs/north-carolina/","ND":"/insurance-costs/north-dakota/","OH":"/insurance-costs/ohio/","OK":"/insurance-costs/oklahoma/","OR":"/insurance-costs/oregon/","PA":"/insurance-costs/pennsylvania/","RI":"/insurance-costs/rhode-island/","SC":"/insurance-costs/south-carolina/","SD":"/insurance-costs/south-dakota/","TN":"/insurance-costs/tennessee/","TX":"/insurance-costs/texas/","UT":"/insurance-costs/utah/","VT":"/insurance-costs/vermont/","VA":"/insurance-costs/virginia/","WA":"/insurance-costs/washington/","WV":"/insurance-costs/west-virginia/","WI":"/insurance-costs/wisconsin/","WY":"/insurance-costs/wyoming/"};
-    const mapHost = document.getElementById('state-map');
-
-    function loadScriptOnce(src) {
-      if (document.querySelector(`script[src="${src}"]`)) return Promise.resolve();
-      return new Promise((resolve, reject) => {
-        const script = document.createElement('script');
-        script.src = src;
-        script.onload = resolve;
-        script.onerror = reject;
-        document.head.appendChild(script);
-      });
-    }
-
-    function initStateMap() {
-      if (!window.jsVectorMap || !mapHost || mapHost.dataset.mapReady === '1') return;
-      mapHost.dataset.mapReady = '1';
-      new jsVectorMap({
-        selector: '#state-map',
-        map: 'us_merc_en',
-        zoomButtons: true,
-        selectedRegions: [],
-        onRegionTooltipShow(event, tooltip, code) {
-          const abbr = code.split('-')[1];
-          if (!abbr || !stateUrlByAbbr[abbr]) {
-            return;
-          }
-          tooltip.text(`${tooltip.text()} — View details`);
-        },
-        onRegionClick(event, code) {
-          const abbr = code.split('-')[1];
-          const target = stateUrlByAbbr[abbr];
-          if (target) {
-            window.location.href = target;
-          }
-        },
-        regionStyle: {
-          initial: {
-            fill: '#d8e7f6',
-            stroke: '#7d99b5',
-            strokeWidth: 1
-          },
-          hover: {
-            fill: '#9ec0e2'
-          },
-          selected: {
-            fill: '#4f7292'
-          }
-        }
-      });
-    }
-
-    function loadAndInitMap() {
-      if (!mapHost || mapHost.dataset.mapRequested === '1') return;
-      mapHost.dataset.mapRequested = '1';
-
-      const localAssets = [
-        '/assets/vendor/jsvectormap/1.7.0/jsvectormap.min.js',
-        '/assets/vendor/jsvectormap/1.7.0/us-merc-en.js'
-      ];
-      const cdnAssets = [
-        'https://cdn.jsdelivr.net/npm/jsvectormap@1.7.0/dist/js/jsvectormap.min.js',
-        'https://cdn.jsdelivr.net/npm/jsvectormap@1.7.0/dist/maps/us-merc-en.js'
-      ];
-
-      const loadAssets = (assets) => Promise.all(assets.map((asset) => loadScriptOnce(asset)));
-
-      loadAssets(localAssets)
-        .then(initStateMap)
-        .catch(() => loadAssets(cdnAssets)
-          .then(initStateMap)
-          .catch(() => {
-            mapHost.innerHTML = '<p class="mutedSmall" style="padding:12px;">Map unavailable right now. Use the state list to navigate.</p>';
-          }));
-    }
-
-    if ('IntersectionObserver' in window && mapHost) {
-      const mapObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            loadAndInitMap();
-            observer.disconnect();
-          }
-        });
-      }, { rootMargin: '200px 0px' });
-      mapObserver.observe(mapHost);
-    } else {
-      loadAndInitMap();
-    }
-  </script>
+  <script defer src="/assets/search-autocomplete.js"></script>
   <script defer src="/assets/version-footer.js"></script>
 </body>
 </html>

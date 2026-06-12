@@ -2,80 +2,121 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Search DataByArea.com</title>
-  <meta name="description" content="Search DataByArea.com for state, region, city, utility, property tax, insurance, and cost of living pages." />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Search City and State Data | DataByArea</title>
+  <meta name="description" content="Search DataByArea for city dashboards, state hubs, and regional cost of living, utility, property tax, and insurance pages." />
   <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="canonical" href="https://databyarea.com/search/" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            navy: '#061a33',
-            'brand-blue': '#1188ff',
-            coral: '#ff6b4a'
-          }
-        }
-      }
-    };
-  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <style>
+    .search-result-list{display:grid;gap:10px;margin-top:12px}
+    .search-result{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:start;border:1px solid #d3e1ec;border-radius:12px;background:#fff;padding:14px;text-decoration:none;box-shadow:0 4px 12px rgba(15,23,42,.05)}
+    .search-result:hover{border-color:#8bb7ca;background:#f8fbff;text-decoration:none}
+    .search-result strong{display:block;color:#173f5c;font-size:19px;line-height:1.2}
+    .search-result span{display:block;margin-top:5px;color:#456175;font-size:13px;line-height:1.45}
+    .search-result em{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;background:#eaf6fb;color:#0f516f;padding:5px 9px;font-size:11px;font-style:normal;font-weight:900;text-transform:uppercase;white-space:nowrap}
+    .search-empty{border:1px dashed #b8cad8;border-radius:12px;background:#f8fbff;padding:18px;color:#456175}
+    @media (max-width:700px){.search-result{grid-template-columns:1fr}.search-result em{justify-self:start}}
+  </style>
 </head>
-<body class="bg-slate-50 text-slate-900 antialiased">
-  <main class="mx-auto min-h-screen max-w-5xl px-5 py-10 sm:px-6 lg:px-8">
-    <header class="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
-      <a class="text-2xl font-extrabold tracking-tight text-navy" href="/">DataByArea.com</a>
-      <nav class="flex flex-wrap gap-3 text-sm font-semibold text-slate-600" aria-label="Search navigation">
-        <a class="rounded-full bg-white px-4 py-2 shadow-sm ring-1 ring-slate-200 hover:text-navy" href="/cost-of-living/">Cost of Living</a>
-        <a class="rounded-full bg-white px-4 py-2 shadow-sm ring-1 ring-slate-200 hover:text-navy" href="/utility-costs/">Utilities</a>
-        <a class="rounded-full bg-white px-4 py-2 shadow-sm ring-1 ring-slate-200 hover:text-navy" href="/property-taxes/">Property Taxes</a>
-        <a class="rounded-full bg-white px-4 py-2 shadow-sm ring-1 ring-slate-200 hover:text-navy" href="/insurance-costs/">Insurance</a>
-      </nav>
+<body class="area-dashboard-page insight-hub-page">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="container area-dashboard-shell">
+    <header class="area-top-nav area-home-header">
+      <a href="/" class="area-home-brand" aria-label="DataByArea.com home">
+        <span class="area-home-logo" aria-hidden="true"><img src="/assets/logo-icon.svg" alt="" width="36" height="36" decoding="async" fetchpriority="high" /></span>
+        <span>DataByArea.com</span>
+      </a>
+      <div class="area-home-actions">
+        <a class="area-home-button search" href="/search/">Search Data</a>
+        <a class="area-home-login" href="/login/">Log In</a>
+        <a class="area-home-button signup" href="/signup/">Sign Up</a>
+      </div>
     </header>
 
-    <section class="mt-12 rounded-[2rem] bg-navy p-6 text-white shadow-2xl sm:p-10">
-      <p class="text-sm font-bold uppercase tracking-[0.22em] text-sky-200">Site search</p>
-      <h1 class="mt-3 text-4xl font-extrabold tracking-tight sm:text-5xl">Find area data pages</h1>
-      <p class="mt-4 max-w-2xl text-lg text-slate-200">Search for a state, region, category, or supported city profile. State searches route to state selection insight pages so you can continue drilling into counties and cities.</p>
-      <form id="search-form" class="mt-8 flex flex-col gap-3 rounded-[2rem] bg-white p-2 shadow-lg sm:flex-row sm:items-center sm:rounded-full" action="/search/" method="get" role="search">
-        <label class="sr-only" for="q">Search DataByArea</label>
-        <input id="q" name="q" type="search" autocomplete="off" class="min-w-0 flex-1 rounded-full px-5 py-3 text-base text-slate-800 outline-none placeholder:text-slate-400" placeholder="Try Minnesota, Kiester MN, property taxes, utilities..." />
-        <button class="rounded-full bg-coral px-7 py-3 font-bold text-white transition hover:bg-orange-500" type="submit">Search</button>
-      </form>
-    </section>
+    <nav class="insight-topics" aria-label="Insight pages">
+      <a href="/cost-of-living/">Cost of Living</a>
+      <a href="/utility-costs/">Utilities</a>
+      <a href="/property-taxes/">Property Taxes</a>
+      <a href="/insurance-costs/">Insurance</a>
+    </nav>
 
-    <section class="mt-10" aria-labelledby="results-title">
-      <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+    <main id="main-content" class="insight-main">
+      <section class="insight-hero" aria-labelledby="search-title">
         <div>
-          <h2 id="results-title" class="text-2xl font-extrabold text-navy">Search results</h2>
-          <p id="results-summary" class="mt-1 text-slate-600">Enter a query to see matching DataByArea pages.</p>
+          <div class="insight-breadcrumbs"><a href="/">Home</a> &rsaquo; Search</div>
+          <h1 id="search-title">Search DataByArea</h1>
+          <p>Find state hubs, city dashboards, and regional insight pages. Start with a city, state, or supported ZIP code; exact place matches open directly.</p>
+          <div class="insight-actions">
+            <a href="#search-panel">Search</a>
+            <a href="/minnesota/">Minnesota Hub</a>
+            <a href="/cost-of-living/">Cost of Living</a>
+            <a href="/utility-costs/">Utilities</a>
+          </div>
         </div>
-        <a class="font-semibold text-brand-blue hover:text-blue-700" href="/">Back to homepage</a>
-      </div>
-      <div id="results" class="mt-6 grid gap-4"></div>
-    </section>
-  </main>
+        <aside class="insight-panel" id="search-panel" aria-label="Search DataByArea">
+          <h2>Find a Location</h2>
+          <form id="search-form" class="insight-hero-tool" action="/search/" method="get" data-dba-search-form>
+            <div>
+              <label for="q">Search city, state, or ZIP</label>
+              <div class="insight-hero-tool-row">
+                <input id="q" name="q" type="search" autocomplete="off" placeholder="Try Minnesota, Kiester MN, or 56051" data-dba-autocomplete data-dba-max-suggestions="12" />
+                <button type="submit">Search</button>
+              </div>
+            </div>
+          </form>
+          <div class="insight-hero-divider"></div>
+          <div class="insight-hero-quick" aria-label="Quick searches">
+            <a href="/minnesota/">Minnesota</a>
+            <a href="/minnesota/kiester/">Kiester, MN</a>
+            <a href="/utility-costs/minnesota/">MN Utilities</a>
+          </div>
+          <p class="insight-source">Suggestions list places only. Category-specific searches route the selected place to that category's page when available.</p>
+        </aside>
+      </section>
+
+      <section class="insight-grid" aria-label="Search shortcuts">
+        <article class="insight-card">
+          <span class="insight-label">State hub</span>
+          <span class="insight-kpi">Minnesota</span>
+          <p>Open the complete Minnesota hub for state-level links, city dashboards, and regional planning signals.</p>
+        </article>
+        <article class="insight-card">
+          <span class="insight-label">Local pages</span>
+          <span class="insight-kpi">Cities</span>
+          <p>City suggestions open dashboard pages with local cost, tax, utility, insurance, weather, and comparison sections.</p>
+        </article>
+        <article class="insight-card">
+          <span class="insight-label">Planning pages</span>
+          <span class="insight-kpi">Insights</span>
+          <p>Use insight pages for broader state-level analysis before narrowing into a city profile.</p>
+        </article>
+        <article class="insight-card">
+          <span class="insight-label">Supported aliases</span>
+          <span class="insight-kpi">ZIP</span>
+          <p>ZIP matches route to the best supported place page when the search index has a known local alias.</p>
+        </article>
+
+        <article class="insight-card insight-full" aria-labelledby="results-title">
+          <h2 id="results-title">Search Results</h2>
+          <p id="results-summary">Enter a city, state, ZIP, or topic to search DataByArea.</p>
+          <div id="results" class="search-result-list"></div>
+        </article>
+      </section>
+    </main>
+  </div>
 
   <script>
     (function () {
-      var stateNames = ['Alabama','Alaska','Arizona','Arkansas','California','Colorado','Connecticut','Delaware','Florida','Georgia','Hawaii','Idaho','Illinois','Indiana','Iowa','Kansas','Kentucky','Louisiana','Maine','Maryland','Massachusetts','Michigan','Minnesota','Mississippi','Missouri','Montana','Nebraska','Nevada','New Hampshire','New Jersey','New Mexico','New York','North Carolina','North Dakota','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Vermont','Virginia','Washington','West Virginia','Wisconsin','Wyoming'];
       var pages = [
-        { title: 'Cost of Living by State', url: '/cost-of-living/', type: 'Insight', description: 'State selection page for cost of living comparisons.' },
-        { title: 'Utility Costs by State', url: '/utility-costs/', type: 'Insight', description: 'State selection page for electric, gas, water, and utility cost comparisons.' },
-        { title: 'Property Taxes by State', url: '/property-taxes/', type: 'Insight', description: 'State selection page for property tax rate comparisons.' },
-        { title: 'Insurance Costs by State', url: '/insurance-costs/', type: 'Insight', description: 'State selection page for insurance and risk cost comparisons.' },
-        { title: 'Kiester, MN Area Profile', url: '/minnesota/kiester/', type: 'City profile', description: 'City dashboard with utilities, demographics, schools, economy, real estate, and climate panels.' },
+        { title: 'Cost of Living by State', url: '/cost-of-living/', type: 'Insight', description: 'Compare housing, utilities, taxes, insurance, and income fit by state and city.', aliases: ['cost of living', 'living costs'] },
+        { title: 'Utility Costs by State', url: '/utility-costs/', type: 'Insight', description: 'Compare electric, gas, water, sewer, trash, internet, and monthly utility planning ranges.', aliases: ['utilities', 'utility costs', 'electricity'] },
+        { title: 'Property Taxes by State', url: '/property-taxes/', type: 'Insight', description: 'Review property tax rates, assessment patterns, buyer checklists, and homeowner budgeting notes.', aliases: ['property tax', 'property taxes', 'taxes'] },
+        { title: 'Insurance Costs by State', url: '/insurance-costs/', type: 'Insight', description: 'Compare insurance cost drivers, risk factors, and quote-prep checklists across states.', aliases: ['insurance', 'home insurance', 'auto insurance'] }
       ];
-
-      stateNames.forEach(function (name) {
-        var slug = name.toLowerCase().replace(/ /g, '-');
-        pages.push({ title: name + ' cost of living', url: '/cost-of-living/' + slug + '/', type: 'State insight', description: 'State-level insight page with city and county drill-down links.' });
-        pages.push({ title: name + ' utility costs', url: '/utility-costs/' + slug + '/', type: 'State insight', description: 'State-level utility costs page.' });
-        pages.push({ title: name + ' property taxes', url: '/property-taxes/' + slug + '/', type: 'State insight', description: 'State-level property tax page.' });
-        pages.push({ title: name + ' insurance costs', url: '/insurance-costs/' + slug + '/', type: 'State insight', description: 'State-level insurance cost page.' });
-      });
-
       var form = document.getElementById('search-form');
       var input = document.getElementById('q');
       var results = document.getElementById('results');
@@ -83,50 +124,89 @@
       var params = new URLSearchParams(window.location.search);
 
       function normalize(value) {
-        return (value || '').trim().toLowerCase().replace(/\s+/g, ' ');
+        return String(value || '').trim().toLowerCase().replace(/[^a-z0-9]+/g, ' ').replace(/\s+/g, ' ').trim();
+      }
+
+      function escapeHtml(value) {
+        return String(value || '').replace(/[&<>"']/g, function (char) {
+          return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char];
+        });
+      }
+
+      function pageText(page) {
+        return normalize([page.title, page.type, page.description, page.url.replace(/[/-]/g, ' ')].concat(page.aliases || []).join(' '));
       }
 
       function score(page, term) {
-        var haystack = normalize(page.title + ' ' + page.type + ' ' + page.description + ' ' + page.url.replace(/[/-]/g, ' '));
-        if (!term) return 0;
-        if (normalize(page.title) === term) return 100;
-        if (haystack.indexOf(term) !== -1) return 50;
-        return term.split(' ').filter(function (part) { return part && haystack.indexOf(part) !== -1; }).length * 10;
+        var title = normalize(page.title);
+        var haystack = pageText(page);
+        if (!term) return page.type === 'Insight' ? 100 : 0;
+        if (title === term) return 1200;
+        if ((page.aliases || []).some(function (alias) { return normalize(alias) === term; })) return 1150;
+        if (title.indexOf(term) === 0) return 850;
+        if (haystack.indexOf(term) !== -1) return 500;
+        return term.split(' ').filter(function (part) { return part && haystack.indexOf(part) !== -1; }).length * 100;
+      }
+
+      function description(page) {
+        if (page.description) return page.description;
+        if (page.type === 'City profile') return 'City dashboard with local area data, nearby comparisons, and related insight links.';
+        if (page.type === 'State profile') return 'State hub with regional links, state-wide planning context, and city discovery paths.';
+        if (page.type === 'City insight') return 'Local insight page for this category and city.';
+        return 'DataByArea profile and insight page.';
       }
 
       function render() {
         var term = normalize(input.value);
         var matches = pages.map(function (page) {
-          return Object.assign({ score: score(page, term) }, page);
+          return Object.assign({ _score: score(page, term) }, page);
         }).filter(function (page) {
-          return term ? page.score > 0 : page.type === 'Insight';
+          return page._score > 0;
         }).sort(function (a, b) {
-          return b.score - a.score || a.title.localeCompare(b.title);
-        }).slice(0, 12);
+          return b._score - a._score || a.title.localeCompare(b.title);
+        }).slice(0, term ? 20 : 8);
 
-        summary.textContent = term ? (matches.length + ' result' + (matches.length === 1 ? '' : 's') + ' for “' + input.value.trim() + '”.') : 'Popular state selection insight pages.';
+        summary.textContent = term ? (matches.length + ' result' + (matches.length === 1 ? '' : 's') + ' for "' + input.value.trim() + '".') : 'Popular DataByArea entry points.';
+        if (!matches.length) {
+          results.innerHTML = '<div class="search-empty">No matching page found yet. Try a state name, city name, or a supported ZIP code.</div>';
+          return;
+        }
         results.innerHTML = matches.map(function (page) {
-          return '<article class="rounded-3xl bg-white p-5 shadow-sm ring-1 ring-slate-200">' +
-            '<div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">' +
-            '<div><p class="text-sm font-bold uppercase tracking-[0.18em] text-brand-blue">' + page.type + '</p>' +
-            '<h3 class="mt-2 text-xl font-extrabold text-navy"><a class="hover:text-brand-blue" href="' + page.url + '">' + page.title + '</a></h3>' +
-            '<p class="mt-2 text-slate-600">' + page.description + '</p></div>' +
-            '<a class="shrink-0 rounded-full bg-navy px-5 py-2 text-center text-sm font-bold text-white hover:bg-slate-800" href="' + page.url + '">Open</a>' +
-            '</div></article>';
+          return '<a class="search-result" href="' + escapeHtml(page.url) + '">' +
+            '<span><strong>' + escapeHtml(page.title) + '</strong><span>' + escapeHtml(description(page)) + '</span></span>' +
+            '<em>' + escapeHtml(page.type || 'Page') + '</em>' +
+            '</a>';
         }).join('');
       }
 
       input.value = params.get('q') || '';
       input.addEventListener('input', render);
       form.addEventListener('submit', function (event) {
-        event.preventDefault();
         var q = input.value.trim();
-        history.replaceState(null, '', q ? '/search/?q=' + encodeURIComponent(q) : '/search/');
+        if (!q) {
+          event.preventDefault();
+          history.replaceState(null, '', '/search/');
+          render();
+          return;
+        }
+        event.preventDefault();
+        history.replaceState(null, '', '/search/?q=' + encodeURIComponent(q));
         render();
       });
-      render();
+
+      fetch('/assets/search-index.json', { cache: 'force-cache' })
+        .then(function (response) {
+          if (!response.ok) throw new Error('Search index unavailable');
+          return response.json();
+        })
+        .then(function (payload) {
+          pages = pages.concat(payload.items || []);
+          render();
+        })
+        .catch(render);
     })();
   </script>
+  <script defer src="/assets/search-autocomplete.js"></script>
   <script defer src="/assets/version-footer.js"></script>
 </body>
 </html>

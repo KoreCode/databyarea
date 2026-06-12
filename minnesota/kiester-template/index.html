@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Kiester, MN Area Profile | DataByArea</title>
-  <meta name="description" content="Kiester, Minnesota area profile dashboard with utility rates, demographics, schools, local economy, real estate, climate and nearby city comparisons." />
-  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <title>City Dashboard Template | DataByArea</title>
+  <meta name="description" content="Reusable DataByArea city dashboard template with API-filled metrics, static fallbacks, weather, and nearby city comparisons." />
+  <meta name="robots" content="noindex,nofollow" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="canonical" href="https://databyarea.com/minnesota/kiester/" />
+  <link rel="canonical" href="https://databyarea.com/minnesota/kiester-template/" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -535,7 +535,7 @@
           </div>
 
           <div class="regional-explorer-tools">
-            <form class="regional-search" action="/search/" method="get">
+            <form class="regional-search" action="/search/" method="get" data-dba-search-form>
               <label for="regional-search-input">Search a city, state, or ZIP</label>
               <div class="regional-search-row">
                 <input id="regional-search-input" name="q" type="search" placeholder="Try Wells, Minnesota, or 56051" autocomplete="off" data-dba-autocomplete data-dba-state="minnesota" data-dba-max-suggestions="10" />
@@ -545,7 +545,7 @@
 
             <div class="regional-quick-views" aria-label="Regional explorer quick views">
               <a href="/minnesota/kiester/">Nearby Cities</a>
-              <a href="/minnesota/faribault-county/">Faribault County</a>
+              <a href="/minnesota/">Minnesota Hub</a>
               <a href="/minnesota/">Minnesota</a>
               <a href="/cost-of-living/minnesota/">Cost Benchmarks</a>
             </div>
@@ -594,7 +594,99 @@
     </footer>
   </div>
   <script>
+  window.DBA_CITY_TEMPLATE_CONFIG = {
+    cityName: 'Kiester',
+    stateName: 'Minnesota',
+    stateAbbr: 'MN',
+    countyName: 'Faribault County',
+    stateSlug: 'minnesota',
+    citySlug: 'kiester',
+    zipCodes: ['56051'],
+    apiPath: '/api/databyarea/minnesota/kiester',
+    pagePath: '/minnesota/kiester/',
+    templatePath: '/minnesota/kiester-template/',
+    searchLabel: 'Kiester, MN',
+    weather: {
+      latitude: 43.54,
+      longitude: -93.71,
+      timezone: 'America/Chicago'
+    },
+    currentCity: {
+      label: 'Kiester, MN',
+      url: '/minnesota/kiester/',
+      aliases: ['kiester', 'kiester mn', '56051'],
+      population: '507',
+      costIndex: '95.8',
+      homeValue: '$189k',
+      propertyTax: '$2,190',
+      electricRate: '$0.154/kWh',
+      risk: 'Moderate'
+    },
+    comparisonCities: [
+      { label: 'Wells, MN', url: '/minnesota/wells/', aliases: ['wells', 'wells mn', '56097'], population: '2,410', costIndex: '99.0', homeValue: '$171k', propertyTax: '$2,260', electricRate: '$0.158/kWh', risk: 'Moderate' },
+      { label: 'Winnebago, MN', url: '/minnesota/winnebago/', aliases: ['winnebago', 'winnebago mn', '56098'], population: '1,370', costIndex: '96.7', homeValue: '$164k', propertyTax: '$2,110', electricRate: '$0.156/kWh', risk: 'Moderate' },
+      { label: 'Albert Lea, MN', url: '/minnesota/albert-lea/', aliases: ['albert lea', 'albert lea mn', '56007'], population: '18,420', costIndex: '101.4', homeValue: '$174k', propertyTax: '$2,540', electricRate: '$0.166/kWh', risk: 'Moderate' },
+      { label: 'Fairmont, MN', url: '/minnesota/fairmont/', aliases: ['fairmont', 'fairmont mn', '56031'], population: '10,480', costIndex: '98.6', homeValue: '$177k', propertyTax: '$2,430', electricRate: '$0.160/kWh', risk: 'Moderate' },
+      { label: 'Austin, MN', url: '/minnesota/austin/', aliases: ['austin', 'austin mn', '55912'], population: '26,210', costIndex: '101.1', homeValue: '$182k', propertyTax: '$2,510', electricRate: '$0.164/kWh', risk: 'Moderate' },
+      { label: 'Mankato, MN', url: '/minnesota/mankato/', aliases: ['mankato', 'mankato mn', '56001'], population: '44,690', costIndex: '104.8', homeValue: '$267k', propertyTax: '$3,180', electricRate: '$0.162/kWh', risk: 'Moderate' },
+      { label: 'North Mankato, MN', url: '/minnesota/north-mankato/', aliases: ['north mankato', 'north mankato mn', '56003'], population: '14,320', costIndex: '103.2', homeValue: '$259k', propertyTax: '$3,040', electricRate: '$0.162/kWh', risk: 'Moderate' }
+    ],
+    fieldAliases: {
+      electricity_rate: ['electricity_rate', 'electricity_price_usd_per_kwh', 'electricity_price_cents_per_kwh'],
+      home_value: ['home_value', 'median_home_value', 'median_home_value_usd'],
+      property_tax: ['property_tax', 'median_property_tax_paid_usd'],
+      unemployment: ['unemployment', 'unemployment_rate'],
+      median_wage: ['median_wage', 'median_household_income'],
+      gas_rate: ['gas_rate', 'natural_gas_price_per_ccf'],
+      water_bill: ['water_bill', 'average_water_bill_usd'],
+      rent_2br: ['rent_2br', 'median_gross_rent', 'rent_2br_usd']
+    }
+  };
+  </script>
+  <script>
   document.getElementById('y').textContent = new Date().getFullYear();
+
+  (function () {
+    var cfg = window.DBA_CITY_TEMPLATE_CONFIG || {};
+    var cityLabel = [cfg.cityName, cfg.stateAbbr].filter(Boolean).join(', ');
+    var fullPlace = [cityLabel, cfg.countyName, cfg.stateAbbr].filter(Boolean).join(', ');
+    if (!cityLabel) return;
+
+    document.title = cityLabel + ' Area Profile | DataByArea';
+    var description = document.querySelector('meta[name="description"]');
+    if (description) {
+      description.setAttribute('content', cityLabel + ' area profile dashboard with API-filled utility rates, demographics, schools, local economy, real estate, climate, insurance, and nearby city comparisons.');
+    }
+    var canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) canonical.setAttribute('href', 'https://databyarea.com' + (cfg.templatePath || cfg.pagePath || window.location.pathname));
+
+    var title = document.getElementById('area-title');
+    if (title) title.textContent = cityLabel + ' Area Profile';
+    var heroSubhead = document.querySelector('.area-hero p');
+    if (heroSubhead) heroSubhead.textContent = fullPlace;
+    var grid = document.querySelector('.area-grid');
+    if (grid) grid.setAttribute('aria-label', cfg.cityName + ' data dashboard');
+
+    document.querySelectorAll('a[href="/search/?q=Kiester%2C%20MN"]').forEach(function (link) {
+      link.setAttribute('href', '/search/?q=' + encodeURIComponent(cfg.searchLabel || cityLabel));
+    });
+
+    document.querySelectorAll('.comparison-intro').forEach(function (node) {
+      node.textContent = 'Enter another ' + (cfg.stateName || 'nearby') + ' city or ZIP code, or start with one of the nearby places below.';
+    });
+    document.querySelectorAll('[data-compare-help]').forEach(function (node) {
+      node.textContent = 'Select a suggestion to compare it side by side with ' + cfg.cityName + '.';
+    });
+
+    var regionalSummary = document.querySelector('.regional-explorer-head .card-summary');
+    if (regionalSummary) {
+      regionalSummary.textContent = 'Zoom out from ' + cfg.cityName + ' to nearby cities, ' + cfg.countyName + ', and ' + cfg.stateName + ' benchmarks.';
+    }
+    var regionalInput = document.getElementById('regional-search-input');
+    if (regionalInput) {
+      regionalInput.setAttribute('placeholder', 'Try ' + cfg.countyName + ', ' + ((cfg.comparisonCities || [])[0] || {}).label + ', or ' + (cfg.zipCodes || ['ZIP'])[0]);
+    }
+  })();
 
   (function () {
     var tabs = document.querySelectorAll('.area-pill-tabs .area-tab');
@@ -658,28 +750,47 @@
     var quickCompareButtons = document.querySelectorAll('[data-compare-city]');
     if (!input || !datalist) return;
 
-    var kiester = {
-      label: 'Kiester, MN',
-      url: '/minnesota/kiester/',
-      aliases: ['kiester', 'kiester mn', '56051'],
-      population: '507',
-      costIndex: '95.8',
-      homeValue: '$189k',
-      propertyTax: '$2,190',
-      electricRate: '$0.154/kWh',
-      risk: 'Moderate'
+    var config = window.DBA_CITY_TEMPLATE_CONFIG || {};
+    var currentCity = config.currentCity || {
+      label: [config.cityName, config.stateAbbr].filter(Boolean).join(', '),
+      url: config.pagePath || window.location.pathname,
+      aliases: [config.cityName, config.searchLabel].filter(Boolean),
+      population: '--',
+      costIndex: '--',
+      homeValue: '--',
+      propertyTax: '--',
+      electricRate: '--',
+      risk: '--'
     };
+    var suggestions = [currentCity].concat(config.comparisonCities || []);
 
-    var suggestions = [
-      kiester,
-      { label: 'Wells, MN', url: '/minnesota/wells/', aliases: ['wells', 'wells mn', '56097'], population: '2,410', costIndex: '99.0', homeValue: '$171k', propertyTax: '$2,260', electricRate: '$0.158/kWh', risk: 'Moderate' },
-      { label: 'Winnebago, MN', url: '/minnesota/winnebago/', aliases: ['winnebago', 'winnebago mn', '56098'], population: '1,370', costIndex: '96.7', homeValue: '$164k', propertyTax: '$2,110', electricRate: '$0.156/kWh', risk: 'Moderate' },
-      { label: 'Albert Lea, MN', url: '/minnesota/albert-lea/', aliases: ['albert lea', 'albert lea mn', '56007'], population: '18,420', costIndex: '101.4', homeValue: '$174k', propertyTax: '$2,540', electricRate: '$0.166/kWh', risk: 'Moderate' },
-      { label: 'Fairmont, MN', url: '/minnesota/fairmont/', aliases: ['fairmont', 'fairmont mn', '56031'], population: '10,480', costIndex: '98.6', homeValue: '$177k', propertyTax: '$2,430', electricRate: '$0.160/kWh', risk: 'Moderate' },
-      { label: 'Austin, MN', url: '/minnesota/austin/', aliases: ['austin', 'austin mn', '55912'], population: '26,210', costIndex: '101.1', homeValue: '$182k', propertyTax: '$2,510', electricRate: '$0.164/kWh', risk: 'Moderate' },
-      { label: 'Mankato, MN', url: '/minnesota/mankato/', aliases: ['mankato', 'mankato mn', '56001'], population: '44,690', costIndex: '104.8', homeValue: '$267k', propertyTax: '$3,180', electricRate: '$0.162/kWh', risk: 'Moderate' },
-      { label: 'North Mankato, MN', url: '/minnesota/north-mankato/', aliases: ['north mankato', 'north mankato mn', '56003'], population: '14,320', costIndex: '103.2', homeValue: '$259k', propertyTax: '$3,040', electricRate: '$0.162/kWh', risk: 'Moderate' }
-    ];
+    function renderComparisonCards() {
+      var grid = document.querySelector('.comparison-grid');
+      if (!grid || !(config.comparisonCities || []).length) return;
+      grid.innerHTML = config.comparisonCities.slice(0, 7).map(function (city, index) {
+        var className = index > 2 ? 'comparison-card comparison-card-extra' : 'comparison-card';
+        var summary = city.summary || 'Nearby comparison for housing, taxes, utilities, and local cost context.';
+        var distance = city.distance || 'Nearby';
+        var bestFor = city.bestFor || 'Local benchmark';
+        return [
+          '<article class="' + className + '">',
+          '<div>',
+          '<h3>' + city.label + '</h3>',
+          '<p>' + summary + '</p>',
+          '</div>',
+          '<dl>',
+          '<div><dt>Distance</dt><dd>' + distance + '</dd></div>',
+          '<div><dt>Best for</dt><dd>' + bestFor + '</dd></div>',
+          '</dl>',
+          '<div class="comparison-actions">',
+          '<button type="button" data-compare-city="' + city.label + '">Compare</button>',
+          '<a href="' + city.url + '">City page</a>',
+          '</div>',
+          '</article>'
+        ].join('');
+      }).join('');
+      quickCompareButtons = document.querySelectorAll('[data-compare-city]');
+    }
 
     function normalize(value) {
       return String(value || '').trim().toLowerCase().replace(/[^a-z0-9]+/g, ' ').replace(/\s+/g, ' ').trim();
@@ -691,7 +802,7 @@
       suggestions
         .filter(function (entry) {
           if (!query) return true;
-          return normalize(entry.label).indexOf(query) === 0 || entry.aliases.some(function (alias) {
+          return normalize(entry.label).indexOf(query) === 0 || (entry.aliases || []).some(function (alias) {
             return normalize(alias).indexOf(query) === 0;
           });
         })
@@ -707,7 +818,7 @@
       var query = normalize(value);
       if (!query) return null;
       return suggestions.find(function (entry) {
-        return normalize(entry.label) === query || entry.aliases.some(function (alias) {
+        return normalize(entry.label) === query || (entry.aliases || []).some(function (alias) {
           return normalize(alias) === query;
         });
       });
@@ -715,33 +826,33 @@
 
     function findDesktopPeer(city) {
       return suggestions.find(function (entry) {
-        return entry.url !== kiester.url && entry.url !== city.url;
+        return entry.url !== currentCity.url && entry.url !== city.url;
       });
     }
 
     function renderComparison(city) {
       if (!result || !city) return;
-      if (city.url === kiester.url) {
-        result.innerHTML = '<p class="compare-empty">Kiester is already the current city. Pick another city to compare side by side.</p>';
+      if (city.url === currentCity.url) {
+        result.innerHTML = '<p class="compare-empty">' + currentCity.label + ' is already the current city. Pick another city to compare side by side.</p>';
         return;
       }
       var desktopPeer = findDesktopPeer(city);
       var rows = [
-        ['Population', kiester.population, city.population, desktopPeer && desktopPeer.population],
-        ['Cost index', kiester.costIndex, city.costIndex, desktopPeer && desktopPeer.costIndex],
-        ['Median home value', kiester.homeValue, city.homeValue, desktopPeer && desktopPeer.homeValue],
-        ['Median property tax', kiester.propertyTax, city.propertyTax, desktopPeer && desktopPeer.propertyTax],
-        ['Electric rate', kiester.electricRate, city.electricRate, desktopPeer && desktopPeer.electricRate],
-        ['Risk level', kiester.risk, city.risk, desktopPeer && desktopPeer.risk]
+        ['Population', currentCity.population, city.population, desktopPeer && desktopPeer.population],
+        ['Cost index', currentCity.costIndex, city.costIndex, desktopPeer && desktopPeer.costIndex],
+        ['Median home value', currentCity.homeValue, city.homeValue, desktopPeer && desktopPeer.homeValue],
+        ['Median property tax', currentCity.propertyTax, city.propertyTax, desktopPeer && desktopPeer.propertyTax],
+        ['Electric rate', currentCity.electricRate, city.electricRate, desktopPeer && desktopPeer.electricRate],
+        ['Risk level', currentCity.risk, city.risk, desktopPeer && desktopPeer.risk]
       ];
       result.innerHTML = [
         '<div class="compare-result-head">',
-        '<div><strong>Kiester, MN</strong><span>Current city</span></div>',
+        '<div><strong>' + currentCity.label + '</strong><span>Current city</span></div>',
         '<div><strong>' + city.label + '</strong><span>Selected comparison</span></div>',
         desktopPeer ? '<div class="compare-desktop-extra"><strong>' + desktopPeer.label + '</strong><span>Nearby peer</span></div>' : '',
         '</div>',
         '<table class="compare-table" aria-label="Side-by-side city comparison">',
-        '<thead><tr><th>Metric</th><th>Kiester</th><th>' + city.label.replace(', MN', '') + '</th>' + (desktopPeer ? '<th class="compare-desktop-extra">' + desktopPeer.label.replace(', MN', '') + '</th>' : '') + '</tr></thead>',
+        '<thead><tr><th>Metric</th><th>' + currentCity.label.replace(', ' + (config.stateAbbr || ''), '') + '</th><th>' + city.label.replace(', ' + (config.stateAbbr || ''), '') + '</th>' + (desktopPeer ? '<th class="compare-desktop-extra">' + desktopPeer.label.replace(', ' + (config.stateAbbr || ''), '') + '</th>' : '') + '</tr></thead>',
         '<tbody>',
         rows.map(function (row) {
           return '<tr><th scope="row">' + row[0] + '</th><td>' + row[1] + '</td><td>' + row[2] + '</td>' + (desktopPeer ? '<td class="compare-desktop-extra">' + row[3] + '</td>' : '') + '</tr>';
@@ -780,6 +891,8 @@
       }
     });
 
+    renderComparisonCards();
+
     quickCompareButtons.forEach(function (button) {
       button.addEventListener('click', function () {
         var match = findMatch(button.dataset.compareCity);
@@ -803,7 +916,19 @@
     var condition = weather.querySelector('[data-weather-condition]');
     var wind = weather.querySelector('[data-weather-wind]');
     var daily = weather.querySelector('[data-weather-daily]');
-    var url = 'https://api.open-meteo.com/v1/forecast?latitude=43.54&longitude=-93.71&current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code&daily=temperature_2m_max,temperature_2m_min,precipitation_sum&temperature_unit=fahrenheit&wind_speed_unit=mph&precipitation_unit=inch&timezone=America%2FChicago';
+    var config = window.DBA_CITY_TEMPLATE_CONFIG || {};
+    var weatherConfig = config.weather || {};
+    var weatherParams = new URLSearchParams({
+      latitude: String(weatherConfig.latitude || 43.54),
+      longitude: String(weatherConfig.longitude || -93.71),
+      current: 'temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code',
+      daily: 'temperature_2m_max,temperature_2m_min,precipitation_sum',
+      temperature_unit: 'fahrenheit',
+      wind_speed_unit: 'mph',
+      precipitation_unit: 'inch',
+      timezone: weatherConfig.timezone || 'America/Chicago'
+    });
+    var url = 'https://api.open-meteo.com/v1/forecast?' + weatherParams.toString();
 
     var weatherCodes = {
       0: 'Clear',
@@ -886,12 +1011,13 @@
       return Number.isFinite(num) ? num : null;
     }
 
-    function formatters(key, value) {
+    function formatters(key, value, sourceKey) {
       if (value == null || value === '') return null;
       var n = toNumber(value);
       switch (key) {
         case 'electricity_rate':
-          return n == null ? null : '$' + n.toFixed(3) + '/kWh';
+          if (n == null) return null;
+          return '$' + (sourceKey === 'electricity_price_cents_per_kwh' ? n / 100 : n).toFixed(3) + '/kWh';
         case 'gasoline_price_usd_per_gallon':
           return n == null ? null : '$' + n.toFixed(2) + '/gal';
         case 'water_bill':
@@ -927,22 +1053,39 @@
     function applyData(metrics) {
       var hasMetrics = metrics && Object.keys(metrics).length > 0;
       if (!hasMetrics) return;
+      var config = window.DBA_CITY_TEMPLATE_CONFIG || {};
+      var fieldAliases = config.fieldAliases || {};
+
+      function resolveMetric(key) {
+        var candidates = [key].concat(fieldAliases[key] || []);
+        for (var i = 0; i < candidates.length; i += 1) {
+          var candidate = candidates[i];
+          if (Object.prototype.hasOwnProperty.call(metrics, candidate)) {
+            return { key: candidate, value: metrics[candidate] };
+          }
+        }
+        return null;
+      }
 
       fieldNodes.forEach(function (node) {
         var key = node.dataset.field;
-        if (!Object.prototype.hasOwnProperty.call(metrics, key)) return;
+        var resolved = resolveMetric(key);
+        if (!resolved) return;
 
-        var raw = metrics[key];
+        var raw = resolved.value;
         var hasValue = raw != null && raw !== '';
 
         if (hasValue) {
-          var formatted = formatters(key, raw);
+          var formatted = formatters(key, raw, resolved.key);
           node.textContent = formatted || String(raw);
         }
       });
     }
 
-    fetch('/api/databyarea/minnesota/kiester')
+    var config = window.DBA_CITY_TEMPLATE_CONFIG || {};
+    var apiPath = config.apiPath || ('/api/databyarea/' + (config.stateSlug || 'minnesota') + '/' + (config.citySlug || 'kiester'));
+
+    fetch(apiPath)
       .then(function (res) {
         if (!res.ok) throw new Error('City data request failed');
         return res.json();
