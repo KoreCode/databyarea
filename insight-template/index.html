@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Insight Page Template | DataByArea</title>
+  <meta name="description" content="Reusable DataByArea insight page template for future state, city, and ZIP-aware data hubs." />
+  <meta name="robots" content="noindex,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="canonical" href="https://databyarea.com/insight-template/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body class="area-dashboard-page insight-hub-page">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="container area-dashboard-shell">
+    <header class="area-top-nav area-home-header">
+      <a href="/" class="area-home-brand" aria-label="DataByArea.com home">
+        <span class="area-home-logo" aria-hidden="true"><img src="/assets/logo-icon.svg" alt="" width="36" height="36" decoding="async" fetchpriority="high" /></span>
+        <span>DataByArea.com</span>
+      </a>
+      <div class="area-home-actions">
+        <a class="area-home-button search" href="/search/">Search Data</a>
+        <a class="area-home-login" href="/login/">Log In</a>
+        <a class="area-home-button signup" href="/signup/">Sign Up</a>
+      </div>
+    </header>
+
+    <nav class="insight-topics" aria-label="Insight pages">
+      <a href="/cost-of-living/">Cost of Living</a>
+      <a href="/utility-costs/">Utilities</a>
+      <a href="/property-taxes/">Property Taxes</a>
+      <a href="/insurance-costs/">Insurance</a>
+    </nav>
+
+    <main id="main-content" class="insight-main">
+      <section class="insight-hero" aria-labelledby="insight-title">
+        <div>
+          <div class="insight-breadcrumbs"><a href="/">Home</a> &rsaquo; Insight Template</div>
+          <h1 id="insight-title">Future Insight Topic by State, City, and ZIP</h1>
+          <p>Use this template for new insight hubs. Replace the topic copy, KPIs, comparison table, and methodology notes while keeping the shared search, state selector, insight navigation, and responsive card layout.</p>
+          <div class="insight-actions">
+            <a href="#location-search">Find a Location</a>
+            <a href="#topic-drivers">Topic Drivers</a>
+            <a href="#browse-states">Browse States</a>
+            <a href="/search/">Search Data</a>
+          </div>
+        </div>
+        <aside class="insight-panel" aria-label="Template snapshot">
+          <h2>Template Snapshot</h2>
+          <div class="insight-panel-grid">
+            <div><strong>KPI 1</strong><span>Primary metric</span></div>
+            <div><strong>KPI 2</strong><span>Secondary metric</span></div>
+            <div><strong>KPI 3</strong><span>Local context</span></div>
+            <div><strong>KPI 4</strong><span>Verification need</span></div>
+          </div>
+          <p class="insight-source">Replace this note with source and methodology context for the new insight topic.</p>
+        </aside>
+      </section>
+
+      <section class="insight-grid" aria-label="Template content layout">
+        <article class="insight-card">
+          <span class="insight-label">Primary signal</span>
+          <span class="insight-kpi">Metric</span>
+          <p>Explain the main user-facing metric and why it matters when comparing places.</p>
+        </article>
+        <article class="insight-card">
+          <span class="insight-label">Local variation</span>
+          <span class="insight-kpi">High</span>
+          <p>Explain what changes by state, county, city, ZIP, property, or household profile.</p>
+        </article>
+        <article class="insight-card">
+          <span class="insight-label">Planning use</span>
+          <span class="insight-kpi">Budget</span>
+          <p>Explain how a user should apply the data to a move, purchase, rental, or household plan.</p>
+        </article>
+        <article class="insight-card">
+          <span class="insight-label">Verify</span>
+          <span class="insight-kpi">Local</span>
+          <p>Tell users what source should be checked before making a final decision.</p>
+        </article>
+
+        <article class="insight-card insight-wide" id="location-search">
+          <h2>Find a Local Profile</h2>
+          <p>Keep this universal search on future insight hubs so users can jump by state, city, or ZIP.</p>
+          <form action="/search/" method="get" data-dba-search-form>
+            <label class="mutedSmall" for="template-search">Search location</label>
+            <div class="insight-search-row">
+              <input id="template-search" name="q" type="search" autocomplete="off" placeholder="Try Minnesota, Kiester MN, or 56051" data-dba-autocomplete data-dba-max-suggestions="12" />
+              <button type="submit">Search</button>
+            </div>
+          </form>
+        </article>
+
+        <article class="insight-card insight-wide">
+          <h2>Choose a State Profile</h2>
+          <p>Set <code>data-dba-category</code> to the future insight slug when that category has state pages.</p>
+          <form data-state-selector>
+            <label class="mutedSmall" for="template-state-selector">Choose a state</label>
+            <div class="insight-selector-row">
+              <select id="template-state-selector" autocomplete="off" data-dba-state-select data-dba-category="cost-of-living">
+                <option value="">Choose a state...</option>
+              </select>
+              <button type="submit">View State</button>
+            </div>
+          </form>
+        </article>
+
+        <article class="insight-card insight-wide" id="topic-drivers">
+          <h2>Topic Driver Pattern</h2>
+          <div class="insight-stack" aria-label="Template topic drivers" style="margin-top:10px">
+            <div><span>Driver one</span><i style="--w:92%"></i><b>Highest</b></div>
+            <div><span>Driver two</span><i style="--w:76%"></i><b>High</b></div>
+            <div><span>Driver three</span><i style="--w:64%"></i><b>Medium</b></div>
+            <div><span>Driver four</span><i style="--w:48%"></i><b>Local</b></div>
+          </div>
+        </article>
+
+        <article class="insight-card insight-wide">
+          <h2>User Checklist Pattern</h2>
+          <ul class="insight-list">
+            <li><strong>Compare:</strong> define the first thing users should compare across locations.</li>
+            <li><strong>Verify:</strong> name the trusted local source or document users should check.</li>
+            <li><strong>Budget:</strong> explain how this insight affects a monthly or annual household plan.</li>
+            <li><strong>Next step:</strong> link to the relevant city, state, or related insight page.</li>
+          </ul>
+        </article>
+
+        <section class="insight-card insight-full" aria-labelledby="template-table-title">
+          <h2 id="template-table-title">Comparison Table Pattern</h2>
+          <div class="insight-table-wrap" style="margin-top:12px">
+            <table class="insight-table">
+              <thead><tr><th>Field</th><th>Meaning</th><th>User Question</th><th>Source</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Primary metric</th><td>What this topic mainly measures.</td><td>How does this change my decision?</td><td>Dataset or API.</td></tr>
+                <tr><th scope="row">Local detail</th><td>What changes below state level.</td><td>What should I verify locally?</td><td>City, county, provider, or official record.</td></tr>
+                <tr><th scope="row">Related cost</th><td>Which other DataByArea insight page connects.</td><td>What else affects the budget?</td><td>Internal related page.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <article class="insight-card insight-full" id="browse-states">
+          <h2>Browse State Profiles</h2>
+          <div class="insight-state-grid" data-state-link-grid="cost-of-living" aria-label="Template state links"></div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer home-footer">
+      <p><strong>Template note:</strong> This page is intentionally noindex and should be copied or adapted when adding a new insight family.</p>
+      <p><a href="/about/">About</a> &middot; <a href="/privacy/">Privacy Policy</a> &middot; <a href="/contact/">Contact</a></p>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      var form = document.querySelector('[data-state-selector]');
+      if (!form) return;
+      var select = form.querySelector('select');
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        if (select && select.value) window.location.href = select.value;
+      });
+      select.addEventListener('change', function () {
+        if (select.value) window.location.href = select.value;
+      });
+    })();
+  </script>
+  <script defer src="/assets/search-autocomplete.js"></script>
+  <script defer src="/assets/version-footer.js"></script>
+</body>
+</html>

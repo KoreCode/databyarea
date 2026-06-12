@@ -1,0 +1,131 @@
+{
+  "schema_version": "dba.metric_definitions.v1",
+  "metrics": {
+    "population": {
+      "label": "Population",
+      "unit": "people",
+      "format": "integer",
+      "aliases": ["population"]
+    },
+    "median_household_income": {
+      "label": "Median household income",
+      "unit": "usd",
+      "format": "currency_integer",
+      "aliases": ["median_household_income", "median_wage"]
+    },
+    "median_home_value": {
+      "label": "Median home value",
+      "unit": "usd",
+      "format": "currency_integer",
+      "aliases": ["median_home_value", "median_home_value_usd", "home_value"]
+    },
+    "median_property_tax_paid": {
+      "label": "Median property tax paid",
+      "unit": "usd",
+      "format": "currency_integer",
+      "aliases": ["median_property_tax_paid_usd", "property_tax"]
+    },
+    "estimated_state_sales_tax_rate": {
+      "label": "Estimated state sales tax rate",
+      "unit": "percent",
+      "format": "percent_2",
+      "aliases": ["estimated_state_sales_tax_rate_percent"]
+    },
+    "electricity_rate": {
+      "label": "Electricity rate",
+      "unit": "usd_per_kwh",
+      "format": "usd_per_kwh",
+      "aliases": ["electricity_rate", "electricity_price_usd_per_kwh", "electricity_price_cents_per_kwh"]
+    },
+    "gasoline_price": {
+      "label": "Gasoline price",
+      "unit": "usd_per_gallon",
+      "format": "usd_per_gallon",
+      "aliases": ["gasoline_price_usd_per_gallon"]
+    },
+    "water_bill": {
+      "label": "Average water bill",
+      "unit": "usd_per_month",
+      "format": "currency_month",
+      "aliases": ["water_bill", "average_water_bill_usd"]
+    },
+    "gas_rate": {
+      "label": "Natural gas rate",
+      "unit": "usd_per_ccf",
+      "format": "usd_per_ccf",
+      "aliases": ["gas_rate", "natural_gas_price_per_ccf"]
+    },
+    "rent_2br": {
+      "label": "Two-bedroom rent",
+      "unit": "usd_per_month",
+      "format": "currency_month",
+      "aliases": ["rent_2br", "rent_2br_usd", "median_gross_rent"]
+    },
+    "cost_index": {
+      "label": "Composite cost index",
+      "unit": "index",
+      "format": "decimal_1",
+      "aliases": ["cost_index", "composite_cost_index"]
+    },
+    "grocery_index": {
+      "label": "Grocery index",
+      "unit": "index",
+      "format": "decimal_1",
+      "aliases": ["grocery_index"]
+    },
+    "housing_index": {
+      "label": "Housing index",
+      "unit": "index",
+      "format": "decimal_1",
+      "aliases": ["housing_index"]
+    },
+    "transportation_index": {
+      "label": "Transportation index",
+      "unit": "index",
+      "format": "decimal_1",
+      "aliases": ["transportation_index"]
+    },
+    "median_age": {
+      "label": "Median age",
+      "unit": "years",
+      "format": "decimal_1",
+      "aliases": ["median_age"]
+    },
+    "bachelors_plus": {
+      "label": "Bachelor's degree or higher",
+      "unit": "percent",
+      "format": "percent_1",
+      "aliases": ["bachelors_plus"]
+    },
+    "unemployment_rate": {
+      "label": "Unemployment rate",
+      "unit": "percent",
+      "format": "percent_1",
+      "aliases": ["unemployment", "unemployment_rate"]
+    },
+    "labor_force": {
+      "label": "Labor force",
+      "unit": "people",
+      "format": "integer",
+      "aliases": ["labor_force"]
+    },
+    "sunny_days": {
+      "label": "Sunny days",
+      "unit": "days",
+      "format": "integer",
+      "aliases": ["sunny_days"]
+    },
+    "annual_snowfall": {
+      "label": "Annual snowfall",
+      "unit": "inches",
+      "format": "inches_1",
+      "aliases": ["annual_snowfall"]
+    },
+    "hazard_risk": {
+      "label": "Hazard risk",
+      "unit": "risk_level",
+      "format": "text",
+      "aliases": ["hazard_risk", "risk_level"]
+    }
+  }
+}

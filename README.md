@@ -18,17 +18,34 @@ DataByArea
 - After each run, a summary is written to:
   - `_deploy/last_daily_run_summary.json`
   - `_deploy/last_daily_run_summary.md`
-- A required publish gate now runs after generation (`python3 scripts/site_quality_agents.py`) and fails fast before any commit/push/deploy step when critical checks fail.
+- Required publish gates now run after generation and fail fast before any commit/push/deploy step when critical checks fail:
+  - `python scripts/build_search_index.py`
+  - `python scripts/validate_data_layer.py`
+  - `python scripts/check_conflict_markers.py`
+  - `python scripts/site_quality_agents.py`
+  - `python scripts/production_check.py`
 - The publish gate writes its status back into both daily summary files so pass/fail is visible in run history.
 - State coverage check runs first via `scripts/ensure_states.py` to keep state-level hubs in place.
 - SEO baseline is refreshed each run by rebuilding `sitemap.xml`, `robots.txt`, and generating internal-link-ready state/city pages.
 - City publishing is forced inside the one-button pipeline so both daily and manual runs attempt to add up to `--cities` new city pages each run.
+- Static search/autocomplete data can be refreshed with `python3 scripts/build_search_index.py`; it writes `assets/search-index.json` for homepage search, insight-page selectors, and city template suggestions.
+- New insight families should start from `/insight-template/`, then set the proper category slug in the state selector and state-link grid.
+
+### Template data layer
+- Canonical city/state template data is now defined before further template rollout:
+  - Contract: `data/contracts/databyarea-location-v1.json`
+  - Metric catalog: `data/metric_definitions.json`
+  - City seed: `data/places/minnesota/kiester.json`
+  - State insight seed: `data/state-insights/minnesota.json`
+  - Guide: `docs/data-layer.md`
+- Validate data records before template generation:
+  - `python3 scripts/validate_data_layer.py`
+- City templates should read canonical metric keys first, then aliases, then static fallback display values. Avoid hardcoding city names, nearby city cards, source labels, or metric values in generated pages.
 
 ### Daily autorun (1 service + 10 cities)
-- Command used by runner script: `./run_daily.sh`
-  - Runs: `DBA_AUTORUN=1 python3 one_button_daily.py --services 1 --cities 10 --relink --clean`
-  - Runs: `python3 one_button_daily.py --services 1 --cities 10 --relink --clean`
-  - Then runs required gate: `python3 scripts/site_quality_agents.py` (non-zero exit blocks downstream publish actions).
+- Command used by runner script: `bash ./run_daily.sh`
+  - Runs: `DBA_AUTORUN=1 python one_button_daily.py --services 1 --cities 10 --relink --clean`
+  - Then runs the search index, data layer, conflict marker, site quality, and production readiness gates.
 - Install cron job: `./setup_autorun.sh`
   - Default schedule is daily at `03:15 UTC`
   - Override schedule: `CRON_EXPR=\"0 2 * * *\" ./setup_autorun.sh`
@@ -36,7 +53,7 @@ DataByArea
 
 ### EIA API integration
 - EIA API helper lives at `scripts/eia_client.py`.
-- Default key is configured for this repo and can be overridden with env var `EIA_API_KEY`.
+- Set `EIA_API_KEY` in your local environment and in GitHub repository secrets for scheduled API pulls. The repo does not ship a default API key.
 - Example usage:
   - `python3 -c "from scripts.eia_client import fetch_series; print(fetch_series('electricity/retail-sales/data'))"`
 
@@ -69,6 +86,18 @@ DataByArea
   - missing JSON-LD on page types that should include it
   - broken internal links for newly published paths
 - Admin backend script key: `agent_quality_review`
+
+### Production readiness checks
+- Script: `scripts/production_check.py`
+- Purpose: dependency-free CI gate for workflows, Python syntax, data layer validity, JSON parsing, critical pages, search index health, accidental secret patterns, and common text encoding damage.
+- Run locally or in GitHub Actions:
+  - `python scripts/build_search_index.py`
+  - `python scripts/validate_data_layer.py`
+  - `python scripts/production_check.py`
+- Report output:
+  - `_deploy/reports/production_check.json`
+- Automation workflow:
+  - `.github/workflows/production-pass.yml` runs on push, pull request, and manual dispatch.
 
 ### Content + distribution automation
 - Script: `scripts/content_distribution_workflow.py`

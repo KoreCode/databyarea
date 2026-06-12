@@ -1,0 +1,114 @@
+{
+  "schema_version": "dba.location.v1",
+  "description": "Canonical template-facing data contract for DataByArea city dashboards, state hubs, and insight pages.",
+  "required_top_level_keys": [
+    "schema_version",
+    "location",
+    "page",
+    "metrics",
+    "sources",
+    "updated_at"
+  ],
+  "location": {
+    "type": "city | county | state | metro | zip",
+    "name": "Display name, e.g. Kiester",
+    "slug": "URL slug, e.g. kiester",
+    "state_name": "State display name",
+    "state_slug": "State URL slug",
+    "state_abbr": "Two-letter state abbreviation",
+    "county_name": "County display name when known",
+    "county_slug": "County URL slug when known",
+    "country": "US",
+    "zip_codes": ["Known ZIP aliases"],
+    "geo": {
+      "latitude": "number | null",
+      "longitude": "number | null",
+      "timezone": "IANA timezone string"
+    }
+  },
+  "page": {
+    "canonical_path": "Primary public URL",
+    "api_path": "API path for live enrichment",
+    "template_path": "Template preview path when applicable",
+    "title": "SEO/browser title",
+    "description": "Meta description",
+    "robots": "index,follow | noindex,nofollow"
+  },
+  "metric_object": {
+    "value": "raw numeric/string/boolean value used by templates",
+    "unit": "people | usd | percent | index | usd_per_kwh | usd_per_gallon | ratio | inches | risk_level | text",
+    "display": "preformatted value for static fallback rendering",
+    "label": "Human label",
+    "source_id": "key into sources",
+    "source_year": "dataset year or period",
+    "updated_at": "ISO date or datetime",
+    "confidence": "high | medium | low | estimated | placeholder",
+    "status": "actual | estimate | fallback | unavailable",
+    "aliases": ["legacy API keys this metric can satisfy"],
+    "notes": "short user-facing caveat"
+  },
+  "metrics": {
+    "description": "Flat object keyed by canonical metric ids. Each value must follow metric_object."
+  },
+  "sections": {
+    "description": "Template grouping instructions. Values are metric id arrays or chart ids.",
+    "cost_of_living": [],
+    "utilities": [],
+    "demographics": [],
+    "schools": [],
+    "economy": [],
+    "real_estate": [],
+    "climate": [],
+    "insurance": []
+  },
+  "charts": {
+    "description": "Reusable chart data keyed by chart id.",
+    "chart_id": {
+      "type": "bar | line | pyramid | comparison | stack",
+      "title": "Chart title",
+      "unit": "index | percent | usd | text",
+      "source_id": "key into sources",
+      "points": [
+        { "label": "Jan", "value": 22 }
+      ]
+    }
+  },
+  "comparisons": {
+    "nearby_cities": [
+      {
+        "label": "Wells, MN",
+        "state_slug": "minnesota",
+        "city_slug": "wells",
+        "url": "/minnesota/wells/",
+        "aliases": ["wells", "wells mn", "56097"],
+        "metrics": {
+          "population": "display value",
+          "cost_index": "display value",
+          "median_home_value": "display value",
+          "median_property_tax": "display value",
+          "electric_rate": "display value",
+          "risk_level": "display value"
+        },
+        "summary": "Short comparison explanation",
+        "distance": "display distance when known",
+        "best_for": "why this peer is useful"
+      }
+    ]
+  },
+  "sources": {
+    "source_id": {
+      "name": "Human source name",
+      "publisher": "Agency/company/source publisher",
+      "url": "Source URL when public",
+      "dataset": "Dataset name",
+      "dataset_year": "Year or period",
+      "accessed_at": "ISO date",
+      "license": "License or terms note"
+    }
+  },
+  "fallback_policy": {
+    "missing_metric": "Hide optional rows/cards when no fallback exists; otherwise show display value with fallback status.",
+    "api_enrichment": "Live API values may override metrics when source confidence is equal or higher and aliases match.",
+    "template_rule": "Templates should read canonical keys first, then aliases, and should show source/caveat metadata near metric groups."
+  }
+}

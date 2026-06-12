@@ -1,0 +1,155 @@
+{
+  "schema_version": "dba.state_insight.v1",
+  "updated_at": "2026-06-10",
+  "state": {
+    "name": "Minnesota",
+    "slug": "minnesota",
+    "abbr": "MN",
+    "country": "US"
+  },
+  "page": {
+    "state_hub_path": "/minnesota/",
+    "insight_paths": {
+      "cost_of_living": "/cost-of-living/minnesota/",
+      "utilities": "/utility-costs/minnesota/",
+      "property_taxes": "/property-taxes/minnesota/",
+      "insurance": "/insurance-costs/minnesota/"
+    }
+  },
+  "metrics": {
+    "cost_index": {
+      "value": 101.2,
+      "unit": "index",
+      "display": "101.2",
+      "label": "Cost index",
+      "source_id": "state_static_seed",
+      "source_year": "2026",
+      "updated_at": "2026-06-10",
+      "confidence": "estimated",
+      "status": "fallback",
+      "notes": "Statewide planning signal used for comparison only."
+    },
+    "median_home_value_signal": {
+      "value": 286000,
+      "unit": "usd",
+      "display": "$286k",
+      "label": "Home value signal",
+      "source_id": "state_static_seed",
+      "source_year": "2026",
+      "updated_at": "2026-06-10",
+      "confidence": "estimated",
+      "status": "fallback",
+      "notes": "Statewide planning signal; city values vary."
+    },
+    "electricity_rate": {
+      "value": 0.1545,
+      "unit": "usd_per_kwh",
+      "display": "15.45c/kWh",
+      "label": "Residential electricity price",
+      "source_id": "eia_state_electricity_2024",
+      "source_year": "2024",
+      "updated_at": "2026-06-10",
+      "confidence": "medium",
+      "status": "actual",
+      "notes": "EIA annual residential benchmark."
+    },
+    "electricity_monthly_usage": {
+      "value": 712,
+      "unit": "kwh_per_month",
+      "display": "712 kWh",
+      "label": "Monthly residential electricity use",
+      "source_id": "eia_state_electricity_2024",
+      "source_year": "2024",
+      "updated_at": "2026-06-10",
+      "confidence": "medium",
+      "status": "actual",
+      "notes": "Statewide benchmark; household usage varies."
+    },
+    "electricity_monthly_bill": {
+      "value": 110.06,
+      "unit": "usd_per_month",
+      "display": "$110",
+      "label": "Monthly residential electric bill",
+      "source_id": "eia_state_electricity_2024",
+      "source_year": "2024",
+      "updated_at": "2026-06-10",
+      "confidence": "medium",
+      "status": "actual",
+      "notes": "Statewide benchmark; provider bills vary."
+    },
+    "property_tax_signal": {
+      "value": 3180,
+      "unit": "usd",
+      "display": "$3,180",
+      "label": "Property tax signal",
+      "source_id": "state_static_seed",
+      "source_year": "2026",
+      "updated_at": "2026-06-10",
+      "confidence": "estimated",
+      "status": "fallback",
+      "notes": "Planning anchor; parcel tax statement is authoritative."
+    },
+    "property_tax_effective_rate_guide": {
+      "value": 1.1,
+      "unit": "percent",
+      "display": "1.1%",
+      "label": "Effective-rate guide",
+      "source_id": "state_static_seed",
+      "source_year": "2026",
+      "updated_at": "2026-06-10",
+      "confidence": "estimated",
+      "status": "fallback",
+      "notes": "Planning anchor; rate varies by parcel and district."
+    }
+  },
+  "city_sets": {
+    "featured": [
+      { "label": "Kiester", "slug": "kiester", "url": "/minnesota/kiester/", "market_type": "Small town" },
+      { "label": "Wells", "slug": "wells", "url": "/minnesota/wells/", "market_type": "Nearby peer" },
+      { "label": "Winnebago", "slug": "winnebago", "url": "/minnesota/winnebago/", "market_type": "Regional peer" },
+      { "label": "Albert Lea", "slug": "albert-lea", "url": "/minnesota/albert-lea/", "market_type": "Regional city" },
+      { "label": "Rochester", "slug": "rochester", "url": "/minnesota/rochester/", "market_type": "Regional center" },
+      { "label": "Mankato", "slug": "mankato", "url": "/minnesota/mankato/", "market_type": "College/regional market" },
+      { "label": "Duluth", "slug": "duluth", "url": "/minnesota/duluth/", "market_type": "Northern port city" },
+      { "label": "Minneapolis", "slug": "minneapolis", "url": "/minnesota/minneapolis/", "market_type": "Large city" }
+    ]
+  },
+  "insight_copy": {
+    "cost_of_living": {
+      "primary_signal": "Housing, tax escrow, utilities, insurance, and commute should be compared together.",
+      "verification": "Use city dashboards and address-level provider/tax records before making financial decisions."
+    },
+    "utilities": {
+      "primary_signal": "Winter heating, home efficiency, water/sewer fees, and internet availability drive monthly utility spread.",
+      "verification": "Ask providers, landlords, sellers, or property managers for recent bills tied to the exact address."
+    },
+    "property_taxes": {
+      "primary_signal": "County, city, school district, classification, local levies, special assessments, and credits shape the bill.",
+      "verification": "Review the current parcel tax statement and assessor records."
+    },
+    "insurance": {
+      "primary_signal": "Weather risk, roof age, rebuild cost, driver profile, coverage limits, and deductible drive final premiums.",
+      "verification": "Compare matched quotes for the exact address, vehicle, household, and coverage."
+    }
+  },
+  "sources": {
+    "state_static_seed": {
+      "name": "DataByArea Minnesota state insight seed values",
+      "publisher": "DataByArea.com",
+      "url": "https://databyarea.com/minnesota/",
+      "dataset": "Static state insight fallback values",
+      "dataset_year": "2026",
+      "accessed_at": "2026-06-10",
+      "license": "Internal template seed"
+    },
+    "eia_state_electricity_2024": {
+      "name": "EIA Minnesota residential electricity benchmark",
+      "publisher": "U.S. Energy Information Administration",
+      "url": "https://www.eia.gov/electricity/",
+      "dataset": "Annual residential electricity benchmark",
+      "dataset_year": "2024",
+      "accessed_at": "2026-06-10",
+      "license": "Public domain / U.S. government source"
+    }
+  }
+}

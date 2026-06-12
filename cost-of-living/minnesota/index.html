@@ -1,159 +1,350 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   <title>Cost of Living in Minnesota | DataByArea</title>
-  <meta name="description" content="Explore cost of living in Minnesota. Compare state averages and city-level differences.">
-  <meta name="robots" content="index,follow,max-image-preview:large">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="canonical" href="https://databyarea.com/cost-of-living/minnesota/">
-  <link rel="stylesheet" href="/assets/styles.css">
+  <meta name="description" content="Minnesota cost of living profile with housing, utilities, property taxes, insurance, income context, city comparisons, and API-backed methodology notes." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="canonical" href="https://databyarea.com/cost-of-living/minnesota/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <style>
+    .state-cost-page{background:linear-gradient(180deg,#e8f0f8,#f6f9fc 28%,#edf3f8)}
+    .state-cost-main{padding:0 4px 18px}
+    .state-cost-hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(320px,.9fr);gap:18px;margin:0 -16px;padding:24px 22px;background:linear-gradient(112deg,#103956,#0d6676 58%,#15766a);color:#f4fbff}
+    .state-cost-hero h1{max-width:12ch;margin:0;font-size:52px;line-height:1.03;letter-spacing:0}
+    .state-cost-hero p{max-width:70ch;margin:9px 0 0;color:#d9eef7;font-size:18px;line-height:1.48}
+    .state-cost-breadcrumbs{margin:0 0 10px;color:#cde6f3;font-size:14px}
+    .state-cost-breadcrumbs a{color:#fff;font-weight:800}
+    .state-cost-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:17px}
+    .state-cost-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:9px 14px;border-radius:8px;font-size:14px;font-weight:900;text-decoration:none}
+    .state-cost-actions a:first-child{background:#ff704d;color:#fff}
+    .state-cost-actions a:not(:first-child){border:1px solid rgba(255,255,255,.42);background:#fff;color:#0f516f}
+    .hero-panel{align-self:stretch;border:1px solid rgba(229,247,250,.42);border-radius:12px;background:rgba(255,255,255,.13);padding:14px;box-shadow:0 14px 30px rgba(5,38,51,.18)}
+    .hero-panel h2{margin:0 0 10px;color:#fff;font-size:18px}
+    .hero-panel-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+    .hero-panel-grid div{border:1px solid rgba(229,247,250,.24);border-radius:10px;background:rgba(255,255,255,.13);padding:10px}
+    .hero-panel-grid strong{display:block;color:#fff;font-size:24px;line-height:1}
+    .hero-panel-grid span{display:block;margin-top:5px;color:#d3edf4;font-size:12px;font-weight:800;text-transform:uppercase}
+    .hero-source{margin:11px 0 0;color:#cfeaf2;font-size:12px;line-height:1.4}
+    .state-cost-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:14px}
+    .state-cost-card{border:1px solid #c9d7e4;border-radius:12px;background:#fff;padding:15px;box-shadow:0 8px 18px rgba(15,23,42,.07)}
+    .state-cost-card h2{margin:0 0 8px;color:#163e5a;font-size:24px;line-height:1.15}
+    .state-cost-card h3{margin:0 0 7px;color:#173f5c;font-size:18px;line-height:1.2}
+    .state-cost-card p{margin:0;color:#456175;font-size:14px;line-height:1.47}
+    .state-cost-kpi{display:block;margin-bottom:5px;color:#0f6a75;font-size:30px;font-weight:900;line-height:1}
+    .state-cost-label{display:block;margin-bottom:7px;color:#667c8e;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.06em}
+    .state-cost-wide{grid-column:span 2}
+    .state-cost-full{grid-column:1 / -1}
+    .state-cost-three{grid-column:span 3}
+    .state-cost-table-wrap{overflow:auto;border:1px solid #d8e2ec;border-radius:10px}
+    .state-cost-table{width:100%;min-width:720px;border-collapse:collapse;font-size:13px}
+    .state-cost-table caption{text-align:left;font-weight:900;color:#2f4d62;padding:0 0 7px}
+    .state-cost-table th,.state-cost-table td{border-bottom:1px solid #d8e2ec;padding:9px 10px;text-align:left;vertical-align:top}
+    .state-cost-table thead th{background:#edf4fa;color:#274c64;font-size:11px;text-transform:uppercase}
+    .state-cost-table tbody th{color:#173f5c}
+    .state-cost-table td{color:#102f43;font-weight:800}
+    .state-cost-table tr:last-child th,.state-cost-table tr:last-child td{border-bottom:0}
+    .state-cost-muted{color:#60758a;font-size:13px;line-height:1.45}
+    .state-cost-links{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
+    .state-cost-links a{display:flex;align-items:center;justify-content:center;min-height:42px;border:1px solid #cfe0eb;border-radius:9px;background:#f7fbff;color:#183f58;font-size:13px;font-weight:900;text-align:center;text-decoration:none}
+    .state-cost-links a:hover{border-color:#8bb7ca;background:#eef7ff}
+    .budget-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+    .budget-card{border:1px solid #d5e3ec;border-radius:11px;background:#f8fbff;padding:12px}
+    .budget-card strong{display:block;color:#173f5c;font-size:17px}
+    .budget-card span{display:block;margin-top:4px;color:#0f6a75;font-size:24px;font-weight:900}
+    .budget-card p{margin-top:6px;font-size:13px}
+    .cost-stack{display:grid;gap:8px}
+    .cost-stack div{display:grid;grid-template-columns:120px 1fr auto;gap:8px;align-items:center}
+    .cost-stack span{color:#36586e;font-size:13px;font-weight:900}
+    .cost-stack i{height:14px;border-radius:999px;background:linear-gradient(90deg,#0f6a75,#66a95f);width:var(--w)}
+    .cost-stack b{color:#102f43;font-size:13px}
+    .state-cost-city-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+    .state-city-card{display:flex;flex-direction:column;justify-content:space-between;min-height:150px;border:1px solid #d1e1eb;border-radius:12px;background:#fff;padding:12px;text-decoration:none;box-shadow:0 1px 4px rgba(15,23,42,.05)}
+    .state-city-card strong{display:block;color:#163e5a;font-size:17px}
+    .state-city-card span{display:block;margin-top:5px;color:#456175;font-size:13px;line-height:1.4}
+    .state-city-card em{display:block;margin-top:10px;color:#0f6a75;font-style:normal;font-size:12px;font-weight:900;text-transform:uppercase}
+    .state-city-card:hover{border-color:#8bb7ca;background:#f7fbff;text-decoration:none}
+    .state-selector-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;margin-top:10px}
+    .state-selector-row select{min-width:0;border:1px solid #c6d8e5;border-radius:9px;background:#fff;color:#102f43;padding:10px 11px;font-size:14px;font-weight:800}
+    .state-selector-row button{border:0;border-radius:9px;background:#0f6a75;color:#fff;padding:10px 13px;font-size:13px;font-weight:900;cursor:pointer}
+    .source-list{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+    .source-list li{border:1px solid #d8e2ec;border-radius:9px;background:#f8fbff;padding:9px;color:#456175;font-size:13px;line-height:1.45}
+    .source-list strong{color:#173f5c}
+    @media (max-width:1100px){
+      .state-cost-hero{grid-template-columns:1fr}
+      .state-cost-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .state-cost-three{grid-column:1 / -1}
+      .state-cost-city-grid,.state-cost-links{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .budget-grid{grid-template-columns:1fr}
+    }
+    @media (max-width:700px){
+      .state-cost-hero{margin:0 -12px;padding:18px 12px}
+      .state-cost-hero h1{font-size:36px}
+      .state-cost-grid,.state-cost-city-grid,.state-cost-links,.state-selector-row,.hero-panel-grid{grid-template-columns:1fr}
+      .state-cost-wide,.state-cost-three{grid-column:auto}
+      .state-cost-actions a{width:100%}
+      .cost-stack div{grid-template-columns:94px 1fr auto}
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Cost of Living in Minnesota",
+    "url": "https://databyarea.com/cost-of-living/minnesota/",
+    "description": "Minnesota cost of living profile with housing, utilities, property taxes, insurance, income context, and local city profile links.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "DataByArea.com"
+    }
+  }
+  </script>
 </head>
-<body>
-  <div class="container">
-    <div class="nav">
-      <div class="brand">
-        <img src="/assets/logo.png" alt="Data By Area logo" class="logo">
-        <div class="brand-text">
-          <strong>Data By Area</strong>
-          <span>Costs • Rates • Public Data</span>
+<body class="area-dashboard-page state-cost-page">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="container area-dashboard-shell">
+    <header class="area-top-nav area-home-header">
+      <a href="/" class="area-home-brand" aria-label="DataByArea.com home">
+        <span class="area-home-logo" aria-hidden="true">
+          <img src="/assets/logo-icon.svg" alt="" width="36" height="36" decoding="async" fetchpriority="high" />
+        </span>
+        <span>DataByArea.com</span>
+      </a>
+
+      <div class="area-home-actions">
+        <a class="area-home-button search" href="/search/">Search Data</a>
+        <a class="area-home-login" href="/login/">Log In</a>
+        <a class="area-home-button signup" href="/signup/">Sign Up</a>
+      </div>
+    </header>
+
+    <main id="main-content" class="state-cost-main">
+      <section class="state-cost-hero" aria-labelledby="state-cost-title">
+        <div>
+          <div class="state-cost-breadcrumbs"><a href="/">Home</a> &rsaquo; <a href="/cost-of-living/">Cost of Living</a> &rsaquo; Minnesota</div>
+          <h1 id="state-cost-title">Cost of Living in Minnesota</h1>
+          <p>Minnesota is not one cost market. Twin Cities housing, southern Minnesota small towns, northern climate exposure, and regional job centers all create different monthly budgets. Use this page to screen the statewide picture, then open a city profile for local detail.</p>
+          <div class="state-cost-actions">
+            <a href="#minnesota-cities">Compare Cities</a>
+            <a href="#monthly-budget">Monthly Budget</a>
+            <a href="/utility-costs/minnesota/">Utilities</a>
+            <a href="/property-taxes/minnesota/">Property Taxes</a>
+            <a href="/insurance-costs/minnesota/">Insurance</a>
+          </div>
         </div>
-      </div>
-      <div class="navlinks">
-        <a class="pill" href="/">Home</a>
-        <a class="pill" href="/cost-of-living/">Cost of Living</a>
-        <a class="pill" href="/utility-costs/">Utility Costs</a>
-        <a class="pill" href="/property-taxes/">Property Tax Rates</a>
-        <a class="pill" href="/insurance-costs/">Insurance Costs</a>
-      </div>
-    </div>
+        <aside class="hero-panel" aria-label="Minnesota cost snapshot">
+          <h2>Statewide Planning Snapshot</h2>
+          <div class="hero-panel-grid">
+            <div><strong>101.2</strong><span>Cost index</span></div>
+            <div><strong>$286k</strong><span>Home value signal</span></div>
+            <div><strong>$0.162</strong><span>Electric rate/kWh</span></div>
+            <div><strong>$3,180</strong><span>Property tax signal</span></div>
+          </div>
+          <p class="hero-source">Designed for comparison. Use the statewide summary as a starting point, then verify local costs with city profiles and current provider or tax records.</p>
+        </aside>
+      </section>
 
-    <div class="hero">
-      <h1>Cost of Living in Minnesota</h1>
-      <p>Explore cost of living in Minnesota. Compare state averages and city-level differences.</p>
-      <div class="breadcrumbs">
-        <a href="/">Home</a> › <a href="/cost-of-living/">Cost of Living</a> › <span>Minnesota</span>
-      </div>
-    </div>
+      <section class="state-cost-grid" aria-label="Minnesota cost of living summary">
+        <article class="state-cost-card">
+          <span class="state-cost-label">Overall read</span>
+          <span class="state-cost-kpi">Near U.S. average</span>
+          <p>Statewide Minnesota is usually a middle-cost market, but the spread between Minneapolis suburbs and rural southern towns can be larger than the headline number suggests.</p>
+        </article>
+        <article class="state-cost-card">
+          <span class="state-cost-label">Biggest swing</span>
+          <span class="state-cost-kpi">Housing</span>
+          <p>Rent, home value, tax levy, and insurance should be read together. A cheaper house can still carry a different monthly burden once taxes and winter upkeep are included.</p>
+        </article>
+        <article class="state-cost-card">
+          <span class="state-cost-label">Seasonal pressure</span>
+          <span class="state-cost-kpi">Heating</span>
+          <p>Electric and natural gas prices matter, but usage is the quiet driver. Older homes and northern climates can change winter bills fast.</p>
+        </article>
+        <article class="state-cost-card">
+          <span class="state-cost-label">Best next step</span>
+          <span class="state-cost-kpi">City compare</span>
+          <p>Use local dashboards for side-by-side city comparisons, nearby peers, weather context, and links into utilities, property tax, and insurance pages.</p>
+        </article>
 
-    <div class="grid">
-      <div class="card">
-        <h2>What you can compare</h2>
-        <p>Use this page to review housing, groceries, utilities, healthcare, and transportation across Minnesota.</p>
-        <ul class="list">
-          <li class="item">Statewide averages and regional variation</li>
-          <li class="item">City-level snapshots for major metros</li>
-          <li class="item">Cross-category links for fuller context</li>
-        </ul>
-      </div>
+        <article class="state-cost-card state-cost-wide" id="monthly-budget">
+          <h2>Monthly Budget Examples</h2>
+          <p class="state-cost-muted">These are planning ranges, not quotes. They show how household size and location type can change the budget conversation.</p>
+          <div class="budget-grid" style="margin-top:12px">
+            <div class="budget-card">
+              <strong>Small-town owner</strong>
+              <span>$2.4k-$3.4k</span>
+              <p>Mortgage or rent, utilities, property tax allocation, insurance, food, and basic transportation in lower-cost southern or western markets.</p>
+            </div>
+            <div class="budget-card">
+              <strong>Regional center renter</strong>
+              <span>$2.9k-$4.3k</span>
+              <p>Higher rent and services, often balanced by stronger job access in cities like Rochester, Mankato, Duluth, or St. Cloud.</p>
+            </div>
+            <div class="budget-card">
+              <strong>Twin Cities household</strong>
+              <span>$4.0k-$6.4k</span>
+              <p>Housing and transportation choices dominate. Walkability, commute, schools, and property tax jurisdiction all matter.</p>
+            </div>
+          </div>
+        </article>
 
-      <div class="card">
-        <h2>Related Minnesota pages</h2>
-        <p>Explore other cost categories for Minnesota.</p>
-        <ul class="list">
-          <li><a href="/utility-costs/minnesota/">Utility Costs in Minnesota</a></li>
-<li><a href="/property-taxes/minnesota/">Property Tax Rates in Minnesota</a></li>
-<li><a href="/insurance-costs/minnesota/">Insurance Costs in Minnesota</a></li>
-        </ul>
-        <a class="btn" href="/cost-of-living/">Back to Cost of Living states</a>
-      </div>
-    </div>
+        <article class="state-cost-card state-cost-wide">
+          <h2>Where the Budget Goes</h2>
+          <div class="cost-stack" aria-label="Typical Minnesota cost stack" style="margin-top:10px">
+            <div><span>Housing</span><i style="--w:88%"></i><b>Largest</b></div>
+            <div><span>Transport</span><i style="--w:58%"></i><b>High</b></div>
+            <div><span>Food</span><i style="--w:45%"></i><b>Medium</b></div>
+            <div><span>Utilities</span><i style="--w:34%"></i><b>Seasonal</b></div>
+            <div><span>Insurance</span><i style="--w:31%"></i><b>Local</b></div>
+            <div><span>Taxes</span><i style="--w:29%"></i><b>Varies</b></div>
+          </div>
+        </article>
 
-    <!-- COUNTY_PAGES:ANCHOR -->
-    <!-- POPULAR_CITIES:START -->
-<div class="card">
-<h2 class="sectionTitle">Minnesota insights dashboard</h2>
-<p>Jump between insight pages for Minnesota and choose a city to open local detail pages.</p>
-<div class="navlinks">
-<a class="pill" href="/cost-of-living/minnesota/">Cost of Living</a>
-<a class="pill" href="/utility-costs/minnesota/">Utility Costs</a>
-<a class="pill" href="/property-taxes/minnesota/">Property Tax Rates</a>
-<a class="pill" href="/insurance-costs/minnesota/">Insurance Costs</a>
-</div>
-<label for="cost-of-living-state-selector"><strong>State selector (Cost of Living)</strong></label>
-<select
-  id="cost-of-living-state-selector"
-  style="display:block;width:100%;max-width:420px;margin:.5rem 0 1rem;padding:.55rem;border-radius:10px;border:1px solid #d5dfeb;background:#fff;"
-  onchange="if(this.value) window.location.href=this.value;"
->
-<option value="/cost-of-living/alabama/">Alabama</option>
-<option value="/cost-of-living/alaska/">Alaska</option>
-<option value="/cost-of-living/arizona/">Arizona</option>
-<option value="/cost-of-living/arkansas/">Arkansas</option>
-<option value="/cost-of-living/california/">California</option>
-<option value="/cost-of-living/colorado/">Colorado</option>
-<option value="/cost-of-living/connecticut/">Connecticut</option>
-<option value="/cost-of-living/delaware/">Delaware</option>
-<option value="/cost-of-living/florida/">Florida</option>
-<option value="/cost-of-living/georgia/">Georgia</option>
-<option value="/cost-of-living/hawaii/">Hawaii</option>
-<option value="/cost-of-living/idaho/">Idaho</option>
-<option value="/cost-of-living/illinois/">Illinois</option>
-<option value="/cost-of-living/indiana/">Indiana</option>
-<option value="/cost-of-living/iowa/">Iowa</option>
-<option value="/cost-of-living/kansas/">Kansas</option>
-<option value="/cost-of-living/kentucky/">Kentucky</option>
-<option value="/cost-of-living/louisiana/">Louisiana</option>
-<option value="/cost-of-living/maine/">Maine</option>
-<option value="/cost-of-living/maryland/">Maryland</option>
-<option value="/cost-of-living/massachusetts/">Massachusetts</option>
-<option value="/cost-of-living/michigan/">Michigan</option>
-<option value="/cost-of-living/minnesota/" selected>Minnesota</option>
-<option value="/cost-of-living/mississippi/">Mississippi</option>
-<option value="/cost-of-living/missouri/">Missouri</option>
-<option value="/cost-of-living/montana/">Montana</option>
-<option value="/cost-of-living/nebraska/">Nebraska</option>
-<option value="/cost-of-living/nevada/">Nevada</option>
-<option value="/cost-of-living/new-hampshire/">New Hampshire</option>
-<option value="/cost-of-living/new-jersey/">New Jersey</option>
-<option value="/cost-of-living/new-mexico/">New Mexico</option>
-<option value="/cost-of-living/new-york/">New York</option>
-<option value="/cost-of-living/north-carolina/">North Carolina</option>
-<option value="/cost-of-living/north-dakota/">North Dakota</option>
-<option value="/cost-of-living/ohio/">Ohio</option>
-<option value="/cost-of-living/oklahoma/">Oklahoma</option>
-<option value="/cost-of-living/oregon/">Oregon</option>
-<option value="/cost-of-living/pennsylvania/">Pennsylvania</option>
-<option value="/cost-of-living/rhode-island/">Rhode Island</option>
-<option value="/cost-of-living/south-carolina/">South Carolina</option>
-<option value="/cost-of-living/south-dakota/">South Dakota</option>
-<option value="/cost-of-living/tennessee/">Tennessee</option>
-<option value="/cost-of-living/texas/">Texas</option>
-<option value="/cost-of-living/utah/">Utah</option>
-<option value="/cost-of-living/vermont/">Vermont</option>
-<option value="/cost-of-living/virginia/">Virginia</option>
-<option value="/cost-of-living/washington/">Washington</option>
-<option value="/cost-of-living/west-virginia/">West Virginia</option>
-<option value="/cost-of-living/wisconsin/">Wisconsin</option>
-<option value="/cost-of-living/wyoming/">Wyoming</option>
-</select>
-<label for="cost-of-living-minnesota-city-selector"><strong>City selector (Cost of Living)</strong></label>
-<select
-  id="cost-of-living-minnesota-city-selector"
-  style="display:block;width:100%;max-width:420px;margin:.5rem 0 1rem;padding:.55rem;border-radius:10px;border:1px solid #d5dfeb;background:#fff;"
-  onchange="if(this.value) window.location.href=this.value;"
->
-  <option value="">Choose a city page...</option>
-<option value="/cost-of-living/minnesota/minneapolis/">Minneapolis</option>
-</select>
-</div>
-<div class="card">
-<h2 class="sectionTitle">Popular cities in Minnesota</h2>
-<p class="cityListMeta">Browse 1 total city pages in Minnesota.</p>
-<ul class="gridList cityGrid">
-<li><a class="cityLink" href="/cost-of-living/minnesota/minneapolis/">Minneapolis</a></li>
-</ul>
-</div>
-<!-- POPULAR_CITIES:END -->
+        <section class="state-cost-card state-cost-full" aria-labelledby="city-comparison-title">
+          <h2 id="city-comparison-title">Minnesota City Cost Comparison</h2>
+          <p>Use this as a quick scan, then open each city page for local cards, nearby comparison tools, and deeper report links.</p>
+          <div class="state-cost-table-wrap" style="margin-top:12px">
+            <table class="state-cost-table" aria-label="Minnesota city cost comparison table">
+              <thead>
+                <tr>
+                  <th>City</th>
+                  <th>Market Type</th>
+                  <th>Cost Signal</th>
+                  <th>Housing Read</th>
+                  <th>Utility / Climate Note</th>
+                  <th>Open</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Kiester</th><td>Small town</td><td>Lower</td><td>Lower entry price, property tax still matters</td><td>Winter heating is the practical seasonal factor</td><td><a href="/minnesota/kiester/">City profile</a></td></tr>
+                <tr><th scope="row">Wells</th><td>Nearby peer</td><td>Lower-middle</td><td>Useful rural peer for Kiester comparisons</td><td>Similar southern Minnesota climate pattern</td><td><a href="/minnesota/wells/">City profile</a></td></tr>
+                <tr><th scope="row">Albert Lea</th><td>Regional city</td><td>Middle</td><td>More services and job access than smaller towns</td><td>Transportation and utilities should be compared together</td><td><a href="/minnesota/albert-lea/">City profile</a></td></tr>
+                <tr><th scope="row">Rochester</th><td>Regional center</td><td>Higher</td><td>Healthcare economy supports stronger housing demand</td><td>Income fit is central to affordability</td><td><a href="/minnesota/rochester/">City profile</a></td></tr>
+                <tr><th scope="row">Mankato</th><td>College/regional market</td><td>Middle-higher</td><td>Rent and student-market effects can shape costs</td><td>Compare commute and housing together</td><td><a href="/minnesota/mankato/">City profile</a></td></tr>
+                <tr><th scope="row">Duluth</th><td>Northern port city</td><td>Middle</td><td>Older housing stock can affect maintenance</td><td>Cold, snow, and lake-influenced weather matter</td><td><a href="/minnesota/duluth/">City profile</a></td></tr>
+                <tr><th scope="row">Minneapolis</th><td>Large city</td><td>Higher</td><td>More expensive, but more transit and wage options</td><td>Transportation choices can offset some housing cost</td><td><a href="/minnesota/minneapolis/">City profile</a></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
 
-    <!-- POPULAR_CITIES:ANCHOR -->
+        <article class="state-cost-card state-cost-wide">
+          <h2>Cost Categories</h2>
+          <p>Open focused Minnesota pages when the statewide cost-of-living summary is too broad.</p>
+          <div class="state-cost-links" style="margin-top:10px">
+            <a href="/cost-of-living/minnesota/">Cost of Living</a>
+            <a href="/utility-costs/minnesota/">Utilities</a>
+            <a href="/property-taxes/minnesota/">Property Taxes</a>
+            <a href="/insurance-costs/minnesota/">Insurance</a>
+          </div>
+        </article>
 
-    <div class="footer">
-      <p><strong>Disclaimer:</strong> Informational estimates only. Costs and rates vary by household, provider, and local area.</p>
-      <p><a href="/about/">About</a> · <a href="/privacy/">Privacy Policy</a> · <a href="/contact/">Contact</a></p>
-      <p>Last updated: 2026-06-07</p>
-    </div>
+        <article class="state-cost-card state-cost-wide">
+          <h2>Decision Checklist</h2>
+          <table class="state-cost-table" aria-label="Minnesota affordability decision checklist">
+            <caption>Before choosing a Minnesota city</caption>
+            <tbody>
+              <tr><th scope="row">1. Housing</th><td>Compare rent or mortgage, tax escrow, insurance, age of home, and heating type.</td></tr>
+              <tr><th scope="row">2. Income</th><td>Check local wage data, remote-work flexibility, commute time, and job concentration.</td></tr>
+              <tr><th scope="row">3. Utilities</th><td>Look beyond the rate. Estimate winter gas/electric usage and water/sewer charges.</td></tr>
+              <tr><th scope="row">4. Taxes</th><td>Review property tax, sales tax context, and school/city/county levy differences.</td></tr>
+              <tr><th scope="row">5. Insurance</th><td>Account for roof age, wind/hail exposure, distance to services, and claim history.</td></tr>
+            </tbody>
+          </table>
+        </article>
+
+        <section class="state-cost-card state-cost-full" id="minnesota-cities" aria-labelledby="minnesota-cities-title">
+          <h2 id="minnesota-cities-title">Minnesota City Profiles</h2>
+          <p>Start with the statewide read, then use city dashboards for local housing, utilities, tax, climate, schools, economy, and side-by-side comparisons.</p>
+          <div class="state-cost-city-grid" style="margin-top:12px">
+            <a class="state-city-card" href="/minnesota/kiester/"><strong>Kiester</strong><span>Small-town southern Minnesota profile with cost, utilities, taxes, climate, and nearby comparisons.</span><em>Open city dashboard</em></a>
+            <a class="state-city-card" href="/minnesota/wells/"><strong>Wells</strong><span>Nearby peer for rural housing, utility, and service-area comparisons.</span><em>Open city dashboard</em></a>
+            <a class="state-city-card" href="/minnesota/winnebago/"><strong>Winnebago</strong><span>Faribault County benchmark for housing and tax context.</span><em>Open city dashboard</em></a>
+            <a class="state-city-card" href="/minnesota/albert-lea/"><strong>Albert Lea</strong><span>Larger southern Minnesota market for jobs, housing, and utility comparisons.</span><em>Open city dashboard</em></a>
+            <a class="state-city-card" href="/minnesota/rochester/"><strong>Rochester</strong><span>Regional center with healthcare, housing, and labor-market context.</span><em>Open city dashboard</em></a>
+            <a class="state-city-card" href="/minnesota/mankato/"><strong>Mankato</strong><span>Regional and student-market benchmark for rent, wages, and services.</span><em>Open city dashboard</em></a>
+            <a class="state-city-card" href="/minnesota/duluth/"><strong>Duluth</strong><span>Northern Minnesota benchmark with different climate and housing signals.</span><em>Open city dashboard</em></a>
+            <a class="state-city-card" href="/minnesota/minneapolis/"><strong>Minneapolis</strong><span>Large-city benchmark for urban housing, wages, taxes, and transportation.</span><em>Open city dashboard</em></a>
+          </div>
+        </section>
+
+        <article class="state-cost-card state-cost-wide">
+          <h2>Find a Minnesota City Profile</h2>
+          <p>Choose any indexed Minnesota city dashboard from the current static site index.</p>
+          <form data-city-selector>
+            <label class="mutedSmall" for="state-cost-city-selector">Choose a city</label>
+            <div class="state-selector-row">
+              <select id="state-cost-city-selector" autocomplete="off" data-dba-city-select data-dba-state="minnesota" data-dba-category="city-dashboard">
+                <option value="">Choose a city page...</option>
+              </select>
+              <button type="submit">Open City</button>
+            </div>
+          </form>
+        </article>
+
+        <article class="state-cost-card state-cost-wide">
+          <h2>Switch State</h2>
+          <p>Open another state cost-of-living profile without returning to the national hub.</p>
+          <form data-state-selector>
+            <label class="mutedSmall" for="state-cost-selector">Choose a state</label>
+            <div class="state-selector-row">
+              <select id="state-cost-selector" autocomplete="off" data-dba-state-select data-dba-category="cost-of-living" data-current-state="minnesota">
+                <option value="">Choose a state...</option>
+                <option value="/cost-of-living/iowa/">Iowa</option>
+                <option value="/cost-of-living/north-dakota/">North Dakota</option>
+                <option value="/cost-of-living/south-dakota/">South Dakota</option>
+                <option value="/cost-of-living/wisconsin/">Wisconsin</option>
+                <option value="/cost-of-living/illinois/">Illinois</option>
+                <option value="/cost-of-living/california/">California</option>
+                <option value="/cost-of-living/texas/">Texas</option>
+                <option value="/cost-of-living/florida/">Florida</option>
+              </select>
+              <button type="submit">View State</button>
+            </div>
+          </form>
+        </article>
+
+        <article class="state-cost-card state-cost-wide">
+          <h2>Data Sources and Methodology</h2>
+          <ul class="source-list">
+            <li><strong>Use case:</strong> This page is a screening tool for comparing Minnesota regions and deciding which local city profile to open next.</li>
+            <li><strong>Source approach:</strong> Cost profiles combine public demographic, housing, labor, energy, climate, and local benchmark data where available.</li>
+            <li><strong>Estimate quality:</strong> Statewide figures are useful for comparison, while city pages should be used for local decisions because household costs vary by property, provider, commute, and insurance profile.</li>
+          </ul>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer home-footer">
+      <p><strong>Disclaimer:</strong> Informational estimates only. Costs and rates vary by household, provider, property, and local area.</p>
+      <p><a href="/about/">About</a> &middot; <a href="/privacy/">Privacy Policy</a> &middot; <a href="/contact/">Contact</a></p>
+      <p>Last updated: 2026-06-09</p>
+    </footer>
   </div>
+
+  <script>
+    (function () {
+      function bindSelector(selector) {
+        var form = document.querySelector(selector);
+        if (!form) return;
+        var select = form.querySelector('select');
+        form.addEventListener('submit', function (event) {
+          event.preventDefault();
+          if (select && select.value) window.location.href = select.value;
+        });
+        select.addEventListener('change', function () {
+          if (select.value) window.location.href = select.value;
+        });
+      }
+      bindSelector('[data-state-selector]');
+      bindSelector('[data-city-selector]');
+    })();
+  </script>
+  <script defer src="/assets/search-autocomplete.js"></script>
   <script defer src="/assets/version-footer.js"></script>
 </body>
 </html>

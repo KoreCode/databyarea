@@ -149,16 +149,7 @@
     if (!tabBar) return;
 
     var insightTab = tabBar.querySelector('[data-area-tab="insights"]');
-    if (!insightTab) {
-      insightTab = document.createElement('a');
-      insightTab.className = 'area-tab';
-      insightTab.dataset.areaTab = 'insights';
-      insightTab.href = window.location.pathname + '?tab=insights';
-      insightTab.innerHTML = '<span aria-hidden="true">📍</span> Insight Pages';
-      tabBar.insertBefore(insightTab, tabBar.firstChild);
-    }
-
-    if (tab === 'insights') {
+    if (insightTab && tab === 'insights') {
       tabBar.querySelectorAll('.area-tab').forEach(function (node) {
         node.classList.remove('active');
         node.removeAttribute('aria-current');
@@ -217,6 +208,8 @@
 
   function initExplorer() {
     if (!document.body || document.querySelector('.explorer')) return;
+    if (document.body.classList.contains('area-dashboard-page')) return;
+    if (document.querySelector('.cost-region-explorer') || document.querySelector('.regional-explorer')) return;
     var container = document.querySelector('.container') || document.body;
     var footer = container.querySelector('.footer') || document.querySelector('.footer');
     if (!footer) return;
