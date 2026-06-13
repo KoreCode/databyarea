@@ -290,6 +290,18 @@ SCRIPT_CATALOG: dict[str, dict[str, Any]] = {
         "value_args": ["--max"],
         "examples": [["--max", "10"], ["--max", "25", "--inject"]],
     },
+    "generate_service_guides": {
+        "path": "scripts/generate_service_guides.py",
+        "description": "Generate API-enriched high-intent service guide pages. Defaults to one detailed guide plus supporting hub/service/state/city pages.",
+        "safe_args": ["--limit", "--all", "--service", "--project", "--state", "--city", "--clean", "--skip-api", "--api-timeout", "--dry-run"],
+        "value_args": ["--limit", "--service", "--project", "--state", "--city", "--api-timeout"],
+        "default_args": ["--limit", "1", "--service", "electrician", "--state", "minnesota", "--city", "lake-city", "--project", "new-outlets"],
+        "examples": [
+            ["--limit", "1", "--service", "electrician", "--state", "minnesota", "--city", "lake-city", "--project", "new-outlets"],
+            ["--limit", "3", "--service", "plumber", "--state", "minnesota", "--skip-api"],
+            ["--dry-run", "--limit", "10", "--service", "hvac", "--state", "minnesota"],
+        ],
+    },
     "build_site": {
         "path": "scripts/build_site.py",
         "description": "Generate service/state pages and update manifest.",
@@ -634,21 +646,26 @@ def dashboard_html() -> str:
     for key, spec in SCRIPT_CATALOG.items():
         examples = " • ".join(" ".join(e) if e else "(no args)" for e in spec["examples"])
         safe_args = " ".join(spec["safe_args"]) or "(none)"
+        value_args = " ".join(spec.get("value_args", [])) or "(none)"
+        default_args = " ".join(spec.get("default_args", [])) or "(no default args)"
         cards.append(
             f"""
-            <button class="command-card" onclick="runScript('{key}')">
+            <button class="command-card" onclick="selectScript('{key}')">
               <div class="command-head">
                 <span class="status-dot"></span>
                 <span class="command-name">{key}</span>
-                <span class="chip">Run</span>
+                <span class="chip">Select</span>
               </div>
               <p class="command-desc">{spec['description']}</p>
               <div class="command-meta"><strong>Script:</strong> <code>{spec['path']}</code></div>
               <div class="command-meta"><strong>Allowed args:</strong> <code>{safe_args}</code></div>
+              <div class="command-meta"><strong>Value args:</strong> <code>{value_args}</code></div>
+              <div class="command-meta"><strong>Default:</strong> <code>{default_args}</code></div>
               <div class="command-meta"><strong>Examples:</strong> <code>{examples}</code></div>
             </button>
             """
         )
+    scripts_json = json.dumps(SCRIPT_CATALOG)
 
     return f"""<!doctype html>
 <html>
@@ -780,12 +797,17 @@ def dashboard_html() -> str:
           {''.join(cards)}
         </div>
         <div class="controls">
-          <label for="args" class="small">Optional args for selected script (space-separated):</label>
-          <input id="args" class="input" placeholder="--services 1 --cities 10 --relink --clean" />
+          <label for="scriptKey" class="small">Selected script:</label>
+          <input id="scriptKey" class="input" value="generate_service_guides" />
+          <label for="args" class="small">Editable args for selected script (space-separated):</label>
+          <input id="args" class="input" value="--limit 1 --service electrician --state minnesota --city lake-city --project new-outlets" />
           <div class="actions">
             <button class="btn" onclick="loadOverview()">Refresh Overview</button>
-            <button class="btn" onclick="runScript('one_button_daily')">Run Daily Pipeline</button>
+            <button class="btn" onclick="useDefaults()">Use Defaults</button>
+            <button class="btn" onclick="runSelectedScript()">Run Selected Script</button>
+            <button class="btn" onclick="selectScript('one_button_daily')">Daily Pipeline Defaults</button>
           </div>
+          <div id="scriptHelp" class="command-meta"></div>
         </div>
       </section>
 
@@ -815,6 +837,29 @@ const qp = new URLSearchParams(window.location.search);
 const keyParam = '{ADMIN_KEY_PARAM}';
 const keyValue = qp.get(keyParam);
 const suffix = keyValue ? `?${{keyParam}}=${{encodeURIComponent(keyValue)}}` : '';
+const scriptCatalog = {scripts_json};
+let selectedScript = 'generate_service_guides';
+
+function describeScript(scriptKey) {{
+  const spec = scriptCatalog[scriptKey] || {{}};
+  const examples = (spec.examples || []).map(e => e.length ? e.join(' ') : '(no args)').join(' | ');
+  const valueArgs = (spec.value_args || []).join(' ') || '(none)';
+  document.getElementById('scriptHelp').innerHTML = `<strong>${{scriptKey}}</strong><br>${{spec.description || ''}}<br><strong>Value args:</strong> <code>${{valueArgs}}</code><br><strong>Examples:</strong> <code>${{examples}}</code>`;
+}}
+
+function selectScript(scriptKey) {{
+  selectedScript = scriptKey;
+  document.getElementById('scriptKey').value = scriptKey;
+  useDefaults();
+  describeScript(scriptKey);
+}}
+
+function useDefaults() {{
+  const scriptKey = document.getElementById('scriptKey').value.trim() || selectedScript;
+  const spec = scriptCatalog[scriptKey] || {{}};
+  const defaults = spec.default_args || (spec.examples || [[]])[0] || [];
+  document.getElementById('args').value = defaults.join(' ');
+}}
 
 async function loadOverview() {{
   const [cfg, hist, summary] = await Promise.all([
@@ -845,7 +890,15 @@ async function runScript(scriptKey) {{
   document.getElementById('out').value = JSON.stringify(data, null, 2);
 }}
 
+async function runSelectedScript() {{
+  const scriptKey = document.getElementById('scriptKey').value.trim() || selectedScript;
+  selectedScript = scriptKey;
+  describeScript(scriptKey);
+  await runScript(scriptKey);
+}}
+
 loadOverview();
+describeScript(selectedScript);
 </script>
 </body>
 </html>
@@ -931,6 +984,7 @@ class Handler(BaseHTTPRequestHandler):
             payload = {
                 "scripts": SCRIPT_CATALOG,
                 "settings": SETTINGS,
+                "api_sources": {name: {"configured": bool(value)} for name, value in API_KEYS.items()},
                 "crm": {
                     "pipeline_stages": CRM_PIPELINE_STAGES,
                     "sequence_templates": CRM_SEQUENCE_BY_INTENT,

@@ -11,12 +11,19 @@ Outputs:
 
 from __future__ import annotations
 
+import argparse
 import html
 import json
+import os
 import shutil
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
+
+try:
+    from service_guide_data import build_service_guide_context
+except ImportError:  # pragma: no cover - package import fallback
+    from scripts.service_guide_data import build_service_guide_context
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = "https://databyarea.com"
@@ -229,6 +236,34 @@ def render_template(path: Path, values: dict[str, object]) -> str:
     return template
 
 
+def parse_int_env(name: str, default: int) -> int:
+    try:
+        return int(os.getenv(name, str(default)))
+    except ValueError:
+        return default
+
+
+def html_list(items: list[str]) -> str:
+    return "\n".join(f"<li>{esc(item)}</li>" for item in items)
+
+
+def api_source_items(source_notes: list[dict[str, str]]) -> str:
+    if not source_notes:
+        return "<li>No source records were returned for this generation.</li>"
+    badges = {"ok": "Used", "missing_key": "Missing key", "error": "Unavailable", "skipped": "Skipped", "no_match": "No match"}
+    return "\n".join(
+        f"<li><strong>{esc(note.get('name', 'Source'))}:</strong> {esc(badges.get(note.get('status', ''), note.get('status', 'Status')))}. {esc(note.get('detail', ''))}</li>"
+        for note in source_notes
+    )
+
+
+def market_signal_items(market_items: list[tuple[str, str]]) -> str:
+    return "\n".join(
+        f"""<div><strong>{esc(value)}</strong><span>{esc(label)}</span></div>"""
+        for label, value in market_items
+    )
+
+
 def page_shell(title: str, desc: str, canonical_path: str, body: str, *, robots: str = "index,follow,max-image-preview:large") -> str:
     return f"""<!doctype html>
 <html lang="en">
@@ -397,9 +432,23 @@ def project_page(
     state_slug: str = "",
     state_name: str = "",
     city_slug: str = "",
+    *,
+    use_api: bool = True,
+    api_timeout: int = 8,
 ) -> str:
     city_name = title_case_slug(city_slug)
     location = f"{city_name}, {state_name}" if city_slug else (state_name or "the United States")
+    data_context = build_service_guide_context(
+        service_slug=service_slug,
+        service_label=guide["label"],
+        project_label=project["label"],
+        project_range=project["range"],
+        state_slug=state_slug,
+        state_name=state_name,
+        city_name=city_name,
+        timeout=api_timeout,
+        use_api=use_api and bool(state_slug),
+    )
     title = f"Cost for {project['label']} in {location}"
     desc = f"{project['label']} cost guide for {location}, including project range, scope, price drivers, quote checks, and related {guide['service']} projects."
     canonical = project_url(service_slug, project["slug"], state_slug, city_slug)
@@ -432,12 +481,20 @@ def project_page(
             "project_scope_sentence": f"{esc(project['scope']).capitalize()}.",
             "location": esc(location),
             "project_label": esc(project["label"]),
-            "project_range": esc(project["range"]),
+            "project_range": esc(data_context["adjusted_project_range"]),
+            "base_project_range": esc(data_context["base_project_range"]),
             "project_unit": esc(project["unit"]),
             "location_short": esc(city_name or state_name or "National"),
             "back_to_service_url": service_url(service_slug, state_slug, city_slug),
             "driver_items": driver_items,
             "sibling_cards": sibling_cards,
+            "data_quality_label": esc(data_context["data_quality_label"]),
+            "model_label": esc(data_context["model_label"]),
+            "estimate_summary": esc(data_context["estimate_summary"]),
+            "updated_at_utc": esc(data_context["updated_at_utc"]),
+            "market_signal_items": market_signal_items(data_context["market_items"]),
+            "rate_model_items": html_list(data_context["model_notes"]),
+            "api_source_items": api_source_items(data_context["source_notes"]),
         },
     )
 
@@ -494,46 +551,131 @@ def write_manifest(written: list[str]) -> None:
     write(OUT_ROOT / "manifest.json", json.dumps(manifest, indent=2) + "\n")
 
 
-def main() -> None:
-    written: list[str] = []
-    for service_slug in SERVICE_GUIDES:
-        target = OUT_ROOT / service_slug
-        if target.exists():
-            shutil.rmtree(target)
-    write(OUT_ROOT / "index.html", hub_page())
-    written.append("/service-guides/")
+def find_project(service_slug: str, project_slug: str) -> dict[str, Any]:
+    for project in PROJECT_GUIDES.get(service_slug, []):
+        if project["slug"] == project_slug:
+            return project
+    choices = ", ".join(project["slug"] for project in PROJECT_GUIDES.get(service_slug, []))
+    raise SystemExit(f"Unknown project '{project_slug}' for service '{service_slug}'. Choices: {choices}")
 
+
+def generation_candidates(args: argparse.Namespace) -> list[tuple[str, str, str, str]]:
+    services = [args.service] if args.service else list(SERVICE_GUIDES)
+    candidates: list[tuple[str, str, str, str]] = []
     city_routes = state_city_routes()
-    for service_slug, guide in SERVICE_GUIDES.items():
-        write(OUT_ROOT / service_slug / "index.html", guide_page(service_slug, guide))
-        written.append(service_url(service_slug))
-        for project in PROJECT_GUIDES.get(service_slug, []):
-            write(OUT_ROOT / service_slug / project["slug"] / "index.html", project_page(service_slug, guide, project))
-            written.append(project_url(service_slug, project["slug"]))
-        for state_slug, state_name in US_STATES.items():
-            write(OUT_ROOT / service_slug / state_slug / "index.html", guide_page(service_slug, guide, state_slug, state_name))
-            written.append(service_url(service_slug, state_slug))
-            for project in PROJECT_GUIDES.get(service_slug, []):
-                write(
-                    OUT_ROOT / service_slug / state_slug / project["slug"] / "index.html",
-                    project_page(service_slug, guide, project, state_slug, state_name),
-                )
-                written.append(project_url(service_slug, project["slug"], state_slug))
-        for state_slug, state_name, city_slug in city_routes:
-            write(
-                OUT_ROOT / service_slug / state_slug / city_slug / "index.html",
-                guide_page(service_slug, guide, state_slug, state_name, city_slug),
-            )
-            written.append(service_url(service_slug, state_slug, city_slug))
-            for project in PROJECT_GUIDES.get(service_slug, []):
-                write(
-                    OUT_ROOT / service_slug / state_slug / city_slug / project["slug"] / "index.html",
-                    project_page(service_slug, guide, project, state_slug, state_name, city_slug),
-                )
-                written.append(project_url(service_slug, project["slug"], state_slug, city_slug))
+    city_lookup = {(state_slug, city_slug): (state_slug, state_name, city_slug) for state_slug, state_name, city_slug in city_routes}
+
+    for service_slug in services:
+        if service_slug not in SERVICE_GUIDES:
+            raise SystemExit(f"Unknown service '{service_slug}'. Choices: {', '.join(SERVICE_GUIDES)}")
+        projects = [find_project(service_slug, args.project)] if args.project else PROJECT_GUIDES.get(service_slug, [])
+        for project in projects:
+            if args.city:
+                state_slug = args.state or "minnesota"
+                state_name = US_STATES.get(state_slug, title_case_slug(state_slug))
+                if (state_slug, args.city) in city_lookup:
+                    _, state_name, city_slug = city_lookup[(state_slug, args.city)]
+                else:
+                    city_slug = args.city
+                candidates.append((service_slug, state_slug, city_slug, project["slug"]))
+            elif args.state:
+                candidates.append((service_slug, args.state, "", project["slug"]))
+            else:
+                for state_slug in US_STATES:
+                    candidates.append((service_slug, state_slug, "", project["slug"]))
+                for state_slug, _state_name, city_slug in city_routes:
+                    candidates.append((service_slug, state_slug, city_slug, project["slug"]))
+    return candidates
+
+
+def write_support_pages(service_slug: str, state_slug: str, city_slug: str, written: list[str]) -> tuple[dict[str, Any], str]:
+    guide = SERVICE_GUIDES[service_slug]
+    state_name = US_STATES.get(state_slug, title_case_slug(state_slug)) if state_slug else ""
+
+    support_pages = [
+        (OUT_ROOT / "index.html", "/service-guides/", hub_page()),
+        (OUT_ROOT / service_slug / "index.html", service_url(service_slug), guide_page(service_slug, guide)),
+    ]
+    if state_slug:
+        support_pages.append((OUT_ROOT / service_slug / state_slug / "index.html", service_url(service_slug, state_slug), guide_page(service_slug, guide, state_slug, state_name)))
+    if state_slug and city_slug:
+        support_pages.append((OUT_ROOT / service_slug / state_slug / city_slug / "index.html", service_url(service_slug, state_slug, city_slug), guide_page(service_slug, guide, state_slug, state_name, city_slug)))
+
+    for path, url, content in support_pages:
+        write(path, content)
+        if url not in written:
+            written.append(url)
+    return guide, state_name
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Generate static high-intent service guide pages.")
+    parser.add_argument("--limit", type=int, default=parse_int_env("DBA_SERVICE_GUIDE_LIMIT", 1), help="Maximum detailed project pages to generate. Defaults to 1.")
+    parser.add_argument("--all", action="store_true", help="Generate every service/state/city/project combination. Use intentionally.")
+    parser.add_argument("--service", default=os.getenv("DBA_SERVICE_GUIDE_SERVICE", "electrician"), help="Service slug to generate.")
+    parser.add_argument("--project", default=os.getenv("DBA_SERVICE_GUIDE_PROJECT") or None, help="Project slug to generate. Defaults to the first project for the selected service.")
+    parser.add_argument("--state", default=os.getenv("DBA_SERVICE_GUIDE_STATE", "minnesota"), help="State slug for the target guide.")
+    parser.add_argument("--city", default=os.getenv("DBA_SERVICE_GUIDE_CITY", "lake-city"), help="City slug for the target guide. Leave empty for a state-level guide.")
+    parser.add_argument("--clean", action="store_true", help="Clean service-guides output before generation.")
+    parser.add_argument("--skip-api", action="store_true", help="Generate with template fallback data and source notes instead of calling public APIs.")
+    parser.add_argument("--api-timeout", type=int, default=parse_int_env("DBA_SERVICE_GUIDE_API_TIMEOUT", 8), help="Timeout in seconds for each public API request.")
+    parser.add_argument("--dry-run", action="store_true", help="Print planned detailed guide URLs without writing files.")
+    return parser.parse_args()
+
+
+def main() -> None:
+    args = parse_args()
+    written: list[str] = []
+
+    if args.all:
+        args.limit = 0
+        args.service = ""
+        args.project = ""
+        args.state = ""
+        args.city = ""
+
+    if args.clean and OUT_ROOT.exists():
+        shutil.rmtree(OUT_ROOT)
+
+    candidates = generation_candidates(args)
+    if args.limit > 0:
+        candidates = candidates[: args.limit]
+
+    planned_urls = [
+        project_url(service_slug, project_slug, state_slug, city_slug)
+        for service_slug, state_slug, city_slug, project_slug in candidates
+    ]
+    if args.dry_run:
+        print("\n".join(planned_urls))
+        return
+
+    detail_count = 0
+    for service_slug, state_slug, city_slug, project_slug in candidates:
+        guide, state_name = write_support_pages(service_slug, state_slug, city_slug, written)
+        project = find_project(service_slug, project_slug)
+        path = OUT_ROOT / service_slug / state_slug
+        if city_slug:
+            path = path / city_slug
+        path = path / project_slug / "index.html"
+        write(
+            path,
+            project_page(
+                service_slug,
+                guide,
+                project,
+                state_slug,
+                state_name,
+                city_slug,
+                use_api=not args.skip_api,
+                api_timeout=args.api_timeout,
+            ),
+        )
+        written.append(project_url(service_slug, project_slug, state_slug, city_slug))
+        detail_count += 1
 
     write_manifest(written)
-    print(f"Generated {len(written)} static service guide page(s)")
+    print(f"Generated {detail_count} detailed service guide page(s), {len(written)} total support/static page(s)")
+    print(f"Limit={args.limit or 'all'} API={'off' if args.skip_api else 'on'}")
 
 
 if __name__ == "__main__":

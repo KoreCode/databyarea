@@ -44,9 +44,10 @@
         <div>
           <div class="insight-breadcrumbs">{{breadcrumb}}</div>
           <h1 id="project-guide-title">{{title}}</h1>
-          <p>This detailed high-intent guide narrows the broader {{service_label_lower}} template to {{project_scope}} in {{location}}.</p>
+          <p>This detailed high-intent guide narrows the broader {{service_label_lower}} template to {{project_scope}} in {{location}}, then layers in available public data signals for local planning context.</p>
           <div class="insight-actions">
             <a href="#project-snapshot">Snapshot</a>
+            <a href="#local-data">Local Data</a>
             <a href="#scope">Scope</a>
             <a href="#quote-checks">Quote Checks</a>
             <a href="{{back_to_service_url}}">Back to Service</a>
@@ -58,9 +59,9 @@
             <div><strong>{{project_range}}</strong><span>Planning range</span></div>
             <div><strong>{{project_unit}}</strong><span>Estimate basis</span></div>
             <div><strong>{{location}}</strong><span>Location context</span></div>
-            <div><strong>Scope</strong><span>Verify details</span></div>
+            <div><strong>{{data_quality_label}}</strong><span>Data status</span></div>
           </div>
-          <p class="insight-source">Generated as a static detailed project page. API-enriched labor, material, and regional adjustment data can be attached to this template later.</p>
+          <p class="insight-source">Updated {{updated_at_utc}}. {{estimate_summary}}</p>
         </aside>
       </section>
 
@@ -73,7 +74,7 @@
         <article class="insight-card">
           <span class="insight-label">Planning range</span>
           <span class="insight-kpi">{{project_range}}</span>
-          <p>Use as a first-pass range before comparing written local quotes.</p>
+          <p>Base template range: {{base_project_range}}. Use this as a first-pass range before comparing written local quotes.</p>
         </article>
         <article class="insight-card">
           <span class="insight-label">Location</span>
@@ -84,6 +85,18 @@
           <span class="insight-label">Estimate basis</span>
           <span class="insight-kpi">{{project_unit}}</span>
           <p>Ask contractors to clarify exactly what is included in this unit.</p>
+        </article>
+
+        <article class="insight-card insight-wide" id="local-data">
+          <h2>Local Data Used for This Estimate</h2>
+          <p>The page is generated statically, but the estimate model checks the configured public data APIs at generation time. Missing or unavailable sources are reported instead of hidden.</p>
+          <div class="insight-panel-grid" style="margin-top:12px">{{market_signal_items}}</div>
+        </article>
+
+        <article class="insight-card insight-wide">
+          <h2>How the Range Was Processed</h2>
+          <p>{{model_label}}. The model adjusts only within conservative bounds so public macro data cannot overrule the project scope.</p>
+          <ul class="insight-list" style="margin-top:10px">{{rate_model_items}}</ul>
         </article>
 
         <article class="insight-card insight-wide" id="scope">
@@ -109,6 +122,11 @@
             <li>Document what happens if hidden damage, code upgrades, or access problems appear.</li>
             <li>Compare at least two written quotes using the same project assumptions.</li>
           </ul>
+        </article>
+
+        <article class="insight-card insight-wide">
+          <h2>Source Status</h2>
+          <ul class="insight-list" style="margin-top:10px">{{api_source_items}}</ul>
         </article>
 
         <article class="insight-card insight-wide">
