@@ -546,6 +546,7 @@ def write_manifest(written: list[str]) -> None:
         "services": sorted(SERVICE_GUIDES),
         "project_templates_per_service": {service: [item["slug"] for item in projects] for service, projects in PROJECT_GUIDES.items()},
         "page_count": len(written),
+        "paths": written,
         "sample_paths": written[:20],
     }
     write(OUT_ROOT / "manifest.json", json.dumps(manifest, indent=2) + "\n")

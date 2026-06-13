@@ -7,9 +7,7 @@ cd "$ROOT_DIR"
 mkdir -p _deploy
 DBA_AUTORUN=1 python one_button_daily.py --services 1 --cities 10 --relink --clean
 
+python scripts/generate_tree_map.py
+
 # Required fail-fast publish gates. If any returns non-zero, stop before commit/push/deploy action.
-python scripts/build_search_index.py
-python scripts/validate_data_layer.py
-python scripts/check_conflict_markers.py
-python scripts/site_quality_agents.py
-python scripts/production_check.py
+python scripts/run_production_gates.py --quality-agents
