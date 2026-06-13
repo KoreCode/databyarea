@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Admin Panel Template | DataByArea</title>
+  <meta name="description" content="Internal DataByArea admin panel template for script status, publish gates, run history, and operational controls." />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="canonical" href="https://databyarea.com/admin/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <style>
+    .admin-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(280px,.65fr);gap:12px;margin-top:14px}
+    .admin-command-list{display:grid;gap:10px;margin-top:12px}
+    .admin-command{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;border:1px solid #d3e1ec;border-radius:12px;background:#fff;padding:13px;box-shadow:0 4px 12px rgba(15,23,42,.05)}
+    .admin-command strong{display:block;color:#173f5c;font-size:17px}
+    .admin-command span{display:block;margin-top:4px;color:#526b7c;font-size:13px;line-height:1.4}
+    .admin-command button,.admin-control button{border:0;border-radius:9px;background:#0f6a75;color:#fff;padding:10px 13px;font-size:13px;font-weight:900;cursor:pointer;white-space:nowrap}
+    .admin-control{display:grid;gap:8px;margin-top:10px}
+    .admin-control input{min-width:0;border:1px solid #c6d8e5;border-radius:9px;background:#fff;color:#102f43;padding:10px 11px;font-size:14px;font-weight:700}
+    .admin-log{min-height:160px;border:1px solid #d3e1ec;border-radius:12px;background:#f8fbff;padding:12px;color:#35546a;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:12px;line-height:1.45;white-space:pre-wrap}
+    @media (max-width:900px){.admin-grid,.admin-command{grid-template-columns:1fr}.admin-command button{justify-self:start}}
+  </style>
+</head>
+<body class="area-dashboard-page insight-hub-page">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="container area-dashboard-shell">
+    <header class="area-top-nav area-home-header">
+      <a href="/" class="area-home-brand" aria-label="DataByArea.com home">
+        <span class="area-home-logo" aria-hidden="true"><img src="/assets/logo-icon.svg" alt="" width="36" height="36" decoding="async" fetchpriority="high" /></span>
+        <span>DataByArea.com</span>
+      </a>
+      <div class="area-home-actions">
+        <a class="area-home-button search" href="/search/">Search Data</a>
+        <a class="area-home-login" href="/login/">Log In</a>
+        <a class="area-home-button signup" href="/signup/">Sign Up</a>
+      </div>
+    </header>
+
+    <nav class="insight-topics" aria-label="Admin sections">
+      <a class="active" href="#overview">Overview</a>
+      <a href="#commands">Commands</a>
+      <a href="#history">History</a>
+      <a href="#settings">Settings</a>
+    </nav>
+
+    <main id="main-content" class="insight-main">
+      <section class="insight-hero" aria-labelledby="admin-title">
+        <div>
+          <div class="insight-breadcrumbs"><a href="/">Home</a> &rsaquo; Admin</div>
+          <h1 id="admin-title">Admin Panel Template</h1>
+          <p>A work-focused internal template for checking automation status, running approved scripts, and reading publish-gate output without leaving the DataByArea design system.</p>
+          <div class="insight-actions">
+            <a href="#commands">Run Command</a>
+            <a href="#history">Run History</a>
+            <a href="#settings">Settings</a>
+          </div>
+        </div>
+        <aside class="insight-panel" id="overview" aria-label="Admin health summary">
+          <h2>System Health</h2>
+          <div class="insight-panel-grid">
+            <div><strong>OK</strong><span>Backend</span></div>
+            <div><strong>OK</strong><span>Publish gate</span></div>
+            <div><strong>1</strong><span>Active worker</span></div>
+            <div><strong>0</strong><span>Queued jobs</span></div>
+          </div>
+          <p class="insight-source">This template should be connected to the admin backend health and run endpoints before deployment.</p>
+        </aside>
+      </section>
+
+      <section class="admin-grid" aria-label="Admin workspace">
+        <article class="insight-card" id="commands">
+          <h2>Approved Commands</h2>
+          <div class="admin-command-list">
+            <div class="admin-command">
+              <span><strong>Build Search Index</strong><span>Refresh city, state, and category autocomplete data.</span></span>
+              <button type="button">Run</button>
+            </div>
+            <div class="admin-command">
+              <span><strong>Validate Data Layer</strong><span>Check city records, state insight records, and metric definitions.</span></span>
+              <button type="button">Run</button>
+            </div>
+            <div class="admin-command">
+              <span><strong>Production Check</strong><span>Run syntax, JSON, workflow, secret, critical-page, and search-index checks.</span></span>
+              <button type="button">Run</button>
+            </div>
+          </div>
+        </article>
+
+        <aside class="insight-card" id="settings">
+          <h2>API Settings</h2>
+          <form class="admin-control">
+            <label for="api-base">API base URL</label>
+            <input id="api-base" type="url" value="http://127.0.0.1:8787" />
+            <label for="admin-key">Access key</label>
+            <input id="admin-key" type="password" autocomplete="off" placeholder="Optional local key" />
+            <button type="button">Save Settings</button>
+          </form>
+        </aside>
+
+        <article class="insight-card insight-full" id="history">
+          <h2>Latest Run Output</h2>
+          <div class="admin-log" aria-live="polite">No command has been run in this template preview.</div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer home-footer">
+      <p><strong>Security note:</strong> Keep admin pages authenticated and noindexed. Only expose whitelisted commands and bounded options.</p>
+      <p><a href="/about/">About</a> &middot; <a href="/privacy/">Privacy Policy</a> &middot; <a href="/contact/">Contact</a></p>
+    </footer>
+  </div>
+  <script defer src="/assets/version-footer.js"></script>
+</body>
+</html>

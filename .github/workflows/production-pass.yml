@@ -31,6 +31,9 @@ jobs:
             pip install -r requirements.txt
           fi
 
+      - name: Generate service guides
+        run: python scripts/generate_service_guides.py
+
       - name: Build search index
         run: python scripts/build_search_index.py
 
