@@ -67,6 +67,7 @@ API_KEYS = {
     "bls": os.getenv("BLS_API_KEY", "").strip(),
     "fred": os.getenv("FRED_API_KEY", "").strip(),
     "bea": os.getenv("BEA_API_KEY", "").strip(),
+    "data_gov": os.getenv("DATA_GOV_API_KEY", "").strip(),
 }
 
 STATE_FIPS = {
