@@ -8,12 +8,14 @@ DataByArea
 
 ## Documentation Map
 - Primary project README: `README.md`
+- Markdown documentation index: `docs/DOCUMENTATION_INDEX.md`
 - Canonical template inventory: `canonical-templates/README.md`
 - Data layer guide: `docs/data-layer.md`
 - Technical baseline: `docs/technical-quality-baseline.md`
 - Cloudflare/GitHub deployment guide: `CLOUDFLARE_GITHUB_AUTODEPLOY.md`
 - Full single-generator automation guide: `FULL_AUTOMATION_SINGLE_GENERATOR.md`
-- Admin backend documentation library: `GET /api/readmes` and `GET /api/readme?path=README.md`
+- Admin backend Markdown library: `GET /api/docs` and `GET /api/doc?path=README.md`
+- README-compatible aliases: `GET /api/readmes` and `GET /api/readme?path=README.md`
 
 ## Automation
 
@@ -162,7 +164,7 @@ DataByArea
   - Current settings and log file paths
   - Run history and latest daily summary
   - API to execute allowed scripts (`POST /api/run`)
-  - Documentation library for README and ops docs (`GET /api/readmes`, `GET /api/readme?path=...`)
+  - Documentation library for Markdown, README, and ops docs (`GET /api/docs`, `GET /api/doc?path=...`)
   - Monetization control center for slots, partner targeting, disclosures, and tracking config
   - Health endpoint: `GET /api/health`
 - Safety behavior:

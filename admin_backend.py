@@ -980,8 +980,8 @@ def dashboard_html() -> str:
 
     <section class="panel" style="margin-top:18px">
       <div class="panel-head">
-        <span>Documentation Library</span>
-        <span class="small">README, ops docs, and implementation notes from the repo</span>
+        <span>Markdown Documentation Library</span>
+        <span class="small">README, ops docs, template notes, and planning docs from the repo</span>
       </div>
       <div class="controls">
         <div class="actions">
@@ -1101,11 +1101,12 @@ function renderDocumentationSelect() {{
     select.appendChild(opt);
   }});
   const readmeCount = documentationLibrary.filter(doc => doc.category === 'readme').length;
-  document.getElementById('documentationHelp').textContent = `${{documentationLibrary.length}} docs indexed, including ${{readmeCount}} README file(s).`;
+  const markdownCount = documentationLibrary.filter(doc => doc.path.toLowerCase().endsWith('.md')).length;
+  document.getElementById('documentationHelp').textContent = `${{documentationLibrary.length}} docs indexed, including ${{readmeCount}} README file(s) and ${{markdownCount}} Markdown file(s).`;
 }}
 
 async function loadDocumentation() {{
-  const res = await fetch('/api/readmes' + suffix).then(r=>r.json());
+  const res = await fetch('/api/docs' + suffix).then(r=>r.json());
   documentationLibrary = res.items || [];
   renderDocumentationSelect();
   document.getElementById('out').value = JSON.stringify(res, null, 2);
@@ -1116,7 +1117,7 @@ async function loadDocumentation() {{
 
 async function openDocumentation(path) {{
   const joiner = suffix ? '&' : '?';
-  const res = await fetch('/api/readme' + suffix + joiner + 'path=' + encodeURIComponent(path)).then(r=>r.json());
+  const res = await fetch('/api/doc' + suffix + joiner + 'path=' + encodeURIComponent(path)).then(r=>r.json());
   document.getElementById('documentationViewer').value = res.content || JSON.stringify(res, null, 2);
   document.getElementById('documentationHelp').textContent = res.ok ? `Open: ${{res.path}}` : (res.error || 'Unable to open documentation.');
 }}
@@ -1241,6 +1242,7 @@ class Handler(BaseHTTPRequestHandler):
                     "items": docs,
                     "count": len(docs),
                     "readme_count": sum(1 for item in docs if item["category"] == "readme"),
+                    "markdown_count": sum(1 for item in docs if item["path"].lower().endswith(".md")),
                 },
                 "monetization": {
                     "config_path": str(MONETIZATION_CONFIG_PATH),
@@ -1255,7 +1257,7 @@ class Handler(BaseHTTPRequestHandler):
             }
             self._send_json(payload)
             return
-        if path == "/api/readmes":
+        if path in {"/api/docs", "/api/readmes"}:
             docs = discover_documentation()
             self._send_json(
                 {
@@ -1263,10 +1265,11 @@ class Handler(BaseHTTPRequestHandler):
                     "items": docs,
                     "count": len(docs),
                     "readme_count": sum(1 for item in docs if item["category"] == "readme"),
+                    "markdown_count": sum(1 for item in docs if item["path"].lower().endswith(".md")),
                 }
             )
             return
-        if path == "/api/readme":
+        if path in {"/api/doc", "/api/readme"}:
             _, query = self._path_parts()
             rel_path = (query.get("path") or [""])[0]
             _, payload, status = load_documentation_file(rel_path)
