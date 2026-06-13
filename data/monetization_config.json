@@ -1,0 +1,103 @@
+{
+  "enabled": false,
+  "affiliate_disclosure_enabled": false,
+  "display_ads_enabled": false,
+  "service_ctas_enabled": true,
+  "tracking_enabled": true,
+  "tracking_endpoint": "/api/monetization/event",
+  "adsense": {
+    "enabled": false,
+    "client": "",
+    "slots": {}
+  },
+  "disclosure": {
+    "label": "Affiliate disclosure",
+    "text": "DataByArea may earn a commission or referral fee when you use selected partner links. This does not change our planning estimates or the data shown on the page."
+  },
+  "partners": [
+    {
+      "id": "direct-service-leads",
+      "name": "Local contractor quote request",
+      "type": "service_lead",
+      "enabled": false,
+      "priority": 100,
+      "cta_label": "Compare Local Quotes",
+      "title": "Compare local contractor estimates",
+      "description": "Request comparable quotes for the same scope, timeline, materials, and permit assumptions.",
+      "url": "/contact/?intent=service_quote",
+      "services": ["plumber", "electrician", "hvac", "roofing", "water-heater", "garage-door", "foundation", "concrete-driveway"],
+      "states": ["*"],
+      "cities": ["*"],
+      "projects": ["*"],
+      "slots": ["service_quote_primary", "service_quote_inline"]
+    },
+    {
+      "id": "insurance-compare",
+      "name": "Insurance comparison partner",
+      "type": "affiliate",
+      "enabled": false,
+      "priority": 80,
+      "cta_label": "Compare Insurance Rates",
+      "title": "Compare insurance options",
+      "description": "Use state and local cost context before comparing home, renters, or auto insurance quotes.",
+      "url": "/contact/?intent=insurance_compare",
+      "services": ["insurance"],
+      "states": ["*"],
+      "cities": ["*"],
+      "projects": ["*"],
+      "slots": ["insurance_compare", "contextual_footer"]
+    },
+    {
+      "id": "utility-compare",
+      "name": "Utility provider comparison partner",
+      "type": "affiliate",
+      "enabled": false,
+      "priority": 70,
+      "cta_label": "Check Utility Options",
+      "title": "Check local utility and internet options",
+      "description": "Compare available providers after reviewing local utility cost context.",
+      "url": "/contact/?intent=utility_compare",
+      "services": ["utility"],
+      "states": ["*"],
+      "cities": ["*"],
+      "projects": ["*"],
+      "slots": ["utility_compare", "contextual_footer"]
+    }
+  ],
+  "slots": {
+    "service_quote_primary": {
+      "enabled": true,
+      "kind": "partner_cta",
+      "label": "Service quote CTA",
+      "fallback_title": "Compare local project quotes",
+      "fallback_description": "Use the same scope assumptions when comparing contractors.",
+      "fallback_url": "/contact/?intent=service_quote"
+    },
+    "service_quote_inline": {
+      "enabled": true,
+      "kind": "partner_cta",
+      "label": "Inline service quote CTA"
+    },
+    "display_in_article": {
+      "enabled": false,
+      "kind": "adsense",
+      "label": "Advertisement",
+      "adsense_slot": ""
+    },
+    "insurance_compare": {
+      "enabled": true,
+      "kind": "partner_cta",
+      "label": "Insurance comparison CTA"
+    },
+    "utility_compare": {
+      "enabled": true,
+      "kind": "partner_cta",
+      "label": "Utility comparison CTA"
+    },
+    "contextual_footer": {
+      "enabled": true,
+      "kind": "partner_cta",
+      "label": "Contextual footer offer"
+    }
+  }
+}

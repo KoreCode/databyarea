@@ -311,6 +311,7 @@ def page_shell(title: str, desc: str, canonical_path: str, body: str, *, robots:
       <p><a href="/about/">About</a> &middot; <a href="/privacy/">Privacy Policy</a> &middot; <a href="/contact/">Contact</a></p>
     </footer>
   </div>
+  <script defer src="/assets/monetization.js"></script>
   <script defer src="/assets/version-footer.js"></script>
 </body>
 </html>
@@ -389,6 +390,8 @@ def guide_page(service_slug: str, guide: dict[str, Any], state_slug: str = "", s
           <span class="insight-kpi">Quotes</span>
           <p>Compare written estimates with the same scope, timing, materials, permits, and warranty terms.</p>
         </article>
+
+        <article class="insight-wide" data-monetization-slot="service_quote_inline" aria-label="Compare local service quotes"></article>
 
         <article class="insight-card insight-wide" id="project-examples">
           <h2>Common Project Types</h2>
