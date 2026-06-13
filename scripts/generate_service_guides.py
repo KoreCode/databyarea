@@ -21,6 +21,8 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 SITE = "https://databyarea.com"
 OUT_ROOT = ROOT / "service-guides"
+TEMPLATE_ROOT = ROOT / "templates"
+HIGH_INTENT_TEMPLATE = TEMPLATE_ROOT / "high-intent-service-guide.html"
 
 US_STATES = {
     "alabama": "Alabama", "alaska": "Alaska", "arizona": "Arizona", "arkansas": "Arkansas",
@@ -220,6 +222,13 @@ def write(path: Path, content: str) -> None:
     path.write_text(content, encoding="utf-8")
 
 
+def render_template(path: Path, values: dict[str, object]) -> str:
+    template = path.read_text(encoding="utf-8")
+    for key, value in values.items():
+        template = template.replace(f"{{{{{key}}}}}", str(value))
+    return template
+
+
 def page_shell(title: str, desc: str, canonical_path: str, body: str, *, robots: str = "index,follow,max-image-preview:large") -> str:
     return f"""<!doctype html>
 <html lang="en">
@@ -410,87 +419,27 @@ def project_page(
         for item in PROJECT_GUIDES.get(service_slug, [])
         if item["slug"] != project["slug"]
     )
-    body = f"""
-    <main id="main-content" class="insight-main">
-      <section class="insight-hero" aria-labelledby="project-guide-title">
-        <div>
-          <div class="insight-breadcrumbs">{breadcrumb}</div>
-          <h1 id="project-guide-title">{esc(title)}</h1>
-          <p>This detailed high-intent guide narrows the broader {esc(guide['label'].lower())} template to {esc(project['scope'])} in {esc(location)}.</p>
-          <div class="insight-actions">
-            <a href="#project-snapshot">Snapshot</a>
-            <a href="#scope">Scope</a>
-            <a href="#quote-checks">Quote Checks</a>
-            <a href="{service_url(service_slug, state_slug, city_slug)}">Back to Service</a>
-          </div>
-        </div>
-        <aside class="insight-panel" id="project-snapshot" aria-label="{esc(project['label'])} project snapshot">
-          <h2>Project Snapshot</h2>
-          <div class="insight-panel-grid">
-            <div><strong>{esc(project['range'])}</strong><span>Planning range</span></div>
-            <div><strong>{esc(project['unit'])}</strong><span>Estimate basis</span></div>
-            <div><strong>{esc(location)}</strong><span>Location context</span></div>
-            <div><strong>Scope</strong><span>Verify details</span></div>
-          </div>
-          <p class="insight-source">Generated as a static detailed project page. API-enriched labor, material, and regional adjustment data can be attached to this template later.</p>
-        </aside>
-      </section>
-
-      <section class="insight-grid" aria-label="{esc(title)}">
-        <article class="insight-card">
-          <span class="insight-label">Project type</span>
-          <span class="insight-kpi">{esc(project['label'])}</span>
-          <p>{esc(project['scope']).capitalize()}.</p>
-        </article>
-        <article class="insight-card">
-          <span class="insight-label">Planning range</span>
-          <span class="insight-kpi">{esc(project['range'])}</span>
-          <p>Use as a first-pass range before comparing written local quotes.</p>
-        </article>
-        <article class="insight-card">
-          <span class="insight-label">Location</span>
-          <span class="insight-kpi">{esc(city_name or state_name or 'National')}</span>
-          <p>Local labor pressure, code requirements, and access conditions can move the final cost.</p>
-        </article>
-        <article class="insight-card">
-          <span class="insight-label">Estimate basis</span>
-          <span class="insight-kpi">{esc(project['unit'])}</span>
-          <p>Ask contractors to clarify exactly what is included in this unit.</p>
-        </article>
-
-        <article class="insight-card insight-wide" id="scope">
-          <h2>What This Price Usually Includes</h2>
-          <ul class="insight-list" style="margin-top:10px">
-            <li>Labor for the defined project scope.</li>
-            <li>Standard materials or devices unless upgraded materials are specified.</li>
-            <li>Basic setup, cleanup, and normal access conditions.</li>
-            <li>Permit or inspection coordination when required, unless priced separately.</li>
-          </ul>
-        </article>
-
-        <article class="insight-card insight-wide">
-          <h2>What Moves the Price</h2>
-          <ul class="insight-list" style="margin-top:10px">{driver_items}</ul>
-        </article>
-
-        <article class="insight-card insight-wide" id="quote-checks">
-          <h2>Quote Checks for {esc(project['label'])}</h2>
-          <ul class="insight-list" style="margin-top:10px">
-            <li>Ask whether the quote includes permits, inspection, disposal, travel, and cleanup.</li>
-            <li>Confirm material grade, device model, finish, system size, or repair method.</li>
-            <li>Document what happens if hidden damage, code upgrades, or access problems appear.</li>
-            <li>Compare at least two written quotes using the same project assumptions.</li>
-          </ul>
-        </article>
-
-        <article class="insight-card insight-wide">
-          <h2>Related Detailed Guides</h2>
-          <div class="insight-feature-grid" style="margin-top:12px">{sibling_cards}</div>
-        </article>
-      </section>
-    </main>
-"""
-    return page_shell(title, desc, canonical, body)
+    return render_template(
+        HIGH_INTENT_TEMPLATE,
+        {
+            "site": SITE,
+            "title": esc(title),
+            "description": esc(desc),
+            "canonical_path": esc(canonical),
+            "breadcrumb": breadcrumb,
+            "service_label_lower": esc(guide["label"].lower()),
+            "project_scope": esc(project["scope"]),
+            "project_scope_sentence": f"{esc(project['scope']).capitalize()}.",
+            "location": esc(location),
+            "project_label": esc(project["label"]),
+            "project_range": esc(project["range"]),
+            "project_unit": esc(project["unit"]),
+            "location_short": esc(city_name or state_name or "National"),
+            "back_to_service_url": service_url(service_slug, state_slug, city_slug),
+            "driver_items": driver_items,
+            "sibling_cards": sibling_cards,
+        },
+    )
 
 
 def hub_page() -> str:
