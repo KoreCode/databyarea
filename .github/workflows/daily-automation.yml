@@ -36,6 +36,9 @@ jobs:
       - name: Regenerate tree map
         run: python scripts/generate_tree_map.py
 
+      - name: Generate service guides
+        run: python scripts/generate_service_guides.py
+
       - name: Check for unresolved merge markers
         run: python scripts/check_conflict_markers.py
 

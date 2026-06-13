@@ -7,7 +7,7 @@ This helps SEO coverage by guaranteeing crawlable state-level hubs.
 from __future__ import annotations
 
 import argparse
-from datetime import datetime
+from datetime import UTC, datetime
 from pathlib import Path
 
 SITE_NAME = "DataByArea"
@@ -106,7 +106,7 @@ def state_index_html(section: str, state_slug: str) -> str:
         f"Explore {section_title.lower()} in {state_name}. "
         f"Compare state averages and city-level differences."
     )
-    today = datetime.utcnow().strftime("%Y-%m-%d")
+    today = datetime.now(UTC).strftime("%Y-%m-%d")
     related_links = []
     for other_section in SECTIONS:
         if other_section == section:

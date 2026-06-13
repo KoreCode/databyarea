@@ -36,6 +36,9 @@ jobs:
             pip install -r requirements.txt
           fi
 
+      - name: Generate service guides
+        run: python scripts/generate_service_guides.py
+
       - name: Ensure output folders exist
         run: |
           mkdir -p _deploy/reports data

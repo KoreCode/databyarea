@@ -1,7 +1,8 @@
 import os
+from pathlib import Path
 from datetime import date
 
-BASE_DIR = "/storage/emulated/0/databyarea-site"
+BASE_DIR = Path(os.environ.get("DBA_SITE_ROOT", Path(__file__).resolve().parent))
 SITE = "https://databyarea.com"
 TODAY = date.today().isoformat()
 
@@ -52,6 +53,17 @@ def build_urls():
         for state_slug, _ in STATES:
             urls.append(url_entry(f"/{cat_slug}/{state_slug}/", priority="0.7", changefreq="monthly"))
 
+    service_root = BASE_DIR / "service-guides"
+    if service_root.exists():
+        for page in sorted(service_root.rglob("index.html")):
+            rel = page.relative_to(BASE_DIR).as_posix()
+            path = "/" + rel.removesuffix("index.html")
+            if path == "/service-guides/guide/":
+                continue
+            depth = len([part for part in path.split("/") if part])
+            priority = "0.85" if depth <= 2 else "0.65"
+            urls.append(url_entry(path, priority=priority, changefreq="monthly"))
+
     return urls
 
 def write_sitemap():
@@ -61,7 +73,7 @@ def write_sitemap():
 """ + "\n".join(urls) + """
 </urlset>
 """
-    out_path = os.path.join(BASE_DIR, "sitemap.xml")
+    out_path = BASE_DIR / "sitemap.xml"
     with open(out_path, "w", encoding="utf-8") as f:
         f.write(xml)
     print("WROTE:", out_path)
@@ -72,7 +84,7 @@ Allow: /
 
 Sitemap: {SITE}/sitemap.xml
 """
-    out_path = os.path.join(BASE_DIR, "robots.txt")
+    out_path = BASE_DIR / "robots.txt"
     with open(out_path, "w", encoding="utf-8") as f:
         f.write(txt)
     print("WROTE:", out_path)

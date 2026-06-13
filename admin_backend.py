@@ -33,7 +33,10 @@ from urllib.parse import parse_qs, quote, urlencode, urlparse
 from urllib.request import Request, urlopen
 from uuid import uuid4
 
+from scripts.env_loader import load_local_env
+
 REPO_ROOT = Path(__file__).resolve().parent
+load_local_env(REPO_ROOT)
 DAILY_LOG = REPO_ROOT / ".daily_runs.json"
 CITY_LOG = REPO_ROOT / ".daily_city_runs.json"
 SUMMARY_JSON = REPO_ROOT / "_deploy" / "last_daily_run_summary.json"
@@ -62,6 +65,8 @@ API_KEYS = {
     "census": os.getenv("CENSUS_API_KEY", "").strip(),
     "eia": os.getenv("EIA_API_KEY", "").strip(),
     "bls": os.getenv("BLS_API_KEY", "").strip(),
+    "fred": os.getenv("FRED_API_KEY", "").strip(),
+    "bea": os.getenv("BEA_API_KEY", "").strip(),
 }
 
 STATE_FIPS = {
@@ -830,7 +835,7 @@ async function loadOverview() {{
 
 async function runScript(scriptKey) {{
   const argLine = document.getElementById('args').value.trim();
-  const args = argLine ? argLine.split(/\s+/) : [];
+  const args = argLine ? argLine.split(/\\s+/) : [];
   const res = await fetch('/api/run' + suffix, {{
     method: 'POST',
     headers: {{'Content-Type':'application/json'}},
