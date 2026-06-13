@@ -137,6 +137,18 @@ def page_exists(*parts):
     return (ROOT.joinpath(*parts) / "index.html").exists()
 
 
+def service_guide_manifest_urls():
+    manifest_path = ROOT / "service-guides" / "manifest.json"
+    if not manifest_path.exists():
+        return set()
+    try:
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return set()
+    paths = manifest.get("paths") or manifest.get("sample_paths") or []
+    return {path for path in paths if isinstance(path, str) and path.startswith("/service-guides/")}
+
+
 def add_item(items, seen, item):
     if item["url"] in seen:
         return
@@ -264,8 +276,8 @@ def build_index():
                     "aliases": aliases,
                 })
 
-    service_root = ROOT / "service-guides"
-    if (service_root / "index.html").exists():
+    service_urls = service_guide_manifest_urls()
+    if "/service-guides/" in service_urls:
         add_item(items, seen, {
             "title": "Service Guide Hub",
             "url": "/service-guides/",
@@ -275,20 +287,22 @@ def build_index():
         })
 
     for service_slug, service_label in SERVICE_GUIDES.items():
-        if page_exists("service-guides", service_slug):
+        service_url = f"/service-guides/{service_slug}/"
+        if service_url in service_urls:
             add_item(items, seen, {
                 "title": label_from_slug(service_label),
-                "url": f"/service-guides/{service_slug}/",
+                "url": service_url,
                 "type": "Service guide",
                 "category": "service-guide",
                 "service": service_slug,
                 "aliases": [service_label, f"{service_label} by state", f"{service_label} near me"],
             })
         for project_slug, project_label in SERVICE_PROJECTS.get(service_slug, {}).items():
-            if page_exists("service-guides", service_slug, project_slug):
+            project_url = f"/service-guides/{service_slug}/{project_slug}/"
+            if project_url in service_urls:
                 add_item(items, seen, {
                     "title": f"{label_from_slug(project_label)} cost",
-                    "url": f"/service-guides/{service_slug}/{project_slug}/",
+                    "url": project_url,
                     "type": "Detailed service guide",
                     "category": "service-guide",
                     "service": service_slug,
@@ -296,10 +310,11 @@ def build_index():
                     "aliases": [project_label, f"{project_label} cost", f"{service_label} {project_label}"],
                 })
         for state_slug, (state_name, state_abbr) in STATE_NAMES.items():
-            if page_exists("service-guides", service_slug, state_slug):
+            state_url = f"/service-guides/{service_slug}/{state_slug}/"
+            if state_url in service_urls:
                 add_item(items, seen, {
                     "title": f"{state_name} {service_label}",
-                    "url": f"/service-guides/{service_slug}/{state_slug}/",
+                    "url": state_url,
                     "type": "State service guide",
                     "category": "service-guide",
                     "service": service_slug,
@@ -309,10 +324,11 @@ def build_index():
                     "aliases": [f"{state_name} {service_label}", f"{state_abbr} {service_label}", f"{service_label} {state_name}"],
                 })
             for project_slug, project_label in SERVICE_PROJECTS.get(service_slug, {}).items():
-                if page_exists("service-guides", service_slug, state_slug, project_slug):
+                state_project_url = f"/service-guides/{service_slug}/{state_slug}/{project_slug}/"
+                if state_project_url in service_urls:
                     add_item(items, seen, {
                         "title": f"{state_name} {project_label} cost",
-                        "url": f"/service-guides/{service_slug}/{state_slug}/{project_slug}/",
+                        "url": state_project_url,
                         "type": "State detailed service guide",
                         "category": "service-guide",
                         "service": service_slug,
@@ -324,12 +340,13 @@ def build_index():
                     })
             for city_dir in city_dirs_for_state(state_slug):
                 city_slug = city_dir.name
-                if not page_exists("service-guides", service_slug, state_slug, city_slug):
+                city_url = f"/service-guides/{service_slug}/{state_slug}/{city_slug}/"
+                if city_url not in service_urls:
                     continue
                 city = title_case_city(city_slug)
                 add_item(items, seen, {
                     "title": f"{city} {service_label}",
-                    "url": f"/service-guides/{service_slug}/{state_slug}/{city_slug}/",
+                    "url": city_url,
                     "type": "City service guide",
                     "category": "service-guide",
                     "service": service_slug,
@@ -340,11 +357,12 @@ def build_index():
                     "aliases": [f"{city} {service_label}", f"{city} {state_abbr} {service_label}", f"{service_label} {city}"],
                 })
                 for project_slug, project_label in SERVICE_PROJECTS.get(service_slug, {}).items():
-                    if not page_exists("service-guides", service_slug, state_slug, city_slug, project_slug):
+                    city_project_url = f"/service-guides/{service_slug}/{state_slug}/{city_slug}/{project_slug}/"
+                    if city_project_url not in service_urls:
                         continue
                     add_item(items, seen, {
                         "title": f"{city} {project_label} cost",
-                        "url": f"/service-guides/{service_slug}/{state_slug}/{city_slug}/{project_slug}/",
+                        "url": city_project_url,
                         "type": "City detailed service guide",
                         "category": "service-guide",
                         "service": service_slug,

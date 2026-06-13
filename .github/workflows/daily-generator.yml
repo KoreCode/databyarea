@@ -36,21 +36,16 @@ jobs:
             pip install -r requirements.txt
           fi
 
-      - name: Generate service guides
-        run: python scripts/generate_service_guides.py
-
       - name: Ensure output folders exist
         run: |
           mkdir -p _deploy/reports data
 
-      - name: Build search index
-        run: python scripts/build_search_index.py
-
-      - name: Validate data layer
-        run: python scripts/validate_data_layer.py
-
-      - name: Check for unresolved merge markers
-        run: python scripts/check_conflict_markers.py
-
-      - name: Run production readiness checks
-        run: python scripts/production_check.py
+      - name: Run production gates
+        env:
+          CENSUS_API_KEY: ${{ secrets.CENSUS_API_KEY }}
+          BLS_API_KEY: ${{ secrets.BLS_API_KEY }}
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          BEA_API_KEY: ${{ secrets.BEA_API_KEY }}
+          EIA_API_KEY: ${{ secrets.EIA_API_KEY }}
+          DATA_GOV_API_KEY: ${{ secrets.DATA_GOV_API_KEY }}
+        run: python scripts/run_production_gates.py

@@ -29,21 +29,15 @@ jobs:
       - name: Run full automation pipeline
         env:
           DBA_AUTORUN: '1'
+          CENSUS_API_KEY: ${{ secrets.CENSUS_API_KEY }}
+          BLS_API_KEY: ${{ secrets.BLS_API_KEY }}
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          BEA_API_KEY: ${{ secrets.BEA_API_KEY }}
+          EIA_API_KEY: ${{ secrets.EIA_API_KEY }}
+          DATA_GOV_API_KEY: ${{ secrets.DATA_GOV_API_KEY }}
         run: |
           python -m py_compile one_button_daily.py
           bash ./run_daily.sh
-
-      - name: Regenerate tree map
-        run: python scripts/generate_tree_map.py
-
-      - name: Generate service guides
-        run: python scripts/generate_service_guides.py
-
-      - name: Check for unresolved merge markers
-        run: python scripts/check_conflict_markers.py
-
-      - name: Run production readiness checks
-        run: python scripts/production_check.py
 
       - name: Commit and push changes if any
         run: |

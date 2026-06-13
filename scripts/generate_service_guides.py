@@ -11,16 +11,25 @@ Outputs:
 
 from __future__ import annotations
 
+import argparse
 import html
 import json
+import os
 import shutil
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
+try:
+    from service_guide_data import build_service_guide_context
+except ImportError:  # pragma: no cover - package import fallback
+    from scripts.service_guide_data import build_service_guide_context
+
 ROOT = Path(__file__).resolve().parents[1]
 SITE = "https://databyarea.com"
 OUT_ROOT = ROOT / "service-guides"
+TEMPLATE_ROOT = ROOT / "templates"
+HIGH_INTENT_TEMPLATE = TEMPLATE_ROOT / "high-intent-service-guide.html"
 
 US_STATES = {
     "alabama": "Alabama", "alaska": "Alaska", "arizona": "Arizona", "arkansas": "Arkansas",
@@ -220,6 +229,41 @@ def write(path: Path, content: str) -> None:
     path.write_text(content, encoding="utf-8")
 
 
+def render_template(path: Path, values: dict[str, object]) -> str:
+    template = path.read_text(encoding="utf-8")
+    for key, value in values.items():
+        template = template.replace(f"{{{{{key}}}}}", str(value))
+    return template
+
+
+def parse_int_env(name: str, default: int) -> int:
+    try:
+        return int(os.getenv(name, str(default)))
+    except ValueError:
+        return default
+
+
+def html_list(items: list[str]) -> str:
+    return "\n".join(f"<li>{esc(item)}</li>" for item in items)
+
+
+def api_source_items(source_notes: list[dict[str, str]]) -> str:
+    if not source_notes:
+        return "<li>No source records were returned for this generation.</li>"
+    badges = {"ok": "Used", "missing_key": "Missing key", "error": "Unavailable", "skipped": "Skipped", "no_match": "No match"}
+    return "\n".join(
+        f"<li><strong>{esc(note.get('name', 'Source'))}:</strong> {esc(badges.get(note.get('status', ''), note.get('status', 'Status')))}. {esc(note.get('detail', ''))}</li>"
+        for note in source_notes
+    )
+
+
+def market_signal_items(market_items: list[tuple[str, str]]) -> str:
+    return "\n".join(
+        f"""<div><strong>{esc(value)}</strong><span>{esc(label)}</span></div>"""
+        for label, value in market_items
+    )
+
+
 def page_shell(title: str, desc: str, canonical_path: str, body: str, *, robots: str = "index,follow,max-image-preview:large") -> str:
     return f"""<!doctype html>
 <html lang="en">
@@ -267,6 +311,7 @@ def page_shell(title: str, desc: str, canonical_path: str, body: str, *, robots:
       <p><a href="/about/">About</a> &middot; <a href="/privacy/">Privacy Policy</a> &middot; <a href="/contact/">Contact</a></p>
     </footer>
   </div>
+  <script defer src="/assets/monetization.js"></script>
   <script defer src="/assets/version-footer.js"></script>
 </body>
 </html>
@@ -346,6 +391,8 @@ def guide_page(service_slug: str, guide: dict[str, Any], state_slug: str = "", s
           <p>Compare written estimates with the same scope, timing, materials, permits, and warranty terms.</p>
         </article>
 
+        <article class="insight-wide" data-monetization-slot="service_quote_inline" aria-label="Compare local service quotes"></article>
+
         <article class="insight-card insight-wide" id="project-examples">
           <h2>Common Project Types</h2>
           <ul class="insight-list" style="margin-top:10px">{project_items}</ul>
@@ -388,9 +435,23 @@ def project_page(
     state_slug: str = "",
     state_name: str = "",
     city_slug: str = "",
+    *,
+    use_api: bool = True,
+    api_timeout: int = 8,
 ) -> str:
     city_name = title_case_slug(city_slug)
     location = f"{city_name}, {state_name}" if city_slug else (state_name or "the United States")
+    data_context = build_service_guide_context(
+        service_slug=service_slug,
+        service_label=guide["label"],
+        project_label=project["label"],
+        project_range=project["range"],
+        state_slug=state_slug,
+        state_name=state_name,
+        city_name=city_name,
+        timeout=api_timeout,
+        use_api=use_api and bool(state_slug),
+    )
     title = f"Cost for {project['label']} in {location}"
     desc = f"{project['label']} cost guide for {location}, including project range, scope, price drivers, quote checks, and related {guide['service']} projects."
     canonical = project_url(service_slug, project["slug"], state_slug, city_slug)
@@ -410,87 +471,35 @@ def project_page(
         for item in PROJECT_GUIDES.get(service_slug, [])
         if item["slug"] != project["slug"]
     )
-    body = f"""
-    <main id="main-content" class="insight-main">
-      <section class="insight-hero" aria-labelledby="project-guide-title">
-        <div>
-          <div class="insight-breadcrumbs">{breadcrumb}</div>
-          <h1 id="project-guide-title">{esc(title)}</h1>
-          <p>This detailed high-intent guide narrows the broader {esc(guide['label'].lower())} template to {esc(project['scope'])} in {esc(location)}.</p>
-          <div class="insight-actions">
-            <a href="#project-snapshot">Snapshot</a>
-            <a href="#scope">Scope</a>
-            <a href="#quote-checks">Quote Checks</a>
-            <a href="{service_url(service_slug, state_slug, city_slug)}">Back to Service</a>
-          </div>
-        </div>
-        <aside class="insight-panel" id="project-snapshot" aria-label="{esc(project['label'])} project snapshot">
-          <h2>Project Snapshot</h2>
-          <div class="insight-panel-grid">
-            <div><strong>{esc(project['range'])}</strong><span>Planning range</span></div>
-            <div><strong>{esc(project['unit'])}</strong><span>Estimate basis</span></div>
-            <div><strong>{esc(location)}</strong><span>Location context</span></div>
-            <div><strong>Scope</strong><span>Verify details</span></div>
-          </div>
-          <p class="insight-source">Generated as a static detailed project page. API-enriched labor, material, and regional adjustment data can be attached to this template later.</p>
-        </aside>
-      </section>
-
-      <section class="insight-grid" aria-label="{esc(title)}">
-        <article class="insight-card">
-          <span class="insight-label">Project type</span>
-          <span class="insight-kpi">{esc(project['label'])}</span>
-          <p>{esc(project['scope']).capitalize()}.</p>
-        </article>
-        <article class="insight-card">
-          <span class="insight-label">Planning range</span>
-          <span class="insight-kpi">{esc(project['range'])}</span>
-          <p>Use as a first-pass range before comparing written local quotes.</p>
-        </article>
-        <article class="insight-card">
-          <span class="insight-label">Location</span>
-          <span class="insight-kpi">{esc(city_name or state_name or 'National')}</span>
-          <p>Local labor pressure, code requirements, and access conditions can move the final cost.</p>
-        </article>
-        <article class="insight-card">
-          <span class="insight-label">Estimate basis</span>
-          <span class="insight-kpi">{esc(project['unit'])}</span>
-          <p>Ask contractors to clarify exactly what is included in this unit.</p>
-        </article>
-
-        <article class="insight-card insight-wide" id="scope">
-          <h2>What This Price Usually Includes</h2>
-          <ul class="insight-list" style="margin-top:10px">
-            <li>Labor for the defined project scope.</li>
-            <li>Standard materials or devices unless upgraded materials are specified.</li>
-            <li>Basic setup, cleanup, and normal access conditions.</li>
-            <li>Permit or inspection coordination when required, unless priced separately.</li>
-          </ul>
-        </article>
-
-        <article class="insight-card insight-wide">
-          <h2>What Moves the Price</h2>
-          <ul class="insight-list" style="margin-top:10px">{driver_items}</ul>
-        </article>
-
-        <article class="insight-card insight-wide" id="quote-checks">
-          <h2>Quote Checks for {esc(project['label'])}</h2>
-          <ul class="insight-list" style="margin-top:10px">
-            <li>Ask whether the quote includes permits, inspection, disposal, travel, and cleanup.</li>
-            <li>Confirm material grade, device model, finish, system size, or repair method.</li>
-            <li>Document what happens if hidden damage, code upgrades, or access problems appear.</li>
-            <li>Compare at least two written quotes using the same project assumptions.</li>
-          </ul>
-        </article>
-
-        <article class="insight-card insight-wide">
-          <h2>Related Detailed Guides</h2>
-          <div class="insight-feature-grid" style="margin-top:12px">{sibling_cards}</div>
-        </article>
-      </section>
-    </main>
-"""
-    return page_shell(title, desc, canonical, body)
+    return render_template(
+        HIGH_INTENT_TEMPLATE,
+        {
+            "site": SITE,
+            "title": esc(title),
+            "description": esc(desc),
+            "canonical_path": esc(canonical),
+            "breadcrumb": breadcrumb,
+            "service_label_lower": esc(guide["label"].lower()),
+            "project_scope": esc(project["scope"]),
+            "project_scope_sentence": f"{esc(project['scope']).capitalize()}.",
+            "location": esc(location),
+            "project_label": esc(project["label"]),
+            "project_range": esc(data_context["adjusted_project_range"]),
+            "base_project_range": esc(data_context["base_project_range"]),
+            "project_unit": esc(project["unit"]),
+            "location_short": esc(city_name or state_name or "National"),
+            "back_to_service_url": service_url(service_slug, state_slug, city_slug),
+            "driver_items": driver_items,
+            "sibling_cards": sibling_cards,
+            "data_quality_label": esc(data_context["data_quality_label"]),
+            "model_label": esc(data_context["model_label"]),
+            "estimate_summary": esc(data_context["estimate_summary"]),
+            "updated_at_utc": esc(data_context["updated_at_utc"]),
+            "market_signal_items": market_signal_items(data_context["market_items"]),
+            "rate_model_items": html_list(data_context["model_notes"]),
+            "api_source_items": api_source_items(data_context["source_notes"]),
+        },
+    )
 
 
 def hub_page() -> str:
@@ -540,51 +549,137 @@ def write_manifest(written: list[str]) -> None:
         "services": sorted(SERVICE_GUIDES),
         "project_templates_per_service": {service: [item["slug"] for item in projects] for service, projects in PROJECT_GUIDES.items()},
         "page_count": len(written),
+        "paths": written,
         "sample_paths": written[:20],
     }
     write(OUT_ROOT / "manifest.json", json.dumps(manifest, indent=2) + "\n")
 
 
-def main() -> None:
-    written: list[str] = []
-    for service_slug in SERVICE_GUIDES:
-        target = OUT_ROOT / service_slug
-        if target.exists():
-            shutil.rmtree(target)
-    write(OUT_ROOT / "index.html", hub_page())
-    written.append("/service-guides/")
+def find_project(service_slug: str, project_slug: str) -> dict[str, Any]:
+    for project in PROJECT_GUIDES.get(service_slug, []):
+        if project["slug"] == project_slug:
+            return project
+    choices = ", ".join(project["slug"] for project in PROJECT_GUIDES.get(service_slug, []))
+    raise SystemExit(f"Unknown project '{project_slug}' for service '{service_slug}'. Choices: {choices}")
 
+
+def generation_candidates(args: argparse.Namespace) -> list[tuple[str, str, str, str]]:
+    services = [args.service] if args.service else list(SERVICE_GUIDES)
+    candidates: list[tuple[str, str, str, str]] = []
     city_routes = state_city_routes()
-    for service_slug, guide in SERVICE_GUIDES.items():
-        write(OUT_ROOT / service_slug / "index.html", guide_page(service_slug, guide))
-        written.append(service_url(service_slug))
-        for project in PROJECT_GUIDES.get(service_slug, []):
-            write(OUT_ROOT / service_slug / project["slug"] / "index.html", project_page(service_slug, guide, project))
-            written.append(project_url(service_slug, project["slug"]))
-        for state_slug, state_name in US_STATES.items():
-            write(OUT_ROOT / service_slug / state_slug / "index.html", guide_page(service_slug, guide, state_slug, state_name))
-            written.append(service_url(service_slug, state_slug))
-            for project in PROJECT_GUIDES.get(service_slug, []):
-                write(
-                    OUT_ROOT / service_slug / state_slug / project["slug"] / "index.html",
-                    project_page(service_slug, guide, project, state_slug, state_name),
-                )
-                written.append(project_url(service_slug, project["slug"], state_slug))
-        for state_slug, state_name, city_slug in city_routes:
-            write(
-                OUT_ROOT / service_slug / state_slug / city_slug / "index.html",
-                guide_page(service_slug, guide, state_slug, state_name, city_slug),
-            )
-            written.append(service_url(service_slug, state_slug, city_slug))
-            for project in PROJECT_GUIDES.get(service_slug, []):
-                write(
-                    OUT_ROOT / service_slug / state_slug / city_slug / project["slug"] / "index.html",
-                    project_page(service_slug, guide, project, state_slug, state_name, city_slug),
-                )
-                written.append(project_url(service_slug, project["slug"], state_slug, city_slug))
+    city_lookup = {(state_slug, city_slug): (state_slug, state_name, city_slug) for state_slug, state_name, city_slug in city_routes}
+
+    for service_slug in services:
+        if service_slug not in SERVICE_GUIDES:
+            raise SystemExit(f"Unknown service '{service_slug}'. Choices: {', '.join(SERVICE_GUIDES)}")
+        projects = [find_project(service_slug, args.project)] if args.project else PROJECT_GUIDES.get(service_slug, [])
+        for project in projects:
+            if args.city:
+                state_slug = args.state or "minnesota"
+                state_name = US_STATES.get(state_slug, title_case_slug(state_slug))
+                if (state_slug, args.city) in city_lookup:
+                    _, state_name, city_slug = city_lookup[(state_slug, args.city)]
+                else:
+                    city_slug = args.city
+                candidates.append((service_slug, state_slug, city_slug, project["slug"]))
+            elif args.state:
+                candidates.append((service_slug, args.state, "", project["slug"]))
+            else:
+                for state_slug in US_STATES:
+                    candidates.append((service_slug, state_slug, "", project["slug"]))
+                for state_slug, _state_name, city_slug in city_routes:
+                    candidates.append((service_slug, state_slug, city_slug, project["slug"]))
+    return candidates
+
+
+def write_support_pages(service_slug: str, state_slug: str, city_slug: str, written: list[str]) -> tuple[dict[str, Any], str]:
+    guide = SERVICE_GUIDES[service_slug]
+    state_name = US_STATES.get(state_slug, title_case_slug(state_slug)) if state_slug else ""
+
+    support_pages = [
+        (OUT_ROOT / "index.html", "/service-guides/", hub_page()),
+        (OUT_ROOT / service_slug / "index.html", service_url(service_slug), guide_page(service_slug, guide)),
+    ]
+    if state_slug:
+        support_pages.append((OUT_ROOT / service_slug / state_slug / "index.html", service_url(service_slug, state_slug), guide_page(service_slug, guide, state_slug, state_name)))
+    if state_slug and city_slug:
+        support_pages.append((OUT_ROOT / service_slug / state_slug / city_slug / "index.html", service_url(service_slug, state_slug, city_slug), guide_page(service_slug, guide, state_slug, state_name, city_slug)))
+
+    for path, url, content in support_pages:
+        write(path, content)
+        if url not in written:
+            written.append(url)
+    return guide, state_name
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Generate static high-intent service guide pages.")
+    parser.add_argument("--limit", type=int, default=parse_int_env("DBA_SERVICE_GUIDE_LIMIT", 1), help="Maximum detailed project pages to generate. Defaults to 1.")
+    parser.add_argument("--all", action="store_true", help="Generate every service/state/city/project combination. Use intentionally.")
+    parser.add_argument("--service", default=os.getenv("DBA_SERVICE_GUIDE_SERVICE", "electrician"), help="Service slug to generate.")
+    parser.add_argument("--project", default=os.getenv("DBA_SERVICE_GUIDE_PROJECT") or None, help="Project slug to generate. Defaults to the first project for the selected service.")
+    parser.add_argument("--state", default=os.getenv("DBA_SERVICE_GUIDE_STATE", "minnesota"), help="State slug for the target guide.")
+    parser.add_argument("--city", default=os.getenv("DBA_SERVICE_GUIDE_CITY", "lake-city"), help="City slug for the target guide. Leave empty for a state-level guide.")
+    parser.add_argument("--clean", action="store_true", help="Clean service-guides output before generation.")
+    parser.add_argument("--skip-api", action="store_true", help="Generate with template fallback data and source notes instead of calling public APIs.")
+    parser.add_argument("--api-timeout", type=int, default=parse_int_env("DBA_SERVICE_GUIDE_API_TIMEOUT", 8), help="Timeout in seconds for each public API request.")
+    parser.add_argument("--dry-run", action="store_true", help="Print planned detailed guide URLs without writing files.")
+    return parser.parse_args()
+
+
+def main() -> None:
+    args = parse_args()
+    written: list[str] = []
+
+    if args.all:
+        args.limit = 0
+        args.service = ""
+        args.project = ""
+        args.state = ""
+        args.city = ""
+
+    if args.clean and OUT_ROOT.exists():
+        shutil.rmtree(OUT_ROOT)
+
+    candidates = generation_candidates(args)
+    if args.limit > 0:
+        candidates = candidates[: args.limit]
+
+    planned_urls = [
+        project_url(service_slug, project_slug, state_slug, city_slug)
+        for service_slug, state_slug, city_slug, project_slug in candidates
+    ]
+    if args.dry_run:
+        print("\n".join(planned_urls))
+        return
+
+    detail_count = 0
+    for service_slug, state_slug, city_slug, project_slug in candidates:
+        guide, state_name = write_support_pages(service_slug, state_slug, city_slug, written)
+        project = find_project(service_slug, project_slug)
+        path = OUT_ROOT / service_slug / state_slug
+        if city_slug:
+            path = path / city_slug
+        path = path / project_slug / "index.html"
+        write(
+            path,
+            project_page(
+                service_slug,
+                guide,
+                project,
+                state_slug,
+                state_name,
+                city_slug,
+                use_api=not args.skip_api,
+                api_timeout=args.api_timeout,
+            ),
+        )
+        written.append(project_url(service_slug, project_slug, state_slug, city_slug))
+        detail_count += 1
 
     write_manifest(written)
-    print(f"Generated {len(written)} static service guide page(s)")
+    print(f"Generated {detail_count} detailed service guide page(s), {len(written)} total support/static page(s)")
+    print(f"Limit={args.limit or 'all'} API={'off' if args.skip_api else 'on'}")
 
 
 if __name__ == "__main__":

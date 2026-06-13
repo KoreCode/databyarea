@@ -53,6 +53,8 @@ ADMIN_LOG_PATH = LOG_DIR / "admin_backend.log"
 BACKUP_DIR = REPO_ROOT / "_deploy" / "backups"
 BACKUP_DIR.mkdir(parents=True, exist_ok=True)
 LEADS_DB = REPO_ROOT / "_deploy" / "crm_leads.json"
+MONETIZATION_CONFIG_PATH = REPO_ROOT / "data" / "monetization_config.json"
+MONETIZATION_EVENTS_PATH = LOG_DIR / "monetization_events.jsonl"
 SERVER_STARTED_AT = time.time()
 REQUEST_COUNTS: dict[str, list[float]] = {}
 REQUEST_LOCK = threading.Lock()
@@ -67,6 +69,7 @@ API_KEYS = {
     "bls": os.getenv("BLS_API_KEY", "").strip(),
     "fred": os.getenv("FRED_API_KEY", "").strip(),
     "bea": os.getenv("BEA_API_KEY", "").strip(),
+    "data_gov": os.getenv("DATA_GOV_API_KEY", "").strip(),
 }
 
 STATE_FIPS = {
@@ -290,6 +293,18 @@ SCRIPT_CATALOG: dict[str, dict[str, Any]] = {
         "value_args": ["--max"],
         "examples": [["--max", "10"], ["--max", "25", "--inject"]],
     },
+    "generate_service_guides": {
+        "path": "scripts/generate_service_guides.py",
+        "description": "Generate API-enriched high-intent service guide pages. Defaults to one detailed guide plus supporting hub/service/state/city pages.",
+        "safe_args": ["--limit", "--all", "--service", "--project", "--state", "--city", "--clean", "--skip-api", "--api-timeout", "--dry-run"],
+        "value_args": ["--limit", "--service", "--project", "--state", "--city", "--api-timeout"],
+        "default_args": ["--limit", "1", "--service", "electrician", "--state", "minnesota", "--city", "lake-city", "--project", "new-outlets"],
+        "examples": [
+            ["--limit", "1", "--service", "electrician", "--state", "minnesota", "--city", "lake-city", "--project", "new-outlets"],
+            ["--limit", "3", "--service", "plumber", "--state", "minnesota", "--skip-api"],
+            ["--dry-run", "--limit", "10", "--service", "hvac", "--state", "minnesota"],
+        ],
+    },
     "build_site": {
         "path": "scripts/build_site.py",
         "description": "Generate service/state pages and update manifest.",
@@ -393,6 +408,48 @@ def load_json(path: Path, default: Any) -> Any:
 def save_json(path: Path, payload: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def load_monetization_config() -> dict[str, Any]:
+    return load_json(MONETIZATION_CONFIG_PATH, {"enabled": False, "partners": [], "slots": {}})
+
+
+def validate_monetization_config(config: Any) -> tuple[bool, str]:
+    if not isinstance(config, dict):
+        return False, "Config must be a JSON object."
+    if "partners" in config and not isinstance(config["partners"], list):
+        return False, "partners must be a list."
+    if "slots" in config and not isinstance(config["slots"], dict):
+        return False, "slots must be an object keyed by slot name."
+    if "adsense" in config and not isinstance(config["adsense"], dict):
+        return False, "adsense must be an object."
+    return True, ""
+
+
+def save_monetization_config(config: dict[str, Any]) -> dict[str, Any]:
+    config["updated_at_utc"] = _iso_utc()
+    save_json(MONETIZATION_CONFIG_PATH, config)
+    return config
+
+
+def record_monetization_event(payload: dict[str, Any], ip: str) -> dict[str, Any]:
+    event = {
+        "received_at_utc": _iso_utc(),
+        "ip": ip,
+        "event": str(payload.get("event", "monetization_click"))[:80],
+        "path": str(payload.get("path", ""))[:300],
+        "slot": str(payload.get("slot", ""))[:120],
+        "partner_id": str(payload.get("partner_id", ""))[:120],
+        "service": str(payload.get("service", ""))[:120],
+        "state": str(payload.get("state", ""))[:120],
+        "city": str(payload.get("city", ""))[:120],
+        "project": str(payload.get("project", ""))[:120],
+        "ts": str(payload.get("ts", ""))[:80],
+    }
+    MONETIZATION_EVENTS_PATH.parent.mkdir(parents=True, exist_ok=True)
+    with MONETIZATION_EVENTS_PATH.open("a", encoding="utf-8") as handle:
+        handle.write(json.dumps(event, ensure_ascii=False) + "\n")
+    return event
 
 
 def load_crm_state() -> dict[str, Any]:
@@ -634,21 +691,26 @@ def dashboard_html() -> str:
     for key, spec in SCRIPT_CATALOG.items():
         examples = " • ".join(" ".join(e) if e else "(no args)" for e in spec["examples"])
         safe_args = " ".join(spec["safe_args"]) or "(none)"
+        value_args = " ".join(spec.get("value_args", [])) or "(none)"
+        default_args = " ".join(spec.get("default_args", [])) or "(no default args)"
         cards.append(
             f"""
-            <button class="command-card" onclick="runScript('{key}')">
+            <button class="command-card" onclick="selectScript('{key}')">
               <div class="command-head">
                 <span class="status-dot"></span>
                 <span class="command-name">{key}</span>
-                <span class="chip">Run</span>
+                <span class="chip">Select</span>
               </div>
               <p class="command-desc">{spec['description']}</p>
               <div class="command-meta"><strong>Script:</strong> <code>{spec['path']}</code></div>
               <div class="command-meta"><strong>Allowed args:</strong> <code>{safe_args}</code></div>
+              <div class="command-meta"><strong>Value args:</strong> <code>{value_args}</code></div>
+              <div class="command-meta"><strong>Default:</strong> <code>{default_args}</code></div>
               <div class="command-meta"><strong>Examples:</strong> <code>{examples}</code></div>
             </button>
             """
         )
+    scripts_json = json.dumps(SCRIPT_CATALOG)
 
     return f"""<!doctype html>
 <html>
@@ -745,6 +807,7 @@ def dashboard_html() -> str:
       width:100%; min-height:240px; border-radius:10px; border:1px solid var(--border); background:#020617;
       color:#cbd5e1; margin-top:14px; padding:12px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size:12px;
     }}
+    #monetizationConfig {{ min-height:360px; margin-top:0; }}
     @media (max-width: 1000px) {{
       .grid {{ grid-template-columns:1fr; }}
     }}
@@ -780,12 +843,17 @@ def dashboard_html() -> str:
           {''.join(cards)}
         </div>
         <div class="controls">
-          <label for="args" class="small">Optional args for selected script (space-separated):</label>
-          <input id="args" class="input" placeholder="--services 1 --cities 10 --relink --clean" />
+          <label for="scriptKey" class="small">Selected script:</label>
+          <input id="scriptKey" class="input" value="generate_service_guides" />
+          <label for="args" class="small">Editable args for selected script (space-separated):</label>
+          <input id="args" class="input" value="--limit 1 --service electrician --state minnesota --city lake-city --project new-outlets" />
           <div class="actions">
             <button class="btn" onclick="loadOverview()">Refresh Overview</button>
-            <button class="btn" onclick="runScript('one_button_daily')">Run Daily Pipeline</button>
+            <button class="btn" onclick="useDefaults()">Use Defaults</button>
+            <button class="btn" onclick="runSelectedScript()">Run Selected Script</button>
+            <button class="btn" onclick="selectScript('one_button_daily')">Daily Pipeline Defaults</button>
           </div>
+          <div id="scriptHelp" class="command-meta"></div>
         </div>
       </section>
 
@@ -807,6 +875,27 @@ def dashboard_html() -> str:
       </aside>
     </div>
 
+    <section class="panel" style="margin-top:18px">
+      <div class="panel-head">
+        <span>Monetization Control Center</span>
+        <span class="small">Config-driven slots, partners, ads, disclosure, and tracking</span>
+      </div>
+      <div class="controls">
+        <div class="actions">
+          <button class="btn" onclick="loadMonetizationConfig()">Reload Config</button>
+          <button class="btn" onclick="saveMonetizationConfig()">Save Config</button>
+          <button class="btn" onclick="setMonetizationFlag('enabled', true)">Enable Monetization</button>
+          <button class="btn" onclick="setMonetizationFlag('enabled', false)">Disable Monetization</button>
+          <button class="btn" onclick="setMonetizationFlag('affiliate_disclosure_enabled', true)">Enable Disclosure</button>
+          <button class="btn" onclick="setMonetizationFlag('display_ads_enabled', false)">Keep Ads Off</button>
+        </div>
+        <div class="command-meta">
+          Edit partner targeting by <code>services</code>, <code>states</code>, <code>cities</code>, <code>projects</code>, and <code>slots</code>. Keep AdSense disabled until account approval and slot IDs are configured.
+        </div>
+        <textarea id="monetizationConfig" spellcheck="false"></textarea>
+      </div>
+    </section>
+
     <textarea id='out' readonly></textarea>
   </div>
 
@@ -815,6 +904,30 @@ const qp = new URLSearchParams(window.location.search);
 const keyParam = '{ADMIN_KEY_PARAM}';
 const keyValue = qp.get(keyParam);
 const suffix = keyValue ? `?${{keyParam}}=${{encodeURIComponent(keyValue)}}` : '';
+const scriptCatalog = {scripts_json};
+let selectedScript = 'generate_service_guides';
+let monetizationConfig = {{}};
+
+function describeScript(scriptKey) {{
+  const spec = scriptCatalog[scriptKey] || {{}};
+  const examples = (spec.examples || []).map(e => e.length ? e.join(' ') : '(no args)').join(' | ');
+  const valueArgs = (spec.value_args || []).join(' ') || '(none)';
+  document.getElementById('scriptHelp').innerHTML = `<strong>${{scriptKey}}</strong><br>${{spec.description || ''}}<br><strong>Value args:</strong> <code>${{valueArgs}}</code><br><strong>Examples:</strong> <code>${{examples}}</code>`;
+}}
+
+function selectScript(scriptKey) {{
+  selectedScript = scriptKey;
+  document.getElementById('scriptKey').value = scriptKey;
+  useDefaults();
+  describeScript(scriptKey);
+}}
+
+function useDefaults() {{
+  const scriptKey = document.getElementById('scriptKey').value.trim() || selectedScript;
+  const spec = scriptCatalog[scriptKey] || {{}};
+  const defaults = spec.default_args || (spec.examples || [[]])[0] || [];
+  document.getElementById('args').value = defaults.join(' ');
+}}
 
 async function loadOverview() {{
   const [cfg, hist, summary] = await Promise.all([
@@ -831,6 +944,48 @@ async function loadOverview() {{
   document.getElementById('uptime').textContent = `DAY ${{day}}`;
 
   document.getElementById('out').value = JSON.stringify({{config: cfg, history: hist, last_summary: summary}}, null, 2);
+  monetizationConfig = (cfg.monetization && cfg.monetization.config) || {{}};
+  document.getElementById('monetizationConfig').value = JSON.stringify(monetizationConfig, null, 2);
+}}
+
+async function loadMonetizationConfig() {{
+  const res = await fetch('/api/monetization' + suffix).then(r=>r.json());
+  monetizationConfig = res.config || {{}};
+  document.getElementById('monetizationConfig').value = JSON.stringify(monetizationConfig, null, 2);
+  document.getElementById('out').value = JSON.stringify(res, null, 2);
+}}
+
+async function saveMonetizationConfig() {{
+  let parsed;
+  try {{
+    parsed = JSON.parse(document.getElementById('monetizationConfig').value);
+  }} catch (err) {{
+    document.getElementById('out').value = 'Invalid monetization JSON: ' + err.message;
+    return;
+  }}
+  const res = await fetch('/api/monetization' + suffix, {{
+    method: 'POST',
+    headers: {{'Content-Type':'application/json'}},
+    body: JSON.stringify({{config: parsed}})
+  }});
+  const data = await res.json();
+  if (data.config) {{
+    monetizationConfig = data.config;
+    document.getElementById('monetizationConfig').value = JSON.stringify(monetizationConfig, null, 2);
+  }}
+  document.getElementById('out').value = JSON.stringify(data, null, 2);
+}}
+
+function setMonetizationFlag(flag, value) {{
+  let parsed;
+  try {{
+    parsed = JSON.parse(document.getElementById('monetizationConfig').value || '{{}}');
+  }} catch (err) {{
+    parsed = monetizationConfig || {{}};
+  }}
+  parsed[flag] = value;
+  monetizationConfig = parsed;
+  document.getElementById('monetizationConfig').value = JSON.stringify(parsed, null, 2);
 }}
 
 async function runScript(scriptKey) {{
@@ -845,7 +1000,15 @@ async function runScript(scriptKey) {{
   document.getElementById('out').value = JSON.stringify(data, null, 2);
 }}
 
+async function runSelectedScript() {{
+  const scriptKey = document.getElementById('scriptKey').value.trim() || selectedScript;
+  selectedScript = scriptKey;
+  describeScript(scriptKey);
+  await runScript(scriptKey);
+}}
+
 loadOverview();
+describeScript(selectedScript);
 </script>
 </body>
 </html>
@@ -931,6 +1094,12 @@ class Handler(BaseHTTPRequestHandler):
             payload = {
                 "scripts": SCRIPT_CATALOG,
                 "settings": SETTINGS,
+                "api_sources": {name: {"configured": bool(value)} for name, value in API_KEYS.items()},
+                "monetization": {
+                    "config_path": str(MONETIZATION_CONFIG_PATH),
+                    "events_path": str(MONETIZATION_EVENTS_PATH),
+                    "config": load_monetization_config(),
+                },
                 "crm": {
                     "pipeline_stages": CRM_PIPELINE_STAGES,
                     "sequence_templates": CRM_SEQUENCE_BY_INTENT,
@@ -938,6 +1107,9 @@ class Handler(BaseHTTPRequestHandler):
                 },
             }
             self._send_json(payload)
+            return
+        if path == "/api/monetization":
+            self._send_json({"ok": True, "config": load_monetization_config(), "path": str(MONETIZATION_CONFIG_PATH)})
             return
         if path == "/api/health":
             uptime_seconds = int(time.time() - SERVER_STARTED_AT)
@@ -1003,6 +1175,21 @@ class Handler(BaseHTTPRequestHandler):
             )
             return
         logger.info("POST %s ip=%s", path, ip)
+        if path == "/api/monetization/event":
+            length = int(self.headers.get("Content-Length", "0"))
+            if length > MAX_POST_BYTES:
+                self._send_json({"ok": False, "error": f"Payload too large (>{MAX_POST_BYTES} bytes)"}, status=413)
+                return
+            body = self.rfile.read(length) if length > 0 else b"{}"
+            try:
+                payload = json.loads(body.decode("utf-8"))
+            except Exception:
+                payload = {}
+            if not isinstance(payload, dict):
+                payload = {}
+            event = record_monetization_event(payload, ip)
+            self._send_json({"ok": True, "event": event})
+            return
         if not self._authorized():
             self._send_json({"ok": False, "error": f"Unauthorized. Supply {ADMIN_KEY_PARAM}=... in URL or X-Admin-Key header."}, status=401)
             return
@@ -1026,6 +1213,16 @@ class Handler(BaseHTTPRequestHandler):
                 return
             result = run_script(script_key, args)
             self._send_json(result, status=200 if result.get("ok") else 400)
+            return
+
+        if path == "/api/monetization":
+            config = payload.get("config", payload)
+            ok, error = validate_monetization_config(config)
+            if not ok:
+                self._send_json({"ok": False, "error": error}, status=400)
+                return
+            saved = save_monetization_config(config)
+            self._send_json({"ok": True, "config": saved, "path": str(MONETIZATION_CONFIG_PATH)})
             return
 
         if path == "/api/leads/capture":

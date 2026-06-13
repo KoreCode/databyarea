@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Cost for New Outlets in Lake City, Minnesota | DataByArea</title>
-  <meta name="description" content="New Outlets cost guide for Lake City, Minnesota, including project range, scope, price drivers, quote checks, and related electrician projects." />
+  <title>{{title}} | DataByArea</title>
+  <meta name="description" content="{{description}}" />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="canonical" href="https://databyarea.com/service-guides/electrician/minnesota/lake-city/new-outlets/" />
-  <meta property="og:title" content="Cost for New Outlets in Lake City, Minnesota | DataByArea" />
-  <meta property="og:description" content="New Outlets cost guide for Lake City, Minnesota, including project range, scope, price drivers, quote checks, and related electrician projects." />
-  <meta property="og:url" content="https://databyarea.com/service-guides/electrician/minnesota/lake-city/new-outlets/" />
+  <link rel="canonical" href="{{site}}{{canonical_path}}" />
+  <meta property="og:title" content="{{title}} | DataByArea" />
+  <meta property="og:description" content="{{description}}" />
+  <meta property="og:url" content="{{site}}{{canonical_path}}" />
   <meta property="og:type" content="article" />
   <meta name="twitter:card" content="summary" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -42,51 +42,66 @@
     <main id="main-content" class="insight-main">
       <section class="insight-hero" aria-labelledby="project-guide-title">
         <div>
-          <div class="insight-breadcrumbs"><a href="/">Home</a> &rsaquo; <a href="/service-guides/">Service Guides</a> &rsaquo; <a href="/service-guides/electrician/">Electrician Rates</a> &rsaquo; <a href="/service-guides/electrician/minnesota/">Minnesota</a> &rsaquo; <a href="/service-guides/electrician/minnesota/lake-city/">Lake City</a> &rsaquo; New Outlets</div>
-          <h1 id="project-guide-title">Cost for New Outlets in Lake City, Minnesota</h1>
-          <p>This detailed high-intent guide narrows the broader electrician rates template to adding one or more standard outlets where wiring access is reasonable in Lake City, Minnesota.</p>
+          <div class="insight-breadcrumbs">{{breadcrumb}}</div>
+          <h1 id="project-guide-title">{{title}}</h1>
+          <p>This detailed high-intent guide narrows the broader {{service_label_lower}} template to {{project_scope}} in {{location}}, then layers in available public data signals for local planning context.</p>
           <div class="insight-actions">
             <a href="#project-snapshot">Snapshot</a>
+            <a href="#local-data">Local Data</a>
             <a href="#scope">Scope</a>
             <a href="#quote-checks">Quote Checks</a>
-            <a href="/service-guides/electrician/minnesota/lake-city/">Back to Service</a>
+            <a href="{{back_to_service_url}}">Back to Service</a>
           </div>
         </div>
-        <aside class="insight-panel" id="project-snapshot" aria-label="New Outlets project snapshot">
+        <aside class="insight-panel" id="project-snapshot" aria-label="{{project_label}} project snapshot">
           <h2>Project Snapshot</h2>
           <div class="insight-panel-grid">
-            <div><strong>$175-$650</strong><span>Planning range</span></div>
-            <div><strong>outlet</strong><span>Estimate basis</span></div>
-            <div><strong>Lake City, Minnesota</strong><span>Location context</span></div>
-            <div><strong>Scope</strong><span>Verify details</span></div>
+            <div><strong>{{project_range}}</strong><span>Planning range</span></div>
+            <div><strong>{{project_unit}}</strong><span>Estimate basis</span></div>
+            <div><strong>{{location}}</strong><span>Location context</span></div>
+            <div><strong>{{data_quality_label}}</strong><span>Data status</span></div>
           </div>
-          <p class="insight-source">Generated as a static detailed project page. API-enriched labor, material, and regional adjustment data can be attached to this template later.</p>
+          <p class="insight-source">Updated {{updated_at_utc}}. {{estimate_summary}}</p>
         </aside>
       </section>
 
-      <section class="insight-grid" aria-label="Cost for New Outlets in Lake City, Minnesota">
+      <section class="insight-grid" aria-label="{{title}}">
         <article class="insight-card">
           <span class="insight-label">Project type</span>
-          <span class="insight-kpi">New Outlets</span>
-          <p>Adding one or more standard outlets where wiring access is reasonable.</p>
+          <span class="insight-kpi">{{project_label}}</span>
+          <p>{{project_scope_sentence}}</p>
         </article>
         <article class="insight-card">
           <span class="insight-label">Planning range</span>
-          <span class="insight-kpi">$175-$650</span>
-          <p>Use as a first-pass range before comparing written local quotes.</p>
+          <span class="insight-kpi">{{project_range}}</span>
+          <p>Base template range: {{base_project_range}}. Use this as a first-pass range before comparing written local quotes.</p>
         </article>
         <article class="insight-card">
           <span class="insight-label">Location</span>
-          <span class="insight-kpi">Lake City</span>
+          <span class="insight-kpi">{{location_short}}</span>
           <p>Local labor pressure, code requirements, and access conditions can move the final cost.</p>
         </article>
         <article class="insight-card">
           <span class="insight-label">Estimate basis</span>
-          <span class="insight-kpi">outlet</span>
+          <span class="insight-kpi">{{project_unit}}</span>
           <p>Ask contractors to clarify exactly what is included in this unit.</p>
         </article>
 
-        <article class="insight-wide" data-monetization-slot="service_quote_primary" aria-label="Compare local project quotes"></article>`r`n`r`n        <article class="insight-card insight-wide" id="scope">
+        <article class="insight-wide" data-monetization-slot="service_quote_primary" aria-label="Compare local project quotes"></article>
+
+        <article class="insight-card insight-wide" id="local-data">
+          <h2>Local Data Used for This Estimate</h2>
+          <p>The page is generated statically, but the estimate model checks the configured public data APIs at generation time. Missing or unavailable sources are reported instead of hidden.</p>
+          <div class="insight-panel-grid" style="margin-top:12px">{{market_signal_items}}</div>
+        </article>
+
+        <article class="insight-card insight-wide">
+          <h2>How the Range Was Processed</h2>
+          <p>{{model_label}}. The model adjusts only within conservative bounds so public macro data cannot overrule the project scope.</p>
+          <ul class="insight-list" style="margin-top:10px">{{rate_model_items}}</ul>
+        </article>
+
+        <article class="insight-card insight-wide" id="scope">
           <h2>What This Price Usually Includes</h2>
           <ul class="insight-list" style="margin-top:10px">
             <li>Labor for the defined project scope.</li>
@@ -98,14 +113,11 @@
 
         <article class="insight-card insight-wide">
           <h2>What Moves the Price</h2>
-          <ul class="insight-list" style="margin-top:10px"><li>Panel capacity and existing wiring condition</li>
-<li>Permit and inspection requirements</li>
-<li>Circuit complexity</li>
-<li>Material and device quality</li></ul>
+          <ul class="insight-list" style="margin-top:10px">{{driver_items}}</ul>
         </article>
 
         <article class="insight-card insight-wide" id="quote-checks">
-          <h2>Quote Checks for New Outlets</h2>
+          <h2>Quote Checks for {{project_label}}</h2>
           <ul class="insight-list" style="margin-top:10px">
             <li>Ask whether the quote includes permits, inspection, disposal, travel, and cleanup.</li>
             <li>Confirm material grade, device model, finish, system size, or repair method.</li>
@@ -114,11 +126,16 @@
           </ul>
         </article>
 
+        <article class="insight-wide" data-monetization-slot="display_in_article" aria-label="Advertisement"></article>
+
+        <article class="insight-card insight-wide">
+          <h2>Source Status</h2>
+          <ul class="insight-list" style="margin-top:10px">{{api_source_items}}</ul>
+        </article>
+
         <article class="insight-card insight-wide">
           <h2>Related Detailed Guides</h2>
-          <div class="insight-feature-grid" style="margin-top:12px"><a class="insight-feature-card" href="/service-guides/electrician/minnesota/lake-city/panel-upgrade/"><strong>Panel Upgrade</strong><span>$1,800-$5,500 planning range for Lake City, Minnesota.</span><em>Open project</em></a>
-<a class="insight-feature-card" href="/service-guides/electrician/minnesota/lake-city/ev-charger-installation/"><strong>EV Charger Installation</strong><span>$750-$2,800 planning range for Lake City, Minnesota.</span><em>Open project</em></a>
-<a class="insight-feature-card" href="/service-guides/electrician/minnesota/lake-city/light-fixture-installation/"><strong>Light Fixture Installation</strong><span>$150-$900 planning range for Lake City, Minnesota.</span><em>Open project</em></a></div>
+          <div class="insight-feature-grid" style="margin-top:12px">{{sibling_cards}}</div>
         </article>
       </section>
     </main>

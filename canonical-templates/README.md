@@ -5,6 +5,11 @@ Reusable template snapshots copied from current production-style pages.
 These files are source examples for future canonical template work. They are not
 wired into the site generator yet.
 
+The actively wired high-intent project template lives at
+`templates/high-intent-service-guide.html`. Refine that file when perfecting the
+detailed service guide pattern; `scripts/generate_service_guides.py` renders
+project pages from it.
+
 ## Production Readiness Standard
 
 Each template should follow the same design philosophy as the refined insight
