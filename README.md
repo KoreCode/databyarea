@@ -4,7 +4,16 @@ DataByArea
 ## Positioning (current focus)
 - **Primary persona:** U.S. homeowners and renters planning a near-term move or budgeting decision.
 - **Top use case:** Compare location-based household costs (utilities, insurance, property taxes, and cost of living) at state/county/city level before choosing where to live.
-- **One-sentence value proposition:** **“This site helps U.S. movers and household budget planners compare local living costs across places in under 5 minutes.”**
+- **One-sentence value proposition:** **"This site helps U.S. movers and household budget planners compare local living costs across places in under 5 minutes."**
+
+## Documentation Map
+- Primary project README: `README.md`
+- Canonical template inventory: `canonical-templates/README.md`
+- Data layer guide: `docs/data-layer.md`
+- Technical baseline: `docs/technical-quality-baseline.md`
+- Cloudflare/GitHub deployment guide: `CLOUDFLARE_GITHUB_AUTODEPLOY.md`
+- Full single-generator automation guide: `FULL_AUTOMATION_SINGLE_GENERATOR.md`
+- Admin backend documentation library: `GET /api/readmes` and `GET /api/readme?path=README.md`
 
 ## Automation
 
@@ -18,7 +27,9 @@ DataByArea
 - After each run, a summary is written to:
   - `_deploy/last_daily_run_summary.json`
   - `_deploy/last_daily_run_summary.md`
-- Required publish gates now run after generation and fail fast before any commit/push/deploy step when critical checks fail:
+- Required publish gates now run after generation through the single gate runner and fail fast before any commit/push/deploy step when critical checks fail:
+  - `python scripts/run_production_gates.py`
+- The gate runner includes:
   - `python scripts/build_search_index.py`
   - `python scripts/validate_data_layer.py`
   - `python scripts/check_conflict_markers.py`
@@ -65,6 +76,7 @@ DataByArea
   - `EIA_API_KEY`
   - `FRED_API_KEY`
   - `BEA_API_KEY`
+  - `DATA_GOV_API_KEY`
 - Use `.env.example` as the safe template for local setup. Keep real `.env` files untracked.
 
 ### Fast API pull/store/display pipeline
@@ -150,6 +162,8 @@ DataByArea
   - Current settings and log file paths
   - Run history and latest daily summary
   - API to execute allowed scripts (`POST /api/run`)
+  - Documentation library for README and ops docs (`GET /api/readmes`, `GET /api/readme?path=...`)
+  - Monetization control center for slots, partner targeting, disclosures, and tracking config
   - Health endpoint: `GET /api/health`
 - Safety behavior:
   - Only whitelisted options are accepted per script
@@ -226,11 +240,13 @@ DataByArea
    - Re-run generator to publish templates without those modules
 
 ## Ops Files
-- `DIRECTORY_TREE.md` — clean repository tree map.
-- `AUTOMATION_STATUS.md` — current automation enablement status and scheduler line.
-- `CLOUDFLARE_GITHUB_AUTODEPLOY.md` — Cloudflare + GitHub auto-deploy + domain admin routing steps.
-- `FULL_AUTOMATION_SINGLE_GENERATOR.md` — full end-to-end setup (GitHub Actions + Cloudflare) with single generator mode.
-- `docs/technical-quality-baseline.md` — technical baseline for error tracking, uptime monitoring, backups, and security hardening.
+- `DIRECTORY_TREE.md` - clean repository tree map.
+- `AUTOMATION_STATUS.md` - current automation enablement status and scheduler line.
+- `CLOUDFLARE_GITHUB_AUTODEPLOY.md` - Cloudflare + GitHub auto-deploy + domain admin routing steps.
+- `FULL_AUTOMATION_SINGLE_GENERATOR.md` - full end-to-end setup (GitHub Actions + Cloudflare) with single generator mode.
+- `docs/technical-quality-baseline.md` - technical baseline for error tracking, uptime monitoring, backups, and security hardening.
+- `docs/monetization_admin_server_plan.md` - monetization/admin rollout notes.
+- `docs/90-day-execution-board.md` - current execution board and priorities.
 
 ## Site Version Footer
 - A small version badge is injected at the bottom-right of pages via `/assets/version-footer.js`.

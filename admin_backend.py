@@ -55,6 +55,18 @@ BACKUP_DIR.mkdir(parents=True, exist_ok=True)
 LEADS_DB = REPO_ROOT / "_deploy" / "crm_leads.json"
 MONETIZATION_CONFIG_PATH = REPO_ROOT / "data" / "monetization_config.json"
 MONETIZATION_EVENTS_PATH = LOG_DIR / "monetization_events.jsonl"
+DOC_FILE_EXTENSIONS = {".md", ".txt"}
+DOC_SKIP_DIRS = {
+    ".git",
+    ".agents",
+    ".codex",
+    "__pycache__",
+    ".pytest_cache",
+    "node_modules",
+    "_deploy",
+    "_trash",
+    "service-guides",
+}
 SERVER_STARTED_AT = time.time()
 REQUEST_COUNTS: dict[str, list[float]] = {}
 REQUEST_LOCK = threading.Lock()
@@ -408,6 +420,75 @@ def load_json(path: Path, default: Any) -> Any:
 def save_json(path: Path, payload: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def _is_doc_candidate(path: Path) -> bool:
+    if path.suffix.lower() not in DOC_FILE_EXTENSIONS:
+        return False
+    rel_parts = path.relative_to(REPO_ROOT).parts
+    if any(part in DOC_SKIP_DIRS for part in rel_parts):
+        return False
+    name = path.name.lower()
+    if name.startswith("readme"):
+        return True
+    if path.suffix.lower() == ".md":
+        return True
+    return False
+
+
+def _doc_category(rel: str) -> str:
+    name = Path(rel).name.lower()
+    if name.startswith("readme"):
+        return "readme"
+    if rel.startswith("docs/"):
+        return "docs"
+    return "ops"
+
+
+def discover_documentation() -> list[dict[str, Any]]:
+    docs: list[dict[str, Any]] = []
+    for path in sorted(REPO_ROOT.rglob("*")):
+        if not path.is_file() or not _is_doc_candidate(path):
+            continue
+        rel = path.relative_to(REPO_ROOT).as_posix()
+        try:
+            stat = path.stat()
+            text = path.read_text(encoding="utf-8", errors="ignore")
+        except Exception:
+            continue
+        title = rel
+        for line in text.splitlines():
+            clean = line.strip().lstrip("#").strip()
+            if clean:
+                title = clean[:120]
+                break
+        docs.append(
+            {
+                "path": rel,
+                "title": title,
+                "category": _doc_category(rel),
+                "size_bytes": stat.st_size,
+                "updated_at_utc": datetime.fromtimestamp(stat.st_mtime, tz=timezone.utc).isoformat(),
+                "preview": text[:280],
+            }
+        )
+    return docs
+
+
+def load_documentation_file(rel_path: str) -> tuple[bool, dict[str, Any], int]:
+    normalized = rel_path.replace("\\", "/").strip().lstrip("/")
+    if not normalized or normalized.startswith("../") or "/../" in normalized:
+        return False, {"ok": False, "error": "Invalid documentation path."}, 400
+    path = (REPO_ROOT / normalized).resolve()
+    try:
+        path.relative_to(REPO_ROOT)
+    except ValueError:
+        return False, {"ok": False, "error": "Documentation path is outside the repository."}, 400
+    if not path.exists() or not path.is_file() or not _is_doc_candidate(path):
+        return False, {"ok": False, "error": "Documentation file not found or not allowed."}, 404
+    content = path.read_text(encoding="utf-8", errors="ignore")
+    rel = path.relative_to(REPO_ROOT).as_posix()
+    return True, {"ok": True, "path": rel, "category": _doc_category(rel), "content": content}, 200
 
 
 def load_monetization_config() -> dict[str, Any]:
@@ -808,6 +889,7 @@ def dashboard_html() -> str:
       color:#cbd5e1; margin-top:14px; padding:12px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size:12px;
     }}
     #monetizationConfig {{ min-height:360px; margin-top:0; }}
+    #documentationViewer {{ min-height:420px; margin-top:0; }}
     @media (max-width: 1000px) {{
       .grid {{ grid-template-columns:1fr; }}
     }}
@@ -896,6 +978,23 @@ def dashboard_html() -> str:
       </div>
     </section>
 
+    <section class="panel" style="margin-top:18px">
+      <div class="panel-head">
+        <span>Documentation Library</span>
+        <span class="small">README, ops docs, and implementation notes from the repo</span>
+      </div>
+      <div class="controls">
+        <div class="actions">
+          <button class="btn" onclick="loadDocumentation()">Reload Docs</button>
+          <button class="btn" onclick="openSelectedDocumentation()">Open Selected</button>
+        </div>
+        <label for="documentationSelect" class="small">Available documentation:</label>
+        <select id="documentationSelect" class="input"></select>
+        <div id="documentationHelp" class="command-meta"></div>
+        <textarea id="documentationViewer" readonly spellcheck="false"></textarea>
+      </div>
+    </section>
+
     <textarea id='out' readonly></textarea>
   </div>
 
@@ -907,6 +1006,7 @@ const suffix = keyValue ? `?${{keyParam}}=${{encodeURIComponent(keyValue)}}` : '
 const scriptCatalog = {scripts_json};
 let selectedScript = 'generate_service_guides';
 let monetizationConfig = {{}};
+let documentationLibrary = [];
 
 function describeScript(scriptKey) {{
   const spec = scriptCatalog[scriptKey] || {{}};
@@ -946,6 +1046,8 @@ async function loadOverview() {{
   document.getElementById('out').value = JSON.stringify({{config: cfg, history: hist, last_summary: summary}}, null, 2);
   monetizationConfig = (cfg.monetization && cfg.monetization.config) || {{}};
   document.getElementById('monetizationConfig').value = JSON.stringify(monetizationConfig, null, 2);
+  documentationLibrary = (cfg.documentation && cfg.documentation.items) || documentationLibrary;
+  renderDocumentationSelect();
 }}
 
 async function loadMonetizationConfig() {{
@@ -988,6 +1090,44 @@ function setMonetizationFlag(flag, value) {{
   document.getElementById('monetizationConfig').value = JSON.stringify(parsed, null, 2);
 }}
 
+function renderDocumentationSelect() {{
+  const select = document.getElementById('documentationSelect');
+  if (!select) return;
+  select.innerHTML = '';
+  documentationLibrary.forEach(doc => {{
+    const opt = document.createElement('option');
+    opt.value = doc.path;
+    opt.textContent = `${{doc.category}} - ${{doc.path}}`;
+    select.appendChild(opt);
+  }});
+  const readmeCount = documentationLibrary.filter(doc => doc.category === 'readme').length;
+  document.getElementById('documentationHelp').textContent = `${{documentationLibrary.length}} docs indexed, including ${{readmeCount}} README file(s).`;
+}}
+
+async function loadDocumentation() {{
+  const res = await fetch('/api/readmes' + suffix).then(r=>r.json());
+  documentationLibrary = res.items || [];
+  renderDocumentationSelect();
+  document.getElementById('out').value = JSON.stringify(res, null, 2);
+  if (documentationLibrary.length && !document.getElementById('documentationViewer').value) {{
+    await openDocumentation(documentationLibrary[0].path);
+  }}
+}}
+
+async function openDocumentation(path) {{
+  const joiner = suffix ? '&' : '?';
+  const res = await fetch('/api/readme' + suffix + joiner + 'path=' + encodeURIComponent(path)).then(r=>r.json());
+  document.getElementById('documentationViewer').value = res.content || JSON.stringify(res, null, 2);
+  document.getElementById('documentationHelp').textContent = res.ok ? `Open: ${{res.path}}` : (res.error || 'Unable to open documentation.');
+}}
+
+async function openSelectedDocumentation() {{
+  const select = document.getElementById('documentationSelect');
+  if (select && select.value) {{
+    await openDocumentation(select.value);
+  }}
+}}
+
 async function runScript(scriptKey) {{
   const argLine = document.getElementById('args').value.trim();
   const args = argLine ? argLine.split(/\\s+/) : [];
@@ -1008,6 +1148,7 @@ async function runSelectedScript() {{
 }}
 
 loadOverview();
+loadDocumentation();
 describeScript(selectedScript);
 </script>
 </body>
@@ -1091,10 +1232,16 @@ class Handler(BaseHTTPRequestHandler):
             self._send_html(dashboard_html())
             return
         if path == "/api/config":
+            docs = discover_documentation()
             payload = {
                 "scripts": SCRIPT_CATALOG,
                 "settings": SETTINGS,
                 "api_sources": {name: {"configured": bool(value)} for name, value in API_KEYS.items()},
+                "documentation": {
+                    "items": docs,
+                    "count": len(docs),
+                    "readme_count": sum(1 for item in docs if item["category"] == "readme"),
+                },
                 "monetization": {
                     "config_path": str(MONETIZATION_CONFIG_PATH),
                     "events_path": str(MONETIZATION_EVENTS_PATH),
@@ -1107,6 +1254,23 @@ class Handler(BaseHTTPRequestHandler):
                 },
             }
             self._send_json(payload)
+            return
+        if path == "/api/readmes":
+            docs = discover_documentation()
+            self._send_json(
+                {
+                    "ok": True,
+                    "items": docs,
+                    "count": len(docs),
+                    "readme_count": sum(1 for item in docs if item["category"] == "readme"),
+                }
+            )
+            return
+        if path == "/api/readme":
+            _, query = self._path_parts()
+            rel_path = (query.get("path") or [""])[0]
+            _, payload, status = load_documentation_file(rel_path)
+            self._send_json(payload, status=status)
             return
         if path == "/api/monetization":
             self._send_json({"ok": True, "config": load_monetization_config(), "path": str(MONETIZATION_CONFIG_PATH)})

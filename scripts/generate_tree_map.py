@@ -6,7 +6,18 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "DIRECTORY_TREE.md"
 MAX_DEPTH = 3
-SKIP_DIRS = {".git", "__pycache__", "node_modules", "_deploy", ".mypy_cache", ".pytest_cache"}
+SKIP_DIRS = {
+    ".git",
+    ".agents",
+    ".codex",
+    "__pycache__",
+    "node_modules",
+    "_deploy",
+    "_trash",
+    "service-guides",
+    ".mypy_cache",
+    ".pytest_cache",
+}
 
 
 def include(path: Path) -> bool:

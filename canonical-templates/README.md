@@ -27,6 +27,14 @@ pages:
 - For state, city, county, and hub templates, use the contextual service guide
   module with `/assets/service-guide-data.js` and
   `/assets/service-guide-context.js`.
+- Include reusable monetization slots through `/assets/monetization.js` where
+  the page type supports offers, with partner targeting controlled by
+  `data/monetization_config.json`.
+- Keep affiliate disclosures available through the shared footer when
+  monetization is activated.
+- Prefer service-guide CTAs first, especially detailed project guides, and keep
+  AdSense-compatible display slots disabled until configured.
+- Preserve click/event tracking hooks before sending traffic to partners.
 
 | Template copy | Source page |
 | --- | --- |

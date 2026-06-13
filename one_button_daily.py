@@ -6,8 +6,6 @@
 #  1) OPTIONAL: Publish a safe batch of popular city pages (runs publish_popular_cities_daily.py if present)
 #  1) Runs the single canonical generator:
 #       scripts/build_site.py
-#  1) Runs the first available generator:
-#       make-site.py OR scripts/build_site.py OR newfile.py
 #     (publishes today's service pages + ensures hubs/legal)
 #  2) OPTIONAL: Runs relink_existing_pages.py
 #  3) OPTIONAL: Runs auto_clean_site.py
@@ -41,9 +39,7 @@ SITE_URL = "https://databyarea.com"
 RUN_LOG = Path(".daily_runs.json")
 SINGLE_GENERATOR = Path("scripts/build_site.py")
 GENERATOR_CANDIDATES = [
-    Path("make-site.py"),
     Path("scripts/build_site.py"),
-    Path("newfile.py"),
 ]
 RELINK = Path("relink_existing_pages.py")
 CLEANER = Path("auto_clean_site.py")

@@ -7,10 +7,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
     - `.github/workflows/content-distribution-automation.yml`
     - `.github/workflows/daily-automation.yml`
     - `.github/workflows/daily-generator.yml`
+    - `.github/workflows/production-pass.yml`
     - `.github/workflows/weekly-kpi-report.yml`
-- `_trash/`
-  - `_trash/.trashed-1772080145-Generate-DataByArea`
-  - `_trash/List.py`
 - `about/`
   - `about/index.html`
 - `admin/`
@@ -29,12 +27,56 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `assets/logo-icon.svg`
   - `assets/logo.png`
   - `assets/logoww.png`
+  - `assets/monetization.js`
+  - `assets/search-autocomplete.js`
+  - `assets/search-index.json`
+  - `assets/service-guide-context.js`
+  - `assets/service-guide-data.js`
   - `assets/site-version.json`
   - `assets/state-selection-visual.svg`
   - `assets/styles.css`
   - `assets/version-footer.js`
 - `california/`
   - `california/index.html`
+- `canonical-templates/`
+  - `canonical-templates/admin-panel/`
+    - `canonical-templates/admin-panel/index.html`
+  - `canonical-templates/city-dashboard/`
+    - `canonical-templates/city-dashboard/index.html`
+  - `canonical-templates/city-insight/`
+    - `canonical-templates/city-insight/index.html`
+  - `canonical-templates/cost-of-living-state/`
+    - `canonical-templates/cost-of-living-state/index.html`
+  - `canonical-templates/county-insight/`
+    - `canonical-templates/county-insight/index.html`
+  - `canonical-templates/detailed-high-intent-service-guide/`
+    - `canonical-templates/detailed-high-intent-service-guide/index.html`
+  - `canonical-templates/high-intent-service-guide/`
+    - `canonical-templates/high-intent-service-guide/index.html`
+  - `canonical-templates/insurance-costs-state/`
+    - `canonical-templates/insurance-costs-state/index.html`
+  - `canonical-templates/legal-trust-page/`
+    - `canonical-templates/legal-trust-page/index.html`
+  - `canonical-templates/national-category-hub/`
+    - `canonical-templates/national-category-hub/index.html`
+  - `canonical-templates/property-taxes-state/`
+    - `canonical-templates/property-taxes-state/index.html`
+  - `canonical-templates/search-page/`
+    - `canonical-templates/search-page/index.html`
+  - `canonical-templates/service-guide-city/`
+    - `canonical-templates/service-guide-city/index.html`
+  - `canonical-templates/service-guide-hub/`
+    - `canonical-templates/service-guide-hub/index.html`
+  - `canonical-templates/service-guide-national/`
+    - `canonical-templates/service-guide-national/index.html`
+  - `canonical-templates/service-guide-state/`
+    - `canonical-templates/service-guide-state/index.html`
+  - `canonical-templates/state-hub/`
+    - `canonical-templates/state-hub/index.html`
+  - `canonical-templates/utility-costs-state/`
+    - `canonical-templates/utility-costs-state/index.html`
+  - `canonical-templates/index.html`
+  - `canonical-templates/README.md`
 - `colorado/`
   - `colorado/index.html`
 - `concrete-driveway-cost-by-state/`
@@ -248,6 +290,13 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
     - `cost-of-living/wyoming/index.html`
   - `cost-of-living/index.html`
 - `data/`
+  - `data/contracts/`
+    - `data/contracts/databyarea-location-v1.json`
+  - `data/places/`
+    - `data/places/minnesota/`
+      - `data/places/minnesota/kiester.json`
+  - `data/state-insights/`
+    - `data/state-insights/minnesota.json`
   - `data/cities.csv`
   - `data/city_url_migration_map.json`
   - `data/content_briefs.json`
@@ -255,7 +304,9 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `data/core_pages.txt`
   - `data/generate_csv_system.py`
   - `data/index.html`
+  - `data/metric_definitions.json`
   - `data/minnesota_utility_city_store.csv`
+  - `data/monetization_config.json`
   - `data/published_manifest.json`
   - `data/weekly_kpi_inputs.json`
 - `deck-building-cost-by-state/`
@@ -265,6 +316,7 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
 - `docs/`
   - `docs/90-day-execution-board.md`
   - `docs/canonical-city-dashboard-migration-plan.md`
+  - `docs/data-layer.md`
   - `docs/DUPLICATION_REMEDIATION_PROMPTS.md`
   - `docs/insight-landing-page-component.tsx`
   - `docs/monetization_admin_server_plan.md`
@@ -291,6 +343,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `illinois/index.html`
 - `indiana/`
   - `indiana/index.html`
+- `insight-template/`
+  - `insight-template/index.html`
 - `insurance-costs/`
   - `insurance-costs/alabama/`
     - `insurance-costs/alabama/birmingham/`
@@ -501,6 +555,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `kansas/index.html`
 - `kentucky/`
   - `kentucky/index.html`
+- `login/`
+  - `login/index.html`
 - `louisiana/`
   - `louisiana/index.html`
 - `maine/`
@@ -862,6 +918,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
     - `minnesota/kenyon/index.html`
   - `minnesota/kiester/`
     - `minnesota/kiester/index.html`
+  - `minnesota/kiester-template/`
+    - `minnesota/kiester-template/index.html`
   - `minnesota/la-crescent/`
     - `minnesota/la-crescent/index.html`
   - `minnesota/lake-city/`
@@ -1566,6 +1624,7 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
     - `scripts/generators/validate_keys.py`
   - `scripts/.gitignore`
   - `scripts/backup_snapshot.py`
+  - `scripts/build_search_index.py`
   - `scripts/build_site.py`
   - `scripts/check_conflict_markers.py`
   - `scripts/city_url_migration.py`
@@ -1575,16 +1634,24 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `scripts/eia_pipeline.py`
   - `scripts/ensure_state_stats_pages.py`
   - `scripts/ensure_states.py`
+  - `scripts/env_loader.py`
+  - `scripts/generate_service_guides.py`
   - `scripts/generate_tree_map.py`
   - `scripts/generate_us_city_dataset.py`
   - `scripts/index.html`
-  - `scripts/oldgen.py`
+  - `scripts/local-static-server.ps1`
+  - `scripts/production_check.py`
+  - `scripts/run_production_gates.py`
+  - `scripts/service_guide_data.py`
   - `scripts/site_quality_agents.py`
   - `scripts/update_homepage_modules.py`
   - `scripts/uptime_monitor.py`
+  - `scripts/validate_data_layer.py`
   - `scripts/weekly_kpi_report.py`
 - `search/`
   - `search/index.html`
+- `signup/`
+  - `signup/index.html`
 - `site/`
   - `site/api-dashboard/`
     - `site/api-dashboard/index.html`
@@ -1707,6 +1774,8 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `south-carolina/index.html`
 - `south-dakota/`
   - `south-dakota/index.html`
+- `templates/`
+  - `templates/high-intent-service-guide.html`
 - `tennessee/`
   - `tennessee/index.html`
 - `terms/`
@@ -2629,15 +2698,13 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
   - `wisconsin/index.html`
 - `wyoming/`
   - `wyoming/index.html`
-- `.daily_city_runs.json`
-- `.daily_runs.json`
+- `.env.example`
+- `.env.local`
 - `.gitignore`
 - `admin_backend.py`
 - `auto_clean_site.py`
 - `AUTOMATION_STATUS.md`
-- `cleanup_repo.sh`
 - `CLOUDFLARE_GITHUB_AUTODEPLOY.md`
-- `databyarea-site.zip`
 - `directory_structure.txt`
 - `DIRECTORY_TREE.md`
 - `file_list.txt`
@@ -2647,17 +2714,14 @@ Generated clean tree map (depth <= 3, noisy/build dirs excluded).
 - `LEAFLET_GEOJSON_STEPS.md`
 - `makesitemap.py`
 - `monetization_flags.json`
-- `newfile.py`
 - `one_button_daily.py`
 - `popular_cities.csv`
 - `publish_popular_cities_daily.py`
 - `published_manifest.json`
 - `README.md`
 - `relink_existing_pages.py`
-- `repo_snapshot.zip`
 - `robots.txt`
 - `run_daily.sh`
 - `scan_and_cleanup.py`
 - `setup_autorun.sh`
 - `sitemap.xml`
-- `tt.zip`

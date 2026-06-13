@@ -1,4 +1,7 @@
 # Runtime logs/state
+__pycache__/
+*.pyc
+.pytest_cache/
 .daily_runs.json
 .daily_city_runs.json
 .env
@@ -6,7 +9,14 @@
 !.env.example
 
 # Generated deploy packages and run outputs
+*.zip
+*.7z
+*.rar
+*.tar
+*.tar.gz
 _deploy/*.zip
+_trash/
+_deploy/logs/
 _deploy/last_daily_run_summary.json
 _deploy/last_daily_run_summary.md
 _deploy/autorun.log

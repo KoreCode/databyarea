@@ -42,7 +42,6 @@ KEEP_DIRS = {
 EXACT_JUNK_FILES = {
     "Gen-OLD.py",
     "List.py",
-    "newfile.py",
     "Generate-DataByArea",
 }
 
