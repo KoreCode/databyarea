@@ -1,6 +1,9 @@
 # Runtime logs/state
 .daily_runs.json
 .daily_city_runs.json
+.env
+.env.*
+!.env.example
 
 # Generated deploy packages and run outputs
 _deploy/*.zip

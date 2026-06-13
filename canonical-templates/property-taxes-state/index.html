@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Property Taxes in Minnesota | Rates, Burden, City Context | DataByArea</title>
+  <meta name="description" content="Minnesota property tax guide with effective-rate context, homeowner burden examples, county and city comparison notes, tax-bill checklist, and links to related local cost pages." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="canonical" href="https://databyarea.com/property-taxes/minnesota/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+  <style>
+    .tax-state-page{background:linear-gradient(180deg,#e8f0f8,#f6f9fc 30%,#edf3f8);color:#102033}
+    .tax-main{padding:0 4px 18px}
+    .tax-hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(320px,.9fr);gap:18px;margin:0 -16px;padding:24px 22px;background:linear-gradient(112deg,#173957,#0f6572 58%,#266e57);color:#f4fbff}
+    .tax-hero h1{max-width:13ch;margin:0;font-size:52px;line-height:1.03;letter-spacing:0}
+    .tax-hero p{max-width:72ch;margin:9px 0 0;color:#d9eef7;font-size:18px;line-height:1.48}
+    .tax-breadcrumbs{margin:0 0 10px;color:#cde6f3;font-size:14px}
+    .tax-breadcrumbs a{color:#fff;font-weight:800}
+    .tax-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:17px}
+    .tax-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:9px 14px;border-radius:8px;font-size:14px;font-weight:900;text-decoration:none}
+    .tax-actions a:first-child{background:#ff704d;color:#fff}
+    .tax-actions a:not(:first-child){border:1px solid rgba(255,255,255,.42);background:#fff;color:#0f516f}
+    .tax-panel{align-self:stretch;border:1px solid rgba(229,247,250,.42);border-radius:12px;background:rgba(255,255,255,.13);padding:14px;box-shadow:0 14px 30px rgba(5,38,51,.18)}
+    .tax-panel h2{margin:0 0 10px;color:#fff;font-size:18px}
+    .tax-panel-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+    .tax-panel-grid div{border:1px solid rgba(229,247,250,.24);border-radius:10px;background:rgba(255,255,255,.13);padding:10px}
+    .tax-panel-grid strong{display:block;color:#fff;font-size:24px;line-height:1}
+    .tax-panel-grid span{display:block;margin-top:5px;color:#d3edf4;font-size:12px;font-weight:800;text-transform:uppercase}
+    .tax-source{margin:11px 0 0;color:#cfeaf2;font-size:12px;line-height:1.4}
+    .tax-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:14px}
+    .tax-card{border:1px solid #c9d7e4;border-radius:12px;background:#fff;padding:15px;box-shadow:0 8px 18px rgba(15,23,42,.07)}
+    .tax-card h2{margin:0 0 8px;color:#163e5a;font-size:24px;line-height:1.15}
+    .tax-card h3{margin:0 0 7px;color:#173f5c;font-size:18px;line-height:1.2}
+    .tax-card p{margin:0;color:#456175;font-size:14px;line-height:1.47}
+    .tax-kpi{display:block;margin-bottom:5px;color:#0f6a75;font-size:30px;font-weight:900;line-height:1}
+    .tax-label{display:block;margin-bottom:7px;color:#667c8e;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.06em}
+    .tax-wide{grid-column:span 2}
+    .tax-full{grid-column:1 / -1}
+    .tax-table-wrap{overflow:auto;border:1px solid #d8e2ec;border-radius:10px}
+    .tax-table{width:100%;min-width:760px;border-collapse:collapse;font-size:13px}
+    .tax-table caption{text-align:left;font-weight:900;color:#2f4d62;padding:0 0 7px}
+    .tax-table th,.tax-table td{border-bottom:1px solid #d8e2ec;padding:9px 10px;text-align:left;vertical-align:top}
+    .tax-table thead th{background:#edf4fa;color:#274c64;font-size:11px;text-transform:uppercase}
+    .tax-table tbody th{color:#173f5c}
+    .tax-table td{color:#102f43;font-weight:800}
+    .tax-table tr:last-child th,.tax-table tr:last-child td{border-bottom:0}
+    .example-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+    .example-card{border:1px solid #d5e3ec;border-radius:11px;background:#f8fbff;padding:12px}
+    .example-card strong{display:block;color:#173f5c;font-size:17px}
+    .example-card span{display:block;margin-top:4px;color:#0f6a75;font-size:24px;font-weight:900}
+    .example-card p{margin-top:6px;font-size:13px}
+    .tax-stack{display:grid;gap:8px}
+    .tax-stack div{display:grid;grid-template-columns:128px 1fr auto;gap:8px;align-items:center}
+    .tax-stack span{color:#36586e;font-size:13px;font-weight:900}
+    .tax-stack i{height:14px;border-radius:999px;background:linear-gradient(90deg,#0f6a75,#66a95f);width:var(--w)}
+    .tax-stack b{color:#102f43;font-size:13px}
+    .tax-links{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}
+    .tax-links a{display:flex;align-items:center;justify-content:center;min-height:42px;border:1px solid #cfe0eb;border-radius:9px;background:#f7fbff;color:#183f58;font-size:13px;font-weight:900;text-align:center;text-decoration:none}
+    .tax-links a:hover{border-color:#8bb7ca;background:#eef7ff}
+    .city-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+    .city-card{display:flex;flex-direction:column;justify-content:space-between;min-height:145px;border:1px solid #d1e1eb;border-radius:12px;background:#fff;padding:12px;text-decoration:none;box-shadow:0 1px 4px rgba(15,23,42,.05)}
+    .city-card strong{display:block;color:#163e5a;font-size:17px}
+    .city-card span{display:block;margin-top:5px;color:#456175;font-size:13px;line-height:1.4}
+    .city-card em{display:block;margin-top:10px;color:#0f6a75;font-style:normal;font-size:12px;font-weight:900;text-transform:uppercase}
+    .city-card:hover{border-color:#8bb7ca;background:#f7fbff;text-decoration:none}
+    .selector-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;margin-top:10px}
+    .selector-row select{min-width:0;border:1px solid #c6d8e5;border-radius:9px;background:#fff;color:#102f43;padding:10px 11px;font-size:14px;font-weight:800}
+    .selector-row button{border:0;border-radius:9px;background:#0f6a75;color:#fff;padding:10px 13px;font-size:13px;font-weight:900;cursor:pointer}
+    .source-list{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+    .source-list li{border:1px solid #d8e2ec;border-radius:9px;background:#f8fbff;padding:9px;color:#456175;font-size:13px;line-height:1.45}
+    .source-list strong{color:#173f5c}
+    @media (max-width:1100px){
+      .tax-hero{grid-template-columns:1fr}
+      .tax-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .city-grid,.tax-links{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .example-grid{grid-template-columns:1fr}
+    }
+    @media (max-width:700px){
+      .tax-hero{margin:0 -12px;padding:18px 12px}
+      .tax-hero h1{font-size:36px}
+      .tax-grid,.city-grid,.tax-links,.selector-row,.tax-panel-grid{grid-template-columns:1fr}
+      .tax-wide{grid-column:auto}
+      .tax-actions a{width:100%}
+      .tax-stack div{grid-template-columns:100px 1fr auto}
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How are Minnesota property taxes calculated?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Minnesota property tax bills are shaped by estimated market value, property classification, local levies, tax capacity, voter-approved items, and any applicable credits or exclusions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why can two Minnesota homes with similar values have different tax bills?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Different counties, cities, school districts, special districts, property classifications, exemptions, and levy changes can produce different tax bills for similarly valued homes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What should I check before buying a home in Minnesota?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Review the current tax statement, estimated market value, classification, special assessments, homestead status, school district, and whether the seller's tax bill reflects your future use."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="area-dashboard-page tax-state-page">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="container area-dashboard-shell">
+    <header class="area-top-nav area-home-header">
+      <a href="/" class="area-home-brand" aria-label="DataByArea.com home">
+        <span class="area-home-logo" aria-hidden="true">
+          <img src="/assets/logo-icon.svg" alt="" width="36" height="36" decoding="async" fetchpriority="high" />
+        </span>
+        <span>DataByArea.com</span>
+      </a>
+
+      <div class="area-home-actions">
+        <a class="area-home-button search" href="/search/">Search Data</a>
+        <a class="area-home-login" href="/login/">Log In</a>
+        <a class="area-home-button signup" href="/signup/">Sign Up</a>
+      </div>
+    </header>
+
+    <main id="main-content" class="tax-main">
+      <section class="tax-hero" aria-labelledby="tax-title">
+        <div>
+          <div class="tax-breadcrumbs"><a href="/">Home</a> &rsaquo; <a href="/property-taxes/">Property Taxes</a> &rsaquo; Minnesota</div>
+          <h1 id="tax-title">Property Taxes in Minnesota</h1>
+          <p>Minnesota property tax bills depend on more than home value. County, city, school district, classification, local levies, special assessments, and credits all shape the final annual bill. Use this guide to understand what to compare before buying, refinancing, or relocating.</p>
+          <div class="tax-actions">
+            <a href="#tax-examples">Tax Examples</a>
+            <a href="#comparison-table">Compare Areas</a>
+            <a href="#city-pages">Local Pages</a>
+            <a href="/cost-of-living/minnesota/">Cost of Living</a>
+          </div>
+        </div>
+        <aside class="tax-panel" aria-label="Minnesota property tax snapshot">
+          <h2>Homeowner Planning Snapshot</h2>
+          <div class="tax-panel-grid">
+            <div><strong>$3,180</strong><span>Statewide tax signal</span></div>
+            <div><strong>1.1%</strong><span>Effective-rate guide</span></div>
+            <div><strong>Local</strong><span>Levies drive bills</span></div>
+            <div><strong>Annual</strong><span>Verify statement</span></div>
+          </div>
+          <p class="tax-source">Use these as planning anchors. Actual tax bills should be checked against the parcel's current tax statement and local assessor records.</p>
+        </aside>
+      </section>
+
+      <section class="tax-grid" aria-label="Minnesota property tax summary">
+        <article class="tax-card">
+          <span class="tax-label">Big idea</span>
+          <span class="tax-kpi">Value + levy</span>
+          <p>The tax bill is not just a rate. Market value, class rate, local levies, school district, and credits all interact.</p>
+        </article>
+        <article class="tax-card">
+          <span class="tax-label">Buyer risk</span>
+          <span class="tax-kpi">Escrow jump</span>
+          <p>Monthly payment estimates can miss tax changes if the seller's homestead status or assessed value differs from your future situation.</p>
+        </article>
+        <article class="tax-card">
+          <span class="tax-label">Local variation</span>
+          <span class="tax-kpi">High</span>
+          <p>Neighboring cities can carry different school, county, city, and special district levies even when home prices look similar.</p>
+        </article>
+        <article class="tax-card">
+          <span class="tax-label">Best document</span>
+          <span class="tax-kpi">Tax statement</span>
+          <p>Always review the parcel-level tax statement, special assessments, and homestead classification before final budget decisions.</p>
+        </article>
+
+        <article class="tax-card tax-wide" id="tax-examples">
+          <h2>Estimated Annual Tax Examples</h2>
+          <p>These examples show how effective tax rate changes can affect the owner budget.</p>
+          <div class="example-grid" style="margin-top:12px">
+            <div class="example-card">
+              <strong>$175k home</strong>
+              <span>$1.8k-$2.4k</span>
+              <p>Common small-town planning range, depending on local levies and classification.</p>
+            </div>
+            <div class="example-card">
+              <strong>$300k home</strong>
+              <span>$3.0k-$4.2k</span>
+              <p>Useful statewide midpoint for escrow planning and city-to-city comparisons.</p>
+            </div>
+            <div class="example-card">
+              <strong>$500k home</strong>
+              <span>$5.2k-$7.2k</span>
+              <p>Higher-value homes can see larger annual swings from levy or assessment changes.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="tax-card tax-wide">
+          <h2>What Moves the Tax Bill</h2>
+          <div class="tax-stack" aria-label="Minnesota property tax bill drivers" style="margin-top:10px">
+            <div><span>Home value</span><i style="--w:92%"></i><b>Highest</b></div>
+            <div><span>School levy</span><i style="--w:76%"></i><b>High</b></div>
+            <div><span>City levy</span><i style="--w:64%"></i><b>High</b></div>
+            <div><span>County levy</span><i style="--w:58%"></i><b>Medium</b></div>
+            <div><span>Classification</span><i style="--w:52%"></i><b>Important</b></div>
+            <div><span>Special assessments</span><i style="--w:38%"></i><b>Parcel-specific</b></div>
+          </div>
+        </article>
+
+        <section class="tax-card tax-full" id="comparison-table" aria-labelledby="comparison-title">
+          <h2 id="comparison-title">Minnesota Area Comparison Guide</h2>
+          <p>Use this table to frame the questions to ask by market type. Parcel-level data should always be verified locally.</p>
+          <div class="tax-table-wrap" style="margin-top:12px">
+            <table class="tax-table" aria-label="Minnesota property tax comparison table">
+              <thead>
+                <tr>
+                  <th>Area</th>
+                  <th>Market Type</th>
+                  <th>Tax-Bill Watch Item</th>
+                  <th>Buyer Question</th>
+                  <th>Open</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Kiester</th><td>Small town</td><td>Lower home values, but levy and county context still matter.</td><td>What is the current parcel tax statement and special assessment status?</td><td><a href="/minnesota/kiester/">City dashboard</a></td></tr>
+                <tr><th scope="row">Wells</th><td>Nearby peer</td><td>Useful rural comparison for similar-sized homes.</td><td>How does the school district and city levy compare with nearby towns?</td><td><a href="/minnesota/wells/">City dashboard</a></td></tr>
+                <tr><th scope="row">Albert Lea</th><td>Regional city</td><td>More services can mean different city levy structure.</td><td>Are taxes bundled with lake, utility, or local improvement assessments?</td><td><a href="/minnesota/albert-lea/">City dashboard</a></td></tr>
+                <tr><th scope="row">Rochester</th><td>Regional center</td><td>Higher-value homes make escrow accuracy more important.</td><td>Will a recent sale change estimated market value or homestead assumptions?</td><td><a href="/minnesota/rochester/">City dashboard</a></td></tr>
+                <tr><th scope="row">Mankato</th><td>College/regional market</td><td>Neighborhood, school district, and property type can change the bill.</td><td>Is the property owner-occupied, rental, or mixed-use for classification?</td><td><a href="/minnesota/mankato/">City dashboard</a></td></tr>
+                <tr><th scope="row">Duluth</th><td>Northern city</td><td>Older housing stock can add maintenance alongside taxes.</td><td>Are there city, utility, or street improvement assessments?</td><td><a href="/minnesota/duluth/">City dashboard</a></td></tr>
+                <tr><th scope="row">Minneapolis</th><td>Large city</td><td>Higher values and urban levy mix require parcel-specific review.</td><td>How do city, county, school, park, and special district lines affect the bill?</td><td><a href="/property-taxes/minnesota/minneapolis/">Tax page</a></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <article class="tax-card tax-wide">
+          <h2>How to Read a Minnesota Tax Bill</h2>
+          <ul class="source-list">
+            <li><strong>Estimated market value:</strong> The assessor's value estimate used in the tax calculation process.</li>
+            <li><strong>Classification:</strong> Homestead, non-homestead, rental, commercial, agricultural, and other classes can be treated differently.</li>
+            <li><strong>Taxing districts:</strong> County, city, township, school, special districts, and voter-approved levies may all appear.</li>
+            <li><strong>Special assessments:</strong> Street, utility, drainage, or local improvement charges can change a parcel's total bill.</li>
+          </ul>
+        </article>
+
+        <article class="tax-card tax-wide">
+          <h2>Buyer Checklist</h2>
+          <ul class="source-list">
+            <li><strong>Ask for the current tax statement</strong> and compare it with the listing's monthly payment estimate.</li>
+            <li><strong>Confirm homestead status</strong> because the seller's bill may not match your future ownership use.</li>
+            <li><strong>Check special assessments</strong> for street, sewer, water, sidewalk, or local improvement charges.</li>
+            <li><strong>Review escrow assumptions</strong> with the lender if taxes are likely to change after purchase.</li>
+          </ul>
+        </article>
+
+        <article class="tax-card tax-wide">
+          <h2>Related Minnesota Cost Pages</h2>
+          <p>Property taxes are one part of the ownership budget. Open the companion pages for a fuller picture.</p>
+          <div class="tax-links" style="margin-top:10px">
+            <a href="/cost-of-living/minnesota/">Cost of Living</a>
+            <a href="/utility-costs/minnesota/">Utilities</a>
+            <a href="/property-taxes/minnesota/">Property Taxes</a>
+            <a href="/insurance-costs/minnesota/">Insurance</a>
+          </div>
+        </article>
+
+        <article class="tax-card tax-wide">
+          <h2>Switch State</h2>
+          <p>Open another state property tax profile without returning to the national hub.</p>
+          <form data-state-selector>
+            <label class="mutedSmall" for="tax-state-selector">Choose a state</label>
+            <div class="selector-row">
+              <select id="tax-state-selector" autocomplete="off" data-dba-state-select data-dba-category="property-taxes" data-current-state="minnesota">
+                <option value="">Choose a state...</option>
+                <option value="/property-taxes/iowa/">Iowa</option>
+                <option value="/property-taxes/north-dakota/">North Dakota</option>
+                <option value="/property-taxes/south-dakota/">South Dakota</option>
+                <option value="/property-taxes/wisconsin/">Wisconsin</option>
+                <option value="/property-taxes/illinois/">Illinois</option>
+                <option value="/property-taxes/california/">California</option>
+                <option value="/property-taxes/texas/">Texas</option>
+                <option value="/property-taxes/florida/">Florida</option>
+              </select>
+              <button type="submit">View State</button>
+            </div>
+          </form>
+        </article>
+
+        <section class="tax-card tax-full" id="city-pages" aria-labelledby="city-pages-title">
+          <h2 id="city-pages-title">Minnesota Property Tax and City Pages</h2>
+          <p>Open available tax pages or broader city dashboards when a dedicated tax page is not yet available.</p>
+          <div class="city-grid" style="margin-top:12px">
+            <a class="city-card" href="/property-taxes/minnesota/minneapolis/"><strong>Minneapolis</strong><span>Dedicated property tax page with city-level tax methodology and local links.</span><em>Open tax page</em></a>
+            <a class="city-card" href="/minnesota/kiester/"><strong>Kiester</strong><span>City dashboard with property tax, home value, and nearby comparison context.</span><em>Open city dashboard</em></a>
+            <a class="city-card" href="/minnesota/wells/"><strong>Wells</strong><span>Nearby rural benchmark for tax and housing comparisons.</span><em>Open city dashboard</em></a>
+            <a class="city-card" href="/minnesota/winnebago/"><strong>Winnebago</strong><span>Faribault County comparison point for local cost context.</span><em>Open city dashboard</em></a>
+            <a class="city-card" href="/minnesota/albert-lea/"><strong>Albert Lea</strong><span>Regional southern Minnesota dashboard for home value and ownership cost comparison.</span><em>Open city dashboard</em></a>
+            <a class="city-card" href="/minnesota/rochester/"><strong>Rochester</strong><span>Regional center dashboard for higher-value housing and ownership costs.</span><em>Open city dashboard</em></a>
+            <a class="city-card" href="/minnesota/mankato/"><strong>Mankato</strong><span>Regional market dashboard with housing, taxes, and cost-of-living context.</span><em>Open city dashboard</em></a>
+            <a class="city-card" href="/minnesota/duluth/"><strong>Duluth</strong><span>Northern Minnesota dashboard with climate, housing, and ownership-cost context.</span><em>Open city dashboard</em></a>
+          </div>
+        </section>
+
+        <article class="tax-card tax-wide">
+          <h2>Find a Property Tax Page</h2>
+          <p>Use the dropdown for available Minnesota property tax profiles.</p>
+          <form data-city-selector>
+            <label class="mutedSmall" for="tax-city-selector">Choose a city</label>
+            <div class="selector-row">
+              <select id="tax-city-selector" autocomplete="off" data-dba-city-select data-dba-state="minnesota" data-dba-category="property-taxes">
+                <option value="">Choose a city page...</option>
+                <option value="/property-taxes/minnesota/minneapolis/">Minneapolis</option>
+                <option value="/minnesota/kiester/">Kiester city dashboard</option>
+                <option value="/minnesota/wells/">Wells city dashboard</option>
+                <option value="/minnesota/winnebago/">Winnebago city dashboard</option>
+                <option value="/minnesota/albert-lea/">Albert Lea city dashboard</option>
+                <option value="/minnesota/rochester/">Rochester city dashboard</option>
+                <option value="/minnesota/mankato/">Mankato city dashboard</option>
+                <option value="/minnesota/duluth/">Duluth city dashboard</option>
+              </select>
+              <button type="submit">Open Page</button>
+            </div>
+          </form>
+        </article>
+
+        <article class="tax-card tax-wide">
+          <h2>Data Sources and Methodology</h2>
+          <ul class="source-list">
+            <li><strong>Primary local check:</strong> Parcel-level county or city property tax statements should be treated as the final source for individual homes.</li>
+            <li><strong>Comparison approach:</strong> State and city pages use public tax, housing, and cost benchmarks to explain local affordability patterns.</li>
+            <li><strong>Estimate quality:</strong> Effective-rate examples are planning tools. Actual bills vary by parcel, classification, district, levy, credit, exemption, and assessment status.</li>
+          </ul>
+        </article>
+        <article data-service-guide-module data-services="roofing,foundation,concrete-driveway,garage-door" data-title="Property Service Guides" data-intro="Open a contractor-rate guide tailored to this state page."></article>
+      </section>
+    </main>
+
+    <footer class="footer home-footer">
+      <p><strong>Disclaimer:</strong> Informational estimates only. Property tax bills vary by parcel, classification, district, levy, exemption, and special assessment.</p>
+      <p><a href="/about/">About</a> &middot; <a href="/privacy/">Privacy Policy</a> &middot; <a href="/contact/">Contact</a></p>
+      <p>Last updated: 2026-06-12</p>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      function bindSelector(selector) {
+        var form = document.querySelector(selector);
+        if (!form) return;
+        var select = form.querySelector('select');
+        form.addEventListener('submit', function (event) {
+          event.preventDefault();
+          if (select && select.value) window.location.href = select.value;
+        });
+        select.addEventListener('change', function () {
+          if (select.value) window.location.href = select.value;
+        });
+      }
+      bindSelector('[data-state-selector]');
+      bindSelector('[data-city-selector]');
+    })();
+  </script>
+  <script defer src="/assets/search-autocomplete.js"></script>
+  <script defer src="/assets/service-guide-data.js"></script>
+  <script defer src="/assets/service-guide-context.js"></script>
+  <script defer src="/assets/version-footer.js"></script>
+</body>
+</html>

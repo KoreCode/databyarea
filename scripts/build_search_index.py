@@ -11,6 +11,66 @@ CATEGORIES = {
     "property-taxes": "property taxes",
     "insurance-costs": "insurance costs",
 }
+SERVICE_GUIDES = {
+    "plumber": "plumber rates",
+    "electrician": "electrician rates",
+    "hvac": "HVAC installation",
+    "roofing": "roof replacement",
+    "water-heater": "water heater installation",
+    "garage-door": "garage door repair",
+    "foundation": "foundation repair",
+    "concrete-driveway": "concrete driveway cost",
+}
+SERVICE_PROJECTS = {
+    "plumber": {
+        "leak-repair": "leak repair",
+        "drain-cleaning": "drain cleaning",
+        "faucet-replacement": "faucet replacement",
+        "pipe-replacement": "pipe replacement",
+    },
+    "electrician": {
+        "new-outlets": "new outlets",
+        "panel-upgrade": "panel upgrade",
+        "ev-charger-installation": "EV charger installation",
+        "light-fixture-installation": "light fixture installation",
+    },
+    "hvac": {
+        "ac-replacement": "AC replacement",
+        "furnace-replacement": "furnace replacement",
+        "heat-pump-installation": "heat pump installation",
+        "ductwork-repair": "ductwork repair",
+    },
+    "roofing": {
+        "asphalt-shingle-replacement": "asphalt shingle replacement",
+        "roof-leak-repair": "roof leak repair",
+        "flashing-repair": "flashing repair",
+        "roof-deck-repair": "roof deck repair",
+    },
+    "water-heater": {
+        "tank-water-heater-replacement": "tank water heater replacement",
+        "tankless-water-heater-installation": "tankless water heater installation",
+        "expansion-tank-installation": "expansion tank installation",
+        "water-heater-code-upgrades": "water heater code upgrades",
+    },
+    "garage-door": {
+        "spring-replacement": "spring replacement",
+        "opener-installation": "opener installation",
+        "panel-replacement": "panel replacement",
+        "full-door-replacement": "full door replacement",
+    },
+    "foundation": {
+        "crack-repair": "foundation crack repair",
+        "pier-installation": "pier installation",
+        "basement-waterproofing": "basement waterproofing",
+        "structural-stabilization": "structural stabilization",
+    },
+    "concrete-driveway": {
+        "driveway-replacement": "driveway replacement",
+        "concrete-removal": "concrete removal",
+        "stamped-concrete": "stamped concrete",
+        "reinforced-driveway": "reinforced driveway",
+    },
+}
 STATE_NAMES = {
     "alabama": ("Alabama", "AL"),
     "alaska": ("Alaska", "AK"),
@@ -203,6 +263,98 @@ def build_index():
                     "city": city_slug,
                     "aliases": aliases,
                 })
+
+    service_root = ROOT / "service-guides"
+    if (service_root / "index.html").exists():
+        add_item(items, seen, {
+            "title": "Service Guide Hub",
+            "url": "/service-guides/",
+            "type": "Service guide hub",
+            "category": "service-guide",
+            "aliases": ["service guides", "contractor rates", "project rates", "home service costs"],
+        })
+
+    for service_slug, service_label in SERVICE_GUIDES.items():
+        if page_exists("service-guides", service_slug):
+            add_item(items, seen, {
+                "title": label_from_slug(service_label),
+                "url": f"/service-guides/{service_slug}/",
+                "type": "Service guide",
+                "category": "service-guide",
+                "service": service_slug,
+                "aliases": [service_label, f"{service_label} by state", f"{service_label} near me"],
+            })
+        for project_slug, project_label in SERVICE_PROJECTS.get(service_slug, {}).items():
+            if page_exists("service-guides", service_slug, project_slug):
+                add_item(items, seen, {
+                    "title": f"{label_from_slug(project_label)} cost",
+                    "url": f"/service-guides/{service_slug}/{project_slug}/",
+                    "type": "Detailed service guide",
+                    "category": "service-guide",
+                    "service": service_slug,
+                    "project": project_slug,
+                    "aliases": [project_label, f"{project_label} cost", f"{service_label} {project_label}"],
+                })
+        for state_slug, (state_name, state_abbr) in STATE_NAMES.items():
+            if page_exists("service-guides", service_slug, state_slug):
+                add_item(items, seen, {
+                    "title": f"{state_name} {service_label}",
+                    "url": f"/service-guides/{service_slug}/{state_slug}/",
+                    "type": "State service guide",
+                    "category": "service-guide",
+                    "service": service_slug,
+                    "state": state_slug,
+                    "state_name": state_name,
+                    "state_abbr": state_abbr,
+                    "aliases": [f"{state_name} {service_label}", f"{state_abbr} {service_label}", f"{service_label} {state_name}"],
+                })
+            for project_slug, project_label in SERVICE_PROJECTS.get(service_slug, {}).items():
+                if page_exists("service-guides", service_slug, state_slug, project_slug):
+                    add_item(items, seen, {
+                        "title": f"{state_name} {project_label} cost",
+                        "url": f"/service-guides/{service_slug}/{state_slug}/{project_slug}/",
+                        "type": "State detailed service guide",
+                        "category": "service-guide",
+                        "service": service_slug,
+                        "project": project_slug,
+                        "state": state_slug,
+                        "state_name": state_name,
+                        "state_abbr": state_abbr,
+                        "aliases": [f"{state_name} {project_label}", f"{state_abbr} {project_label}", f"{project_label} cost {state_name}"],
+                    })
+            for city_dir in city_dirs_for_state(state_slug):
+                city_slug = city_dir.name
+                if not page_exists("service-guides", service_slug, state_slug, city_slug):
+                    continue
+                city = title_case_city(city_slug)
+                add_item(items, seen, {
+                    "title": f"{city} {service_label}",
+                    "url": f"/service-guides/{service_slug}/{state_slug}/{city_slug}/",
+                    "type": "City service guide",
+                    "category": "service-guide",
+                    "service": service_slug,
+                    "state": state_slug,
+                    "state_name": state_name,
+                    "state_abbr": state_abbr,
+                    "city": city_slug,
+                    "aliases": [f"{city} {service_label}", f"{city} {state_abbr} {service_label}", f"{service_label} {city}"],
+                })
+                for project_slug, project_label in SERVICE_PROJECTS.get(service_slug, {}).items():
+                    if not page_exists("service-guides", service_slug, state_slug, city_slug, project_slug):
+                        continue
+                    add_item(items, seen, {
+                        "title": f"{city} {project_label} cost",
+                        "url": f"/service-guides/{service_slug}/{state_slug}/{city_slug}/{project_slug}/",
+                        "type": "City detailed service guide",
+                        "category": "service-guide",
+                        "service": service_slug,
+                        "project": project_slug,
+                        "state": state_slug,
+                        "state_name": state_name,
+                        "state_abbr": state_abbr,
+                        "city": city_slug,
+                        "aliases": [f"{city} {project_label}", f"{city} {state_abbr} {project_label}", f"{project_label} cost {city}"],
+                    })
 
     items.sort(key=lambda item: (item.get("state") or "", item.get("city") or "", item["category"], item["title"]))
     return {"states": states, "items": items}

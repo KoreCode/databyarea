@@ -45,6 +45,10 @@ CRITICAL_PAGES = [
     "/utility-costs/",
     "/property-taxes/",
     "/insurance-costs/",
+    "/service-guides/",
+    "/service-guides/plumber/minnesota/",
+    "/service-guides/electrician/minnesota/lake-city/",
+    "/service-guides/electrician/minnesota/lake-city/new-outlets/",
     "/cost-of-living/minnesota/",
     "/utility-costs/minnesota/",
     "/property-taxes/minnesota/",
@@ -152,7 +156,7 @@ def check_json_files() -> dict[str, Any]:
             continue
         checked += 1
         try:
-            json.loads(path.read_text(encoding="utf-8"))
+            json.loads(path.read_text(encoding="utf-8-sig"))
         except Exception as exc:
             failures.append({"path": path.relative_to(REPO_ROOT).as_posix(), "error": str(exc)})
     return {"ok": not failures, "checked": checked, "failures": failures[:50]}
@@ -240,7 +244,7 @@ def check_search_index() -> dict[str, Any]:
     if not path.exists():
         return {"ok": False, "error": "assets/search-index.json is missing"}
     try:
-        payload = json.loads(path.read_text(encoding="utf-8"))
+        payload = json.loads(path.read_text(encoding="utf-8-sig"))
     except json.JSONDecodeError as exc:
         return {"ok": False, "error": str(exc)}
 
@@ -270,7 +274,7 @@ def check_search_index() -> dict[str, Any]:
 
 def check_common_text_damage() -> dict[str, Any]:
     findings: list[dict[str, str]] = []
-    bad_tokens = ("Â", "â€”", "â€“", "â€™", "â†")
+    bad_tokens = ("\u00c2", "\u00e2\u20ac\u201d", "\u00e2\u20ac\u201c", "\u00e2\u20ac\u2122", "\u00e2\u2020")
     for path in text_files():
         rel = path.relative_to(REPO_ROOT).as_posix()
         text = path.read_text(encoding="utf-8", errors="ignore")

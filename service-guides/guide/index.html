@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Service Guide | DataByArea</title>
+  <meta name="description" content="Contextual DataByArea contractor service guide with location-aware project rate planning." />
+  <meta name="robots" content="noindex,follow,max-image-preview:large" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="canonical" href="https://databyarea.com/service-guides/guide/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body class="area-dashboard-page insight-hub-page">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="container area-dashboard-shell">
+    <header class="area-top-nav area-home-header">
+      <a href="/" class="area-home-brand" aria-label="DataByArea.com home">
+        <span class="area-home-logo" aria-hidden="true"><img src="/assets/logo-icon.svg" alt="" width="36" height="36" decoding="async" fetchpriority="high" /></span>
+        <span>DataByArea.com</span>
+      </a>
+      <div class="area-home-actions">
+        <a class="area-home-button search" href="/search/">Search Data</a>
+        <a class="area-home-login" href="/login/">Log In</a>
+        <a class="area-home-button signup" href="/signup/">Sign Up</a>
+      </div>
+    </header>
+
+    <nav class="insight-topics" aria-label="Insight pages">
+      <a href="/service-guides/">Service Guides</a>
+      <a href="/cost-of-living/">Cost of Living</a>
+      <a href="/utility-costs/">Utilities</a>
+      <a href="/property-taxes/">Property Taxes</a>
+      <a href="/insurance-costs/">Insurance</a>
+    </nav>
+
+    <main id="main-content" class="insight-main">
+      <section class="insight-hero" aria-labelledby="guide-title">
+        <div>
+          <div class="insight-breadcrumbs"><a href="/">Home</a> &rsaquo; <a href="/service-guides/">Service Guides</a> &rsaquo; <span data-guide-breadcrumb>Guide</span></div>
+          <h1 id="guide-title">Service Guide</h1>
+          <p data-guide-intro>Loading service guide...</p>
+          <div class="insight-actions">
+            <a href="#rate-snapshot">Rates</a>
+            <a href="#project-examples">Projects</a>
+            <a href="#quote-checks">Quote Checks</a>
+            <a href="/service-guides/">All Guides</a>
+          </div>
+        </div>
+        <aside class="insight-panel" id="rate-snapshot" aria-label="Service rate snapshot">
+          <h2 data-guide-panel-title>Rate Snapshot</h2>
+          <div class="insight-panel-grid">
+            <div><strong data-guide-range>--</strong><span>Planning range</span></div>
+            <div><strong data-guide-location>Area</strong><span>Location context</span></div>
+            <div><strong data-guide-unit>Unit</strong><span>Estimate basis</span></div>
+            <div><strong>Local</strong><span>Verify quotes</span></div>
+          </div>
+          <p class="insight-source">Ranges are planning estimates built from service type and location context. Verify exact scope, permits, materials, and contractor terms locally.</p>
+        </aside>
+      </section>
+
+      <section class="insight-grid" aria-label="Contextual service guide">
+        <article class="insight-card">
+          <span class="insight-label">Service</span>
+          <span class="insight-kpi" data-guide-service>--</span>
+          <p data-guide-service-note>Service-specific project scope changes the final quote.</p>
+        </article>
+        <article class="insight-card">
+          <span class="insight-label">Location</span>
+          <span class="insight-kpi" data-guide-location-card>--</span>
+          <p>State and city context affects labor availability, permit rules, travel time, and local demand.</p>
+        </article>
+        <article class="insight-card">
+          <span class="insight-label">Confidence</span>
+          <span class="insight-kpi">Planning</span>
+          <p>Use this as a first-pass range before collecting current local quotes.</p>
+        </article>
+        <article class="insight-card">
+          <span class="insight-label">Best next step</span>
+          <span class="insight-kpi">2-3 Quotes</span>
+          <p>Compare written estimates with the same scope, timing, materials, permits, and warranty terms.</p>
+        </article>
+
+        <article class="insight-card insight-wide" id="project-examples">
+          <h2>Common Project Types</h2>
+          <ul class="insight-list" data-guide-projects style="margin-top:10px"></ul>
+        </article>
+
+        <article class="insight-card insight-wide">
+          <h2>What Moves the Price</h2>
+          <ul class="insight-list" data-guide-drivers style="margin-top:10px"></ul>
+        </article>
+
+        <article class="insight-card insight-wide" id="quote-checks">
+          <h2>Quote Checks</h2>
+          <ul class="insight-list" style="margin-top:10px">
+            <li>Ask whether the estimate is hourly, flat-rate, diagnostic-plus-repair, or project based.</li>
+            <li>Confirm permits, inspections, disposal, cleanup, and warranty terms in writing.</li>
+            <li>Compare the same materials, fixture quality, system size, or repair scope across bids.</li>
+            <li>Document what triggers extra charges, emergency fees, travel fees, and change orders.</li>
+          </ul>
+        </article>
+
+        <article class="insight-card insight-wide">
+          <h2>Related Guides</h2>
+          <div class="insight-feature-grid" data-guide-related style="margin-top:12px"></div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer home-footer">
+      <p><strong>Disclaimer:</strong> Contractor and project rates are estimates for planning. Exact prices vary by scope, property condition, permits, materials, and contractor availability.</p>
+      <p><a href="/about/">About</a> &middot; <a href="/privacy/">Privacy Policy</a> &middot; <a href="/contact/">Contact</a></p>
+    </footer>
+  </div>
+  <script src="/assets/service-guide-data.js"></script>
+  <script>
+    (function () {
+      var guides = window.DBA_SERVICE_GUIDES || {};
+      var stateNames = {
+        "alabama": "Alabama", "alaska": "Alaska", "arizona": "Arizona", "arkansas": "Arkansas",
+        "california": "California", "colorado": "Colorado", "connecticut": "Connecticut", "delaware": "Delaware",
+        "florida": "Florida", "georgia": "Georgia", "hawaii": "Hawaii", "idaho": "Idaho",
+        "illinois": "Illinois", "indiana": "Indiana", "iowa": "Iowa", "kansas": "Kansas",
+        "kentucky": "Kentucky", "louisiana": "Louisiana", "maine": "Maine", "maryland": "Maryland",
+        "massachusetts": "Massachusetts", "michigan": "Michigan", "minnesota": "Minnesota", "mississippi": "Mississippi",
+        "missouri": "Missouri", "montana": "Montana", "nebraska": "Nebraska", "nevada": "Nevada",
+        "new-hampshire": "New Hampshire", "new-jersey": "New Jersey", "new-mexico": "New Mexico", "new-york": "New York",
+        "north-carolina": "North Carolina", "north-dakota": "North Dakota", "ohio": "Ohio", "oklahoma": "Oklahoma",
+        "oregon": "Oregon", "pennsylvania": "Pennsylvania", "rhode-island": "Rhode Island", "south-carolina": "South Carolina",
+        "south-dakota": "South Dakota", "tennessee": "Tennessee", "texas": "Texas", "utah": "Utah",
+        "vermont": "Vermont", "virginia": "Virginia", "washington": "Washington", "west-virginia": "West Virginia",
+        "wisconsin": "Wisconsin", "wyoming": "Wyoming"
+      };
+
+      function titleCaseSlug(slug) {
+        return String(slug || "").split("-").filter(Boolean).map(function (part) {
+          return part.charAt(0).toUpperCase() + part.slice(1);
+        }).join(" ");
+      }
+
+      function setText(selector, value) {
+        var el = document.querySelector(selector);
+        if (el) el.textContent = value;
+      }
+
+      function list(selector, items) {
+        var el = document.querySelector(selector);
+        if (!el) return;
+        el.innerHTML = items.map(function (item) { return "<li>" + item + "</li>"; }).join("");
+      }
+
+      function guideUrl(service, state, city) {
+        var params = new URLSearchParams();
+        params.set("service", service);
+        if (state) params.set("state", state);
+        if (city) params.set("city", city);
+        return "/service-guides/guide/?" + params.toString();
+      }
+
+      var params = new URLSearchParams(window.location.search);
+      var serviceKey = params.get("service") || "plumber";
+      var stateSlug = params.get("state") || "";
+      var citySlug = params.get("city") || "";
+      var guide = guides[serviceKey] || guides.plumber;
+      var stateName = stateNames[stateSlug] || titleCaseSlug(stateSlug);
+      var cityName = titleCaseSlug(citySlug);
+      var locationLabel = cityName && stateName ? cityName + ", " + stateName : (stateName || "Your Area");
+      var title = guide.label + " in " + locationLabel;
+
+      document.title = title + " | DataByArea";
+      var canonical = document.querySelector('link[rel="canonical"]');
+      if (canonical) canonical.setAttribute("href", "https://databyarea.com" + guideUrl(serviceKey, stateSlug, citySlug));
+      var description = document.querySelector('meta[name="description"]');
+      if (description) description.setAttribute("content", title + " with local contractor rate ranges, project examples, price drivers, and quote checks.");
+
+      setText("#guide-title", title);
+      setText("[data-guide-breadcrumb]", guide.label);
+      setText("[data-guide-intro]", "Use this contextual service guide to plan " + guide.service + " costs for " + locationLabel + ". The page adapts from state or city links and can later be backed by saved API-enriched rate data.");
+      setText("[data-guide-panel-title]", guide.label + " Snapshot");
+      setText("[data-guide-range]", guide.range);
+      setText("[data-guide-location]", locationLabel);
+      setText("[data-guide-unit]", guide.unit);
+      setText("[data-guide-service]", guide.label.replace(" Rates", ""));
+      setText("[data-guide-location-card]", cityName || stateName || "Area");
+      setText("[data-guide-service-note]", "Typical " + guide.service + " pricing is shaped by project scope, local labor pressure, materials, and permit requirements.");
+      list("[data-guide-projects]", guide.projectExamples || []);
+      list("[data-guide-drivers]", guide.drivers || []);
+
+      var related = document.querySelector("[data-guide-related]");
+      if (related) {
+        related.innerHTML = (guide.related || []).map(function (key) {
+          var item = guides[key];
+          if (!item) return "";
+          return '<a class="insight-feature-card" href="' + guideUrl(key, stateSlug, citySlug) + '">' +
+            '<strong>' + item.label + '</strong>' +
+            '<span>' + item.range + ' planning range for ' + locationLabel + '.</span>' +
+            '<em>Open guide</em>' +
+          '</a>';
+        }).join("");
+      }
+    })();
+  </script>
+  <script defer src="/assets/version-footer.js"></script>
+</body>
+</html>

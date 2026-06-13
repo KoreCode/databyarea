@@ -1,0 +1,86 @@
+{
+  "generated_at_utc": "2026-06-13T05:40:50.230147+00:00",
+  "services": [
+    "concrete-driveway",
+    "electrician",
+    "foundation",
+    "garage-door",
+    "hvac",
+    "plumber",
+    "roofing",
+    "water-heater"
+  ],
+  "project_templates_per_service": {
+    "plumber": [
+      "leak-repair",
+      "drain-cleaning",
+      "faucet-replacement",
+      "pipe-replacement"
+    ],
+    "electrician": [
+      "new-outlets",
+      "panel-upgrade",
+      "ev-charger-installation",
+      "light-fixture-installation"
+    ],
+    "hvac": [
+      "ac-replacement",
+      "furnace-replacement",
+      "heat-pump-installation",
+      "ductwork-repair"
+    ],
+    "roofing": [
+      "asphalt-shingle-replacement",
+      "roof-leak-repair",
+      "flashing-repair",
+      "roof-deck-repair"
+    ],
+    "water-heater": [
+      "tank-water-heater-replacement",
+      "tankless-water-heater-installation",
+      "expansion-tank-installation",
+      "water-heater-code-upgrades"
+    ],
+    "garage-door": [
+      "spring-replacement",
+      "opener-installation",
+      "panel-replacement",
+      "full-door-replacement"
+    ],
+    "foundation": [
+      "crack-repair",
+      "pier-installation",
+      "basement-waterproofing",
+      "structural-stabilization"
+    ],
+    "concrete-driveway": [
+      "driveway-replacement",
+      "concrete-removal",
+      "stamped-concrete",
+      "reinforced-driveway"
+    ]
+  },
+  "page_count": 18001,
+  "sample_paths": [
+    "/service-guides/",
+    "/service-guides/plumber/",
+    "/service-guides/plumber/leak-repair/",
+    "/service-guides/plumber/drain-cleaning/",
+    "/service-guides/plumber/faucet-replacement/",
+    "/service-guides/plumber/pipe-replacement/",
+    "/service-guides/plumber/alabama/",
+    "/service-guides/plumber/alabama/leak-repair/",
+    "/service-guides/plumber/alabama/drain-cleaning/",
+    "/service-guides/plumber/alabama/faucet-replacement/",
+    "/service-guides/plumber/alabama/pipe-replacement/",
+    "/service-guides/plumber/alaska/",
+    "/service-guides/plumber/alaska/leak-repair/",
+    "/service-guides/plumber/alaska/drain-cleaning/",
+    "/service-guides/plumber/alaska/faucet-replacement/",
+    "/service-guides/plumber/alaska/pipe-replacement/",
+    "/service-guides/plumber/arizona/",
+    "/service-guides/plumber/arizona/leak-repair/",
+    "/service-guides/plumber/arizona/drain-cleaning/",
+    "/service-guides/plumber/arizona/faucet-replacement/"
+  ]
+}

@@ -57,6 +57,16 @@ DataByArea
 - Example usage:
   - `python3 -c "from scripts.eia_client import fetch_series; print(fetch_series('electricity/retail-sales/data'))"`
 
+### External economic API keys
+- Local and scheduled enrichment scripts should read API keys from environment variables, not tracked source files.
+- Supported key names:
+  - `CENSUS_API_KEY`
+  - `BLS_API_KEY`
+  - `EIA_API_KEY`
+  - `FRED_API_KEY`
+  - `BEA_API_KEY`
+- Use `.env.example` as the safe template for local setup. Keep real `.env` files untracked.
+
 ### Fast API pull/store/display pipeline
 - Script: `scripts/eia_pipeline.py`
 - Purpose: quickly pull EIA data, cache responses, store normalized points in sqlite, and render an HTML dashboard.
